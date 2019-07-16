@@ -11,8 +11,12 @@
     - check the sel-based requirements and make sure I used the correct selection-depends reqs
 
     - Incorporate TLS Package
+        - Remove TLSC and TLSS requirements
+        - Edit FTP_ITC_EXT.1
+        - What about SSH? Probably need to change the reference to that package
+    - Somehow indicate that the SV or CV package must be selected. Currently there is no SFR that does this.
     - Incorporate TDs
-    - 0139 Clarification of testing for FDP_RIP_EXT.2
+    - DONE: 0139 Clarification of testing for FDP_RIP_EXT.2
     - 0166 Optional authentication of TLS Client
     - 0206 Testing for Non-Existence of Disconnected Virtual Devices
     - 0213 Corrections to App Note references to FCS_TLS, FCS_IPSEC, and FTP_ITC
@@ -2075,11 +2079,12 @@
                         <note role="application">Disk storage must be zeroed before it is made accessible to a <abbr linkend="VM"/> for use by a Guest OS.<htm:br></htm:br><htm:br></htm:br>
                             The purpose of this requirement is to ensure that a <abbr linkend="VM"/> does not receive disk storage containing data previously used by another <abbr linkend="VM"/> or the host.<htm:br></htm:br><htm:br></htm:br>
                             This does not apply to disk-resident files shared by design or policy between <abbr linkend="VM"/>s or between the <abbr linkend="VMM"/>s and <abbr linkend="VM"/>s, such as read-only data files or files used for inter-VM data transfers permitted by policy. </note>
-                        <aactivity>The evaluator shall ensure that the <abbr linkend="TSS"/> documents the conditions under which physical disk storage is not cleared prior to allocation to a Guest <abbr linkend="VM"/>.<htm:br></htm:br><htm:br></htm:br>
-                            The evaluator shall perform the following tests:<htm:br></htm:br><htm:br></htm:br>
+                        <aactivity>The evaluator shall ensure that the <abbr linkend="TSS"/> documents the conditions under which physical disk storage is not cleared prior to allocation to a Guest <abbr linkend="VM"/>. The evaluator shall also ensure that the <abbr linkend="TSS"/> documents the metadata used in its virtual disk files. <htm:br></htm:br><htm:br></htm:br>
+                            The evaluator shall perform the following test:<htm:br></htm:br><htm:br></htm:br>
                             <testlist>
-                                <test>The evaluator (as an unprivileged <abbr linkend="VM"/> user) must create a new, large file (10MB) in the <abbr linkend="VM"/>’s file system. The test is to read each location in the file to ensure that every location contains a value of 0. This can be done using a custom tool or a binary file editor or viewer.</test>
-                                <test>The evaluator (as VS Administrator) must create a virtual disk and connect it to a <abbr linkend="VM"/>. As an unprivileged <abbr linkend="VM"/> user, the evaluator must then create a large (10 MB) memory-mapped file on the virtual disk. The test is to read each location in the file to ensure that every location contains a value of 0. This can be done using a custom tool or a binary file editor or viewer.</test>
+                                <test>On the host, the evaluator creates a file that is more than half the size of a connected physical storage device (or multiple files whose individual sizes add up to more than half the size of the storage media).  This file (or files) shall be filled entirely with a non-zero value.  Then, the
+                                    file (or files) shall be released (freed for use but not cleared).  Next, the evaluator (as a <abbr linkend="VS"/> Administrator) creates a virtual disk at least that large on the same physical storage device and connects it to a powered-off <abbr linkend="VM"/>.  Then, from outside the 
+                                    Guest <abbr linkend="VM"/>, scan through and check that all the non-metadata (as documented in the <abbr linkend="TSS"/>) in the file corresponding to that virtual disk is set to zero.</test>
                             </testlist>
                         </aactivity>
                     </f-element>
