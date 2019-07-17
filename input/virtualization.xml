@@ -24,9 +24,9 @@
     - OBEV: 0244 FCS_TLSC_EXT - TLS Client Curves Allowed
     - PART: 0247 FPT_VDP_EXT.1 Clarification for Assurance Activity
     - DONE: 0249 Applicability of FTP_ITC_EXT.1
-    - 0250 Hypercall Controls - FPT_HCL_EXT.1 Clarification
-    - 0252 Inaccurate statement in application note of FCS_TLSC_EXT.2.4
-    - 0264 Clarification of Auditable Events for FPT_RDM_EXT.1
+    - DONE: 0250 Hypercall Controls - FPT_HCL_EXT.1 Clarification
+    - OBEV: 0252 Inaccurate statement in application note of FCS_TLSC_EXT.2.4
+    - DONE: 0264 Clarification of Auditable Events for FPT_RDM_EXT.1
     - 0265 Audit of TLS and HTTPS Session Terminations
     - 0267 TLSS testing - Empty Certificate Authorities list
     - 0360 AD Server configuration in FMT_MOF_EXT.1
@@ -649,8 +649,9 @@
                                 </htm:TR>
                                 <htm:TR>
                                     <htm:TD>FPT_RDM_EXT.1</htm:TD>
-                                    <htm:TD>Transfer of removable media or device between <abbr linkend="VM"/>s.</htm:TD>
-                                    <htm:TD>None.</htm:TD>
+                                    <htm:TD>Connection/disconnection of removable media or device to/from a VM.<htm:br></htm:br><htm:br></htm:br>
+                                        Ejection/insertion of removable media or device from/to an already connected VM.</htm:TD>
+                                    <htm:TD>VM Identifier, Removable media/device identifier, event description or identifier (connect/disconnect, ejection/insertion, etc.)</htm:TD>
                                 </htm:TR>
                                 <htm:TR>
                                     <htm:TD>FPT_TUD_EXT.1</htm:TD>
@@ -2103,11 +2104,7 @@
                         </title>
                     </f-element>
                     <f-element id="FPT_HCL_EXT.1.2">
-                        <title>The <abbr linkend="TSF"/> shall allow administrators to configure any <abbr linkend="VM"/>’s Hypercall interface to 
-                            <selectables>
-                                <selectable>enable</selectable>
-                                <selectable>disable</selectable>
-                            </selectables> access to Hypercall functions.
+                        <title>The <abbr linkend="TSF"/> shall allow administrators to configure any <abbr linkend="VM"/>’s Hypercall interface to disable access to individual functions, all functions, or groups of functions.
                         </title>
                     </f-element>
                     <f-element id="FPT_HCL_EXT.1.3">
@@ -2117,18 +2114,32 @@
                     <f-element id="FPT_HCL_EXT.1.4">
                         <title>The <abbr linkend="TSF"/> shall validate the parameters passed to the hypercall interface prior to execution of the <abbr linkend="VMM"/> functionality exposed by that interface.
                         </title>
-                        <note role="application">The purpose of this requirement is to help ensure the integrity of the <abbr linkend="VMM"/> by documenting the attack surface exposed to Guest <abbr linkend="VM"/>s, and to ensure that Hypercall parameters supplied by software running in the untrusted Guest <abbr linkend="VM"/> are properly validated prior to use by the <abbr linkend="VMM"/>.<htm:br></htm:br><htm:br></htm:br>
+                        <note role="application">The purpose of this requirement is to help ensure the integrity of the 
+                            <abbr linkend="VMM"/> by defining the attack surface exposed to Guest VMs through Hypercalls,
+                            testing the mechanisms for reducing that attack surface by disabling Hypercalls, and ensuring that
+                            Hypercall parameters are properly validated prior to use by the <abbr linkend="VMM"/>.<htm:br></htm:br><htm:br></htm:br>
                             A Hypercall interface allows a set of <abbr linkend="VMM"/> functions to be invoked by software running within a <abbr linkend="VM"/>. Hypercall interfaces are used by virtualization-aware <abbr linkend="VM"/>s to communicate and exchange data with the <abbr linkend="VMM"/>. For example, a <abbr linkend="VM"/> could use a hypercall interface to get information about the real world, such as the time of day or the underlying hardware of the host system. A hypercall could also be used to transfer data between <abbr linkend="VM"/>s through a copy-paste mechanism. Because hypercall interfaces expose the <abbr linkend="VMM"/> to Guest <abbr linkend="VM"/>s, these interfaces constitute attack surface. In order to minimize attack surface, these interfaces must be limited to the minimum needed to support <abbr linkend="VM"/> functionality.<htm:br></htm:br><htm:br></htm:br>
                             For the selection in FPT_HCL_EXT.1.2, the <abbr linkend="ST"/> author selects the applicable actions that administrators can perform to configure functions supported by the interface.<htm:br></htm:br><htm:br></htm:br>
                             For the assignment in FPT_HCL_EXT.1.3, the <abbr linkend="ST"/> author lists the interface functions that cannot be configured per FPT_HCL_EXT.1.2.<htm:br></htm:br><htm:br></htm:br>
-                            A vendor-provided test harness may reduce evaluation time.
+                            A vendor-provided test harness may reduce evaluation time.<htm:br></htm:br><htm:br></htm:br>
+                            There is no expectation that the evaluator will need to review source code in order to accomplish the
+                            Assurance Activity.  The evaluator documentation review should ensure that there are documented
+                            Hypercall functions in the <abbr linkend="TSS"/>, that each documented Hypercall function contains the specified
+                            information, and that there are not obvious or publicly known Hypercall functions missing.
                         </note>
-                        <aactivity>The evaluator shall examine the <abbr linkend="TSS"/> or operational guidance to ensure it includes the documentation of the interface, including all possible functions available via the interface. Documentation must include, for each function, how to call the function, function parameters and legal values, configuration settings for enabling/disabling the function, and conditions under which the function can be disabled. The <abbr linkend="TSS"/> must also specify those functions that cannot be disabled.<htm:br></htm:br><htm:br></htm:br>
+                        <aactivity>The evaluator shall examine the <abbr linkend="TSS"/> or operational guidance to ensure it 
+                            documentations all Hypercall functions at the level necessary for the evaluator to disable the functions
+                            and run tests 1 and 2, below. Documentation must include, for each function, how to call the function, function
+                            parameters and legal values, configuration settings for enabling/disabling the function, and conditions under
+                            which the function can be disabled. The <abbr linkend="TSS"/> must also specify those functions that cannot be
+                            disabled.  While there is no expectation that the evaluator will need to examine source code in order to
+                            accomplish this Assurance Activity, the evaluator must ensure that there are no obvious or publicly known
+                            Hypercall functions missing from the TSS. <htm:br></htm:br><htm:br></htm:br>
                             The evaluator shall examine the operational guidance to ensure it contains instructions for how to configure interface functions per FPT_HCL_EXT.1.2.<htm:br></htm:br><htm:br></htm:br>
                             The evaluator shall perform the following tests:<htm:br></htm:br><htm:br></htm:br>
                             <testlist>
                                 <test>For each configurable function that meets FPT_HCL_EXT.1.2, the evaluator shall follow the operational guidance to enable the function. The evaluator shall then attempt to call each function from within the <abbr linkend="VM"/>. If the call is allowed, then the test succeeds.</test>
-                                <test>For each configurable function, the evaluator shall configure the <abbr linkend="TSF"/> to disable the function. The evaluator shall then attempt to call the function from within the <abbr linkend="VM"/>. If the call is blocked, then the test succeeds.</test>
+                                <test>For each configurable function that meets FPT_HCL_EXT.1.2, the evaluator shall configure the <abbr linkend="TSF"/> to disable the function. The evaluator shall then attempt to call the function from within the <abbr linkend="VM"/>. If the call is blocked, then the test succeeds.</test>
                             </testlist>
                         </aactivity>
                     </f-element>
