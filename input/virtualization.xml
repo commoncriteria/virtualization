@@ -27,11 +27,11 @@
     - DONE: 0250 Hypercall Controls - FPT_HCL_EXT.1 Clarification
     - OBEV: 0252 Inaccurate statement in application note of FCS_TLSC_EXT.2.4
     - DONE: 0264 Clarification of Auditable Events for FPT_RDM_EXT.1
-    - 0265 Audit of TLS and HTTPS Session Terminations
-    - 0267 TLSS testing - Empty Certificate Authorities list
+    - DONE: 0265 Audit of TLS and HTTPS Session Terminations
+    - OBEV: 0267 TLSS testing - Empty Certificate Authorities list
     - 0360 AD Server configuration in FMT_MOF_EXT.1
-    - 0363 Access Banner and applicability to programmatic interfaces
-    - 0403 Conditional Testing with TLS Session IDs
+    - DONE: 0363 Access Banner and applicability to programmatic interfaces
+    - OBEV: 0403 Conditional Testing with TLS Session IDs
 
     - Translate SV and CV packages into XML
     - Somehow indicate that the SV or CV package must be selected. Currently there is no SFR that does this.
@@ -480,6 +480,9 @@
                         </title>
                         <note role="application">
                             The <abbr linkend="ST"/> author can include other auditable events directly in Table 1; they are not limited to the list presented. The <abbr linkend="ST"/> author should update the table in FAU_GEN.1.2 with any additional information generated. “Subject identity” in FAU_GEN.1.2 could be a user id or an identifier specifying a <abbr linkend="VM"/>, for example.<htm:br></htm:br><htm:br></htm:br>
+                            If ‘additional information defined in Table 3’ is selected, it is acceptable to include individual 
+                            entries from Table 3 without including the entirety of Table 3.  Appropriate entries from Tables 2, 4,
+                            and 5 should be included in the <abbr linkend="ST"/> if the associated SFRs and selections are included.<htm:br></htm:br><htm:br></htm:br>
                             The Table 1 entry for FDP_VNC_EXT.1 refers to configuration settings that attach <abbr linkend="VM"/>s to virtualized network components. Changes to these configurations can be made during <abbr linkend="VM"/> execution or when <abbr linkend="VM"/>s are not running. Audit records must be generated for either case.<htm:br></htm:br><htm:br></htm:br>
                             The intent of the audit requirement for FDP_PPR_EXT.1 is to log that the <abbr linkend="VM"/> is connected to a physical device (when the device becomes part of the <abbr linkend="VM"/>’s hardware view), not to log every time that the device is accessed. Generally, this is only once at <abbr linkend="VM"/> startup. However, some devices can be connected and disconnected during operation (e.g., virtual USB devices such as CD-ROMs). All such connection/disconnection events must be logged.
                         </note>
@@ -2370,8 +2373,15 @@
             <subsection id="fta" title="TOE Access">
                 <f-component id="FTA_TAB.1" name="TOE Access Banner"  status="threshold">
                     <f-element id="FTA_TAB.1.1">
-                        <title>Before establishing an Administrator session, the <abbr linkend="TSF"/> shall display an advisory warning message regarding unauthorized use of the <abbr linkend="TOE"/>.
+                        <title>Before establishing an administrative user session, the <abbr linkend="TSF"/> shall display a
+                            security Administrator-specifiedad advisory notice and consent warning message regarding
+                            use of the <abbr linkend="TOE"/>.
                         </title>
+                        <note role="application">
+                            This requirement is intended to apply to interactive sessions between a human user and a TOE. IT
+                            entities establishing connections or programmatic connections (e.g., remote procedure calls over
+                            a network) are not required to be covered by this requirement.<htm:br></htm:br><htm:br></htm:br>
+                        </note>
                     <aactivity>The evaluator shall configure the <abbr linkend="TOE"/> to display the advisory warning message “TEST TEST Warning Message TEST TEST”. The evaluator shall then log out and confirm that the advisory message is displayed before logging can occur.
                         </aactivity>
                     </f-element>
@@ -2793,7 +2803,9 @@
         As indicated in the introduction to this PP, the baseline requirements (those that must be performed by the <abbr linkend="TOE"/> or its underlying platform) are contained in the body of the PP. There are additional requirements based on selections in the body of the PP: if certain selections are made, then additional requirements below will need to be included.<htm:br></htm:br><htm:br></htm:br>
         
         <htm:b>FAU_GEN.1 Auditable Events Table (Optional)</htm:b><htm:br></htm:br><htm:br></htm:br>
-        The following additional auditable events shall be claimed by the <abbr linkend="ST"/> author if “additional information defined in Table 3” is selected in FAU_GEN.1:<htm:br></htm:br><htm:br></htm:br>
+        The following additional auditable events may be claimed by the <abbr linkend="ST"/> author if “additional information
+        defined in Table 3” is selected in FAU_GEN.1.  Any subset of Table 3, including individual entries, may be included in
+        the <abbr linkend="ST"/>; it is not necessary to include the entirety of Table 3.<htm:br></htm:br><htm:br></htm:br>
         <htm:table border="1">
             <htm:caption>Table 3: Auditable Events</htm:caption>
             <htm:TR class="header">
@@ -2801,6 +2813,13 @@
                 <htm:TH>Auditable Events</htm:TH>
                 <htm:TH>Additional Audit Record Contents</htm:TH>
             </htm:TR>
+            <htm:tr>
+                <htm:td>FCS_HTTPS_EXT.1</htm:td>
+                <htm:td>Failure to establish a HTTPS Session.<htm:br></htm:br>
+                    Establishment/Termination of a HTTPS session.</htm:td>
+                <htm:td>Reason for failure.<htm:br></htm:br>
+                    Non-<abbr linkend="TOE"/> endpoint of connection (IP address) for both successes and failures.</htm:td>
+            </htm:tr>
             <htm:tr>
                 <htm:td>FIA_UIA_EXT.1</htm:td>
                 <htm:td>Administrator session start time and end time</htm:td>
@@ -2819,13 +2838,6 @@
                 <htm:TH>Auditable Events</htm:TH>
                 <htm:TH>Additional Audit Record Contents</htm:TH>
             </htm:TR>
-            <htm:tr>
-                <htm:td>FCS_HTTPS_EXT.1</htm:td>
-                <htm:td>Failure to establish a HTTPS Session.<htm:br></htm:br>
-                    Establishment/Termination of a HTTPS session.</htm:td>
-                <htm:td>Reason for failure.<htm:br></htm:br>
-                    Non-<abbr linkend="TOE"/> endpoint of connection (IP address) for both successes and failures.</htm:td>
-            </htm:tr>
             <htm:tr>
                 <htm:td>FCS_IPSEC_EXT.1</htm:td>
                 <htm:td>Failure to establish an IPsec SA.<htm:br></htm:br>
