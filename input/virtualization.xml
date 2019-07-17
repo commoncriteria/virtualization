@@ -20,10 +20,10 @@
     - OBEV: 0166 Optional authentication of TLS Client
     - DONE: 0206 Testing for Non-Existence of Disconnected Virtual Devices
     - DONE: 0213 Corrections to App Note references to FCS_TLS, FCS_IPSEC, and FTP_ITC
-    - 0230 ALC Assurance Activities for Server Virtualization and Base Virtualization PPs
-    - 0244 FCS_TLSC_EXT - TLS Client Curves Allowed
-    - 0247 FPT_VDP_EXT.1 Clarification for Assurance Activity
-    - 0249 Applicability of FTP_ITC_EXT.1
+    - DONE: 0230 ALC Assurance Activities for Server Virtualization and Base Virtualization PPs
+    - OBEV: 0244 FCS_TLSC_EXT - TLS Client Curves Allowed
+    - PART: 0247 FPT_VDP_EXT.1 Clarification for Assurance Activity
+    - DONE: 0249 Applicability of FTP_ITC_EXT.1
     - 0250 Hypercall Controls - FPT_HCL_EXT.1 Clarification
     - 0252 Inaccurate statement in application note of FCS_TLSC_EXT.2.4
     - 0264 Clarification of Auditable Events for FPT_RDM_EXT.1
@@ -2239,10 +2239,21 @@
                             FPT_VDP_EXT.1.2 is an attestation requirement. The vendor must attest that parameters passed from a <abbr linkend="VM"/> to a virtual device interface are not able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform. The vendor must attest that there are no design or implementation flaws that permit the above.
                         </note>
                         <aactivity>
-                            The evaluator shall examine the <abbr linkend="TSS"/> to ensure it documents all virtual device interfaces, including I/O ports, protocols, and data formats.<htm:br></htm:br><htm:br></htm:br>
-                            The evaluator ensures that the <abbr linkend="ST"/> includes the following statement attesting that parameters passed from a Guest <abbr linkend="VM"/> to virtual device interfaces are thoroughly validated, that all values outside the legal values specified in the <abbr linkend="TSS"/> are rejected, and that any data passed to the virtual device interfaces is unable to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform:<htm:br></htm:br><htm:br></htm:br>
-                        “Parameters passed from Guest <abbr linkend="VM"/>s to virtual device interfaces are thoroughly validated and all illegal values (as specified in the <abbr linkend="TSS"/>) are rejected. Additionally, parameters passed from Guest <abbr linkend="VM"/>s to virtual device interfaces are not able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform. Thorough testing and architectural design reviews have been conducted to ensure the accuracy of these claims, and there are no design or implementation flaws that bypass or defeat the security of the virtual device interfaces.”
+                            The evaluator shall examine the <abbr linkend="TSS"/> to ensure it documents all virtual device interfaces
+                            at the virtual I/O port level, to specify port number (absolute or relative to a base), port name, and a
+                            description of legal input values.  The documentation must be sufficient to enable the evaluator to
+                            effectively run the tests in FPT_DVD_EXT.1.  The evaluator must ensure that there are no obvious or
+                            publicly known virtual I/O ports missing from the <abbr linkend="TSS"/>.
                         </aactivity>
+<!-- How do we specify AA Notes? 
+-->
+                        <note>
+                            There is no expectation that evaluators will examine source code to verify the “all” part of the Assurance Activity.<htm:br></htm:br><htm:br></htm:br>
+                            The evaluator shall examine the <abbr linkend="TSS"/> to ensure it documents all virtual device interfaces,
+                            including I/O ports, protocols, and data formats.<htm:br></htm:br><htm:br></htm:br>
+                            The evaluator ensures that the <abbr linkend="ST"/> includes the following statement attesting that parameters passed from a Guest <abbr linkend="VM"/> to virtual device interfaces are thoroughly validated, that all values outside the legal values specified in the <abbr linkend="TSS"/> are rejected, and that any data passed to the virtual device interfaces is unable to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform:<htm:br></htm:br><htm:br></htm:br>
+                            “Parameters passed from Guest <abbr linkend="VM"/>s to virtual device interfaces are thoroughly validated and all illegal values (as specified in the <abbr linkend="TSS"/>) are rejected. Additionally, parameters passed from Guest <abbr linkend="VM"/>s to virtual device interfaces are not able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform. Thorough testing and architectural design reviews have been conducted to ensure the accuracy of these claims, and there are no design or implementation flaws that bypass or defeat the security of the virtual device interfaces.”
+                        </note>
                     </f-element>
                 </f-component>
                 <f-component id="FPT_VIV_EXT.1" name="VMM Isolation from VMs"  status="threshold">
@@ -2365,7 +2376,15 @@
                                 <selectable>IPsec as conforming to FCS_IPSEC_EXT.1</selectable>
                                 <selectable>SSH as conforming to the <h:a href="https://www.niap-ccevs.org/pp/"><h:i><abbr linkend="EP"/> for Secure Shell</h:i></h:a></selectable>
                             </selectables>
-                            to provide a trusted communication channel between itself, external IT entities, and remote users that is logically distinct from other communication paths and provides assured identification of its endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.
+                            to provide a trusted communication channel between itself, and<htm:br></htm:br><htm:br></htm:br>
+                            <htm:li>audit servers (as required by FAU_STG_EXT.1), and</htm:li>
+                            <selectables linebreak="yes">
+                                <selectable>remote administrators (as required by FTP_TRP.1.1 if selected in FMT_MOF_EXT.1.1 in the selected EP),</selectable>
+                                <selectable>separation of management and operational networks (if selected in FMT_SMO_EXT.1),</selectable>
+                                <selectable>[assignment: other capabilities],</selectable>
+                                <selectable>no other capabilities]</selectable>
+                            </selectables>
+                            that is logically distinct from other communication paths and provides assured identification of its endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.
                         </title>
                         <note role="application">This PP does not mandate that a product implement TLS with mutual authentication; either FCS_TLSS_EXT.1 or FCS_TLSS_EXT.2 can be selected if the <abbr linkend="TOE"/> provides TLS server capabilities. However, if the product itself does include the capability to perform TLS with mutual authentication, it is expected that it be included within the <abbr linkend="TOE"/> boundary.<htm:br></htm:br><htm:br></htm:br>
                             If the <abbr linkend="ST"/> author selects SSH, the <abbr linkend="TSF"/> shall be validated against the Extended Package for Secure Shell. The <abbr linkend="ST"/> author must include the security functional requirements for the trusted channel protocol selected in FTP_ITC_EXT.1 in the main body of the <abbr linkend="ST"/>.<htm:br></htm:br><htm:br></htm:br>
@@ -2587,7 +2606,12 @@
                         <a-element id="ALC_CMC.1.1E">
                             <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.
                             </title>
-                            <aactivity>The evaluator shall verify that the <abbr linkend="TOE"/> has been provided with its unique reference labeled. The evaluator shall verify that the CM documentation has been provided and that it describes the method used to uniquely identify each configuration item. The evaluator shall verify that the developer has used a CM system and that this system uniquely identifies each configuration item.
+                            <aactivity>The evaluator shall check the ST to ensure that it contains an identifier (such as a product
+                                name/version number) that specifically identifies the version that meets the requirements of the ST.
+                                Further, the evaluator shall check the AGD guidance and <addr linkend="TOE"/> samples received for testing to ensure
+                                that the version number is consistent with that in the ST. If the vendor maintains a web site
+                                advertising the TOE, the evaluator shall examine the information on the web site to ensure that
+                                the information in the ST is sufficient to distinguish the product.
                             </aactivity>
                         </a-element>
                     </group>
@@ -2613,7 +2637,17 @@
                     <group type="eval-action">
                         <a-element id="ALC_CMS.1.1E">
                             <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
-                            <aactivity>The evaluator shall verify that the developer has provided a configuration list for the <abbr linkend="TOE"/> that contains each item highlighted above. The evaluator shall verify that each item in the configuration list is uniquely identified and its developer is indicated.</aactivity>
+                            <aactivity>The evaluator shall ensure that the developer has identified (in public-facing development
+                                guidance for their platform) one or more development environments appropriate for use in developing
+                                applications for the developer’s platform. For each of these development environments, the developer
+                                shall provide information on how to configure the environment to ensure that buffer overflow protection
+                                mechanisms in the environment(s) are invoked (e.g., compiler and linker flags). The evaluator shall
+                                ensure that this documentation also includes an indication of whether such protections are on by
+                                default, or have to be specifically enabled.
+                                The evaluator shall ensure that the TSF is uniquely identified (with respect to other products from
+                                the TSF vendor), and that documentation provided by the developer in association with the requirements
+                                in the ST is associated with the TSF  using this unique identification.
+                            </aactivity>
                         </a-element>
                     </group>                    
                 </a-component>                
