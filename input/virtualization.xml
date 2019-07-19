@@ -2973,7 +2973,7 @@
         </section>
     </appendix>
 
-    <appendix id="equiv" title="Virtualiztion PP Equivalency Guidlines">
+    <appendix id="equiv" title="Virtualization PP Equivalency Guidlines">
         <section id="vm-intro" title="Introduction">
           The purpose of equivalence in PP-based evaluations is to find a balance between evaluation rigor and commercial
             practicability--to ensure that evaluations meet customer expectations while recognizing that there is little to be gained
@@ -3135,10 +3135,10 @@
         <h:tr>
           <h:td valign="top">Different</h:td>
           <h:td valign="top">If PP-specified security functionality is affected by the differences, then the 
-            Versions are not considered equivalent and must be tested separately. It is necessary only to test 
+            Versions are considered to be not equivalent and must be tested separately. It is necessary only to test 
             the functionality affected by the changes. If only the differences are tested, then for each 
             difference the Vendor must provide an explanation of why the difference does or does not affect 
-            PP-specified functionality. If the Product Versions are separately tested fully, then there is 
+            PP-specified functionality. If the Product Versions are fully tested separately, then there is 
             no need to document the differences. </h:td>
         </h:tr>
       </h:table>
@@ -3147,37 +3147,30 @@
       <h:br />
     </section>
     <section id="platformequiv" title="Specific Guidance for Determining Platform Equivalence">
-      Platform equivalence is used to determine the platforms that equivalent versions of a Product must be tested on. 
-      Platform equivalence analysis done for one software application cannot be applied to another software application.
-      Platform equivalence is not general—it is with respect to a particular application. 
+      Platform equivalence is used to determine the platforms that a product must be tested on. These guidelines are divided
+        into sections for determining hardware equivalence and software (host OS/control domain) equivalence. If the Product is
+        installed onto bare metal, then only hardware equivalence is relevant. If the Product is installed onto an OS—or is integrated
+        into an OS—then both hardware and software equivalence are required. Likewise, if the Product can be installed either on bare
+        metal or on an operating system, both hardware and software equivalence are relevant. 
       <h:br /><h:br />
-      Product Equivalency analysis must already have been done and Products have been determined to be equivalent.
-      <h:br /><h:br />
-      The platform can be hardware or virtual hardware, an operating system or similar entity, or a software execution 
-      environment such as a container. For purposes of determining equivalence for software applications, we address each
-      type of platform separately. In general, platform equivalence is based on differences in the interfaces between the 
-      TOE and Platform that are relevant to the implementation of PP-specified security functionality.
-      <h:br /><h:br />
-      <subsection id="hardware-equiv" title="Platform Equivalence—Hardware/Virtual Hardware Platforms">
-        If an Application runs directly on hardware without an operating system—or directly on virtualized 
-        hardware without an operating system—then platform equivalence is based on processor architecture and 
-        instruction sets. In the case of virtualized hardware, it is the virtualized processor and architecture 
-        that are presented to the application that matters—not the physical hardware.
+      <subsection id="hardware-equiv" title="Hardware Platform Equivalence">
+        If a Virtualization Solution runs directly on hardware without an operating system, then platform equivalence is based primarily
+          on processor architecture and instruction sets. 
         <h:br /><h:br />
-        Platforms with different processor architectures and instruction sets are not equivalent. This is not 
-        likely to be an issue for equivalency analysis for applications since there is likely to be a different 
-        version of the application for different hardware environments.
-        Equivalency analysis becomes important when comparing processors with the same architecture. Processors 
-        with the same architecture that have instruction sets that are subsets or supersets of each other are not
-        disqualified from being equivalent for purposes of an App evaluation. If the application takes the same 
-        code paths when executing PP-specified security functionality on different processors of the same family, 
-        then the processors can be considered equivalent with respect to that application.
-        For example, if an application follows one code path on platforms that support the AES-NI instruction 
-        and another on platforms that do not, then those two platforms are not equivalent with respect to that 
-        application functionality. But if the application follows the same code path whether or not the platform 
-        supports AES-NI, then the platforms are equivalent with respect to that functionality.
+        Platforms with different processor architectures and instruction sets are not equivalent. This is probably
+          not an issue because there is likely to be a different product model for different hardware environments.
+        <h:br /><h:br />    
+        Equivalency analysis becomes important when comparing platforms with the same processor architecture. Processors
+          with the same architecture that have instruction sets that are subsets or supersets of each other are not disqualified
+          from being equivalent for purposes of a VPP evaluation. If the VS takes the same code paths when executing PP-specified
+          security functionality on different processors of the same family, then the processors can be considered equivalent with
+          respect to that application. 
+        <h:br /><h:br />    
+        For example, if a VS follows one code path on platforms that support the AES-NI instruction and another on platforms that do
+          not, then those two platforms are not equivalent with respect to that VS functionality. But if the VS follows the same code
+          path whether or not the platform supports AES-NI, then the platforms are equivalent with respect to that functionality.
         <h:br /><h:br />
-        The platforms are equivalent with respect to the application if the platforms are equivalent with respect to all PP-specified
+        The platforms are equivalent with respect to the VS if the platforms are equivalent with respect to all PP-specified
         security functionality.
         <h:table border="1">
           <h:tr class="header" bgcolor="#cccccc">
@@ -3188,75 +3181,33 @@
           <h:tr valign="top">
             <h:td valign="top">Platform Architectures</h:td>
             <h:td valign="top">Different</h:td>
-            <h:td valign="top">Platforms that present different processor architectures and instruction sets to the application are not equivalent.</h:td>
+            <h:td valign="top">Haardware platforms that implement different processor architectures and instruction sets are not equivalent.</h:td>
           </h:tr>
-          <h:tr>
+          <h:tr bgcolor="#cccccc">
             <h:td valign="top">PP-Specified Functionality</h:td>
             <h:td valign="top">Same</h:td>
             <h:td valign="top">For platforms with the same processor architecture, the platforms are equivalent with
-              respect to the application if execution of all PP-specified security functionality follows the same code path on both platforms.</h:td>
+              respect to the application if execution of all PP-specified security functionality follows the same code path on
+                both platforms.</h:td>
           </h:tr>
         </h:table>
-        <h:b>Table 3. Factors for Determining Hardware/Virtual Hardware Platform Equivalence</h:b>
+        <h:b>Table 3. Factors for Determining Hardware Platform Equivalence</h:b>
         <h:br />
         <h:br />
-        
       </subsection>
-      <subsection id="os-equiv" title="Platform Equivalence—OS Platforms">
-        For traditional applications that are built for and run on operating systems, platform equivalence is 
-        determined by the interfaces between the application and the operating system that are relevant to PP-specified 
-        security functionality. Generally, these are the processor interface, device interfaces, and OS APIs. The following 
-        factors applied in order:
-        
-        <h:table border="1">
-          <h:tr class="header" bgcolor="#cccccc">
-            <h:td valign="top">Factor</h:td>
-            <h:td valign="top">Same/Different/None</h:td>
-            <h:td valign="top">Guidance</h:td>
-          </h:tr>
-          <h:tr valign="top">
-            <h:td valign="top">Platform Architectures</h:td>
-            <h:td valign="top">Different</h:td>
-            <h:td valign="top">Platforms that run on different processor architectures and instruction sets are not equivalent.</h:td>
-          </h:tr>
-          <h:tr valign="top">
-            <h:td valign="top">Platform Vendors</h:td>
-            <h:td valign="top">Different</h:td>
-            <h:td valign="top">Platforms from different vendors are not equivalent. </h:td>
-          </h:tr>
-          <h:tr valign="top">
-            <h:td valign="top">Platform Versions</h:td>
-            <h:td valign="top">Different</h:td>
-            <h:td valign="top">Platforms from the same vendor with different major version numbers are not equivalent.</h:td>
-          </h:tr>
-          <h:tr valign="top">
-            <h:td valign="top">Platform Interfaces</h:td>
-            <h:td valign="top">Different</h:td>
-            <h:td valign="top">Platforms from the same vendor and major version are not equivalent if there are
-              differences in device interfaces and OS APIs that are relevant to the way the platform provides PP-specified 
-              security functionality to the application. </h:td>
-          </h:tr>
-          <h:tr valign="top">
-            <h:td valign="top">Platform Interfaces</h:td>
-            <h:td valign="top">Same</h:td>
-            <h:td valign="top">Platforms from the same vendor and major version are equivalent if there are 
-              no differences in device interfaces and OS APIs that are relevant to the way the platform 
-              provides PP-specified security functionality to the application, or if the Platform does 
-              not provide such functionality to the application.</h:td>
-          </h:tr>
-          
-        </h:table>
-        <h:b>Table 4. Factors for Determining OS/VS Platform Equivalence</h:b>
+      <subsection id="os-equiv" title="Software Platform Equivalence">
+        If the Product installs onto or integrates with an operating system that is not installed with the product--and thus
+          is not part of the TOE--then the Product must be tested on all non-equivalent Software Platforms.
         <h:br />
         <h:br />
-    
-      </subsection>
-      <subsection id="software-equiv" title="Software-based Execution Environment Platform Equivalence">
-        If an Application is built for and runs in a non-OS software-based execution environment, such as a Container or 
-        Java Runtime, then the below criteria must be used to determine platform equivalence. The key point is that the 
-        underlying hardware (virtual or physical) and OS is not relevant to platform equivalence. This allows applications 
-        to be tested and run on software-based execution environments on any hardware—as in cloud deployments.
-        
+        The guidance for Product Model (Section 3) specifies that Products intended for use on substantially different operating
+          systems (e.g. Windows vs. Linux vs. SunOS) are different Models. Therefore, platforms running substantially different
+          operating systems are de facto not equivalent. Likewise, operating systems with different major version numbers are not
+          equivalent for purposes of this PP.
+        <h:br />
+        <h:br />
+          As a result, Software Platform equivalence is largely concerned with revisions and variations of operating systems that
+          are substantially the same (e.g. different versions and revision levels of Windows or Linux). 
         <h:table border="1">
           <h:tr class="header" bgcolor="#cccccc">
             <h:td valign="top">Factor</h:td>
@@ -3266,29 +3217,32 @@
           <h:tr valign="top">
             <h:td valign="top">Platform Type/Vendor</h:td>
             <h:td valign="top">Different</h:td>
-            <h:td valign="top">Software-based execution environments that are substantially different or come 
-              from different vendors are not equivalent. For example, a java virtual machine is not the same as a 
-              container. A Docker container is not the same as a CoreOS container.</h:td>
+            <h:td valign="top">Operating systems that are substantially different or come from different vendors are not equivalent.</h:td>
           </h:tr>
           <h:tr valign="top">
             <h:td valign="top">Platform Versions</h:td>
             <h:td valign="top">Different</h:td>
-            <h:td valign="top">Execution environments that are otherwise equivalent are not equivalent if they have 
-              different major version numbers.</h:td>
+            <h:td valign="top">Operating systems are not equivalent if they have different major version numbers.</h:td>
           </h:tr>
-          <h:tr valign="top">
-            <h:td valign="top">PP-Specified Security Functionality</h:td>
-            <h:td valign="top">Same</h:td>
-            <h:td valign="top">All other things being equal, execution environments are equivalent if there is no 
-              significant difference in the interfaces through which the environments provide PP-specified security 
-              functionality to applications.</h:td>
-          </h:tr>
+         <h:tr>
+          <h:td rowspan="2" valign="top">PP-Specified Functionality</h:td>
+          <h:td valign="top">Same</h:td>
+          <h:td valign="top">If the differences between software platform models or versions affect only
+              non-PP-specified functionality, then the software platforms are equivalent. </h:td>
+        </h:tr>
+        <h:tr>
+          <h:td valign="top">Different</h:td>
+          <h:td valign="top">If PP-specified security functionality is affected by the differences between software platform
+              versions or models, then the software platforms are not considered equivalent and must be tested separately. It is
+              necessary only to test the functionality affected by the changes. If only the differences are tested, then for each
+              difference the Vendor must provide an explanation of why the difference does or does not affect PP-specified
+              functionality. If the Products are fully tested on each platform, then there is no need to document the differences. </h:td>
+        </h:tr>
         </h:table>
-        <h:b>Table 5. Factors for Software-based Execution Environment Platform Equivalence</h:b>
+        <h:b>Table 4. Factors for Software Platform Equivalence</h:b>
         <h:br />
         <h:br />
-      </subsection>
-    </section>
+    
     <section id="specificity" title="Level of Specificity for Tested Configurations and Claimed Equivalent Configurations">
       In order to make equivalency determinations, the vendor and evaluator must agree on the equivalency claims. They must 
       then provide the scheme with sufficient information about the TOE instances and platforms that were evaluated, and the 
@@ -3296,35 +3250,23 @@
       <h:br /><h:br />
       The ST must describe all configurations evaluated down to processor manufacturer, model number, and microarchitecture version. 
       <h:br /><h:br />
-      The information regarding claimed equivalent configurations depends on the platform that the application was developed for and runs on.
+      The information regarding claimed equivalent configurations depends on the platform that the VS was developed for and runs on.
       <h:br /><h:br />
-      <h:b>Bare-Metal Applications</h:b>
+      <h:b>Bare-Metal VS</h:b>
       <h:br /><h:br />
-      For applications that run without an operating system on bare-metal or virtual bare-metal, the claimed configuration must 
+      For VSes that run without an operating system on bare-metal or virtual bare-metal, the claimed configuration must 
       describe the platform down to the specific processor manufacturer, model number, and microarchitecture version. The Vendor
-      must describe the differences in the TOE with respect to PP-specified security functionality and how the TOE functions
+      must describe the differences in the TOE with respect to PP-specified security functionality and how the TOE operates
       differently to leverage platform differences (e.g., instruction set extensions) in the tested configuration versus the 
       claimed equivalent configuration. 
       <h:br /><h:br />
-      <h:b>Traditional Applications</h:b>
+      <h:b>VS with OS Support</h:b>
       <h:br /><h:br />
-      For applications that run with an operating system as their immediate platform, the claimed configuration must describe 
-      the platform down to the specific operating system version. If the platform is a virtualization system, then the claimed 
-      configuration must describe the platform down to the specific virtualization system version. The Vendor must describe the 
-      differences in the TOE with respect to PP-specified security functionality and how the TOE functions differently to leverage
-      platform differences in the tested configuration versus the claimed equivalent configuration. Relevant platform differences 
-      could include instruction sets, device interfaces, and OS APIs invoked by the TOE to implement PP-specified security 
-      functionality.
+      For VSes that run on an OS host or with the assistance of an OS, then the claimed configuration must describe the OS down to
+        its specific model and version number. The Vendor must describe the differences in the TOE with respect to PP-specified
+        security functionality and how the TOE functions differently to leverage platform differences in the tested configuration
+        versus the claimed equivalent configuration. 
       <h:br /><h:br />
-      <h:b>Software-Based Execution Environments</h:b>
-      <h:br /><h:br />
-      For applications that run in a software-based execution environment such as a Java virtual machine or a Container, then 
-      the claimed configuration must describe the platform down to the specific version of the software execution environment. 
-      The Vendor must describe the differences in the TOE with respect to PP-specified security functionality and how the TOE 
-      functions differently to leverage platform differences in the tested configuration versus the claimed equivalent 
-      configuration.
-      <h:br />
-      
     </section>
     </appendix>    
     
