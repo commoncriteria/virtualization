@@ -11,36 +11,47 @@
     - check the sel-based requirements and make sure I used the correct selection-depends reqs
 
     - Incorporate TLS Package
+        - DONE: Remove TLSC and TLSS requirements
+        - DONE: Fix all references to TLSC and PLSS requirements
+        - DONE: Edit FTP_ITC_EXT.1
+
     - Incorporate TDs
-    - 0139 Clarification of testing for FDP_RIP_EXT.2
-    - 0166 Optional authentication of TLS Client
-    - 0206 Testing for Non-Existence of Disconnected Virtual Devices
-    - 0213 Corrections to App Note references to FCS_TLS, FCS_IPSEC, and FTP_ITC
-    - 0230 ALC Assurance Activities for Server Virtualization and Base Virtualization PPs
-    - 0244 FCS_TLSC_EXT - TLS Client Curves Allowed
-    - 0247 FPT_VDP_EXT.1 Clarification for Assurance Activity
-    - 0249 Applicability of FTP_ITC_EXT.1
-    - 0250 Hypercall Controls - FPT_HCL_EXT.1 Clarification
-    - 0252 Inaccurate statement in application note of FCS_TLSC_EXT.2.4
-    - 0264 Clarification of Auditable Events for FPT_RDM_EXT.1
-    - 0265 Audit of TLS and HTTPS Session Terminations
-    - 0267 TLSS testing - Empty Certificate Authorities list
+    - DONE: 0139 Clarification of testing for FDP_RIP_EXT.2
+    - OBEV: 0166 Optional authentication of TLS Client
+    - DONE: 0206 Testing for Non-Existence of Disconnected Virtual Devices
+    - DONE: 0213 Corrections to App Note references to FCS_TLS, FCS_IPSEC, and FTP_ITC
+    - DONE: 0230 ALC Assurance Activities for Server Virtualization and Base Virtualization PPs
+    - OBEV: 0244 FCS_TLSC_EXT - TLS Client Curves Allowed
+    - PART: 0247 FPT_VDP_EXT.1 Clarification for Assurance Activity
+    - DONE: 0249 Applicability of FTP_ITC_EXT.1
+    - DONE: 0250 Hypercall Controls - FPT_HCL_EXT.1 Clarification
+    - OBEV: 0252 Inaccurate statement in application note of FCS_TLSC_EXT.2.4
+    - DONE: 0264 Clarification of Auditable Events for FPT_RDM_EXT.1
+    - DONE: 0265 Audit of TLS and HTTPS Session Terminations
+    - OBEV: 0267 TLSS testing - Empty Certificate Authorities list
     - 0360 AD Server configuration in FMT_MOF_EXT.1
-    - 0363 Access Banner and applicability to programmatic interfaces
-    - 0403 Conditional Testing with TLS Session IDs
+    - DONE: 0363 Access Banner and applicability to programmatic interfaces
+    - OBEV: 0403 Conditional Testing with TLS Session IDs
+    - DONE: 0432: Corrections to FIA_AFL_EXT.1
+
+    - DONE: Add Equivalency section (Annex E)
+
     - Translate SV and CV packages into XML
+    - Somehow indicate that the SV or CV package must be selected. Currently there is no SFR that does this.
     
     -->
 <?xml-model href="CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
+<!-- TITLE PAGE -->
 
 <PP xmlns="http://niap-ccevs.org/cc/v1" name="Virtualization"
     xmlns:htm="http://www.w3.org/1999/xhtml" boilerplate="yes">
     <PPReference title="PP Reference" id="ID003">
         <ReferenceTable>
             <PPTitle>Protection Profile for Virtualization</PPTitle>
-            <PPVersion>1.0</PPVersion>
+            <PPVersion>1.1 Draft</PPVersion>
             <PPAuthor>National Information Assurance Partnership</PPAuthor>
-            <PPPubDate>2016-11-17</PPPubDate>
+            <PPPubDate>2019-07-19</PPPubDate>
             <PPCertificationID>unassigned</PPCertificationID>
             <CCVersion>Version 3.1R5</CCVersion>
             <Keywords>Virtualization</Keywords>
@@ -51,20 +62,33 @@
         </ReferenceTable>
     </PPReference>
 
+    <!-- REVISION HISTORY -->
+    
     <RevisionHistory role="draft">
         <entry>
             <version>1.0</version>
             <date>2016-11-17</date>
             <subject>Initial Publication</subject>
         </entry>
-
+        <entry>
+            <version>1.1</version>
+            <date>2019-07-16</date>
+            <subject>Incorporate TDs and reference TLS Package, Add Equivalency Guidelines</subject>
+        </entry>
     </RevisionHistory>
+    
+    <!-- TABLE OF CONTENTS goes here -->
+    
+    <!-- INTRODUCTION -->
     
     <chapter id="intro" title="Introduction">
         <section id="overview" title="Overview">
             The scope of this Protection Profile (PP) is to describe the security functionality of virtualization technologies in terms of [CC] and to define security functional and assurance requirements for such products. This PP is not complete in itself, but rather provides a set of requirements that are common to the Extended Packages (<abbr linkend="EP"/>) for Server Virtualization and for Client Virtualization. These capabilities have been broken out into this generic ‘base’ PP due to the high degree of similarity between the two product types.<htm:br></htm:br><htm:br></htm:br>
             Due to the increasing prevalence of virtualization technology in enterprise computing environments, it is essential to ensure that this technology is implemented securely in order to mitigate the risk introduced by sharing multiple computers and their data across a single physical system.<htm:br></htm:br><htm:br></htm:br>
         </section>
+        
+        <!-- In 1.0 this was two tables, one for CC Terms and one for Technology Terms. Why were they combined? -->
+
         <section id="terms" title="Terms">
             The following sections provide both Common Criteria and technology terms used in this PP.
             <glossary>
@@ -104,6 +128,7 @@
                 <entry><term>Virtualization System (VS)</term><description>A software product that enables multiple independent computing systems to execute on the same physical hardware platform without interference from one other. For the purposes of this document, the VS consists of a Virtual Machine Manager (<abbr linkend="VMM"/>), Virtual Machine (<abbr linkend="VM"/>) abstractions, a management subsystem, and other components.</description></entry>
                 </glossary>
            </section>
+        
         <section id="complianttargets" title="Compliant Targets of Evaluation">
             A Virtualization System (VS) is a software product that enables multiple independent computing systems to execute on the same physical hardware platform without interference from one other. A VS creates a virtualized hardware environment (virtual machines or <abbr linkend="VM"/>s) for each instance of an operating system permitting these environments to execute concurrently while maintaining isolation and the appearance of exclusive control over assigned computing resources. For the purposes of this document, the VS consists of a Virtual Machine Manager (<abbr linkend="VMM"/>), Virtual Machine (<abbr linkend="VM"/>) abstractions, a management subsystem, and other components.<htm:br></htm:br><htm:br></htm:br>
             A <abbr linkend="VMM"/> is a collection of software components responsible for enabling <abbr linkend="VM"/>s to function as expected by the software executing within them. Generally, the <abbr linkend="VMM"/> consists of a Hypervisor, Service <abbr linkend="VM"/>s, and other components of the VS, such as virtual devices, binary translation systems, and physical device drivers. It manages concurrent execution of all <abbr linkend="VM"/>s and virtualizes platform resources as needed.<htm:br></htm:br><htm:br></htm:br>
@@ -112,8 +137,9 @@
             A Guest <abbr linkend="VM"/> is a <abbr linkend="VM"/> that contains a virtual environment for the execution of an independent computing system. Virtual environments execute mission workloads and implement customer-specific client or server functionality in Guest <abbr linkend="VM"/>s, such as a web server or desktop productivity applications. A Helper <abbr linkend="VM"/> is a <abbr linkend="VM"/> that performs services on behalf of one or more Guest <abbr linkend="VM"/>s, but does not qualify as a Service <abbr linkend="VM"/>—and therefore is not part of the <abbr linkend="VMM"/>. Helper <abbr linkend="VM"/>s implement functions or services that are particular to the workloads of Guest <abbr linkend="VM"/>s. For example, a <abbr linkend="VM"/> that provides a virus scanning service for a Guest <abbr linkend="VM"/> would be considered a Helper <abbr linkend="VM"/>. The line between Helper and Service <abbr linkend="VM"/>s can easily be blurred. For instance, a <abbr linkend="VM"/> that implements a cryptographic function—such as an in-line encryption <abbr linkend="VM"/>—could be identified as either a Service or Helper <abbr linkend="VM"/> depending on the particular virtualization solution. If the cryptographic functions are necessary only for the privacy of Guest <abbr linkend="VM"/> data in support of the Guest’s mission applications, it would be proper to classify the encryption <abbr linkend="VM"/> as a Helper. But if the encryption <abbr linkend="VM"/> is necessary for the <abbr linkend="VMM"/> to isolate Guest <abbr linkend="VM"/>s, it would be proper to classify the encryption <abbr linkend="VM"/> as a Service <abbr linkend="VM"/>. For the purposes of this document, Helper <abbr linkend="VM"/>s are subject to all requirements that apply to Guest <abbr linkend="VM"/>s, unless specifically stated otherwise.<htm:br></htm:br><htm:br></htm:br>
             <subsection id="toeboundary" title="TOE Boundary">
                 Figure 1 shows a greatly simplified view of a generic Virtualization System and Platform. <abbr linkend="TOE"/> components are displayed in Red. Non-<abbr linkend="TOE"/> components are in Blue. The Platform is the hardware, firmware, and software onto which the VS is installed. The <abbr linkend="VMM"/> includes the Hypervisor, Service <abbr linkend="VM"/>s, and <abbr linkend="VM"/> containers, but not the software that runs inside Guest <abbr linkend="VM"/>s or Helper <abbr linkend="VM"/>s. The Management Subsystem is part of the <abbr linkend="TOE"/>, but may or may not be part of the <abbr linkend="VMM"/>.   <htm:br></htm:br><htm:br></htm:br>
+
                 <figure entity="images/figure1.png" title="Figure 1: Virtualization System and Platform " id="vsplatform"/> 
-                
+    
                
                 For purposes of this Protection Profile, the Virtualization System is the <abbr linkend="TOE"/>, subject to some caveats. The Platform onto which the VS is installed (which includes hardware, platform firmware, and Host Operating System) is not part of the <abbr linkend="TOE"/>. Software installed with the VS on the Host OS specifically to support the VS or implement VS functionality is part of the <abbr linkend="TOE"/>. General purpose software—such as device drivers for physical devices and the Host OS itself—is not part of the <abbr linkend="TOE"/>, regardless of whether it supports VS functionality or runs inside a Service <abbr linkend="VM"/> or control domain. Software that runs within Guest and Helper <abbr linkend="VM"/>s is not part of the <abbr linkend="TOE"/>.<htm:br></htm:br><htm:br></htm:br>
                 In general, for virtualization products that are installed onto “bare metal,” the entire set of installed components constitute the <abbr linkend="TOE"/>, and the hardware constitute the Platform. Also in general, for products that are hosted by or integrated into a commodity operating system, the components installed expressly for implementing and supporting virtualization are in the <abbr linkend="TOE"/>, and the Platform comprises the hardware and Host OS.
@@ -128,7 +154,7 @@
                 This PP includes several SFRs that include elements that are met via vendor attestation. Attestation assurance activities are reserved for SFRs that define properties that are critical to the system’s security functionality, but that are impossible or impractical to test in a repeatable and consistent manner. These Attestation assurance activities require the vendor to make an assertion in the <abbr linkend="ST"/> that their product meets the specified SFR—no further testing or assessment of the product regarding these SFRs or elements is performed by the CCTL. The CCTL will simply verify that the <abbr linkend="ST"/> includes a pre-determined Attestation statement. By including this statement in the <abbr linkend="ST"/>, the vendor is accepting responsibility for the assurance of their product in these particular areas. If at any time evidence is produced that indicates that these statements are false (and the product does not meet the specified security functionality), the CC certificate may be revoked. See FDP_VMS_EXT.1, FDP_VNC_EXT.1, FPT_VDP_EXT.1, and FPT_VIV_EXT.1 for the associated Attestation statements.
             </subsection>
             <subsection id="equiv" title="Product and Platform Equivalence">
-                The tests in this Protection Profile must be run on all product versions and Platforms with which the Vendor would like to claim compliance—subject to this Profile’s equivalency guidelines (to be published).
+                The tests in this Protection Profile must be run on all product versions and Platforms with which the Vendor would like to claim compliance—subject to this Profile’s equivalency guidelines (see Annex E).
             </subsection>
             
         </section>
@@ -136,6 +162,9 @@
             This base PP does not define any use cases for virtualization technology. Client Virtualization and Server Virtualization products have different use cases and so these are defined in their respective <abbr linkend="EP"/>s.
         </section>
     </chapter>
+    
+    <!-- CONFORMANCE CLAIMS -->
+    
     <chapter id="claims" title="Conformance Claims">
         <cclaims>
             <cclaim id="statement">
@@ -168,6 +197,9 @@
             </cclaim>
         </cclaims>
     </chapter>
+    
+    <!-- SECURITY PROBLEM DESCRIPTION -->
+
     <chapter id="desc" title="Security Problem Description">
         <section id="threats" title="Threats">
             <threats>
@@ -319,6 +351,9 @@
             There are no organizational security policies defined for this PP.
         </section>
     </chapter>
+    
+    <!-- SECURITY OBJECTIVES -->
+    
     <chapter id="obj" title="Security Objectives">
         <section id="secobjtoe" title="Security Objectives for the TOE">
             <SOs>
@@ -417,6 +452,9 @@
         </section>
 
     </chapter>
+    
+    <!-- SECURITY REQUIREMENTS -->
+    
     <chapter id="req" title="Security Requirements">
         <section id="sfr" title="TOE Security Functional Requirements">
             The Security Functional Requirements (SFRs) included in this section are derived from Part 2 of the Common Criteria for Information Technology Security Evaluation, Version 3.1, Revision 4, with additional extended functional components.<htm:br></htm:br><htm:br></htm:br>
@@ -470,6 +508,9 @@
                         </title>
                         <note role="application">
                             The <abbr linkend="ST"/> author can include other auditable events directly in Table 1; they are not limited to the list presented. The <abbr linkend="ST"/> author should update the table in FAU_GEN.1.2 with any additional information generated. “Subject identity” in FAU_GEN.1.2 could be a user id or an identifier specifying a <abbr linkend="VM"/>, for example.<htm:br></htm:br><htm:br></htm:br>
+                            If ‘additional information defined in Table 3’ is selected, it is acceptable to include individual 
+                            entries from Table 3 without including the entirety of Table 3.  Appropriate entries from Tables 2, 4,
+                            and 5 should be included in the <abbr linkend="ST"/> if the associated SFRs and selections are included.<htm:br></htm:br><htm:br></htm:br>
                             The Table 1 entry for FDP_VNC_EXT.1 refers to configuration settings that attach <abbr linkend="VM"/>s to virtualized network components. Changes to these configurations can be made during <abbr linkend="VM"/> execution or when <abbr linkend="VM"/>s are not running. Audit records must be generated for either case.<htm:br></htm:br><htm:br></htm:br>
                             The intent of the audit requirement for FDP_PPR_EXT.1 is to log that the <abbr linkend="VM"/> is connected to a physical device (when the device becomes part of the <abbr linkend="VM"/>’s hardware view), not to log every time that the device is accessed. Generally, this is only once at <abbr linkend="VM"/> startup. However, some devices can be connected and disconnected during operation (e.g., virtual USB devices such as CD-ROMs). All such connection/disconnection events must be logged.
                         </note>
@@ -639,8 +680,9 @@
                                 </htm:TR>
                                 <htm:TR>
                                     <htm:TD>FPT_RDM_EXT.1</htm:TD>
-                                    <htm:TD>Transfer of removable media or device between <abbr linkend="VM"/>s.</htm:TD>
-                                    <htm:TD>None.</htm:TD>
+                                    <htm:TD>Connection/disconnection of removable media or device to/from a VM.<htm:br></htm:br><htm:br></htm:br>
+                                        Ejection/insertion of removable media or device from/to an already connected VM.</htm:TD>
+                                    <htm:TD>VM Identifier, Removable media/device identifier, event description or identifier (connect/disconnect, ejection/insertion, etc.)</htm:TD>
                                 </htm:TR>
                                 <htm:TR>
                                     <htm:TD>FPT_TUD_EXT.1</htm:TD>
@@ -1583,7 +1625,7 @@
                         </title>
                         <note role="application">At this time, only the comparison between the presented identifier in the peer’s certificate and the peer’s reference identifier is mandated by the testing below. However, in the future, this requirement will address two aspects of the peer certificate validation: 1) comparison of the peer’s ID payload to the peer’s certificate which are both presented identifiers, as required by RFC 4945 and 2) verification that the peer identified by the ID payload and the certificate is the peer expected by the <abbr linkend="TOE"/> (per the reference identifier). At that time, the <abbr linkend="TOE"/> will be required to demonstrate both aspects (i.e. that the <abbr linkend="TOE"/> enforces that the peer’s ID payload matches the peer’s certificate which both match configured peer reference identifiers).<htm:br></htm:br><htm:br></htm:br>
                             Excluding the DN identifier type (which is necessarily the Subject DN in the peer certificate), the <abbr linkend="TOE"/> may support the identifier in either the Common Name or Subject Alternative Name (SAN) or both. If both are supported, the preferred logic is to compare the reference identifier to a presented SAN, and only if the peer’s certificate does not contain a SAN, to fall back to a comparison against the Common Name. In the future, the <abbr linkend="TOE"/> will be required to compare the reference identifier to the presented identifier in the SAN only, ignoring the Common Name.<htm:br></htm:br><htm:br></htm:br>
-                            The configuration of the peer reference identifier is addressed by FMT_SMF.1.1.</note>
+                            The configuration of the peer reference identifier is addressed by FMT_MOF_EXT.1.2 in the selected EP.</note>
                         <aactivity>
                             <abbr linkend="TSS"/><htm:br></htm:br><htm:br></htm:br>
                             The evaluator shall ensure that the <abbr linkend="TSS"/> describes how the <abbr linkend="TOE"/> compares the peer’s presented identifier to the reference identifier. This description shall include whether the certificate presented identifier is compared to the ID payload presented identifier, which field(s) of the certificate are used as the presented identifier (DN, Common Name, or SAN), and, if multiple fields are supported, the logical order comparison. If the <abbr linkend="ST"/> author assigned an additional identifier type, the <abbr linkend="TSS"/> description shall also include a description of that type and the method by which that type is compared to the peer’s presented certificate.<htm:br></htm:br><htm:br></htm:br>
@@ -1602,400 +1644,6 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FCS_TLSC_EXT.1 TLS" name="Client Protocol"  status="sel-based">
-                    <selection-depends req="FTP_ITC_EXT.1.1"/><!-- HERE check this -->
-                    <f-element id="FCS_TLSC_EXT.1.1"><!--page 94 -->
-                        <title>The <abbr linkend="TSF"/> shall implement 
-                            <selectables>
-                                <selectable>TLS 1.2 (RFC 5246)</selectable>
-                                <selectable>TLS 1.1 (RFC 4346)</selectable>
-                            </selectables> supporting the following ciphersuites: 
-                            <htm:ul>
-                                <htm:li>Mandatory Ciphersuites:<htm:br></htm:br><htm:br></htm:br>
-                                    TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 3268
-                                </htm:li>
-                                <htm:li>Optional Ciphersuites:<htm:br></htm:br><htm:br></htm:br>
-                                    <selectables linebreak="yes">
-                                        <selectable>TLS_RSA_WITH_AES_256_CBC_SHA as defined in RFC 3268 </selectable>
-                                        <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA as defined in RFC 3268 </selectable>
-                                        <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_SHA as defined in RFC 3268</selectable>
-                                        <selectable>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA as defined in RFC 4492 </selectable>
-                                        <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA as defined in RFC 4492 </selectable>
-                                        <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA as defined in RFC 4492 </selectable>
-                                        <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA as defined in RFC 4492 </selectable>
-                                        <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246 </selectable>
-                                        <selectable>TLS_RSA_WITH_AES_256_CBC_ SHA256 as defined in RFC 5246</selectable> 
-                                        <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_ SHA256 as defined in RFC 5246 </selectable>
-                                        <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_ SHA256 as defined in RFC 5246 </selectable>
-                                        <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289 </selectable>
-                                        <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289 </selectable>
-                                        <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289 </selectable>
-                                        <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 </selectable>
-                                        <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289 </selectable>
-                                        <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 </selectable>
-                                        <selectable>no other ciphersuite.</selectable>
-                                    </selectables>
-                                </htm:li>
-                            </htm:ul>
-                            
-                        </title>
-                        <note role="application">The ciphersuites to be tested in the evaluated configuration are limited by this requirement. The <abbr linkend="ST"/> author should select the optional ciphersuites that are supported; if there are no ciphersuites supported other than the mandatory suites, then “None” should be selected. It is necessary to limit the ciphersuites that can be used in an evaluated configuration administratively on the server in the test environment. The Suite B algorithms listed above (RFC 6460) are the preferred algorithms for implementation. TLS_RSA_WITH_AES_128_CBC_SHA is required in order to ensure compliance with RFC 5246.<htm:br></htm:br><htm:br></htm:br>
-                            These requirements will be revisited as new TLS versions are standardized by the IETF.<htm:br></htm:br><htm:br></htm:br>
-                            If any ciphersuites are selected using ECDHE, then FCS_TLSC_EXT.1.5 is required.<htm:br></htm:br><htm:br></htm:br>
-                        In a future version of this PP TLS v1.2 will be required for all <abbr linkend="TOE"/>s.
-                    </note>
-                        <aactivity>The evaluator shall check the description of the implementation of this protocol in the <abbr linkend="TSS"/> to ensure that the ciphersuites supported are specified. The evaluator shall check the <abbr linkend="TSS"/> to ensure that the ciphersuites specified include those listed for this component.<htm:br></htm:br><htm:br></htm:br>
-                            <testlist>
-                                <test>The evaluator shall establish a TLS connection using each of the ciphersuites specified by the requirement. This connection may be established as part of the establishment of a higher-level protocol, e.g., as part of an EAP session. It is sufficient to observe the successful negotiation of a ciphersuite to satisfy the intent of the test; it is not necessary to examine the characteristics of the encrypted traffic in an attempt to discern the ciphersuite being used (for example, that the cryptographic algorithm is 128-bit AES and not 256-bit AES).</test>
-                                <test>The evaluator shall attempt to establish the connection using a server with a server certificate that contains the Server Authentication purpose in the extendedKeyUsage field and verify that a connection is established. The evaluator will then verify that the client rejects an otherwise valid server certificate that lacks the Server Authentication purpose in the extendedKeyUsage field and a connection is not established. Ideally, the two certificates should be identical except for the extendedKeyUsage field.</test>
-                                <test>The evaluator shall send a server certificate in the TLS connection that the does not match the server-selected ciphersuite (for example, send a ECDSA certificate while using the TLS_RSA_WITH_AES_128_CBC_SHA ciphersuite or send a RSA certificate while using one of the ECDSA ciphersuites.) The evaluator shall verify that the <abbr linkend="TOE"/> disconnects after receiving the server’s Certificate handshake message.</test>
-                                <test>The evaluator shall configure the server to select the TLS_NULL_WITH_NULL_NULL ciphersuite and verify that the client denies the connection.</test>
-                                <test>The evaluator shall perform the following modifications to the traffic:
-                                    <htm:ul>
-                                        <htm:li>Change the TLS version selected by the server in the Server Hello to a non-supported TLS version (for example 1.3 represented by the two bytes 03 04) and verify that the client rejects the connection</htm:li>
-                                        <htm:li>Modify at least one byte in the server’s nonce in the Server Hello handshake message, and verify that the client rejects the Server Key Exchange handshake message (if using a DHE or ECDHE ciphersuite) or that the server denies the client’s Finished handshake message</htm:li>
-                                        <htm:li>Modify the server’s selected ciphersuite in the Server Hello handshake message to be a ciphersuite not presented in the Client Hello handshake message. The evaluator shall verify that the client rejects the connection after receiving the Server Hello</htm:li>
-                                        <htm:li>Modify the signature block in the Server’s Key Exchange handshake message, and verify that the client rejects the connection after receiving the Server Key Exchange message</htm:li>
-                                        <htm:li>Modify a byte in the Server Finished handshake message, and verify that the client sends a fatal alert upon receipt and does not send any application data</htm:li>
-                                        <htm:li>Send a garbled message from the Server after the Server has issued the ChangeCipherSpec message and verify that the client denies the connection</htm:li>
-                                    </htm:ul>
-                                    </test>
-                            </testlist>
-                        </aactivity>
-                    </f-element>
-                    <f-element id="FCS_TLSC_EXT.1.2">
-                        <title>The <abbr linkend="TSF"/> shall verify that the presented identifier matches the reference identifier according to RFC 6125.
-                        </title>
-                        <note role="application">The rules for verification of identity are described in Section 6 of RFC 6125. The reference identifier is established by the user (e.g., entering a URL into a web browser or clicking a link), by configuration (e.g., configuring the name of a mail server or authentication server), or by an application (e.g., a parameter of an API) depending on the application service. Based on a singular reference identifier’s source domain and application service type (e.g., HTTP, SIP, LDAP), the client establishes all reference identifiers which are acceptable, such as a Common Name for the Subject Name field of the certificate and a (case-insensitive) DNS name, URI name, and Service Name for the Subject Alternative Name field. The client then compares this list of all acceptable reference identifiers to the presented identifiers in the TLS server’s certificate.<htm:br></htm:br><htm:br></htm:br>
-                            The preferred method for verification is the Subject Alternative Name using DNS names, URI names, or Service Names. Verification using the Common Name is required for the purposes of backwards compatibility. Additionally, support for use of IP addresses in the Subject Name or Subject Alternative name is discouraged as against best practices but may be implemented. Finally, the client should avoid constructing reference identifiers using wildcards. However, if the presented identifiers include wildcards, the client must follow the best practices regarding matching; these best practices are captured in the assurance activity.</note>
-                        <aactivity>The evaluator shall ensure that the <abbr linkend="TSS"/> describes the client’s method of establishing all reference identifiers from the administrator/application-configured reference identifier, including which types of reference identifiers are supported (e.g., Common Name, DNS Name, URI Name, Service Name, or other application-specific Subject Alternative Names) and whether IP addresses and wildcards are supported. The evaluator shall ensure that this description identifies whether and the manner in which certificate pinning is supported or used by the <abbr linkend="TOE"/>.<htm:br></htm:br><htm:br></htm:br>
-                            The evaluator shall configure the reference identifier according to the AGD guidance and perform the following tests during a TLS connection:<htm:br></htm:br><htm:br></htm:br>
-                            <testlist>
-                                <test>The evaluator shall present a server certificate that does not contain an identifier in either the Subject Alternative Name (SAN) or Common Name (CN) that matches the reference identifier. The evaluator shall verify that the connection fails.</test>
-                                <test>The evaluator shall present a server certificate that contains a CN that matches the reference identifier, contains the SAN extension, but does not contain an identifier in the SAN that matches the reference identifier. The evaluator shall verify that the connection fails. The evaluator shall repeat this test for each supported SAN type.</test>
-                                <test>The evaluator shall present a server certificate that contains a CN that matches the reference identifier and does not contain the SAN extension. The evaluator shall verify that the connection succeeds.</test>
-                                <test>The evaluator shall present a server certificate that contains a CN that does not match the reference identifier but does contain an identifier in the SAN that matches. The evaluator shall verify that the connection succeeds.</test>
-                                <test>The evaluator shall perform the following wildcard tests with each supported type of reference identifier:
-                                    <htm:ul>
-                                        <htm:li>The evaluator shall present a server certificate containing a wildcard that is not in the left-most label of the presented identifier (e.g., foo.*.example.com) and verify that the connection fails</htm:li>
-                                        <htm:li>The evaluator shall present a server certificate containing a wildcard in the left-most label (e.g., *.example.com). The evaluator shall configure the reference identifier with a single left-most label (e.g., foo.example.com) and verify that the connection succeeds. The evaluator shall configure the reference identifier without a left-most label as in the certificate (e.g., example.com) and verify that the connection fails. The evaluator shall configure the reference identifier with two left-most labels (e.g., bar.foo.example.come) and verify that the connection fails</htm:li>
-                                    </htm:ul>
-                                   </test>
-                                <test>[conditional] If URI or Service name reference identifiers are supported, the evaluator shall configure the DNS name and the service identifier. The evaluator shall present a server certificate containing the correct DNS name and service identifier in the URIName or SRVName fields of the SAN and verify that the connection succeeds. The evaluator shall repeat this test with the wrong service identifier (but correct DNS name) and verify that the connection fails.</test>
-                                <test>[conditional] If pinned certificates are supported the evaluator shall present a certificate that does not match the pinned certificate and verify that the connection fails.</test>
-                             </testlist>
-                        </aactivity>
-                    </f-element>
-                    <f-element id="FCS_TLSC_EXT.1.3">
-                        <title>The <abbr linkend="TSF"/> shall establish a trusted channel only if the peer certificate is valid.
-                        </title>
-                        <note role="application">Validity is determined by the identifier verification, certificate path, the expiration date, and the revocation status in accordance with RFC 5280. Certificate validity shall be tested in accordance with testing performed for FIA_X509_EXT.1.</note>
-                        <aactivity>
-                            <testlist>
-                                <test>The evaluator shall demonstrate that using a certificate without a valid certification path results in the function failing. Using the administrative guidance, the evaluator shall then load a certificate or certificates needed to validate the certificate to be used in the function, and demonstrate that the function succeeds. The evaluator then shall delete one of the certificates, and show that the function fails.</test>
-                            </testlist>
-                        </aactivity>
-                    </f-element>
-                    <f-element id="FCS_TLSC_EXT.1.4">
-                        <title>The <abbr linkend="TSF"/> shall support mutual authentication using X.509v3 certificates.
-                        </title>
-                        <note role="application">If TLS is used for FTP_ITC_EXT.1, then this component is required.
-                            The use of X.509v3 certificates for TLS is addressed in FIA_X509_EXT.2.1. This requirement adds that this use must include the client must be capable of presenting a certificate to a TLS server for TLS mutual authentication.</note>
-                        <aactivity>The evaluator shall ensure that the <abbr linkend="TSS"/> description required per FIA_X509_EXT.2.1 includes the use of client-side certificates for TLS mutual authentication.
-                            <testlist>
-                                <test>The evaluator shall perform the following modification to the traffic:
-                                    Configure the server to require mutual authentication and then modify a byte in a CA field in the Server’s Certificate Request handshake message. The modified CA field shall not be the CA used to sign the client’s certificate. The evaluator shall verify the connection is unsuccessful.</test>
-                            </testlist>
-                        </aactivity>
-                    </f-element>
-                    <f-element id="FCS_TLSC_EXT.1.5">
-                        <title>The <abbr linkend="TSF"/> shall present the Supported Elliptic Curves Extension in the Client Hello with the following NIST curves: 
-                            <selectables>
-                                <selectable>secp256r1</selectable>
-                                <selectable>secp384r1</selectable>
-                                <selectable>secp521r1</selectable>
-                            </selectables> and no other curves.
-                        </title>
-                        <note role="application">If ciphersuites with elliptic curves were selected in FCS_TLSC_EXT.1.1, this component is required.<htm:br></htm:br><htm:br></htm:br>
-                            This requirement limits the elliptic curves allowed for authentication and key agreement to the NIST curves from FCS_COP.1(2) and FCS_CKM.1 and FCS_CKM.2. This extension is required for clients supporting Elliptic Curve ciphersuites.</note>
-                        <aactivity>The evaluator shall verify that <abbr linkend="TSS"/> describes the Supported Elliptic Curves Extension and whether the required behavior is performed by default or may be configured.
-                            <testlist>
-                                <test>The evaluator shall configure the server to perform an ECDHE key exchange in the TLS connection using a non-supported curve (for example P-192) and shall verify that the <abbr linkend="TOE"/> disconnects after receiving the server’s Key Exchange handshake message.</test>
-                            </testlist>
-                        </aactivity>
-                    </f-element>
-                </f-component>
-  
-                <f-component id="FCS_TLSS_EXT.1" name="TLS Server Protocol"  status="sel-based">
-                    <selection-depends req="FTP_ITC_EXT.1.1"/><!-- HERE check this -->
-                    <f-element id="FCS_TLSS_EXT.1.1">
-                        <title>The <abbr linkend="TSF"/> shall implement 
-                            <selectables>
-                                <selectable>TLS 1.2 (RFC 5246)</selectable>
-                                <selectable>TLS 1.1 (RFC 4346)</selectable>
-                            </selectables> supporting the following ciphersuites: 
-                            <htm:ul>
-                                <htm:li>Mandatory Ciphersuites:<htm:br></htm:br>
-                                    TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 3268
-                                </htm:li>
-                                <htm:li>Optional Ciphersuites:<htm:br></htm:br>
-                                    <selectables linebreak="yes">
-                                        <selectable>TLS_RSA_WITH_AES_256_CBC_SHA as defined in RFC 3268 </selectable>
-                                        <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA as defined in RFC 3268 </selectable>
-                                        <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_SHA as defined in RFC 3268 </selectable>
-                                        <selectable>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA as defined in RFC 4492 </selectable>
-                                        <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA as defined in RFC 4492 </selectable>
-                                        <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA as defined in RFC 4492 </selectable>
-                                        <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA as defined in RFC 4492 </selectable>
-                                        <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246 </selectable>
-                                        <selectable>TLS_RSA_WITH_AES_256_CBC_ SHA256 as defined in RFC 5246 </selectable>
-                                        <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_ SHA256 as defined in RFC 5246 </selectable>
-                                        <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_ SHA256 as defined in RFC 5246 </selectable>
-                                        <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289 </selectable>
-                                        <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289 </selectable>
-                                        <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289 </selectable>
-                                        <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 </selectable>
-                                        <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289 </selectable>
-                                        <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 </selectable>
-                                        <selectable>no other ciphersuite</selectable>
-                                    </selectables>
-                                </htm:li>
-                            </htm:ul>
-                           
-                            </title>
-                        <note role="application">The ciphersuites to be tested in the evaluated configuration are limited by this requirement. The <abbr linkend="ST"/> author should select the optional ciphersuites that are supported; if there are no ciphersuites supported other than the mandatory suites, then “None” should be selected. It is necessary to limit the ciphersuites that can be used in an evaluated configuration administratively on the server in the test environment. The Suite B algorithms listed above (RFC 6460) are the preferred algorithms for implementation. TLS_RSA_WITH_AES_128_CBC_SHA is required in order to ensure compliance with RFC 5246.<htm:br></htm:br><htm:br></htm:br>
-                            These requirements will be revisited as new TLS versions are standardized by the IETF.<htm:br></htm:br><htm:br></htm:br>
-                            If any ciphersuites are selected using ECDHE, then FCS_TLSS_EXT.1.5 is required.<htm:br></htm:br><htm:br></htm:br>
-                            In a future version of this PP TLS v1.2 will be required for all <abbr linkend="TOE"/>s.</note>
-                        <aactivity>The evaluator shall check the description of the implementation of this protocol in the <abbr linkend="TSS"/> to ensure that the ciphersuites supported are specified. The evaluator shall check the <abbr linkend="TSS"/> to ensure that the ciphersuites specified are identical to those listed for this component.<htm:br></htm:br><htm:br></htm:br>
-                            Operational Guidance<htm:br></htm:br><htm:br></htm:br>
-                            The evaluator shall also check the operational guidance to ensure that it contains instructions on configuring the <abbr linkend="TOE"/> so that TLS conforms to the description in the <abbr linkend="TSS"/> (for instance, the set of ciphersuites advertised by the <abbr linkend="TOE"/> may have to be restricted to meet the requirements).<htm:br></htm:br><htm:br></htm:br>
-                            <testlist>
-                                <test>The evaluator shall establish a TLS connection using each of the ciphersuites specified by the requirement. This connection may be established as part of the establishment of a higher-level protocol, e.g., as part of an EAP session. It is sufficient to observe the successful negotiation of a ciphersuite to satisfy the intent of the test; it is not necessary to examine the characteristics of the encrypted traffic in an attempt to discern the ciphersuite being used (for example, that the cryptographic algorithm is 128-bit AES and not 256-bit AES).</test>
-                                <test>The evaluator shall send a Client Hello to the server with a list of ciphersuites that does not contain any of the ciphersuites in the server’s <abbr linkend="ST"/> and verify that the server denies the connection. Additionally, the evaluator shall send a Client Hello to the server containing only the TLS_NULL_WITH_NULL_NULL ciphersuite and verify that the server denies the connection.</test>
-                                <test>The evaluator shall use a client to send a key exchange message in the TLS connection that the does not match the server-selected ciphersuite (for example, send an ECDHE key exchange while using the TLS_RSA_WITH_AES_128_CBC_SHA ciphersuite or send a RSA key exchange while using one of the ECDSA ciphersuites.) The evaluator shall verify that the <abbr linkend="TOE"/> disconnects after the receiving the key exchange message.</test>
-                                <test>The evaluator shall perform the following modifications to the traffic:<htm:br></htm:br><htm:br></htm:br>
-                                    <htm:ul>
-                                        <htm:li>Modify at a byte in the client’s nonce in the Client Hello handshake message, and verify that the server rejects the client’s Certificate Verify handshake message (if using mutual authentication) or that the server denies the client’s Finished handshake message</htm:li>
-                                        <htm:li>Modify the signature block in the Client’s Key Exchange handshake message, and verify that the server rejects the client’s Certificate Verify handshake message (if using mutual authentication) or that the server denies the client’s Finished handshake message</htm:li>
-                                        <htm:li>Modify a byte in the Client Finished handshake message, and verify that the server rejects the connection and does not send any application data</htm:li>
-                                        <htm:li>After generating a fatal alert by sending a Finished message from the client before the client sends a ChangeCipherSpec message, send a Client Hello with the session identifier from the previous test, and verify that the server denies the connection</htm:li>
-                                        <htm:li>Send a garbled message from the client after the client has issued the ChangeCipherSpec message and verify that the Server denies the connection</htm:li>
-                                    </htm:ul>
-                                </test>
-                            </testlist>
-                        </aactivity>
-                        </f-element>
-                    <f-element id="FCS_TLSS_EXT.1.2">
-                        <title>The <abbr linkend="TSF"/> shall deny connections from clients requesting SSL 1.0, SSL 2.0, SSL 3.0, TLS 1.0, and 
-                            <selectables>
-                                <selectable>TLS 1.1</selectable>
-                                <selectable>none</selectable>
-                            </selectables>.
-                        </title>
-                        <note role="application">All SSL versions and TLS v1.0 shall be denied. Any TLS versions not selected in FCS_TLSS_EXT.1.1 should be selected here.</note>
-                        <aactivity>
-                            The evaluator shall verify that the <abbr linkend="TSS"/> contains a description of the denial of old SSL and TLS versions.<htm:br></htm:br><htm:br></htm:br>
-                            Operational Guidance<htm:br></htm:br><htm:br></htm:br>
-                            The evaluator shall verify that any configuration necessary to meet the requirement are contained in the AGD guidance.<htm:br></htm:br><htm:br></htm:br>
-                            Tests<htm:br></htm:br><htm:br></htm:br>
-                            The evaluator shall send a Client Hello requesting a connection with version SSL 1.0 and verify that the server denies the connection. The evaluator shall repeat this test with SSL 2.0, SSL 3.0, TLS 1.0, and any selected TLS versions.
-                        </aactivity>
-                    </f-element>
-                    <f-element id="FCS_TLSS_EXT.1.3">
-                        <title>The <abbr linkend="TSF"/> shall generate key agreement parameters using RSA with key size 2048 bits and 
-                            <selectables>
-                                <selectable>3072 bits</selectable>
-                                <selectable>4096 bits</selectable>
-                                <selectable>no other size</selectable>
-                            </selectables> and 
-                            <selectables linebreak="yes">
-                                <selectable>over NIST curves 
-                                    <selectables>
-                                        <selectable>secp256r1</selectable>
-                                        <selectable></selectable>
-                                        </selectables> and no other curves</selectable>
-                                <selectable>Diffie-Hellman parameters of size 2048 bits and 
-                                    <selectables linebreak="yes">
-                                        <selectable>3072 bits</selectable>
-                                        <selectable>no other size</selectable>
-                                    </selectables></selectable>
-                                <selectable>no other</selectable>
-                            </selectables>.
-                            </title>
-                        <note role="application">If the <abbr linkend="ST"/> lists a DHE or ECDHE ciphersuite in FCS_TLSS_EXT.1.1, the <abbr linkend="ST"/> must include the Diffie-Hellman or NIST curves selection in the requirement. FMT_SMF.1 requires the configuration of the key agreement parameters in order to establish the security strength of the TLS connection.</note>
-                        <aactivity>The evaluator shall verify that the <abbr linkend="TSS"/> describes the key agreement parameters of the server key exchange message.<htm:br></htm:br><htm:br></htm:br>
-                            Operational Guidance<htm:br></htm:br><htm:br></htm:br>
-                            The evaluator shall verify that any configuration necessary to meet the requirement is contained in the AGD guidance.<htm:br></htm:br><htm:br></htm:br>
-                            Tests<htm:br></htm:br><htm:br></htm:br>
-                            If the second selection includes any choice other than “no other”, the evaluator shall attempt a connection using an ECDHE ciphersuite and a configured curve and, using a packet analyzer, verify that the key agreement parameters in the Key Exchange message are the ones configured. (Determining that the size matches the expected size for the configured curve is sufficient.) The evaluator shall repeat this test for each supported NIST Elliptic Curve and each supported Diffie-Hellman key size.
-                            
-                            </aactivity>
-                        </f-element>
-                    </f-component> 
-                <f-component id="FCS_TLSS_EXT.2 TLS" name="Server Protocol with Mutual Authentication"  status="sel-based">
-                    <selection-depends req="FTP_ITC_EXT.1.1"/><!-- HERE check this -->
-                    <f-element id="FCS_TLSS_EXT.2.1">
-                        <title>The <abbr linkend="TSF"/> shall implement 
-                            <selectables>
-                                <selectable>TLS 1.2 (RFC 5246)</selectable>
-                                <selectable>TLS 1.1 (RFC 4346)</selectable>
-                            </selectables> supporting the following ciphersuites:
-                            <htm:ul>
-                                <htm:li>Mandatory Ciphersuites:<htm:br></htm:br>
-                                    TLS_RSA_WITH_AES_128_CBC_SHA as defined in RFC 3268
-                                </htm:li>
-                                <htm:li>Optional Ciphersuites:<htm:br></htm:br>
-                                    <selectables linebreak="yes">
-                                        <selectable>TLS_RSA_WITH_AES_256_CBC_SHA as defined in RFC 3268 </selectable>
-                                        <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_SHA as defined in RFC 3268 </selectable>
-                                        <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_SHA as defined in RFC 3268 </selectable>
-                                        <selectable>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA as defined in RFC 4492 </selectable>
-                                        <selectable>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA as defined in RFC 4492 </selectable>
-                                        <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA as defined in RFC 4492 </selectable>
-                                        <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA as defined in RFC 4492</selectable>
-                                        <selectable>TLS_RSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5246 </selectable>
-                                        <selectable>TLS_RSA_WITH_AES_256_CBC_ SHA256 as defined in RFC 5246 </selectable>
-                                        <selectable>TLS_DHE_RSA_WITH_AES_128_CBC_ SHA256 as defined in RFC 5246 </selectable>
-                                        <selectable>TLS_DHE_RSA_WITH_AES_256_CBC_ SHA256 as defined in RFC 5246 </selectable>
-                                        <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 as defined in RFC 5289 </selectable>
-                                        <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 as defined in RFC 5289 </selectable>
-                                        <selectable>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289 </selectable>
-                                        <selectable>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 </selectable>
-                                        <selectable>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 as defined in RFC 5289 </selectable>
-                                        <selectable>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 as defined in RFC 5289 </selectable>
-                                        <selectable>no other ciphersuite</selectable>
-                                    </selectables>
-                                </htm:li>
-                            </htm:ul>
-                            
-                            
-                        </title>
-                        
-                        <note role="application">The ciphersuites to be tested in the evaluated configuration are limited by this requirement. The <abbr linkend="ST"/> author should select the optional ciphersuites that are supported; if there are no ciphersuites supported other than the mandatory suites, then “None” should be selected. It is necessary to limit the ciphersuites that can be used in an evaluated configuration administratively on the server in the test environment. The Suite B algorithms listed above (RFC 6460) are the preferred algorithms for implementation. TLS_RSA_WITH_AES_128_CBC_SHA is required in order to ensure compliance with RFC 5246.<htm:br></htm:br><htm:br></htm:br>
-                            These requirements will be revisited as new TLS versions are standardized by the IETF.<htm:br></htm:br><htm:br></htm:br>
-                            If any ciphersuites are selected using ECDHE, then FCS_TLSS_EXT.1.5 is required.<htm:br></htm:br><htm:br></htm:br>
-                            In a future version of this PP TLS v1.2 will be required for all <abbr linkend="TOE"/>s.
-                        </note>
-                        <aactivity>The evaluator shall check the description of the implementation of this protocol in the <abbr linkend="TSS"/> to ensure that the ciphersuites supported are specified. The evaluator shall check the <abbr linkend="TSS"/> to ensure that the ciphersuites specified are identical to those listed for this component.<htm:br></htm:br><htm:br></htm:br>
-                            Operational Guidance<htm:br></htm:br><htm:br></htm:br>
-                            The evaluator shall also check the operational guidance to ensure that it contains instructions on configuring the <abbr linkend="TOE"/> so that TLS conforms to the description in the <abbr linkend="TSS"/> (for instance, the set of ciphersuites advertised by the <abbr linkend="TOE"/> may have to be restricted to meet the requirements).<htm:br></htm:br><htm:br></htm:br>
-                            <testlist>
-                                <test>The evaluator shall establish a TLS connection using each of the ciphersuites specified by the requirement. This connection may be established as part of the establishment of a higher-level protocol, e.g., as part of an EAP session. It is sufficient to observe the successful negotiation of a ciphersuite to satisfy the intent of the test; it is not necessary to examine the characteristics of the encrypted traffic in an attempt to discern the ciphersuite being used (for example, that the cryptographic algorithm is 128-bit AES and not 256-bit AES).</test>
-                                <test>The evaluator shall send a Client Hello to the server with a list of ciphersuites that does not contain any of the ciphersuites in the server’s <abbr linkend="ST"/> and verify that the server denies the connection. Additionally, the evaluator shall send a Client Hello to the server containing only the TLS_NULL_WITH_NULL_NULL ciphersuite and verify that the server denies the connection.</test>
-                                <test>The evaluator shall use a client to send a key exchange message in the TLS connection that the does not match the server-selected ciphersuite (for example, send an ECDHE key exchange while using the TLS_RSA_WITH_AES_128_CBC_SHA ciphersuite or send a RSA key exchange while using one of the ECDSA ciphersuites.) The evaluator shall verify that the <abbr linkend="TOE"/> disconnects after the receiving the key exchange message.</test>
-                                <test>evaluator shall perform the following modifications to the traffic:
-                                    <htm:ul>
-                                        <htm:li>Modify at a byte in the client’s nonce in the Client Hello handshake message, and verify that the server rejects the client’s Certificate Verify handshake message (if using mutual authentication) or that the server denies the client’s Finished handshake message</htm:li>
-                                        <htm:li>Modify the signature block in the Client’s Key Exchange handshake message, and verify that the server rejects the client’s Certificate Verify handshake message (if using mutual authentication) or that the server denies the client’s Finished handshake message</htm:li>
-                                        <htm:li>Modify a byte in the Client Finished handshake message, and verify that the server rejects the connection and does not send any application data</htm:li>
-                                        <htm:li>After generating a fatal alert by sending a Finished message from the client before the client sends a ChangeCipherSpec message, send a Client Hello with the session identifier from the previous test, and verify that the server denies the connection</htm:li>
-                                        <htm:li>Send a garbled message from the client after the client has issued the ChangeCipherSpec message and verify that the Server denies the connection</htm:li>
-                                    </htm:ul>
-                                </test>
-                            </testlist>
-                        </aactivity>
-                    </f-element>
-                    <f-element id="FCS_TLSS_EXT.2.2">
-                        <title>The <abbr linkend="TSF"/> shall deny connections from clients requesting SSL 1.0, SSL 2.0, SSL 3.0, TLS 1.0, and 
-                            <selectables>
-                                <selectable>TLS 1.1</selectable>
-                                <selectable>none</selectable>
-                            </selectables>.
-                        </title>
-                        <note role="application">All SSL versions and TLS v1.0 shall be denied. Any TLS versions not selected in FCS_TLSS_EXT.1.1 should be selected here.</note>
-                        <aactivity>The evaluator shall verify that the <abbr linkend="TSS"/> contains a description of the denial of old SSL and TLS versions.<htm:br></htm:br><htm:br></htm:br>
-                            Operational Guidance<htm:br></htm:br><htm:br></htm:br>
-                            The evaluator shall verify that any configuration necessary to meet the requirement are contained in the AGD guidance.<htm:br></htm:br><htm:br></htm:br>
-                            Tests<htm:br></htm:br><htm:br></htm:br>
-                            The evaluator shall send a Client Hello requesting a connection with version SSL 1.0 and verify that the server denies the connection. The evaluator shall repeat this test with SSL 2.0, SSL 3.0, TLS 1.0, and any selected TLS versions.
-                        </aactivity>
-                    </f-element>
-                    <f-element id="FCS_TLSS_EXT.2.3">
-                        <title>The <abbr linkend="TSF"/> shall generate key agreement parameters using RSA with key size 2048 bits and 
-                            <selectables>
-                                <selectable>3072 bits</selectable>
-                                <selectable>4096 bits</selectable>
-                                <selectable>no other size</selectable>
-                            </selectables> and 
-                            <selectables>
-                                <selectable>over NIST curves  <selectables>
-                                    <selectable>secp256r1</selectable>
-                                    <selectable>secp384r1</selectable>
-                                </selectables> and no other curves</selectable>
-                                <selectable>Diffie-Hellman parameters of size 2048 bits and 
-                                    <selectables>
-                                        <selectable>3072 bits</selectable>
-                                        <selectable>no other size</selectable>
-                                    </selectables>no other</selectable>
-                                <selectable></selectable>
-                            </selectables>.
-                        </title>
-                        <note role="application">If the <abbr linkend="ST"/> lists a DHE or ECDHE ciphersuite in FCS_TLSS_EXT.1.1, the <abbr linkend="ST"/> must include the Diffie-Hellman or NIST curves selection in the requirement. FMT_SMF.1 requires the configuration of the key agreement parameters in order to establish the security strength of the TLS connection.</note>
-                        <aactivity>The evaluator shall verify that the <abbr linkend="TSS"/> describes the key agreement parameters of the server key exchange message.<htm:br></htm:br><htm:br></htm:br>
-                            Operational Guidance<htm:br></htm:br><htm:br></htm:br>
-                            The evaluator shall verify that any configuration necessary to meet the requirement is contained in the AGD guidance.<htm:br></htm:br><htm:br></htm:br>
-                            Tests<htm:br></htm:br><htm:br></htm:br>
-                            If the second selection includes any choice other than “no other”, the evaluator shall attempt a connection using an ECDHE ciphersuite and a configured curve and, using a packet analyzer, verify that the key agreement parameters in the Key Exchange message are the ones configured. (Determining that the size matches the expected size for the configured curve is sufficient.) The evaluator shall repeat this test for each supported NIST Elliptic Curve and each supported Diffie-Hellman key size.
-                        </aactivity>
-                    </f-element>
-                    <f-element id="FCS_TLSS_EXT.2.4">
-                        <title>The <abbr linkend="TSF"/> shall support mutual authentication of TLS clients using X.509v3 certificates.
-                        </title>
-                        <note role="application"> </note>
-                        <aactivity>The evaluator shall ensure that the <abbr linkend="TSS"/> description required per FIA_X509_EXT.2.1 includes the use of client-side certificates for TLS mutual authentication.<htm:br></htm:br><htm:br></htm:br>
-                            Operational Guidance<htm:br></htm:br><htm:br></htm:br>
-                            The evaluator shall verify that the AGD guidance required per FIA_X509_EXT.2.1 includes instructions for configuring the client-side certificates for TLS mutual authentication.
-                            <testlist>
-                                <test>The evaluator shall configure the server to send a certificate request to the client and shall attempt a connection without sending a certificate from the client. The evaluator shall verify that the connection is denied.</test>
-                                <test>The evaluator shall configure the server to send a certificate request to the client without the supported_signature_algorithm used by the client’s certificate. The evaluator shall attempt a connection using the client certificate and verify that the connection is denied.</test>
-                                <test>The evaluator shall demonstrate that using a certificate without a valid certification path results in the function failing. Using the administrative guidance, the evaluator shall then load a certificate or certificates needed to validate the certificate to be used in the function, and demonstrate that the function succeeds. The evaluator then shall delete one of the certificates, and show that the function fails.</test>
-                                <test>The evaluator shall configure the client to send a certificate that does not chain to one of the Certificate Authorities (either a Root or Intermediate CA) in the server’s Certificate Request message. The evaluator shall verify that the attempted connection is denied.</test>
-                                <test>The evaluator shall configure the client to send a certificate with the Client Authentication purpose in the extendedKeyUsage field and verify that the server accepts the attempted connection. The evaluator shall repeat this test without the Client Authentication purpose and shall verify that the server denies the connection. Ideally, the two certificates should be identical except for the Client Authentication purpose.</test>
-                                <test>The evaluator shall perform the following modifications to the traffic:
-                                    <htm:ul>
-                                        <htm:li>Configure the server to require mutual authentication and then modify a byte in the client’s certificate. The evaluator shall verify that the server rejects the connection.</htm:li>
-                                        <htm:li>Configure the server to require mutual authentication and then modify a byte in the client’s Certificate Verify handshake message. The evaluator shall verify that the server rejects the connection.</htm:li>
-                                    </htm:ul>
-                                    </test>
-                            </testlist>
-                        </aactivity>
-                    </f-element>
-                    <f-element id="FCS_TLSS_EXT.2.5">
-                        <title>The <abbr linkend="TSF"/> shall not establish a trusted channel if the peer certificate is invalid.
-                        </title>
-                        <note role="application">The use of X.509v3 certificates for TLS is addressed in FIA_X509_EXT.2.1. This requirement adds that this use must include support for client-side certificates for TLS mutual authentication.<htm:br></htm:br><htm:br></htm:br>
-                            Validity is determined by the certificate path, the expiration date, and the revocation status in accordance with RFC 5280. Certificate validity shall be tested in accordance with testing performed for FIA_X509_EXT.1.</note>
-                        <aactivity>The evaluator shall ensure that the <abbr linkend="TSS"/> description required per FIA_X509_EXT.2.1 includes the use of client-side certificates for TLS mutual authentication.<htm:br></htm:br><htm:br></htm:br>
-                            Operational Guidance<htm:br></htm:br><htm:br></htm:br>
-                            The evaluator shall verify that the AGD guidance required per FIA_X509_EXT.2.1 includes instructions for configuring the client-side certificates for TLS mutual authentication.
-                            <testlist>
-                                <test>The evaluator shall configure the server to send a certificate request to the client and shall attempt a connection without sending a certificate from the client. The evaluator shall verify that the connection is denied.</test>
-                                <test>The evaluator shall configure the server to send a certificate request to the client without the supported_signature_algorithm used by the client’s certificate. The evaluator shall attempt a connection using the client certificate and verify that the connection is denied.</test>
-                                <test>The evaluator shall demonstrate that using a certificate without a valid certification path results in the function failing. Using the administrative guidance, the evaluator shall then load a certificate or certificates needed to validate the certificate to be used in the function, and demonstrate that the function succeeds. The evaluator then shall delete one of the certificates, and show that the function fails.</test>
-                                <test>The evaluator shall configure the client to send a certificate that does not chain to one of the Certificate Authorities (either a Root or Intermediate CA) in the server’s Certificate Request message. The evaluator shall verify that the attempted connection is denied.</test>
-                                <test>The evaluator shall configure the client to send a certificate with the Client Authentication purpose in the extendedKeyUsage field and verify that the server accepts the attempted connection. The evaluator shall repeat this test without the Client Authentication purpose and shall verify that the server denies the connection. Ideally, the two certificates should be identical except for the Client Authentication purpose.</test>
-                                <test>The evaluator shall perform the following modifications to the traffic:
-                                    <htm:ul>
-                                        <htm:li>Configure the server to require mutual authentication and then modify a byte in the client’s certificate. The evaluator shall verify that the server rejects the connection.</htm:li>
-                                        <htm:li>Configure the server to require mutual authentication and then modify a byte in the client’s Certificate Verify handshake message. The evaluator shall verify that the server rejects the connection.</htm:li>
-                                    </htm:ul>
-                                    </test>
-                            </testlist>
-                        </aactivity>
-                    </f-element>
-                    <f-element id="FCS_TLSS_EXT.2.6">
-                        <title>The <abbr linkend="TSF"/> shall not establish a trusted channel if the distinguished name (DN) or Subject Alternative Name (SAN) contained in a certificate does not match the expected identifier for the peer.
-                        </title>
-                        <note role="application">The peer identifier may be in the Subject field or the Subject Alternative Name extension of the certificate. The expected identifier may either be configured, may be compared to the Domain Name, IP address, username, or email address used by the peer, or may be passed to a directory server for comparison. Matching should be performed by a bit-wise comparison.</note>
-                        <aactivity>The evaluator shall verify that the <abbr linkend="TSS"/> describes how the DN or SAN in the certificate is compared to the expected identifier.<htm:br></htm:br><htm:br></htm:br>
-                            Operational Guidance<htm:br></htm:br><htm:br></htm:br>
-                            If the <abbr linkend="TOE"/> implements mutual authentication such that the DN is not compared automatically to the Domain Name or IP address, username, or email address, then the evaluator shall ensure that the AGD guidance includes configuration of the expected DN or the directory server for the connection.<htm:br></htm:br><htm:br></htm:br>
-                            Tests<htm:br></htm:br><htm:br></htm:br>
-                            The evaluator shall send a client certificate with an identifier that does not match an expected identifier and verify that the server denies the connection.
-                        </aactivity>
-                    </f-element>
-                </f-component> 
             </subsection>
             <subsection id="fdp" title="User Data Protection">
                 <f-component id="FDP_HBI_EXT.1" name="Hardware-Based Isolation Mechanisms"  status="threshold">
@@ -2075,11 +1723,12 @@
                         <note role="application">Disk storage must be zeroed before it is made accessible to a <abbr linkend="VM"/> for use by a Guest OS.<htm:br></htm:br><htm:br></htm:br>
                             The purpose of this requirement is to ensure that a <abbr linkend="VM"/> does not receive disk storage containing data previously used by another <abbr linkend="VM"/> or the host.<htm:br></htm:br><htm:br></htm:br>
                             This does not apply to disk-resident files shared by design or policy between <abbr linkend="VM"/>s or between the <abbr linkend="VMM"/>s and <abbr linkend="VM"/>s, such as read-only data files or files used for inter-VM data transfers permitted by policy. </note>
-                        <aactivity>The evaluator shall ensure that the <abbr linkend="TSS"/> documents the conditions under which physical disk storage is not cleared prior to allocation to a Guest <abbr linkend="VM"/>.<htm:br></htm:br><htm:br></htm:br>
-                            The evaluator shall perform the following tests:<htm:br></htm:br><htm:br></htm:br>
+                        <aactivity>The evaluator shall ensure that the <abbr linkend="TSS"/> documents the conditions under which physical disk storage is not cleared prior to allocation to a Guest <abbr linkend="VM"/>. The evaluator shall also ensure that the <abbr linkend="TSS"/> documents the metadata used in its virtual disk files. <htm:br></htm:br><htm:br></htm:br>
+                            The evaluator shall perform the following test:<htm:br></htm:br><htm:br></htm:br>
                             <testlist>
-                                <test>The evaluator (as an unprivileged <abbr linkend="VM"/> user) must create a new, large file (10MB) in the <abbr linkend="VM"/>’s file system. The test is to read each location in the file to ensure that every location contains a value of 0. This can be done using a custom tool or a binary file editor or viewer.</test>
-                                <test>The evaluator (as VS Administrator) must create a virtual disk and connect it to a <abbr linkend="VM"/>. As an unprivileged <abbr linkend="VM"/> user, the evaluator must then create a large (10 MB) memory-mapped file on the virtual disk. The test is to read each location in the file to ensure that every location contains a value of 0. This can be done using a custom tool or a binary file editor or viewer.</test>
+                                <test>On the host, the evaluator creates a file that is more than half the size of a connected physical storage device (or multiple files whose individual sizes add up to more than half the size of the storage media).  This file (or files) shall be filled entirely with a non-zero value.  Then, the
+                                    file (or files) shall be released (freed for use but not cleared).  Next, the evaluator (as a <abbr linkend="VS"/> Administrator) creates a virtual disk at least that large on the same physical storage device and connects it to a powered-off <abbr linkend="VM"/>.  Then, from outside the 
+                                    Guest <abbr linkend="VM"/>, scan through and check that all the non-metadata (as documented in the <abbr linkend="TSS"/>) in the file corresponding to that virtual disk is set to zero.</test>
                             </testlist>
                         </aactivity>
                     </f-element>
@@ -2178,35 +1827,56 @@
                                     <assignable>range of acceptable values</assignable></selectable>
                             </selectables>
                             
-                            unsuccessful authentication attempts for 
-                            <selectables linebreak="yes">
-                                <selectable>authentication based on username and password</selectable>
-                                <selectable>authentication based on username and a PIN that releases an asymmetric key stored in OE-protected storage</selectable>
-                                <selectable>authentication based on X.509 certificates</selectable>
-                                <selectable>authentication based on an SSH public key credential]
-                                    </selectable>
+                            unsuccessful authentication attempts occur related to Administrators attempting to authenticate remotely using a
+                            <selectables>
+                                <selectable>password</selectable>
+                                <selectable>PIN</selectable>.
                             </selectables>
-                            occur related to 
-                            <assignable>list of authentication events</assignable>.
                         </title>
-                        <aactivity>The evaluator will set an administrator-configurable threshold for failed attempts, or note the <abbr linkend="ST"/>-specified assignment. The evaluator will then (per selection) repeatedly attempt to authenticate with an incorrect password, PIN, or certificate until the number of attempts reaches the threshold. Note that the authentication attempts and lockouts must also be logged as specified in FAU_GEN.1.
-                        </aactivity>
                     </f-element>
                     <f-element id="FIA_AFL_EXT.1.2">
-                        <title>When the defined number of unsuccessful authentication attempts for an account has been met, the <abbr linkend="TSF"/> shall: 
+                        <title>When the defined number of unsuccessful authentication attempts has been met, the <abbr linkend="TSF"/>
+                            shall: 
                             <selectables>
-                                <selectable>Account Lockout</selectable>
-                                <selectable>Account Disablement</selectable>
-                                <selectable>Mandatory Credential Reset</selectable>
-                                <selectable><assignable> list of actions</assignable></selectable>
+                                <selectable>prevent the offending Administrator from successfully establishing remote session using
+                                    any authentication method that involves a password or PIN until
+                                    <assignable>action to unlock</assignable> is taken by an Administrator</selectable>
+                                <selectable>prevent the offending Administrator from successfully establishing remote session using
+                                    any authentication method that involves a password or PIN until an Administrator defined time
+                                    period has elapsed</selectable>
                             </selectables>
                         </title>
-                        <note role="application">The action to be taken shall be populated in the assignment of the <abbr linkend="ST"/> and defined in the administrator guidance.</note>
-                        <aactivity>The evaluator shall perform the following tests:
+                        <note role="application">The action to be taken shall be populated in the selection of the <abbr linkend="ST"/>
+                            and defined in the Administrator guidance.<htm:br></htm:br><htm:br></htm:br>
+                            This requirement applies to a defined number of successive unsuccessful remote password or PIN-based
+                            authentication attempts and does not apply to local Administrative access. Compliant TOEs may optionally
+                            include cryptographic authentication failures and local authentication failures in the number of
+                            unsuccessful authentication attempts.
+                        </note>
+                        <aactivity>The evaluator shall perform the following tests for each credential selected in FIA_AFL_EXT.1.1:
                             <testlist>
-                                <test>The evaluator will attempt to authenticate repeatedly to the system with a known bad password. Once the defined number of failed authentication attempts has been reached the evaluator will ensure that the account that was being used for testing has had the actions detailed in the assignment list above applied to it. The evaluator will ensure that an event has been logged to the security event log detailing that the account has had these actions applied.</test>
-                                <test>The evaluator will attempt to authenticate repeatedly to the system with a known bad certificate. Once the defined number of failed authentication attempts has been reached the evaluator will ensure that the account that was being used for testing has had the actions detailed in the assignment list above applied to it. The evaluator will ensure that an event has been logged to the security event log detailing that the account has had these actions applied.</test>
-                                <test>The evaluator will attempt to authenticate repeatedly to the system using both a bad password and a bad certificate. Once the defined number of failed authentication attempts has been reached the evaluator will ensure that the account that was being used for testing has had the actions detailed in the assignment list above applied to it. The evaluator will ensure that an event has been logged to the security event log detailing that the account has had these actions applied.</test>
+                                <test>The evaluator will set an Administrator-configurable threshold n for failed attempts, or note the ST-specified assignment.</test>
+                                <testlist>
+                                    <test>The evaluator will attempt to authenticate remotely with the credential n-1 times. The evaluator will then attempt to authenticate
+                                        using a good credential and verify that authentication is successful.</test>
+                                    <test> The evaluator will make n attempts to authenticate using a bad credential. The evaluator
+                                        will then attempt to authenticate using a good credential and verify that the attempt is
+                                        unsuccessful. Note that the authentication attempts and lockouts must also be logged as
+                                        specified in FAU_GEN.1.</test>
+                                    <test>After reaching the limit for unsuccessful authentication attempts the evaluator will proceed
+                                        as follows:</test>
+                                    <testlist>
+                                        <test>If the Administrator action selection in FIA_AFL_EXT.1.2 is selected, then the evaluator
+                                            will confirm by testing that following the operational guidance and performing each action
+                                            specified in the ST to re-enable the remote Administrator’s access results in successful
+                                            access (when using valid credentials for that Administrator).</test>
+                                        <test>If the time period selection in FIA_AFL_EXT.1.2 is selected, the evaluator will wait for
+                                            just less than the time period configured and show that an authentication attempt using
+                                            valid credentials does not result in successful access. The evaluator will then wait until
+                                            just after the time period configured and show that an authentication attempt using valid
+                                            credentials results in successful access.</test>
+                                        </testlist>
+                                </testlist>
                             </testlist>
                         </aactivity>
                     </f-element>
@@ -2440,7 +2110,7 @@
                         <note role="application">The virtualized hardware abstraction implemented by a particular VS might include the virtualized interfaces for many different devices. Sometimes these devices are not present in a particular instantiation of a <abbr linkend="VM"/>. The interface for devices not present must not accessible by the <abbr linkend="VM"/>.<htm:br></htm:br><htm:br></htm:br>
                             Such interfaces include memory buffers and processor I/O ports.<htm:br></htm:br><htm:br></htm:br>
                             The purpose of this requirement is to reduce the attack surface of the <abbr linkend="VMM"/> by closing unused interfaces.</note>
-                        <aactivity>The evaluator shall verify that the audit records provide all of the information specified in FAU_GEN.1 and that this information is suitable for human interpretation. The evaluator shall review the operational guidance for the procedure on how to review the audit records. The assurance activity for this requirement is performed in conjunction with the assurance activity for FAU_GEN.1.
+                        <aactivity>The evaluator shall connect a device to a VM, then using a device driver running in the guest, scan the VM's processor I/O ports to ensure that the device's ports are present. (The device's interface should be documented in the TSS under FPT_VDP_EXT.1.) The evaluator shall remove the device from the VM and run the scan again. This requirement is met if the device's I/O ports are no longer present.
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -2486,11 +2156,7 @@
                         </title>
                     </f-element>
                     <f-element id="FPT_HCL_EXT.1.2">
-                        <title>The <abbr linkend="TSF"/> shall allow administrators to configure any <abbr linkend="VM"/>’s Hypercall interface to 
-                            <selectables>
-                                <selectable>enable</selectable>
-                                <selectable>disable</selectable>
-                            </selectables> access to Hypercall functions.
+                        <title>The <abbr linkend="TSF"/> shall allow administrators to configure any <abbr linkend="VM"/>’s Hypercall interface to disable access to individual functions, all functions, or groups of functions.
                         </title>
                     </f-element>
                     <f-element id="FPT_HCL_EXT.1.3">
@@ -2500,18 +2166,32 @@
                     <f-element id="FPT_HCL_EXT.1.4">
                         <title>The <abbr linkend="TSF"/> shall validate the parameters passed to the hypercall interface prior to execution of the <abbr linkend="VMM"/> functionality exposed by that interface.
                         </title>
-                        <note role="application">The purpose of this requirement is to help ensure the integrity of the <abbr linkend="VMM"/> by documenting the attack surface exposed to Guest <abbr linkend="VM"/>s, and to ensure that Hypercall parameters supplied by software running in the untrusted Guest <abbr linkend="VM"/> are properly validated prior to use by the <abbr linkend="VMM"/>.<htm:br></htm:br><htm:br></htm:br>
+                        <note role="application">The purpose of this requirement is to help ensure the integrity of the 
+                            <abbr linkend="VMM"/> by defining the attack surface exposed to Guest VMs through Hypercalls,
+                            testing the mechanisms for reducing that attack surface by disabling Hypercalls, and ensuring that
+                            Hypercall parameters are properly validated prior to use by the <abbr linkend="VMM"/>.<htm:br></htm:br><htm:br></htm:br>
                             A Hypercall interface allows a set of <abbr linkend="VMM"/> functions to be invoked by software running within a <abbr linkend="VM"/>. Hypercall interfaces are used by virtualization-aware <abbr linkend="VM"/>s to communicate and exchange data with the <abbr linkend="VMM"/>. For example, a <abbr linkend="VM"/> could use a hypercall interface to get information about the real world, such as the time of day or the underlying hardware of the host system. A hypercall could also be used to transfer data between <abbr linkend="VM"/>s through a copy-paste mechanism. Because hypercall interfaces expose the <abbr linkend="VMM"/> to Guest <abbr linkend="VM"/>s, these interfaces constitute attack surface. In order to minimize attack surface, these interfaces must be limited to the minimum needed to support <abbr linkend="VM"/> functionality.<htm:br></htm:br><htm:br></htm:br>
                             For the selection in FPT_HCL_EXT.1.2, the <abbr linkend="ST"/> author selects the applicable actions that administrators can perform to configure functions supported by the interface.<htm:br></htm:br><htm:br></htm:br>
                             For the assignment in FPT_HCL_EXT.1.3, the <abbr linkend="ST"/> author lists the interface functions that cannot be configured per FPT_HCL_EXT.1.2.<htm:br></htm:br><htm:br></htm:br>
-                            A vendor-provided test harness may reduce evaluation time.
+                            A vendor-provided test harness may reduce evaluation time.<htm:br></htm:br><htm:br></htm:br>
+                            There is no expectation that the evaluator will need to review source code in order to accomplish the
+                            Assurance Activity.  The evaluator documentation review should ensure that there are documented
+                            Hypercall functions in the <abbr linkend="TSS"/>, that each documented Hypercall function contains the specified
+                            information, and that there are not obvious or publicly known Hypercall functions missing.
                         </note>
-                        <aactivity>The evaluator shall examine the <abbr linkend="TSS"/> or operational guidance to ensure it includes the documentation of the interface, including all possible functions available via the interface. Documentation must include, for each function, how to call the function, function parameters and legal values, configuration settings for enabling/disabling the function, and conditions under which the function can be disabled. The <abbr linkend="TSS"/> must also specify those functions that cannot be disabled.<htm:br></htm:br><htm:br></htm:br>
+                        <aactivity>The evaluator shall examine the <abbr linkend="TSS"/> or operational guidance to ensure it 
+                            documentations all Hypercall functions at the level necessary for the evaluator to disable the functions
+                            and run tests 1 and 2, below. Documentation must include, for each function, how to call the function, function
+                            parameters and legal values, configuration settings for enabling/disabling the function, and conditions under
+                            which the function can be disabled. The <abbr linkend="TSS"/> must also specify those functions that cannot be
+                            disabled.  While there is no expectation that the evaluator will need to examine source code in order to
+                            accomplish this Assurance Activity, the evaluator must ensure that there are no obvious or publicly known
+                            Hypercall functions missing from the TSS. <htm:br></htm:br><htm:br></htm:br>
                             The evaluator shall examine the operational guidance to ensure it contains instructions for how to configure interface functions per FPT_HCL_EXT.1.2.<htm:br></htm:br><htm:br></htm:br>
                             The evaluator shall perform the following tests:<htm:br></htm:br><htm:br></htm:br>
                             <testlist>
                                 <test>For each configurable function that meets FPT_HCL_EXT.1.2, the evaluator shall follow the operational guidance to enable the function. The evaluator shall then attempt to call each function from within the <abbr linkend="VM"/>. If the call is allowed, then the test succeeds.</test>
-                                <test>For each configurable function, the evaluator shall configure the <abbr linkend="TSF"/> to disable the function. The evaluator shall then attempt to call the function from within the <abbr linkend="VM"/>. If the call is blocked, then the test succeeds.</test>
+                                <test>For each configurable function that meets FPT_HCL_EXT.1.2, the evaluator shall configure the <abbr linkend="TSF"/> to disable the function. The evaluator shall then attempt to call the function from within the <abbr linkend="VM"/>. If the call is blocked, then the test succeeds.</test>
                             </testlist>
                         </aactivity>
                     </f-element>
@@ -2622,10 +2302,19 @@
                             FPT_VDP_EXT.1.2 is an attestation requirement. The vendor must attest that parameters passed from a <abbr linkend="VM"/> to a virtual device interface are not able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform. The vendor must attest that there are no design or implementation flaws that permit the above.
                         </note>
                         <aactivity>
-                            The evaluator shall examine the <abbr linkend="TSS"/> to ensure it documents all virtual device interfaces, including I/O ports, protocols, and data formats.<htm:br></htm:br><htm:br></htm:br>
-                            The evaluator ensures that the <abbr linkend="ST"/> includes the following statement attesting that parameters passed from a Guest <abbr linkend="VM"/> to virtual device interfaces are thoroughly validated, that all values outside the legal values specified in the <abbr linkend="TSS"/> are rejected, and that any data passed to the virtual device interfaces is unable to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform:<htm:br></htm:br><htm:br></htm:br>
-                        “Parameters passed from Guest <abbr linkend="VM"/>s to virtual device interfaces are thoroughly validated and all illegal values (as specified in the <abbr linkend="TSS"/>) are rejected. Additionally, parameters passed from Guest <abbr linkend="VM"/>s to virtual device interfaces are not able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform. Thorough testing and architectural design reviews have been conducted to ensure the accuracy of these claims, and there are no design or implementation flaws that bypass or defeat the security of the virtual device interfaces.”
+                            The evaluator shall examine the <abbr linkend="TSS"/> to ensure it documents all virtual device interfaces
+                            at the virtual I/O port level, to specify port number (absolute or relative to a base), port name, and a
+                            description of legal input values.  The documentation must be sufficient to enable the evaluator to
+                            effectively run the tests in FPT_DVD_EXT.1.  The evaluator must ensure that there are no obvious or
+                            publicly known virtual I/O ports missing from the <abbr linkend="TSS"/>.
                         </aactivity>
+                        <note><htm:b><htm:i>Assurance Activity Note:</htm:i></htm:b><htm:br></htm:br>
+                            There is no expectation that evaluators will examine source code to verify the “all” part of the Assurance Activity.<htm:br></htm:br><htm:br></htm:br>
+                            The evaluator shall examine the <abbr linkend="TSS"/> to ensure it documents all virtual device interfaces,
+                            including I/O ports, protocols, and data formats.<htm:br></htm:br><htm:br></htm:br>
+                            The evaluator ensures that the <abbr linkend="ST"/> includes the following statement attesting that parameters passed from a Guest <abbr linkend="VM"/> to virtual device interfaces are thoroughly validated, that all values outside the legal values specified in the <abbr linkend="TSS"/> are rejected, and that any data passed to the virtual device interfaces is unable to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform:<htm:br></htm:br><htm:br></htm:br>
+                            “Parameters passed from Guest <abbr linkend="VM"/>s to virtual device interfaces are thoroughly validated and all illegal values (as specified in the <abbr linkend="TSS"/>) are rejected. Additionally, parameters passed from Guest <abbr linkend="VM"/>s to virtual device interfaces are not able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform. Thorough testing and architectural design reviews have been conducted to ensure the accuracy of these claims, and there are no design or implementation flaws that bypass or defeat the security of the virtual device interfaces.”
+                        </note>
                     </f-element>
                 </f-component>
                 <f-component id="FPT_VIV_EXT.1" name="VMM Isolation from VMs"  status="threshold">
@@ -2731,8 +2420,15 @@
             <subsection id="fta" title="TOE Access">
                 <f-component id="FTA_TAB.1" name="TOE Access Banner"  status="threshold">
                     <f-element id="FTA_TAB.1.1">
-                        <title>Before establishing an Administrator session, the <abbr linkend="TSF"/> shall display an advisory warning message regarding unauthorized use of the <abbr linkend="TOE"/>.
+                        <title>Before establishing an administrative user session, the <abbr linkend="TSF"/> shall display a
+                            security Administrator-specifiedad advisory notice and consent warning message regarding
+                            use of the <abbr linkend="TOE"/>.
                         </title>
+                        <note role="application">
+                            This requirement is intended to apply to interactive sessions between a human user and a TOE. IT
+                            entities establishing connections or programmatic connections (e.g., remote procedure calls over
+                            a network) are not required to be covered by this requirement.<htm:br></htm:br><htm:br></htm:br>
+                        </note>
                     <aactivity>The evaluator shall configure the <abbr linkend="TOE"/> to display the advisory warning message “TEST TEST Warning Message TEST TEST”. The evaluator shall then log out and confirm that the advisory message is displayed before logging can occur.
                         </aactivity>
                     </f-element>
@@ -2743,17 +2439,20 @@
                     <f-element id="FTP_ITC_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall use 
                             <selectables linebreak="yes">
-                                <selectable>TLS as conforming to 
-                                    <selectables linebreak="yes">
-                                        <selectable>FCS_TLSC_EXT.1</selectable>
-                                        <selectable>FCS_TLSS_EXT.1</selectable>
-                                        <selectable>FCS_TLSS_EXT.2</selectable>
-                                    </selectables></selectable>
+                                <selectable id="tls">TLS as conforming to the <h:a href="https://www.niap-ccevs.org/pp/"><h:i>Package for Transport Layer Security</h:i></h:a></selectable>
                                 <selectable>TLS/HTTPS as conforming to FCS_HTTPS_EXT.1</selectable>
                                 <selectable>IPsec as conforming to FCS_IPSEC_EXT.1</selectable>
-                                <selectable>SSH as conforming to the Extended Package for Secure Shell</selectable>
+                                <selectable>SSH as conforming to the <h:a href="https://www.niap-ccevs.org/pp/"><h:i><abbr linkend="EP"/> for Secure Shell</h:i></h:a></selectable>
                             </selectables>
-                            to provide a trusted communication channel between itself, external IT entities, and remote users that is logically distinct from other communication paths and provides assured identification of its endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.
+                            to provide a trusted communication channel between itself, and<htm:br></htm:br><htm:br></htm:br>
+                            <htm:li>audit servers (as required by FAU_STG_EXT.1), and</htm:li>
+                            <selectables linebreak="yes">
+                                <selectable>remote administrators (as required by FTP_TRP.1.1 if selected in FMT_MOF_EXT.1.1 in the selected EP),</selectable>
+                                <selectable>separation of management and operational networks (if selected in FMT_SMO_EXT.1),</selectable>
+                                <selectable>[assignment: other capabilities],</selectable>
+                                <selectable>no other capabilities]</selectable>
+                            </selectables>
+                            that is logically distinct from other communication paths and provides assured identification of its endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.
                         </title>
                         <note role="application">This PP does not mandate that a product implement TLS with mutual authentication; either FCS_TLSS_EXT.1 or FCS_TLSS_EXT.2 can be selected if the <abbr linkend="TOE"/> provides TLS server capabilities. However, if the product itself does include the capability to perform TLS with mutual authentication, it is expected that it be included within the <abbr linkend="TOE"/> boundary.<htm:br></htm:br><htm:br></htm:br>
                             If the <abbr linkend="ST"/> author selects SSH, the <abbr linkend="TSF"/> shall be validated against the Extended Package for Secure Shell. The <abbr linkend="ST"/> author must include the security functional requirements for the trusted channel protocol selected in FTP_ITC_EXT.1 in the main body of the <abbr linkend="ST"/>.<htm:br></htm:br><htm:br></htm:br>
@@ -2975,7 +2674,12 @@
                         <a-element id="ALC_CMC.1.1E">
                             <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.
                             </title>
-                            <aactivity>The evaluator shall verify that the <abbr linkend="TOE"/> has been provided with its unique reference labeled. The evaluator shall verify that the CM documentation has been provided and that it describes the method used to uniquely identify each configuration item. The evaluator shall verify that the developer has used a CM system and that this system uniquely identifies each configuration item.
+                            <aactivity>The evaluator shall check the ST to ensure that it contains an identifier (such as a product
+                                name/version number) that specifically identifies the version that meets the requirements of the ST.
+                                Further, the evaluator shall check the AGD guidance and <addr linkend="TOE"/> samples received for testing to ensure
+                                that the version number is consistent with that in the ST. If the vendor maintains a web site
+                                advertising the TOE, the evaluator shall examine the information on the web site to ensure that
+                                the information in the ST is sufficient to distinguish the product.
                             </aactivity>
                         </a-element>
                     </group>
@@ -3001,7 +2705,17 @@
                     <group type="eval-action">
                         <a-element id="ALC_CMS.1.1E">
                             <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
-                            <aactivity>The evaluator shall verify that the developer has provided a configuration list for the <abbr linkend="TOE"/> that contains each item highlighted above. The evaluator shall verify that each item in the configuration list is uniquely identified and its developer is indicated.</aactivity>
+                            <aactivity>The evaluator shall ensure that the developer has identified (in public-facing development
+                                guidance for their platform) one or more development environments appropriate for use in developing
+                                applications for the developer’s platform. For each of these development environments, the developer
+                                shall provide information on how to configure the environment to ensure that buffer overflow protection
+                                mechanisms in the environment(s) are invoked (e.g., compiler and linker flags). The evaluator shall
+                                ensure that this documentation also includes an indication of whether such protections are on by
+                                default, or have to be specifically enabled.
+                                The evaluator shall ensure that the TSF is uniquely identified (with respect to other products from
+                                the TSF vendor), and that documentation provided by the developer in association with the requirements
+                                in the ST is associated with the TSF  using this unique identification.
+                            </aactivity>
                         </a-element>
                     </group>                    
                 </a-component>                
@@ -3136,7 +2850,9 @@
         As indicated in the introduction to this PP, the baseline requirements (those that must be performed by the <abbr linkend="TOE"/> or its underlying platform) are contained in the body of the PP. There are additional requirements based on selections in the body of the PP: if certain selections are made, then additional requirements below will need to be included.<htm:br></htm:br><htm:br></htm:br>
         
         <htm:b>FAU_GEN.1 Auditable Events Table (Optional)</htm:b><htm:br></htm:br><htm:br></htm:br>
-        The following additional auditable events shall be claimed by the <abbr linkend="ST"/> author if “additional information defined in Table 3” is selected in FAU_GEN.1:<htm:br></htm:br><htm:br></htm:br>
+        The following additional auditable events may be claimed by the <abbr linkend="ST"/> author if “additional information
+        defined in Table 3” is selected in FAU_GEN.1.  Any subset of Table 3, including individual entries, may be included in
+        the <abbr linkend="ST"/>; it is not necessary to include the entirety of Table 3.<htm:br></htm:br><htm:br></htm:br>
         <htm:table border="1">
             <htm:caption>Table 3: Auditable Events</htm:caption>
             <htm:TR class="header">
@@ -3144,6 +2860,13 @@
                 <htm:TH>Auditable Events</htm:TH>
                 <htm:TH>Additional Audit Record Contents</htm:TH>
             </htm:TR>
+            <htm:tr>
+                <htm:td>FCS_HTTPS_EXT.1</htm:td>
+                <htm:td>Failure to establish a HTTPS Session.<htm:br></htm:br>
+                    Establishment/Termination of a HTTPS session.</htm:td>
+                <htm:td>Reason for failure.<htm:br></htm:br>
+                    Non-<abbr linkend="TOE"/> endpoint of connection (IP address) for both successes and failures.</htm:td>
+            </htm:tr>
             <htm:tr>
                 <htm:td>FIA_UIA_EXT.1</htm:td>
                 <htm:td>Administrator session start time and end time</htm:td>
@@ -3163,32 +2886,11 @@
                 <htm:TH>Additional Audit Record Contents</htm:TH>
             </htm:TR>
             <htm:tr>
-                <htm:td>FCS_HTTPS_EXT.1</htm:td>
-                <htm:td>Failure to establish a HTTPS Session.<htm:br></htm:br>
-                    Establishment/Termination of a HTTPS session.</htm:td>
-                <htm:td>Reason for failure.<htm:br></htm:br>
-                    Non-<abbr linkend="TOE"/> endpoint of connection (IP address) for both successes and failures.</htm:td>
-            </htm:tr>
-            <htm:tr>
                 <htm:td>FCS_IPSEC_EXT.1</htm:td>
                 <htm:td>Failure to establish an IPsec SA.<htm:br></htm:br>
                     Establishment/Termination of an IPsec SA.</htm:td>
                 <htm:td>Reason for failure.<htm:br></htm:br>
                     Non-<abbr linkend="TOE"/> endpoint of connection (IP address) for both successes and failures.</htm:td>
-            </htm:tr>
-            <htm:tr>
-                <htm:td>FCS_TLSC_EXT.1</htm:td>
-                <htm:td>Failure to establish a TLS Session.<htm:br></htm:br>
-                    Establishment/Termination of a TLS Session.</htm:td>
-                <htm:td>Reason for failure.<htm:br></htm:br>
-                    Non-<abbr linkend="TOE"/> endpoint of connection (IP address).</htm:td>
-            </htm:tr>
-            <htm:tr>
-                <htm:td>FCS_TLSS_EXT.2</htm:td>
-                <htm:td>Failure to establish a TLS Session.<htm:br></htm:br>
-                    Establishment/Termination of a TLS Session.</htm:td>
-                <htm:td>Reason for failure.<htm:br></htm:br>
-                    Non-<abbr linkend="TOE"/> endpoint of connection (IP address).</htm:td>
             </htm:tr>
             <htm:tr>
                 <htm:td>FIA_X509_EXT.1</htm:td>
@@ -3270,6 +2972,304 @@
             More specifically, all entropy source health tests and their rationale will be documented. This will include a description of the health tests, the rate and conditions under which each health test is performed (e.g., at startup, continuously, or on-demand), the expected results for each health test, and rationale indicating why each test is believed to be appropriate for detecting one or more failures in the entropy source.
         </section>
     </appendix>
+
+    <appendix id="equiv" title="Virtualization PP Equivalency Guidlines">
+        <section id="vm-intro" title="Introduction">
+          The purpose of equivalence in PP-based evaluations is to find a balance between evaluation rigor and commercial
+            practicability--to ensure that evaluations meet customer expectations while recognizing that there is little to be gained
+            from requiring that every variation in a product or platform be fully tested. If a product is found to be compliant with
+            a PP on one platform, then all equivalent products on equivalent platforms are also considered to be compliant with the PP.
+        <h:br />
+        <h:br />
+        A Vendor can make a claim of equivalence if the Vendor believes that a particular instance of their Product implements
+            PP-specified security functionality in a way equivalent to the implementation of the same functionality on another
+            instance of their Product on which the functionality was tested. The Product instances can differ in version number or
+            feature level (model), or the instances may run on different platforms. Equivalency can be used to reduce the testing
+            required across claimed evaluated configurations. It can also be used during Assurance Maintenance to reduce testing
+            needed to add more evaluated configurations to a certification.
+      <h:br />
+      <h:br />
+      These equivalency guidelines do not replace Assurance Maintenance requirements or NIAP Policy #5 requirements for CAVP
+            certificates. Nor may equivalency be used to leverage evaluations with expired certifications.
+      <h:br />
+      <h:br />
+      This document provides guidance for determining whether Products and Platforms are equivalent for purposes of
+            evaluation against the Protection Profile for Virtualization (VPP) when instantiated with either the Client or Server
+            Extended Package. 
+      <h:br />
+      <h:br />
+      Equivalence has two aspects:
+      <h:br />
+      <h:br />
+      <h:ol>
+        <h:li><h:b><h:i>Product Equivalence:</h:i></h:b> Products may be considered equivalent if there are no
+          differences between Product Models and Product Versions with respect to PP-specified security functionality.</h:li>
+        <h:li><h:b><h:i>Platform Equivalence:</h:i></h:b> Platforms may be considered equivalent if there are no
+          significant differences in the services they provide to the Product--or in the way the platforms 
+          provide those services--with respect to PP-specified security functionality.</h:li>
+      </h:ol>
+      The equivalency determination is made in accordance with these guidelines by the Validator and Scheme using information
+            provided by the Evaluator/Vendor.
+    </section>
+    <section id="approach" title="Approach to Equivalency Analysis">
+      There are two scenarios for performing equivalency analysis. One is when a product has been certified and the vendor 
+      wants to show that a later product should be considered certified due to equivalence with the earlier product. The 
+      other is when multiple product variants are going though evaluation together and the vendor would like to reduce 
+      the amount of testing that must be done. The basic rules for determining equivalence are the same in both cases. 
+      But there is one additional consideration that applies to equivalence with previously certified products. That is, 
+      the product with which equivalence is being claimed must have a valid certification in accordance with scheme rules
+      and the Assurance Maintenance process must be followed. If a product’s certification has expired, then equivalence 
+      cannot be claimed with that product.
+      <h:br /><h:br />
+      When performing equivalency analysis, the Evaluator/Vendor should first use the factors and guidelines for Product
+      Model equivalence to determine the set of Product Models to be evaluated. In general, Product Models that do not differ 
+      in PP-specified security functionality are considered equivalent for purposes of evaluation against the VPP.
+      <h:br /><h:br />
+      If multiple revision levels of Product Models are to be evaluated--or to determine whether a revision of an evaluated 
+      product needs re-evaluation--the Evaluator/Vendor and Validator should use the factors and guidelines for Product 
+      Version equivalence to determine whether Product Versions are equivalent.
+      <h:br /><h:br />
+      Having determined the set of Product Models and Versions to be evaluated, the next step is to determine the set of
+      Platforms that the Products must be tested on.
+      <h:br /><h:br />
+      Each non-equivalent Product for which compliance is claimed must be fully tested on each non-equivalent platform 
+      for which compliance is claimed. For non-equivalent Products on equivalent platforms, only the differences that
+      affect PP-specified security functionality must be tested for each product.
+      <h:br />
+      <h:br />
+      If the set of equivalent Products includes only bare-metal installations, then the equivalency analysis is complete.
+        But if any members of the set include hosted installations or installations that integrate with an existing host operating
+        system or control domain, then software platform equivalence must be taken into consideration. The Evaluator/Vendor and
+        Validator should use the factors and guidance for software platform equivalence to determine whether different models or
+        versions of host or control domain operating systems require separate testing.
+      <h:b><h:i>“Differences in PP-Specified Security Functionality” Defined</h:i></h:b>
+      <h:br />
+      If PP-specified security functionality is implemented by the TOE, then differences in the actual implementation
+      between versions or product models break equivalence for that feature. Likewise, if the TOE implements the 
+      functionality in one version or model and the functionality is implemented by the platform in another version 
+      or model, then equivalence is broken. If the functionality is implemented by the platform in multiple models or 
+      versions on equivalent platforms, then the functionality is considered different if the product invokes the platform 
+      differently to perform the function.
+      
+    </section>
+    <section id="modelequiv" title="Specific Guidance for Determining Product Model Equivalence">
+      Product Model equivalence attempts to determine whether different feature levels of the same product across 
+      a product line are equivalent for purposes of PP testing. For example, if a product has a “basic” edition and an “enterprise” 
+      edition, is it necessary to test both models? Or does testing one model provide sufficient assurance that both models 
+      are compliant?
+      <h:br />
+      <h:br />
+      Table 1, below, lists the factors for determining Product Model equivalence.
+      <h:br />
+      <h:br />
+      
+      <h:table border="1">
+        <h:tr class="header" bgcolor="#cccccc">
+          <h:td valign="top">Factor</h:td>
+          <h:td valign="top">Same/Different</h:td>
+          <h:td valign="top">Guidance</h:td>
+        </h:tr>
+        <h:tr>
+          <h:td valign="top">Target Platform</h:td>
+          <h:td valign="top">Different</h:td>
+          <h:td valign="top">Product Models that virtualize different instruction sets (e.g. x86, ARM, POWER, SPARC, MIPS)
+              are not equivalent.</h:td>
+        </h:tr>
+        <h:tr bgcolor="#cccccc">
+          <h:td valign="top">Installation Types</h:td>
+          <h:td valign="top">Different</h:td>
+          <h:td valign="top">If a Product can be installed either on bare metal or onto an operating system (either Type 1 or Type
+              2), and the vendor wants to claim that both installation types constitute a single Model, then see the guidance
+              for “PP-Specified Functionality,” below.</h:td>
+        </h:tr>
+        <h:tr>
+          <h:td valign="top">Software Platform</h:td>
+          <h:td valign="top">Different</h:td>
+          <h:td valign="top">Product Models that run on substantially different software environments, such as different host
+              operating systems, are not equivalent. Models that install on different versions of the same software environment
+              may be equivalent depending on the below factors.</h:td>
+        </h:tr>
+        <h:tr bgcolor="#cccccc">
+          <h:td rowspan="2" valign="top">PP-Specified Functionality</h:td>
+          <h:td valign="top">Same</h:td>
+          <h:td valign="top">If the differences between Models affect only non-PP-specified functionality, then the Models are equivalent. </h:td>
+        </h:tr>
+        <h:tr>
+          <h:td valign="top">Different</h:td>
+          <h:td valign="top">If PP-specified security functionality is affected by the differences between Models, 
+            then the Models are not equivalent and must be tested separately. It is necessary to test only the functionality 
+            affected by the software differences. If only differences are tested, then the differences must be enumerated, 
+            and for each difference the Vendor must provide an explanation of why each difference does or does not affect 
+            PP-specified functionality. If the Product Models are fully tested separately, then there is no need to document the differences. 
+          </h:td>
+        </h:tr>
+      </h:table>
+      <h:b>Table 1. Factors for Determining Product Model Equivalance</h:b>
+      <h:br /> 
+      <h:br />
+    </section>
+        
+    <section id="versionequiv" title="Specific Guidance for Determining Product Version Equivalence">
+      In cases of version equivalence, differences are expressed in terms of changes implemented in revisions 
+      of an evaluated Product. In general, versions are equivalent if the changes have no effect on any 
+      security-relevant claims about the TOE or assurance evidence. Non-security-relevant changes to TOE 
+      functionality or the addition of non-security-relevant functionality does not affect equivalence.
+      <h:br /><h:br />
+      
+      <h:table border="1">
+        <h:tr class="header" bgcolor="#cccccc">
+          <h:td valign="top">Factor</h:td>
+          <h:td valign="top">Same/Different</h:td>
+          <h:td valign="top">Guidance</h:td>
+        </h:tr>
+        <h:tr valign="top">
+          <h:td valign="top">Product Models</h:td>
+          <h:td valign="top">Different</h:td>
+          <h:td valign="top">Versions of different Product Models are not equivalent unless the Models are equivalent as defined in Section 3.</h:td>
+        </h:tr>
+        <h:tr>
+          <h:td rowspan="2" valign="top">PP-Specified Functionality</h:td>
+          <h:td valign="top">Same</h:td>
+          <h:td valign="top">If the differences affect only non-PP-specified functionality, then the Versions are equivalent. </h:td>
+        </h:tr>
+        <h:tr>
+          <h:td valign="top">Different</h:td>
+          <h:td valign="top">If PP-specified security functionality is affected by the differences, then the 
+            Versions are considered to be not equivalent and must be tested separately. It is necessary only to test 
+            the functionality affected by the changes. If only the differences are tested, then for each 
+            difference the Vendor must provide an explanation of why the difference does or does not affect 
+            PP-specified functionality. If the Product Versions are fully tested separately, then there is 
+            no need to document the differences. </h:td>
+        </h:tr>
+      </h:table>
+      <h:b>Table 2. Factors for Determining Product Version Equivalence</h:b>
+      <h:br />
+      <h:br />
+    </section>
+    <section id="platformequiv" title="Specific Guidance for Determining Platform Equivalence">
+      Platform equivalence is used to determine the platforms that a product must be tested on. These guidelines are divided
+        into sections for determining hardware equivalence and software (host OS/control domain) equivalence. If the Product is
+        installed onto bare metal, then only hardware equivalence is relevant. If the Product is installed onto an OS—or is integrated
+        into an OS—then both hardware and software equivalence are required. Likewise, if the Product can be installed either on bare
+        metal or on an operating system, both hardware and software equivalence are relevant. 
+      <h:br /><h:br />
+      <subsection id="hardware-equiv" title="Hardware Platform Equivalence">
+        If a Virtualization Solution runs directly on hardware without an operating system, then platform equivalence is based primarily
+          on processor architecture and instruction sets. 
+        <h:br /><h:br />
+        Platforms with different processor architectures and instruction sets are not equivalent. This is probably
+          not an issue because there is likely to be a different product model for different hardware environments.
+        <h:br /><h:br />    
+        Equivalency analysis becomes important when comparing platforms with the same processor architecture. Processors
+          with the same architecture that have instruction sets that are subsets or supersets of each other are not disqualified
+          from being equivalent for purposes of a VPP evaluation. If the VS takes the same code paths when executing PP-specified
+          security functionality on different processors of the same family, then the processors can be considered equivalent with
+          respect to that application. 
+        <h:br /><h:br />    
+        For example, if a VS follows one code path on platforms that support the AES-NI instruction and another on platforms that do
+          not, then those two platforms are not equivalent with respect to that VS functionality. But if the VS follows the same code
+          path whether or not the platform supports AES-NI, then the platforms are equivalent with respect to that functionality.
+        <h:br /><h:br />
+        The platforms are equivalent with respect to the VS if the platforms are equivalent with respect to all PP-specified
+        security functionality.
+        <h:table border="1">
+          <h:tr class="header" bgcolor="#cccccc">
+            <h:td valign="top">Factor</h:td>
+            <h:td valign="top">Same/Different/None</h:td>
+            <h:td valign="top">Guidance</h:td>
+          </h:tr>
+          <h:tr valign="top">
+            <h:td valign="top">Platform Architectures</h:td>
+            <h:td valign="top">Different</h:td>
+            <h:td valign="top">Haardware platforms that implement different processor architectures and instruction sets are not equivalent.</h:td>
+          </h:tr>
+          <h:tr bgcolor="#cccccc">
+            <h:td valign="top">PP-Specified Functionality</h:td>
+            <h:td valign="top">Same</h:td>
+            <h:td valign="top">For platforms with the same processor architecture, the platforms are equivalent with
+              respect to the application if execution of all PP-specified security functionality follows the same code path on
+                both platforms.</h:td>
+          </h:tr>
+        </h:table>
+        <h:b>Table 3. Factors for Determining Hardware Platform Equivalence</h:b>
+        <h:br />
+        <h:br />
+      </subsection>
+      <subsection id="os-equiv" title="Software Platform Equivalence">
+        If the Product installs onto or integrates with an operating system that is not installed with the product--and thus
+          is not part of the TOE--then the Product must be tested on all non-equivalent Software Platforms.
+        <h:br />
+        <h:br />
+        The guidance for Product Model (Section 3) specifies that Products intended for use on substantially different operating
+          systems (e.g. Windows vs. Linux vs. SunOS) are different Models. Therefore, platforms running substantially different
+          operating systems are de facto not equivalent. Likewise, operating systems with different major version numbers are not
+          equivalent for purposes of this PP.
+        <h:br />
+        <h:br />
+          As a result, Software Platform equivalence is largely concerned with revisions and variations of operating systems that
+          are substantially the same (e.g. different versions and revision levels of Windows or Linux). 
+        <h:table border="1">
+          <h:tr class="header" bgcolor="#cccccc">
+            <h:td valign="top">Factor</h:td>
+            <h:td valign="top">Same/Different/None</h:td>
+            <h:td valign="top">Guidance</h:td>
+          </h:tr>
+          <h:tr valign="top">
+            <h:td valign="top">Platform Type/Vendor</h:td>
+            <h:td valign="top">Different</h:td>
+            <h:td valign="top">Operating systems that are substantially different or come from different vendors are not equivalent.</h:td>
+          </h:tr>
+          <h:tr valign="top">
+            <h:td valign="top">Platform Versions</h:td>
+            <h:td valign="top">Different</h:td>
+            <h:td valign="top">Operating systems are not equivalent if they have different major version numbers.</h:td>
+          </h:tr>
+         <h:tr>
+          <h:td rowspan="2" valign="top">PP-Specified Functionality</h:td>
+          <h:td valign="top">Same</h:td>
+          <h:td valign="top">If the differences between software platform models or versions affect only
+              non-PP-specified functionality, then the software platforms are equivalent. </h:td>
+        </h:tr>
+        <h:tr>
+          <h:td valign="top">Different</h:td>
+          <h:td valign="top">If PP-specified security functionality is affected by the differences between software platform
+              versions or models, then the software platforms are not considered equivalent and must be tested separately. It is
+              necessary only to test the functionality affected by the changes. If only the differences are tested, then for each
+              difference the Vendor must provide an explanation of why the difference does or does not affect PP-specified
+              functionality. If the Products are fully tested on each platform, then there is no need to document the differences. </h:td>
+        </h:tr>
+        </h:table>
+        <h:b>Table 4. Factors for Software Platform Equivalence</h:b>
+        <h:br />
+        <h:br />
+    
+    <section id="specificity" title="Level of Specificity for Tested Configurations and Claimed Equivalent Configurations">
+      In order to make equivalency determinations, the vendor and evaluator must agree on the equivalency claims. They must 
+      then provide the scheme with sufficient information about the TOE instances and platforms that were evaluated, and the 
+      TOE instances and platforms that are claimed to be equivalent.
+      <h:br /><h:br />
+      The ST must describe all configurations evaluated down to processor manufacturer, model number, and microarchitecture version. 
+      <h:br /><h:br />
+      The information regarding claimed equivalent configurations depends on the platform that the VS was developed for and runs on.
+      <h:br /><h:br />
+      <h:b>Bare-Metal VS</h:b>
+      <h:br /><h:br />
+      For VSes that run without an operating system on bare-metal or virtual bare-metal, the claimed configuration must 
+      describe the platform down to the specific processor manufacturer, model number, and microarchitecture version. The Vendor
+      must describe the differences in the TOE with respect to PP-specified security functionality and how the TOE operates
+      differently to leverage platform differences (e.g., instruction set extensions) in the tested configuration versus the 
+      claimed equivalent configuration. 
+      <h:br /><h:br />
+      <h:b>VS with OS Support</h:b>
+      <h:br /><h:br />
+      For VSes that run on an OS host or with the assistance of an OS, then the claimed configuration must describe the OS down to
+        its specific model and version number. The Vendor must describe the differences in the TOE with respect to PP-specified
+        security functionality and how the TOE functions differently to leverage platform differences in the tested configuration
+        versus the claimed equivalent configuration. 
+      <h:br /><h:br />
+    </section>
+    </appendix>    
+    
     <appendix id="ref" title="References">
         <htm:table>
             <htm:tr>
