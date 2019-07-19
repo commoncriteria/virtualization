@@ -1800,32 +1800,47 @@
                                     <assignable>range of acceptable values</assignable></selectable>
                             </selectables>
                             
-                            unsuccessful authentication attempts for 
-                            <selectables linebreak="yes">
-                                <selectable>authentication based on username and password</selectable>
-                                <selectable>authentication based on username and a PIN that releases an asymmetric key stored in OE-protected storage</selectable>
-                                <selectable>authentication based on X.509 certificates</selectable>
-                                <selectable>authentication based on an SSH public key credential]
-                                    </selectable>
+                            unsuccessful authentication attempts occur related to Administrators attempting to authenticate remotely using a
+                            <selectables>
+                                <selectable>password</selectable>
+                                <selectable>PIN</selectable>.
                             </selectables>
-                            occur related to 
-                            <assignable>list of authentication events</assignable>.
                         </title>
-                        <aactivity>The evaluator will set an administrator-configurable threshold for failed attempts, or note the <abbr linkend="ST"/>-specified assignment. The evaluator will then (per selection) repeatedly attempt to authenticate with an incorrect password, PIN, or certificate until the number of attempts reaches the threshold. Note that the authentication attempts and lockouts must also be logged as specified in FAU_GEN.1.
-                        </aactivity>
                     </f-element>
                     <f-element id="FIA_AFL_EXT.1.2">
-                        <title>When the defined number of unsuccessful authentication attempts for an account has been met, the <abbr linkend="TSF"/> shall: 
+                        <title>When the defined number of unsuccessful authentication attempts has been met, the <abbr linkend="TSF"/>
+                            shall: 
                             <selectables>
-                                <selectable>Account Lockout</selectable>
-                                <selectable>Account Disablement</selectable>
-                                <selectable>Mandatory Credential Reset</selectable>
-                                <selectable><assignable> list of actions</assignable></selectable>
+                                <selectable>prevent the offending Administrator from successfully establishing remote session using
+                                    any authentication method that involves a password or PIN until
+                                    <assignable>action to unlock</assignable> is taken by an Administrator</selectable>
+                                <selectable>prevent the offending Administrator from successfully establishing remote session using
+                                    any authentication method that involves a password or PIN until an Administrator defined time
+                                    period has elapsed</selectable>
                             </selectables>
                         </title>
-                        <note role="application">The action to be taken shall be populated in the assignment of the <abbr linkend="ST"/> and defined in the administrator guidance.</note>
-                        <aactivity>The evaluator shall perform the following tests:
+                        <note role="application">The action to be taken shall be populated in the selection of the <abbr linkend="ST"/>
+                            and defined in the Administrator guidance.<htm:br></htm:br><htm:br></htm:br>
+                            This requirement applies to a defined number of successive unsuccessful remote password or PIN-based
+                            authentication attempts and does not apply to local Administrative access. Compliant TOEs may optionally
+                            include cryptographic authentication failures and local authentication failures in the number of
+                            unsuccessful authentication attempts.
+                        </note>
+                        <aactivity>The evaluator shall perform the following tests for each credential selected in FIA_AFL_EXT.1.1:
                             <testlist>
+                                <test>The evaluator will set an Administrator-configurable threshold n for failed attempts, or note the ST-specified assignment.</test>
+                                <testlist>
+                                    <test>The evaluator will attempt to authenticate remotely with the credential n-1 times. The evaluator will then attempt to authenticate
+                                        using a good credential and verify that authentication is successful.</test>
+                                    <test> The evaluator will make n attempts to authenticate using a bad credential. The evaluator
+                                        will then attempt to authenticate using a good credential and verify that the attempt is
+                                        unsuccessful. Note that the authentication attempts and lockouts must also be logged as
+                                        specified in FAU_GEN.1.</test>
+                                    <test>After reaching the limit for unsuccessful authentication attempts the evaluator will proceed
+                                        as follows:</test>
+                                </testlist>
+
+
                                 <test>The evaluator will attempt to authenticate repeatedly to the system with a known bad password. Once the defined number of failed authentication attempts has been reached the evaluator will ensure that the account that was being used for testing has had the actions detailed in the assignment list above applied to it. The evaluator will ensure that an event has been logged to the security event log detailing that the account has had these actions applied.</test>
                                 <test>The evaluator will attempt to authenticate repeatedly to the system with a known bad certificate. Once the defined number of failed authentication attempts has been reached the evaluator will ensure that the account that was being used for testing has had the actions detailed in the assignment list above applied to it. The evaluator will ensure that an event has been logged to the security event log detailing that the account has had these actions applied.</test>
                                 <test>The evaluator will attempt to authenticate repeatedly to the system using both a bad password and a bad certificate. Once the defined number of failed authentication attempts has been reached the evaluator will ensure that the account that was being used for testing has had the actions detailed in the assignment list above applied to it. The evaluator will ensure that an event has been logged to the security event log detailing that the account has had these actions applied.</test>
