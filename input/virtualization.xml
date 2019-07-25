@@ -29,7 +29,7 @@
     - DONE: 0264 Clarification of Auditable Events for FPT_RDM_EXT.1
     - DONE: 0265 Audit of TLS and HTTPS Session Terminations
     - OBEV: 0267 TLSS testing - Empty Certificate Authorities list
-    - 0360 AD Server configuration in FMT_MOF_EXT.1
+    - DONE*: 0360 AD Server configuration in FMT_MOF_EXT.1 (* Base PP part of this TD done).
     - DONE: 0363 Access Banner and applicability to programmatic interfaces
     - OBEV: 0403 Conditional Testing with TLS Session IDs
     - DONE: 0432: Corrections to FIA_AFL_EXT.1
@@ -1884,13 +1884,30 @@
                     <f-element id="FIA_UAU.5.1">
                         <title>The <abbr linkend="TSF"/> shall provide the following authentication mechanisms:
                             <selectables linebreak="yes">
-                                <selectable>authentication based on username and password</selectable>
+                                <selectable>
+                                    <selectables>
+                                        <selectable>local</selectable>
+                                        <selectable>directory-based</selectable>
+                                    </selectables>
+                                    authentication based on username and password
+                                </selectable>
                                 <selectable>authentication based on username and a PIN that releases an asymmetric key stored in OE-protected storage</selectable>
-                                <selectable>authentication based on X.509 certificates</selectable>
-                                <selectable>authentication based on an SSH public key credential]
-                                    to support Administrator authentication</selectable>
-                            </selectables>
-                            
+                                <selectable>
+                                    <selectables>
+                                        <selectable>local</selectable>
+                                        <selectable>directory-based</selectable>
+                                    </selectables>
+                                    authentication based on X.509 certificates
+                                </selectable>
+                                <selectable>
+                                    <selectables>
+                                        <selectable>local</selectable>
+                                        <selectable>directory-based</selectable>
+                                    </selectables>
+                                    authentication based on an SSH public key credential
+                                </selectable>
+                            </selectables>                            
+                            to support Administrator authentication.
                         </title>
                         <note role="application">Selection of ‘authentication based on username and password’ requires that FIA_PMG_EXT.1 be included in the <abbr linkend="ST"/>. This also requires that the <abbr linkend="ST"/> include a management function for password management. If the <abbr linkend="ST"/> author selects ‘authentication based on an SSH public-key credential’, the <abbr linkend="TSF"/> shall be validated against the Extended Package for Secure Shell.<h:br></h:br><h:br></h:br>
                             PINs used to access OE-protected storage are set and managed by the OE-protected storage mechanism. Thus requirements on PIN management are outside the scope of the <abbr linkend="TOE"/>.
