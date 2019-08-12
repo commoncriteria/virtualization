@@ -357,66 +357,176 @@
         <section id="secobjtoe" title="Security Objectives for the TOE">
             <SOs>
                 <SO id="O.VM_ISOLATION">
-                    <description><abbr linkend="VM"/>s are the fundamental subject of the system. The <abbr linkend="VMM"/> is responsible for applying the system security policy (<abbr linkend="SSP"/>) to the <abbr linkend="VM"/> and all resources. As basic functionality, the <abbr linkend="VMM"/> must support a security policy that mandates no information transfer between <abbr linkend="VM"/>s.<htm:br></htm:br><htm:br></htm:br>
-                        The <abbr linkend="VMM"/> must support the necessary mechanisms to isolate the resources of all <abbr linkend="VM"/>s. The <abbr linkend="VMM"/> partitions a platform's physical resources for use by the supported virtual environments. Depending on the use case, a <abbr linkend="VM"/> may require a completely isolated environment with exclusive access to system resources, or share some of its resources with other <abbr linkend="VM"/>s. It must be possible to enforce a security policy that prohibits the transfer of data between <abbr linkend="VM"/>s through shared devices. When the platform security policy allows the sharing of resources across <abbr linkend="VM"/> boundaries, the <abbr linkend="VMM"/> must ensure that all access to those resources is consistent with the policy. The <abbr linkend="VMM"/> may delegate the responsibility for the mediation of sharing of particular resources to select Service <abbr linkend="VM"/>s; however in doing so, it remains responsible for mediating access to the Service <abbr linkend="VM"/>s, and each Service <abbr linkend="VM"/> must mediate all access to any shared resource that has been delegated to it in accordance with the <abbr linkend="SSP"/>.<htm:br></htm:br><htm:br></htm:br>
-                        Devices, whether virtual or physical, are resources requiring access control. The <abbr linkend="VMM"/> must enforce access control in accordance to system security policy. Physical devices are platform devices with access mediated via the <abbr linkend="VMM"/> per the O.VMM_Integrity objective. Virtual devices may include virtual storage devices and virtual network devices. Some of the access control restrictions must be enforced internal to Service <abbr linkend="VM"/>s, as may be the case for isolating virtual networks. <abbr linkend="VMM"/>s may also expose purely virtual interfaces. These are <abbr linkend="VMM"/> specific, and while they are not analogous to a physical device, they are also subject to access control.<htm:br></htm:br><htm:br></htm:br>
-                        The <abbr linkend="VMM"/> must support the mechanisms to isolate all resources associated with virtual networks and to limit a <abbr linkend="VM"/>'s access to only those virtual networks for which it has been configured. The <abbr linkend="VMM"/> must also support the mechanisms to control the configurations of virtual networks according to the <abbr linkend="SSP"/>.
+                    <description><abbr linkend="VM"/>s are the fundamental subject of the system. The <abbr linkend="VMM"/> is 
+                        responsible for applying the system security policy (<abbr linkend="SSP"/>) to the <abbr linkend="VM"/> and 
+                        all resources. As basic functionality, the <abbr linkend="VMM"/> must support a security policy that mandates 
+                        no information transfer between <abbr linkend="VM"/>s.<htm:br></htm:br><htm:br></htm:br>
+                        The <abbr linkend="VMM"/> must support the necessary mechanisms to isolate the resources of all 
+                        <abbr linkend="VM"/>s. The <abbr linkend="VMM"/> partitions a platform's physical resources for use by the 
+                        supported virtual environments. Depending on the use case, a <abbr linkend="VM"/> may require a completely 
+                        isolated environment with exclusive access to system resources, or share some of its resources with other 
+                        <abbr linkend="VM"/>s. It must be possible to enforce a security policy that prohibits the transfer of data 
+                        between <abbr linkend="VM"/>s through shared devices. When the platform security policy allows the sharing of 
+                        resources across <abbr linkend="VM"/> boundaries, the <abbr linkend="VMM"/> must ensure that all access to 
+                        those resources is consistent with the policy. The <abbr linkend="VMM"/> may delegate the responsibility for 
+                        the mediation of sharing of particular resources to select Service <abbr linkend="VM"/>s; however in doing so, 
+                        it remains responsible for mediating access to the Service <abbr linkend="VM"/>s, and each Service 
+                        <abbr linkend="VM"/> must mediate all access to any shared resource that has been delegated to it in 
+                        accordance with the <abbr linkend="SSP"/>.<htm:br></htm:br><htm:br></htm:br>
+                        Devices, whether virtual or physical, are resources requiring access control. The <abbr linkend="VMM"/> must 
+                        enforce access control in accordance to system security policy. Physical devices are platform devices with 
+                        access mediated via the <abbr linkend="VMM"/> per the O.VMM_Integrity objective. Virtual devices may include 
+                        virtual storage devices and virtual network devices. Some of the access control restrictions must be enforced
+                        internal to Service <abbr linkend="VM"/>s, as may be the case for isolating virtual networks. 
+                        <abbr linkend="VMM"/>s may also expose purely virtual interfaces. These are <abbr linkend="VMM"/> specific, 
+                        and while they are not analogous to a physical device, they are also subject to access control.<htm:br>
+                        </htm:br><htm:br></htm:br>
+                        The <abbr linkend="VMM"/> must support the mechanisms to isolate all resources associated with virtual 
+                        networks and to limit a <abbr linkend="VM"/>'s access to only those virtual networks for which it has been 
+                        configured. The <abbr linkend="VMM"/> must also support the mechanisms to control the configurations of 
+                        virtual networks according to the <abbr linkend="SSP"/>.
                     </description>
-                    <component-refer ref="FAU_ALT_EXT.1"/><!-- HERE this is incorrect, I just grabbed something for filler -->
+                    <component-refer ref="FAU_GEN.1" />
+                    <component-refer ref="FCS_CKM_EXT.4" />
+                  
                 </SO>
                 <SO id="O.VMM_INTEGRITY">
-                    <description>Integrity is a core security objective for Virtualization Systems. To achieve system integrity, the integrity of each <abbr linkend="VMM"/> component must be established and maintained. This objective concerns only the integrity of the Virtualization System—not the integrity of software running inside of Guest <abbr linkend="VM"/>s or of the physical platform. The overall objective is to ensure the integrity of critical components of a Virtualization System.<htm:br></htm:br><htm:br></htm:br>
-                        Initial integrity of a VS can be established through mechanisms such as a digitally signed installation or update package, or through integrity measurements made at launch. Integrity is maintained in a running system by careful protection of the <abbr linkend="VMM"/> from untrusted users and software. For example, it must not be possible for software running within a Guest <abbr linkend="VM"/> to exploit a vulnerability in a device or hypercall interface and gain control of the <abbr linkend="VMM"/>. The vendor must release patches for vulnerabilities as soon as practicable after discovery.<htm:br></htm:br><htm:br></htm:br>
+                    <description>Integrity is a core security objective for Virtualization Systems. To achieve system integrity, the 
+                        integrity of each <abbr linkend="VMM"/> component must be established and maintained. This objective concerns 
+                        only the integrity of the Virtualization System—not the integrity of software running inside of Guest 
+                        <abbr linkend="VM"/>s or of the physical platform. The overall objective is to ensure the integrity of 
+                        critical components of a Virtualization System.<htm:br></htm:br><htm:br></htm:br>
+                        Initial integrity of a VS can be established through mechanisms such as a digitally signed installation or 
+                        update package, or through integrity measurements made at launch. Integrity is maintained in a running system 
+                        by careful protection of the <abbr linkend="VMM"/> from untrusted users and software. For example, it must not
+                        be possible for software running within a Guest <abbr linkend="VM"/> to exploit a vulnerability in a device or
+                        hypercall interface and gain control of the <abbr linkend="VMM"/>. The vendor must release patches for 
+                        vulnerabilities as soon as practicable after discovery.<htm:br></htm:br><htm:br></htm:br>
                     </description>
-                    <component-refer ref="FAU_ALT_EXT.1"/><!-- HERE this is incorrect, I just grabbed something for filler -->
+                    <component-refer ref="FAU_GEN.1" />
+                    <component-refer ref="FAU_CKM.1" />
+                    <component-refer ref="FCS_CKM.2" />
+                    <component-refer ref="FCS_COP.1" />
+                    <component-refer ref="FCS_RBG_EXT.1" />
+                    
                 </SO>
                 <SO id="O.PLATFORM_INTEGRITY">
-                    <description>The integrity of the <abbr linkend="VMM"/> depends on the integrity of the hardware and software on which the <abbr linkend="VMM"/> relies. Although the VS does not have complete control over the integrity of the platform, the VS should as much as possible try to ensure that no users or software hosted by the VS is capable of undermining the integrity of the platform.
+                    <description>The integrity of the <abbr linkend="VMM"/> depends on the integrity of the hardware and software on 
+                        which the <abbr linkend="VMM"/> relies. Although the VS does not have complete control over the integrity of 
+                        the platform, the VS should as much as possible try to ensure that no users or software hosted by the VS is 
+                        capable of undermining the integrity of the platform.
                     </description>
-                    <component-refer ref="FAU_ALT_EXT.1"/><!-- HERE this is incorrect, I just grabbed something for filler -->
+                    <component-refer ref="FDP_HBI_EXT.1"/>
+                    
                 </SO>
                 <SO id="O.DOMAIN_INTEGRITY">
-                    <description>While the VS is not responsible for the contents or correct functioning of software that runs within Guest <abbr linkend="VM"/>s, it is responsible for ensuring that the correct functioning of the software within a Guest <abbr linkend="VM"/> is not interfered with by other <abbr linkend="VM"/>s.
+                    <description>While the VS is not responsible for the contents or correct functioning of software that runs within 
+                        Guest <abbr linkend="VM"/>s, it is responsible for ensuring that the correct functioning of the software 
+                        within a Guest <abbr linkend="VM"/> is not interfered with by other <abbr linkend="VM"/>s.
                     </description>
-                    <component-refer ref="FAU_ALT_EXT.1"/><!-- HERE this is incorrect, I just grabbed something for filler -->
+                    <component-refer ref="FCS_CKM_EXT.4" />
+                    <component-refer ref="FCS_ENT_EXT.1" />
+                    <component-refer ref="FCS_RBG_EXT.1" />
+                    
                 </SO>
                 <SO id="O.MANAGEMENT_ACCESS">
-                    <description><abbr linkend="VMM"/> management functions include <abbr linkend="VM"/> configuration, virtualized network configuration, allocation of physical resources, and reporting. Only certain authorized system users (administrators) are allowed to exercise management functions.<htm:br></htm:br><htm:br></htm:br>
-                        Because of the privileges exercised by the <abbr linkend="VMM"/> management functions, it must not be possible for the <abbr linkend="VMM"/>’s management components to be compromised without administrator notification. This means that unauthorized users cannot be permitted access to the management functions, and the management components must not be interfered with by Guest <abbr linkend="VM"/>s or unprivileged users on other networks—including operational networks connected to the <abbr linkend="TOE"/>.<htm:br></htm:br><htm:br></htm:br>
-                        <abbr linkend="VMM"/>s include a set of management functions that collectively allow administrators to configure and manage the <abbr linkend="VMM"/>, as well as configure Guest <abbr linkend="VM"/>s. These management functions are specific to the virtualization system, distinct from any other management functions that might exist for the internal management of any given Guest <abbr linkend="VM"/>. These <abbr linkend="VMM"/> management functions are privileged, with the security of the entire system relying on their proper use. The <abbr linkend="VMM"/> management functions can be classified into different categories and the policy for their use and the impact to security may vary accordingly.<htm:br></htm:br><htm:br></htm:br>
-                        The management functions might be distributed throughout the <abbr linkend="VMM"/> (within the <abbr linkend="VMM"/> and Service <abbr linkend="VM"/>s). The <abbr linkend="VMM"/> must support the necessary mechanisms to enable the control of all management functions according to the system security policy. When a management function is distributed among multiple Service <abbr linkend="VM"/>s, the <abbr linkend="VM"/>s must be protected using the security mechanisms of the Hypervisor and any Service <abbr linkend="VM"/>s involved to ensure that the intent of the system security policy is not compromised. Additionally, since hypercalls permit Guest <abbr linkend="VM"/>s to invoke the Hypervisor, and often allow the passing of data to the Hypervisor, it is important that the hypercall interface is well-guarded and that all parameters be validated.<htm:br></htm:br><htm:br></htm:br>
-                        The <abbr linkend="VMM"/> maintains configuration data for every <abbr linkend="VM"/> on the system. This configuration data, whether of Service or Guest <abbr linkend="VM"/>s, must be protected. The mechanisms used to establish, modify and verify configuration data are part of the VS management functions and must be protected as such. The proper internal configuration of Service <abbr linkend="VM"/>s that provide critical security functions can also greatly impact VS security. These configurations must also be protected. Internal configuration of Guest <abbr linkend="VM"/>s should not impact overall VS security. The overall goal is to ensure that the <abbr linkend="VMM"/>, including the environments internal to Service <abbr linkend="VM"/>s, is properly configured and that all Guest <abbr linkend="VM"/> configurations are maintained consistent with the system security policy throughout their lifecycle.<htm:br></htm:br><htm:br></htm:br>
-                        Virtualization Systems are often managed remotely. For example, an administrator can remotely update virtualization software, start and shut down <abbr linkend="VM"/>s, and manage virtualized network connections. If a console is required, it could be run on a separate machine or it could itself run in a <abbr linkend="VM"/>. When performing remote management, an administrator must communicate with a privileged management agent over a network. Communications with the management infrastructure must be protected from Guest <abbr linkend="VM"/>s and operational networks.<htm:br></htm:br><htm:br></htm:br>
+                    <description><abbr linkend="VMM"/> management functions include <abbr linkend="VM"/> configuration, virtualized 
+                        network configuration, allocation of physical resources, and reporting. Only certain authorized system users 
+                        (administrators) are allowed to exercise management functions.<htm:br></htm:br><htm:br></htm:br>
+                        Because of the privileges exercised by the <abbr linkend="VMM"/> management functions, it must not be possible 
+                        for the <abbr linkend="VMM"/>’s management components to be compromised without administrator notification. 
+                        This means that unauthorized users cannot be permitted access to the management functions, and the management 
+                        components must not be interfered with by Guest <abbr linkend="VM"/>s or unprivileged users on other 
+                        networks—including operational networks connected to the <abbr linkend="TOE"/>.<htm:br></htm:br><htm:br>
+                        </htm:br> <abbr linkend="VMM"/>s include a set of management functions that collectively allow administrators 
+                        to configure and manage the <abbr linkend="VMM"/>, as well as configure Guest <abbr linkend="VM"/>s. These 
+                        management functions are specific to the virtualization system, distinct from any other management functions 
+                        that might exist for the internal management of any given Guest <abbr linkend="VM"/>. These 
+                        <abbr linkend="VMM"/> management functions are privileged, with the security of the entire system relying on 
+                        their proper use. The <abbr linkend="VMM"/> management functions can be classified into different categories 
+                        and the policy for their use and the impact to security may vary accordingly.<htm:br></htm:br><htm:br></htm:br>
+                        The management functions might be distributed throughout the <abbr linkend="VMM"/> (within the 
+                        <abbr linkend="VMM"/> and Service <abbr linkend="VM"/>s). The <abbr linkend="VMM"/> must support the necessary 
+                        mechanisms to enable the control of all management functions according to the system security policy. When a 
+                        management function is distributed among multiple Service <abbr linkend="VM"/>s, the <abbr linkend="VM"/>s 
+                        must be protected using the security mechanisms of the Hypervisor and any Service <abbr linkend="VM"/>s 
+                        involved to ensure that the intent of the system security policy is not compromised. Additionally, since 
+                        hypercalls permit Guest <abbr linkend="VM"/>s to invoke the Hypervisor, and often allow the passing of data 
+                        to the Hypervisor, it is important that the hypercall interface is well-guarded and that all parameters be 
+                        validated.<htm:br></htm:br><htm:br></htm:br> The <abbr linkend="VMM"/> maintains configuration data for every 
+                        <abbr linkend="VM"/> on the system. This configuration data, whether of Service or Guest <abbr linkend="VM"/>s,
+                        must be protected. The mechanisms used to establish, modify and verify configuration data are part of the VS 
+                        management functions and must be protected as such. The proper internal configuration of Service 
+                        <abbr linkend="VM"/>s that provide critical security functions can also greatly impact VS security. These 
+                        configurations must also be protected. Internal configuration of Guest <abbr linkend="VM"/>s should not 
+                        impact overall VS security. The overall goal is to ensure that the <abbr linkend="VMM"/>, including the 
+                        environments internal to Service <abbr linkend="VM"/>s, is properly configured and that all Guest 
+                        <abbr linkend="VM"/> configurations are maintained consistent with the system security policy throughout 
+                        their lifecycle.<htm:br></htm:br><htm:br></htm:br> Virtualization Systems are often managed remotely. For 
+                        example, an administrator can remotely update virtualization software, start and shut down 
+                        <abbr linkend="VM"/>s, and manage virtualized network connections. If a console is required, it could be 
+                        run on a separate machine or it could itself run in a <abbr linkend="VM"/>. When performing remote management, 
+                        an administrator must communicate with a privileged management agent over a network. Communications with the 
+                        management infrastructure must be protected from Guest <abbr linkend="VM"/>s and operational networks.
+                        <htm:br></htm:br><htm:br></htm:br>
                     </description>
-                    <component-refer ref="FAU_ALT_EXT.1"/><!-- HERE this is incorrect, I just grabbed something for filler -->
+                    <component-refer ref="FAU_GEN.1" />
+                    <component-refer ref="FCS_CKM.1" />
+                    <component-refer ref="FCS_CKM.2" />
+                    <component-refer ref="FCS_COP.1" />
+                    <component-refer ref="FCS_RBG_EXT.1" />
+                    
                 </SO>
                 <SO id="O.PATCHED_SOFTWARE">
-                    <description>The Virtualization System must be updated and patched when needed in order to prevent the potential compromise of the <abbr linkend="VMM"/>, as well as the networks and <abbr linkend="VM"/>s that it hosts. Identifying and applying needed updates must be a normal part of the operating procedure to ensure that patches are applied in a timely and thorough manner. In order to facilitate this, the VS must support standards and protocols that help enhance the manageability of the VS as an IT product, enabling it to be integrated as part of a manageable network (e.g., reporting current patch level and patchability).
+                    <description>The Virtualization System must be updated and patched when needed in order to prevent the potential 
+                        compromise of the <abbr linkend="VMM"/>, as well as the networks and <abbr linkend="VM"/>s that it hosts. 
+                        Identifying and applying needed updates must be a normal part of the operating procedure to ensure that 
+                        patches are applied in a timely and thorough manner. In order to facilitate this, the VS must support 
+                        standards and protocols that help enhance the manageability of the VS as an IT product, enabling it to be 
+                        integrated as part of a manageable network (e.g., reporting current patch level and patchability).
                     </description>
                     <component-refer ref="FAU_ALT_EXT.1"/><!-- HERE this is incorrect, I just grabbed something for filler -->
+                    
                 </SO>
                 <SO id="O.VM_ENTROPY">
-                    <description><abbr linkend="VM"/>s must have access to good entropy sources to support security-related features that implement cryptographic algorithms. For example, in order to function as members of operational networks, <abbr linkend="VM"/>s must be able to communicate securely with other network entities—whether virtual or physical. They must therefore have access to sources of good entropy to support that secure communication.
+                    <description><abbr linkend="VM"/>s must have access to good entropy sources to support security-related features 
+                        that implement cryptographic algorithms. For example, in order to function as members of operational 
+                        networks, <abbr linkend="VM"/>s must be able to communicate securely with other network entities—whether 
+                        virtual or physical. They must therefore have access to sources of good entropy to support that secure 
+                        communication.
                     </description>
-                    <component-refer ref="FAU_ALT_EXT.1"/><!-- HERE this is incorrect, I just grabbed something for filler -->
+                    <component-refer ref="FCS_ENT_EXT.1" />
+                    <component-refer ref="FCS_RBG_EXT.1" />
+                    
                 </SO>
                 <SO id="O.AUDIT">
-                    <description>The purpose of audit is to capture and protect data about what happens on a system so that it can later be examined to determine what has happened in the past.
+                    <description>The purpose of audit is to capture and protect data about what happens on a system so that it can 
+                        later be examined to determine what has happened in the past.
                     </description>
-                    <component-refer ref="FAU_ALT_EXT.1"/><!-- HERE this is incorrect, I just grabbed something for filler -->
+                    <component-refer ref="FAU_GEN.1" />
+                    <component-refer ref="FAU_SAR.1" />
+                    <component-refer ref="FAU_STG.1" />
+                    <component-refer ref="FAU_STG_EXT.1" />
+                    
                 </SO>
                 <SO id="O.CORRECTLY_APPLIED_CONFIGURATION">
-                    <description>The <abbr linkend="TOE"/> must not apply configurations that violate the current security policy.<htm:br></htm:br><htm:br></htm:br>
-                        The <abbr linkend="TOE"/> must correctly apply configurations and policies to newly created Guest <abbr linkend="VM"/>s, as well as to existing Guest <abbr linkend="VM"/>s when applicable configuration or policy changes are made. All changes to configuration and to policy must conform to the existing security policy. Similarly, changes made to the configuration of the <abbr linkend="TOE"/> itself must not violate the existing security policy.
+                    <description>The <abbr linkend="TOE"/> must not apply configurations that violate the current security policy.
+                        <htm:br></htm:br><htm:br></htm:br> The <abbr linkend="TOE"/> must correctly apply configurations and policies 
+                        to newly created Guest <abbr linkend="VM"/>s, as well as to existing Guest <abbr linkend="VM"/>s when 
+                        applicable configuration or policy changes are made. All changes to configuration and to policy must conform 
+                        to the existing security policy. Similarly, changes made to the configuration of the <abbr linkend="TOE"/> 
+                        itself must not violate the existing security policy.
                     </description>
                     <component-refer ref="FAU_ALT_EXT.1"/><!-- HERE this is incorrect, I just grabbed something for filler -->
+
                 </SO>
                 <SO id="O.RESOURCE_ALLOCATION">
-                    <description>The <abbr linkend="TOE"/> will provide mechanisms that enforce constraints on the allocation of system resources in accordance with existing security policy.
+                    <description>The <abbr linkend="TOE"/> will provide mechanisms that enforce constraints on the allocation of 
+                        system resources in accordance with existing security policy.
                     </description>
-                    <component-refer ref="FAU_ALT_EXT.1"/><!-- HERE this is incorrect, I just grabbed something for filler -->
+                    <component-refer ref="FCS_CKM_EXT.4" />
+
                 </SO>
-                
             </SOs>
         </section>
         <section id="secobjoe" title="Security Objectives for the Operational Environment">
