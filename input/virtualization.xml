@@ -5,9 +5,9 @@
     
     - figure 1 from page 9
     
-    - fix all of the objective-refer tags in the threats
-    - fix all of the objective-refer tags in the assumptions
-    - fix all of the component-refer tags in the security objectives
+    - DONE: fix all of the objective-refer tags in the threats
+    - DONE: fix all of the objective-refer tags in the assumptions
+    - DONE: fix all of the component-refer tags in the security objectives
     - check the sel-based requirements and make sure I used the correct selection-depends reqs
 
     - Incorporate TLS Package
@@ -396,7 +396,10 @@
                     <component-refer ref="FDP_VNC_EXT.1" />
                     <component-refer ref="FPT_DVD_EXT.1" />
                     <component-refer ref="FPT_EEM_EXT.1" />
-                  
+                    <component-refer ref="FPT_HAS_EXT.1" />
+                    <component-refer ref="FPT_HCL_EXT.1" />
+                    <component-refer ref="FPT_VDP_EXT.1" />
+                    <component-refer ref="FPT_VIV_EXT.1" />
                 </SO>
                 <SO id="O.VMM_INTEGRITY">
                     <description>Integrity is a core security objective for Virtualization Systems. To achieve system integrity, the 
@@ -420,8 +423,9 @@
                     <component-refer ref="FDP_VMS_EXT.1" />
                     <component-refer ref="FDP_VNC_EXT.1" />
                     <component-refer ref="FPT_EEM_EXT.1" />
- 
-                    
+                    <component-refer ref="FPT_HAS_EXT.1" />
+                    <component-refer ref="FPT_VDP_EXT.1" />
+                    <component-refer ref="FPT_VIV_EXT.1" />                    
                 </SO>
                 <SO id="O.PLATFORM_INTEGRITY">
                     <description>The integrity of the <abbr linkend="VMM"/> depends on the integrity of the hardware and software on 
@@ -436,8 +440,10 @@
                     <component-refer ref="FPT_DVD_EXT.1" />
                     <component-refer ref="FPT_EEM_EXT.1" />
                     <component-refer ref="FPT_HAS_EXT.1" />
-                    
-                    
+                    <component-refer ref="FPT_HAS_EXT.1" />
+                    <component-refer ref="FPT_HCL_EXT.1" />
+                    <component-refer ref="FPT_VDP_EXT.1" />
+                    <component-refer ref="FPT_VIV_EXT.1" />
                 </SO>
                 <SO id="O.DOMAIN_INTEGRITY">
                     <description>While the VS is not responsible for the contents or correct functioning of software that runs within 
@@ -452,7 +458,11 @@
                     <component-refer ref="FDP_VMS_EXT.1" />
                     <component-refer ref="FDP_VNC_EXT.1" />
                     <component-refer ref="FPT_EEM_EXT.1" />
-                     
+                    <component-refer ref="FPT_HAS_EXT.1" />
+                    <component-refer ref="FPT_RDM_EXT.1" />
+                    <component-refer ref="FPT_VDP_EXT.1" />
+                    <component-refer ref="FTP_UIF_EXT.1" />
+                    <component-refer ref="FTP_UIF_EXT.2" />
                 </SO>
                 <SO id="O.MANAGEMENT_ACCESS">
                     <description><abbr linkend="VMM"/> management functions include <abbr linkend="VM"/> configuration, virtualized 
@@ -504,9 +514,7 @@
                     <component-refer ref="FIA_UAU.5" />
                     <component-refer ref="FIA_UIA_EXT.1" />
                     <component-refer ref="FMT_SMO_EXT.1" />
-                    
-                    
-                    
+                    <component-refer ref="FTP_ITC_EXT.1" />                    
                 </SO>
                 <SO id="O.PATCHED_SOFTWARE">
                     <description>The Virtualization System must be updated and patched when needed in order to prevent the potential 
@@ -516,8 +524,7 @@
                         standards and protocols that help enhance the manageability of the VS as an IT product, enabling it to be 
                         integrated as part of a manageable network (e.g., reporting current patch level and patchability).
                     </description>
-                    <component-refer ref="FAU_ALT_EXT.1"/><!-- HERE this is incorrect, I just grabbed something for filler -->
-                    
+                    <component-refer ref="FPT_TUD_EXT.1" />
                 </SO>
                 <SO id="O.VM_ENTROPY">
                     <description><abbr linkend="VM"/>s must have access to good entropy sources to support security-related features 
@@ -528,7 +535,6 @@
                     </description>
                     <component-refer ref="FCS_ENT_EXT.1" />
                     <component-refer ref="FCS_RBG_EXT.1" />
-                    
                 </SO>
                 <SO id="O.AUDIT">
                     <description>The purpose of audit is to capture and protect data about what happens on a system so that it can 
@@ -538,7 +544,6 @@
                     <component-refer ref="FAU_SAR.1" />
                     <component-refer ref="FAU_STG.1" />
                     <component-refer ref="FAU_STG_EXT.1" />
-                    
                 </SO>
                 <SO id="O.CORRECTLY_APPLIED_CONFIGURATION">
                     <description>The <abbr linkend="TOE"/> must not apply configurations that violate the current security policy.
@@ -549,7 +554,6 @@
                         itself must not violate the existing security policy.
                     </description>
                     <component-refer ref="FMT_MSA_EXT.1" />
-
                 </SO>
                 <SO id="O.RESOURCE_ALLOCATION">
                     <description>The <abbr linkend="TOE"/> will provide mechanisms that enforce constraints on the allocation of 
@@ -558,8 +562,6 @@
                     <component-refer ref="FCS_CKM_EXT.4" />
                     <component-refer ref="FDP_RIP_EXT.1" />
                     <component-refer ref="FDP_RIP_EXT.2" />
-
-
                 </SO>
             </SOs>
         </section>
