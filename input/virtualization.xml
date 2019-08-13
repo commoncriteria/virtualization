@@ -46,25 +46,19 @@
 
 <PP xmlns="https://niap-ccevs.org/cc/v1" name="Virtualization"
     xmlns:h="http://www.w3.org/1999/xhtml" boilerplate="yes">
-    <PPReference title="PP Reference" id="ID003">
+    <PPReference>
         <ReferenceTable>
             <PPTitle>Protection Profile for Virtualization</PPTitle>
-            <PPVersion>1.1 Draft</PPVersion>
+            <PPVersion>1.1</PPVersion>
             <PPAuthor>National Information Assurance Partnership</PPAuthor>
             <PPPubDate>2019-07-19</PPPubDate>
-            <PPCertificationID>unassigned</PPCertificationID>
-            <CCVersion>Version 3.1R5</CCVersion>
             <Keywords>Virtualization</Keywords>
-            <entry>
-                <name>Registration</name>
-                <description>National Information Assurance Partnership</description>
-            </entry>
         </ReferenceTable>
     </PPReference>
 
     <!-- REVISION HISTORY -->
     
-    <RevisionHistory role="draft">
+    <RevisionHistory>
         <entry>
             <version>1.0</version>
             <date>2016-11-17</date>
@@ -72,7 +66,7 @@
         </entry>
         <entry>
             <version>1.1</version>
-            <date>2019-07-16</date>
+            <date>2019-10-01</date>
             <subject>Incorporate TDs and reference TLS Package, Add Equivalency Guidelines</subject>
         </entry>
     </RevisionHistory>
@@ -89,16 +83,29 @@
         
         <!-- In 1.0 this was two tables, one for CC Terms and one for Technology Terms. Why were they combined? -->
 
-        <section id="terms" title="Terms">
-            The following sections provide both Common Criteria and technology terms used in this PP.
-            <glossary>
-                <entry><term>Administrator</term><description>Administrators perform management activities on the VS. These management functions do not include administration of software running within Guest <abbr linkend="VM"/>s, such as the Guest OS. Administrators need not be human as in the case of embedded or headless <abbr linkend="VM"/>s. Administrators are often nothing more than software entities that operate within the <abbr linkend="VM"/>.</description></entry>
-                <entry><term>Auditor</term><description>Auditors are responsible for managing the audit capabilities of the <abbr linkend="TOE"/>. An Auditor may also be an Administrator. It is not a requirement that the <abbr linkend="TOE"/> be capable of supporting an Auditor role that is separate from that of an Administrator.</description></entry>
+        <section title="Terms" id="terms">
+           <subsection id="ccterms" title="Common Criteria Terms">
+            The following sections define Common Criteria terms used in this PP.
+             <glossary>
                 <entry><term><abbr title="Common Criteria">CC</abbr></term><description>Common Criteria for Information Technology Security Evaluation (International Standard ISO/IEC 15408).</description></entry>
                 <entry><term>Common Criteria Testing Laboratory</term><description>Within the context of the Common Criteria Evaluation and Validation Scheme (CCEVS), an IT security evaluation facility, accredited by the National Voluntary Laboratory Accreditation Program (NVLAP) and approved by the NIAP Validation Body to conduct Common Criteria-based evaluations.</description></entry>
                 <entry><term><abbr title="Common Evaluation Methodology">CEM</abbr></term><description>Common Evaluation Methodology for Information Technology Security Evaluation.</description></entry>
-                <entry><term>Domain</term><description>A Domain or Information Domain is a policy construct that groups together execution environments and networks by sensitivity of information and access control policy. For example, classification levels represent information domains. Within classification levels, there might be other domains representing communities of interest or coalitions. In the context of a VS, information domains are generally implemented as collections of <abbr linkend="VM"/>s connected by virtual networks. The VS itself can be considered an Information Domain, as can its Management Subsystem.</description></entry>
                 <entry><term><abbr title="Extended Package">EP</abbr></term><description>An implementation-independent set of security requirements for a specific subset of products described by a PP.</description></entry>
+                <entry><term>Protection Profile (PP)</term><description>An implementation-independent set of security requirements for a category of products.</description></entry>
+                <entry><term>Security Assurance Requirement (SAR)</term><description>A requirement for how the <abbr linkend="TOE"/>’s proper implementation of the SFRs is verified by an evaluator.</description></entry>
+                <entry><term>Security Functional Requirement (SFR)</term><description>A requirement for security enforcement by the <abbr linkend="TOE"/>.</description></entry>
+                <entry><term><abbr title="Security Target">ST</abbr></term><description>A set of implementation-dependent security requirements for a specific product.</description></entry>
+                <entry><term><abbr title="Target of Evaluation">TOE</abbr></term><description>The product under evaluation.</description></entry>
+                <entry><term><abbr title="TOE Security Functionality">TSF</abbr></term><description>The security functionality of the product under evaluation.</description></entry>
+                <entry><term><abbr title="TOE Summary Specification">TSS</abbr></term><description>A description of how a <abbr linkend="TOE"/> satisfies the SFRs in an <abbr linkend="ST"/>.</description></entry>
+               </glossary>
+            </subsection>
+            <subsection id="techterms" title="Technology Terms">
+             The following sections define technology terms used in this PP.
+               <glossary>
+                <entry><term>Administrator</term><description>Administrators perform management activities on the VS. These management functions do not include administration of software running within Guest <abbr linkend="VM"/>s, such as the Guest OS. Administrators need not be human as in the case of embedded or headless <abbr linkend="VM"/>s. Administrators are often nothing more than software entities that operate within the <abbr linkend="VM"/>.</description></entry>
+                <entry><term>Auditor</term><description>Auditors are responsible for managing the audit capabilities of the <abbr linkend="TOE"/>. An Auditor may also be an Administrator. It is not a requirement that the <abbr linkend="TOE"/> be capable of supporting an Auditor role that is separate from that of an Administrator.</description></entry>
+                <entry><term>Domain</term><description>A Domain or Information Domain is a policy construct that groups together execution environments and networks by sensitivity of information and access control policy. For example, classification levels represent information domains. Within classification levels, there might be other domains representing communities of interest or coalitions. In the context of a VS, information domains are generally implemented as collections of <abbr linkend="VM"/>s connected by virtual networks. The VS itself can be considered an Information Domain, as can its Management Subsystem.</description></entry>
                 <entry><term>Guest Network</term><description>See Operational Network.</description></entry>
                 <entry><term>Guest Operating System (OS)</term><description>An operating system that runs within a Guest <abbr linkend="VM"/>.</description></entry>
                 <entry><term>Guest <abbr linkend="VM"/></term><description>A Guest <abbr linkend="VM"/> is a <abbr linkend="VM"/> that contains a virtual environment for the execution of an independent computing system. Virtual environments execute mission workloads and implement customer-specific client or server functionality in Guest <abbr linkend="VM"/>s, such as a web server or desktop productivity applications.</description></entry>
@@ -113,20 +120,14 @@
                 <entry><term>Operational Network</term><description>An Operational Network is a network, which may have both physical and virtualized components, used to connect Guest <abbr linkend="VM"/>s to each other and potentially to other entities outside of the VS. Operational Networks support mission workloads and customer-specific client or server functionality. Also called a “Guest Network.”</description></entry>
                 <entry><term>Physical Platform</term><description>The hardware environment on which a VS executes. Physical platform resources include processors, memory, devices, and associated firmware.</description></entry>
                 <entry><term>Platform</term><description>The hardware, firmware, and software environment into which a VS is installed and executes.</description></entry>
-                <entry><term>Protection Profile (PP)</term><description>An implementation-independent set of security requirements for a category of products.</description></entry>
-                <entry><term>Security Assurance Requirement (SAR)</term><description>A requirement for how the <abbr linkend="TOE"/>’s proper implementation of the SFRs is verified by an evaluator.</description></entry>
-                <entry><term>Security Functional Requirement (SFR)</term><description>A requirement for security enforcement by the <abbr linkend="TOE"/>.</description></entry>
-                <entry><term><abbr title="Security Target">ST</abbr></term><description>A set of implementation-dependent security requirements for a specific product.</description></entry>
                 <entry><term>Service <abbr linkend="VM"/></term><description>A Service <abbr linkend="VM"/> is a <abbr linkend="VM"/> whose purpose is to support the Hypervisor in providing the resources or services necessary to support Guest <abbr linkend="VM"/>s. Service <abbr linkend="VM"/>s may implement some portion of Hypervisor functionality, but also may contain important system functionality that is not necessary for Hypervisor operation. As with any <abbr linkend="VM"/>, Service <abbr linkend="VM"/>s necessarily execute without full Hypervisor privileges—only the privileges required to perform its designed functionality. Examples of Service <abbr linkend="VM"/>s include device driver <abbr linkend="VM"/>s that manage access to a physical devices, and name-service <abbr linkend="VM"/>s that help establish communication paths between <abbr linkend="VM"/>s.</description></entry>
                 <entry><term><abbr title="System Security Policy">SSP</abbr></term><description>The overall policy enforced by the VS defining constraints on the behavior of <abbr linkend="VM"/>s and users.</description></entry>
-                <entry><term><abbr title="Target of Evaluation">TOE</abbr></term><description>The product under evaluation.</description></entry>
-                <entry><term><abbr title="TOE Security Functionality">TSF</abbr></term><description>The security functionality of the product under evaluation.</description></entry>
-                <entry><term><abbr title="TOE Summary Specification">TSS</abbr></term><description>A description of how a <abbr linkend="TOE"/> satisfies the SFRs in an <abbr linkend="ST"/>.</description></entry>
                 <entry><term>User</term><description>Users operate Guest <abbr linkend="VM"/>s and are subject to configuration policies applied to the VS by Administrators. Users need not be human as in the case of embedded or headless <abbr linkend="VM"/>s, users are often nothing more than software entities that operate within the <abbr linkend="VM"/>.</description></entry>
                 <entry><term><abbr title="Virtual Machine">VM</abbr></term><description>A Virtual Machine is a virtualized hardware environment in which an operating system may execute.</description></entry>
                 <entry><term><abbr title="Virtual Machine Manager">VMM</abbr></term><description>A <abbr linkend="VMM"/> is a collection of software components responsible for enabling <abbr linkend="VM"/>s to function as expected by the software executing within them. Generally, the <abbr linkend="VMM"/> consists of a Hypervisor, Service <abbr linkend="VM"/>s, and other components of the VS, such as virtual devices, binary translation systems, and physical device drivers. It manages concurrent execution of all <abbr linkend="VM"/>s and virtualizes platform resources as needed.</description></entry>
                 <entry><term>Virtualization System (VS)</term><description>A software product that enables multiple independent computing systems to execute on the same physical hardware platform without interference from one other. For the purposes of this document, the VS consists of a Virtual Machine Manager (<abbr linkend="VMM"/>), Virtual Machine (<abbr linkend="VM"/>) abstractions, a management subsystem, and other components.</description></entry>
-                </glossary>
+               </glossary>
+            </subsection>
            </section>
         
         <section id="complianttargets" title="Compliant Targets of Evaluation">
@@ -620,7 +621,7 @@
                     <h:b>Iteration</h:b> operation: are identified with a number inside parentheses (e.g. "(1)")</h:li>
             </h:ul>
             <subsection id="fau" title="Security Audit (FAU)">
-                <f-component id="FAU_GEN.1" name="Audit Data Generation"  status="threshold">
+                <f-component id="FAU_GEN.1" name="Audit Data Generation">
                     <f-element id="FAU_GEN.1.1">
                         <title>The <abbr linkend="TSF"/> shall be able to generate an audit record of the following auditable events:
                             <h:ol type="a">
@@ -663,10 +664,26 @@
                             The intent of the audit requirement for FDP_PPR_EXT.1 is to log that the <abbr linkend="VM"/> is connected to a physical device (when the device becomes part of the <abbr linkend="VM"/>’s hardware view), not to log every time that the device is accessed. Generally, this is only once at <abbr linkend="VM"/> startup. However, some devices can be connected and disconnected during operation (e.g., virtual USB devices such as CD-ROMs). All such connection/disconnection events must be logged.
                         </note>
                         <aactivity>
-                            The evaluator shall check the <abbr linkend="TSS"/> and ensure that it lists all of the auditable events and provides a format for audit records. Each audit record format type shall be covered, along with a brief description of each field. The evaluator shall check to make sure that every audit event type mandated by the PP is described in the <abbr linkend="TSS"/>.<h:br></h:br><h:br></h:br>
-                            The evaluator shall also make a determination of the administrative actions that are relevant in the context of this PP. The evaluator shall examine the administrative guide and make a determination of which administrative commands, including subcommands, scripts, and configuration files, are related to the configuration (including enabling or disabling) of the mechanisms implemented in the <abbr linkend="TOE"/> that are necessary to enforce the requirements specified in the PP. The evaluator shall document the methodology or approach taken while determining which actions in the administrative guide are security-relevant with respect to this PP.<h:br></h:br><h:br></h:br>
-                            The evaluator shall test the <abbr linkend="TOE"/>’s ability to correctly generate audit records by having the <abbr linkend="TOE"/> generate audit records for the events listed and administrative actions. For administrative actions, the evaluator shall test that each action determined by the evaluator above to be security relevant in the context of this PP is auditable. When verifying the test results, the evaluator shall ensure the audit records generated during testing match the format specified in the administrative guide, and that the fields in each audit record have the proper entries.<h:br></h:br><h:br></h:br>
-                            Note that the testing here can be accomplished in conjunction with the testing of the security mechanisms directly.<h:br></h:br><h:br></h:br>
+                            The evaluator shall check the <abbr linkend="TSS"/> and ensure that it lists all of the auditable events 
+                            and provides a format for audit records. Each audit record format type shall be covered, along with a 
+                            brief description of each field. The evaluator shall check to make sure that every audit event type 
+                            mandated by the PP is described in the <abbr linkend="TSS"/>.<h:br></h:br><h:br></h:br>
+                            The evaluator shall also make a determination of the administrative actions that are relevant in the 
+                            context of this PP. The evaluator shall examine the administrative guide and make a determination of which 
+                            administrative commands, including subcommands, scripts, and configuration files, are related to the 
+                            configuration (including enabling or disabling) of the mechanisms implemented in the <abbr linkend="TOE"/> 
+                            that are necessary to enforce the requirements specified in the PP. The evaluator shall document the 
+                            methodology or approach taken while determining which actions in the administrative guide are 
+                            security-relevant with respect to this PP.<h:br></h:br><h:br></h:br>
+                            The evaluator shall test the <abbr linkend="TOE"/>’s ability to correctly generate audit records by 
+                            having the <abbr linkend="TOE"/> generate audit records for the events listed and administrative actions. 
+                            For administrative actions, the evaluator shall test that each action determined by the evaluator above to 
+                            be security relevant in the context of this PP is auditable. When verifying the test results, the 
+                            evaluator shall ensure the audit records generated during testing match the format specified in the 
+                            administrative guide, and that the fields in each audit record have the proper entries.<h:br></h:br>
+                            <h:br></h:br>
+                            Note that the testing here can be accomplished in conjunction with the testing of the security mechanisms 
+                            directly.<h:br></h:br><h:br></h:br>
                             <!-- HERE do table 1 from page 22 -->
                             <h:table border="1">
                                 <h:caption>Table 1: Auditable Events</h:caption>
@@ -877,16 +894,16 @@
                             
                             
                             
-                            <!-- HERE do the table on page 78 here??, Table 2: Auditable Events-->
+                            <!-- HERE do the table on page 78 here??, Table 2: Auditable Events -->
                             <!-- HERE do the table on page 80 here???, Table 3: Auditable Events -->
-                            <!-- HERE table from 114??-->
-                            <!-- HERE table from 118??-->
+                            <!-- HERE table from 114?? -->
+                            <!-- HERE table from 118?? -->
                             
                             
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FAU_SAR.1" name="Audit Review"  status="threshold">
+                <f-component id="FAU_SAR.1" name="Audit Review">
                     <f-element id="FAU_SAR.1.1">
                         <title>The <abbr linkend="TSF"/> shall provide [administrators] with the capability to read [all information] from the audit records.
                         </title>
@@ -898,7 +915,7 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FAU_STG.1" name="Protected Audit Trail Storage"  status="threshold">
+                <f-component id="FAU_STG.1" name="Protected Audit Trail Storage">
                     <f-element id="FAU_STG.1.1">
                         <title>The <abbr linkend="TSF"/> shall protect the stored audit records in the audit trail from unauthorized deletion.
                         </title>
@@ -915,7 +932,7 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FAU_STG_EXT.1" name="Off-Loading of Audit Data"  status="threshold">
+                <f-component id="FAU_STG_EXT.1" name="Off-Loading of Audit Data">
                     <f-element id="FAU_STG_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall be able to transmit the generated audit data to an external IT entity using a trusted channel as specified in FTP_ITC_EXT.1.
                         </title>
@@ -975,7 +992,7 @@
                 </f-component>
             </subsection>
             <subsection id="fcs" title="Cryptographic Support">
-                <f-component id="FCS_CKM.1" name="Cryptographic Key Generation" status="threshold">
+                <f-component id="FCS_CKM.1" name="Cryptographic Key Generation">
                     <f-element id="FCS_CKM.1.1">
                         <title> The <abbr linkend="TSF"/> shall generate asymmetric cryptographic keys in accordance with a specified cryptographic key generation algorithm
                             <selectables linebreak="yes">
@@ -1058,7 +1075,7 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FCS_CKM.2" name="Cryptographic Key Establishment" status="threshold">
+                <f-component id="FCS_CKM.2" name="Cryptographic Key Establishment">
                     <f-element id="FCS_CKM.2.1">
                         <title>The <abbr linkend="TSF"/> shall perform cryptographic key establishment in accordance with a specified cryptographic key establishment method:
                             <selectables linebreak="yes">
@@ -1097,7 +1114,7 @@
                     </f-element>
                 </f-component>
 
-                <f-component id="FCS_CKM_EXT.4" name="Cryptographic Key Destruction"  status="threshold">
+                <f-component id="FCS_CKM_EXT.4" name="Cryptographic Key Destruction">
                     <f-element id="FCS_CKM_EXT.4.1">
                         <title>The <abbr linkend="TSF"/> shall cause disused cryptographic keys in volatile memory to be destroyed or rendered unrecoverable.
                         </title>
@@ -1137,7 +1154,7 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FCS_COP.1(1)" name="Cryptographic Operation (AES Data Encryption/ Decryption)" status="threshold">
+                <f-component id="FCS_COP.1(1)" name="Cryptographic Operation (AES Data Encryption/ Decryption)">
                     <f-element id="FCS_COP.1.1(1)">
                         <title>
                             The <abbr linkend="TSF"/> shall perform [encryption and decryption] in accordance with a specified cryptographic algorithm<h:br></h:br>
@@ -1267,7 +1284,7 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FCS_COP.1(2)" name="Cryptographic Operation (Hashing)" status="threshold">
+                <f-component id="FCS_COP.1(2)" name="Cryptographic Operation (Hashing)">
                     <f-element id="FCS_COP.1.1(2)">
                         <title>The <abbr linkend="TSF"/> shall perform [cryptographic hashing] in accordance with a specified cryptographic algorithm
                             <selectables>
@@ -1329,7 +1346,7 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FCS_COP.1(3)" name="Cryptographic Operation (Signature Algorithms)" status="threshold">
+                <f-component id="FCS_COP.1(3)" name="Cryptographic Operation (Signature Algorithms)">
                     <f-element id="FCS_COP.1.1(3)">
                         <title>The <abbr linkend="TSF"/> shall perform [<h:i>cryptographic signature services (generation and verification)</h:i>] in accordance with a specified cryptographic algorithm
                             <selectables linebreak="yes">
@@ -1367,7 +1384,7 @@
                     </f-element>
                 </f-component>
                 
-                <f-component id="FCS_COP.1(4)" name="Cryptographic Operation (Keyed Hash algorithms)" status="threshold">
+                <f-component id="FCS_COP.1(4)" name="Cryptographic Operation (Keyed Hash algorithms)">
                     <f-element id="FCS_COP.1.1(4)">
                         <title>The <abbr linkend="TSF"/> shall perform [<h:i>keyed-hash message authentication</h:i>] in accordance with a specified cryptographic algorithm
                             <selectables>
@@ -1395,7 +1412,7 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FCS_ENT_EXT.1" name="Extended: Entropy for Virtual Machines" status="threshold">
+                <f-component id="FCS_ENT_EXT.1" name="Extended: Entropy for Virtual Machines">
                     <f-element id="FCS_ENT_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall provide a mechanism to make available to <abbr linkend="VM"/>s entropy that meets FCS_RBG_EXT.1 through
                             <selectables>
@@ -1423,7 +1440,7 @@
                     </f-element>
                 </f-component>
                 
-                <f-component id="FCS_RBG_EXT.1" name="Cryptographic Operation (Random Bit Generation)"  status="threshold">
+                <f-component id="FCS_RBG_EXT.1" name="Cryptographic Operation (Random Bit Generation)">
                     <f-element id="FCS_RBG_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall perform all deterministic random bit generation services in accordance with NIST Special Publication 800-90A using
                             <selectables>
@@ -1794,7 +1811,7 @@
                 </f-component>
             </subsection>
             <subsection id="fdp" title="User Data Protection">
-                <f-component id="FDP_HBI_EXT.1" name="Hardware-Based Isolation Mechanisms"  status="threshold">
+                <f-component id="FDP_HBI_EXT.1" name="Hardware-Based Isolation Mechanisms">
                     <f-element id="FDP_HBI_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall use
                             <selectables>
@@ -1813,7 +1830,7 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FDP_PPR_EXT.1" name="Physical Platform Resource Controls"  status="threshold">
+                <f-component id="FDP_PPR_EXT.1" name="Physical Platform Resource Controls">
                     <f-element id="FDP_PPR_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall allow an authorized administrator to control Guest <abbr linkend="VM"/> access to the following physical platform resources: <assignable>list of physical platform resources the <abbr linkend="VMM"/> is able to control access to</assignable>.
                         </title>
@@ -1850,7 +1867,7 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FDP_RIP_EXT.1" name="Residual Information in Memory"  status="threshold">
+                <f-component id="FDP_RIP_EXT.1" name="Residual Information in Memory">
                     <f-element id="FDP_RIP_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall ensure that any previous information content of physical memory is cleared prior to allocation to a Guest <abbr linkend="VM"/>.
                         </title>
@@ -1864,7 +1881,7 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FDP_RIP_EXT.2" name="Residual Information on Disk"  status="threshold">
+                <f-component id="FDP_RIP_EXT.2" name="Residual Information on Disk">
                     <f-element id="FDP_RIP_EXT.2.1">
                         <title>The <abbr linkend="TSF"/> shall ensure that any previous information content of physical disk storage is cleared prior to allocation to a Guest <abbr linkend="VM"/>.
                         </title>
@@ -1881,7 +1898,7 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FDP_VMS_EXT.1" name="VM Separation"  status="threshold">
+                <f-component id="FDP_VMS_EXT.1" name="VM Separation">
                     <f-element id="FDP_VMS_EXT.1.1">
                         <title>The VS shall provide the following mechanisms for transferring data between Guest <abbr linkend="VM"/>s:
                             <selectables linebreak="yes">
@@ -1941,7 +1958,7 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FDP_VNC_EXT.1" name="Virtual Networking Components"  status="threshold">
+                <f-component id="FDP_VNC_EXT.1" name="Virtual Networking Components">
                     <f-element id="FDP_VNC_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall allow Administrators to configure virtual networking components to connect <abbr linkend="VM"/>s to each other, and to physical networks.
                         </title>
@@ -1966,7 +1983,7 @@
                 </f-component>
             </subsection>
             <subsection id="fia" title="Identification and Authentication">
-                <f-component id="FIA_AFL_EXT.1" name="Authentication Failure Handling"  status="threshold">
+                <f-component id="FIA_AFL_EXT.1" name="Authentication Failure Handling">
                     <f-element id="FIA_AFL_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall detect when
                             <selectables linebreak="yes">
@@ -2029,7 +2046,7 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FIA_UAU.5" name="Multiple Authentication Mechanisms"  status="threshold">
+                <f-component id="FIA_UAU.5" name="Multiple Authentication Mechanisms">
                     <f-element id="FIA_UAU.5.1">
                         <title>The <abbr linkend="TSF"/> shall provide the following authentication mechanisms:
                             <selectables linebreak="yes">
@@ -2088,7 +2105,7 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FIA_UIA_EXT.1" name="Administrator Identification and Authentication"  status="threshold">
+                <f-component id="FIA_UIA_EXT.1" name="Administrator Identification and Authentication">
                     <f-element id="">
                         <title>The <abbr linkend="TSF"/> shall require Administrators to be successfully identified and authenticated using one of the methods in FIA_UAU.5 before allowing any <abbr linkend="TSF"/>-mediated management function to be performed by that Administrator.
                         </title>
@@ -2217,7 +2234,7 @@
                 </f-component>
             </subsection>
             <subsection id="fmt" title="Security Management">
-                <f-component id="FMT_MSA_EXT.1" name="Default Data Sharing Configuration"  status="threshold">
+                <f-component id="FMT_MSA_EXT.1" name="Default Data Sharing Configuration">
                     <f-element id="FMT_MSA_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall by default enforce a policy prohibiting sharing of data between Guest <abbr linkend="VM"/>s using
                             <selectables linebreak="yes">
@@ -2242,7 +2259,7 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FMT_SMO_EXT.1" name="Separation of Management and Operational Networks"  status="threshold">
+                <f-component id="FMT_SMO_EXT.1" name="Separation of Management and Operational Networks">
                     <f-element id="FMT_SMO_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall support the configuration of separate management and operational networks through
                             <selectables>
@@ -2268,7 +2285,7 @@
                 </f-component>
             </subsection>
             <subsection id="fpt" title="Protection of the TSF">
-                <f-component id="FPT_DVD_EXT.1" name="Non-Existence of Disconnected Virtual Devices"  status="threshold">
+                <f-component id="FPT_DVD_EXT.1" name="Non-Existence of Disconnected Virtual Devices">
                     <f-element id="FPT_DVD_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall limit a Guest <abbr linkend="VM"/>’s access to virtual devices to those that are present in the <abbr linkend="VM"/>’s current virtual hardware configuration.
                         </title>
@@ -2279,7 +2296,7 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FPT_EEM_EXT.1" name="Execution Environment Mitigations"  status="threshold">
+                <f-component id="FPT_EEM_EXT.1" name="Execution Environment Mitigations">
                     <f-element id="FPT_EEM_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall take advantage of execution environment-based vulnerability mitigation mechanisms supported by the Platform such as:
                             <selectables linebreak="yes">
@@ -2299,7 +2316,7 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FPT_HAS_EXT.1" name="Hardware Assists"  status="threshold">
+                <f-component id="FPT_HAS_EXT.1" name="Hardware Assists">
                     <f-element id="FPT_HAS_EXT.1.1">
                         <title>The <abbr linkend="VMM"/> shall use <assignable>list of hardware-based virtualization assists</assignable> to reduce or eliminate the need for binary translation.
                         </title>
@@ -2315,7 +2332,7 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FPT_HCL_EXT.1" name="Hypercall Controls"  status="threshold">
+                <f-component id="FPT_HCL_EXT.1" name="Hypercall Controls">
                     <f-element id="FPT_HCL_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall provide a Hypercall interface for Guest <abbr linkend="VM"/>s to use to invoke functionality provided by the <abbr linkend="VMM"/>.
                         </title>
@@ -2361,7 +2378,7 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FPT_RDM_EXT.1" name="Removable Devices and Media"  status="threshold">
+                <f-component id="FPT_RDM_EXT.1" name="Removable Devices and Media">
                     <f-element id="FPT_RDM_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall implement controls for handling the transfer of virtual and physical removable media and virtual and physical removable media devices between information domains.
                         </title>
@@ -2399,7 +2416,7 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FPT_TUD_EXT.1" name="Trusted Updates to the Virtualization System"  status="threshold">
+                <f-component id="FPT_TUD_EXT.1" name="Trusted Updates to the Virtualization System">
                     <f-element id="FPT_TUD_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall provide administrators the ability to query the currently executed version of the <abbr linkend="TOE"/> firmware/software as well as the most recently installed version of the <abbr linkend="TOE"/> firmware/software.
                         </title>
@@ -2455,7 +2472,7 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FPT_VDP_EXT.1" name="Virtual Device Parameters"  status="threshold">
+                <f-component id="FPT_VDP_EXT.1" name="Virtual Device Parameters">
                     <f-element id="FPT_VDP_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall provide interfaces for virtual devices implemented by the <abbr linkend="VMM"/> as part of the virtual hardware abstraction.
                         </title>
@@ -2482,7 +2499,7 @@
                         </note>
                     </f-element>
                 </f-component>
-                <f-component id="FPT_VIV_EXT.1" name="VMM Isolation from VMs"  status="threshold">
+                <f-component id="FPT_VIV_EXT.1" name="VMM Isolation from VMs">
                     <f-element id="FPT_VIV_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> must ensure that software running in a <abbr linkend="VM"/> is not able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform.
                         </title>
@@ -2583,7 +2600,7 @@
                 </f-component>
             </subsection>
             <subsection id="fta" title="TOE Access">
-                <f-component id="FTA_TAB.1" name="TOE Access Banner"  status="threshold">
+                <f-component id="FTA_TAB.1" name="TOE Access Banner">
                     <f-element id="FTA_TAB.1.1">
                         <title>Before establishing an administrative user session, the <abbr linkend="TSF"/> shall display a
                             security Administrator-specifiedad advisory notice and consent warning message regarding
@@ -2600,7 +2617,7 @@
                 </f-component>
             </subsection>
             <subsection id="ftp" title="Trusted Path/Channel">
-                <f-component id="FTP_ITC_EXT.1" name="Trusted Channel Communications"  status="threshold">
+                <f-component id="FTP_ITC_EXT.1" name="Trusted Channel Communications">
                     <f-element id="FTP_ITC_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall use
                             <selectables linebreak="yes">
@@ -2627,7 +2644,7 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FTP_UIF_EXT.1" name="User Interface: I/O Focus"  status="threshold">
+                <f-component id="FTP_UIF_EXT.1" name="User Interface: I/O Focus">
                     <f-element id="FTP_UIF_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall indicate to users which <abbr linkend="VM"/>, if any, has the current input focus.
                         </title>
@@ -2643,7 +2660,7 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                <f-component id="FTP_UIF_EXT.2" name="User Interface: Identification of VM"  status="threshold">
+                <f-component id="FTP_UIF_EXT.2" name="User Interface: Identification of VM">
                     <f-element id="FTP_UIF_EXT.2.1">
                         <title>The <abbr linkend="TSF"/> shall support the unique identification of a <abbr linkend="VM"/>’s output display to users.
                         </title>
