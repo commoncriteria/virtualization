@@ -45,6 +45,49 @@
 
 <PP xmlns="http://niap-ccevs.org/cc/v1" name="Virtualization"
     xmlns:h="http://www.w3.org/1999/xhtml" boilerplate="yes">
+    <PPReference title="PP Reference" id="ID003"><?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../transforms/pp2html.xsl"?>
+
+<!-- to do
+    
+    - figure 1 from page 9
+    
+    - DONE: fix all of the objective-refer tags in the threats
+    - DONE: fix all of the objective-refer tags in the assumptions
+    - DONE: fix all of the component-refer tags in the security objectives
+    - check the sel-based requirements and make sure I used the correct selection-depends reqs
+    - Incorporate TLS Package
+        - DONE: Remove TLSC and TLSS requirements
+        - DONE: Fix all references to TLSC and PLSS requirements
+        - DONE: Edit FTP_ITC_EXT.1
+    - Incorporate TDs
+    - DONE: 0139 Clarification of testing for FDP_RIP_EXT.2
+    - OBEV: 0166 Optional authentication of TLS Client
+    - DONE: 0206 Testing for Non-Existence of Disconnected Virtual Devices
+    - DONE: 0213 Corrections to App Note references to FCS_TLS, FCS_IPSEC, and FTP_ITC
+    - DONE: 0230 ALC Assurance Activities for Server Virtualization and Base Virtualization PPs
+    - OBEV: 0244 FCS_TLSC_EXT - TLS Client Curves Allowed
+    - PART: 0247 FPT_VDP_EXT.1 Clarification for Assurance Activity
+    - DONE: 0249 Applicability of FTP_ITC_EXT.1
+    - DONE: 0250 Hypercall Controls - FPT_HCL_EXT.1 Clarification
+    - OBEV: 0252 Inaccurate statement in application note of FCS_TLSC_EXT.2.4
+    - DONE: 0264 Clarification of Auditable Events for FPT_RDM_EXT.1
+    - DONE: 0265 Audit of TLS and HTTPS Session Terminations
+    - OBEV: 0267 TLSS testing - Empty Certificate Authorities list
+    - DONE*: 0360 AD Server configuration in FMT_MOF_EXT.1 (* Base PP part of this TD done).
+    - DONE: 0363 Access Banner and applicability to programmatic interfaces
+    - OBEV: 0403 Conditional Testing with TLS Session IDs
+    - DONE: 0432: Corrections to FIA_AFL_EXT.1
+    - DONE: Add Equivalency section (Annex E)
+    - Somehow indicate that the SV or CV package must be selected. Currently there is no SFR that does this.
+    
+    -->
+<?xml-model href="CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+
+<!-- TITLE PAGE -->
+
+<PP xmlns="http://niap-ccevs.org/cc/v1" name="Virtualization"
+    xmlns:h="http://www.w3.org/1999/xhtml" boilerplate="yes">
     <PPReference title="PP Reference" id="ID003">
         <ReferenceTable>
             <PPTitle>Protection Profile for Virtualization</PPTitle>
@@ -360,7 +403,7 @@
                     <description><abbr linkend="VM"/>s are the fundamental subject of the system. The <abbr linkend="VMM"/> is 
                         responsible for applying the system security policy (<abbr linkend="SSP"/>) to the <abbr linkend="VM"/> and 
                         all resources. As basic functionality, the <abbr linkend="VMM"/> must support a security policy that mandates 
-                        no information transfer between <abbr linkend="VM"/>s.<htm:br></htm:br><htm:br></htm:br>
+                        no information transfer between <abbr linkend="VM"/>s.<h:br></h:br><h:br></h:br>
                         The <abbr linkend="VMM"/> must support the necessary mechanisms to isolate the resources of all 
                         <abbr linkend="VM"/>s. The <abbr linkend="VMM"/> partitions a platform's physical resources for use by the 
                         supported virtual environments. Depending on the use case, a <abbr linkend="VM"/> may require a completely 
@@ -372,15 +415,15 @@
                         the mediation of sharing of particular resources to select Service <abbr linkend="VM"/>s; however in doing so, 
                         it remains responsible for mediating access to the Service <abbr linkend="VM"/>s, and each Service 
                         <abbr linkend="VM"/> must mediate all access to any shared resource that has been delegated to it in 
-                        accordance with the <abbr linkend="SSP"/>.<htm:br></htm:br><htm:br></htm:br>
+                        accordance with the <abbr linkend="SSP"/>.<h:br></h:br><h:br></h:br>
                         Devices, whether virtual or physical, are resources requiring access control. The <abbr linkend="VMM"/> must 
                         enforce access control in accordance to system security policy. Physical devices are platform devices with 
                         access mediated via the <abbr linkend="VMM"/> per the O.VMM_Integrity objective. Virtual devices may include 
                         virtual storage devices and virtual network devices. Some of the access control restrictions must be enforced
                         internal to Service <abbr linkend="VM"/>s, as may be the case for isolating virtual networks. 
                         <abbr linkend="VMM"/>s may also expose purely virtual interfaces. These are <abbr linkend="VMM"/> specific, 
-                        and while they are not analogous to a physical device, they are also subject to access control.<htm:br>
-                        </htm:br><htm:br></htm:br>
+                        and while they are not analogous to a physical device, they are also subject to access control.<h:br>
+                        </h:br><h:br></h:br>
                         The <abbr linkend="VMM"/> must support the mechanisms to isolate all resources associated with virtual 
                         networks and to limit a <abbr linkend="VM"/>'s access to only those virtual networks for which it has been 
                         configured. The <abbr linkend="VMM"/> must also support the mechanisms to control the configurations of 
@@ -407,13 +450,13 @@
                         integrity of each <abbr linkend="VMM"/> component must be established and maintained. This objective concerns 
                         only the integrity of the Virtualization System—not the integrity of software running inside of Guest 
                         <abbr linkend="VM"/>s or of the physical platform. The overall objective is to ensure the integrity of 
-                        critical components of a Virtualization System.<htm:br></htm:br><htm:br></htm:br>
+                        critical components of a Virtualization System.<h:br></h:br><h:br></h:br>
                         Initial integrity of a VS can be established through mechanisms such as a digitally signed installation or 
                         update package, or through integrity measurements made at launch. Integrity is maintained in a running system 
                         by careful protection of the <abbr linkend="VMM"/> from untrusted users and software. For example, it must not
                         be possible for software running within a Guest <abbr linkend="VM"/> to exploit a vulnerability in a device or
                         hypercall interface and gain control of the <abbr linkend="VMM"/>. The vendor must release patches for 
-                        vulnerabilities as soon as practicable after discovery.<htm:br></htm:br><htm:br></htm:br>
+                        vulnerabilities as soon as practicable after discovery.<h:br></h:br><h:br></h:br>
                     </description>
                     <component-refer ref="FAU_GEN.1" />
                     <component-refer ref="FAU_CKM.1" />
@@ -469,19 +512,19 @@
                   
                     <description><abbr linkend="VMM"/> management functions include <abbr linkend="VM"/> configuration, virtualized 
                         network configuration, allocation of physical resources, and reporting. Only certain authorized system users 
-                        (administrators) are allowed to exercise management functions.<htm:br></htm:br><htm:br></htm:br>
+                        (administrators) are allowed to exercise management functions.<h:br></h:br><h:br></h:br>
                         Because of the privileges exercised by the <abbr linkend="VMM"/> management functions, it must not be possible 
                         for the <abbr linkend="VMM"/>’s management components to be compromised without administrator notification. 
                         This means that unauthorized users cannot be permitted access to the management functions, and the management 
                         components must not be interfered with by Guest <abbr linkend="VM"/>s or unprivileged users on other 
-                        networks—including operational networks connected to the <abbr linkend="TOE"/>.<htm:br></htm:br><htm:br>
-                        </htm:br> <abbr linkend="VMM"/>s include a set of management functions that collectively allow administrators 
+                        networks—including operational networks connected to the <abbr linkend="TOE"/>.<h:br></h:br><h:br>
+                        </h:br> <abbr linkend="VMM"/>s include a set of management functions that collectively allow administrators 
                         to configure and manage the <abbr linkend="VMM"/>, as well as configure Guest <abbr linkend="VM"/>s. These 
                         management functions are specific to the virtualization system, distinct from any other management functions 
                         that might exist for the internal management of any given Guest <abbr linkend="VM"/>. These 
                         <abbr linkend="VMM"/> management functions are privileged, with the security of the entire system relying on 
                         their proper use. The <abbr linkend="VMM"/> management functions can be classified into different categories 
-                        and the policy for their use and the impact to security may vary accordingly.<htm:br></htm:br><htm:br></htm:br>
+                        and the policy for their use and the impact to security may vary accordingly.<h:br></h:br><h:br></h:br>
                         The management functions might be distributed throughout the <abbr linkend="VMM"/> (within the 
                         <abbr linkend="VMM"/> and Service <abbr linkend="VM"/>s). The <abbr linkend="VMM"/> must support the necessary 
                         mechanisms to enable the control of all management functions according to the system security policy. When a 
@@ -490,7 +533,7 @@
                         involved to ensure that the intent of the system security policy is not compromised. Additionally, since 
                         hypercalls permit Guest <abbr linkend="VM"/>s to invoke the Hypervisor, and often allow the passing of data 
                         to the Hypervisor, it is important that the hypercall interface is well-guarded and that all parameters be 
-                        validated.<htm:br></htm:br><htm:br></htm:br> The <abbr linkend="VMM"/> maintains configuration data for every 
+                        validated.<h:br></h:br><h:br></h:br> The <abbr linkend="VMM"/> maintains configuration data for every 
                         <abbr linkend="VM"/> on the system. This configuration data, whether of Service or Guest <abbr linkend="VM"/>s,
                         must be protected. The mechanisms used to establish, modify and verify configuration data are part of the VS 
                         management functions and must be protected as such. The proper internal configuration of Service 
@@ -499,13 +542,13 @@
                         impact overall VS security. The overall goal is to ensure that the <abbr linkend="VMM"/>, including the 
                         environments internal to Service <abbr linkend="VM"/>s, is properly configured and that all Guest 
                         <abbr linkend="VM"/> configurations are maintained consistent with the system security policy throughout 
-                        their lifecycle.<htm:br></htm:br><htm:br></htm:br> Virtualization Systems are often managed remotely. For 
+                        their lifecycle.<h:br></h:br><h:br></h:br> Virtualization Systems are often managed remotely. For 
                         example, an administrator can remotely update virtualization software, start and shut down 
                         <abbr linkend="VM"/>s, and manage virtualized network connections. If a console is required, it could be 
                         run on a separate machine or it could itself run in a <abbr linkend="VM"/>. When performing remote management, 
                         an administrator must communicate with a privileged management agent over a network. Communications with the 
                         management infrastructure must be protected from Guest <abbr linkend="VM"/>s and operational networks.
-                        <htm:br></htm:br><htm:br></htm:br>
+                        <h:br></h:br><h:br></h:br>
                     </description>
                     <component-refer ref="FAU_GEN.1" />
                     <component-refer ref="FCS_CKM.1" />
@@ -549,7 +592,7 @@
                 </SO>
                 <SO id="O.CORRECTLY_APPLIED_CONFIGURATION">
                     <description>The <abbr linkend="TOE"/> must not apply configurations that violate the current security policy.
-                        <htm:br></htm:br><htm:br></htm:br> The <abbr linkend="TOE"/> must correctly apply configurations and policies 
+                        <h:br></h:br><h:br></h:br> The <abbr linkend="TOE"/> must correctly apply configurations and policies 
                         to newly created Guest <abbr linkend="VM"/>s, as well as to existing Guest <abbr linkend="VM"/>s when 
                         applicable configuration or policy changes are made. All changes to configuration and to policy must conform 
                         to the existing security policy. Similarly, changes made to the configuration of the <abbr linkend="TOE"/> 
@@ -1306,14 +1349,14 @@
                             <h:b>Selected Long Messages Test Bit-oriented Mode</h:b><h:br></h:br><h:br></h:br>
                             The evaluators devise an input set consisting of m messages, where m is the block length
                             of the hash algorithm. The length of the ith message is 512 + 99*i, where
-                            1 &#2264; i &#2264; m <!--   1 ≤ i ≤ m -->. The message text shall be pseudo-randomly
+                            1 &#2264; i &#2264; m <!--   1 = i = m -->. The message text shall be pseudo-randomly
                             generated. The evaluators compute the message digest for each of the messages and ensure
                             that the correct result is produced when the messages are provided to the <abbr linkend="TSF"/>.
                             <h:br></h:br><h:br></h:br>
                             <h:b>Selected Long Messages Test Byte-oriented Mode</h:b><h:br></h:br><h:br></h:br>
                             The evaluators devise an input set consisting of m/8 messages,
                             where m is the block length of the hash algorithm. The length of the ith message
-                            is 512 + 8*99*i, where 1 &#2264; i &#2264; m/8 <!--   1 ≤ i ≤ m/8-->.
+                            is 512 + 8*99*i, where 1 &#2264; i &#2264; m/8 <!--   1 = i = m/8-->.
                             The message text shall be pseudo-randomly generated. The evaluators compute the message
                             digest for each of the messages and ensure that the correct result is produced when
                             the messages are provided to the <abbr linkend="TSF"/>.
@@ -3678,7 +3721,6 @@
           </aactivity>
         </f-element>
         </f-component>
-
     
     <h:TR>
                                     <h:TD>FIA_PMG_EXT.1</h:TD>
@@ -3723,3 +3765,4 @@
     </h:TR>
             -->
 </PP>
+
