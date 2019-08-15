@@ -78,11 +78,10 @@
     <chapter id="intro" title="Introduction">
         <section id="overview" title="Overview">
             The scope of this Protection Profile (PP) is to describe the security functionality of virtualization technologies in terms of [CC] and to define security functional and assurance requirements for such products. This PP is not complete in itself, but rather provides a set of requirements that are common to the Extended Packages (<abbr linkend="EP"/>) for Server Virtualization and for Client Virtualization. These capabilities have been broken out into this generic ‘base’ PP due to the high degree of similarity between the two product types.<h:br></h:br><h:br></h:br>
-            Due to the increasing prevalence of virtualization technology in enterprise computing environments, it is essential to ensure that this technology is implemented securely in order to mitigate the risk introduced by sharing multiple computers and their data across a single physical system.<h:br></h:br><h:br></h:br>
+            Due to the increasing prevalence of virtualization technology in enterprise computing environments, it is essential to ensure that this technology is implemented securely in order to mitigate the risk introduced by sharing multiple computers and their data across a single physical system.
+            <h:br></h:br>
         </section>
-        
-        <!-- In 1.0 this was two tables, one for CC Terms and one for Technology Terms. Why were they combined? -->
-
+      
         <section title="Terms" id="terms">
            <subsection id="ccterms" title="Common Criteria Terms">
             The following sections define Common Criteria terms used in this PP.
@@ -157,8 +156,8 @@
             <subsection id="equiv" title="Product and Platform Equivalence">
                 The tests in this Protection Profile must be run on all product versions and Platforms with which the Vendor would like to claim compliance—subject to this Profile’s equivalency guidelines (see Annex E).
             </subsection>
-            
         </section>
+
         <section id="usecases" title="Use Cases">
             This base PP does not define any use cases for virtualization technology. Client Virtualization and Server Virtualization products have different use cases and so these are defined in their respective <abbr linkend="EP"/>s.
         </section>
@@ -208,7 +207,7 @@
                     <description>
                         It is a fundamental property of <abbr linkend="VM"/>s that the domains encapsulated by different <abbr linkend="VM"/>s remain separate unless data sharing is permitted by policy. For this reason, all Virtualization Systems shall support a policy that prohibits information transfer between <abbr linkend="VM"/>s.<h:br></h:br><h:br></h:br>
                         It shall be possible to configure <abbr linkend="VM"/>s such that data cannot be moved between domains from <abbr linkend="VM"/> to <abbr linkend="VM"/>, or through virtual or physical network components under the control of the VS. When <abbr linkend="VM"/>s are configured as such, it shall not be possible for data to leak between domains, neither by the express efforts of software or users of a <abbr linkend="VM"/>, nor because of vulnerabilities or errors in the implementation of the <abbr linkend="VMM"/> or other VS components.<h:br></h:br><h:br></h:br>
-                        If it is possible for data to leak between domains when prohibited by policy, then an adversary on one domain or network can obtain data from another domain. Such cross-domain data leakage can, for example, cause classified information, corporate proprietary information, or personally identifiable information to be made accessible to unauthorized entities.<h:br></h:br><h:br></h:br>
+                        If it is possible for data to leak between domains when prohibited by policy, then an adversary on one domain or network can obtain data from another domain. Such cross-domain data leakage can, for example, cause classified information, corporate proprietary information, or personally identifiable information to be made accessible to unauthorized entities.
                     </description>
                     <objective-refer ref="O.VM_ISOLATION">
                         <rationale>Logical separation of <abbr linkend="VM"/>s and enforcement of domain integrity prevent unauthorized transmission of data from one <abbr linkend="VM"/> to another.</rationale>
@@ -314,6 +313,7 @@
                 </threat>
             </threats>
         </section>
+        
         <section id="assumptions" title="Assumptions">
             <assumptions>
                 <assumption id="A.PLATFORM_INTEGRITY">
@@ -415,7 +415,7 @@
                         by careful protection of the <abbr linkend="VMM"/> from untrusted users and software. For example, it must not
                         be possible for software running within a Guest <abbr linkend="VM"/> to exploit a vulnerability in a device or
                         hypercall interface and gain control of the <abbr linkend="VMM"/>. The vendor must release patches for 
-                        vulnerabilities as soon as practicable after discovery.<h:br></h:br><h:br></h:br>
+                        vulnerabilities as soon as practicable after discovery.
                     </description>
                     <component-refer ref="FAU_GEN.1" />
                     <component-refer ref="FAU_CKM.1" />
@@ -507,7 +507,6 @@
                         run on a separate machine or it could itself run in a <abbr linkend="VM"/>. When performing remote management, 
                         an administrator must communicate with a privileged management agent over a network. Communications with the 
                         management infrastructure must be protected from Guest <abbr linkend="VM"/>s and operational networks.
-                        <h:br></h:br><h:br></h:br>
                     </description>
                     <component-refer ref="FAU_GEN.1" />
                     <component-refer ref="FCS_CKM.1" />
@@ -574,32 +573,25 @@
                 <SO id="OE.CONFIG">
                     <description><abbr linkend="TOE"/> administrators will configure the Virtualization System correctly to create the intended security policy.
                     </description>
-                    <component-refer ref="FAU_ALT_EXT.1"/><!-- HERE this is incorrect, I just grabbed something for filler -->
                 </SO>
                 <SO id="OE.PHYSICAL">
                     <description>Physical security, commensurate with the value of the <abbr linkend="TOE"/> and the data it contains, is provided by the environment.
                     </description>
-                    <component-refer ref="FAU_ALT_EXT.1"/><!-- HERE this is incorrect, I just grabbed something for filler -->
                 </SO>
                 <SO id="OE.TRUSTED_ADMIN">
                     <description><abbr linkend="TOE"/> Administrators are trusted to follow and apply all administrator guidance in a trusted manner.
                     </description>
-                    <component-refer ref="FAU_ALT_EXT.1"/><!-- HERE this is incorrect, I just grabbed something for filler -->
                 </SO>
                 <SO id="OE.COVERT_CHANNELS">
                     <description>If the <abbr linkend="TOE"/> has covert storage or timing channels, then for all <abbr linkend="VM"/>s executing on that <abbr linkend="TOE"/>, it is assumed that those <abbr linkend="VM"/>s will have sufficient assurance relative to the IT assets to which they have access, to outweigh the risk that they will violate the security policy of the <abbr linkend="TOE"/> by using those covert channels.
                     </description>
-                    <component-refer ref="FAU_ALT_EXT.1"/><!-- HERE this is incorrect, I just grabbed something for filler -->
                 </SO>
                 <SO id="OE.NON_MALICIOUS_USER">
                     <description>Users are trusted to be not willfully negligent or hostile and use the VS in compliance with the applied enterprise security policy and guidance.
                     </description>
-                    <component-refer ref="FAU_ALT_EXT.1"/><!-- HERE this is incorrect, I just grabbed something for filler -->
                 </SO>
-                
             </SOs>
         </section>
-
     </chapter>
     
     <!-- SECURITY REQUIREMENTS -->
