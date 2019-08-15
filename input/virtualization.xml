@@ -665,7 +665,7 @@
                             administrative guide, and that the fields in each audit record have the proper entries.<h:br></h:br>
                             <h:br></h:br>
                             Note that the testing here can be accomplished in conjunction with the testing of the security mechanisms 
-                            directly.<h:br></h:br><h:br></h:br>
+                            directly.<h:br></h:br>
                             <!-- HERE do table 1 from page 22 -->
                             <h:table border="1">
                                 <h:caption>Table 1: Auditable Events</h:caption>
@@ -875,7 +875,6 @@
                             
                             
                             
-                            
                             <!-- HERE do the table on page 78 here??, Table 2: Auditable Events -->
                             <!-- HERE do the table on page 80 here???, Table 3: Auditable Events -->
                             <!-- HERE table from 114?? -->
@@ -885,6 +884,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+                
+                <!-- FAU_SAR.1 -->
                 <f-component id="FAU_SAR.1" name="Audit Review">
                     <f-element id="FAU_SAR.1.1">
                         <title>The <abbr linkend="TSF"/> shall provide [administrators] with the capability to read [all information] from the audit records.
@@ -897,6 +898,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+                
+                <!-- FAU_STG.1 -->
                 <f-component id="FAU_STG.1" name="Protected Audit Trail Storage">
                     <f-element id="FAU_STG.1.1">
                         <title>The <abbr linkend="TSF"/> shall protect the stored audit records in the audit trail from unauthorized deletion.
@@ -914,6 +917,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+
+                <!-- FAU_STG_EXT.1 -->
                 <f-component id="FAU_STG_EXT.1" name="Off-Loading of Audit Data">
                     <f-element id="FAU_STG_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall be able to transmit the generated audit data to an external IT entity using a trusted channel as specified in FTP_ITC_EXT.1.
@@ -945,6 +950,7 @@
                     </f-element>
                 </f-component>
                 
+                <!-- FAU_ARP.1 !!!!! This requirement does not appear in the Optional Annex as it should. -->
                 <f-component id="FAU_ARP.1" name="Security Audit Automatic Response"  status="optional">
                     <f-element id="FAU_ARP.1.1">
                         <title>The <abbr linkend="TSF"/> shall take <assignable>list of actions</assignable> upon detection of a potential security violation.
@@ -955,6 +961,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+                
+                <!-- FAU_SAA.1 !!!!! This does not appear in the Optional Annex as it should -->
                 <f-component id="FAU_SAA.1" name="Security Audit Analysis"  status="optional">
                     <f-element id="FAU_SAA.1.1">
                         <title>The <abbr linkend="TSF"/> shall be able to apply a set of rules in monitoring the audited events and based upon these rules indicate a potential violation of the enforcement of the SFRs.
@@ -973,7 +981,10 @@
                     </f-element>
                 </f-component>
             </subsection>
+            
             <subsection id="fcs" title="Cryptographic Support">
+                
+                <!-- FCS_CKM.1 -->
                 <f-component id="FCS_CKM.1" name="Cryptographic Key Generation">
                     <f-element id="FCS_CKM.1.1">
                         <title> The <abbr linkend="TSF"/> shall generate asymmetric cryptographic keys in accordance with a specified cryptographic key generation algorithm
@@ -1057,6 +1068,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+                
+                <!-- FCS_CKM.2 -->
                 <f-component id="FCS_CKM.2" name="Cryptographic Key Establishment">
                     <f-element id="FCS_CKM.2.1">
                         <title>The <abbr linkend="TSF"/> shall perform cryptographic key establishment in accordance with a specified cryptographic key establishment method:
@@ -1096,6 +1109,7 @@
                     </f-element>
                 </f-component>
 
+                <!-- FCS_CKM_EXT.4 -->
                 <f-component id="FCS_CKM_EXT.4" name="Cryptographic Key Destruction">
                     <f-element id="FCS_CKM_EXT.4.1">
                         <title>The <abbr linkend="TSF"/> shall cause disused cryptographic keys in volatile memory to be destroyed or rendered unrecoverable.
@@ -1136,6 +1150,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+                
+                <!-- FCS_COP.1(1) -->
                 <f-component id="FCS_COP.1(1)" name="Cryptographic Operation (AES Data Encryption/ Decryption)">
                     <f-element id="FCS_COP.1.1(1)">
                         <title>
@@ -1266,6 +1282,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+                
+                <!-- FCS_COP.1(2) -->
                 <f-component id="FCS_COP.1(2)" name="Cryptographic Operation (Hashing)">
                     <f-element id="FCS_COP.1.1(2)">
                         <title>The <abbr linkend="TSF"/> shall perform [cryptographic hashing] in accordance with a specified cryptographic algorithm
@@ -1328,6 +1346,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+                
+                <!-- FCS_COP.1(3) -->
                 <f-component id="FCS_COP.1(3)" name="Cryptographic Operation (Signature Algorithms)">
                     <f-element id="FCS_COP.1.1(3)">
                         <title>The <abbr linkend="TSF"/> shall perform [<h:i>cryptographic signature services (generation and verification)</h:i>] in accordance with a specified cryptographic algorithm
@@ -1366,6 +1386,7 @@
                     </f-element>
                 </f-component>
                 
+                <!-- FCS_COP.1(4) -->
                 <f-component id="FCS_COP.1(4)" name="Cryptographic Operation (Keyed Hash algorithms)">
                     <f-element id="FCS_COP.1.1(4)">
                         <title>The <abbr linkend="TSF"/> shall perform [<h:i>keyed-hash message authentication</h:i>] in accordance with a specified cryptographic algorithm
@@ -1394,6 +1415,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+                
+                <!-- FCS_ENT_EXT.1 -->
                 <f-component id="FCS_ENT_EXT.1" name="Extended: Entropy for Virtual Machines">
                     <f-element id="FCS_ENT_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall provide a mechanism to make available to <abbr linkend="VM"/>s entropy that meets FCS_RBG_EXT.1 through
@@ -1422,6 +1445,7 @@
                     </f-element>
                 </f-component>
                 
+                <!-- FCS_RBG_EXT.1 -->
                 <f-component id="FCS_RBG_EXT.1" name="Cryptographic Operation (Random Bit Generation)">
                     <f-element id="FCS_RBG_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall perform all deterministic random bit generation services in accordance with NIST Special Publication 800-90A using
@@ -1463,7 +1487,9 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-            <f-component id="FCS_HTTPS_EXT.1" name="HTTPS Protocol"  status="sel-based">
+                
+                <!-- FCS_HTTPS_EXT.1 !!!!! Does not appear in Selecton-Based section -->
+                <f-component id="FCS_HTTPS_EXT.1" name="HTTPS Protocol"  status="sel-based">
                     <selection-depends req="FTP_ITC_EXT.1.1"/><!-- HERE check this -->
                     <f-element id="FCS_HTTPS_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall implement the HTTPS protocol that complies with RFC 2818.
@@ -1477,6 +1503,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+                
+                <!-- FCS_IPSEC_EXT.1 !!!!! Does not appeas in Selection-Based annex -->
                 <f-component id="FCS_IPSEC_EXT.1" name="IPsec Protocol"  status="sel-based">
                     <selection-depends req="FTP_ITC_EXT.1.1"/><!-- HERE check this -->
                     <f-element id="FCS_IPSEC_EXT.1.1">
@@ -1559,7 +1587,6 @@
                                         <selectable>RFC 4868 for hash functions</selectable>
                                     </selectables>.</selectable>
                             </selectables>
-                            
                         </title>
                         <note role="application">If the <abbr linkend="TOE"/> implements SHA-2 hash algorithms for IKEv1 or IKEv2, the <abbr linkend="ST"/> author shall select RFC 4868. If the <abbr linkend="ST"/> author selects IKEv1, FCS_IPSEC_EXT.1.15 must also be included in the <abbr linkend="ST"/>.</note>
                         <aactivity><abbr linkend="TSS"/>
@@ -1792,7 +1819,10 @@
                     </f-element>
                 </f-component>
             </subsection>
+
             <subsection id="fdp" title="User Data Protection">
+
+                <!-- FDP_HBI_EXT.1 -->
                 <f-component id="FDP_HBI_EXT.1" name="Hardware-Based Isolation Mechanisms">
                     <f-element id="FDP_HBI_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall use
@@ -1803,8 +1833,7 @@
                             <selectables>
                                 <selectable>no devices</selectable>
                                 <selectable><assignable> physical devices to which the <abbr linkend="VMM"/> allows Guest <abbr linkend="VM"/>s physical access</assignable></selectable>
-                            </selectables>.
-                            
+                            </selectables>.                        
                         </title>
                         <note role="application">The <abbr linkend="TSF"/> must use available hardware-based isolation mechanisms to constrain <abbr linkend="VM"/>s when <abbr linkend="VM"/>s have direct access to physical devices. “Direct access” in this context means that the <abbr linkend="VM"/> can read or write device memory or access device I/O ports without the <abbr linkend="VMM"/> being able to intercept and validate every transaction.</note>
                         <aactivity>The evaluator shall verify that the operational guidance contains instructions on how to ensure that the platform-provided, hardware-based mechanisms are enabled.<h:br></h:br><h:br></h:br>
@@ -1812,6 +1841,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+
+                <!-- FDP_PPR_EXT.1 -->
                 <f-component id="FDP_PPR_EXT.1" name="Physical Platform Resource Controls">
                     <f-element id="FDP_PPR_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall allow an authorized administrator to control Guest <abbr linkend="VM"/> access to the following physical platform resources: <assignable>list of physical platform resources the <abbr linkend="VMM"/> is able to control access to</assignable>.
@@ -1849,6 +1880,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+                
+                <!-- FDP_RIP_EXT.1 -->
                 <f-component id="FDP_RIP_EXT.1" name="Residual Information in Memory">
                     <f-element id="FDP_RIP_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall ensure that any previous information content of physical memory is cleared prior to allocation to a Guest <abbr linkend="VM"/>.
@@ -1863,6 +1896,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+
+                <!-- FDP_RIP_EXT.2 -->
                 <f-component id="FDP_RIP_EXT.2" name="Residual Information on Disk">
                     <f-element id="FDP_RIP_EXT.2.1">
                         <title>The <abbr linkend="TSF"/> shall ensure that any previous information content of physical disk storage is cleared prior to allocation to a Guest <abbr linkend="VM"/>.
@@ -1880,6 +1915,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+
+                <!-- FDP_VMS_EXT.1 -->
                 <f-component id="FDP_VMS_EXT.1" name="VM Separation">
                     <f-element id="FDP_VMS_EXT.1.1">
                         <title>The VS shall provide the following mechanisms for transferring data between Guest <abbr linkend="VM"/>s:
@@ -1931,15 +1968,14 @@
                                     
                                 </test>
                             </testlist>
-                                    FMT_MSA_EXT.1.1 is met if communication is unsuccessful in step (b). FMT_MSA_EXT.1.2 is met if communication is successful in step (d). Additionally, FMT_MSA_EXT.1 requires that the evaluator verifies that the <abbr linkend="TSS"/> documents the inter-VM communications mechanisms as described above.
-                                
-                                
-                                
+                            FMT_MSA_EXT.1.1 is met if communication is unsuccessful in step (b). FMT_MSA_EXT.1.2 is met if communication is successful in step (d). Additionally, FMT_MSA_EXT.1 requires that the evaluator verifies that the <abbr linkend="TSS"/> documents the inter-VM communications mechanisms as described above.
                             The evaluator must ensure that the <abbr linkend="ST"/> includes the following statement attesting that there are no other ways for data to be transferred between <abbr linkend="VM"/>s other than those listed in FDP_VMS_EXT.1.1:<h:br></h:br><h:br></h:br>
                             A Guest <abbr linkend="VM"/> cannot access the data of another Guest <abbr linkend="VM"/>, or transfer data to another Guest <abbr linkend="VM"/> other than through the mechanisms described in FDP_VMS_EXT.1.1 when expressly enabled by an authorized Administrator. There are no design or implementation flaws that permit the above mechanisms to be bypassed or defeated, or for data to be transferred through undocumented mechanisms. This claim does not apply to covert channels or architectural side-channels.
                         </aactivity>
                     </f-element>
                 </f-component>
+                
+                <!-- FDP_VNC_EXT.1 -->
                 <f-component id="FDP_VNC_EXT.1" name="Virtual Networking Components">
                     <f-element id="FDP_VNC_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall allow Administrators to configure virtual networking components to connect <abbr linkend="VM"/>s to each other, and to physical networks.
@@ -1964,7 +2000,10 @@
                     </f-element>
                 </f-component>
             </subsection>
+            
             <subsection id="fia" title="Identification and Authentication">
+                
+                <!-- FIA_AFL_EXT.1 -->
                 <f-component id="FIA_AFL_EXT.1" name="Authentication Failure Handling">
                     <f-element id="FIA_AFL_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall detect when
@@ -2028,6 +2067,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+
+                <!-- FIA_UAU.5 -->
                 <f-component id="FIA_UAU.5" name="Multiple Authentication Mechanisms">
                     <f-element id="FIA_UAU.5.1">
                         <title>The <abbr linkend="TSF"/> shall provide the following authentication mechanisms:
@@ -2087,6 +2128,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+
+                <!-- FIA_UIA_EXT.1 -->
                 <f-component id="FIA_UIA_EXT.1" name="Administrator Identification and Authentication">
                     <f-element id="">
                         <title>The <abbr linkend="TSF"/> shall require Administrators to be successfully identified and authenticated using one of the methods in FIA_UAU.5 before allowing any <abbr linkend="TSF"/>-mediated management function to be performed by that Administrator.
@@ -2096,6 +2139,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+
+                <!-- FIA_PMG_EXT.1 !!!!! Not there -->
                 <f-component id="FIA_PMG_EXT.1" name="Password Management"  status="sel-based">
                     <selection-depends req="FIA_UAU.5.1"/><!-- HERE check this -->
                     <f-element id="FIA_PMG_EXT.1.1">
@@ -2128,6 +2173,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+
+                <!-- FIA_X509_EXT.1 !!!!! -->
                 <f-component id="FIA_X509_EXT.1" name="X.509 Certificate Validation"  status="sel-based">
                     <selection-depends req="FIA_UAU.5.2"/><!-- HERE check this -->
                     <f-element id="FIA_X509_EXT.1.1">
@@ -2176,6 +2223,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+
+                <!-- FIA_X509_EXT.2 !!!!! -->
                 <f-component id="FIA_X509_EXT.2" name="X.509 Certificate Authentication"  status="sel-based">
                     <selection-depends req="FPT_TUD_EXT.1.3"/><!-- HERE check this -->
                     <f-element id="FIA_X509_EXT.2.1">
@@ -2215,7 +2264,10 @@
                     </f-element>
                 </f-component>
             </subsection>
+            
             <subsection id="fmt" title="Security Management">
+                
+                <!-- FMT_MSA_EXT.1 -->
                 <f-component id="FMT_MSA_EXT.1" name="Default Data Sharing Configuration">
                     <f-element id="FMT_MSA_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall by default enforce a policy prohibiting sharing of data between Guest <abbr linkend="VM"/>s using
@@ -2241,6 +2293,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+                
+                <!-- FMT_SMO_EXT.1 -->
                 <f-component id="FMT_SMO_EXT.1" name="Separation of Management and Operational Networks">
                     <f-element id="FMT_SMO_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall support the configuration of separate management and operational networks through
@@ -2266,7 +2320,10 @@
                     </f-element>
                 </f-component>
             </subsection>
+            
             <subsection id="fpt" title="Protection of the TSF">
+                
+                <!-- FPT_DVD_EXT.1 -->
                 <f-component id="FPT_DVD_EXT.1" name="Non-Existence of Disconnected Virtual Devices">
                     <f-element id="FPT_DVD_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall limit a Guest <abbr linkend="VM"/>’s access to virtual devices to those that are present in the <abbr linkend="VM"/>’s current virtual hardware configuration.
@@ -2278,6 +2335,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+
+                <!-- FPT_EEM_EXT.1 -->
                 <f-component id="FPT_EEM_EXT.1" name="Execution Environment Mitigations">
                     <f-element id="FPT_EEM_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall take advantage of execution environment-based vulnerability mitigation mechanisms supported by the Platform such as:
@@ -2298,6 +2357,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+                
+                <!-- FPT_HAS_EXT.1 -->
                 <f-component id="FPT_HAS_EXT.1" name="Hardware Assists">
                     <f-element id="FPT_HAS_EXT.1.1">
                         <title>The <abbr linkend="VMM"/> shall use <assignable>list of hardware-based virtualization assists</assignable> to reduce or eliminate the need for binary translation.
@@ -2314,6 +2375,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+
+                <!-- FPT_HCL_EXT.1 -->
                 <f-component id="FPT_HCL_EXT.1" name="Hypercall Controls">
                     <f-element id="FPT_HCL_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall provide a Hypercall interface for Guest <abbr linkend="VM"/>s to use to invoke functionality provided by the <abbr linkend="VMM"/>.
@@ -2360,6 +2423,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+
+                <!-- FPT_RDM_EXT.1 -->
                 <f-component id="FPT_RDM_EXT.1" name="Removable Devices and Media">
                     <f-element id="FPT_RDM_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall implement controls for handling the transfer of virtual and physical removable media and virtual and physical removable media devices between information domains.
@@ -2398,6 +2463,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+
+                <!-- FPT_TUD_EXT.1 -->
                 <f-component id="FPT_TUD_EXT.1" name="Trusted Updates to the Virtualization System">
                     <f-element id="FPT_TUD_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall provide administrators the ability to query the currently executed version of the <abbr linkend="TOE"/> firmware/software as well as the most recently installed version of the <abbr linkend="TOE"/> firmware/software.
@@ -2443,6 +2510,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+                
+                <!-- FPT_TUD_EXT.2 !!!!! Missing -->
                 <f-component id="FPT_TUD_EXT.2" name="Trusted Update Based on Certificates"  status="sel-based">
                     <selection-depends req="FIA_X509_EXT.2.1"/><!-- HERE check this -->
                     <f-element id="FPT_TUD_EXT.2.1">
@@ -2454,6 +2523,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+
+                <!-- FPT_VDP_EXT.1 -->
                 <f-component id="FPT_VDP_EXT.1" name="Virtual Device Parameters">
                     <f-element id="FPT_VDP_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall provide interfaces for virtual devices implemented by the <abbr linkend="VMM"/> as part of the virtual hardware abstraction.
@@ -2481,6 +2552,8 @@
                         </note>
                     </f-element>
                 </f-component>
+
+                <!-- FPT_VIV_EXT.1 -->
                 <f-component id="FPT_VIV_EXT.1" name="VMM Isolation from VMs">
                     <f-element id="FPT_VIV_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> must ensure that software running in a <abbr linkend="VM"/> is not able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform.
@@ -2506,6 +2579,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+
+                <!-- FPT_GVI_EXT.1 !!!!! Optional -->
                 <f-component id="FPT_GVI_EXT.1" name="Guest VM Integrity"  status="optional">
                     <f-element id="FPT_GVI_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall verify the integrity of Guest <abbr linkend="VM"/>s through the following mechanisms: <assignable>list of Guest <abbr linkend="VM"/> integrity mechanisms</assignable>.
@@ -2515,6 +2590,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+
+                <!-- FPT_DDI_EXT.1 !!!!! Objective -->
                 <f-component id="FPT_DDI_EXT.1" name="Device Driver Isolation"  status="objective">
                     <f-element id="FPT_DDI_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall ensure that device drivers for physical devices are isolated from the <abbr linkend="VMM"/> and all other domains.
@@ -2524,6 +2601,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+
+                <!-- FPT_IDV_EXT.1 !!!!! Objective -->
                 <f-component id="FPT_IDV_EXT.1" name="Software Identification and Versions"  status="objective">
                     <f-element id="FPT_IDV_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall include software identification (SWID) tags that contain a SoftwareIdentity element and an Entity element as defined in ISO/IEC 19770-2:2009.
@@ -2541,6 +2620,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+
+                <!-- FPT_INT_EXT.1 !!!!! Objective -->
                 <f-component id="FPT_INT_EXT.1" name="Support for Introspection"  status="objective">
                     <f-element id="FPT_INT_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall support a mechanism for permitting the <abbr linkend="VMM"/> or privileged <abbr linkend="VM"/>s to access the internals of another <abbr linkend="VM"/> for purposes of introspection.
@@ -2552,6 +2633,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+
+                <!-- FPT_ML_EXT.1 !!!!! Objective -->
                 <f-component id="FPT_ML_EXT.1" name="Measured Launch of Platform and VMM"  status="objective">
                     <f-element id="FPT_ML_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall support a measured launch of the Virtualization System. Measured components of the Virtualization system shall include the static executable image of the Hypervisor and:
@@ -2581,7 +2664,10 @@
                     </f-element>
                 </f-component>
             </subsection>
+
             <subsection id="fta" title="TOE Access">
+                
+                <!-- FTA_TAB.1 -->
                 <f-component id="FTA_TAB.1" name="TOE Access Banner">
                     <f-element id="FTA_TAB.1.1">
                         <title>Before establishing an administrative user session, the <abbr linkend="TSF"/> shall display a
@@ -2598,7 +2684,10 @@
                     </f-element>
                 </f-component>
             </subsection>
+            
             <subsection id="ftp" title="Trusted Path/Channel">
+                
+                <!-- FTP_ITC_EXT.1 -->
                 <f-component id="FTP_ITC_EXT.1" name="Trusted Channel Communications">
                     <f-element id="FTP_ITC_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall use
@@ -2626,6 +2715,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+
+                <!-- FTP_UIF_EXT.1 -->
                 <f-component id="FTP_UIF_EXT.1" name="User Interface: I/O Focus">
                     <f-element id="FTP_UIF_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall indicate to users which <abbr linkend="VM"/>, if any, has the current input focus.
@@ -2642,6 +2733,8 @@
                         </aactivity>
                     </f-element>
                 </f-component>
+
+                <!-- FTP_UIF_EXT.2 -->
                 <f-component id="FTP_UIF_EXT.2" name="User Interface: Identification of VM">
                     <f-element id="FTP_UIF_EXT.2.1">
                         <title>The <abbr linkend="TSF"/> shall support the unique identification of a <abbr linkend="VM"/>’s output display to users.
@@ -2654,7 +2747,9 @@
                         </aactivity>
                     </f-element>
                 </f-component>
-                 <f-component id="FTP_TRP.1" name="Trusted Path"  status="sel-based">
+
+                <!-- FTP_TRP.1 !!!!! -->
+                <f-component id="FTP_TRP.1" name="Trusted Path"  status="sel-based">
                     <selection-depends req="FTP_ITC_EXT.1.1"/><!-- HERE check this -->
                     <f-element id="FTP_TRP.1.1">
                         <title>The <abbr linkend="TSF"/> shall use a trusted channel as specified in FTP_ITC_EXT.1 to provide a trusted communication path between itself and [remote] administrators that is logically distinct from other communication paths and provides assured identification of its end points and protection of the communicated data from [modification, disclosure].
@@ -2681,6 +2776,7 @@
                 </f-component>
             </subsection>
         </section>
+
         <section id="sar" title="TOE Security Assurance Requirements">
             The Security Objectives for the <abbr linkend="TOE"/> in Section 4 were constructed to address threats identified in Section 3.1. The Security Functional Requirements (SFRs) in Section 5.1 are a formal instantiation of the Security Objectives. The PP identifies the Security Assurance Requirements (SARs) to frame the extent to which the evaluator assesses the documentation applicable for the evaluation and performs independent testing.<h:br></h:br><h:br></h:br>
             This section lists the set of Security Assurance Requirements (SARs) from Part 3 of the Common Criteria for Information Technology Security Evaluation, Version 3.1, Revision 4 that are required in evaluations against this PP. Individual assurance activities to be performed are specified in both Section 5.1 as well as in this section.<h:br></h:br><h:br></h:br>
@@ -2977,13 +3073,15 @@
         </section>
     </chapter>
     
+    <!-- Annex A: OPTIONAL Requirements -->
+    
     <appendix id="opt" title="Optional Requirements">
-        As indicated in Section 2, the baseline requirements (those that must be performed by the <abbr linkend="TOE"/>) are contained in the body of this PP. Additionally, there are three other types of requirements specified in Appendix A, Appendix B, and Appendix C. The first type (in this Appendix) are requirements that can be included in the <abbr linkend="ST"/>, but are not required in order for a <abbr linkend="TOE"/> to claim conformance to this PP. The second type (in Appendix B) are requirements based on selections in the body of the PP: if certain selections are made, then additional requirements in that appendix must be included. The third type (in Appendix C) are components that are not required in order to conform to this PP, but will be included in the baseline requirements in future versions of this PP, so adoption by vendors is encouraged. Note that the <abbr linkend="ST"/> author is responsible for ensuring that requirements that may be associated with those in Appendix A, Appendix B, and Appendix C but are not listed (e.g., FMT-type requirements) are also included in the <abbr linkend="ST"/>.<h:br></h:br><h:br></h:br>
+    <h:br></h:br><h:br></h:br>
         
         <h:b>Auditable Events</h:b><h:br></h:br><h:br></h:br>
         Depending on the specific requirements selected by the <abbr linkend="ST"/> author, the <abbr linkend="ST"/>/<abbr linkend="TOE"/> should include the appropriate auditable events from the table below in the <abbr linkend="ST"/> as part of the FAU_GEN.1 claim.<h:br></h:br><h:br></h:br>
         
-        <!-- HERE table from page 78 -->
+        <!-- Table 2: HERE table from page 78 -->
         <h:table border="1">
             <h:caption>Table 2: Auditable Events</h:caption>
             <h:TR class="header">
@@ -3008,10 +3106,10 @@
                 <h:td>None.</h:td>
             </h:tr>
         </h:table>
-        
     </appendix>
+
+    <!-- ANNEX B: Selection-Based -->
     <appendix id="sel" title="Selection-Based Requirements">
-        As indicated in the introduction to this PP, the baseline requirements (those that must be performed by the <abbr linkend="TOE"/> or its underlying platform) are contained in the body of the PP. There are additional requirements based on selections in the body of the PP: if certain selections are made, then additional requirements below will need to be included.<h:br></h:br><h:br></h:br>
         
         <h:b>FAU_GEN.1 Auditable Events Table (Optional)</h:b><h:br></h:br><h:br></h:br>
         The following additional auditable events may be claimed by the <abbr linkend="ST"/> author if “additional information
@@ -3084,11 +3182,11 @@
                 <h:td>User ID and remote source (IP address) if feasible.</h:td>
             </h:tr>
         </h:table>
-        
     </appendix>
+
+    <!-- Annex C: Objective Requirements -->
     <appendix id="obj-req" title="Objective Requirements">
-        This Annex includes requirements that specify security functionality which also addresses threats. The requirements are not currently mandated in the body of this PP as they describe security functionality not yet widely available in commercial technology. However, these requirements may be included in the <abbr linkend="ST"/> such that the <abbr linkend="TOE"/> is still conformant to this PP, and it is expected that they be included as soon as possible.<h:br></h:br><h:br></h:br>
-        
+      
         <h:b>Auditable Events</h:b>
         Depending on the specific objective SFRs that are claimed by the <abbr linkend="ST"/>/<abbr linkend="TOE"/>, the <abbr linkend="ST"/> author shall include the appropriate auditable events listed below in the claims made for FAU_GEN.1.<h:br></h:br><h:br></h:br>
         <!-- HERE table from page 118 -->
@@ -3121,6 +3219,8 @@
             </h:tr>
         </h:table>
     </appendix>
+
+    <!-- Annex D: Entropy Documentation and Assessment -->
     <appendix id="ent" title="Entropy Documentation and Assessment">
         <section id="design" title="Design Description">
             Documentation shall include the design of the entropy source as a whole, including the interaction of all entropy source components. It will describe the operation of the entropy source to include how it works, how entropy is produced, and how unprocessed (raw) data can be obtained from within the entropy source for testing purposes. The documentation should walk through the entropy source design indicating where the random comes from, where it is passed next, any post-processing of the raw outputs (hash, XOR, etc.), if/where it is stored, and finally, how it is output from the entropy source. Any conditions placed on the process (e.g., blocking) should also be described in the entropy source design. Diagrams and examples are encouraged.<h:br></h:br><h:br></h:br>
@@ -3137,7 +3237,8 @@
         </section>
     </appendix>
 
-    <appendix id="equiv" title="Virtualization PP Equivalency Guidlines">
+    <!-- Annex E: Equivalency Cuidelines -->
+    <appendix id="equiv" title="Equivalency Guidlines">
         <section id="vm-intro" title="Introduction">
           The purpose of equivalence in PP-based evaluations is to find a balance between evaluation rigor and commercial
             practicability--to ensure that evaluations meet customer expectations while recognizing that there is little to be gained
@@ -3163,7 +3264,6 @@
       <h:br />
       <h:br />
       Equivalence has two aspects:
-      <h:br />
       <h:br />
       <h:ol>
         <h:li><h:b><h:i>Product Equivalence:</h:i></h:b> Products may be considered equivalent if there are no
@@ -3214,7 +3314,6 @@
       or model, then equivalence is broken. If the functionality is implemented by the platform in multiple models or
       versions on equivalent platforms, then the functionality is considered different if the product invokes the platform
       differently to perform the function.
-      
     </section>
     <section id="modelequiv" title="Specific Guidance for Determining Product Model Equivalence">
       Product Model equivalence attempts to determine whether different feature levels of the same product across
@@ -3239,7 +3338,7 @@
           <h:td valign="top">Product Models that virtualize different instruction sets (e.g. x86, ARM, POWER, SPARC, MIPS)
               are not equivalent.</h:td>
         </h:tr>
-        <h:tr bgcolor="#cccccc">
+        <h:tr>
           <h:td valign="top">Installation Types</h:td>
           <h:td valign="top">Different</h:td>
           <h:td valign="top">If a Product can be installed either on bare metal or onto an operating system (either Type 1 or Type
@@ -3253,7 +3352,7 @@
               operating systems, are not equivalent. Models that install on different versions of the same software environment
               may be equivalent depending on the below factors.</h:td>
         </h:tr>
-        <h:tr bgcolor="#cccccc">
+        <h:tr>
           <h:td rowspan="2" valign="top">PP-Specified Functionality</h:td>
           <h:td valign="top">Same</h:td>
           <h:td valign="top">If the differences between Models affect only non-PP-specified functionality, then the Models are equivalent. </h:td>
@@ -3347,7 +3446,7 @@
             <h:td valign="top">Different</h:td>
             <h:td valign="top">Haardware platforms that implement different processor architectures and instruction sets are not equivalent.</h:td>
           </h:tr>
-          <h:tr bgcolor="#cccccc">
+          <h:tr>
             <h:td valign="top">PP-Specified Functionality</h:td>
             <h:td valign="top">Same</h:td>
             <h:td valign="top">For platforms with the same processor architecture, the platforms are equivalent with
