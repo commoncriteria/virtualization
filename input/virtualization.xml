@@ -33,6 +33,7 @@
     - DONE: 0363 Access Banner and applicability to programmatic interfaces
     - OBEV: 0403 Conditional Testing with TLS Session IDs
     - DONE: 0432: Corrections to FIA_AFL_EXT.1
+    - DONE: 0433: Assurance activity for FIA_X509_EXT.1.2
 
     - DONE: Add Equivalency section (Annex E)
 
@@ -950,7 +951,7 @@
                     </f-element>
                 </f-component>
                 
-                <!-- FAU_ARP.1 !!!!! This requirement does not appear in the Optional Annex as it should. -->
+                <!-- FAU_ARP.1 -->
                 <f-component id="FAU_ARP.1" name="Security Audit Automatic Response"  status="optional">
                     <f-element id="FAU_ARP.1.1">
                         <title>The <abbr linkend="TSF"/> shall take <assignable>list of actions</assignable> upon detection of a potential security violation.
@@ -962,7 +963,7 @@
                     </f-element>
                 </f-component>
                 
-                <!-- FAU_SAA.1 !!!!! This does not appear in the Optional Annex as it should -->
+                <!-- FAU_SAA.1 -->
                 <f-component id="FAU_SAA.1" name="Security Audit Analysis"  status="optional">
                     <f-element id="FAU_SAA.1.1">
                         <title>The <abbr linkend="TSF"/> shall be able to apply a set of rules in monitoring the audited events and based upon these rules indicate a potential violation of the enforcement of the SFRs.
@@ -1488,7 +1489,7 @@
                     </f-element>
                 </f-component>
                 
-                <!-- FCS_HTTPS_EXT.1 !!!!! Does not appear in Selecton-Based section -->
+                <!-- FCS_HTTPS_EXT.1 -->
                 <f-component id="FCS_HTTPS_EXT.1" name="HTTPS Protocol"  status="sel-based">
                     <selection-depends req="FTP_ITC_EXT.1.1"/><!-- HERE check this -->
                     <f-element id="FCS_HTTPS_EXT.1.1">
@@ -1504,7 +1505,7 @@
                     </f-element>
                 </f-component>
                 
-                <!-- FCS_IPSEC_EXT.1 !!!!! Does not appeas in Selection-Based annex -->
+                <!-- FCS_IPSEC_EXT.1 -->
                 <f-component id="FCS_IPSEC_EXT.1" name="IPsec Protocol"  status="sel-based">
                     <selection-depends req="FTP_ITC_EXT.1.1"/><!-- HERE check this -->
                     <f-element id="FCS_IPSEC_EXT.1.1">
@@ -2140,7 +2141,7 @@
                     </f-element>
                 </f-component>
 
-                <!-- FIA_PMG_EXT.1 !!!!! Not there -->
+                <!-- FIA_PMG_EXT.1 -->
                 <f-component id="FIA_PMG_EXT.1" name="Password Management"  status="sel-based">
                     <selection-depends req="FIA_UAU.5.1"/><!-- HERE check this -->
                     <f-element id="FIA_PMG_EXT.1.1">
@@ -2174,7 +2175,7 @@
                     </f-element>
                 </f-component>
 
-                <!-- FIA_X509_EXT.1 !!!!! -->
+                <!-- FIA_X509_EXT.1 -->
                 <f-component id="FIA_X509_EXT.1" name="X.509 Certificate Validation"  status="sel-based">
                     <selection-depends req="FIA_UAU.5.2"/><!-- HERE check this -->
                     <f-element id="FIA_X509_EXT.1.1">
@@ -2216,15 +2217,14 @@
                                 <test>The evaluator shall demonstrate that validating a certificate without a valid certification path results in the function (application validation, trusted channel setup, or trusted software update) failing. The evaluator shall then load a certificate or certificates needed to validate the certificate to be used in the function, and demonstrate that the function succeeds. The evaluator then shall delete one of the certificates, and show that the function fails.</test>
                                 <test>The evaluator shall demonstrate that validating an expired certificate results in the function failing.</test>
                                 <test>The evaluator shall test that the <abbr linkend="TOE"/> can properly handle revoked certificates –conditional on whether CRL or OCSP is selected; if both are selected, and then a test is performed for each method. The evaluator has to only test one up in the trust chain (future revisions may require to ensure the validation is done up the entire chain). The evaluator shall ensure that a valid certificate is used, and that the validation function succeeds. The evaluator then attempts the test with a certificate that will be revoked (for each method chosen in the selection) to ensure when the certificate is no longer valid that the validation function fails.</test>
-                                <test>The evaluator shall construct a certificate path, such that the certificate of the CA issuing the <abbr linkend="TOE"/>’s certificate does not contain the basicConstraints extension. The validation of the certificate path fails.</test>
-                                <test>The evaluator shall construct a certificate path, such that the certificate of the CA issuing the <abbr linkend="TOE"/>’s certificate has the cA flag in the basicConstraints extension not set. The validation of the certificate path fails.</test>
-                                <test>The evaluator shall construct a certificate path, such that the certificate of the CA issuing the <abbr linkend="TOE"/>’s certificate has the cA flag in the basicConstraints extension set to TRUE. The validation of the certificate path succeeds.</test>
+                                <test>The evaluator shall ensure that at least one of the CAs in the chain does not contain the basicConstraints extension. The evaluator confirms that the TOE rejects such a certificate at one (or both) of the following points: (i) as part of the validation of the leaf certificate belonging to this chain; (ii) when attempting to add a CA certificate without the basicConstraints extension to the TOE’s trust store (i.e. when attempting to install the CA certificate as one which will be retrieved from the TOE itself when validating future certificate chains)</test>
+                                <test>The evaluator shall ensure that at least one of the CA certificates in the chain has a basicConstraints extension in which the CA flag is set to FALSE. The evaluator confirms that the TOE rejects such a certificate at one (or both) of the following points: (i) as part of the validation of the leaf certificate belonging to this chain; (ii) when attempting to add a CA certificate with the CA flag set to FALSE to the TOE’s trust store (i.e. when attempting to install the CA certificate as one which will be retrieved from the TOE itself when validating future certificate chains).</test>
                             </testlist>
                         </aactivity>
                     </f-element>
                 </f-component>
 
-                <!-- FIA_X509_EXT.2 !!!!! -->
+                <!-- FIA_X509_EXT.2 -->
                 <f-component id="FIA_X509_EXT.2" name="X.509 Certificate Authentication"  status="sel-based">
                     <selection-depends req="FPT_TUD_EXT.1.3"/><!-- HERE check this -->
                     <f-element id="FIA_X509_EXT.2.1">
@@ -2511,7 +2511,7 @@
                     </f-element>
                 </f-component>
                 
-                <!-- FPT_TUD_EXT.2 !!!!! Missing -->
+                <!-- FPT_TUD_EXT.2 -->
                 <f-component id="FPT_TUD_EXT.2" name="Trusted Update Based on Certificates"  status="sel-based">
                     <selection-depends req="FIA_X509_EXT.2.1"/><!-- HERE check this -->
                     <f-element id="FPT_TUD_EXT.2.1">
@@ -2580,7 +2580,7 @@
                     </f-element>
                 </f-component>
 
-                <!-- FPT_GVI_EXT.1 !!!!! Optional -->
+                <!-- FPT_GVI_EXT.1 -->
                 <f-component id="FPT_GVI_EXT.1" name="Guest VM Integrity"  status="optional">
                     <f-element id="FPT_GVI_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall verify the integrity of Guest <abbr linkend="VM"/>s through the following mechanisms: <assignable>list of Guest <abbr linkend="VM"/> integrity mechanisms</assignable>.
@@ -2591,7 +2591,7 @@
                     </f-element>
                 </f-component>
 
-                <!-- FPT_DDI_EXT.1 !!!!! Objective -->
+                <!-- FPT_DDI_EXT.1 -->
                 <f-component id="FPT_DDI_EXT.1" name="Device Driver Isolation"  status="objective">
                     <f-element id="FPT_DDI_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall ensure that device drivers for physical devices are isolated from the <abbr linkend="VMM"/> and all other domains.
@@ -2602,7 +2602,7 @@
                     </f-element>
                 </f-component>
 
-                <!-- FPT_IDV_EXT.1 !!!!! Objective -->
+                <!-- FPT_IDV_EXT.1 -->
                 <f-component id="FPT_IDV_EXT.1" name="Software Identification and Versions"  status="objective">
                     <f-element id="FPT_IDV_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall include software identification (SWID) tags that contain a SoftwareIdentity element and an Entity element as defined in ISO/IEC 19770-2:2009.
@@ -2621,7 +2621,7 @@
                     </f-element>
                 </f-component>
 
-                <!-- FPT_INT_EXT.1 !!!!! Objective -->
+                <!-- FPT_INT_EXT.1 -->
                 <f-component id="FPT_INT_EXT.1" name="Support for Introspection"  status="objective">
                     <f-element id="FPT_INT_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall support a mechanism for permitting the <abbr linkend="VMM"/> or privileged <abbr linkend="VM"/>s to access the internals of another <abbr linkend="VM"/> for purposes of introspection.
@@ -2634,7 +2634,7 @@
                     </f-element>
                 </f-component>
 
-                <!-- FPT_ML_EXT.1 !!!!! Objective -->
+                <!-- FPT_ML_EXT.1 -->
                 <f-component id="FPT_ML_EXT.1" name="Measured Launch of Platform and VMM"  status="objective">
                     <f-element id="FPT_ML_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall support a measured launch of the Virtualization System. Measured components of the Virtualization system shall include the static executable image of the Hypervisor and:
@@ -2748,7 +2748,7 @@
                     </f-element>
                 </f-component>
 
-                <!-- FTP_TRP.1 !!!!! -->
+                <!-- FTP_TRP.1 -->
                 <f-component id="FTP_TRP.1" name="Trusted Path"  status="sel-based">
                     <selection-depends req="FTP_ITC_EXT.1.1"/><!-- HERE check this -->
                     <f-element id="FTP_TRP.1.1">
