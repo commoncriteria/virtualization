@@ -9,17 +9,21 @@ branches:
 
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install -qq make xsltproc
+  - sudo apt-get install -qq make xsltproc python3
 
 before_script:
   - wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
   - tar -xvf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
   - export PATH=$PATH:$PWD/wkhtmltox/bin/
   - git clone https://github.com/AndroidKitKat/ExecuteDaisy.git
+  - wget -O - https://github.com/relaxng/jing-trang/releases/download/V20181222/jing-20181222.zip | jar -x
+
 
 script:
+  - set -e
+  - make validate
   - make
-# - DAISY_DIR=ExecuteDaisy  make diff
+  - DAISY_DIR=ExecuteDaisy  make diff
   - git clone https://github.com/commoncriteria/commoncriteria.github.io.git
   - git clone https://github.com/commoncriteria/ci-scripts.git
   - mkdir -p commoncriteria.github.io/pp/$(basename $TRAVIS_REPO_SLUG)
