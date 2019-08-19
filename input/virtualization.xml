@@ -2410,8 +2410,10 @@
                             include cryptographic authentication failures and local authentication failures in the number of
                             unsuccessful authentication attempts.
                         </note>
-                        <aactivity>The evaluator shall perform the following tests for each credential selected in FIA_AFL_EXT.1.1:
-                            <testlist>
+                        <aactivity>
+                            <Tests>
+                                The evaluator shall perform the following tests for each credential selected in FIA_AFL_EXT.1.1:
+                                <testlist>
                                 <test>The evaluator will set an Administrator-configurable threshold n for failed attempts, or note the ST-specified assignment.</test>
                                 <testlist>
                                     <test>The evaluator will attempt to authenticate remotely with the credential n-1 times. The evaluator will then attempt to authenticate
@@ -2435,6 +2437,7 @@
                                         </testlist>
                                 </testlist>
                             </testlist>
+                            </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -2452,14 +2455,14 @@
                                     authentication based on username and password
                                 </selectable>
                                 <selectable>authentication based on username and a PIN that releases an asymmetric key stored in OE-protected storage</selectable>
-                                <selectable>
+                                <selectable id="uau-x509">
                                     <selectables>
                                         <selectable>local</selectable>
                                         <selectable>directory-based</selectable>
                                     </selectables>
                                     authentication based on X.509 certificates
                                 </selectable>
-                                <selectable>
+                                <selectable id="uau-ssh">
                                     <selectables>
                                         <selectable>local</selectable>
                                         <selectable>directory-based</selectable>
@@ -2476,7 +2479,9 @@
                     <f-element id="FIA_UAU.5.2">
                         <title>The <abbr linkend="TSF"/> shall authenticate any Administrator’s claimed identity according to the <assignable>rules describing how the multiple authentication mechanisms provide authentication</assignable>.
                         </title>
-                        <aactivity>If ‘username and password authentication‘ is selected, the evaluator will configure the VS with a known username and password and conduct the following tests:
+                        <aactivity>
+                            <Tests>
+                                If ‘username and password authentication‘ is selected, the evaluator will configure the VS with a known username and password and conduct the following tests:
                             <testlist>
                                 <test>The evaluator will attempt to authenticate to the VS using the known username and password. The evaluator will ensure that the authentication attempt is successful.</test>
                                 <test>The evaluator will attempt to authenticate to the VS using the known username but an incorrect password. The evaluator will ensure that the authentication attempt is unsuccessful.</test>
@@ -2496,6 +2501,7 @@
                                 <test>The evaluator will attempt to authenticate to the VS using a message signed by the client private key that corresponds to provisioned client public key. The evaluator will ensure that the authentication attempt is successful.</test>
                                 <test>The evaluator will generate a second client key pair and will attempt to authenticate to the VS with the private key over SSH without first provisioning the VS to support the new key pair. The evaluator will ensure that the authentication attempt is unsuccessful.</test>
                             </testlist>
+                            </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -2506,7 +2512,19 @@
                         <title>The <abbr linkend="TSF"/> shall require Administrators to be successfully identified and authenticated using one of the methods in FIA_UAU.5 before allowing any <abbr linkend="TSF"/>-mediated management function to be performed by that Administrator.
                         </title>
                         <note role="application">Users do not have to authenticate, only Administrators need to authenticate.</note>
-                        <aactivity>The evaluator shall examine the <abbr linkend="TSS"/> to determine that it describes the logon process for each logon method (local, remote (HTTPS, SSH, etc.)) supported for the product. This description shall contain information pertaining to the credentials allowed/used, any protocol transactions that take place, and what constitutes a “successful logon”. The evaluator shall examine the operational guidance to determine that any necessary preparatory steps (e.g., establishing credential material such as pre-shared keys, tunnels, certificates, etc.) to logging in are described. For each supported the login method, the evaluator shall ensure the operational guidance provides clear instructions for successfully logging on. If configuration is necessary to ensure the services provided before login are limited, the evaluator shall determine that the operational guidance provides sufficient instruction on limiting the allowed services.
+                        <aactivity>
+                            <TSS>
+                                The evaluator shall examine the <abbr linkend="TSS"/> to determine that it describes the logon
+                                process for each logon method (local, remote (HTTPS, SSH, etc.)) supported for the product. 
+                                This description shall contain information pertaining to the credentials allowed/used, any 
+                                protocol transactions that take place, and what constitutes a “successful logon”. The evaluator
+                                shall examine the operational guidance to determine that any necessary preparatory steps (e.g., 
+                                establishing credential material such as pre-shared keys, tunnels, certificates, etc.) to logging
+                                in are described. For each supported the login method, the evaluator shall ensure the operational
+                                guidance provides clear instructions for successfully logging on. If configuration is necessary
+                                to ensure the services provided before login are limited, the evaluator shall determine that the
+                                operational guidance provides sufficient instruction on limiting the allowed services.
+                            </TSS>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -2537,17 +2555,25 @@
                         </title>
                         <note role="application">The <abbr linkend="ST"/> author selects the special characters that are supported by the <abbr linkend="TOE"/>; they may optionally list additional special characters supported using the assignment. “Administrative passwords” refers to passwords used by administrators to gain access to the Management Subsystem.</note>
                         <aactivity>
-                            The evaluator shall examine the operational guidelines to determine that it provides guidance to security administrators in the composition of strong passwords, and that it provides instructions on setting the minimum password length. The evaluator shall also perform the following tests. Note that one or more of these tests may be performed with a single test case.
+                            <Guidance>
+                                The evaluator shall examine the operational guideance to determine that it provides guidance to
+                                security administrators in the composition of strong passwords, and that it provides instructions
+                                on setting the minimum password length. 
+                            </Guidance>
+                            <Tests>
+                                The evaluator shall also perform the following tests. 
+                                Note that one or more of these tests may be performed with a single test case.
                             <testlist>
                                 <test>The evaluator shall compose passwords that either meet the requirements, or fail to meet the requirements, in some way. For each password, the evaluator shall verify that the <abbr linkend="TOE"/> supports the password. While the evaluator is not required (nor is it feasible) to test all possible combinations of passwords, the evaluator shall ensure that all characters, rule characteristics, and a minimum length listed in the requirement are supported, and justify the subset of those characters chosen for testing.</test>
                             </testlist>
+                            </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
 
                 <!-- FIA_X509_EXT.1 -->
                 <f-component id="FIA_X509_EXT.1" name="X.509 Certificate Validation"  status="sel-based">
-                    <selection-depends req="FIA_UAU.5.2"/><!-- HERE check this -->
+                    <selection-depends req="FIA_UAU.5.1" ids="uau-x509"/>
                     <f-element id="FIA_X509_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall validate certificates in accordance with the following rules:
                             <h:ul>
