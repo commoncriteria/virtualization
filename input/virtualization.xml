@@ -645,241 +645,244 @@
                             The intent of the audit requirement for FDP_PPR_EXT.1 is to log that the <abbr linkend="VM"/> is connected to a physical device (when the device becomes part of the <abbr linkend="VM"/>’s hardware view), not to log every time that the device is accessed. Generally, this is only once at <abbr linkend="VM"/> startup. However, some devices can be connected and disconnected during operation (e.g., virtual USB devices such as CD-ROMs). All such connection/disconnection events must be logged.
                         </note>
                         <aactivity>
-                            The evaluator shall check the <abbr linkend="TSS"/> and ensure that it lists all of the auditable events 
-                            and provides a format for audit records. Each audit record format type shall be covered, along with a 
-                            brief description of each field. The evaluator shall check to make sure that every audit event type 
-                            mandated by the PP is described in the <abbr linkend="TSS"/>.<h:br></h:br><h:br></h:br>
-                            The evaluator shall also make a determination of the administrative actions that are relevant in the 
-                            context of this PP. The evaluator shall examine the administrative guide and make a determination of which 
-                            administrative commands, including subcommands, scripts, and configuration files, are related to the 
-                            configuration (including enabling or disabling) of the mechanisms implemented in the <abbr linkend="TOE"/> 
-                            that are necessary to enforce the requirements specified in the PP. The evaluator shall document the 
-                            methodology or approach taken while determining which actions in the administrative guide are 
-                            security-relevant with respect to this PP.<h:br></h:br><h:br></h:br>
-                            The evaluator shall test the <abbr linkend="TOE"/>’s ability to correctly generate audit records by 
-                            having the <abbr linkend="TOE"/> generate audit records for the events listed and administrative actions. 
-                            For administrative actions, the evaluator shall test that each action determined by the evaluator above to 
-                            be security relevant in the context of this PP is auditable. When verifying the test results, the 
-                            evaluator shall ensure the audit records generated during testing match the format specified in the 
-                            administrative guide, and that the fields in each audit record have the proper entries.<h:br></h:br>
-                            <h:br></h:br>
-                            Note that the testing here can be accomplished in conjunction with the testing of the security mechanisms 
-                            directly.<h:br></h:br>
-                            <!-- HERE do table 1 from page 22 -->
-                            <h:table border="1">
-                                <h:caption>Table 1: Auditable Events</h:caption>
-                                <h:TR class="header">
-                                    <h:TH>Requirement</h:TH>
-                                    <h:TH>Auditable Events</h:TH>
-                                    <h:TH>Additional Audit Record Contents</h:TH>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FAU_GEN.1</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FAU_SAR.1</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FAU_STG.1</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FAU_STG_EXT.1</h:TD>
-                                    <h:TD>Failure of audit data capture due to lack of disk space or pre-defined limit.<h:br></h:br>
-                                        On failure of logging function, capture record of failure and record upon restart of logging function.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FCS_CKM.1</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FCS_CKM.2</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FCS_CKM_EXT.4</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FCS_COP.1(1)</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FCS_COP.1(2)</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FCS_COP.1(3)</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FCS_COP.1(4)</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FCS_RBG_EXT.1</h:TD>
-                                    <h:TD>Failure of the randomization process.</h:TD>
-                                    <h:TD>No additional information.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FCS_ENT_EXT.1</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FDP_HBI_EXT.1</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FDP_PPR_EXT.1</h:TD>
-                                    <h:TD>Successful and failed <abbr linkend="VM"/> connections to physical devices where connection is governed by configurable policy.<h:br></h:br>
-                                        Security policy violations.</h:TD>
-                                    <h:TD>VM and physical device identifiers.<h:br></h:br>
-                                        Identifier for the security policy that was violated.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FDP_RIP_EXT.1</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FDP_RIP_EXT.2</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FDP_VMS_EXT.1</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FDP_VNC_EXT.1</h:TD>
-                                    <h:TD>Successful and failed attempts to connect <abbr linkend="VM"/>s to virtual and physical networking components.<h:br></h:br>
-                                        Security policy violations.<h:br></h:br>
-                                        Administrator configuration of inter-VM communications channels between <abbr linkend="VM"/>s.<h:br></h:br>
-                                    </h:TD>
-                                    <h:TD>VM and virtual or physical networking component identifiers.<h:br></h:br>
-                                        Identifier for the security policy that was violated.<h:br></h:br></h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FIA_UAU.5</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FIA_UIA_EXT.1</h:TD>
-                                    <h:TD>Administrator authentication attempts<h:br></h:br>
-                                        All use of the identification and authentication mechanism.
-                                    </h:TD>
-                                    <h:TD>Provided user identity, origin of the attempt (e.g. console, remote IP address).</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FMT_MSA_EXT.1</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FMT_SMO_EXT.1</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FMT_SMR.2</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FPT_DVD_EXT.1</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FPT_HAS_EXT.1</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FPT_EEM_EXT.1</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FPT_HCL_EXT.1</h:TD>
-                                    <h:TD>Attempts to access disabled hypercall interfaces<h:br></h:br>
-                                        Security policy violations.</h:TD>
-                                    <h:TD>Interface for which access was attempted.<h:br></h:br>
-                                        Identifier for the security policy that was violated.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FPT_RDM_EXT.1</h:TD>
-                                    <h:TD>Connection/disconnection of removable media or device to/from a VM.<h:br></h:br><h:br></h:br>
-                                        Ejection/insertion of removable media or device from/to an already connected VM.</h:TD>
-                                    <h:TD>VM Identifier, Removable media/device identifier, event description or identifier (connect/disconnect, ejection/insertion, etc.)</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FPT_TUD_EXT.1</h:TD>
-                                    <h:TD>Initiation of update.<h:br></h:br>
-                                        Failure of signature verification.
-                                    </h:TD>
-                                    <h:TD>No additional information.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FPT_VDP_EXT.1</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FPT_VIV_EXT.1</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FTA_TAB.1</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FTP_ITC_EXT.1</h:TD>
-                                    <h:TD>Initiation of the trusted channel.<h:br></h:br>
-                                        Termination of the trusted channel.<h:br></h:br>
-                                        Failures of the trusted path functions.</h:TD>
-                                    <h:TD>User ID and remote source (IP Address) if feasible.</h:TD>
-                                </h:TR>
-                                
-                                <h:TR>
-                                    <h:TD>FTP_UIF_EXT.1</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                                <h:TR>
-                                    <h:TD>FTP_UIF_EXT.2</h:TD>
-                                    <h:TD>None.</h:TD>
-                                    <h:TD>None.</h:TD>
-                                </h:TR>
-                             </h:table>
+                            <TSS>
+                                The evaluator shall check the <abbr linkend="TSS"/> and ensure that it lists all of the auditable events 
+                                and provides a format for audit records. Each audit record format type shall be covered, along with a 
+                                brief description of each field. The evaluator shall check to make sure that every audit event type 
+                                mandated by the PP is described in the <abbr linkend="TSS"/>.<h:br></h:br><h:br></h:br>
+                            </TSS>
+                            <Guidance>
+                                The evaluator shall also make a determination of the administrative actions that are relevant in the 
+                                context of this PP. The evaluator shall examine the administrative guide and make a determination of which 
+                                administrative commands, including subcommands, scripts, and configuration files, are related to the 
+                                configuration (including enabling or disabling) of the mechanisms implemented in the <abbr linkend="TOE"/> 
+                                that are necessary to enforce the requirements specified in the PP. The evaluator shall document the 
+                                methodology or approach taken while determining which actions in the administrative guide are 
+                                security-relevant with respect to this PP.<h:br></h:br><h:br></h:br>
+                            </Guidance>
+                            <Tests>
+                                The evaluator shall test the <abbr linkend="TOE"/>’s ability to correctly generate audit records by 
+                                having the <abbr linkend="TOE"/> generate audit records for the events listed and administrative actions. 
+                                For administrative actions, the evaluator shall test that each action determined by the evaluator above to 
+                                be security relevant in the context of this PP is auditable. When verifying the test results, the 
+                                evaluator shall ensure the audit records generated during testing match the format specified in the 
+                                administrative guide, and that the fields in each audit record have the proper entries.<h:br></h:br>
+                                <h:br></h:br>
+                                Note that the testing here can be accomplished in conjunction with the testing of the security mechanisms 
+                                directly.<h:br></h:br>
+                                <!-- HERE do table 1 from page 22 -->
+                                <h:table border="1">
+                                    <h:caption>Table 1: Auditable Events</h:caption>
+                                    <h:TR class="header">
+                                        <h:TH>Requirement</h:TH>
+                                        <h:TH>Auditable Events</h:TH>
+                                        <h:TH>Additional Audit Record Contents</h:TH>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FAU_GEN.1</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FAU_SAR.1</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FAU_STG.1</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FAU_STG_EXT.1</h:TD>
+                                        <h:TD>Failure of audit data capture due to lack of disk space or pre-defined limit.<h:br></h:br>
+                                            On failure of logging function, capture record of failure and record upon restart of logging function.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FCS_CKM.1</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FCS_CKM.2</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FCS_CKM_EXT.4</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FCS_COP.1(1)</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FCS_COP.1(2)</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FCS_COP.1(3)</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FCS_COP.1(4)</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FCS_RBG_EXT.1</h:TD>
+                                        <h:TD>Failure of the randomization process.</h:TD>
+                                        <h:TD>No additional information.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FCS_ENT_EXT.1</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FDP_HBI_EXT.1</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FDP_PPR_EXT.1</h:TD>
+                                        <h:TD>Successful and failed <abbr linkend="VM"/> connections to physical devices where connection is governed by configurable policy.<h:br></h:br>
+                                            Security policy violations.</h:TD>
+                                        <h:TD>VM and physical device identifiers.<h:br></h:br>
+                                            Identifier for the security policy that was violated.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FDP_RIP_EXT.1</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FDP_RIP_EXT.2</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FDP_VMS_EXT.1</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FDP_VNC_EXT.1</h:TD>
+                                        <h:TD>Successful and failed attempts to connect <abbr linkend="VM"/>s to virtual and physical networking components.<h:br></h:br>
+                                            Security policy violations.<h:br></h:br>
+                                            Administrator configuration of inter-VM communications channels between <abbr linkend="VM"/>s.<h:br></h:br>
+                                        </h:TD>
+                                        <h:TD>VM and virtual or physical networking component identifiers.<h:br></h:br>
+                                            Identifier for the security policy that was violated.<h:br></h:br></h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FIA_UAU.5</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FIA_UIA_EXT.1</h:TD>
+                                        <h:TD>Administrator authentication attempts<h:br></h:br>
+                                            All use of the identification and authentication mechanism.
+                                        </h:TD>
+                                        <h:TD>Provided user identity, origin of the attempt (e.g. console, remote IP address).</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FMT_MSA_EXT.1</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FMT_SMO_EXT.1</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FMT_SMR.2</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FPT_DVD_EXT.1</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FPT_HAS_EXT.1</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FPT_EEM_EXT.1</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FPT_HCL_EXT.1</h:TD>
+                                        <h:TD>Attempts to access disabled hypercall interfaces<h:br></h:br>
+                                            Security policy violations.</h:TD>
+                                        <h:TD>Interface for which access was attempted.<h:br></h:br>
+                                            Identifier for the security policy that was violated.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FPT_RDM_EXT.1</h:TD>
+                                        <h:TD>Connection/disconnection of removable media or device to/from a VM.<h:br></h:br><h:br></h:br>
+                                            Ejection/insertion of removable media or device from/to an already connected VM.</h:TD>
+                                        <h:TD>VM Identifier, Removable media/device identifier, event description or identifier (connect/disconnect, ejection/insertion, etc.)</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FPT_TUD_EXT.1</h:TD>
+                                        <h:TD>Initiation of update.<h:br></h:br>
+                                            Failure of signature verification.
+                                        </h:TD>
+                                        <h:TD>No additional information.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FPT_VDP_EXT.1</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FPT_VIV_EXT.1</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FTA_TAB.1</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FTP_ITC_EXT.1</h:TD>
+                                        <h:TD>Initiation of the trusted channel.<h:br></h:br>
+                                            Termination of the trusted channel.<h:br></h:br>
+                                            Failures of the trusted path functions.</h:TD>
+                                        <h:TD>User ID and remote source (IP Address) if feasible.</h:TD>
+                                    </h:TR>
+
+                                    <h:TR>
+                                        <h:TD>FTP_UIF_EXT.1</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                    <h:TR>
+                                        <h:TD>FTP_UIF_EXT.2</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+                                 </h:table>
+
+                                <!-- HERE do the table on page 78 here??, Table 2: Auditable Events -->
+                                <!-- HERE do the table on page 80 here???, Table 3: Auditable Events -->
+                                <!-- HERE table from 114?? -->
+                                <!-- HERE table from 118?? -->
                             
-                            
-                            
-                            <!-- HERE do the table on page 78 here??, Table 2: Auditable Events -->
-                            <!-- HERE do the table on page 80 here???, Table 3: Auditable Events -->
-                            <!-- HERE table from 114?? -->
-                            <!-- HERE table from 118?? -->
-                            
-                            
+                            </Tests>   
                         </aactivity>
                     </f-element>
                 </f-component>
