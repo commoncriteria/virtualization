@@ -896,7 +896,17 @@
                     <f-element id="FAU_SAR.1.2">
                         <title>The <abbr linkend="TSF"/> shall provide the audit records in a manner suitable for the user to interpret the information.
                         </title>
-                        <aactivity>The evaluator shall verify that the audit records provide all of the information specified in FAU_GEN.1 and that this information is suitable for human interpretation. The evaluator shall review the operational guidance for the procedure on how to review the audit records. The assurance activity for this requirement is performed in conjunction with the assurance activity for FAU_GEN.1.
+                        <aactivity>
+                            <Guidance>
+                                The evaluator shall review the operational guidance for the procedure on how to review the audit 
+                                records.
+                            </Guidance>
+                            <Tests>
+                                The evaluator shall verify that the audit records provide all of the information specified in 
+                                FAU_GEN.1 and that this information is suitable for human interpretation. The assurance 
+                                activity for this requirement is performed in conjunction with the assurance activity for 
+                                FAU_GEN.1.
+                            </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -912,10 +922,18 @@
                         </title>
                         <note role="application">The assurance activity for this SFR is not intended to imply that the <abbr linkend="TOE"/> must support an administrator’s ability to designate individual audit records for deletion. That level of granularity is not required.</note>
                         <aactivity>The evaluator shall ensure that the <abbr linkend="TSS"/> describes how the audit records are protected from unauthorized modification or deletion. The evaluator shall ensure that the <abbr linkend="TSS"/> describes the conditions that must be met for authorized deletion of audit records. The evaluator shall perform the following tests:<h:br></h:br><h:br></h:br>
-                            <testlist>
-                                <test>The evaluator shall access the audit trail as an unauthorized Administrator and attempt to modify and delete the audit records. The evaluator shall verify that these attempts fail.</test>
-                                <test>The evaluator shall access the audit trail as an authorized Administrator and attempt to delete the audit records. The evaluator shall verify that these attempts succeed. The evaluator shall verify that only the records authorized for deletion are deleted.</test>
-                            </testlist>
+                            <Tests>
+                                <testlist>
+                                    <test>The evaluator shall access the audit trail as an unauthorized Administrator and attempt 
+                                        to modify and delete the audit records. The evaluator shall verify that these attempts 
+                                        fail.
+                                    </test>
+                                    <test>The evaluator shall access the audit trail as an authorized Administrator and attempt 
+                                        to delete the audit records. The evaluator shall verify that these attempts succeed. 
+                                        The evaluator shall verify that only the records authorized for deletion are deleted.
+                                    </test>
+                                </testlist>
+                            </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -927,11 +945,24 @@
                         </title>
                         <aactivity>
                             Protocols used for implementing the trusted channel must be selected in FTP_ITC_EXT.1.
-                            The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes the means by which the audit data are transferred to the external audit server, and how the trusted channel is provided. Testing of the trusted channel mechanism is to be performed as specified in the assurance activities for FTP_ITC_EXT.1. The evaluator shall also examine the operational guidance to ensure it describes how to establish the trusted channel to the audit server, as well as describe any requirements on the audit server (particular audit server protocol, version of the protocol required, etc.), as well as configuration of the <abbr linkend="TOE"/> needed to communicate with the audit server.<h:br></h:br><h:br></h:br>
-                            The evaluator shall perform the following test for this requirement:<h:br></h:br><h:br></h:br>
-                            <testlist>
-                                <test>The evaluator shall establish a session between the <abbr linkend="TOE"/> and the audit server according to the configuration guidance provided. The evaluator shall then examine the traffic that passes between the audit server and the <abbr linkend="TOE"/> during several activities of the evaluator’s choice designed to generate audit data to be transferred to the audit server. The evaluator shall observe that these data are not able to be viewed in the clear during this transfer, and that they are successfully received by the audit server. The evaluator shall record the particular software (name, version) used on the audit server during testing.</test>
-                            </testlist>
+                            <TSS>
+                                The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes the means by which 
+                                the audit data are transferred to the external audit server, and how the trusted channel is 
+                                provided. 
+                            </TSS>
+                            <Guidance>
+                                The evaluator shall examine the operational guidance to ensure it describes how to establish the trusted channel to the audit server, as well as describe any requirements 
+                                on the audit server (particular audit server protocol, version of the protocol required, etc.), as well 
+                                as configuration of the <abbr linkend="TOE"/> needed to communicate with the audit server.
+                            </Guidance>
+                            <Tests>
+                                Testing of the trusted channel mechanism is to be performed as specified in the assurance 
+                                activities for FTP_ITC_EXT.1. <h:br></h:br><h:br></h:br>
+                                The evaluator shall perform the following test for this requirement:<h:br></h:br><h:br></h:br>
+                                <testlist>
+                                    <test>The evaluator shall establish a session between the <abbr linkend="TOE"/> and the audit server according to the configuration guidance provided. The evaluator shall then examine the traffic that passes between the audit server and the <abbr linkend="TOE"/> during several activities of the evaluator’s choice designed to generate audit data to be transferred to the audit server. The evaluator shall observe that these data are not able to be viewed in the clear during this transfer, and that they are successfully received by the audit server. The evaluator shall record the particular software (name, version) used on the audit server during testing.</test>
+                                </testlist>
+                            </Tests>
                         </aactivity>
                     </f-element>
                     <f-element id="FAU_STG_EXT.1.2">
@@ -946,8 +977,23 @@
                         </title>
                         <note role="application">An external log server, if available, might be used as alternative storage space in case the local storage space is full. An ‘other action’ could be defined in this case as ‘send the new audit data to an external IT entity’.</note>
                         <aactivity>
-                            The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes what happens when the local audit data store is full. The evaluator shall also examine the operational guidance to determine that it describes the relationship between the local audit data and the audit data that are sent to the audit log server. For example, when an audit event is generated, is it simultaneously sent to the external server and the local store, or is the local store used as a buffer and “cleared” periodically by sending the data to the audit server.<h:br></h:br><h:br></h:br>
-                            The evaluator shall perform operations that generate audit data and verify that this data is stored locally. The evaluator shall perform operations that generate audit data until the local storage space is exceeded and verifies that the <abbr linkend="TOE"/> complies with the behavior defined in the <abbr linkend="ST"/> for FAU_STG_EXT.1.2.
+                            <TSS>
+                                The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes what happens when the 
+                                local audit data store is full. 
+                            </TSS>
+                            <Guidance>
+                                The evaluator shall also examine the operational guidance to 
+                                determine that it describes the relationship between the local audit data and the audit data that 
+                                are sent to the audit log server. For example, when an audit event is generated, is it simultaneously
+                                sent to the external server and the local store, or is the local store used as a buffer and “cleared”
+                                periodically by sending the data to the audit server.
+                            </Guidance>
+                            <Tests>
+                                The evaluator shall perform operations that generate audit data and verify that this data is 
+                                stored locally. The evaluator shall perform operations that generate audit data until the local 
+                                storage space is exceeded and verifies that the <abbr linkend="TOE"/> complies with the behavior 
+                                defined in the <abbr linkend="ST"/> for FAU_STG_EXT.1.2.
+                            </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
