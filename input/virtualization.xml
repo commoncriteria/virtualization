@@ -2387,7 +2387,7 @@
                             unsuccessful authentication attempts occur related to Administrators attempting to authenticate remotely using a
                             <selectables>
                                 <selectable>password</selectable>
-                                <selectable>PIN</selectable>.
+                                <selectable>PIN.</selectable>
                             </selectables>
                         </title>
                     </f-element>
@@ -2447,7 +2447,7 @@
                     <f-element id="FIA_UAU.5.1">
                         <title>The <abbr linkend="TSF"/> shall provide the following authentication mechanisms:
                             <selectables linebreak="yes">
-                                <selectable>
+                                <selectable id="uau-pwd">
                                     <selectables>
                                         <selectable>local</selectable>
                                         <selectable>directory-based</selectable>
@@ -2531,7 +2531,7 @@
 
                 <!-- FIA_PMG_EXT.1 -->
                 <f-component id="FIA_PMG_EXT.1" name="Password Management"  status="sel-based">
-                    <selection-depends req="FIA_UAU.5.1"/><!-- HERE check this -->
+                    <selection-depends req="FIA_UAU.5.1" ids="usu-pwd"/>
                     <f-element id="FIA_PMG_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall provide the following password management capabilities for administrative passwords:
                             <h:ol type="a">
@@ -2606,16 +2606,27 @@
                         <title>The <abbr linkend="TSF"/> shall only treat a certificate as a CA certificate if the basicConstraints extension is present and the CA flag is set to TRUE.
                         </title>
                         <note role="application">This requirement applies to certificates that are used and processed by the <abbr linkend="TSF"/> and restricts the certificates that may be added as trusted CA certificates.</note>
-                        <aactivity>The evaluator shall ensure the <abbr linkend="TSS"/> describes where the check of validity of the certificates takes place. The evaluator ensures the <abbr linkend="TSS"/> also provides a description of the certificate path validation algorithm.<h:br></h:br><h:br></h:br>
-                            The evaluator shall examine the <abbr linkend="TSS"/> to confirm that it describes the behavior of the <abbr linkend="TOE"/> when a connection cannot be established during the validity check of a certificate used in establishing a trusted channel. If the requirement that the administrator is able to specify the default action, then the evaluator shall ensure that the operational guidance contains instructions on how this configuration action is performed.<h:br></h:br><h:br></h:br>
-                            The tests described must be performed in conjunction with the other Certificate Services assurance activities, including the use cases in FIA_X509_EXT.2.1. The tests for the extendedKeyUsage rules are performed in conjunction with the uses that require those rules.<h:br></h:br><h:br></h:br>
-                            <testlist>
-                                <test>The evaluator shall demonstrate that validating a certificate without a valid certification path results in the function (application validation, trusted channel setup, or trusted software update) failing. The evaluator shall then load a certificate or certificates needed to validate the certificate to be used in the function, and demonstrate that the function succeeds. The evaluator then shall delete one of the certificates, and show that the function fails.</test>
-                                <test>The evaluator shall demonstrate that validating an expired certificate results in the function failing.</test>
-                                <test>The evaluator shall test that the <abbr linkend="TOE"/> can properly handle revoked certificates –conditional on whether CRL or OCSP is selected; if both are selected, and then a test is performed for each method. The evaluator has to only test one up in the trust chain (future revisions may require to ensure the validation is done up the entire chain). The evaluator shall ensure that a valid certificate is used, and that the validation function succeeds. The evaluator then attempts the test with a certificate that will be revoked (for each method chosen in the selection) to ensure when the certificate is no longer valid that the validation function fails.</test>
-                                <test>The evaluator shall ensure that at least one of the CAs in the chain does not contain the basicConstraints extension. The evaluator confirms that the TOE rejects such a certificate at one (or both) of the following points: (i) as part of the validation of the leaf certificate belonging to this chain; (ii) when attempting to add a CA certificate without the basicConstraints extension to the TOE’s trust store (i.e. when attempting to install the CA certificate as one which will be retrieved from the TOE itself when validating future certificate chains)</test>
-                                <test>The evaluator shall ensure that at least one of the CA certificates in the chain has a basicConstraints extension in which the CA flag is set to FALSE. The evaluator confirms that the TOE rejects such a certificate at one (or both) of the following points: (i) as part of the validation of the leaf certificate belonging to this chain; (ii) when attempting to add a CA certificate with the CA flag set to FALSE to the TOE’s trust store (i.e. when attempting to install the CA certificate as one which will be retrieved from the TOE itself when validating future certificate chains).</test>
-                            </testlist>
+                        <aactivity>
+                            <TSS>
+                                The evaluator shall ensure the <abbr linkend="TSS"/> describes where the check of validity of the 
+                                certificates takes place. The evaluator ensures the <abbr linkend="TSS"/> also provides a description
+                                of the certificate path validation algorithm.<h:br></h:br><h:br></h:br>
+                                The evaluator shall examine the <abbr linkend="TSS"/> to confirm that it describes the behavior of 
+                                the <abbr linkend="TOE"/> when a connection cannot be established during the validity check of a 
+                                certificate used in establishing a trusted channel. If the requirement that the administrator is able 
+                                to specify the default action, then the evaluator shall ensure that the operational guidance contains
+                                instructions on how this configuration action is performed.
+                            </TSS>
+                            <Tests>
+                                The tests described must be performed in conjunction with the other Certificate Services assurance activities, including the use cases in FIA_X509_EXT.2.1. The tests for the extendedKeyUsage rules are performed in conjunction with the uses that require those rules.<h:br></h:br><h:br></h:br>
+                                <testlist>
+                                    <test>The evaluator shall demonstrate that validating a certificate without a valid certification path results in the function (application validation, trusted channel setup, or trusted software update) failing. The evaluator shall then load a certificate or certificates needed to validate the certificate to be used in the function, and demonstrate that the function succeeds. The evaluator then shall delete one of the certificates, and show that the function fails.</test>
+                                    <test>The evaluator shall demonstrate that validating an expired certificate results in the function failing.</test>
+                                    <test>The evaluator shall test that the <abbr linkend="TOE"/> can properly handle revoked certificates –conditional on whether CRL or OCSP is selected; if both are selected, and then a test is performed for each method. The evaluator has to only test one up in the trust chain (future revisions may require to ensure the validation is done up the entire chain). The evaluator shall ensure that a valid certificate is used, and that the validation function succeeds. The evaluator then attempts the test with a certificate that will be revoked (for each method chosen in the selection) to ensure when the certificate is no longer valid that the validation function fails.</test>
+                                    <test>The evaluator shall ensure that at least one of the CAs in the chain does not contain the basicConstraints extension. The evaluator confirms that the TOE rejects such a certificate at one (or both) of the following points: (i) as part of the validation of the leaf certificate belonging to this chain; (ii) when attempting to add a CA certificate without the basicConstraints extension to the TOE’s trust store (i.e. when attempting to install the CA certificate as one which will be retrieved from the TOE itself when validating future certificate chains)</test>
+                                    <test>The evaluator shall ensure that at least one of the CA certificates in the chain has a basicConstraints extension in which the CA flag is set to FALSE. The evaluator confirms that the TOE rejects such a certificate at one (or both) of the following points: (i) as part of the validation of the leaf certificate belonging to this chain; (ii) when attempting to add a CA certificate with the CA flag set to FALSE to the TOE’s trust store (i.e. when attempting to install the CA certificate as one which will be retrieved from the TOE itself when validating future certificate chains).</test>
+                                </testlist>
+                            </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -2649,13 +2660,25 @@
                             </selectables>.
                         </title>
                         <note role="application">Often a connection must be established to check the revocation status of a certificate - either to download a CRL or to perform a lookup using OCSP. The selection is used to describe the behavior in the event that such a connection cannot be established (for example, due to a network error). If the <abbr linkend="TOE"/> has determined the certificate valid according to all other rules in FIA_X509_EXT.1, the behavior indicated in the selection shall determine the validity. The <abbr linkend="TOE"/> must not accept the certificate if it fails any of the other validation rules in FIA_X509_EXT.1. If the administrator-configured option is selected by the <abbr linkend="ST"/> Author, the <abbr linkend="ST"/> Author must ensure that this is also defined as a management function that is provided by the <abbr linkend="TOE"/>.</note>
-                        <aactivity>The evaluator shall check the <abbr linkend="TSS"/> to ensure that it describes how the <abbr linkend="TOE"/> chooses which certificates to use, and any necessary instructions in the administrative guidance for configuring the operating environment so that the <abbr linkend="TOE"/> can use the certificates.<h:br></h:br><h:br></h:br>
-                            The evaluator shall examine the <abbr linkend="TSS"/> to confirm that it describes the behavior of the <abbr linkend="TOE"/> when a connection cannot be established during the validity check of a certificate used in establishing a trusted channel. If the requirement that the administrator is able to specify the default action, then the evaluator shall ensure that the operational guidance contains instructions on how this configuration action is performed.<h:br></h:br><h:br></h:br>
-                            The evaluator shall perform Test 1 for each function listed in FIA_X509_EXT.2.1 that requires the use of certificates:<h:br></h:br><h:br></h:br>
-                            <testlist>
-                                <test>The evaluator shall demonstrate that using a certificate without a valid certification path results in the function failing. Using the administrative guidance, the evaluator shall then load a certificate or certificates needed to validate the certificate to be used in the function, and demonstrate that the function succeeds. The evaluator then shall delete one of the certificates, and show that the function fails.</test>
-                                <test>The evaluator shall demonstrate that using a valid certificate that requires certificate validation checking to be performed in at least some part by communicating with a non-<abbr linkend="TOE"/> IT entity. The evaluator shall then manipulate the environment so that the <abbr linkend="TOE"/> is unable to verify the validity of the certificate, and observe that the action selected in FIA_X509_EXT.2.2 is performed. If the selected action is administrator-configurable, then the evaluator shall follow the operational guidance to determine that all supported administrator-configurable options behave in their documented manner.</test>
-                            </testlist>
+                        <aactivity>
+                            <TSS>
+                                The evaluator shall check the <abbr linkend="TSS"/> to ensure that it describes how the 
+                                <abbr linkend="TOE"/> chooses which certificates to use, and any necessary instructions in the
+                                administrative guidance for configuring the operating environment so that the <abbr linkend="TOE"/> 
+                                can use the certificates.<h:br></h:br><h:br></h:br>
+                                The evaluator shall examine the <abbr linkend="TSS"/> to confirm that it describes the behavior of the
+                                <abbr linkend="TOE"/> when a connection cannot be established during the validity check of a
+                                certificate used in establishing a trusted channel. If the requirement that the administrator is able
+                                to specify the default action, then the evaluator shall ensure that the operational guidance contains
+                                instructions on how this configuration action is performed.
+                            </TSS>
+                            <Tests>
+                                The evaluator shall perform Test 1 for each function listed in FIA_X509_EXT.2.1 that requires the use of certificates:<h:br></h:br><h:br></h:br>
+                                <testlist>
+                                    <test>The evaluator shall demonstrate that using a certificate without a valid certification path results in the function failing. Using the administrative guidance, the evaluator shall then load a certificate or certificates needed to validate the certificate to be used in the function, and demonstrate that the function succeeds. The evaluator then shall delete one of the certificates, and show that the function fails.</test>
+                                    <test>The evaluator shall demonstrate that using a valid certificate that requires certificate validation checking to be performed in at least some part by communicating with a non-<abbr linkend="TOE"/> IT entity. The evaluator shall then manipulate the environment so that the <abbr linkend="TOE"/> is unable to verify the validity of the certificate, and observe that the action selected in FIA_X509_EXT.2.2 is performed. If the selected action is administrator-configurable, then the evaluator shall follow the operational guidance to determine that all supported administrator-configurable options behave in their documented manner.</test>
+                                </testlist>
+                            </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -2685,7 +2708,10 @@
                                 <h:li>Shared virtual or physical devices</h:li>
                                 <h:li>API-based mechanisms such as Hypercalls</h:li>
                             </h:ul>.</note>
-                        <aactivity>This requirement is met if FDP_VMS_EXT.1 is met.
+                        <aactivity>
+                            <Tests>
+                                This requirement is met if FDP_VMS_EXT.1 is met.
+                            </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -2709,9 +2735,20 @@
                             “Logical means” refers to using separate network cables to connect physical hosts together using general-purpose networking ports. The management and operational networks are kept separate within the hosts using separate virtualized networking components.<h:br></h:br><h:br></h:br>
                             If the <abbr linkend="ST"/> author selects “trusted channel”, then the protocols used for network separation must be selected in FTP_ITC_EXT.1.
                         </note>
-                        <aactivity>The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes how management and operational networks may be separated.<h:br></h:br><h:br></h:br>
-                            The evaluator shall examine the operational guidance to verify that it details how to configure the VS with separate Management and Operational Networks.<h:br></h:br><h:br></h:br>
-                            The evaluator shall configure the management network as documented. If separation is cryptographic or logical, then the evaluator shall capture packets on the management network. If Guest network traffic is detected, the requirement is not met.
+                        <aactivity>
+                            <TSS>
+                                The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes how management and
+                                operational networks may be separated.
+                            </TSS>
+                            <Guidance>
+                                The evaluator shall examine the operational guidance to verify that it details how to configure the 
+                                VS with separate Management and Operational Networks.
+                            </Guidance>
+                            <Tests>
+                                The evaluator shall configure the management network as documented. If separation is cryptographic or 
+                                logical, then the evaluator shall capture packets on the management network. If Guest network traffic 
+                                is detected, the requirement is not met.
+                            </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -2727,7 +2764,13 @@
                         <note role="application">The virtualized hardware abstraction implemented by a particular VS might include the virtualized interfaces for many different devices. Sometimes these devices are not present in a particular instantiation of a <abbr linkend="VM"/>. The interface for devices not present must not accessible by the <abbr linkend="VM"/>.<h:br></h:br><h:br></h:br>
                             Such interfaces include memory buffers and processor I/O ports.<h:br></h:br><h:br></h:br>
                             The purpose of this requirement is to reduce the attack surface of the <abbr linkend="VMM"/> by closing unused interfaces.</note>
-                        <aactivity>The evaluator shall connect a device to a VM, then using a device driver running in the guest, scan the VM's processor I/O ports to ensure that the device's ports are present. (The device's interface should be documented in the TSS under FPT_VDP_EXT.1.) The evaluator shall remove the device from the VM and run the scan again. This requirement is met if the device's I/O ports are no longer present.
+                        <aactivity>
+                            <Tests>
+                                The evaluator shall connect a device to a VM, then using a device driver running in the guest, scan
+                                the VM's processor I/O ports to ensure that the device's ports are present. (The device's interface 
+                                should be documented in the TSS under FPT_VDP_EXT.1.) The evaluator shall remove the device from the
+                                VM and run the scan again. This requirement is met if the device's I/O ports are no longer present.
+                            </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -2749,7 +2792,12 @@
                             This requirement does not mandate that these protections be enabled throughout the Virtualization System—only that they be enabled where they have likely impact. For example, code that receives and processes user input should take advantage of these mechanisms.<h:br></h:br><h:br></h:br>
                             For the selection, the <abbr linkend="ST"/> author selects the supported mechanism(s) and uses the assignment to include mechanisms not listed in the selection, if any.</note>
                         <aactivity>
-                            The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it states, for each platform listed in the <abbr linkend="ST"/>, the execution environment-based vulnerability mitigation mechanisms used by the <abbr linkend="TOE"/> on that platform. The evaluator shall ensure that the lists correspond to what is specified in FPT_EEM_EXT.1.1.
+                            <TSS>
+                                The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it states, for each platform
+                                listed in the <abbr linkend="ST"/>, the execution environment-based vulnerability mitigation
+                                mechanisms used by the <abbr linkend="TOE"/> on that platform. The evaluator shall ensure that the
+                                lists correspond to what is specified in FPT_EEM_EXT.1.1.
+                            </TSS>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -2767,7 +2815,13 @@
                             For the assignment in FPT_HAS_EXT.1, the <abbr linkend="ST"/> author lists the hardware-based virtualization assists on all platforms included in the <abbr linkend="ST"/> that are used by the <abbr linkend="VMM"/> to reduce or eliminate the need for software-based binary translation. Examples for the x86 platform are Intel VT-x and AMD-V. “None” is an acceptable assignment for platforms that do not require virtualization assists in order to eliminate the need for binary translation. This must be documented in the <abbr linkend="TSS"/>.<h:br></h:br><h:br></h:br>
                             For the assignment in FPT_HAS_EXT.1.2, the <abbr linkend="ST"/> author lists the set of hardware-based virtualization memory-handling extensions for all platforms listed in the <abbr linkend="ST"/> that are used by the <abbr linkend="VMM"/> to reduce or eliminate the need for shadow page tables. Examples for the x86 platform are Intel EPT and AMD RVI. “None” is an acceptable assignment for platforms that do not require memory-handling assists in order to eliminate the need for shadow page tables. This must be documented in the <abbr linkend="TSS"/>.
                         </note>
-                        <aactivity>The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it states, for each platform listed in the <abbr linkend="ST"/>, the hardware assists and memory-handling extensions used by the <abbr linkend="TOE"/> on that platform. The evaluator shall ensure that these lists correspond to what is specified in the applicable FPT_HAS_EXT component.
+                        <aactivity>
+                            <TSS>
+                                The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it states, for each platform
+                                listed in the <abbr linkend="ST"/>, the hardware assists and memory-handling extensions used by the
+                                <abbr linkend="TOE"/> on that platform. The evaluator shall ensure that these lists correspond to what 
+                                is specified in the applicable FPT_HAS_EXT component.
+                            </TSS>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -2802,20 +2856,28 @@
                             Hypercall functions in the <abbr linkend="TSS"/>, that each documented Hypercall function contains the specified
                             information, and that there are not obvious or publicly known Hypercall functions missing.
                         </note>
-                        <aactivity>The evaluator shall examine the <abbr linkend="TSS"/> or operational guidance to ensure it
-                            documentations all Hypercall functions at the level necessary for the evaluator to disable the functions
-                            and run tests 1 and 2, below. Documentation must include, for each function, how to call the function, function
-                            parameters and legal values, configuration settings for enabling/disabling the function, and conditions under
-                            which the function can be disabled. The <abbr linkend="TSS"/> must also specify those functions that cannot be
-                            disabled.  While there is no expectation that the evaluator will need to examine source code in order to
-                            accomplish this Assurance Activity, the evaluator must ensure that there are no obvious or publicly known
-                            Hypercall functions missing from the TSS. <h:br></h:br><h:br></h:br>
-                            The evaluator shall examine the operational guidance to ensure it contains instructions for how to configure interface functions per FPT_HCL_EXT.1.2.<h:br></h:br><h:br></h:br>
-                            The evaluator shall perform the following tests:<h:br></h:br><h:br></h:br>
-                            <testlist>
-                                <test>For each configurable function that meets FPT_HCL_EXT.1.2, the evaluator shall follow the operational guidance to enable the function. The evaluator shall then attempt to call each function from within the <abbr linkend="VM"/>. If the call is allowed, then the test succeeds.</test>
-                                <test>For each configurable function that meets FPT_HCL_EXT.1.2, the evaluator shall configure the <abbr linkend="TSF"/> to disable the function. The evaluator shall then attempt to call the function from within the <abbr linkend="VM"/>. If the call is blocked, then the test succeeds.</test>
-                            </testlist>
+                        <aactivity>
+                            <TSS>
+                                The evaluator shall examine the <abbr linkend="TSS"/> or operational guidance to ensure it
+                                documentations all Hypercall functions at the level necessary for the evaluator to disable the functions
+                                and run tests 1 and 2, below. Documentation must include, for each function, how to call the function, function
+                                parameters and legal values, configuration settings for enabling/disabling the function, and conditions under
+                                which the function can be disabled. The <abbr linkend="TSS"/> must also specify those functions that cannot be
+                                disabled.  While there is no expectation that the evaluator will need to examine source code in order to
+                                accomplish this Assurance Activity, the evaluator must ensure that there are no obvious or publicly known
+                                Hypercall functions missing from the TSS.
+                            </TSS>
+                            <Guidance>
+                                The evaluator shall examine the operational guidance to ensure it contains instructions for how to 
+                                configure interface functions per FPT_HCL_EXT.1.2.
+                            </Guidance>
+                            <Tests>
+                                The evaluator shall perform the following tests:<h:br></h:br><h:br></h:br>
+                                <testlist>
+                                    <test>For each configurable function that meets FPT_HCL_EXT.1.2, the evaluator shall follow the operational guidance to enable the function. The evaluator shall then attempt to call each function from within the <abbr linkend="VM"/>. If the call is allowed, then the test succeeds.</test>
+                                    <test>For each configurable function that meets FPT_HCL_EXT.1.2, the evaluator shall configure the <abbr linkend="TSF"/> to disable the function. The evaluator shall then attempt to call the function from within the <abbr linkend="VM"/>. If the call is blocked, then the test succeeds.</test>
+                                </testlist>
+                            </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -2851,11 +2913,19 @@
                             In the first assignment, the <abbr linkend="ST"/> author lists all removable media and removable media devices (both virtual and real) that are supported by the <abbr linkend="TOE"/>. The <abbr linkend="ST"/> author then selects actions that are appropriate for all removable media and removable media devices (both virtual and real) that are being claimed in the assignment.<h:br></h:br><h:br></h:br>
                             For clarity, the <abbr linkend="ST"/> author may iterate this requirement so that like actions are grouped with the removable media or devices to which they apply (e.g., the first iteration could contain all devices for which media is ejected on a switch; the second iteration could contain all devices for which access is prevented on switch, etc.).
                         </note>
-                        <aactivity>The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes the association between the media or devices supported by the <abbr linkend="TOE"/> and the actions that can occur when switching information domains. The evaluator shall examine the operational guidance to ensure it documents how an administrator or user configures the behavior of each media or device.<h:br></h:br><h:br></h:br>
-                            The evaluator shall perform the following test for each listed media or device:
-                            <testlist>
-                                <test>The evaluator shall configure two <abbr linkend="VM"/>s that are members of different information domains, with the media or device connected to one of the <abbr linkend="VM"/>s. The evaluator shall disconnect the media or device from the <abbr linkend="VM"/> and connect it to the other <abbr linkend="VM"/>. The evaluator shall verify that the action performed is consistent with the action assigned in the <abbr linkend="TSS"/>.</test>
-                            </testlist>
+                        <aactivity>
+                            <TSS>
+                                The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes the association between
+                                the media or devices supported by the <abbr linkend="TOE"/> and the actions that can occur when
+                                switching information domains. The evaluator shall examine the operational guidance to ensure it
+                                documents how an administrator or user configures the behavior of each media or device.
+                            </TSS>
+                            <Tests>
+                                The evaluator shall perform the following test for each listed media or device:
+                                <testlist>
+                                    <test>The evaluator shall configure two <abbr linkend="VM"/>s that are members of different information domains, with the media or device connected to one of the <abbr linkend="VM"/>s. The evaluator shall disconnect the media or device from the <abbr linkend="VM"/> and connect it to the other <abbr linkend="VM"/>. The evaluator shall verify that the action performed is consistent with the action assigned in the <abbr linkend="TSS"/>.</test>
+                                </testlist>
+                            </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -2890,19 +2960,37 @@
                             All discrete software components (e.g., applications, drivers, kernel, firmware) of the <abbr linkend="TSF"/>, should be digitally signed by the corresponding manufacturer and subsequently verified by the mechanism performing the update. Since it is recognized that components may be signed by different manufacturers, it is essential that the update process verify that both the update and NV images were produced by the same manufacturer (e.g., by comparing public keys) or signed by legitimate signing keys (e.g., successful verification of certificates when using X.509 certificates).<h:br></h:br><h:br></h:br>
                             The Digital Signature option is the preferred mechanism for authenticating updates. The Published Hash option will be removed from a future version of this PP.
                         </note>
-                        <aactivity>The evaluator shall verify that the <abbr linkend="TSS"/> describes all <abbr linkend="TSF"/> software update mechanisms for updating the system software. Updates to the <abbr linkend="TOE"/> either have a hash associated with them, or are signed by an authorized source. The evaluator shall verify that the description includes either a digital signature or published hash verification of the software before installation and that installation fails if the verification fails. The evaluator shall verify that the <abbr linkend="TSS"/> describes the method by which the digital signature or published hash is verified to include how the candidate updates are obtained, the processing associated with verifying the update, and the actions that take place for both successful and unsuccessful verification. If digital signatures are used, the evaluator shall also ensure the definition of an authorized source is contained in the <abbr linkend="TSS"/>.<h:br></h:br><h:br></h:br>
-                            If the <abbr linkend="ST"/> author indicates that a certificate-based mechanism is used for software update digital signature verification, the evaluator shall verify that the <abbr linkend="TSS"/> contains a description of how the certificates are contained on the device. The evaluator also ensures that the <abbr linkend="TSS"/> (or administrator guidance) describes how the certificates are installed/updated/selected, if necessary.<h:br></h:br><h:br></h:br>
-                            The evaluator shall perform the following tests:<h:br></h:br><h:br></h:br>
-                            <testlist>
-                                <test>The evaluator performs the version verification activity to determine the current version of the product. The evaluator obtains a legitimate update using procedures described in the operational guidance and verifies that it is successfully installed on the <abbr linkend="TOE"/>. After the update, the evaluator performs the version verification activity again to verify the version correctly corresponds to that of the update.</test>
-                                <test>The evaluator performs the version verification activity to determine the current version of the product. The evaluator obtains or produces illegitimate updates as defined below, and attempts to install them on the <abbr linkend="TOE"/>. The evaluator verifies that the <abbr linkend="TOE"/> rejects all of the illegitimate updates. The evaluator performs this test using all of the following forms of illegitimate updates:
-                                    <h:ol>
-                                        <h:li>A modified version (e.g., using a hex editor) of a legitimately signed or hashed update</h:li>
-                                        <h:li>An image that has not been signed/hashed</h:li>
-                                        <h:li>An image signed with an invalid hash or invalid signature (e.g., by using a different key as expected for creating the signature or by manual modification of a legitimate hash/signature)</h:li>
-                                    </h:ol>
+                        <aactivity>
+                            <TSS>
+                                The evaluator shall verify that the <abbr linkend="TSS"/> describes all <abbr linkend="TSF"/> software
+                                update mechanisms for updating the system software. Updates to the <abbr linkend="TOE"/> either have a 
+                                hash associated with them, or are signed by an authorized source. The evaluator shall verify that the
+                                description includes either a digital signature or published hash verification of the software before 
+                                installation and that installation fails if the verification fails. The evaluator shall verify that
+                                the <abbr linkend="TSS"/> describes the method by which the digital signature or published hash is
+                                verified to include how the candidate updates are obtained, the processing associated with verifying 
+                                the update, and the actions that take place for both successful and unsuccessful verification. If
+                                digital signatures are used, the evaluator shall also ensure the definition of an authorized source is 
+                                contained in the <abbr linkend="TSS"/>.<h:br></h:br><h:br></h:br>
+                                If the <abbr linkend="ST"/> author indicates that a certificate-based mechanism is used for software
+                                update digital signature verification, the evaluator shall verify that the <abbr linkend="TSS"/>
+                                contains a description of how the certificates are contained on the device. The evaluator also ensures
+                                that the <abbr linkend="TSS"/> (or administrator guidance) describes how the certificates are
+                                installed/updated/selected, if necessary.
+                            </TSS>
+                            <Tests>
+                                The evaluator shall perform the following tests:<h:br></h:br><h:br></h:br>
+                                <testlist>
+                                    <test>The evaluator performs the version verification activity to determine the current version of the product. The evaluator obtains a legitimate update using procedures described in the operational guidance and verifies that it is successfully installed on the <abbr linkend="TOE"/>. After the update, the evaluator performs the version verification activity again to verify the version correctly corresponds to that of the update.</test>
+                                    <test>The evaluator performs the version verification activity to determine the current version of the product. The evaluator obtains or produces illegitimate updates as defined below, and attempts to install them on the <abbr linkend="TOE"/>. The evaluator verifies that the <abbr linkend="TOE"/> rejects all of the illegitimate updates. The evaluator performs this test using all of the following forms of illegitimate updates:
+                                        <h:ol>
+                                            <h:li>A modified version (e.g., using a hex editor) of a legitimately signed or hashed update</h:li>
+                                            <h:li>An image that has not been signed/hashed</h:li>
+                                            <h:li>An image signed with an invalid hash or invalid signature (e.g., by using a different key as expected for creating the signature or by manual modification of a legitimate hash/signature)</h:li>
+                                        </h:ol>
                                     </test>
-                            </testlist>
+                                </testlist>
+                            </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -2915,7 +3003,10 @@
                         </title>
                         <note role="application">Certificates may optionally be used for code signing of system software updates (FPT_TUD_EXT.1.3). This element must be included in the <abbr linkend="ST"/> if certificates are used for validating updates. If “code signing for system software updates” is selected in FIA_X509_EXT.2.1, FPT_TUD_EXT.2 must be included in the <abbr linkend="ST"/>.<h:br></h:br><h:br></h:br>
                             Validity is determined by the certificate path, the expiration date, and the revocation status in accordance with FIA_X509_EXT.1.</note>
-                        <aactivity>The assurance activity for this requirement is performed in conjunction with the assurance activity for FIA_X509_EXT.1 and FIA_X509_EXT.2.
+                        <aactivity>
+                            <Tests>
+                                The assurance activity for this requirement is performed in conjunction with the assurance activity for FIA_X509_EXT.1 and FIA_X509_EXT.2.
+                            </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -2933,11 +3024,13 @@
                             FPT_VDP_EXT.1.2 is an attestation requirement. The vendor must attest that parameters passed from a <abbr linkend="VM"/> to a virtual device interface are not able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform. The vendor must attest that there are no design or implementation flaws that permit the above.
                         </note>
                         <aactivity>
-                            The evaluator shall examine the <abbr linkend="TSS"/> to ensure it documents all virtual device interfaces
-                            at the virtual I/O port level, to specify port number (absolute or relative to a base), port name, and a
-                            description of legal input values.  The documentation must be sufficient to enable the evaluator to
-                            effectively run the tests in FPT_DVD_EXT.1.  The evaluator must ensure that there are no obvious or
-                            publicly known virtual I/O ports missing from the <abbr linkend="TSS"/>.
+                            <TSS>
+                                The evaluator shall examine the <abbr linkend="TSS"/> to ensure it documents all virtual device interfaces
+                                at the virtual I/O port level, to specify port number (absolute or relative to a base), port name, and a
+                                description of legal input values.  The documentation must be sufficient to enable the evaluator to
+                                effectively run the tests in FPT_DVD_EXT.1.  The evaluator must ensure that there are no obvious or
+                                publicly known virtual I/O ports missing from the <abbr linkend="TSS"/>.
+                            </TSS>
                         </aactivity>
                         <note><h:b><h:i>Assurance Activity Note:</h:i></h:b><h:br></h:br>
                             There is no expectation that evaluators will examine source code to verify the “all” part of the Assurance Activity.<h:br></h:br><h:br></h:br>
@@ -2970,8 +3063,11 @@
                             Of the above, (a) does not apply to platforms that do not support SMM. The rationale behind activity (c) is that a firmware update of a single <abbr linkend="VM"/> must not affect other <abbr linkend="VM"/>s. So if multiple <abbr linkend="VM"/>s share the same firmware image as part of a common hardware abstraction, then the update of a single machine’s BIOS must not be allowed to change the common abstraction. The virtual hardware abstraction is part of the <abbr linkend="VMM"/>.<h:br></h:br><h:br></h:br>
                             This is an attestation requirement. The vendor must attest that software running in a <abbr linkend="VM"/> is not able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform. The vendor must attest that there are no design or implementation flaws that permit the above.
                         </note>
-                        <aactivity>The evaluator ensures that the <abbr linkend="ST"/> includes the following statement attesting that software running in a <abbr linkend="VM"/> is not able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform:<h:br></h:br><h:br></h:br>
-                            “Software running in a <abbr linkend="VM"/> is not able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform. There are no design or implementation flaws that bypass or defeat <abbr linkend="VM"/> isolation.”
+                        <aactivity>
+                            <Tests>
+                                The evaluator ensures that the <abbr linkend="ST"/> includes the following statement attesting that software running in a <abbr linkend="VM"/> is not able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform:<h:br></h:br><h:br></h:br>
+                                “Software running in a <abbr linkend="VM"/> is not able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform. There are no design or implementation flaws that bypass or defeat <abbr linkend="VM"/> isolation.”
+                            </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -2982,7 +3078,15 @@
                         <title>The <abbr linkend="TSF"/> shall verify the integrity of Guest <abbr linkend="VM"/>s through the following mechanisms: <assignable>list of Guest <abbr linkend="VM"/> integrity mechanisms</assignable>.
                         </title>
                         <note role="application">The primary purpose of this requirement is to identify and describe the mechanisms used to verify the integrity of Guest <abbr linkend="VM"/>s that have been 'imported' in some fashion, though these mechanisms could also be applied to all Guest <abbr linkend="VM"/>s, depending on the mechanism used. Importation for this requirement could include <abbr linkend="VM"/> migration (live or otherwise), the importation of virtual disk files that were previously exported, <abbr linkend="VM"/>s in shared storage, etc. It is possible that a trusted <abbr linkend="VM"/> could have been modified during the migration or import/export process, or <abbr linkend="VM"/>s could have been obtained from untrusted sources in the first place, so integrity checks on these <abbr linkend="VM"/>s can be a prudent measure to take. These integrity checks could be as thorough as making sure the entire <abbr linkend="VM"/> exactly matches a previously known <abbr linkend="VM"/> (by hash for example), or by simply checking certain configuration settings to ensure that the <abbr linkend="VM"/>'s configuration will not violate the security model of the VS.</note>
-                        <aactivity>For each mechanism listed in the assignment, the evaluator shall ensure that the <abbr linkend="TSS"/> documents the mechanism, including how it verifies <abbr linkend="VM"/> integrity, which set of Guest <abbr linkend="VM"/>s it will check (all Guest <abbr linkend="VM"/>s, only migrated <abbr linkend="VM"/>s, etc.), when such checks occur (before <abbr linkend="VM"/> startup, immediately following importation/migration, on demand, etc.), and which actions are taken if a <abbr linkend="VM"/> fails the integrity check (or which range of actions are possible if the action is configurable).
+                        <aactivity>
+                            <TSS>
+                                For each mechanism listed in the assignment, the evaluator shall ensure that the <abbr linkend="TSS"/> 
+                                documents the mechanism, including how it verifies <abbr linkend="VM"/> integrity, which set of Guest
+                                <abbr linkend="VM"/>s it will check (all Guest <abbr linkend="VM"/>s, only migrated <abbr linkend="VM"/>
+                                s, etc.), when such checks occur (before <abbr linkend="VM"/> startup, immediately following 
+                                importation/migration, on demand, etc.), and which actions are taken if a <abbr linkend="VM"/> fails
+                                the integrity check (or which range of actions are possible if the action is configurable).
+                            </TSS>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -2993,7 +3097,18 @@
                         <title>The <abbr linkend="TSF"/> shall ensure that device drivers for physical devices are isolated from the <abbr linkend="VMM"/> and all other domains.
                         </title>
                     <note role="application">In order to function on physical hardware, the <abbr linkend="VMM"/> must have access to the device drivers for the physical platform on which it runs. These drivers are often written by third parties, and yet are effectively a part of the <abbr linkend="VMM"/>. Thus the integrity of the <abbr linkend="VMM"/> in part depends on the quality of third party code that the virtualization vendor has no control over. By encapsulating these drivers within one or more dedicated driver domains (e.g., Service <abbr linkend="VM"/> or <abbr linkend="VM"/>s) the damage of a driver failure or vulnerability can be contained within the domain, and would not compromise the <abbr linkend="VMM"/>. When driver domains have exclusive access to a physical device, hardware isolation mechanisms, such as Intel's VT-d, AMD's Input/Output Memory Management Unit (IOMMU), or ARM's System Memory Management Unit (MMU) should be used to ensure that operations performed by Direct Memory Access (DMA) hardware are properly constrained.</note>
-                        <aactivity>The evaluator shall examine the <abbr linkend="TSS"/> documentation to verify that it describes the mechanism used for device driver isolation. If the <abbr linkend="TSS"/> document indicates that a hardware isolation mechanism is used, the evaluator shall verify that the <abbr linkend="TSS"/> documentation enumerates the hardware-isolated DMA-capable devices, and that it also provides a complete list of the accessible targets for memory transactions for each of those DMA-capable devices. (An example of information that might be included in the <abbr linkend="TSS"/> documentation: a listing of all pages belonging to the driver domain, the identification of a subset of the driver domain's pages that the driver domain has permitted the device access to, or the identification of a dedicated area of memory reserved for the device or driver domain).
+                        <aactivity>
+                            <TSS>
+                                The evaluator shall examine the <abbr linkend="TSS"/> documentation to verify that it describes the
+                                mechanism used for device driver isolation. If the <abbr linkend="TSS"/> document indicates that a 
+                                hardware isolation mechanism is used, the evaluator shall verify that the <abbr linkend="TSS"/> 
+                                documentation enumerates the hardware-isolated DMA-capable devices, and that it also provides a 
+                                complete list of the accessible targets for memory transactions for each of those DMA-capable 
+                                devices. (An example of information that might be included in the <abbr linkend="TSS"/> documentation:
+                                a listing of all pages belonging to the driver domain, the identification of a subset of the driver 
+                                domain's pages that the driver domain has permitted the device access to, or the identification of a 
+                                dedicated area of memory reserved for the device or driver domain).
+                            </TSS>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -3008,11 +3123,18 @@
                         <title>The <abbr linkend="TSF"/> shall store SWIDs in a .swidtag file as defined in ISO/IEC 19770-2:2009.
                         </title>
                         <note role="application">SWID tags are XML files embedded within software that provide a standard method for IT departments to track and manage the software. The presence of SWIDs can greatly simplify the software management process and improve security by enhancing the ability of IT departments to manage updates.</note>
-                        <aactivity>The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes how SWID tags are implemented and the format of the tags. The evaluator shall verify that the format complies with FPT_IDV_EXT.1.1 and that SWIDs are stored in accordance with FPT_IDV_EXT.1.2.<h:br></h:br><h:br></h:br>
-                            The evaluator shall perform the following test:
-                            <testlist>
-                                <test>The evaluator shall check for the existence of SWID tags in a .swidtag file. The evaluator shall open the file and verify that each SWID contains at least a SoftwareIdentity element and an Entity element.</test>
-                            </testlist>
+                        <aactivity>
+                            <TSS>
+                                The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes how SWID tags are
+                                implemented and the format of the tags. The evaluator shall verify that the format complies with
+                                FPT_IDV_EXT.1.1 and that SWIDs are stored in accordance with FPT_IDV_EXT.1.2.
+                            </TSS>
+                            <Tests>
+                                The evaluator shall perform the following test:
+                                <testlist>
+                                    <test>The evaluator shall check for the existence of SWID tags in a .swidtag file. The evaluator shall open the file and verify that each SWID contains at least a SoftwareIdentity element and an Entity element.</test>
+                                </testlist>
+                            </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -3024,8 +3146,16 @@
                         </title>
                         <note role="application">Introspection can be used to support malware and anomaly detection from outside of the guest environment. This not only helps protect the Guest OS, it also protects the VS by providing an opportunity for the VS to detect threats to itself that originate within <abbr linkend="VM"/>s, and that may attempt to break out of the <abbr linkend="VM"/> and compromise the <abbr linkend="VMM"/> or other <abbr linkend="VM"/>s.<h:br></h:br><h:br></h:br>
                             The hosting of malware detection software outside of the guest <abbr linkend="VM"/> helps protect the guest and helps ensure the integrity of the malware detection/antivirus software. This capability can be implemented in the <abbr linkend="VMM"/> itself, but ideally it should be hosted by a Service <abbr linkend="VM"/> so that it can be better contained and does not introduce bugs into the <abbr linkend="VMM"/>.</note>
-                        <aactivity>The evaluator shall examine the <abbr linkend="TSS"/> documentation to verify that it describes the interface for <abbr linkend="VM"/> introspection and whether the introspection is performed by the <abbr linkend="VMM"/> or another <abbr linkend="VM"/>.<h:br></h:br><h:br></h:br>
-                            The evaluator shall examine the operational guidance to ensure that it contains instructions for configuration of the introspection mechanism.
+                        <aactivity>
+                            <TSS>
+                                The evaluator shall examine the <abbr linkend="TSS"/> documentation to verify that it describes the
+                                interface for <abbr linkend="VM"/> introspection and whether the introspection is performed by the 
+                                <abbr linkend="VMM"/> or another <abbr linkend="VM"/>.
+                            </TSS>
+                            <Guidance>
+                                The evaluator shall examine the operational guidance to ensure that it contains instructions for
+                                configuration of the introspection mechanism.
+                            </Guidance>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -3051,11 +3181,19 @@
                             If available, hardware should be used to store measurements in such a manner that they cannot be modified in any manner except to be extended. These measurements should be produced in a repeatable manner so that a third party can verify the measurements if given the inputs. Hardware devices, like Trusted Platform Modules (TPM), TrustZone, and MMU are some examples that may serve as foundations for storing and reporting measurements.<h:br></h:br><h:br></h:br>
                             Platforms with a root of trust for measurement (RTM) should initiate the measured launch process. This may include core BIOS or the chipset. The chipset is the preferred RTM, but core BIOS or other firmware is acceptable. In system without a traditional RTM, the first component that boots would be considered the RTM, this is not preferred.
                         </note>
-                        <aactivity>The evaluator shall verify that the <abbr linkend="TSS"/> or Operational Guidance describes how integrity measurements are performed and made available to the Management Subsystem. The evaluator shall examine the operational guidance to verify that it documents how to access the measurements in the Management Subsystem.<h:br></h:br><h:br></h:br>
-                            The evaluator shall perform the following tests:<h:br></h:br><h:br></h:br>
-                            <testlist>
-                                <test>The evaluator shall start the VS, login as an Administrator, and verify that the measurements for the specified components are viewable in the Management Subsystem.</test>
-                            </testlist>
+                        <aactivity>
+                            <TSS>
+                                The evaluator shall verify that the <abbr linkend="TSS"/> or Operational Guidance describes how 
+                                integrity measurements are performed and made available to the Management Subsystem. The evaluator 
+                                shall examine the operational guidance to verify that it documents how to access the measurements in 
+                                the Management Subsystem.
+                            </TSS>
+                            <Tests>
+                                The evaluator shall perform the following tests:<h:br></h:br><h:br></h:br>
+                                <testlist>
+                                    <test>The evaluator shall start the VS, login as an Administrator, and verify that the measurements for the specified components are viewable in the Management Subsystem.</test>
+                              </testlist>
+                            </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -3075,7 +3213,12 @@
                             entities establishing connections or programmatic connections (e.g., remote procedure calls over
                             a network) are not required to be covered by this requirement.<h:br></h:br><h:br></h:br>
                         </note>
-                    <aactivity>The evaluator shall configure the <abbr linkend="TOE"/> to display the advisory warning message “TEST TEST Warning Message TEST TEST”. The evaluator shall then log out and confirm that the advisory message is displayed before logging can occur.
+                    <aactivity>
+                        <Tests>
+                            The evaluator shall configure the <abbr linkend="TOE"/> to display the advisory warning message 
+                            “TEST TEST Warning Message TEST TEST”. The evaluator shall then log out and confirm that the advisory 
+                            message is displayed before logging can occur.
+                        </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -3106,8 +3249,19 @@
                         <note role="application">This PP does not mandate that a product implement TLS with mutual authentication; either FCS_TLSS_EXT.1 or FCS_TLSS_EXT.2 can be selected if the <abbr linkend="TOE"/> provides TLS server capabilities. However, if the product itself does include the capability to perform TLS with mutual authentication, it is expected that it be included within the <abbr linkend="TOE"/> boundary.<h:br></h:br><h:br></h:br>
                             If the <abbr linkend="ST"/> author selects SSH, the <abbr linkend="TSF"/> shall be validated against the Extended Package for Secure Shell. The <abbr linkend="ST"/> author must include the security functional requirements for the trusted channel protocol selected in FTP_ITC_EXT.1 in the main body of the <abbr linkend="ST"/>.<h:br></h:br><h:br></h:br>
                             If any trusted communication channels used by the <abbr linkend="TOE"/> rely on digital certificates and the certificate validation mechanism is implemented by the <abbr linkend="TOE"/>, FIA_X509_EXT.1 must be claimed in the <abbr linkend="ST"/>. Likewise, FIA_X509_EXT.2 must be claimed and should include the relevant selections for the authentication methods used based on the communication channels that are implemented by the <abbr linkend="TSF"/>.</note>
-                        <aactivity>The evaluator will review the <abbr linkend="TSS"/> to determine that it lists all trusted channels the <abbr linkend="TOE"/> uses for remote communications, including both the external entities and/or remote users used for the channel as well as the protocol that is used for each.<h:br></h:br><h:br></h:br>
-                            The evaluator will configure the <abbr linkend="TOE"/> to communicate with each external IT entity and/or type of remote user identified in the <abbr linkend="TSS"/>. The evaluator will monitor network traffic while the VS performs communication with each of these destinations. The evaluator will ensure that for each session a trusted channel was established in conformance with the protocols identified in the selection.
+                        <aactivity>
+                            <TSS>
+                                The evaluator will review the <abbr linkend="TSS"/> to determine that it lists all trusted channels 
+                                the <abbr linkend="TOE"/> uses for remote communications, including both the external entities and/or 
+                                remote users used for the channel as well as the protocol that is used for each.
+                            </TSS>
+                            <Tests>
+                                The evaluator will configure the <abbr linkend="TOE"/> to communicate with each external IT entity 
+                                and/or type of remote user identified in the <abbr linkend="TSS"/>. The evaluator will monitor network
+                                traffic while the VS performs communication with each of these destinations. The evaluator will ensure
+                                that for each session a trusted channel was established in conformance with the protocols identified 
+                                in the selection.
+                            </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -3121,11 +3275,18 @@
                             In environments where multiple <abbr linkend="VM"/>s run at the same time, the user must have a way of knowing which <abbr linkend="VM"/> user input is directed to at any given moment. This is especially important in multiple-domain environments.<h:br></h:br><h:br></h:br>
                             In the case of a human user, this is usually a visual indicator. In the case of headless <abbr linkend="VM"/>s, the user is considered to be a program, but this program still needs to know which <abbr linkend="VM"/> it is sending input to; this would typically be accomplished through programmatic means.</note>
                         <aactivity>
-                            <h:ol>
-                                <h:li>The evaluator shall ensure that the <abbr linkend="TSS"/> lists the supported user input devices</h:li>
-                                <h:li>The evaluator shall ensure that the operational guidance specifies how the current input focus is indicated to the user</h:li>
-                                <h:li>For each supported input device, the evaluator shall demonstrate that the input from each device listed in the <abbr linkend="TSS"/> is directed to the <abbr linkend="VM"/> that is indicated to have the input focus</h:li>
-                            </h:ol>
+                            <TSS>
+                                The evaluator shall ensure that the <abbr linkend="TSS"/> lists the supported user input devices.
+                            </TSS>
+                            <Guidance>
+                                The evaluator shall ensure that the operational guidance specifies how the current input focus is
+                                indicated to the user.
+                            </Guidance>
+                            <Tests>
+                                For each supported input device, the evaluator shall demonstrate that the input from each device
+                                listed in the <abbr linkend="TSS"/> is directed to the <abbr linkend="VM"/> that is indicated to have
+                                the input focus.
+                            </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -3137,9 +3298,20 @@
                         </title>
                         <note role="application">In environments where a user has access to more than one <abbr linkend="VM"/> at the same time, the user must be able to determine the identity of each <abbr linkend="VM"/> displayed in order to avoid inadvertent cross-domain data entry.<h:br></h:br><h:br></h:br>
                             There must be a mechanism for associating an identifier with a <abbr linkend="VM"/> so that an application or program displaying the <abbr linkend="VM"/> can identify the <abbr linkend="VM"/> to users. This is generally indicated visually for human users (e.g., a border around a <abbr linkend="VM"/>’s screen display) and programmatically for headless <abbr linkend="VM"/>s (e.g., an API function). The identification must be unique to the VS, but does not need to be universally unique.</note>
-                        <aactivity>The evaluator shall ensure that the <abbr linkend="TSS"/> describes the mechanism for identifying <abbr linkend="VM"/>s to the user, how identities are assigned to <abbr linkend="VM"/>s, and how conflicts are prevented.<h:br></h:br><h:br></h:br>
-                            The evaluator shall perform the following test:<h:br></h:br><h:br></h:br>
-                            The evaluator shall attempt to create and start at least three Guest <abbr linkend="VM"/>s on a single display device where the evaluator attempts to assign two of the <abbr linkend="VM"/>s the same identifier. If the user interface displays different identifiers for each <abbr linkend="VM"/>, then the requirement is met. Likewise, the requirement is met if the system refuses to create or start a <abbr linkend="VM"/> when there is already a <abbr linkend="VM"/> with the same identifier.
+                        <aactivity>
+                            <TSS>
+                                The evaluator shall ensure that the <abbr linkend="TSS"/> describes the mechanism for identifying 
+                                <abbr linkend="VM"/>s to the user, how identities are assigned to <abbr linkend="VM"/>s, and how 
+                                conflicts are prevented.
+                            </TSS>
+                            <Tests>
+                                The evaluator shall perform the following test:<h:br></h:br><h:br></h:br>
+                                The evaluator shall attempt to create and start at least three Guest <abbr linkend="VM"/>s on a single 
+                                display device where the evaluator attempts to assign two of the <abbr linkend="VM"/>s the same
+                                identifier. If the user interface displays different identifiers for each <abbr linkend="VM"/>, then 
+                                the requirement is met. Likewise, the requirement is met if the system refuses to create or start a
+                                <abbr linkend="VM"/> when there is already a <abbr linkend="VM"/> with the same identifier.
+                            </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -3159,14 +3331,29 @@
                         </title>
                         <note role="application">Protocols used to implement the remote administration trusted channel must be selected in FTP_ITC_EXT.1.<h:br></h:br><h:br></h:br>
                             This requirement ensures that authorized remote administrators initiate all communication with the <abbr linkend="TOE"/> via a trusted path, and that all communications with the <abbr linkend="TOE"/> by remote administrators is performed over this path. The data passed in this trusted communication channel are encrypted as defined the protocol chosen in the first selection. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>, and then ensures that the detailed requirements in Annex B corresponding to their selection are copied to the <abbr linkend="ST"/> if not already present.</note>
-                        <aactivity>The evaluator shall examine the <abbr linkend="TSS"/> to determine that the methods of remote <abbr linkend="TOE"/> administration are indicated, along with how those communications are protected. The evaluator shall also confirm that all protocols listed in the <abbr linkend="TSS"/> in support of <abbr linkend="TOE"/> administration are consistent with those specified in the requirement, and are included in the requirements in the <abbr linkend="ST"/>. The evaluator shall confirm that the operational guidance contains instructions for establishing the remote administrative sessions for each supported method. The evaluator shall also perform the following tests:
-                            <testlist>
-                                <test>The evaluators shall ensure that communications using each specified (in the operational guidance) remote administration method is tested during the course of the evaluation, setting up the connections as described in the operational guidance and ensuring that communication is successful.</test>
-                                <test>For each method of remote administration supported, the evaluator shall follow the operational guidance to ensure that there is no available interface that can be used by a remote user to establish remote administrative sessions without invoking the trusted path.</test>
-                                <test>The evaluator shall ensure, for each method of remote administration, the channel data is not sent in plaintext.</test>
-                                <test>The evaluator shall ensure, for each method of remote administration, modification of the channel data is detected by the <abbr linkend="TOE"/>.</test>
-                            </testlist>
+                        <aactivity>
+                            <TSS>
+                                The evaluator shall examine the <abbr linkend="TSS"/> to determine that the methods of remote 
+                                <abbr linkend="TOE"/> administration are indicated, along with how those communications are protected.
+                                The evaluator shall also confirm that all protocols listed in the <abbr linkend="TSS"/> in support of 
+                                <abbr linkend="TOE"/> administration are consistent with those specified in the requirement, and are 
+                                included in the requirements in the <abbr linkend="ST"/>. 
+                            </TSS>
+                            <Guidance>
+                                The evaluator shall confirm that the 
+                                operational guidance contains instructions for establishing the remote administrative sessions for
+                                each supported method. 
+                            </Guidance>
+                            <Tests>
+                                The evaluator shall also perform the following tests:
+                                <testlist>
+                                    <test>The evaluators shall ensure that communications using each specified (in the operational guidance) remote administration method is tested during the course of the evaluation, setting up the connections as described in the operational guidance and ensuring that communication is successful.</test>
+                                    <test>For each method of remote administration supported, the evaluator shall follow the operational guidance to ensure that there is no available interface that can be used by a remote user to establish remote administrative sessions without invoking the trusted path.</test>
+                                    <test>The evaluator shall ensure, for each method of remote administration, the channel data is not sent in plaintext.</test>
+                                    <test>The evaluator shall ensure, for each method of remote administration, modification of the channel data is detected by the <abbr linkend="TOE"/>.</test>
+                             </testlist>
                             Further assurance activities are associated with the specific protocols.
+                            </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
