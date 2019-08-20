@@ -3032,14 +3032,14 @@
                                 effectively run the tests in FPT_DVD_EXT.1.  The evaluator must ensure that there are no obvious or
                                 publicly known virtual I/O ports missing from the <abbr linkend="TSS"/>.
                             </TSS>
+                            <note><h:b><h:i>Assurance Activity Note:</h:i></h:b><h:br></h:br>
+                                There is no expectation that evaluators will examine source code to verify the “all” part of the Assurance Activity.<h:br></h:br><h:br></h:br>
+                                The evaluator shall examine the <abbr linkend="TSS"/> to ensure it documents all virtual device interfaces,
+                                including I/O ports, protocols, and data formats.<h:br></h:br><h:br></h:br>
+                                The evaluator ensures that the <abbr linkend="ST"/> includes the following statement attesting that parameters passed from a Guest <abbr linkend="VM"/> to virtual device interfaces are thoroughly validated, that all values outside the legal values specified in the <abbr linkend="TSS"/> are rejected, and that any data passed to the virtual device interfaces is unable to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform:<h:br></h:br><h:br></h:br>
+                                “Parameters passed from Guest <abbr linkend="VM"/>s to virtual device interfaces are thoroughly validated and all illegal values (as specified in the <abbr linkend="TSS"/>) are rejected. Additionally, parameters passed from Guest <abbr linkend="VM"/>s to virtual device interfaces are not able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform. Thorough testing and architectural design reviews have been conducted to ensure the accuracy of these claims, and there are no design or implementation flaws that bypass or defeat the security of the virtual device interfaces.”
+                            </note>
                         </aactivity>
-                        <note><h:b><h:i>Assurance Activity Note:</h:i></h:b><h:br></h:br>
-                            There is no expectation that evaluators will examine source code to verify the “all” part of the Assurance Activity.<h:br></h:br><h:br></h:br>
-                            The evaluator shall examine the <abbr linkend="TSS"/> to ensure it documents all virtual device interfaces,
-                            including I/O ports, protocols, and data formats.<h:br></h:br><h:br></h:br>
-                            The evaluator ensures that the <abbr linkend="ST"/> includes the following statement attesting that parameters passed from a Guest <abbr linkend="VM"/> to virtual device interfaces are thoroughly validated, that all values outside the legal values specified in the <abbr linkend="TSS"/> are rejected, and that any data passed to the virtual device interfaces is unable to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform:<h:br></h:br><h:br></h:br>
-                            “Parameters passed from Guest <abbr linkend="VM"/>s to virtual device interfaces are thoroughly validated and all illegal values (as specified in the <abbr linkend="TSS"/>) are rejected. Additionally, parameters passed from Guest <abbr linkend="VM"/>s to virtual device interfaces are not able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform. Thorough testing and architectural design reviews have been conducted to ensure the accuracy of these claims, and there are no design or implementation flaws that bypass or defeat the security of the virtual device interfaces.”
-                        </note>
                     </f-element>
                 </f-component>
 
