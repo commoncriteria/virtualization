@@ -1617,6 +1617,7 @@
                 </f-component>
                 
                 <!-- FCS_HTTPS_EXT.1 -->
+                <!-- Depends on HTTPS being selected for trusted channel -->
                 <f-component id="FCS_HTTPS_EXT.1" name="HTTPS Protocol"  status="sel-based">
                     <selection-depends req="FTP_ITC_EXT.1.1" ids="itc-https"/>
                     <f-element id="FCS_HTTPS_EXT.1.1">
@@ -1643,6 +1644,7 @@
                 </f-component>
                 
                 <!-- FCS_IPSEC_EXT.1 -->
+                <!-- Depends on IPSEC being selected for trusted channels -->
                 <f-component id="FCS_IPSEC_EXT.1" name="IPsec Protocol"  status="sel-based">
                     <selection-depends req="FTP_ITC_EXT.1.1" ids="itc-ipsec"/>
                     <f-element id="FCS_IPSEC_EXT.1.1">
@@ -2509,7 +2511,9 @@
                 <!-- FIA_UIA_EXT.1 -->
                 <f-component id="FIA_UIA_EXT.1" name="Administrator Identification and Authentication">
                     <f-element id="">
-                        <title>The <abbr linkend="TSF"/> shall require Administrators to be successfully identified and authenticated using one of the methods in FIA_UAU.5 before allowing any <abbr linkend="TSF"/>-mediated management function to be performed by that Administrator.
+                        <title>The <abbr linkend="TSF"/> shall require Administrators to be successfully identified and authenticated
+                            using one of the methods in FIA_UAU.5 before allowing any <abbr linkend="TSF"/>-mediated management
+                            function to be performed by that Administrator.
                         </title>
                         <note role="application">Users do not have to authenticate, only Administrators need to authenticate.</note>
                         <aactivity>
@@ -2530,8 +2534,9 @@
                 </f-component>
 
                 <!-- FIA_PMG_EXT.1 -->
+                <!-- Depends on password-based authentication being used for administrator authentication -->
                 <f-component id="FIA_PMG_EXT.1" name="Password Management"  status="sel-based">
-                    <selection-depends req="FIA_UAU.5.1" ids="usu-pwd"/>
+                    <selection-depends req="FIA_UAU.5.1" ids="uau-pwd"/>
                     <f-element id="FIA_PMG_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall provide the following password management capabilities for administrative passwords:
                             <h:ol type="a">
@@ -2572,6 +2577,7 @@
                 </f-component>
 
                 <!-- FIA_X509_EXT.1 -->
+                <!-- Depends on x509 certificates being used for administrator authentication -->
                 <f-component id="FIA_X509_EXT.1" name="X.509 Certificate Validation"  status="sel-based">
                     <selection-depends req="FIA_UAU.5.1" ids="uau-x509"/>
                     <f-element id="FIA_X509_EXT.1.1">
@@ -2632,6 +2638,7 @@
                 </f-component>
 
                 <!-- FIA_X509_EXT.2 -->
+                <!-- Depends on digital signatures being used for trusted updates or administrator authentication -->
                 <f-component id="FIA_X509_EXT.2" name="X.509 Certificate Authentication"  status="sel-based">
                     <selection-depends req="FPT_TUD_EXT.1.3" ids="tud-digsign"/>
                     <selection-depends req="FIA_UAU.5.1" ids="uau-x509"/>
@@ -2997,6 +3004,7 @@
                 </f-component>
                 
                 <!-- FPT_TUD_EXT.2 -->
+                <!-- Depends on X509 certificates being used for code signing. -->
                 <f-component id="FPT_TUD_EXT.2" name="Trusted Update Based on Certificates"  status="sel-based">
                     <selection-depends req="FIA_X509_EXT.2.1" ids="x509-codesign"/>
                     <f-element id="FPT_TUD_EXT.2.1">
@@ -3237,6 +3245,9 @@
                                 <selectable id="itc-ipsec">IPsec as conforming to FCS_IPSEC_EXT.1</selectable>
                                 <selectable id="itc-ssh">SSH as conforming to the <h:a href="https://www.niap-ccevs.org/pp/"><h:i><abbr linkend="EP"/> for Secure Shell</h:i></h:a></selectable>
                             </selectables>
+                            <!-- <import-package-depends package="PKG_TLS_V1.1" req="FTP_ITC_EXT.1.1" ids="itc-https">  -->
+                            <!-- <import-package-depends package="PKG_TLS_V1.1" req="FTP_ITC_EXT.1.1" ids="itc-tls">  -->
+                            <!-- <import-package-depends package="PP_SSH_EP_v1.0" req="FTP_ITC_EXT.1.1" ids="itc-ssh">  -->
                             to provide a trusted communication channel between itself, and<h:br></h:br><h:br></h:br>
                             <h:li>audit servers (as required by FAU_STG_EXT.1), and</h:li>
                             <selectables linebreak="yes">
@@ -3245,11 +3256,28 @@
                                 <selectable>[assignment: other capabilities],</selectable>
                                 <selectable>no other capabilities]</selectable>
                             </selectables>
-                            that is logically distinct from other communication paths and provides assured identification of its endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.
+                            that is logically distinct from other communication paths and provides assured identification of its
+                            endpoints using 
+<!--                        
+                            <selectables>
+                                <selectable id="itc-x509">certificate-based digital signature validation implemented by the TOE</selectable>
+                                <selectable>??????</selectable>
+                             </selectables>
+-->
+                             and protection of the communicated data from disclosure and detection of modification of the communicated data.
                         </title>
-                        <note role="application">This PP does not mandate that a product implement TLS with mutual authentication; either FCS_TLSS_EXT.1 or FCS_TLSS_EXT.2 can be selected if the <abbr linkend="TOE"/> provides TLS server capabilities. However, if the product itself does include the capability to perform TLS with mutual authentication, it is expected that it be included within the <abbr linkend="TOE"/> boundary.<h:br></h:br><h:br></h:br>
-                            If the <abbr linkend="ST"/> author selects SSH, the <abbr linkend="TSF"/> shall be validated against the Extended Package for Secure Shell. The <abbr linkend="ST"/> author must include the security functional requirements for the trusted channel protocol selected in FTP_ITC_EXT.1 in the main body of the <abbr linkend="ST"/>.<h:br></h:br><h:br></h:br>
-                            If any trusted communication channels used by the <abbr linkend="TOE"/> rely on digital certificates and the certificate validation mechanism is implemented by the <abbr linkend="TOE"/>, FIA_X509_EXT.1 must be claimed in the <abbr linkend="ST"/>. Likewise, FIA_X509_EXT.2 must be claimed and should include the relevant selections for the authentication methods used based on the communication channels that are implemented by the <abbr linkend="TSF"/>.</note>
+                        <note role="application">If the ST author selects either TLS or HTTPS, the <abbr linkend="TSF"/> shall be validated against the 
+                            Functional Package for TLS. This PP does not mandate that a product implement TLS with mutual authentication, but if the product 
+                            includes the capability to perform TLS with mutual authentication, it is expected that mutual authentication will be 
+                            included within the <abbr linkend="TOE"/> boundary.<h:br></h:br><h:br></h:br>
+                            If the <abbr linkend="ST"/> author selects SSH, the <abbr linkend="TSF"/> shall be validated against the Extended
+                            Package for Secure Shell. The <abbr linkend="ST"/> author must include the security functional requirements for the
+                            trusted channel protocol selected in FTP_ITC_EXT.1 in the main body of the <abbr linkend="ST"/>.<h:br></h:br><h:br></h:br>
+                            If any trusted communication channels used by the <abbr linkend="TOE"/> rely on digital certificates and the
+                            certificate validation mechanism is implemented by the <abbr linkend="TOE"/>, FIA_X509_EXT.1 must be claimed in the
+                            <abbr linkend="ST"/>. Likewise, FIA_X509_EXT.2 must be claimed and should include the relevant selections for the
+                            authentication methods used based on the communication channels that are implemented by the <abbr linkend="TSF"/>.
+                        </note>
                         <aactivity>
                             <TSS>
                                 The evaluator will review the <abbr linkend="TSS"/> to determine that it lists all trusted channels 
@@ -3318,8 +3346,11 @@
                 </f-component>
 
                 <!-- FTP_TRP.1 -->
+                <!-- TODO: There is really no selection for brining this in. -->
+                <!-- Need an SFR that allows selection of remote vs. local admin of the VS -->
+                <!-- If remote admin is required, then this should be a threshold requirement -->
                 <f-component id="FTP_TRP.1" name="Trusted Path"  status="sel-based">
-                    <selection-depends req="FTP_ITC_EXT.1.1"/><!-- HERE check this -->
+                    <selection-depends req="FTP_ITC_EXT.1.1"/><!-- This is the wrong selection -->
                     <f-element id="FTP_TRP.1.1">
                         <title>The <abbr linkend="TSF"/> shall use a trusted channel as specified in FTP_ITC_EXT.1 to provide a trusted communication path between itself and [remote] administrators that is logically distinct from other communication paths and provides assured identification of its end points and protection of the communicated data from [modification, disclosure].
                         </title>
