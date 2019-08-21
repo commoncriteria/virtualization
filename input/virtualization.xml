@@ -3039,14 +3039,25 @@
                                 description of legal input values.  The documentation must be sufficient to enable the evaluator to
                                 effectively run the tests in FPT_DVD_EXT.1.  The evaluator must ensure that there are no obvious or
                                 publicly known virtual I/O ports missing from the <abbr linkend="TSS"/>.
+                                <h:br /><h:br />
+                                There is no expectation that evaluators will examine source code to verify the “all” part of the 
+                                Assurance Activity.
                             </TSS>
-                            <note><h:b><h:i>Assurance Activity Note:</h:i></h:b><h:br></h:br>
-                                There is no expectation that evaluators will examine source code to verify the “all” part of the Assurance Activity.<h:br></h:br><h:br></h:br>
-                                The evaluator shall examine the <abbr linkend="TSS"/> to ensure it documents all virtual device interfaces,
-                                including I/O ports, protocols, and data formats.<h:br></h:br><h:br></h:br>
-                                The evaluator ensures that the <abbr linkend="ST"/> includes the following statement attesting that parameters passed from a Guest <abbr linkend="VM"/> to virtual device interfaces are thoroughly validated, that all values outside the legal values specified in the <abbr linkend="TSS"/> are rejected, and that any data passed to the virtual device interfaces is unable to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform:<h:br></h:br><h:br></h:br>
-                                “Parameters passed from Guest <abbr linkend="VM"/>s to virtual device interfaces are thoroughly validated and all illegal values (as specified in the <abbr linkend="TSS"/>) are rejected. Additionally, parameters passed from Guest <abbr linkend="VM"/>s to virtual device interfaces are not able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform. Thorough testing and architectural design reviews have been conducted to ensure the accuracy of these claims, and there are no design or implementation flaws that bypass or defeat the security of the virtual device interfaces.”
-                            </note>
+                            <Tests>
+                                The evaluator ensures that the <abbr linkend="ST"/> includes the following statement attesting that
+                                parameters passed from a Guest <abbr linkend="VM"/> to virtual device interfaces are thoroughly
+                                validated, that all values outside the legal values specified in the <abbr linkend="TSS"/> are
+                                rejected, and that any data passed to the virtual device interfaces is unable to degrade or disrupt
+                                the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform:
+                                <h:br></h:br><h:br></h:br>
+                                “Parameters passed from Guest <abbr linkend="VM"/>s to virtual device interfaces are thoroughly
+                                validated and all illegal values (as specified in the <abbr linkend="TSS"/>) are rejected.
+                                Additionally, parameters passed from Guest <abbr linkend="VM"/>s to virtual device interfaces are not 
+                                able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>,
+                                or the Platform. Thorough testing and architectural design reviews have been conducted to ensure the
+                                accuracy of these claims, and there are no design or implementation flaws that bypass or defeat the
+                                security of the virtual device interfaces.”
+                            </Tests>
                         </aactivity>
                     </f-element>
                 </f-component>
@@ -3350,7 +3361,7 @@
                 <!-- Need an SFR that allows selection of remote vs. local admin of the VS -->
                 <!-- If remote admin is required, then this should be a threshold requirement -->
                 <f-component id="FTP_TRP.1" name="Trusted Path"  status="sel-based">
-                    <selection-depends req="FTP_ITC_EXT.1.1"/><!-- This is the wrong selection -->
+<!--                    <selection-depends req="FTP_ITC_EXT.1.1"/> This is the wrong dependency.   -->
                     <f-element id="FTP_TRP.1.1">
                         <title>The <abbr linkend="TSF"/> shall use a trusted channel as specified in FTP_ITC_EXT.1 to provide a trusted communication path between itself and [remote] administrators that is logically distinct from other communication paths and provides assured identification of its end points and protection of the communicated data from [modification, disclosure].
                         </title>
@@ -3484,16 +3495,26 @@
                         <a-element id="AGD_OPE.1.1E">
                             <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
                             <aactivity>
-                                Some of the contents of the operational guidance will be verified by the assurance activities in Section 5.2 and evaluation of the <abbr linkend="TOE"/> according to the <abbr linkend="CEM"/>. The following additional information is also required.<h:br></h:br><h:br></h:br>
-                                The operational guidance shall contain instructions for configuring the password characteristics, number of allowed authentication attempt failures, the lockout period times for inactivity, and the notice and consent warning that is to be provided when authenticating.<h:br></h:br><h:br></h:br>
-                                The operational guidance shall contain step-by-step instructions suitable for use by an end-user of the Virtualization System to configure a new, out-of-the-box system into the configuration evaluated under this Protection Profile.<h:br></h:br><h:br></h:br>
-                                The documentation shall describe the process for verifying updates to the <abbr linkend="TOE"/>, either by checking the hash or by verifying a digital signature. The evaluator shall verify that this process includes the following steps:
-                                <h:ul>
-                                    <h:li>Instructions for querying the current version of the <abbr linkend="TOE"/> software.</h:li>
-                                    <h:li>For hashes, a description of where the hash for a given update can be obtained. For digital signatures, instructions for obtaining the certificate that will be used by the FCS_COP.1(2) mechanism to ensure that a signed update has been received from the certificate owner. This may be supplied with the product initially, or may be obtained by some other means.</h:li>
-                                    <h:li>Instructions for obtaining the update itself. This should include instructions for making the update accessible to the <abbr linkend="TOE"/> (e.g., placement in a specific directory).</h:li>
-                                    <h:li>Instructions for initiating the update process, as well as discerning whether the process was successful or unsuccessful. This includes generation of the hash/digital signature.</h:li>
-                                </h:ul>
+                                <Guidance>
+                                    Some of the contents of the operational guidance will be verified by the assurance activities in 
+                                    Section 5.2 and evaluation of the <abbr linkend="TOE"/> according to the <abbr linkend="CEM"/>. The 
+                                    following additional information is also required.<h:br></h:br><h:br></h:br>
+                                    The operational guidance shall contain instructions for configuring the password characteristics,
+                                    number of allowed authentication attempt failures, the lockout period times for inactivity, and the
+                                    notice and consent warning that is to be provided when authenticating.<h:br></h:br><h:br></h:br>
+                                    The operational guidance shall contain step-by-step instructions suitable for use by an end-user
+                                    of the Virtualization System to configure a new, out-of-the-box system into the configuration
+                                    evaluated under this Protection Profile.<h:br></h:br><h:br></h:br>
+                                    The documentation shall describe the process for verifying updates to the <abbr linkend="TOE"/>, 
+                                    either by checking the hash or by verifying a digital signature. The evaluator shall verify that 
+                                    this process includes the following steps:
+                                    <h:ul>
+                                        <h:li>Instructions for querying the current version of the <abbr linkend="TOE"/> software.</h:li>
+                                        <h:li>For hashes, a description of where the hash for a given update can be obtained. For digital signatures, instructions for obtaining the certificate that will be used by the FCS_COP.1(2) mechanism to ensure that a signed update has been received from the certificate owner. This may be supplied with the product initially, or may be obtained by some other means.</h:li>
+                                        <h:li>Instructions for obtaining the update itself. This should include instructions for making the update accessible to the <abbr linkend="TOE"/> (e.g., placement in a specific directory).</h:li>
+                                        <h:li>Instructions for initiating the update process, as well as discerning whether the process was successful or unsuccessful. This includes generation of the hash/digital signature.</h:li>
+                                  </h:ul>
+                                </Guidance>
                             </aactivity>
                         </a-element>
                     </group>
@@ -3523,8 +3544,16 @@
                             <title>The evaluator shall apply the preparative procedures to confirm that the <abbr linkend="TOE"/> can be prepared securely for operation.</title>
                             
                             <aactivity>
-                                As indicated in the introduction above, there are significant expectations with respect to the documentation—especially when configuring the operational environment to support <abbr linkend="TOE"/> functional requirements. The evaluator shall check to ensure that the guidance provided for the <abbr linkend="TOE"/> adequately addresses all platforms (that is, combination of hardware and operating system) claimed for the <abbr linkend="TOE"/> in the <abbr linkend="ST"/>.<h:br></h:br><h:br></h:br>
-                                The operational guidance shall contain step-by-step instructions suitable for use by an end-user of the Virtualization System to configure a new, out-of-the-box system into the configuration evaluated under this Protection Profile.
+                                <Guidance>
+                                    As indicated in the introduction above, there are significant expectations with respect to the
+                                    documentation—especially when configuring the operational environment to support <abbr linkend="TOE"/>
+                                    functional requirements. The evaluator shall check to ensure that the guidance provided for the 
+                                    <abbr linkend="TOE"/> adequately addresses all platforms (that is, combination of hardware and 
+                                    operating system) claimed for the <abbr linkend="TOE"/> in the <abbr linkend="ST"/>.<h:br></h:br><h:br></h:br>
+                                    The operational guidance shall contain step-by-step instructions suitable for use by an end-user of
+                                    the Virtualization System to configure a new, out-of-the-box system into the configuration evaluated 
+                                    under this Protection Profile.
+                                </Guidance>
                             </aactivity>
                         </a-element>
                     </group>
@@ -3549,12 +3578,21 @@
                         <a-element id="ALC_CMC.1.1E">
                             <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.
                             </title>
-                            <aactivity>The evaluator shall check the ST to ensure that it contains an identifier (such as a product
-                                name/version number) that specifically identifies the version that meets the requirements of the ST.
-                                Further, the evaluator shall check the AGD guidance and <addr linkend="TOE"/> samples received for testing to ensure
-                                that the version number is consistent with that in the ST. If the vendor maintains a web site
-                                advertising the TOE, the evaluator shall examine the information on the web site to ensure that
-                                the information in the ST is sufficient to distinguish the product.
+                            <aactivity>
+                                <TSS>
+                                    The evaluator shall check the ST to ensure that it contains an identifier (such as a product
+                                    name/version number) that specifically identifies the version that meets the requirements of the ST.
+                                </TSS>
+                                <Guidance>
+                                    The evaluator shall check the AGD guidance and <addr linkend="TOE"/> samples received for
+                                    testing to ensure
+                                    that the version number is consistent with that in the ST. 
+                                </Guidance>
+                                <Tests>
+                                    If the vendor maintains a web site
+                                    advertising the TOE, the evaluator shall examine the information on the web site to ensure that
+                                    the information in the ST is sufficient to distinguish the product.
+                                </Tests>
                             </aactivity>
                         </a-element>
                     </group>
@@ -3580,16 +3618,19 @@
                     <group type="eval-action">
                         <a-element id="ALC_CMS.1.1E">
                             <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
-                            <aactivity>The evaluator shall ensure that the developer has identified (in public-facing development
-                                guidance for their platform) one or more development environments appropriate for use in developing
-                                applications for the developer’s platform. For each of these development environments, the developer
-                                shall provide information on how to configure the environment to ensure that buffer overflow protection
-                                mechanisms in the environment(s) are invoked (e.g., compiler and linker flags). The evaluator shall
-                                ensure that this documentation also includes an indication of whether such protections are on by
-                                default, or have to be specifically enabled.
-                                The evaluator shall ensure that the TSF is uniquely identified (with respect to other products from
-                                the TSF vendor), and that documentation provided by the developer in association with the requirements
-                                in the ST is associated with the TSF  using this unique identification.
+                            <aactivity>
+                                <Guidance>
+                                    The evaluator shall ensure that the developer has identified (in public-facing development
+                                    guidance for their platform) one or more development environments appropriate for use in developing
+                                    applications for the developer’s platform. For each of these development environments, the developer
+                                    shall provide information on how to configure the environment to ensure that buffer overflow protection
+                                    mechanisms in the environment(s) are invoked (e.g., compiler and linker flags). The evaluator shall
+                                    ensure that this documentation also includes an indication of whether such protections are on by
+                                    default, or have to be specifically enabled.
+                                    The evaluator shall ensure that the TSF is uniquely identified (with respect to other products from
+                                    the TSF vendor), and that documentation provided by the developer in association with the requirements
+                                    in the ST is associated with the TSF  using this unique identification.
+                                </Guidance>
                             </aactivity>
                         </a-element>
                     </group>
@@ -3647,11 +3688,13 @@
                             <title>The evaluator shall test a subset of the <abbr linkend="TSF"/> to confirm that the <abbr linkend="TSF"/> operates as specified.
                             </title>
                             <aactivity>
-                                The evaluator shall prepare a test plan and report documenting the testing aspects of the system. While it is not necessary to have one test case per test listed in an Assurance Activity, the evaluators must document in the test plan that each applicable testing requirement in the <abbr linkend="ST"/> is covered.<h:br></h:br><h:br></h:br>
-                                The Test Plan identifies the platforms to be tested, and for those platforms not included in the test plan but included in the <abbr linkend="ST"/>, the test plan provides a justification for not testing the platforms. This justification must address the differences between the tested platforms and the untested platforms, and make an argument that the differences do not affect the testing to be performed. It is not sufficient to merely assert that the differences have no affect; rationale must be provided. If all platforms claimed in the <abbr linkend="ST"/> are tested, then no rationale is necessary.<h:br></h:br><h:br></h:br>
-                                The test plan describes the composition of each platform to be tested, and any setup that is necessary beyond what is contained in the AGD documentation. It should be noted that the evaluators are expected to follow the AGD documentation for installation and setup of each platform either as part of a test or as a standard pre-test condition. This may include special test drivers or tools. For each driver or tool, an argument (not just an assertion) is provided that the driver or tool will not adversely affect the performance of the functionality by the <abbr linkend="TOE"/> and its platform. This also includes the configuration of cryptographic engines to be used. The cryptographic algorithms implemented by these engines are those specified by this PP and used by the cryptographic protocols being evaluated (IPsec, TLS/HTTPS, SSH).<h:br></h:br><h:br></h:br>
-                                The test plan identifies high-level test objectives as well as the test procedures to be followed to achieve those objectives. These procedures include expected results. The test report (which could just be an annotated version of the test plan) details the activities that took place when the test procedures were executed, and includes the actual results of the tests. This shall be a cumulative account, so if there was a test run that resulted in a failure; a fix installed; and then a successful re-run of the test, the report would show a “fail” and “pass” result (and the supporting details), and not just the “pass” result.
-                            </aactivity>
+                                <Tests>
+                                    The evaluator shall prepare a test plan and report documenting the testing aspects of the system. While it is not necessary to have one test case per test listed in an Assurance Activity, the evaluators must document in the test plan that each applicable testing requirement in the <abbr linkend="ST"/> is covered.<h:br></h:br><h:br></h:br>
+                                    The Test Plan identifies the platforms to be tested, and for those platforms not included in the test plan but included in the <abbr linkend="ST"/>, the test plan provides a justification for not testing the platforms. This justification must address the differences between the tested platforms and the untested platforms, and make an argument that the differences do not affect the testing to be performed. It is not sufficient to merely assert that the differences have no affect; rationale must be provided. If all platforms claimed in the <abbr linkend="ST"/> are tested, then no rationale is necessary.<h:br></h:br><h:br></h:br>
+                                    The test plan describes the composition of each platform to be tested, and any setup that is necessary beyond what is contained in the AGD documentation. It should be noted that the evaluators are expected to follow the AGD documentation for installation and setup of each platform either as part of a test or as a standard pre-test condition. This may include special test drivers or tools. For each driver or tool, an argument (not just an assertion) is provided that the driver or tool will not adversely affect the performance of the functionality by the <abbr linkend="TOE"/> and its platform. This also includes the configuration of cryptographic engines to be used. The cryptographic algorithms implemented by these engines are those specified by this PP and used by the cryptographic protocols being evaluated (IPsec, TLS/HTTPS, SSH).<h:br></h:br><h:br></h:br>
+                                    The test plan identifies high-level test objectives as well as the test procedures to be followed to achieve those objectives. These procedures include expected results. The test report (which could just be an annotated version of the test plan) details the activities that took place when the test procedures were executed, and includes the actual results of the tests. This shall be a cumulative account, so if there was a test run that resulted in a failure; a fix installed; and then a successful re-run of the test, the report would show a “fail” and “pass” result (and the supporting details), and not just the “pass” result.
+                                </Tests>
+                             </aactivity>
                         </a-element>
                     </group>
                 </a-component>
