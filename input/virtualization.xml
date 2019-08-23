@@ -2579,7 +2579,10 @@
                 <!-- FIA_X509_EXT.1 -->
                 <!-- Depends on x509 certificates being used for administrator authentication -->
                 <f-component id="FIA_X509_EXT.1" name="X.509 Certificate Validation"  status="sel-based">
-                    <selection-depends req="FIA_UAU.5.1" ids="uau-x509"/>
+                    <selection-depends req="FIA_UAU.5.1" ids="uau-x509" />
+		    <selection-depends req="FTP_ITC_EXT.1.1" ids="itc-ipsec" />
+		    <selection-depends req="FTP_ITC_EXT.1.1" ids="itc-tls" />
+		    <selection-depends req="FTP_ITC_EXT.1.1" ids="itc-https" />	
                     <f-element id="FIA_X509_EXT.1.1">
                         <title>The <abbr linkend="TSF"/> shall validate certificates in accordance with the following rules:
                             <h:ul>
@@ -2642,6 +2645,9 @@
                 <f-component id="FIA_X509_EXT.2" name="X.509 Certificate Authentication"  status="sel-based">
                     <selection-depends req="FPT_TUD_EXT.1.3" ids="tud-digsign"/>
                     <selection-depends req="FIA_UAU.5.1" ids="uau-x509"/>
+		    <selection-depends req="FTP_ITC_EXT.1.1" ids="itc-ipsec" />
+		    <selection-depends req="FTP_ITC_EXT.1.1" ids="itc-tls" />
+		    <selection-depends req="FTP_ITC_EXT.1.1" ids="itc-https" />	
                     <f-element id="FIA_X509_EXT.2.1">
                         <title>The <abbr linkend="TSF"/> shall use X.509v3 certificates as defined by RFC 5280 to support authentication for
                             <selectables>
@@ -3006,7 +3012,7 @@
                 <!-- FPT_TUD_EXT.2 -->
                 <!-- Depends on X509 certificates being used for code signing. -->
                 <f-component id="FPT_TUD_EXT.2" name="Trusted Update Based on Certificates"  status="sel-based">
-                    <selection-depends req="FIA_X509_EXT.2.1" ids="x509-codesign"/>
+                    <selection-depends req="FPT_TUD_EXT.1.3" ids="tud-digsign" />
                     <f-element id="FPT_TUD_EXT.2.1">
                         <title>The <abbr linkend="TSF"/> shall not install an update if the code signing certificate is deemed invalid.
                         </title>
@@ -3256,9 +3262,9 @@
                                 <selectable id="itc-ipsec">IPsec as conforming to FCS_IPSEC_EXT.1</selectable>
                                 <selectable id="itc-ssh">SSH as conforming to the <h:a href="https://www.niap-ccevs.org/pp/"><h:i><abbr linkend="EP"/> for Secure Shell</h:i></h:a></selectable>
                             </selectables>
-                            <!-- <import-package-depends package="PKG_TLS_V1.1" req="FTP_ITC_EXT.1.1" ids="itc-https">  -->
-                            <!-- <import-package-depends package="PKG_TLS_V1.1" req="FTP_ITC_EXT.1.1" ids="itc-tls">  -->
-                            <!-- <import-package-depends package="PP_SSH_EP_v1.0" req="FTP_ITC_EXT.1.1" ids="itc-ssh">  -->
+                            <!-- <import-package-depends package="PKG_TLS_V1.1" req="FTP_ITC_EXT.1.1" ids="itc-https"/>  -->
+                            <!-- <import-package-depends package="PKG_TLS_V1.1" req="FTP_ITC_EXT.1.1" ids="itc-tls"/>  -->
+                            <!-- <import-package-depends package="PP_SSH_EP_v1.0" req="FTP_ITC_EXT.1.1" ids="itc-ssh"/>  -->
                             to provide a trusted communication channel between itself, and<h:br></h:br><h:br></h:br>
                             <h:li>audit servers (as required by FAU_STG_EXT.1), and</h:li>
                             <selectables linebreak="yes">
@@ -3268,26 +3274,19 @@
                                 <selectable>no other capabilities]</selectable>
                             </selectables>
                             that is logically distinct from other communication paths and provides assured identification of its
-                            endpoints using 
-<!--                        
-                            <selectables>
-                                <selectable id="itc-x509">certificate-based digital signature validation implemented by the TOE</selectable>
-                                <selectable>??????</selectable>
-                             </selectables>
--->
-                             and protection of the communicated data from disclosure and detection of modification of the communicated data.
+                            endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.
                         </title>
                         <note role="application">If the ST author selects either TLS or HTTPS, the <abbr linkend="TSF"/> shall be validated against the 
                             Functional Package for TLS. This PP does not mandate that a product implement TLS with mutual authentication, but if the product 
                             includes the capability to perform TLS with mutual authentication, it is expected that mutual authentication will be 
-                            included within the <abbr linkend="TOE"/> boundary.<h:br></h:br><h:br></h:br>
+                            included within the <abbr linkend="TOE"/> boundary. The TLS Package requires that the X509 requirements be included by 
+			    the base PP, so selection of TLS or HTTPS causes FIA_X509_EXT.* to be selected.<h:br></h:br><h:br></h:br>
                             If the <abbr linkend="ST"/> author selects SSH, the <abbr linkend="TSF"/> shall be validated against the Extended
-                            Package for Secure Shell. The <abbr linkend="ST"/> author must include the security functional requirements for the
+                            Package for Secure Shell. The SSH package imports the X509 requirements if necessary, so selecting SSH here does not automatically
+			    cause their inclusion. <h:br /> <h:br />
+			    Selection of IPSec also automatically causes inclusion of the X509 requirements.  <h:br /> <h:br />
+			    The <abbr linkend="ST"/> author must include the security functional requirements for the
                             trusted channel protocol selected in FTP_ITC_EXT.1 in the main body of the <abbr linkend="ST"/>.<h:br></h:br><h:br></h:br>
-                            If any trusted communication channels used by the <abbr linkend="TOE"/> rely on digital certificates and the
-                            certificate validation mechanism is implemented by the <abbr linkend="TOE"/>, FIA_X509_EXT.1 must be claimed in the
-                            <abbr linkend="ST"/>. Likewise, FIA_X509_EXT.2 must be claimed and should include the relevant selections for the
-                            authentication methods used based on the communication channels that are implemented by the <abbr linkend="TSF"/>.
                         </note>
                         <aactivity>
                             <TSS>
