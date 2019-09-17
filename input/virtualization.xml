@@ -10,7 +10,7 @@
 
     - Incorporate TLS Package
         - DONE: Remove TLSC and TLSS requirements
-        - DONE: Fix all references to TLSC and PLSS requirements
+        - DONE: Fix all references to TLSC and TLSS requirements
         - DONE: Edit FTP_ITC_EXT.1
 
     - Incorporate TDs
@@ -2579,6 +2579,7 @@
                 <!-- FIA_X509_EXT.1 -->
                 <!-- Depends on x509 certificates being used for administrator authentication -->
                 <f-component id="FIA_X509_EXT.1" name="X.509 Certificate Validation"  status="sel-based">
+                    <selection-depends req="FPT_TUD_EXT.1.3" ids="tud-digsign"/>
                     <selection-depends req="FIA_UAU.5.1" ids="uau-x509" />
 		    <selection-depends req="FTP_ITC_EXT.1.1" ids="itc-ipsec" />
 		    <selection-depends req="FTP_ITC_EXT.1.1" ids="itc-tls" />
@@ -2607,7 +2608,9 @@
                                 </h:li>
                             </h:ul>
                         </title>
-                        <note role="application">This SFR must be included in the <abbr linkend="ST"/> if the selection for FPT_TUD_EXT.1.3 is “digital signature mechanism,” or if the selection for FTP_ITC_EXT.1 includes “IPsec,” “TLS,” or “TLS/HTTPS.”<h:br></h:br><h:br></h:br>
+                        <note role="application">This SFR must be included in the <abbr linkend="ST"/> if the selection for 
+				FPT_TUD_EXT.1.3 is “digital signature mechanism,” or if the selection for FTP_ITC_EXT.1 includes 
+				“IPsec,” “TLS,” or “TLS/HTTPS,” or if FIA_UAU.5.1 requires the use of X.509 certificates.<h:br></h:br><h:br></h:br>
                             FIA_X509_EXT.1.1 lists the rules for validating certificates. The <abbr linkend="ST"/> author shall select whether revocation status is verified using OCSP or CRLs. FIA_X509_EXT.2 requires that certificates are used for IPsec; this use requires that the extendedKeyUsage rules are verified. Certificates may optionally be used for SSH, TLS and HTTPS and, if implemented, must be validated to contain the corresponding extendedKeyUsage.<h:br></h:br><h:br></h:br>
                             Regardless of the selection of <abbr linkend="TSF"/> or <abbr linkend="TOE"/> platform, the validation is expected to end in a trusted root CA certificate in a root store managed by the platform.</note>
                     </f-element>
@@ -2663,7 +2666,9 @@
                                 <selectable>no additional uses</selectable>
                             </selectables>
                         </title>
-                        <note role="application">This SFR must be included in the <abbr linkend="ST"/> if the selection for FPT_TUD_EXT.1.3 is “digital signature mechanism,” or if the selection for FTP_ITC_EXT.1 includes “IPsec,” “TLS,” or “TLS/HTTPS.”</note>
+                        <note role="application">This SFR must be included in the <abbr linkend="ST"/> if the selection for FPT_TUD_EXT.1.3
+				is “digital signature mechanism,” or if the selection for FTP_ITC_EXT.1 includes “IPsec,” “TLS,” or 
+				“TLS/HTTPS,” or if FIA_UAU requires authentication using X.509 certificates.</note>
                     </f-element>
                     <f-element id="FIA_X509_EXT.2.2">
                         <title>When the <abbr linkend="TSF"/> cannot establish a connection to determine the validity of a certificate, the <abbr linkend="TSF"/> shall
