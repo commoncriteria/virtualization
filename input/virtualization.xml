@@ -911,11 +911,11 @@
                 
                 <!-- FAU_SAR.1 -->
                 <f-component id="FAU_SAR.1" name="Audit Review">
-                    <f-element id="FAU_SAR.1.1">
+                    <f-element>
                         <title>The <abbr linkend="TSF"/> shall provide [administrators] with the capability to read [all information] from the audit records.
                         </title>
                     </f-element>
-                    <f-element id="FAU_SAR.1.2">
+                    <f-element>
                         <title>The <abbr linkend="TSF"/> shall provide the audit records in a manner suitable for the user to interpret the information.
                         </title>
                         <aactivity>
@@ -935,11 +935,11 @@
                 
                 <!-- FAU_STG.1 -->
                 <f-component id="FAU_STG.1" name="Protected Audit Trail Storage">
-                    <f-element id="FAU_STG.1.1">
+                    <f-element>
                         <title>The <abbr linkend="TSF"/> shall protect the stored audit records in the audit trail from unauthorized deletion.
                         </title>
                     </f-element>
-                    <f-element id="FAU_STG.1.2">
+                    <f-element>
                         <title>The <abbr linkend="TSF"/> shall be able to [prevent] modifications to the stored audit records in the audit trail.
                         </title>
                         <note role="application">The assurance activity for this SFR is not intended to imply that the <abbr linkend="TOE"/> must support an administrator’s ability to designate individual audit records for deletion. That level of granularity is not required.</note>
@@ -962,7 +962,7 @@
 
                 <!-- FAU_STG_EXT.1 -->
                 <f-component id="FAU_STG_EXT.1" name="Off-Loading of Audit Data">
-                    <f-element id="FAU_STG_EXT.1.1">
+                    <f-element>
                         <title>The <abbr linkend="TSF"/> shall be able to transmit the generated audit data to an external IT entity using a trusted channel as specified in FTP_ITC_EXT.1.
                         </title>
                         <aactivity>
@@ -987,7 +987,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-                    <f-element id="FAU_STG_EXT.1.2">
+                    <f-element>
                         <title>The <abbr linkend="TSF"/> shall
                             <selectables>
                                 <selectable>drop new audit data</selectable>
@@ -1263,9 +1263,9 @@
                     </f-element>
                 </f-component>
                 
-                <!-- FCS_COP.1(1) -->
+                <!-- FCS_COP.1/UDE (formerly FCS_COP.1(1)) -->
 		<!-- Removed AES-CTR because there are no tests 20190919 -->
-                <f-component id="FCS_COP.1(1)" name="Cryptographic Operation (AES Data Encryption/ Decryption)">
+                <f-component id="FCS_COP.1" iteration="UDE" name="Cryptographic Operation (AES Data Encryption/ Decryption)">
                     <f-element id="FCS_COP.1.1(1)">
                         <title>
                             The <abbr linkend="TSF"/> shall perform [encryption and decryption] in accordance with a specified cryptographic algorithm<h:br></h:br>
@@ -1409,8 +1409,8 @@
                     </f-element>
                 </f-component>
                 
-                <!-- FCS_COP.1(2) -->
-                <f-component id="FCS_COP.1(2)" name="Cryptographic Operation (Hashing)">
+		<!-- FCS_COP.1/HASH (formerly FCS_COP.1(2)) -->
+                <f-component id="FCS_COP.1" iteration="HASH" name="Cryptographic Operation (Hashing)">
                     <f-element id="FCS_COP.1.1(2)">
                         <title>The <abbr linkend="TSF"/> shall perform [cryptographic hashing] in accordance with a specified cryptographic algorithm
                             <selectables>
@@ -1542,9 +1542,9 @@
                     </f-element>
                 </f-component>
                 
-                <!-- FCS_COP.1(3) -->
+                <!-- FCS_COP.1/SIG (formerly FCS_COP.1(3)) -->
     		<!-- Added SHA-3 hashes 20190919 -->
-                <f-component id="FCS_COP.1(3)" name="Cryptographic Operation (Signature Algorithms)">
+                <f-component id="FCS_COP.1" iteration="SIG" name="Cryptographic Operation (Signature Algorithms)">
                     <f-element id="FCS_COP.1.1(3)">
                         <title>The <abbr linkend="TSF"/> shall perform [<h:i>cryptographic signature services (generation and verification)</h:i>] in accordance with a specified cryptographic algorithm
                             <selectables linebreak="yes">
@@ -1590,9 +1590,9 @@
                     </f-element>
                 </f-component>
                 
-                <!-- FCS_COP.1(4) -->
+                <!-- FCS_COP.1/KEYHASH (formerly FCS_COP.1(4)) -->
 		<!-- Added SHA-3 hashes 20190919 -->
-                <f-component id="FCS_COP.1(4)" name="Cryptographic Operation (Keyed Hash algorithms)">
+                <f-component id="FCS_COP.1" iteration="KEYHASH" name="Cryptographic Operation (Keyed Hash algorithms)">
                     <f-element id="FCS_COP.1.1(4)">
                         <title>The <abbr linkend="TSF"/> shall perform [<h:i>keyed-hash message authentication</h:i>] in accordance with a specified cryptographic algorithm
                             <selectables>
