@@ -666,8 +666,13 @@
 				objective, and selection-based events in the appropriate tables. And events will not be included
 				unless their associated SFR is included.
   				-->
+                               See <ctr-ref refid="audit-table">: Auditable Events</ctr-ref> for more information.
+
+                                <audit-events/><h:br/>
+                                <ctr id="audit-table" ctr-type="Table">: Auditable Events</ctr>
+
                                 <h:table border="1">
-                                    <h:caption>Table 1: Auditable Events</h:caption>
+                                    <h:caption>Auditable Events</h:caption>
                                     <h:TR class="header">
                                         <h:TH>Requirement</h:TH>
                                         <h:TH>Auditable Events</h:TH>
@@ -1696,13 +1701,13 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-                    <audit-event>Failure of the randomization process</audit-event>
+                    <audit-event><description>Failure of the randomization process</description></audit-event>
                 </f-component>
                 
                 <!-- FCS_HTTPS_EXT.1 -->
                 <!-- Depends on HTTPS being selected for trusted channel -->
                 <f-component id="fcs_https_ext.1" name="HTTPS Protocol"  status="sel-based">
-                    <selection-depends req="FTP_ITC_EXT.1.1" ids="itc-https"/>
+                    <selection-depends req="fel-itc" ids="itc-https"/>
                     <f-element>
                         <title>The <abbr linkend="TSF"/> shall implement the HTTPS protocol that complies with RFC 2818.
                         </title>
@@ -1729,7 +1734,7 @@
                 <!-- FCS_IPSEC_EXT.1 -->
                 <!-- Depends on IPSEC being selected for trusted channels -->
                 <f-component id="fcs_ipsec_ext.1" name="IPsec Protocol"  status="sel-based">
-                    <selection-depends req="FTP_ITC_EXT.1.1" ids="itc-ipsec"/>
+                    <selection-depends req="fel-itc" ids="itc-ipsec"/>
                     <f-element>
                         <title>The <abbr linkend="TSF"/> shall implement the IPsec architecture as specified in RFC 4301.
                         </title>
@@ -1741,7 +1746,7 @@
                                 place when a packet is processed by the <abbr linkend="TOE"/>, e.g., the algorithm used to 
                                 process the packet. The <abbr linkend="TSS"/> describes how the SPD is implemented and the rules
                                 for processing both inbound and outbound packets in terms of the IPsec policy. 
-                                The <abbr linkend="TSS"/> describes the rules that are available and the resulting actions 
+                                The TSS describes the rules that are available and the resulting actions 
                                 available after matching a rule. The <abbr linkend="TSS"/> describes how those rules and actions 
                                 form the SPD in terms of the BYPASS (e.g., no encryption), DISCARD (e.g., drop the packet), and
                                 PROTECT (e.g., encrypt the packet) actions defined in RFC 4301.<h:br></h:br><h:br></h:br>
@@ -2529,7 +2534,7 @@
 
                 <!-- FIA_UAU.5 -->
                 <f-component id="fia_uau.5" name="Multiple Authentication Mechanisms">
-                    <f-element>
+                    <f-element id="fil-aua">
                         <title>The <abbr linkend="TSF"/> shall provide the following authentication mechanisms:
                             <selectables linebreak="yes">
                                 <selectable id="uau-pwd">
@@ -2619,7 +2624,7 @@
                 <!-- FIA_PMG_EXT.1 -->
                 <!-- Depends on password-based authentication being used for administrator authentication -->
                 <f-component id="fia_pmg_ext.1" name="Password Management"  status="sel-based">
-                    <selection-depends req="FIA_UAU.5.1" ids="uau-pwd"/>
+                    <selection-depends req="fil-aua" ids="uau-pwd"/>
                     <f-element>
                         <title>The <abbr linkend="TSF"/> shall provide the following password management capabilities for administrative passwords:
                             <h:ol type="a">
@@ -2662,11 +2667,11 @@
                 <!-- FIA_X509_EXT.1 -->
                 <!-- Depends on x509 certificates being used for administrator authentication -->
                 <f-component id="fia_x509_ext.1" name="X.509 Certificate Validation"  status="sel-based">
-                    <selection-depends req="FPT_TUD_EXT.1.3" ids="tud-digsign"/>
-                    <selection-depends req="FIA_UAU.5.1" ids="uau-x509" />
-		    <selection-depends req="FTP_ITC_EXT.1.1" ids="itc-ipsec" />
-		    <selection-depends req="FTP_ITC_EXT.1.1" ids="itc-tls" />
-		    <selection-depends req="FTP_ITC_EXT.1.1" ids="itc-https" />	
+                    <selection-depends req="fil-auth-soft" ids="tud-digsign"/>
+                    <selection-depends req="fil-aua" ids="uau-x509" />
+		    <selection-depends req="fel-itc" ids="itc-ipsec" />
+		    <selection-depends req="fel-itc" ids="itc-tls" />
+		    <selection-depends req="fel-itc" ids="itc-https" />	
                     <f-element>
                         <title>The <abbr linkend="TSF"/> shall validate certificates in accordance with the following rules:
                             <h:ul>
@@ -2729,11 +2734,11 @@
                 <!-- FIA_X509_EXT.2 -->
                 <!-- Depends on digital signatures being used for trusted updates or administrator authentication -->
                 <f-component id="fia_x509_ext.2" name="X.509 Certificate Authentication"  status="sel-based">
-                    <selection-depends req="FPT_TUD_EXT.1.3" ids="tud-digsign"/>
-                    <selection-depends req="FIA_UAU.5.1" ids="uau-x509"/>
-		    <selection-depends req="FTP_ITC_EXT.1.1" ids="itc-ipsec" />
-		    <selection-depends req="FTP_ITC_EXT.1.1" ids="itc-tls" />
-		    <selection-depends req="FTP_ITC_EXT.1.1" ids="itc-https" />	
+                    <selection-depends req="fil-auth-soft" ids="tud-digsign"/>
+                    <selection-depends req="fil-aua" ids="uau-x509"/>
+		    <selection-depends req="fel-itc" ids="itc-ipsec" />
+		    <selection-depends req="fel-itc" ids="itc-tls" />
+		    <selection-depends req="fel-itc" ids="itc-https" />	
                     <f-element>
                         <title>The <abbr linkend="TSF"/> shall use X.509v3 certificates as defined by RFC 5280 to support authentication for
                             <selectables>
@@ -3049,7 +3054,7 @@
                             </selectables>.
                         </title>
                     </f-element>
-                    <f-element>
+                    <f-element id="fil-auth-soft">
                         <title>The <abbr linkend="TSF"/> shall provide means to authenticate firmware/software updates to the <abbr linkend="TOE"/> using a
                             <selectables>
                                 <selectable id="tud-digsign">digital signature mechanism</selectable>
@@ -3100,7 +3105,7 @@
                 <!-- FPT_TUD_EXT.2 -->
                 <!-- Depends on X509 certificates being used for code signing. -->
                 <f-component id="fpt_tud_ext.2" name="Trusted Update Based on Certificates"  status="sel-based">
-                    <selection-depends req="FPT_TUD_EXT.1.3" ids="tud-digsign" />
+                    <selection-depends req="fil-auth-soft" ids="tud-digsign" />
                     <f-element>
                         <title>The <abbr linkend="TSF"/> shall not install an update if the code signing certificate is deemed invalid.
                         </title>
@@ -3342,7 +3347,7 @@
                 
                 <!-- FTP_ITC_EXT.1 -->
                 <f-component id="ftp_itc_ext.1" name="Trusted Channel Communications">
-                    <f-element>
+                    <f-element id="fel-itc">
                         <title>The <abbr linkend="TSF"/> shall use
                             <selectables linebreak="yes">
                                 <selectable id="itc-tls">TLS as conforming to the <h:a href="https://www.niap-ccevs.org/pp/"><h:i>Package for Transport Layer Security</h:i></h:a></selectable>
@@ -3350,9 +3355,9 @@
                                 <selectable id="itc-ipsec">IPsec as conforming to FCS_IPSEC_EXT.1</selectable>
                                 <selectable id="itc-ssh">SSH as conforming to the <h:a href="https://www.niap-ccevs.org/pp/"><h:i><abbr linkend="EP"/> for Secure Shell</h:i></h:a></selectable>
                             </selectables>
-                            <!-- <import-package-depends package="PKG_TLS_V1.1" req="FTP_ITC_EXT.1.1" ids="itc-https"/>  -->
-                            <!-- <import-package-depends package="PKG_TLS_V1.1" req="FTP_ITC_EXT.1.1" ids="itc-tls"/>  -->
-                            <!-- <import-package-depends package="PP_SSH_EP_v1.0" req="FTP_ITC_EXT.1.1" ids="itc-ssh"/>  -->
+                            <!-- <import-package-depends package="PKG_TLS_V1.1" req="fel-itc" ids="itc-https"/>  -->
+                            <!-- <import-package-depends package="PKG_TLS_V1.1" req="fel-itc" ids="itc-tls"/>  -->
+                            <!-- <import-package-depends package="PP_SSH_EP_v1.0" req="fel-itc" ids="itc-ssh"/>  -->
                             to provide a trusted communication channel between itself, and<h:br></h:br><h:br></h:br>
                             <h:li>audit servers (as required by FAU_STG_EXT.1), and</h:li>
                             <selectables linebreak="yes">
@@ -3448,7 +3453,7 @@
                 <!-- Need an SFR that allows selection of remote vs. local admin of the VS -->
                 <!-- If remote admin is required, then this should be a threshold requirement -->
                 <f-component id="ftp_trp.1" name="Trusted Path">  <!-- status="sel-based" -->
-<!--                    <selection-depends req="FTP_ITC_EXT.1.1"/> This is the wrong dependency.   -->
+<!--                    <selection-depends req="fel-itc"/> This is the wrong dependency.   -->
                     <f-element>
                         <title>The <abbr linkend="TSF"/> shall use a trusted channel as specified in FTP_ITC_EXT.1 to provide a trusted communication path between itself and [remote] administrators that is logically distinct from other communication paths and provides assured identification of its end points and protection of the communicated data from [modification, disclosure].
                         </title>
@@ -4287,5 +4292,3 @@
       <acronyms/>
     </appendix>
 </PP>
-
-      
