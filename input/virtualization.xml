@@ -633,6 +633,8 @@
                             and 5 should be included in the <abbr linkend="ST"/> if the associated SFRs and selections are included.<h:br></h:br><h:br></h:br>
                             The Table 1 entry for FDP_VNC_EXT.1 refers to configuration settings that attach <abbr linkend="VM"/>s to virtualized network components. Changes to these configurations can be made during <abbr linkend="VM"/> execution or when <abbr linkend="VM"/>s are not running. Audit records must be generated for either case.<h:br></h:br><h:br></h:br>
                             The intent of the audit requirement for FDP_PPR_EXT.1 is to log that the <abbr linkend="VM"/> is connected to a physical device (when the device becomes part of the <abbr linkend="VM"/>’s hardware view), not to log every time that the device is accessed. Generally, this is only once at <abbr linkend="VM"/> startup. However, some devices can be connected and disconnected during operation (e.g., virtual USB devices such as CD-ROMs). All such connection/disconnection events must be logged.
+
+                            <audit-events table="sel-based"/>
                         </note>
                         <aactivity>
                             <TSS>
@@ -668,7 +670,7 @@
   				-->
                                See <ctr-ref refid="audit-table">: Auditable Events</ctr-ref> for more information.
 
-                                <audit-events/><h:br/>
+                                <audit-events table="mandatory"/><h:br/>
                                 <ctr id="audit-table" ctr-type="Table">: Auditable Events</ctr>
 
                                 <h:table border="1">
@@ -1701,7 +1703,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-                    <audit-event><description>Failure of the randomization process</description></audit-event>
+                    <audit-event><table known="mandatory"/><description>Failure of the randomization process</description></audit-event>
                 </f-component>
                 
                 <!-- FCS_HTTPS_EXT.1 -->
@@ -1729,8 +1731,16 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+                    <audit-event type="optional">
+                       <table known="optional"/>
+                       <description>QQQQ 1Some failure</description>
+                    </audit-event>
+                    <audit-event>
+                       <table known="sel-based"/>
+                       <description>QQQQ 2Some failure</description>
+                    </audit-event>
                 </f-component>
-                
+
                 <!-- FCS_IPSEC_EXT.1 -->
                 <!-- Depends on IPSEC being selected for trusted channels -->
                 <f-component id="fcs_ipsec_ext.1" name="IPsec Protocol"  status="sel-based">
