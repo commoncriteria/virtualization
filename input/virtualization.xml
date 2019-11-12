@@ -634,8 +634,6 @@
                             and 5 should be included in the <abbr linkend="ST"/> if the associated SFRs and selections are included.<h:br></h:br><h:br></h:br>
                             The Table 1 entry for FDP_VNC_EXT.1 refers to configuration settings that attach <abbr linkend="VM"/>s to virtualized network components. Changes to these configurations can be made during <abbr linkend="VM"/> execution or when <abbr linkend="VM"/>s are not running. Audit records must be generated for either case.<h:br></h:br><h:br></h:br>
                             The intent of the audit requirement for FDP_PPR_EXT.1 is to log that the <abbr linkend="VM"/> is connected to a physical device (when the device becomes part of the <abbr linkend="VM"/>’s hardware view), not to log every time that the device is accessed. Generally, this is only once at <abbr linkend="VM"/> startup. However, some devices can be connected and disconnected during operation (e.g., virtual USB devices such as CD-ROMs). All such connection/disconnection events must be logged.
-
-                            <audit-events table="sel-based"/>
                         </note>
                         <aactivity>
                             <TSS>
@@ -664,7 +662,6 @@
                                 Note that the testing here can be accomplished in conjunction with the testing of the security mechanisms 
                                 directly.<h:br></h:br>
 				    
-                                <!-- HERE do table 1 from page 22 -->
 			        <!-- Eventually I want all audible events in this table. Tool will automatically stick all the optional,
 				objective, and selection-based events in the appropriate tables. And events will not be included
 				unless their associated SFR is included.
@@ -674,139 +671,6 @@
                                 <audit-events table="mandatory"/><h:br/>
                                 <ctr id="audit-table" ctr-type="Table">: Auditable Events</ctr>
 
-                                <h:table border="1">
-                                    <h:caption>Auditable Events</h:caption>
-                                    <h:TR class="header">
-                                        <h:TH>Requirement</h:TH>
-                                        <h:TH>Auditable Events</h:TH>
-                                        <h:TH>Additional Audit Record Contents</h:TH>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FDP_RIP_EXT.1</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FDP_RIP_EXT.2</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FDP_VMS_EXT.1</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FDP_VNC_EXT.1</h:TD>
-                                        <h:TD>Successful and failed attempts to connect <abbr linkend="VM"/>s to virtual and physical networking components.<h:br></h:br>
-                                            Security policy violations.<h:br></h:br>
-                                            Administrator configuration of inter-VM communications channels between <abbr linkend="VM"/>s.<h:br></h:br>
-                                        </h:TD>
-                                        <h:TD>VM and virtual or physical networking component identifiers.<h:br></h:br>
-                                            Identifier for the security policy that was violated.<h:br></h:br></h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FIA_UAU.5</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FIA_UIA_EXT.1</h:TD>
-                                        <h:TD>Administrator authentication attempts<h:br></h:br>
-                                            All use of the identification and authentication mechanism.
-                                        </h:TD>
-                                        <h:TD>Provided user identity, origin of the attempt (e.g. console, remote IP address).</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FMT_MSA_EXT.1</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FMT_SMO_EXT.1</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FMT_SMR.2</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FPT_DVD_EXT.1</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FPT_HAS_EXT.1</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FPT_EEM_EXT.1</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FPT_HCL_EXT.1</h:TD>
-                                        <h:TD>Attempts to access disabled hypercall interfaces<h:br></h:br>
-                                            Security policy violations.</h:TD>
-                                        <h:TD>Interface for which access was attempted.<h:br></h:br>
-                                            Identifier for the security policy that was violated.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FPT_RDM_EXT.1</h:TD>
-                                        <h:TD>Connection/disconnection of removable media or device to/from a VM.<h:br></h:br><h:br></h:br>
-                                            Ejection/insertion of removable media or device from/to an already connected VM.</h:TD>
-                                        <h:TD>VM Identifier, Removable media/device identifier, event description or identifier (connect/disconnect, ejection/insertion, etc.)</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FPT_TUD_EXT.1</h:TD>
-                                        <h:TD>Initiation of update.<h:br></h:br>
-                                            Failure of signature verification.
-                                        </h:TD>
-                                        <h:TD>No additional information.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FPT_VDP_EXT.1</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FPT_VIV_EXT.1</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FTA_TAB.1</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FTP_ITC_EXT.1</h:TD>
-                                        <h:TD>Initiation of the trusted channel.<h:br></h:br>
-                                            Termination of the trusted channel.<h:br></h:br>
-                                            Failures of the trusted path functions.</h:TD>
-                                        <h:TD>User ID and remote source (IP Address) if feasible.</h:TD>
-                                    </h:TR>
-
-                                    <h:TR>
-                                        <h:TD>FTP_UIF_EXT.1</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FTP_UIF_EXT.2</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                 </h:table>
-
-                                <!-- HERE do the table on page 78 here??, Table 2: Auditable Events -->
-                                <!-- HERE do the table on page 80 here???, Table 3: Auditable Events -->
-                                <!-- HERE table from 114?? -->
-                                <!-- HERE table from 118?? -->
-                            
                             </Tests>   
                         </aactivity>
                     </f-element>
@@ -2492,8 +2356,13 @@
                     </f-element>
 		    <audit-event>
                         <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
+			<description>Successful and failed attempts to connect <abbr linkend="VM"/>s to virtual and physical networking components.<h:br></h:br>
+                                     Security policy violations.<h:br></h:br>
+                                     Administrator configuration of inter-VM communications channels between <abbr linkend="VM"/>s.
+			</description>
+                        <add-info>VM and virtual or physical networking component identifiers.<h:br></h:br>
+                                  Identifier for the security policy that was violated.
+			</add-info>
 		    </audit-event>
                 </f-component>
             </subsection>
@@ -2667,8 +2536,11 @@
                     </f-element>
 		    <audit-event>
                         <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
+			<description>Administrator authentication attempts<h:br></h:br>
+                                     All use of the identification and authentication mechanism.
+			</description>
+                        <add-info>Provided user identity, origin of the attempt (e.g. console, remote IP address).
+			</add-info>
 		    </audit-event>
                 </f-component>
 
@@ -3078,10 +2950,23 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+			
+			                                    <h:TR>
+                                        <h:TD>FPT_HCL_EXT.1</h:TD>
+                                        <h:TD>Attempts to access disabled hypercall interfaces<h:br></h:br>
+                                            Security policy violations.</h:TD>
+                                        <h:TD>Interface for which access was attempted.<h:br></h:br>
+                                            Identifier for the security policy that was violated.</h:TD>
+                                    </h:TR>
+
 		    <audit-event>
                         <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
+			<description>Attempts to access disabled hypercall interfaces<h:br></h:br>
+                                     Security policy violations.
+			</description>
+                        <add-info>Interface for which access was attempted.<h:br></h:br>
+                                  Identifier for the security policy that was violated.
+			</add-info>
 		    </audit-event>
                 </f-component>
 
@@ -3131,10 +3016,23 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+			
+			                                    <h:TR>
+                                        <h:TD>FPT_RDM_EXT.1</h:TD>
+                                        <h:TD>Connection/disconnection of removable media or device to/from a VM.<h:br></h:br><h:br></h:br>
+                                            Ejection/insertion of removable media or device from/to an already connected VM.</h:TD>
+                                        <h:TD>VM Identifier, Removable media/device identifier, event description or identifier (connect/disconnect, ejection/insertion, etc.)</h:TD>
+                                    </h:TR>
+
 		    <audit-event>
                         <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
+			<description>
+				Connection/disconnection of removable media or device to/from a VM.<h:br></h:br>
+                                Ejection/insertion of removable media or device from/to an already connected VM.
+			</description>
+                        <add-info>
+				VM Identifier, Removable media/device identifier, event description or identifier (connect/disconnect, ejection/insertion, etc.)
+			</add-info>
 		    </audit-event>
                 </f-component>
 
@@ -3203,8 +3101,12 @@
                     </f-element>
 		    <audit-event>
                         <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
+			<description>
+				Initiation of update.<h:br></h:br>
+                                Failure of signature verification.
+			</description>
+                        <add-info>No additional information.
+			</add-info>
 		    </audit-event>
                 </f-component>
                 
@@ -3549,8 +3451,12 @@
                     </f-element>
 		    <audit-event>
                         <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
+			<description>Initiation of the trusted channel.<h:br></h:br>
+                                     Termination of the trusted channel.<h:br></h:br>
+                                     Failures of the trusted path functions.
+			</description>
+                        <add-info>User ID and remote source (IP Address) if feasible.
+			</add-info>
 		    </audit-event>
                 </f-component>
 
