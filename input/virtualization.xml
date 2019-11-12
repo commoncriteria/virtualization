@@ -40,6 +40,7 @@
     - Added SHA-3 to keyed hashes (test needn't change)
 
     - Updated to handle "iteration" attribute in f-components
+    - Reworking of the audit requirements.
    
     -->
 
@@ -681,32 +682,6 @@
                                         <h:TH>Additional Audit Record Contents</h:TH>
                                     </h:TR>
                                     <h:TR>
-                                        <h:TD>FAU_GEN.1</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FAU_SAR.1</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FAU_STG.1</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FAU_STG_EXT.1</h:TD>
-                                        <h:TD>Failure of audit data capture due to lack of disk space or pre-defined limit.<h:br></h:br>
-                                            On failure of logging function, capture record of failure and record upon restart of logging function.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FCS_CKM.1</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
                                         <h:TD>FCS_CKM.2</h:TD>
                                         <h:TD>None.</h:TD>
                                         <h:TD>None.</h:TD>
@@ -887,6 +862,11 @@
                             </Tests>   
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
                 
                 <!-- FAU_SAR.1 -->
@@ -911,6 +891,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+                        <description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
                 
                 <!-- FAU_STG.1 -->
@@ -938,6 +923,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+                        <description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FAU_STG_EXT.1 -->
@@ -998,6 +988,14 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+                        <description>
+				Failure of audit data capture due to lack of disk space or pre-defined limit.<h:br></h:br>
+                                On failure of logging function, capture record of failure and record upon restart of logging function.
+			</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
                 
                 <!-- FAU_ARP.1 -->
@@ -1139,6 +1137,12 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+<!--			                                    <h:TR>
+                                        <h:TD>FCS_CKM.1</h:TD>
+                                        <h:TD>None.</h:TD>
+                                        <h:TD>None.</h:TD>
+                                    </h:TR>
+-->
                 </f-component>
                 
                 <!-- FCS_CKM.2 -->
@@ -1703,7 +1707,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-                    <audit-event><table known="mandatory"/><description>Failure of the randomization process</description></audit-event>
+                    <audit-event>
+		    	<table known="mandatory"/>
+			<description>Failure of the randomization process</description>
+			<add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
                 
                 <!-- FCS_HTTPS_EXT.1 -->
