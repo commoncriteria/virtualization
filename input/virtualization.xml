@@ -682,58 +682,6 @@
                                         <h:TH>Additional Audit Record Contents</h:TH>
                                     </h:TR>
                                     <h:TR>
-                                        <h:TD>FCS_CKM.2</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FCS_CKM_EXT.4</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FCS_COP.1(1)</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FCS_COP.1(2)</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FCS_COP.1(3)</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FCS_COP.1(4)</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FCS_RBG_EXT.1</h:TD>
-                                        <h:TD>Failure of the randomization process.</h:TD>
-                                        <h:TD>No additional information.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FCS_ENT_EXT.1</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FDP_HBI_EXT.1</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
-                                        <h:TD>FDP_PPR_EXT.1</h:TD>
-                                        <h:TD>Successful and failed <abbr linkend="VM"/> connections to physical devices where connection is governed by configurable policy.<h:br></h:br>
-                                            Security policy violations.</h:TD>
-                                        <h:TD>VM and physical device identifiers.<h:br></h:br>
-                                            Identifier for the security policy that was violated.</h:TD>
-                                    </h:TR>
-                                    <h:TR>
                                         <h:TD>FDP_RIP_EXT.1</h:TD>
                                         <h:TD>None.</h:TD>
                                         <h:TD>None.</h:TD>
@@ -1137,12 +1085,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-<!--			                                    <h:TR>
-                                        <h:TD>FCS_CKM.1</h:TD>
-                                        <h:TD>None.</h:TD>
-                                        <h:TD>None.</h:TD>
-                                    </h:TR>
--->
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
                 
                 <!-- FCS_CKM.2 -->
@@ -1197,6 +1144,11 @@
 			    </Tests>
                          </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FCS_CKM_EXT.4 -->
@@ -1245,8 +1197,13 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
-                
+       
                 <!-- FCS_COP.1/UDE (formerly FCS_COP.1(1)) -->
 		<!-- Removed AES-CTR because there are no tests 20190919 -->
                 <f-component id="fcs_cop.1" iteration="UDE" name="Cryptographic Operation (AES Data Encryption/ Decryption)">
@@ -1391,7 +1348,12 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-                </f-component>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
+  	        </f-component>
                 
 		<!-- FCS_COP.1/HASH (formerly FCS_COP.1(2)) -->
                 <f-component id="fcs_cop.1" iteration="HASH" name="Cryptographic Operation (Hashing)">
@@ -1524,6 +1486,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
                 
                 <!-- FCS_COP.1/SIG (formerly FCS_COP.1(3)) -->
@@ -1572,6 +1539,11 @@
 				</Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
                 
                 <!-- FCS_COP.1/KEYHASH (formerly FCS_COP.1(4)) -->
@@ -1615,6 +1587,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
                 
                 <!-- FCS_ENT_EXT.1 -->
@@ -1660,11 +1637,15 @@
                          </Tests>
                       </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
                 
                 <!-- FCS_RBG_EXT.1 -->
                 <f-component id="fcs_rbg_ext.1" name="Cryptographic Operation (Random Bit Generation)">
-
                     <f-element>
                         <title>The <abbr linkend="TSF"/> shall perform all deterministic random bit generation services in accordance with NIST Special Publication 800-90A using
                             <selectables>
@@ -1743,10 +1724,11 @@
                        <table known="optional"/>
                        <description>QQQQ 1Some failure</description>
                     </audit-event>
-                    <audit-event>
-                       <table known="sel-based"/>
-                       <description>QQQQ 2Some failure</description>
-                    </audit-event>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FCS_IPSEC_EXT.1 -->
@@ -2226,6 +2208,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
             </subsection>
 
@@ -2258,6 +2245,11 @@
                             </Guidance>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FDP_PPR_EXT.1 -->
@@ -2328,6 +2320,12 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>Successful and failed <abbr linkend="VM"/> connections to physical devices where connection is governed by configurable policy.<h:br></h:br>
+                                            Security policy violations.</description>
+                        <add-info>VM and physical device identifiers.<h:br></h:br>Identifier for the security policy that was violated.</add-info>
+		    </audit-event>
                 </f-component>
                 
                 <!-- FDP_RIP_EXT.1 -->
@@ -2351,6 +2349,11 @@
                             </TSS>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FDP_RIP_EXT.2 -->
@@ -2378,6 +2381,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FDP_VMS_EXT.1 -->
@@ -2443,6 +2451,11 @@
                             </Tests>
                          </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
                 
                 <!-- FDP_VNC_EXT.1 -->
@@ -2477,6 +2490,11 @@
                             </Tests>
                          </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
             </subsection>
             
@@ -2548,6 +2566,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FIA_UAU.5 -->
@@ -2612,6 +2635,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FIA_UIA_EXT.1 -->
@@ -2637,6 +2665,11 @@
                             </TSS>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FIA_PMG_EXT.1 -->
@@ -2680,6 +2713,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FIA_X509_EXT.1 -->
@@ -2747,6 +2785,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FIA_X509_EXT.2 -->
@@ -2806,6 +2849,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
             </subsection>
             
@@ -2839,6 +2887,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
                 
                 <!-- FMT_SMO_EXT.1 -->
@@ -2876,6 +2929,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
             </subsection>
             
@@ -2898,6 +2956,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FPT_EEM_EXT.1 -->
@@ -2925,6 +2988,11 @@
                             </TSS>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
                 
                 <!-- FPT_HAS_EXT.1 -->
@@ -2949,6 +3017,11 @@
                             </TSS>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FPT_HCL_EXT.1 -->
@@ -3005,6 +3078,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FPT_RDM_EXT.1 -->
@@ -3053,6 +3131,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FPT_TUD_EXT.1 -->
@@ -3118,6 +3201,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
                 
                 <!-- FPT_TUD_EXT.2 -->
@@ -3135,6 +3223,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FPT_VDP_EXT.1 -->
@@ -3177,6 +3270,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FPT_VIV_EXT.1 -->
@@ -3207,6 +3305,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FPT_GVI_EXT.1 -->
@@ -3226,6 +3329,11 @@
                             </TSS>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FPT_DDI_EXT.1 -->
@@ -3248,6 +3356,11 @@
                             </TSS>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FPT_IDV_EXT.1 -->
@@ -3274,6 +3387,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FPT_INT_EXT.1 -->
@@ -3295,6 +3413,11 @@
                             </Guidance>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FPT_ML_EXT.1 -->
@@ -3333,6 +3456,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
             </subsection>
 
@@ -3358,6 +3486,11 @@
                         </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
             </subsection>
             
@@ -3414,6 +3547,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FTP_UIF_EXT.1 -->
@@ -3439,6 +3577,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FTP_UIF_EXT.2 -->
@@ -3464,6 +3607,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
 
                 <!-- FTP_TRP.1 -->
@@ -3509,6 +3657,11 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event>
+                        <table known="mandatory"/>
+			<description>None.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
                 </f-component>
             </subsection>
         </section>
