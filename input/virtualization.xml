@@ -41,6 +41,8 @@
 
     - Updated to handle "iteration" attribute in f-components
     - Reworking of the audit requirements.
+
+    - Added FIA_AFL_EXT to the audit table. It was inexplicably missing.
    
     -->
 
@@ -601,6 +603,9 @@
                                 <h:li>All administrative actions</h:li>
                                 <h:li>[Specifically defined auditable events in Table 1]</h:li>
                                 <h:li><selectables>
+<!-- XXX This doesn't make sense as a selection. The audit events for optional, objective, and selection-based requirements
+are included only if the corresponding SFR is included. So what does this selection mean?
+-->
                                     <selectable>additional information defined in Table 2</selectable>
                                     <selectable>additional information defined in Table 3</selectable>
                                     <selectable>additional information defined in Table 4</selectable>
@@ -619,6 +624,7 @@
                                 <h:li>The outcome (success or failure) of the event</h:li>
                                 <h:li>[Additional information defined in Table 1]</h:li>
                                 <h:li><selectables>
+<!-- XXX Same here. -->
                                     <selectable>additional information defined in Table 2</selectable>
                                     <selectable>additional information defined in Table 3</selectable>
                                     <selectable>additional information defined in Table 4</selectable>
@@ -662,12 +668,10 @@
                                 Note that the testing here can be accomplished in conjunction with the testing of the security mechanisms 
                                 directly.<h:br></h:br>
 				    
-			        <!-- Eventually I want all audible events in this table. Tool will automatically stick all the optional,
-				objective, and selection-based events in the appropriate tables. And events will not be included
-				unless their associated SFR is included.
-  				-->
-                               See <ctr-ref refid="audit-table">: Auditable Events</ctr-ref> for more information.
+<!-- XXX This needs to move out of the aactivity tag and be its own thing just before the aactivity. -->
+			        See <ctr-ref refid="audit-table">: Auditable Events</ctr-ref> for more information.
 
+				<!-- AUDIT TABLE for MANDATORY SFRs -->
                                 <audit-events table="mandatory"/><h:br/>
                                 <ctr id="audit-table" ctr-type="Table">: Auditable Events</ctr>
 
@@ -826,7 +830,12 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-                </f-component>
+		    <audit-event>
+                        <table known="optional"/>
+                        <description>Actions taken due to potential security violations.</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
+	        </f-component>
                 
                 <!-- FAU_SAA.1 -->
                 <f-component id="fau_saa.1" name="Security Audit Analysis"  status="optional">
@@ -849,7 +858,15 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-                </f-component>
+		    <audit-event>
+                        <table known="optional"/>
+                        <description>
+				Enabling and disabling of any of the analysis mechanisms<h:br></h:br>
+                    		Automated responses performed by the <abbr linkend="TSF"/>
+			</description>
+                        <add-info>None.</add-info>
+		    </audit-event>
+	        </f-component>
             </subsection>
             
             <subsection id="fcs" title="Cryptographic Support">
@@ -1584,14 +1601,15 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-                    <audit-event type="optional">
-                       <table known="optional"/>
-                       <description>QQQQ 1Some failure</description>
-                    </audit-event>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
+	  	    <audit-event>
+                        <table known="sel-based"/>
+			<description>
+				Failure to establish a HTTPS Session.<h:br></h:br>
+                    		Establishment/Termination of a HTTPS session.</description>
+                        <add-info>
+				Reason for failure.<h:br></h:br>
+                    		Non-<abbr linkend="TOE"/> endpoint of connection (IP address) for both successes and failures.
+			</add-info>
 		    </audit-event>
                 </f-component>
 
@@ -2073,9 +2091,15 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
+                        <table known="sel-based"/>
+			<description>
+			    Failure to establish an IPsec SA.<h:br/>
+			    Establishment/Termination of an IPsec SAA.
+			    </description>
+                        <add-info>
+			    Reason for failure.<h:br/>
+			    Non-TOE endpoint of connetion (IP address) for both successes and failures.
+			</add-info>
 		    </audit-event>
                 </f-component>
             </subsection>
@@ -2186,9 +2210,14 @@
                     </f-element>
 		    <audit-event>
                         <table known="mandatory"/>
-			<description>Successful and failed <abbr linkend="VM"/> connections to physical devices where connection is governed by configurable policy.<h:br></h:br>
-                                            Security policy violations.</description>
-                        <add-info>VM and physical device identifiers.<h:br></h:br>Identifier for the security policy that was violated.</add-info>
+			<description>
+				Successful and failed <abbr linkend="VM"/> connections to physical devices where connection is governed by configurable policy.<h:br></h:br>
+                                Security policy violations.
+			</description>
+                        <add-info>
+			    VM and physical device identifiers.<h:br></h:br>
+			    Identifier for the security policy that was violated.
+			</add-info>
 		    </audit-event>
                 </f-component>
                 
@@ -2197,7 +2226,6 @@
                     <f-element>
                         <title>The <abbr linkend="TSF"/> shall ensure that any previous information content of physical memory is cleared prior to allocation to a Guest <abbr linkend="VM"/>.
                         </title>
-                   
                         <note role="application">Physical memory must be zeroed before it is made accessible to a <abbr linkend="VM"/> for general use by a Guest OS.<h:br></h:br><h:br></h:br>
                             The purpose of this requirement is to ensure that a <abbr linkend="VM"/> does not receive memory containing data previously used by another <abbr linkend="VM"/> or the host.<h:br></h:br><h:br></h:br>
                             “For general use” means for use by the Guest OS in its page tables for running applications or system software.<h:br></h:br><h:br></h:br>
@@ -2356,12 +2384,14 @@
                     </f-element>
 		    <audit-event>
                         <table known="mandatory"/>
-			<description>Successful and failed attempts to connect <abbr linkend="VM"/>s to virtual and physical networking components.<h:br></h:br>
-                                     Security policy violations.<h:br></h:br>
-                                     Administrator configuration of inter-VM communications channels between <abbr linkend="VM"/>s.
+			<description>
+				Successful and failed attempts to connect <abbr linkend="VM"/>s to virtual and physical networking components.<h:br></h:br>
+                                Security policy violations.<h:br></h:br>
+                                Administrator configuration of inter-VM communications channels between <abbr linkend="VM"/>s.
 			</description>
-                        <add-info>VM and virtual or physical networking component identifiers.<h:br></h:br>
-                                  Identifier for the security policy that was violated.
+                        <add-info>
+				VM and virtual or physical networking component identifiers.<h:br></h:br>
+                                Identifier for the security policy that was violated.
 			</add-info>
 		    </audit-event>
                 </f-component>
@@ -2437,8 +2467,8 @@
                     </f-element>
 		    <audit-event>
                         <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
+			<description>Unsuccessful login attempts limit is met or exceeded.</description>
+                        <add-info>Origin of attempt (e.g., IP address).</add-info>
 		    </audit-event>
                 </f-component>
 
@@ -2543,7 +2573,7 @@
 			</add-info>
 		    </audit-event>
                 </f-component>
-
+		    
                 <!-- FIA_PMG_EXT.1 -->
                 <!-- Depends on password-based authentication being used for administrator authentication -->
                 <f-component id="fia_pmg_ext.1" name="Password Management"  status="sel-based">
@@ -2586,7 +2616,7 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="mandatory"/>
+                        <table known="sel-based"/>
 			<description>None.</description>
                         <add-info>None.</add-info>
 		    </audit-event>
@@ -2658,9 +2688,9 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
+                        <table known="sel-based"/>
+			<description>Failure to validate a certificate.</description>
+                        <add-info>Reason for failure.</add-info>
 		    </audit-event>
                 </f-component>
 
@@ -2722,7 +2752,7 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="mandatory"/>
+                        <table known="sel-based"/>
 			<description>None.</description>
                         <add-info>None.</add-info>
 		    </audit-event>
@@ -3109,7 +3139,7 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="mandatory"/>
+                        <table known="sel-based"/>
 			<description>None.</description>
                         <add-info>None.</add-info>
 		    </audit-event>
@@ -3215,8 +3245,8 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
+                        <table known="optional"/>
+			<description>Actions taken due to failed integrity check.</description>
                         <add-info>None.</add-info>
 		    </audit-event>
                 </f-component>
@@ -3242,7 +3272,7 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="mandatory"/>
+                        <table known="objective"/>
 			<description>None.</description>
                         <add-info>None.</add-info>
 		    </audit-event>
@@ -3273,7 +3303,7 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="mandatory"/>
+                        <table known="objective"/>
 			<description>None.</description>
                         <add-info>None.</add-info>
 		    </audit-event>
@@ -3299,9 +3329,9 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
+                        <table known="objective"/>
+			<description>Introspection initiated/enabled.</description>
+                        <add-info>The VM introspected.</add-info>
 		    </audit-event>
                 </f-component>
 
@@ -3342,9 +3372,9 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
+                        <table known="objective"/>
+			<description>Integrity initiated/enabled.</description>
+                        <add-info>Integrity measurement values.</add-info>
 		    </audit-event>
                 </f-component>
             </subsection>
@@ -3504,7 +3534,7 @@
                 </f-component>
 
                 <!-- FTP_TRP.1 -->
-                <!-- TODO: There is really no selection for brining this in. -->
+                <!-- TODO: There is really no selection for bringing this in. -->
                 <!-- Need an SFR that allows selection of remote vs. local admin of the VS -->
                 <!-- If remote admin is required, then this should be a threshold requirement -->
                 <f-component id="ftp_trp.1" name="Trusted Path">  <!-- status="sel-based" -->
@@ -3548,8 +3578,14 @@
                     </f-element>
 		    <audit-event>
                         <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
+			<description>
+			    Initiation of the trusted channel.<h:br/>
+			    Termination of the trusted channel.<h:br/>
+			    Failure of the trusted channel functions.
+			    </description>
+                        <add-info>
+			    User ID and remote source (IP address) if feasible.
+			</add-info>
 		    </audit-event>
                 </f-component>
             </subsection>
@@ -3878,36 +3914,13 @@
     <!-- Annex A: OPTIONAL Requirements -->
     
     <appendix id="optional" title="Optional Requirements">
-    <h:br></h:br><h:br></h:br>
-        
-        <h:b>Auditable Events</h:b><h:br></h:br><h:br></h:br>
+        <h:br></h:br><h:br></h:br>
+
+        See <ctr-ref refid="audit-table">: Auditable Events</ctr-ref> for more information.<h:br/><h:br/>
         Depending on the specific requirements selected by the <abbr linkend="ST"/> author, the <abbr linkend="ST"/>/<abbr linkend="TOE"/> should include the appropriate auditable events from the table below in the <abbr linkend="ST"/> as part of the FAU_GEN.1 claim.<h:br></h:br><h:br></h:br>
-        
-        <!-- Table 2: HERE table from page 78 -->
-        <h:table border="1">
-            <h:caption>Table 2: Auditable Events</h:caption>
-            <h:TR class="header">
-                <h:TH>Requirement</h:TH>
-                <h:TH>Auditable Events</h:TH>
-                <h:TH>Additional Audit Record Contents</h:TH>
-            </h:TR>
-            <h:tr>
-                <h:td>FAU_ARP.1</h:td>
-                <h:td>Actions taken due to potential security violations</h:td>
-                <h:td>None.</h:td>
-            </h:tr>
-            <h:tr>
-                <h:td>FAU_SAA.1</h:td>
-                <h:td>Enabling and disabling of any of the analysis mechanisms<h:br></h:br>
-                    Automated responses performed by the <abbr linkend="TSF"/></h:td>
-                <h:td>None.</h:td>
-            </h:tr>
-            <h:tr>
-                <h:td>FPT_GVI.1</h:td>
-                <h:td>Actions taken due to failed integrity check.</h:td>
-                <h:td>None.</h:td>
-            </h:tr>
-        </h:table>
+	    
+        <audit-events table="optional"/><h:br/>
+        <ctr id="audit-table" ctr-type="Table">: Auditable Events</ctr>
     </appendix>
 
     <!-- ANNEX B: Selection-Based -->
@@ -3917,25 +3930,12 @@
         The following additional auditable events may be claimed by the <abbr linkend="ST"/> author if “additional information
         defined in Table 3” is selected in FAU_GEN.1.  Any subset of Table 3, including individual entries, may be included in
         the <abbr linkend="ST"/>; it is not necessary to include the entirety of Table 3.<h:br></h:br><h:br></h:br>
-        <h:table border="1">
-            <h:caption>Table 3: Auditable Events</h:caption>
-            <h:TR class="header">
-                <h:TH>Requirement</h:TH>
-                <h:TH>Auditable Events</h:TH>
-                <h:TH>Additional Audit Record Contents</h:TH>
-            </h:TR>
-            <h:tr>
-                <h:td>FCS_HTTPS_EXT.1</h:td>
-                <h:td>Failure to establish a HTTPS Session.<h:br></h:br>
-                    Establishment/Termination of a HTTPS session.</h:td>
-                <h:td>Reason for failure.<h:br></h:br>
-                    Non-<abbr linkend="TOE"/> endpoint of connection (IP address) for both successes and failures.</h:td>
-            </h:tr>
-            <h:tr>
-                <h:td>FIA_UIA_EXT.1</h:td>
-                <h:td>Administrator session start time and end time</h:td>
-                <h:td>None.</h:td>
-            </h:tr>
+
+        See <ctr-ref refid="audit-table">: Auditable Events</ctr-ref> for more information.<h:br/><h:br/>
+	    
+        <audit-events table="sel-based"/><h:br/>
+        <ctr id="audit-table" ctr-type="Table">: Auditable Events</ctr>
+	    
         </h:table>
         <h:br></h:br><h:br></h:br>
         
