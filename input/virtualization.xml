@@ -2564,7 +2564,9 @@ are included only if the corresponding SFR is included. So what does this select
                             </TSS>
                         </aactivity>
                     </f-element>
-		    <audit-event>
+			
+ <!-- XXX in the original PP this is selection-based (table 3). Might need to change this to state in the PP that it is optional. -->
+		    <audit-event type="optional"> 
                         <table known="mandatory"/>
 			<description>Administrator authentication attempts<h:br></h:br>
                                      All use of the identification and authentication mechanism.
@@ -3936,54 +3938,8 @@ are included only if the corresponding SFR is included. So what does this select
         <audit-events table="sel-based"/><h:br/>
         <ctr id="audit-table" ctr-type="Table">: Auditable Events</ctr>
 	    
-        </h:table>
         <h:br></h:br><h:br></h:br>
         
-        <!-- HERE table from page 114 -->
-        <h:b>Auditable Events</h:b><h:br></h:br><h:br></h:br>
-        Depending on the specific requirements selected by the <abbr linkend="ST"/> author, the <abbr linkend="ST"/>/<abbr linkend="TOE"/> should include the appropriate auditable events from the table below in the <abbr linkend="ST"/> as part of the FAU_GEN.1 claim.<h:br></h:br><h:br></h:br>
-        <h:table border="1">
-            <h:caption>Table 4: Auditable Events</h:caption>
-            <h:TR class="header">
-                <h:TH>Requirement</h:TH>
-                <h:TH>Auditable Events</h:TH>
-                <h:TH>Additional Audit Record Contents</h:TH>
-            </h:TR>
-            <h:tr>
-                <h:td>FCS_IPSEC_EXT.1</h:td>
-                <h:td>Failure to establish an IPsec SA.<h:br></h:br>
-                    Establishment/Termination of an IPsec SA.</h:td>
-                <h:td>Reason for failure.<h:br></h:br>
-                    Non-<abbr linkend="TOE"/> endpoint of connection (IP address) for both successes and failures.</h:td>
-            </h:tr>
-            <h:tr>
-                <h:td>FIA_X509_EXT.1</h:td>
-                <h:td>Failure to validate a certificate.</h:td>
-                <h:td>Reason for failure.</h:td>
-            </h:tr>
-            <h:tr>
-                <h:td>FIA_X509_EXT.2</h:td>
-                <h:td>None.</h:td>
-                <h:td>None.</h:td>
-            </h:tr>
-            <h:tr>
-                <h:td>FIA_PMG_EXT.1</h:td>
-                <h:td>None.</h:td>
-                <h:td>None.</h:td>
-            </h:tr>
-            <h:tr>
-                <h:td>FPT_TUD_EXT.2</h:td>
-                <h:td>None.</h:td>
-                <h:td>None.</h:td>
-            </h:tr>
-            <h:tr>
-                <h:td>FTP_TRP.1</h:td>
-                <h:td>Initiation of the trusted channel.<h:br></h:br>
-                    Termination of the trusted channel.<h:br></h:br>
-                    Failure of the trusted channel functions.</h:td>
-                <h:td>User ID and remote source (IP address) if feasible.</h:td>
-            </h:tr>
-        </h:table>
     </appendix>
 
     <!-- Annex C: Objective Requirements -->
@@ -3991,35 +3947,12 @@ are included only if the corresponding SFR is included. So what does this select
       
         <h:b>Auditable Events</h:b>
         Depending on the specific objective SFRs that are claimed by the <abbr linkend="ST"/>/<abbr linkend="TOE"/>, the <abbr linkend="ST"/> author shall include the appropriate auditable events listed below in the claims made for FAU_GEN.1.<h:br></h:br><h:br></h:br>
-        <!-- HERE table from page 118 -->
-        <h:table border="1">
-            <h:caption>Table 5: Auditable Events</h:caption>
-            <h:TR class="header">
-                <h:TH>Requirement</h:TH>
-                <h:TH>Auditable Events</h:TH>
-                <h:TH>Additional Audit Record Contents</h:TH>
-            </h:TR>
-            <h:tr>
-                <h:td>FPT_DDI_EXT.1</h:td>
-                <h:td>None.</h:td>
-                <h:td>None.</h:td>
-            </h:tr>
-            <h:tr>
-                <h:td>FPT_IDV_EXT.1</h:td>
-                <h:td>None.</h:td>
-                <h:td>None.</h:td>
-            </h:tr>
-            <h:tr>
-                <h:td>FPT_INT_EXT.1</h:td>
-                <h:td>Introspection initiated/enabled</h:td>
-                <h:td>The <abbr linkend="VM"/> introspected</h:td>
-            </h:tr>
-            <h:tr>
-                <h:td>FPT_ML_EXT.1</h:td>
-                <h:td>Integrity measurements collected</h:td>
-                <h:td>Integrity measurement values</h:td>
-            </h:tr>
-        </h:table>
+
+        See <ctr-ref refid="audit-table">: Auditable Events</ctr-ref> for more information.<h:br/><h:br/>
+ 
+        <audit-events table="objective"/><h:br/>
+        <ctr id="audit-table" ctr-type="Table">: Auditable Events</ctr>
+  
     </appendix>
 
     <!-- Annex D: Entropy Documentation and Assessment -->
