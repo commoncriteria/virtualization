@@ -605,6 +605,8 @@
                                 <h:li><selectables>
 <!-- XXX This doesn't make sense as a selection. The audit events for optional, objective, and selection-based requirements
 are included only if the corresponding SFR is included. So what does this selection mean?
+
+
 -->
                                     <selectable>additional information defined in Table 2</selectable>
                                     <selectable>additional information defined in Table 3</selectable>
@@ -624,7 +626,20 @@ are included only if the corresponding SFR is included. So what does this select
                                 <h:li>The outcome (success or failure) of the event</h:li>
                                 <h:li>[Additional information defined in Table 1]</h:li>
                                 <h:li><selectables>
-<!-- XXX Same here. -->
+<!-- XXX Table 2 is Optional.
+        Depending on the specific optional SFRs from Annex A that are claimed in the ST, the ST author shall
+	include the appropriate auditable events from Table 2 for FAU_GEN.1.<h:br></h:br><h:br></h:br>
+
+        Depending on the specific selection-based SFRs from Annex B that are claimed in the ST, the ST author shall
+	include the appropriate auditable events from Table 4 for FAU_GEN.1.<h:br></h:br><h:br></h:br>
+
+        Depending on the specific objective SFRs from Annex C that are claimed in the ST, the ST author shall
+	include the appropriate auditable events from Table 4 for FAU_GEN.1.<h:br></h:br><h:br></h:br>
+	
+	FIA_UIA_EXT.1 is a mandatory requirement that has both mandatory and optional audit events. I think
+ 	I should handle this with a selection within the audit event table.
+ 
+-->
                                     <selectable>additional information defined in Table 2</selectable>
                                     <selectable>additional information defined in Table 3</selectable>
                                     <selectable>additional information defined in Table 4</selectable>
@@ -671,7 +686,7 @@ are included only if the corresponding SFR is included. So what does this select
 				    							
 			See <ctr-ref refid="audit-table">: Auditable Events</ctr-ref> for more information.
 
-			<!-- AUDIT TABLE for MANDATORY SFRs -->
+			<!-- AUDIT TABLE for MANDATORY SFRs. This needs to move outside the EAs -->
                         <audit-events table="mandatory"/><h:br/>
                         <ctr id="audit-table" ctr-type="Table">: Auditable Events</ctr>
 			    
@@ -2567,8 +2582,19 @@ are included only if the corresponding SFR is included. So what does this select
                         </aactivity>
                     </f-element>
 			
- <!-- XXX in the original PP this is selection-based (table 3). Might need to change this to state in the PP that it is optional. -->
-		    <audit-event type="optional"> 
+ <!-- XXX in the original PP this is selection-based (table 3). Might need to change this to state in the PP that it is optional. 
+	Also has optional audit event:
+
+	<audit-event type="optional">
+            <table known="mandatory"/>
+	    <description>Administrator session start time and end time. </description>
+            <add-info>None. </add-info>
+	</audit-event>	
+
+	But it might be simpler to just do this as a selection within the mandatrory audit table and do away with Table 3.
+
+-->
+		    <audit-event> 
                         <table known="mandatory"/>
 			<description>Administrator authentication attempts<h:br></h:br>
                                      All use of the identification and authentication mechanism.
@@ -3930,7 +3956,10 @@ are included only if the corresponding SFR is included. So what does this select
     <!-- ANNEX B: Selection-Based -->
     <appendix id="sel-based" title="Selection-Based Requirements">
         
-        <h:b>FAU_GEN.1 Auditable Events Table (Optional)</h:b><h:br></h:br><h:br></h:br>
+	<!-- Table 3 contains optional audit events within the selection-based requirements.
+	     Table 4 contains audit events that are mandatory if the corresponding SFR is selected. 
+	     Not sure yet how I'm going to deal with this. -->
+	<h:b>FAU_GEN.1 Auditable Events Table (Optional)</h:b><h:br></h:br><h:br></h:br>
         The following additional auditable events may be claimed by the <abbr linkend="ST"/> author if “additional information
         defined in Table 3” is selected in FAU_GEN.1.  Any subset of Table 3, including individual entries, may be included in
         the <abbr linkend="ST"/>; it is not necessary to include the entirety of Table 3.<h:br></h:br><h:br></h:br>
@@ -3948,13 +3977,16 @@ are included only if the corresponding SFR is included. So what does this select
     <appendix id="objective" title="Objective Requirements">
       
         <h:b>Auditable Events</h:b>
-        Depending on the specific objective SFRs that are claimed by the <abbr linkend="ST"/>/<abbr linkend="TOE"/>, the <abbr linkend="ST"/> author shall include the appropriate auditable events listed below in the claims made for FAU_GEN.1.<h:br></h:br><h:br></h:br>
+        Depending on the specific objective SFRs that are claimed by the <abbr linkend="ST"/>/<abbr linkend="TOE"/>, the <abbr linkend="ST"/> author shall
+	include the appropriate auditable events listed below in the claims made for FAU_GEN.1.<h:br></h:br><h:br></h:br>
 
         See <ctr-ref refid="audit-table">: Auditable Events</ctr-ref> for more information.<h:br/><h:br/>
  
         <audit-events table="objective"/><h:br/>
         <ctr id="audit-table" ctr-type="Table">: Auditable Events</ctr>
-  
+
+	<h:br></h:br><h:br></h:br>
+	    
     </appendix>
 
     <!-- Annex D: Entropy Documentation and Assessment -->
