@@ -2585,13 +2585,44 @@ are included only if the corresponding SFR is included. So what does this select
  <!-- XXX in the original PP this is selection-based (table 3). Might need to change this to state in the PP that it is optional. 
 	Also has optional audit event:
 
-	<audit-event type="optional">
-            <table known="mandatory"/>
-	    <description>Administrator session start time and end time. </description>
-            <add-info>None. </add-info>
-	</audit-event>	
+	<audit-events>
 
-	But it might be simpler to just do this as a selection within the mandatrory audit table and do away with Table 3.
+	    <!- This one is a normal mandatory event in a mandatory requirement ->
+	    <audit-event> 
+                <table known="mandatory"/>
+		<description>Administrator authentication attempts</description>
+                <add-info>Provided user identity, origin of the attempt (e.g. console, remote IP address).</add-info>
+	    </audit-event>
+
+	    <!- This one is also a normal mandatory event in a mandatory requirement, but it has a seleciton within it. ->
+	    <audit-event> 
+                <table known="mandatory"/>
+		<description>Administrator authentication attempts</description>
+                <add-info>[selection: Provided user identity, origin of the attempt (e.g. console, remote IP address).</add-info>
+	    </audit-event>
+
+	    <!- This one is an optional event in a mandatory requirement. Not sure if we want to do it this way because
+       		there is no real way to express it in CC language. ->
+	    <audit-event type="optional"> 
+            	<table known="mandatory"/>
+	    	<description>Administrator session start time and end time. </description>
+            	<add-info>None. </add-info>
+	    </audit-event>
+
+     	    <!- This one is a selection-based event in a mandatory requirement. The selection in FAU_GEN says something like
+		"the audit events in Table 3."   -> 
+	    <audit-event type="sel-based" dep="fau_gen-1-table3">
+            	<table unknown="table3"/>
+	    	<description>Administrator session start time and end time. </description>
+            	<add-info>None. </add-info>
+	    </audit-event>
+
+	    <!- The table known="mandatory" can probably be eliminated and by default the event should go into the table depending on the 
+		type of the SFR. So these would go into the audit table for mandatory SFRs. The only time we need the table tag
+ 		is if the event goes into some other table (as in the last one). ->
+
+	</audit-events>
+
 
 -->
 		    <audit-event> 
