@@ -603,17 +603,18 @@
                                 <h:li>All administrative actions</h:li>
                                 <h:li>[Specifically defined auditable events in Table 1]</h:li>
                                 <h:li><selectables>
-<!-- XXX This doesn't make sense as a selection. The audit events for optional, objective, and selection-based requirements
-are included only if the corresponding SFR is included. So what does this selection mean?
 
-
--->
+				<!-- It makes no sense to have a selection for the various audit tables. The entries in those 
+				tables are automatically included in the ST is the associated SFR is included. The audit events are effectively
+				part of their corresponding SFRs. Selecting them here has no effect. 
+				-->
                                     <selectable>additional information defined in Table 2</selectable>
-                                    <selectable>additional information defined in Table 3</selectable>
+				    <selectable>additional information defined in Table 3</selectable>
                                     <selectable>additional information defined in Table 4</selectable>
                                     <selectable>additional information defined in in Table 5</selectable>
                                     <selectable>no other information</selectable>
-                                </selectables></h:li>
+
+				 </selectables></h:li>
                             </h:ol>
                         </title>
                     </f-element>
@@ -2585,6 +2586,24 @@ are included only if the corresponding SFR is included. So what does this select
  <!-- XXX in the original PP this is selection-based (table 3). Might need to change this to state in the PP that it is optional. 
 	Also has optional audit event:
 
+	Types of audit events.
+	- Mandatory events in mandatory requirements.
+	- Mandatory events in optional/objective requirements
+	- Mandatory events in selection-based requirements
+
+ 	- Optional events in mandatory requirements.
+	- Optional events in optional/objective requirements
+	- Optional events in selection-based requirements
+
+ 	- Selection-based events in mandatory requirements.
+ 	- Selection-based events in optional/objective requirements.
+ 	- Selection-based events in selection-based requirements.
+
+	We also have to deal with events that contain selections. If the selection effectively turn the event into an optional 
+	event, then it needs to be recharacterized as such. e.g. if events are [selection: X, None] then event X is optional.
+	If it is [selection: X, Y, None] then events X and Y are both optional. If [selection: X, Y] then they are both optional
+	but one of them must be selected--which sucks.
+
 	<audit-events>
 
 	    <!- This one is a normal mandatory event in a mandatory requirement ->
@@ -2594,15 +2613,16 @@ are included only if the corresponding SFR is included. So what does this select
                 <add-info>Provided user identity, origin of the attempt (e.g. console, remote IP address).</add-info>
 	    </audit-event>
 
-	    <!- This one is also a normal mandatory event in a mandatory requirement, but it has a seleciton within it. ->
+	    <!- This one is also a normal mandatory event in a mandatory requirement, but it has a selection within it. ->
 	    <audit-event> 
                 <table known="mandatory"/>
 		<description>Administrator authentication attempts</description>
                 <add-info>[selection: Provided user identity, origin of the attempt (e.g. console, remote IP address).</add-info>
 	    </audit-event>
 
-	    <!- This one is an optional event in a mandatory requirement. Not sure if we want to do it this way because
-       		there is no real way to express it in CC language. ->
+	    <!- This one is an optional audit event in a mandatory requirement. Not sure if we want to do it this way because
+       		there is no real way to express it in CC language. Alternative is to add it as a selection to FAU_GEN.1, though
+		this sucks as well. Maybe this is in the mandatory table and [selection: event, None]. I think this sucks. ->
 	    <audit-event type="optional"> 
             	<table known="mandatory"/>
 	    	<description>Administrator session start time and end time. </description>
@@ -2610,7 +2630,7 @@ are included only if the corresponding SFR is included. So what does this select
 	    </audit-event>
 
      	    <!- This one is a selection-based event in a mandatory requirement. The selection in FAU_GEN says something like
-		"the audit events in Table 3."   -> 
+		"the audit events in Table 3." -> 
 	    <audit-event type="sel-based" dep="fau_gen-1-table3">
             	<table unknown="table3"/>
 	    	<description>Administrator session start time and end time. </description>
@@ -2622,7 +2642,6 @@ are included only if the corresponding SFR is included. So what does this select
  		is if the event goes into some other table (as in the last one). ->
 
 	</audit-events>
-
 
 -->
 		    <audit-event> 
