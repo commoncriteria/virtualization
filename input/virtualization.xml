@@ -601,19 +601,24 @@
                             <h:ol type="a">
                                 <h:li>Start-up and shutdown of audit functions</h:li>
                                 <h:li>All administrative actions</h:li>
-                                <h:li>[Specifically defined auditable events in Table 1]</h:li>
-                                <h:li><selectables>
 
-				<!-- It makes no sense to have a selection for the various audit tables. The entries in those 
-				tables are automatically included in the ST is the associated SFR is included. The audit events are effectively
-				part of their corresponding SFRs. Selecting them here has no effect. 
+				<!-- Table 1 contains the audit events for mandatory SFRs.
+				     Table 2 contains the audit events for optional SFRs.
+				     Table 3 contains the audit events for selection-based SFRs.
+				     Table 4 contains the audit events for objective SFRs.
+
+				     The former Table 3 has been integrated into Table 1. Table 3 previously contained 
+				     a single optional audit event for FIA_UIA_EXT.1 (a mandatory requirement). Now that 
+			 	     event appears in Table 1 as an optional event.
+
 				-->
-                                    <selectable>additional information defined in Table 2</selectable>
-				    <selectable>additional information defined in Table 3</selectable>
-                                    <selectable>additional information defined in Table 4</selectable>
-                                    <selectable>additional information defined in in Table 5</selectable>
-                                    <selectable>no other information</selectable>
-
+		    
+			        <h:li>[Auditable events defined in Table 1]</h:li>
+                                <h:li><selectables>
+                                    <selectable id="fau-gen-t2">Auditable events defined in Table 2</selectable>
+				    <selectable id="fau-gen-t3">Auditable events defined in Table 3</selectable>
+                                    <selectable id="fau-gen-t4">Auditable events defined in Table 4</selectable>
+                                    <selectable>no other auditable events</selectable>
 				 </selectables></h:li>
                             </h:ol>
                         </title>
@@ -625,38 +630,48 @@
                                 <h:li>Type of event</h:li>
                                 <h:li>Subject and object identity (if applicable)</h:li>
                                 <h:li>The outcome (success or failure) of the event</h:li>
-                                <h:li>[Additional information defined in Table 1]</h:li>
-                                <h:li><selectables>
-<!-- XXX Table 2 is Optional.
-        Depending on the specific optional SFRs from Annex A that are claimed in the ST, the ST author shall
-	include the appropriate auditable events from Table 2 for FAU_GEN.1.<h:br></h:br><h:br></h:br>
-
-        Depending on the specific selection-based SFRs from Annex B that are claimed in the ST, the ST author shall
-	include the appropriate auditable events from Table 4 for FAU_GEN.1.<h:br></h:br><h:br></h:br>
-
-        Depending on the specific objective SFRs from Annex C that are claimed in the ST, the ST author shall
-	include the appropriate auditable events from Table 4 for FAU_GEN.1.<h:br></h:br><h:br></h:br>
 	
-	FIA_UIA_EXT.1 is a mandatory requirement that has both mandatory and optional audit events. I think
- 	I should handle this with a selection within the audit event table.
- 
--->
-                                    <selectable>additional information defined in Table 2</selectable>
-                                    <selectable>additional information defined in Table 3</selectable>
-                                    <selectable>additional information defined in Table 4</selectable>
-                                    <selectable>additional information defined in in Table 5</selectable>
+				<!-- I would like this selection to go away. Additional informaiton should come along with the 
+				     audit events in the tables. If the additional information is not needed it can be
+ 				     made a selection within the table.
+
+				     If this selection cannot go away, then I want the selections tied to the corresponding selections
+				     in FAU_GEN.1.1.
+				-->
+				    
+				<h:li>[Additional information defined in Table 1]</h:li>
+                                <h:li><selectables>
+                                    <selectable>Additional information defined in Table 2</selectable>
+                                    <selectable>Additional information defined in Table 3</selectable>
+                                    <selectable>Additional information defined in Table 4</selectable>
                                     <selectable>no other information</selectable>
                                 </selectables></h:li>
                             </h:ol>
                         </title>
                         <note role="application">
-                            The <abbr linkend="ST"/> author can include other auditable events directly in Table 1; they are not limited to the list presented. The <abbr linkend="ST"/> author should update the table in FAU_GEN.1.2 with any additional information generated. “Subject identity” in FAU_GEN.1.2 could be a user id or an identifier specifying a <abbr linkend="VM"/>, for example.<h:br></h:br><h:br></h:br>
-                            If ‘additional information defined in Table 3’ is selected, it is acceptable to include individual
-                            entries from Table 3 without including the entirety of Table 3.  Appropriate entries from Tables 2, 4,
-                            and 5 should be included in the <abbr linkend="ST"/> if the associated SFRs and selections are included.<h:br></h:br><h:br></h:br>
-                            The Table 1 entry for FDP_VNC_EXT.1 refers to configuration settings that attach <abbr linkend="VM"/>s to virtualized network components. Changes to these configurations can be made during <abbr linkend="VM"/> execution or when <abbr linkend="VM"/>s are not running. Audit records must be generated for either case.<h:br></h:br><h:br></h:br>
-                            The intent of the audit requirement for FDP_PPR_EXT.1 is to log that the <abbr linkend="VM"/> is connected to a physical device (when the device becomes part of the <abbr linkend="VM"/>’s hardware view), not to log every time that the device is accessed. Generally, this is only once at <abbr linkend="VM"/> startup. However, some devices can be connected and disconnected during operation (e.g., virtual USB devices such as CD-ROMs). All such connection/disconnection events must be logged.
+                            The <abbr linkend="ST"/> author can include other auditable events directly in Table 1; they are not
+				limited to the list presented. The <abbr linkend="ST"/> author should update the table in 
+				FAU_GEN.1.2 with any additional information generated. “Subject identity” in FAU_GEN.1.2 could be a 
+				user id or an identifier specifying a <abbr linkend="VM"/>, for example.<h:br></h:br><h:br></h:br>
+			    Appropriate entries from Tables 2, 3, and 4 should be included in the <abbr linkend="ST"/> if the 
+				associated SFRs and selections are included.<h:br></h:br><h:br></h:br>
+                            The Table 1 entry for FDP_VNC_EXT.1 refers to configuration settings that attach 
+				<abbr linkend="VM"/>s to virtualized network components. Changes to these configurations can be made 
+				during <abbr linkend="VM"/> execution or when <abbr linkend="VM"/>s are not running. Audit records 
+				must be generated for either case.<h:br></h:br><h:br></h:br>
+                            The intent of the audit requirement for FDP_PPR_EXT.1 is to log that the <abbr linkend="VM"/> is connected 
+				to a physical device (when the device becomes part of the <abbr linkend="VM"/>’s hardware view), not
+				to log every time that the device is accessed. Generally, this is only once at <abbr linkend="VM"/>
+				startup. However, some devices can be connected and disconnected during operation (e.g., virtual USB
+				devices such as CD-ROMs). All such connection/disconnection events must be logged.
                         </note>
+			    
+			See <ctr-ref refid="audit-table">: Auditable Events</ctr-ref> for more information.
+
+			<!-- AUDIT TABLE for MANDATORY SFRs. This is Table 1 in this PP, but nothing maps it to that name. -->
+                        <ctr id="audit-table" ctr-type="Table">: Auditable Events</ctr>
+                        <audit-table table="mandatory"/><h:br/>
+		    
 			<aactivity>
                             <TSS>
                                 The evaluator shall check the <abbr linkend="TSS"/> and ensure that it lists all of the auditable events 
@@ -683,24 +698,10 @@
                                 <h:br></h:br>
                                 Note that the testing here can be accomplished in conjunction with the testing of the security mechanisms 
                                 directly.<h:br></h:br>
-				    
-				    							
-			See <ctr-ref refid="audit-table">: Auditable Events</ctr-ref> for more information.
-
-			<!-- AUDIT TABLE for MANDATORY SFRs. This needs to move outside the EAs -->
-                        <ctr id="audit-table" ctr-type="Table">: Auditable Events</ctr>
-                        <audit-events table="mandatory"/><h:br/>
-			    
-
-
                             </Tests>   
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
                 
                 <!-- FAU_SAR.1 -->
@@ -725,11 +726,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-                        <description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
                 
                 <!-- FAU_STG.1 -->
@@ -757,11 +754,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-                        <description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
 
                 <!-- FAU_STG_EXT.1 -->
@@ -823,12 +816,14 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="mandatory"/>
-                        <description>
-				Failure of audit data capture due to lack of disk space or pre-defined limit.<h:br></h:br>
-                                On failure of logging function, capture record of failure and record upon restart of logging function.
-			</description>
-                        <add-info>None.</add-info>
+                        <audit-event-descr>
+				Failure of audit data capture due to lack of disk space or pre-defined limit.
+                        </audit-event-descr>
+		    </audit-event>
+		    <audit-event>
+                        <audit-event-descr>
+				On failure of logging function, capture record of failure and record upon restart of logging function.
+                        </audit-event-descr>
 		    </audit-event>
                 </f-component>
                 
@@ -848,10 +843,8 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="optional"/>
-                        <description>Actions taken due to potential security violations.</description>
-                        <add-info>None.</add-info>
+		    <audit-event>   <!-- optional (Table 2) -->
+                        <audit-event-descr>Actions taken due to potential security violations.</audit-event-descr>
 		    </audit-event>
 	        </f-component>
                 
@@ -876,15 +869,13 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="optional"/>
-                        <description>
-				Enabling and disabling of any of the analysis mechanisms<h:br></h:br>
-                    		Automated responses performed by the <abbr linkend="TSF"/>
-			</description>
-                        <add-info>None.</add-info>
+		    <audit-event> <!-- optional (table 2) -->
+                        <audit-event-descr>Enabling and disabling of any of the analysis mechanisms.</audit-event-descr>
 		    </audit-event>
-	        </f-component>
+		    <audit-event>
+                        <audit-event-descr>Automated responses performed by the TSF.</audit-event-descr>
+		    </audit-event>
+		</f-component>
             </subsection>
             
             <subsection id="fcs" title="Cryptographic Support">
@@ -984,11 +975,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
                 
                 <!-- FCS_CKM.2 -->
@@ -1043,11 +1030,7 @@
 			    </Tests>
                          </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
 
                 <!-- FCS_CKM_EXT.4 -->
@@ -1096,11 +1079,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
        
                 <!-- FCS_COP.1/UDE (formerly FCS_COP.1(1)) -->
@@ -1247,11 +1226,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
   	        </f-component>
                 
 		<!-- FCS_COP.1/HASH (formerly FCS_COP.1(2)) -->
@@ -1385,11 +1360,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
                 
                 <!-- FCS_COP.1/SIG (formerly FCS_COP.1(3)) -->
@@ -1438,11 +1409,7 @@
 				</Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
                 
                 <!-- FCS_COP.1/KEYHASH (formerly FCS_COP.1(4)) -->
@@ -1486,11 +1453,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
                 
                 <!-- FCS_ENT_EXT.1 -->
@@ -1536,11 +1499,7 @@
                          </Tests>
                       </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
                 
                 <!-- FCS_RBG_EXT.1 -->
@@ -1588,9 +1547,7 @@
                         </aactivity>
                     </f-element>
                     <audit-event>
-		    	<table known="mandatory"/>
-			<description>Failure of the randomization process</description>
-			<add-info>None.</add-info>
+			<audit-event-descr>Failure of the randomization process</audit-event-descr>
 		    </audit-event>
                 </f-component>
                 
@@ -1620,14 +1577,13 @@
                         </aactivity>
                     </f-element>
 	  	    <audit-event>
-                        <table known="sel-based"/>
-			<description>
-				Failure to establish a HTTPS Session.<h:br></h:br>
-                    		Establishment/Termination of a HTTPS session.</description>
-                        <add-info>
-				Reason for failure.<h:br></h:br>
-                    		Non-<abbr linkend="TOE"/> endpoint of connection (IP address) for both successes and failures.
-			</add-info>
+			<audit-event-descr>Failure to establish a HTTPS Session.</audit-event-descr>
+                        <audit-event-info>Reason for failure.</audit-event-info>
+                        <audit-event-info>Non-TOE endpoint of connection (IP address) for failures.</audit-event-info>
+		    </audit-event>
+	  	    <audit-event>
+			<audit-event-descr>Establishment/Termination of a HTTPS session.</audit-event-descr>
+                        <audit-event-info>Non-TOE endpoint of connection (IP address).</audit-event-info>
 		    </audit-event>
                 </f-component>
 
@@ -2109,15 +2065,13 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="sel-based"/>
-			<description>
-			    Failure to establish an IPsec SA.<h:br/>
-			    Establishment/Termination of an IPsec SAA.
-			    </description>
-                        <add-info>
-			    Reason for failure.<h:br/>
-			    Non-TOE endpoint of connetion (IP address) for both successes and failures.
-			</add-info>
+			<audit-event-descr>Failure to establish an IPsec SA.</audit-event-descr>
+			<audit-event-info>Reason for failure.</audit-event-info>	
+			<audit-event-info>Non-TOE endpoint of connection (IP address).</audit-event-info>	
+		    </audit-event>
+		    <audit-event>
+			<audit-event-descr>Establishment/Termination of an IPsec SAA.</audit-event-descr>
+			<audit-event-info>Non-TOE endpoint of connection (IP address).</audit-event-info>	
 		    </audit-event>
                 </f-component>
             </subsection>
@@ -2151,11 +2105,7 @@
                             </Guidance>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
 
                 <!-- FDP_PPR_EXT.1 -->
@@ -2227,15 +2177,14 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="mandatory"/>
-			<description>
-				Successful and failed <abbr linkend="VM"/> connections to physical devices where connection is governed by configurable policy.<h:br></h:br>
-                                Security policy violations.
-			</description>
-                        <add-info>
-			    VM and physical device identifiers.<h:br></h:br>
-			    Identifier for the security policy that was violated.
-			</add-info>
+			<audit-event-descr>
+				Successful and failed VM connections to physical devices where connection is governed by configurable policy.
+			</audit-event-descr>
+			<audit-event-info>VM and physical device identifiers.</audit-event-info>
+		    </audit-event>
+		    <audit-event>
+			<audit-event-descr>Security policy violations.</audit-event-descr>
+			<audit-event-info>Identifier for the security policy that was violated.</audit-event-info>
 		    </audit-event>
                 </f-component>
                 
@@ -2259,11 +2208,7 @@
                             </TSS>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
 
                 <!-- FDP_RIP_EXT.2 -->
@@ -2291,11 +2236,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
 
                 <!-- FDP_VMS_EXT.1 -->
@@ -2361,11 +2302,7 @@
                             </Tests>
                          </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
                 
                 <!-- FDP_VNC_EXT.1 -->
@@ -2401,16 +2338,17 @@
                          </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="mandatory"/>
-			<description>
-				Successful and failed attempts to connect <abbr linkend="VM"/>s to virtual and physical networking components.<h:br></h:br>
-                                Security policy violations.<h:br></h:br>
-                                Administrator configuration of inter-VM communications channels between <abbr linkend="VM"/>s.
-			</description>
-                        <add-info>
-				VM and virtual or physical networking component identifiers.<h:br></h:br>
-                                Identifier for the security policy that was violated.
-			</add-info>
+			<audit-event-descr>Successful and failed attempts to connect VMs to virtual and physical networking components.</audit-event-descr>
+			<audit-event-info>VM and virtual or physical networking component identifiers.</audit-event-info>
+		    </audit-event>
+		    <audit-event>
+			<audit-event-descr>Security policy violations.</audit-event-descr>
+			<audit-event-info>Identifier for the security policy that was violated.</audit-event-info>
+    			<audit-event-info>VM and virtual or physical networking component identifiers.</audit-event-info>
+		    </audit-event>
+		    <audit-event>
+			<audit-event-descr>Administrator configuration of inter-VM communications channels between VMs.</audit-event-descr>
+			<audit-event-info>VM and virtual or physical networking component identifiers.</audit-event-info>
 		    </audit-event>
                 </f-component>
             </subsection>
@@ -2484,9 +2422,8 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="mandatory"/>
-			<description>Unsuccessful login attempts limit is met or exceeded.</description>
-                        <add-info>Origin of attempt (e.g., IP address).</add-info>
+			<audit-event-descr>Unsuccessful login attempts limit is met or exceeded.</description>
+                        <audit-event-info>Origin of attempt (e.g., IP address).</audit-event-info>
 		    </audit-event>
                 </f-component>
 
@@ -2552,11 +2489,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
 
                 <!-- FIA_UIA_EXT.1 -->
@@ -2582,76 +2515,19 @@
                             </TSS>
                         </aactivity>
                     </f-element>
-			
- <!-- XXX in the original PP this is selection-based (table 3). Might need to change this to state in the PP that it is optional. 
-	Also has optional audit event:
-
-	Types of audit events.
-	- Mandatory events in mandatory requirements.
-	- Mandatory events in optional/objective requirements
-	- Mandatory events in selection-based requirements
-
- 	- Optional events in mandatory requirements.
-	- Optional events in optional/objective requirements
-	- Optional events in selection-based requirements
-
- 	- Selection-based events in mandatory requirements.
- 	- Selection-based events in optional/objective requirements.
- 	- Selection-based events in selection-based requirements.
-
-	We also have to deal with events that contain selections. If the selection effectively turn the event into an optional 
-	event, then it needs to be recharacterized as such. e.g. if events are [selection: X, None] then event X is optional.
-	If it is [selection: X, Y, None] then events X and Y are both optional. If [selection: X, Y] then they are both optional
-	but one of them must be selected, which sucks.
-
-	<audit-events>
-
-	    <!- This one is a normal mandatory event in a mandatory requirement ->
-	    <audit-event> 
-                <table known="mandatory"/>
-		<description>Administrator authentication attempts</description>
-                <add-info>Provided user identity, origin of the attempt (e.g. console, remote IP address).</add-info>
-	    </audit-event>
-
-	    <!- This one is also a normal mandatory event in a mandatory requirement, but it has a selection within it. ->
-	    <audit-event> 
-                <table known="mandatory"/>
-		<description>Administrator authentication attempts</description>
-                <add-info>[selection: Provided user identity, origin of the attempt (e.g. console, remote IP address).</add-info>
-	    </audit-event>
-
-	    <!- This one is an optional audit event in a mandatory requirement. Not sure if we want to do it this way because
-       		there is no real way to express it in CC language. Alternative is to add it as a selection to FAU_GEN.1, though
-		this sucks as well. Maybe this is in the mandatory table and [selection: event, None]. I think this sucks. ->
-	    <audit-event type="optional"> 
-            	<table known="mandatory"/>
-	    	<description>Administrator session start time and end time. </description>
-            	<add-info>None. </add-info>
-	    </audit-event>
-
-     	    <!- This one is a selection-based event in a mandatory requirement. The selection in FAU_GEN says something like
-		"the audit events in Table 3." -> 
-	    <audit-event type="sel-based" dep="fau_gen-1-table3">
-            	<table unknown="table3"/>
-	    	<description>Administrator session start time and end time. </description>
-            	<add-info>None. </add-info>
-	    </audit-event>
-
-	    <!- The table known="mandatory" can probably be eliminated and by default the event should go into the table depending on the 
-		type of the SFR. So these would go into the audit table for mandatory SFRs. The only time we need the table tag
- 		is if the event goes into some other table (as in the last one). ->
-
-	</audit-events>
-
--->
 		    <audit-event> 
-                        <table known="mandatory"/>
-			<description>Administrator authentication attempts<h:br></h:br>
-                                     All use of the identification and authentication mechanism.
-			</description>
-                        <add-info>Provided user identity, origin of the attempt (e.g. console, remote IP address).
-			</add-info>
-		    </audit-event>
+			<audit-event-descr>Administrator authentication attempts.</audit-event-descr>
+                        <audit-event-info>Provided user identity, origin of the attempt (e.g. console, remote IP address).</audit-event-info>
+		    </audit-event> 
+		    <audit-event> 
+			<audit-event-descr>All use of the identification and authentication mechanism.</audit-event-descr>
+                        <audit-event-info>Provided user identity, origin of the attempt (e.g. console, remote IP address).</audit-event-info>
+		    </audit-event> 
+		    <!-- Below event used to be in Table 3 -->
+		    <audit-event type="optional"> 
+			<audit-event-descr>Start and end of administrator session.</audit-event-descr>
+                        <audit-event-info>Start time and end time of administrator session.</audit-event-info>
+		    </audit-event> 
                 </f-component>
 		    
                 <!-- FIA_PMG_EXT.1 -->
@@ -2695,11 +2571,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="sel-based"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
 
                 <!-- FIA_X509_EXT.1 -->
@@ -2768,9 +2640,8 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="sel-based"/>
-			<description>Failure to validate a certificate.</description>
-                        <add-info>Reason for failure.</add-info>
+			<audit-event-descr>Failure to validate a certificate.</audit-event-descr>
+                        <audit-event-info>Reason for failure.</audit-event-info>
 		    </audit-event>
                 </f-component>
 
@@ -2831,11 +2702,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="sel-based"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
             </subsection>
             
@@ -2869,11 +2736,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
                 
                 <!-- FMT_SMO_EXT.1 -->
@@ -2911,11 +2774,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
             </subsection>
             
@@ -2938,11 +2797,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
 
                 <!-- FPT_EEM_EXT.1 -->
@@ -2970,11 +2825,7 @@
                             </TSS>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
                 
                 <!-- FPT_HAS_EXT.1 -->
@@ -2999,11 +2850,7 @@
                             </TSS>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
 
                 <!-- FPT_HCL_EXT.1 -->
@@ -3061,13 +2908,12 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="mandatory"/>
-			<description>Attempts to access disabled hypercall interfaces<h:br></h:br>
-                                     Security policy violations.
-			</description>
-                        <add-info>Interface for which access was attempted.<h:br></h:br>
-                                  Identifier for the security policy that was violated.
-			</add-info>
+			<audit-event-descr>Attempts to access disabled hypercall interfaces</audit-event-descr>
+			<audit-event-info>Interface for which access was attempted.</audit-event-info>
+		    </audit-event>
+		    <audit-event>
+			<audit-event-descr>Security policy violations.</audit-event-descr>
+			<audit-event-info>Identifier for the security policy that was violated.</audit-event-info>
 		    </audit-event>
                 </f-component>
 
@@ -3118,14 +2964,12 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="mandatory"/>
-			<description>
-				Connection/disconnection of removable media or device to/from a VM.<h:br></h:br>
-                                Ejection/insertion of removable media or device from/to an already connected VM.
-			</description>
-                        <add-info>
-				VM Identifier, Removable media/device identifier, event description or identifier (connect/disconnect, ejection/insertion, etc.)
-			</add-info>
+			<audit-event-descr>Connection/disconnection of removable media or device to/from a VM.</audit-event-descr>
+                        <audit-event-info>VM Identifier, Removable media/device identifier, event description or identifier (connect/disconnect, ejection/insertion, etc.)</audit-event-info>
+		    </audit-event>
+		    <audit-event>
+			<audit-event-descr>Ejection/insertion of removable media or device from/to an already connected VM.</audit-event-descr>
+                        <audit-event-info>VM Identifier, Removable media/device identifier, event description or identifier (connect/disconnect, ejection/insertion, etc.)</audit-event-info>
 		    </audit-event>
                 </f-component>
 
@@ -3193,13 +3037,10 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="mandatory"/>
-			<description>
-				Initiation of update.<h:br></h:br>
-                                Failure of signature verification.
-			</description>
-                        <add-info>No additional information.
-			</add-info>
+			<audit-event-descr>Initiation of update.</audit-event-descr>
+		    </audit-event>
+		    <audit-event>
+			<audit-event-descr>Failure of signature verification.</audit-event-descr>
 		    </audit-event>
                 </f-component>
                 
@@ -3218,11 +3059,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="sel-based"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
 
                 <!-- FPT_VDP_EXT.1 -->
@@ -3265,11 +3102,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
 
                 <!-- FPT_VIV_EXT.1 -->
@@ -3300,11 +3133,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
 
                 <!-- FPT_GVI_EXT.1 -->
@@ -3325,9 +3154,7 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="optional"/>
-			<description>Actions taken due to failed integrity check.</description>
-                        <add-info>None.</add-info>
+			<audit-event-descr>Actions taken due to failed integrity check.</audit-event-descr>
 		    </audit-event>
                 </f-component>
 
@@ -3351,11 +3178,7 @@
                             </TSS>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="objective"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
 
                 <!-- FPT_IDV_EXT.1 -->
@@ -3382,11 +3205,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="objective"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
 
                 <!-- FPT_INT_EXT.1 -->
@@ -3409,9 +3228,8 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="objective"/>
-			<description>Introspection initiated/enabled.</description>
-                        <add-info>The VM introspected.</add-info>
+			<audit-event-descr>Introspection initiated/enabled.</audit-event-descr>
+                        <audit-event-info>The VM introspected.</audit-event-info>
 		    </audit-event>
                 </f-component>
 
@@ -3452,9 +3270,8 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="objective"/>
-			<description>Integrity initiated/enabled.</description>
-                        <add-info>Integrity measurement values.</add-info>
+			<audit-event-descr>Integrity initiated/enabled.</audit-event-descr>
+                        <audit-event-info>Integrity measurement values.</audit-event-info>
 		    </audit-event>
                 </f-component>
             </subsection>
@@ -3481,11 +3298,7 @@
                         </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
             </subsection>
             
@@ -3543,14 +3356,17 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="mandatory"/>
-			<description>Initiation of the trusted channel.<h:br></h:br>
-                                     Termination of the trusted channel.<h:br></h:br>
-                                     Failures of the trusted path functions.
-			</description>
-                        <add-info>User ID and remote source (IP Address) if feasible.
-			</add-info>
-		    </audit-event>
+			<audit-event-descr>Initiation of the trusted channel.</audit-event-descr>
+                        <audit-event-info>User ID and remote source (IP Address) if feasible.</audit-event-info>
+		    </audit-event>    
+		    <audit-event>
+			<audit-event-descr>Termination of the trusted channel.</audit-event-descr>
+                        <audit-event-info>User ID and remote source (IP Address) if feasible.</audit-event-info>
+		    </audit-event>    
+		    <audit-event>
+			<audit-event-descr>Failures of the trusted path functions.</audit-event-descr>
+                        <audit-event-info>User ID and remote source (IP Address) if feasible.</audit-event-info>
+		    </audit-event>    
                 </f-component>
 
                 <!-- FTP_UIF_EXT.1 -->
@@ -3576,11 +3392,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
 
                 <!-- FTP_UIF_EXT.2 -->
@@ -3606,11 +3418,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event>
-                        <table known="mandatory"/>
-			<description>None.</description>
-                        <add-info>None.</add-info>
-		    </audit-event>
+		    <audit-event />
                 </f-component>
 
                 <!-- FTP_TRP.1 -->
@@ -3657,16 +3465,17 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-                        <table known="mandatory"/>
-			<description>
-			    Initiation of the trusted channel.<h:br/>
-			    Termination of the trusted channel.<h:br/>
-			    Failure of the trusted channel functions.
-			    </description>
-                        <add-info>
-			    User ID and remote source (IP address) if feasible.
-			</add-info>
-		    </audit-event>
+			<audit-event-descr>Initiation of the trusted channel.</audit-event-descr>
+                        <audit-event-info>User ID and remote source (IP Address) if feasible.</audit-event-info>
+		    </audit-event>    
+		    <audit-event>
+			<audit-event-descr>Termination of the trusted channel.</audit-event-descr>
+                        <audit-event-info>User ID and remote source (IP Address) if feasible.</audit-event-info>
+		    </audit-event>    
+		    <audit-event>
+			<audit-event-descr>Failures of the trusted path functions.</audit-event-descr>
+                        <audit-event-info>User ID and remote source (IP Address) if feasible.</audit-event-info>
+		    </audit-event>    
                 </f-component>
             </subsection>
         </section>
