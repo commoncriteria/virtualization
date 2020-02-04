@@ -3808,7 +3808,9 @@
         See <ctr-ref refid="audit-table">: Auditable Events</ctr-ref> for more information.<h:br/><h:br/>
         Depending on the specific requirements selected by the <abbr linkend="ST"/> author, the <abbr linkend="ST"/>/<abbr linkend="TOE"/> should include the appropriate auditable events from the table below in the <abbr linkend="ST"/> as part of the FAU_GEN.1 claim.<h:br></h:br><h:br></h:br>
 	    
-        <audit-events table="optional"/><h:br/>
+        <audit-table table="optional">
+		<depends on="selection" uid="fau-gen-t2"/>
+	</audit-table>
         <ctr id="audit-table" ctr-type="Table">: Auditable Events</ctr>
     </appendix>
 
@@ -3825,7 +3827,9 @@
 
         See <ctr-ref refid="audit-table">: Auditable Events</ctr-ref> for more information.<h:br/><h:br/>
 	    
-        <audit-events table="sel-based"/><h:br/>
+        <audit-events table="sel-based">
+		<depends on="selection" uid="fau-gen-t3"/>
+	</audit-table>
         <ctr id="audit-table" ctr-type="Table">: Auditable Events</ctr>
 	    
         <h:br></h:br><h:br></h:br>
@@ -3841,7 +3845,9 @@
 
         See <ctr-ref refid="audit-table">: Auditable Events</ctr-ref> for more information.<h:br/><h:br/>
  
-        <audit-events table="objective"/><h:br/>
+        <audit-events table="objective">
+		<depends on="selection" uid="fau-gen-t4"/>
+	</audit-table>
         <ctr id="audit-table" ctr-type="Table">: Auditable Events</ctr>
 
 	<h:br></h:br><h:br></h:br>
