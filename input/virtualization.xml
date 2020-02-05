@@ -42,7 +42,7 @@
     - Updated to handle "iteration" attribute in f-components
     - Reworking of the audit requirements.
 
-    - Added FIA_AFL_EXT to the audit table. It was inexplicably missing.
+    - Added FIA_AFL_EXT to the audit table. It was inexplicably missing. 
    
     -->
 
@@ -90,7 +90,15 @@
     </RevisionHistory>
 	
     <!-- TABLE OF CONTENTS goes here -->
-    
+
+    <!-- Declaration section. So far this is only for audit tables -->
+    <pp-declarations>
+      <audit-table-decl display-name="table1" event-name="mandatory" />
+      <audit-table-decl display-name="table2" event-name="optional" fau-gen-sel="fau-gen-t2" />
+      <audit-table-decl display-name="table3" event-name="sel-based" fau-gen-sel="fau-gen-t3" />
+      <audit-table-decl display-name="table4" event-name="objective" fau-gen-sel="fau-gen-t4" />
+    </pp-declarations>
+
     <!-- INTRODUCTION -->
     
     <chapter id="intro" title="Introduction">
@@ -216,7 +224,7 @@
                     This PP does not claim conformance to any packages.
                 </description>
             </cclaim>
-        </cclaims>
+        </cclaims> 
     </chapter>
 -->
     <!-- SECURITY PROBLEM DESCRIPTION -->
@@ -641,9 +649,9 @@
 				    
 				<h:li>[Additional information defined in Table 1]</h:li>
                                 <h:li><selectables>
-                                    <selectable>Additional information defined in Table 2</selectable>
-                                    <selectable>Additional information defined in Table 3</selectable>
-                                    <selectable>Additional information defined in Table 4</selectable>
+                                    <selectable sel-iff="fau-gen-t2">Additional information defined in Table 2</selectable>
+                                    <selectable sel-iff="fau-gen-t3">Additional information defined in Table 3</selectable>
+                                    <selectable sel-iff="fau-gen-t4">Additional information defined in Table 4</selectable>
                                     <selectable>no other information</selectable>
                                 </selectables></h:li>
                             </h:ol>
@@ -3827,7 +3835,7 @@
 
         See <ctr-ref refid="audit-table">: Auditable Events</ctr-ref> for more information.<h:br/><h:br/>
 	    
-        <audit-events table="sel-based">
+        <audit-table table="sel-based">
 		<depends on="selection" uid="fau-gen-t3"/>
 	</audit-table>
         <ctr id="audit-table" ctr-type="Table">: Auditable Events</ctr>
@@ -3845,7 +3853,7 @@
 
         See <ctr-ref refid="audit-table">: Auditable Events</ctr-ref> for more information.<h:br/><h:br/>
  
-        <audit-events table="objective">
+        <audit-table table="objective">
 		<depends on="selection" uid="fau-gen-t4"/>
 	</audit-table>
         <ctr id="audit-table" ctr-type="Table">: Auditable Events</ctr>
