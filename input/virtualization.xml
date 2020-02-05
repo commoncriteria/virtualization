@@ -91,6 +91,7 @@
 	
     <!-- TABLE OF CONTENTS goes here -->
 
+    <!-- Declaration section. So far this is only for audit tables -->
     <pp-declarations>
       <audit-table-decl display-name="table1" event-name="mandatory" />
       <audit-table-decl display-name="table2" event-name="optional" fau-gen-sel="fau-gen-t2" />
@@ -648,9 +649,9 @@
 				    
 				<h:li>[Additional information defined in Table 1]</h:li>
                                 <h:li><selectables>
-                                    <selectable>Additional information defined in Table 2</selectable>
-                                    <selectable>Additional information defined in Table 3</selectable>
-                                    <selectable>Additional information defined in Table 4</selectable>
+                                    <selectable sel-iff="fau-gen-t2">Additional information defined in Table 2</selectable>
+                                    <selectable sel-iff="fau-gen-t3">Additional information defined in Table 3</selectable>
+                                    <selectable sel-iff="fau-gen-t4">Additional information defined in Table 4</selectable>
                                     <selectable>no other information</selectable>
                                 </selectables></h:li>
                             </h:ol>
