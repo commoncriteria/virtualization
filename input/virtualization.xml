@@ -242,34 +242,69 @@
 		identified as either a Service or Helper VM depending on the particular virtualization solution. If the cryptographic
 		functions are necessary only for the privacy of Guest VM data in support of the Guest’s mission applications, it would
 		be proper to classify the encryption VM as a Helper. But if the encryption VM is necessary for the VMM to isolate
-		Guest <abbr linkend="VM"/>s, it would be proper to classify the encryption <abbr linkend="VM"/> as a Service 
-		<abbr linkend="VM"/>. For the purposes of this document, Helper <abbr linkend="VM"/>s are subject to all requirements
-		that apply to Guest <abbr linkend="VM"/>s, unless specifically stated otherwise.<h:br></h:br><h:br></h:br>
+		Guest VMs, it would be proper to classify the encryption VM as a Service 
+		VM. For the purposes of this document, Helper VMs are subject to all requirements
+		that apply to Guest VMs, unless specifically stated otherwise.<h:br></h:br><h:br></h:br>
             <subsection id="toeboundary" title="TOE Boundary">
-                Figure 1 shows a greatly simplified view of a generic Virtualization System and Platform. <abbr linkend="TOE"/> components are displayed in Red. Non-<abbr linkend="TOE"/> components are in Blue. The Platform is the hardware, firmware, and software onto which the VS is installed. The <abbr linkend="VMM"/> includes the Hypervisor, Service <abbr linkend="VM"/>s, and <abbr linkend="VM"/> containers, but not the software that runs inside Guest <abbr linkend="VM"/>s or Helper <abbr linkend="VM"/>s. The Management Subsystem is part of the <abbr linkend="TOE"/>, but may or may not be part of the <abbr linkend="VMM"/>.   <h:br></h:br><h:br></h:br>
+                Figure 1 shows a greatly simplified view of a generic Virtualization System and Platform. TOE components are displayed
+		    in Red. Non-TOE components are in Blue. The Platform is the hardware, firmware, and software onto which the VS is 
+		    installed. The VMM includes the Hypervisor, Service VMs, and VM containers, but not the software that runs inside
+		    Guest VMs or Helper VMs. The Management Subsystem is part of the TOE, but may or may not be part of the VMM. 
+		    <h:br></h:br><h:br></h:br>
 
                 <figure entity="images/figure1.png" title="Figure 1: Virtualization System and Platform " id="vsplatform"/>
     
-               
-                For purposes of this Protection Profile, the Virtualization System is the <abbr linkend="TOE"/>, subject to some caveats. The Platform onto which the VS is installed (which includes hardware, platform firmware, and Host Operating System) is not part of the <abbr linkend="TOE"/>. Software installed with the VS on the Host OS specifically to support the VS or implement VS functionality is part of the <abbr linkend="TOE"/>. General purpose software—such as device drivers for physical devices and the Host OS itself—is not part of the <abbr linkend="TOE"/>, regardless of whether it supports VS functionality or runs inside a Service <abbr linkend="VM"/> or control domain. Software that runs within Guest and Helper <abbr linkend="VM"/>s is not part of the <abbr linkend="TOE"/>.<h:br></h:br><h:br></h:br>
-                In general, for virtualization products that are installed onto “bare metal,” the entire set of installed components constitute the <abbr linkend="TOE"/>, and the hardware constitute the Platform. Also in general, for products that are hosted by or integrated into a commodity operating system, the components installed expressly for implementing and supporting virtualization are in the <abbr linkend="TOE"/>, and the Platform comprises the hardware and Host OS.
+                For purposes of this Protection Profile, the Virtualization System is the TOE, subject to some caveats. The Platform
+		    onto which the VS is installed (which includes hardware, platform firmware, and Host Operating System) is not
+		    part of the TOE. Software installed with the VS on the Host OS specifically to support the VS
+		    or implement VS functionality is part of the TOE. General purpose software—such as device drivers for physical 
+		    devices and the Host OS itself—is not part of the TOE, regardless of whether it supports VS functionality or 
+		    runs inside a Service VM or control domain. Software that runs within Guest and Helper VMs is not part of the 
+		    TOE.<h:br></h:br><h:br></h:br>
+                In general, for virtualization products that are installed onto “bare metal,” the entire set of installed components
+		    constitute the TOE, and the hardware constitute the Platform. Also in general, for products that are hosted by or
+		    integrated into a commodity operating system, the components installed expressly for implementing and supporting
+		    virtualization are in the TOE, and the Platform comprises the hardware and Host OS.
             </subsection>
             <subsection id="platformreqs" title="Requirements Met by the Platform">
-                Depending on the way the VS is installed, functions tested under this PP may be implemented by the <abbr linkend="TOE"/> or by the Platform. There is no difference in the testing required whether the function is implemented by the <abbr linkend="TOE"/> or by the Platform. In either case, the tests determine whether the function being tested provides a level of assurance acceptable to meet the goals of this Profile with respect to a particular product and platform. The equivalency guidelines are intended in part to address this <abbr linkend="TOE"/> vs. Platform distinction, and to ensure that the assurance level does not change between instances of equivalent products on equivalent platforms—and also, of course, to ensure that the appropriate testing is done when the distinction is significant.
+                Depending on the way the VS is installed, functions tested under this PP may be implemented by the TOE or by the
+		    Platform. There is no difference in the testing required whether the function is implemented by the TOE or by the
+		    Platform. In either case, the tests determine whether the function being tested provides a level of assurance 
+		    acceptable to meet the goals of this Profile with respect to a particular product and platform. The equivalency 
+		    guidelines are intended in part to address this TOE vs. Platform distinction, and to ensure that the assurance 
+		    level does not change between instances of equivalent products on equivalent platforms—and also, of course, to
+		    ensure that the appropriate testing is done when the distinction is significant.
             </subsection>
             <subsection id="scopecert" title="Scope of Certification">
-                Successful evaluation of a Virtualization System against this profile does not constitute or imply successful evaluation of any Host Operating System or Platform—no matter how tightly integrated with the VS. The Platform, including any Host OS, supports the VS through provision of services and resources. Specialized VS components installed on or in a Host OS to support the VS may be considered part of the <abbr linkend="TOE"/>. But general-purpose OS components and functions—whether or not they support the VS—are not part of the <abbr linkend="TOE"/>, and thus are not evaluated under this PP.
+                Successful evaluation of a Virtualization System against this profile does not constitute or imply successful 
+		    evaluation of any Host Operating System or Platform—no matter how tightly integrated with the VS. The Platform,
+		    including any Host OS, supports the VS through provision of services and resources. Specialized VS components 
+		    installed on or in a Host OS to support the VS may be considered part of the TOE. But general-purpose OS
+		    components and functions—whether or not they support the VS—are not part of the TOE, and thus
+		    are not evaluated under this PP.
             </subsection>
             <subsection id="attestation" title="Vendor Attestation">
-                This PP includes several SFRs that include elements that are met via vendor attestation. Attestation assurance activities are reserved for SFRs that define properties that are critical to the system’s security functionality, but that are impossible or impractical to test in a repeatable and consistent manner. These Attestation assurance activities require the vendor to make an assertion in the <abbr linkend="ST"/> that their product meets the specified SFR—no further testing or assessment of the product regarding these SFRs or elements is performed by the CCTL. The CCTL will simply verify that the <abbr linkend="ST"/> includes a pre-determined Attestation statement. By including this statement in the <abbr linkend="ST"/>, the vendor is accepting responsibility for the assurance of their product in these particular areas. If at any time evidence is produced that indicates that these statements are false (and the product does not meet the specified security functionality), the CC certificate may be revoked. See FDP_VMS_EXT.1, FDP_VNC_EXT.1, FPT_VDP_EXT.1, and FPT_VIV_EXT.1 for the associated Attestation statements.
+                This PP includes several SFRs that include elements that are met via vendor attestation. Attestation assurance 
+		    activities are reserved for SFRs that define properties that are critical to the system’s security functionality,
+		    but that are impossible or impractical to test in a repeatable and consistent manner. These Attestation assurance 
+		    activities require the vendor to make an assertion in the ST that their product meets the 
+		    specified SFR—no further testing or assessment of the product regarding these SFRs or elements is performed by the
+		    CCTL. The CCTL will simply verify that the ST includes a pre-determined Attestation statement.
+		    By including this statement in the ST, the vendor is accepting responsibility for the assurance
+		    of their product in these particular areas. If at any time evidence is produced that indicates that these
+		    statements are false (and the product does not meet the specified security functionality), the CC certificate may
+		    be revoked. See FDP_VMS_EXT.1, FDP_VNC_EXT.1, FPT_VDP_EXT.1, and FPT_VIV_EXT.1 for the associated Attestation
+		    statements.
             </subsection>
             <subsection id="equiv" title="Product and Platform Equivalence">
-                The tests in this Protection Profile must be run on all product versions and Platforms with which the Vendor would like to claim compliance—subject to this Profile’s equivalency guidelines (see Annex E).
+                The tests in this Protection Profile must be run on all product versions and Platforms with which the Vendor would 
+		    like to claim compliance—subject to this Profile’s equivalency guidelines (see Annex E).
             </subsection>
         </section>
 
         <section id="usecases" title="Use Cases">
-            This base PP does not define any use cases for virtualization technology. Client Virtualization and Server Virtualization products have different use cases and so these are defined in their respective <abbr linkend="EP"/>s.
+            This base PP does not define any use cases for virtualization technology. Client Virtualization and Server Virtualization
+		products have different use cases and so these are defined in their respective EPs.
         </section>
     </chapter>
     
@@ -279,7 +314,8 @@
 <!--        <cclaims>
             <cclaim id="statement">
                 <description>
-                    To be conformant to this PP, an <abbr linkend="ST"/> must demonstrate Exact Conformance, a subset of Strict Conformance as defined in [<abbr linkend="CC"/>] Part 1 (ASE_CCL). The <abbr linkend="ST"/> must include all components in this PP that are:
+                    To be conformant to this PP, an ST must demonstrate Exact Conformance, a subset of Strict Conformance as defined 
+			in [CC] Part 1 (ASE_CCL). The ST must include all components in this PP that are:
                     <h:ul>
                         <h:li>Unconditional (which are always required)</h:li>
                         <h:li>Selection-based (which are required when certain selections are chosen in the unconditional requirements)
@@ -292,7 +328,7 @@
             </cclaim>
             <cclaim id="claims">
                 <description>
-                    This PP is conformant to Parts 2 (extended) and 3 (extended) of Common Criteria Version 3.1, Revision 4 [<abbr linkend="CC"/>].
+                    This PP is conformant to Parts 2 (extended) and 3 (extended) of Common Criteria Version 3.1, Revision 4 [CC].
                 </description>
             </cclaim>
             <cclaim id="ppclaim">
@@ -315,15 +351,26 @@
             <threats>
                 <threat id="T.DATA_LEAKAGE">
                     <description>
-                        It is a fundamental property of <abbr linkend="VM"/>s that the domains encapsulated by different <abbr linkend="VM"/>s remain separate unless data sharing is permitted by policy. For this reason, all Virtualization Systems shall support a policy that prohibits information transfer between <abbr linkend="VM"/>s.<h:br></h:br><h:br></h:br>
-                        It shall be possible to configure <abbr linkend="VM"/>s such that data cannot be moved between domains from <abbr linkend="VM"/> to <abbr linkend="VM"/>, or through virtual or physical network components under the control of the VS. When <abbr linkend="VM"/>s are configured as such, it shall not be possible for data to leak between domains, neither by the express efforts of software or users of a <abbr linkend="VM"/>, nor because of vulnerabilities or errors in the implementation of the <abbr linkend="VMM"/> or other VS components.<h:br></h:br><h:br></h:br>
-                        If it is possible for data to leak between domains when prohibited by policy, then an adversary on one domain or network can obtain data from another domain. Such cross-domain data leakage can, for example, cause classified information, corporate proprietary information, or personally identifiable information to be made accessible to unauthorized entities.
+                        It is a fundamental property of VMs that the domains encapsulated by different VMs remain separate unless 
+			    data sharing is permitted by policy. For this reason, all Virtualization Systems shall support a policy
+			    that prohibits information transfer between VMs.<h:br></h:br><h:br></h:br>
+                        It shall be possible to configure VMs such that data cannot be moved between domains from VM to VM, or
+			    through virtual or physical network components under the control of the VS. When VMs are configured as
+			    such, it shall not be possible for data to leak between domains, neither by the express efforts of
+			    software or users of a VM, nor because of vulnerabilities or errors in the implementation of the VMM or
+			    other VS components.<h:br></h:br><h:br></h:br>
+                        If it is possible for data to leak between domains when prohibited by policy, then an adversary on one domain 
+			    or network can obtain data from another domain. Such cross-domain data leakage can, for example, cause
+			    classified information, corporate proprietary information, or personally identifiable information to be
+			    made accessible to unauthorized entities.
                     </description>
                     <objective-refer ref="O.VM_ISOLATION">
-                        <rationale>Logical separation of <abbr linkend="VM"/>s and enforcement of domain integrity prevent unauthorized transmission of data from one <abbr linkend="VM"/> to another.</rationale>
+                        <rationale>Logical separation of VMs and enforcement of domain integrity prevent unauthorized transmission 
+				of data from one VM to another.</rationale>
                     </objective-refer>
                     <objective-refer ref="O.DOMAIN_INTEGRITY">
-                        <rationale>Logical separation of <abbr linkend="VM"/>s and enforcement of domain integrity prevent unauthorized transmission of data from one <abbr linkend="VM"/> to another.</rationale>
+                        <rationale>Logical separation of VMs and enforcement of domain integrity prevent unauthorized transmission 
+				of data from one VM to another.</rationale>
                     </objective-refer>
                 </threat>
                 <threat id="T.UNAUTHORIZED_UPDATE">
@@ -331,94 +378,144 @@
                         It is common for attackers to target outdated versions of software containing known flaws. This means it is extremely important to update Virtualization System software as soon as possible when updates are available. But the source of the updates and the updates themselves must be trusted. If an attacker can write their own update containing malicious code they can take control of the VS.
                     </description>
                     <objective-refer ref="O.VMM_INTEGRITY">
-                        <rationale>System integrity prevents the <abbr linkend="TOE"/> from installing a software patch containing unknown and potentially malicious code.</rationale>
+                        <rationale>System integrity prevents the TOE from installing a software patch containing unknown and
+				potentially malicious code.</rationale>
                     </objective-refer>
                 </threat>
                 <threat id="T.UNAUTHORIZED_MODIFICATION">
                     <description>
-                        System integrity is a core security objective for Virtualization Systems. To achieve system integrity, the integrity of each <abbr linkend="VMM"/> component must be established and maintained. Malware running on the platform must not be able to undetectably modify Virtualization System components while the system is running or at rest. Likewise, malicious code running within a virtual machine must not be able to modify Virtualization System components.
+                        System integrity is a core security objective for Virtualization Systems. To achieve system integrity, the
+			    integrity of each VMM component must be established and maintained. Malware running on the platform must
+			    not be able to undetectably modify Virtualization System components while the system is running or at 
+			    rest. Likewise, malicious code running within a virtual machine must not be able to modify Virtualization
+			    System components.
                     </description>
                     <objective-refer ref="O.VMM_INTEGRITY">
-                        <rationale>Enforcement of <abbr linkend="VMM"/> integrity prevents the bypass of enforcement mechanisms and auditing ensures that abuse of legitimate authority can be detected.</rationale>
+                        <rationale>Enforcement of VMM integrity prevents the bypass of enforcement mechanisms and auditing ensures
+				that abuse of legitimate authority can be detected.</rationale>
                     </objective-refer>
                     <objective-refer ref="O.AUDIT">
-                        <rationale>Enforcement of <abbr linkend="VMM"/> integrity prevents the bypass of enforcement mechanisms and auditing ensures that abuse of legitimate authority can be detected.</rationale>
+                        <rationale>Enforcement of VMM integrity prevents the bypass of enforcement mechanisms and auditing ensures
+				that abuse of legitimate authority can be detected.</rationale>
                     </objective-refer>
                 </threat>
                 <threat id="T.USER_ERROR">
                     <description>
-                        If a Virtualization System is capable of simultaneously displaying <abbr linkend="VM"/>s of different domains to the same user at the same time, there is always the chance that the user will become confused and unintentionally leak information between domains. This is especially likely if <abbr linkend="VM"/>s belonging to different domains are indistinguishable. Malicious code may also attempt to interfere with the user’s ability to distinguish between domains. The VS must take measures to minimize the likelihood of such confusion.
+                        If a Virtualization System is capable of simultaneously displaying VMs of different domains to the same user
+			    at the same time, there is always the chance that the user will become confused and unintentionally leak
+			    information between domains. This is especially likely if VMs belonging to different domains are 
+			    indistinguishable. Malicious code may also attempt to interfere with the user’s ability to distinguish
+			    between domains. The VS must take measures to minimize the likelihood of such confusion.
                     </description>
                     <objective-refer ref="O.VM_ISOLATION">
-                        <rationale>Isolation of <abbr linkend="VM"/>s includes clear attribution of those <abbr linkend="VM"/>s to their respective domains which reduces the likelihood that a user inadvertently inputs or transfers data meant for one <abbr linkend="VM"/> into another.</rationale>
+                        <rationale>Isolation of VMs includes clear attribution of those VMs to their respective domains which reduces
+				the likelihood that a user inadvertently inputs or transfers data meant for one VM into another.</rationale>
                     </objective-refer>
                 </threat>
                 <threat id="T.3P_SOFTWARE">
                     <description>
-                        In some VS implementations, critical functions are by necessity performed by software not produced by the virtualization vendor. Such software may include Host Operating Systems and physical device drivers. Vulnerabilities in this software can be exploited by an adversary and result in <abbr linkend="VMM"/> compromise. Where possible, the VS should mitigate the results of potential vulnerabilities or malicious content in third-party code.
+                        In some VS implementations, critical functions are by necessity performed by software not produced by the 
+			    virtualization vendor. Such software may include Host Operating Systems and physical device drivers. 
+			    Vulnerabilities in this software can be exploited by an adversary and result in VM compromise. Where 
+			    possible, the VS should mitigate the results of potential vulnerabilities or malicious content in
+			    third-party code.
                     </description>
                     <objective-refer ref="O.VMM_INTEGRITY">
-                        <rationale>The <abbr linkend="VMM"/> integrity mechanisms include environment-based vulnerability mitigation and potentially support for introspection and device driver isolation, all of which reduce the likelihood that any vulnerabilities in third-party software can be used to exploit the <abbr linkend="TOE"/>.</rationale>
+                        <rationale>The VMM integrity mechanisms include environment-based vulnerability mitigation and potentially
+				support for introspection and device driver isolation, all of which reduce the likelihood that any 
+				vulnerabilities in third-party software can be used to exploit the TOE.</rationale>
                     </objective-refer>
                 </threat>
                 <threat id="T.VMM_COMPROMISE">
                     <description>
-                        The Virtualization System is designed to provide the appearance of exclusivity to the <abbr linkend="VM"/>s and is designed to separate or isolate their functions except where specifically shared. Failure of security mechanisms could lead to unauthorized intrusion into or modification of the <abbr linkend="VMM"/>, or bypass of the <abbr linkend="VMM"/> altogether. This must be prevented to avoid compromising the Virtualization System.
+                        The Virtualization System is designed to provide the appearance of exclusivity to the VMs and is designed
+			    to separate or isolate their functions except where specifically shared. Failure of security mechanisms
+			    could lead to unauthorized intrusion into or modification of the VMM, or bypass of the VMM altogether.
+			    This must be prevented to avoid compromising the Virtualization System.
                     </description>
                     <objective-refer ref="O.VMM_INTEGRITY">
-                        <rationale>Maintaining the integrity of the <abbr linkend="VMM"/> and ensuring that <abbr linkend="VM"/>s execute in isolated domains mitigate the risk that the <abbr linkend="VMM"/> can be compromised or bypassed.</rationale>
+                        <rationale>Maintaining the integrity of the VMM and ensuring that VMs execute in isolated domains mitigate
+				the risk that the VMM can be compromised or bypassed.</rationale>
                     </objective-refer>
                     <objective-refer ref="O.VM_ISOLATION">
-                        <rationale>Maintaining the integrity of the <abbr linkend="VMM"/> and ensuring that <abbr linkend="VM"/>s execute in isolated domains mitigate the risk that the <abbr linkend="VMM"/> can be compromised or bypassed.</rationale>
+                        <rationale>Maintaining the integrity of the VMM and ensuring that VMs execute in isolated domains mitigate
+				the risk that the VMM can be compromised or bypassed.</rationale>
                     </objective-refer>
                 </threat>
                 <threat id="T.PLATFORM_COMPROMISE">
                     <description>
-                        The VS must be capable of protecting the platform from threats that originate within <abbr linkend="VM"/>s and operational networks connected to the VS. The hosting of untrusted—even malicious—domains by the VS cannot be permitted to compromise the security and integrity of the platform on which the VS executes. If an attacker can access the underlying platform in a manner not controlled by the <abbr linkend="VMM"/>, the attacker might be able to modify system firmware or software—compromising both the Virtualization System and the underlying platform.
+                        The VS must be capable of protecting the platform from threats that originate within VMs and operational
+			    networks connected to the VS. The hosting of untrusted—even malicious—domains by the VS cannot be 
+			    permitted to compromise the security and integrity of the platform on which the VS executes. If an 
+			    attacker can access the underlying platform in a manner not controlled by the VMM, the attacker might 
+			    be able to modify system firmware or software—compromising both the Virtualization System and the 
+			    underlying platform.
                     </description>
                     <objective-refer ref="O.PLATFORM_INTEGRITY">
-                        <rationale>Platform integrity mechanisms used by the <abbr linkend="TOE"/> reduce the risk that an attacker can ‘break out’ of a <abbr linkend="VM"/> and affect the platform on which the VS is running.</rationale>
+                        <rationale>Platform integrity mechanisms used by the TOE reduce the risk that an attacker can ‘break out’ 
+				of a VM and affect the platform on which the VS is running.</rationale>
                     </objective-refer>
                 </threat>
                 <threat id="T.UNAUTHORIZED_ACCESS">
                     <description>
-                        Functions performed by the management layer include <abbr linkend="VM"/> configuration, virtualized network configuration, allocation of physical resources, and reporting. Only certain authorized system users (administrators) are allowed to exercise management functions.<h:br></h:br><h:br></h:br>
-                        Virtualization Systems are often managed remotely over communication networks. Members of these networks can be both geographically and logically separated from each other, and pass through a variety of other systems which may be under the control of an adversary, and offer the opportunity for communications to be compromised. An adversary with access to an open management network could inject commands into the management infrastructure. This would provide an adversary with administrator privilege on the platform, and administrative control over the <abbr linkend="VM"/>s and virtual network connections. The adversary could also gain access to the management network by hijacking the management network channel.
+                        Functions performed by the management layer include VM configuration, virtualized network configuration, 
+			    allocation of physical resources, and reporting. Only certain authorized system users (administrators) 
+			    are allowed to exercise management functions.<h:br></h:br><h:br></h:br>
+                        Virtualization Systems are often managed remotely over communication networks. Members of these networks can
+			    be both geographically and logically separated from each other, and pass through a variety of other 
+			    systems which may be under the control of an adversary, and offer the opportunity for communications to be
+			    compromised. An adversary with access to an open management network could inject commands into the
+			    management infrastructure. This would provide an adversary with administrator privilege on the platform,
+			    and administrative control over the VMs and virtual network connections. The adversary could also gain
+			    access to the management network by hijacking the management network channel.
                     </description>
                     <objective-refer ref="O.MANAGEMENT_ACCESS">
-                        <rationale>Ensuring that <abbr linkend="TSF"/> management functions cannot be executed without authorization prevents untrusted subjects from modifying the behavior of the <abbr linkend="TOE"/> in an unanticipated manner.</rationale>
+                        <rationale>Ensuring that TSF management functions cannot be executed without authorization prevents untrusted
+				subjects from modifying the behavior of the TOE in an unanticipated manner.</rationale>
                     </objective-refer>
                 </threat>
                 <threat id="T.WEAK_CRYPTO">
                     <description>
-                        To the extent that <abbr linkend="VM"/>s appear isolated within the Virtualization System, a threat of weak cryptography may arise if the <abbr linkend="VMM"/> does not provide good entropy to support security-related features that depend on entropy to implement cryptographic algorithms. For example, a random number generator keeps an estimate of the number of bits of noise in the entropy pool. From this entropy pool random numbers are created. Good random numbers are essential to implementing strong cryptography. Cryptography implemented using poor random numbers can be defeated by a sophisticated adversary.
+                        To the extent that VMs appear isolated within the Virtualization System, a threat of weak cryptography may 
+			    arise if the VMM does not provide good entropy to support security-related features that depend on
+			    entropy to implement cryptographic algorithms. For example, a random number generator keeps an estimate
+			    of the number of bits of noise in the entropy pool. From this entropy pool random numbers are created.
+			    Good random numbers are essential to implementing strong cryptography. Cryptography implemented using
+			    poor random numbers can be defeated by a sophisticated adversary.
                     </description>
                     <objective-refer ref="O.VM_ENTROPY">
-                        <rationale>Acquisition of good entropy is necessary to support the <abbr linkend="TOE"/>’s security-related cryptographic algorithms.</rationale>
+                        <rationale>Acquisition of good entropy is necessary to support the TOE's security-related cryptographic
+				algorithms.</rationale>
                     </objective-refer>
                 </threat>
                 <threat id="T.UNPATCHED_SOFTWARE">
                     <description>
-                        Vulnerabilities in outdated or unpatched software can be exploited by adversaries to compromise the Virtualization System or platform.
+                        Vulnerabilities in outdated or unpatched software can be exploited by adversaries to compromise the
+			    Virtualization System or platform.
                     </description>
                     <objective-refer ref="O.PATCHED_SOFTWARE">
-                        <rationale>The ability to patch the <abbr linkend="TOE"/> software ensures that protections against vulnerabilities can be applied as they become available.</rationale>
+                        <rationale>The ability to patch the TOE software ensures that protections against vulnerabilities can be 
+				applied as they become available.</rationale>
                     </objective-refer>
                 </threat>
                 <threat id="T.MISCONFIGURATION">
                     <description>
-                        The Virtualization System may be misconfigured, which could impact its functioning and security. This misconfiguration could be due to an administrative error or the use of faulty configuration data.
+                        The Virtualization System may be misconfigured, which could impact its functioning and security. This 
+			    misconfiguration could be due to an administrative error or the use of faulty configuration data.
                     </description>
                     <objective-refer ref="O.CORRECTLY_APPLIED_CONFIGURATION">
-                        <rationale>Mechanisms to prevent the application of configurations that violate the current security policy help prevent misconfigurations.</rationale>
+                        <rationale>Mechanisms to prevent the application of configurations that violate the current security policy 
+				help prevent misconfigurations.</rationale>
                     </objective-refer>
                 </threat>
                 <threat id="T.DENIAL_OF_SERVICE">
                     <description>
-                        A <abbr linkend="VM"/> may block others from system resources (e.g., system memory, persistent storage, and processing time) via a resource exhaustion attack.
+                        A VM may block others from system resources (e.g., system memory, persistent storage, and processing time)
+			    via a resource exhaustion attack.
                     </description>
                     <objective-refer ref="O.RESOURCE_ALLOCATION">
-                        <rationale>The ability of the <abbr linkend="TSF"/> to ensure the proper allocation of resources makes denial of service attacks more difficult.</rationale>
+                        <rationale>The ability of the TSF to ensure the proper allocation of resources makes denial of service
+				attacks more difficult.</rationale>
                     </objective-refer>
                 </threat>
             </threats>
@@ -429,29 +526,39 @@
                 <assumption id="A.PLATFORM_INTEGRITY">
                     <description>The platform has not been compromised prior to installation of the Virtualization System.</description>
                     <objective-refer ref="OE.PLATFORM_INTEGRITY">
-                        <rationale>If the underlying platform has not been compromised prior to installation of the <abbr linkend="TOE"/>, its integrity can be assumed to be intact.</rationale>
+                        <rationale>If the underlying platform has not been compromised prior to installation of the TOE, its integrity
+				can be assumed to be intact.</rationale>
                     </objective-refer>
                 </assumption>
                 <assumption id="A.PHYSICAL">
-                    <description>Physical security commensurate with the value of the <abbr linkend="TOE"/> and the data it contains is assumed to be provided by the environment.</description>
+                    <description>Physical security commensurate with the value of the TOE and the data it contains is assumed to 
+			    be provided by the environment.</description>
                     <objective-refer ref="OE.PHYSICAL">
-                        <rationale>If the <abbr linkend="TOE"/> is deployed in a location that has appropriate physical safeguards, it can be assumed to be physically secure.</rationale>
+                        <rationale>If the TOE is deployed in a location that has appropriate physical safeguards, it can be assumed
+				to be physically secure.</rationale>
                     </objective-refer>
                 </assumption>
                 <assumption id="A.TRUSTED_ADMIN">
-                    <description><abbr linkend="TOE"/> Administrators are trusted to follow and apply all administrator guidance.</description>
+                    <description>TOE Administrators are trusted to follow and apply all administrator guidance.</description>
                     <objective-refer ref="OE.TRUSTED_ADMIN">
-                        <rationale>Providing guidance to administrators and ensuring that individuals are properly trained and vetted before being given administrative responsibilities will ensure that they are trusted.</rationale>
+                        <rationale>Providing guidance to administrators and ensuring that individuals are properly trained and
+				vetted before being given administrative responsibilities will ensure that they are trusted.</rationale>
                     </objective-refer>
                 </assumption>
                 <assumption id="A.COVERT_CHANNELS">
-                    <description>If the <abbr linkend="TOE"/> has covert storage or timing channels, then for all <abbr linkend="VM"/>s executing on that <abbr linkend="TOE"/>, it is assumed that relative to the IT assets to which they have access, those <abbr linkend="VM"/>s will have assurance sufficient to outweigh the risk that they will violate the security policy of the <abbr linkend="TOE"/> by using those covert channels.</description>
+                    <description>If the TOE has covert storage or timing channels, then for all VMs executing on that TOE, it is
+			    assumed that relative to the IT assets to which they have access, those VMs will have assurance sufficient 
+			    to outweigh the risk that they will violate the security policy of the TOE by using those covert channels.</description>
                     <objective-refer ref="OE.COVERT_CHANNELS">
-                        <rationale>It is expected that any data contained within <abbr linkend="VM"/>s is commensurate with the security provided by the <abbr linkend="TOE"/>, which includes any vulnerabilities due to the potential presence of covert storage and/or timing channels.</rationale>
+                        <rationale>It is expected that any data contained within VMs is commensurate with the security provided by 
+				the TOE, which includes any vulnerabilities due to the potential presence of covert storage or 
+				timing channels.</rationale>
                     </objective-refer>
                 </assumption>
                 <assumption id="A.NON_MALICIOUS_USER">
-                    <description>The user of the VS is not willfully negligent or hostile, and uses the VS in compliance with the applied enterprise security policy and guidance. At the same time, malicious applications could act as the user, so requirements which confine malicious applications are still in scope.</description>
+                    <description>The user of the VS is not willfully negligent or hostile, and uses the VS in compliance with the
+			    applied enterprise security policy and guidance. At the same time, malicious applications could act as
+			    the user, so requirements which confine malicious applications are still in scope.</description>
                     <objective-refer ref="OE.NON_MALICIOUS_USER">
                         <rationale>If the organization properly vets and trains users, it is expected that they will be non-malicious.</rationale>
                     </objective-refer>
@@ -469,34 +576,34 @@
         <section id="secobjtoe" title="Security Objectives for the TOE">
             <SOs>
                 <SO id="O.VM_ISOLATION">
-                    <description><abbr linkend="VM"/>s are the fundamental subject of the system. The <abbr linkend="VMM"/> is 
-                        responsible for applying the system security policy (<abbr linkend="SSP"/>) to the <abbr linkend="VM"/> and 
-                        all resources. As basic functionality, the <abbr linkend="VMM"/> must support a security policy that mandates 
-                        no information transfer between <abbr linkend="VM"/>s.<h:br></h:br><h:br></h:br>
-                        The <abbr linkend="VMM"/> must support the necessary mechanisms to isolate the resources of all 
-                        <abbr linkend="VM"/>s. The <abbr linkend="VMM"/> partitions a platform's physical resources for use by the 
-                        supported virtual environments. Depending on the use case, a <abbr linkend="VM"/> may require a completely 
+                    <description>VMs are the fundamental subject of the system. The VMM is 
+                        responsible for applying the system security policy (SSP) to the VM and 
+                        all resources. As basic functionality, the VMM must support a security policy that mandates 
+                        no information transfer between VMs.<h:br></h:br><h:br></h:br>
+                        The VMM must support the necessary mechanisms to isolate the resources of all 
+                        VMs. The VMM partitions a platform's physical resources for use by the 
+                        supported virtual environments. Depending on the use case, a VM may require a completely 
                         isolated environment with exclusive access to system resources, or share some of its resources with other 
-                        <abbr linkend="VM"/>s. It must be possible to enforce a security policy that prohibits the transfer of data 
-                        between <abbr linkend="VM"/>s through shared devices. When the platform security policy allows the sharing of 
-                        resources across <abbr linkend="VM"/> boundaries, the <abbr linkend="VMM"/> must ensure that all access to 
-                        those resources is consistent with the policy. The <abbr linkend="VMM"/> may delegate the responsibility for 
-                        the mediation of sharing of particular resources to select Service <abbr linkend="VM"/>s; however in doing so, 
-                        it remains responsible for mediating access to the Service <abbr linkend="VM"/>s, and each Service 
-                        <abbr linkend="VM"/> must mediate all access to any shared resource that has been delegated to it in 
-                        accordance with the <abbr linkend="SSP"/>.<h:br></h:br><h:br></h:br>
-                        Devices, whether virtual or physical, are resources requiring access control. The <abbr linkend="VMM"/> must 
+                        VMs. It must be possible to enforce a security policy that prohibits the transfer of data 
+                        between VMs through shared devices. When the platform security policy allows the sharing of 
+                        resources across VM boundaries, the VMM must ensure that all access to 
+                        those resources is consistent with the policy. The VMM may delegate the responsibility for 
+                        the mediation of sharing of particular resources to select Service VMs; however in doing so, 
+                        it remains responsible for mediating access to the Service VMs, and each Service 
+                        VM must mediate all access to any shared resource that has been delegated to it in 
+                        accordance with the SSP.<h:br></h:br><h:br></h:br>
+                        Devices, whether virtual or physical, are resources requiring access control. The VMM must 
                         enforce access control in accordance to system security policy. Physical devices are platform devices with 
-                        access mediated via the <abbr linkend="VMM"/> per the O.VMM_Integrity objective. Virtual devices may include 
+                        access mediated via the VMM per the O.VMM_Integrity objective. Virtual devices may include 
                         virtual storage devices and virtual network devices. Some of the access control restrictions must be enforced
-                        internal to Service <abbr linkend="VM"/>s, as may be the case for isolating virtual networks. 
-                        <abbr linkend="VMM"/>s may also expose purely virtual interfaces. These are <abbr linkend="VMM"/> specific, 
+                        internal to Service VMs, as may be the case for isolating virtual networks. 
+                        VMMs may also expose purely virtual interfaces. These are VMM specific, 
                         and while they are not analogous to a physical device, they are also subject to access control.<h:br>
                         </h:br><h:br></h:br>
-                        The <abbr linkend="VMM"/> must support the mechanisms to isolate all resources associated with virtual 
-                        networks and to limit a <abbr linkend="VM"/>'s access to only those virtual networks for which it has been 
-                        configured. The <abbr linkend="VMM"/> must also support the mechanisms to control the configurations of 
-                        virtual networks according to the <abbr linkend="SSP"/>.
+                        The VMM must support the mechanisms to isolate all resources associated with virtual 
+                        networks and to limit a VM's access to only those virtual networks for which it has been 
+                        configured. The VMM must also support the mechanisms to control the configurations of 
+                        virtual networks according to the SSP.
                     </description>
 		    <addressed-by>
 		      FAU_GEN.1, FCS_CKM_EXT.4, FDP_PPR_EXT.1, FDP_RIP_EXT.1,
@@ -507,15 +614,15 @@
                 </SO>
                 <SO id="O.VMM_INTEGRITY">
                     <description>Integrity is a core security objective for Virtualization Systems. To achieve system integrity, the 
-                        integrity of each <abbr linkend="VMM"/> component must be established and maintained. This objective concerns 
+                        integrity of each VMM component must be established and maintained. This objective concerns 
                         only the integrity of the Virtualization System—not the integrity of software running inside of Guest 
-                        <abbr linkend="VM"/>s or of the physical platform. The overall objective is to ensure the integrity of 
+                        VMs or of the physical platform. The overall objective is to ensure the integrity of 
                         critical components of a Virtualization System.<h:br></h:br><h:br></h:br>
                         Initial integrity of a VS can be established through mechanisms such as a digitally signed installation or 
                         update package, or through integrity measurements made at launch. Integrity is maintained in a running system 
-                        by careful protection of the <abbr linkend="VMM"/> from untrusted users and software. For example, it must not
-                        be possible for software running within a Guest <abbr linkend="VM"/> to exploit a vulnerability in a device or
-                        hypercall interface and gain control of the <abbr linkend="VMM"/>. The vendor must release patches for 
+                        by careful protection of the VMM from untrusted users and software. For example, it must not
+                        be possible for software running within a Guest VM to exploit a vulnerability in a device or
+                        hypercall interface and gain control of the VMM. The vendor must release patches for 
                         vulnerabilities as soon as practicable after discovery.
                     </description>
 		    <addressed-by>
@@ -526,8 +633,8 @@
 		    </addressed-by>
                 </SO>
                 <SO id="O.PLATFORM_INTEGRITY">
-                    <description>The integrity of the <abbr linkend="VMM"/> depends on the integrity of the hardware and software on 
-                        which the <abbr linkend="VMM"/> relies. Although the VS does not have complete control over the integrity of 
+                    <description>The integrity of the VMM depends on the integrity of the hardware and software on 
+                        which the VMM relies. Although the VS does not have complete control over the integrity of 
                         the platform, the VS should as much as possible try to ensure that no users or software hosted by the VS is 
                         capable of undermining the integrity of the platform.
                     </description>
@@ -540,8 +647,8 @@
                 </SO>
                 <SO id="O.DOMAIN_INTEGRITY">
                     <description>While the VS is not responsible for the contents or correct functioning of software that runs within 
-                        Guest <abbr linkend="VM"/>s, it is responsible for ensuring that the correct functioning of the software 
-                        within a Guest <abbr linkend="VM"/> is not interfered with by other <abbr linkend="VM"/>s.
+                        Guest VMs, it is responsible for ensuring that the correct functioning of the software 
+                        within a Guest VM is not interfered with by other VMs.
                     </description>
 		    <addressed-by>
                     FCS_CKM_EXT.4, FCS_ENT_EXT.1, FCS_RBG_EXT.1, FDP_RIP_EXT.1,
@@ -552,44 +659,44 @@
                 </SO>
                 <SO id="O.MANAGEMENT_ACCESS">
                   
-                    <description><abbr linkend="VMM"/> management functions include <abbr linkend="VM"/> configuration, virtualized 
+                    <description>VMM management functions include VM> configuration, virtualized 
                         network configuration, allocation of physical resources, and reporting. Only certain authorized system users 
                         (administrators) are allowed to exercise management functions.<h:br></h:br><h:br></h:br>
-                        Because of the privileges exercised by the <abbr linkend="VMM"/> management functions, it must not be possible 
-                        for the <abbr linkend="VMM"/>’s management components to be compromised without administrator notification. 
+                        Because of the privileges exercised by the VMM management functions, it must not be possible 
+                        for the VMM’s management components to be compromised without administrator notification. 
                         This means that unauthorized users cannot be permitted access to the management functions, and the management 
-                        components must not be interfered with by Guest <abbr linkend="VM"/>s or unprivileged users on other 
-                        networks—including operational networks connected to the <abbr linkend="TOE"/>.<h:br></h:br><h:br>
-                        </h:br> <abbr linkend="VMM"/>s include a set of management functions that collectively allow administrators 
-                        to configure and manage the <abbr linkend="VMM"/>, as well as configure Guest <abbr linkend="VM"/>s. These 
+                        components must not be interfered with by Guest VMs or unprivileged users on other 
+                        networks—including operational networks connected to the TOE.<h:br></h:br><h:br>
+                        </h:br> VMMs include a set of management functions that collectively allow administrators 
+                        to configure and manage the VMM, as well as configure Guest VMs. These 
                         management functions are specific to the virtualization system, distinct from any other management functions 
-                        that might exist for the internal management of any given Guest <abbr linkend="VM"/>. These 
-                        <abbr linkend="VMM"/> management functions are privileged, with the security of the entire system relying on 
-                        their proper use. The <abbr linkend="VMM"/> management functions can be classified into different categories 
+                        that might exist for the internal management of any given Guest VM. These 
+                        VMM management functions are privileged, with the security of the entire system relying on 
+                        their proper use. The VMM management functions can be classified into different categories 
                         and the policy for their use and the impact to security may vary accordingly.<h:br></h:br><h:br></h:br>
-                        The management functions might be distributed throughout the <abbr linkend="VMM"/> (within the 
-                        <abbr linkend="VMM"/> and Service <abbr linkend="VM"/>s). The <abbr linkend="VMM"/> must support the necessary 
+                        The management functions might be distributed throughout the VMM (within the 
+                        VMM and Service VMs). The VMM must support the necessary 
                         mechanisms to enable the control of all management functions according to the system security policy. When a 
-                        management function is distributed among multiple Service <abbr linkend="VM"/>s, the <abbr linkend="VM"/>s 
-                        must be protected using the security mechanisms of the Hypervisor and any Service <abbr linkend="VM"/>s 
+                        management function is distributed among multiple Service VMs, the VMs 
+                        must be protected using the security mechanisms of the Hypervisor and any Service VMs 
                         involved to ensure that the intent of the system security policy is not compromised. Additionally, since 
-                        hypercalls permit Guest <abbr linkend="VM"/>s to invoke the Hypervisor, and often allow the passing of data 
+                        hypercalls permit Guest VMs to invoke the Hypervisor, and often allow the passing of data 
                         to the Hypervisor, it is important that the hypercall interface is well-guarded and that all parameters be 
-                        validated.<h:br></h:br><h:br></h:br> The <abbr linkend="VMM"/> maintains configuration data for every 
-                        <abbr linkend="VM"/> on the system. This configuration data, whether of Service or Guest <abbr linkend="VM"/>s,
+                        validated.<h:br></h:br><h:br></h:br> The VMM maintains configuration data for every 
+                        VM on the system. This configuration data, whether of Service or Guest VMs,
                         must be protected. The mechanisms used to establish, modify and verify configuration data are part of the VS 
                         management functions and must be protected as such. The proper internal configuration of Service 
-                        <abbr linkend="VM"/>s that provide critical security functions can also greatly impact VS security. These 
-                        configurations must also be protected. Internal configuration of Guest <abbr linkend="VM"/>s should not 
-                        impact overall VS security. The overall goal is to ensure that the <abbr linkend="VMM"/>, including the 
-                        environments internal to Service <abbr linkend="VM"/>s, is properly configured and that all Guest 
-                        <abbr linkend="VM"/> configurations are maintained consistent with the system security policy throughout 
+                        VMs that provide critical security functions can also greatly impact VS security. These 
+                        configurations must also be protected. Internal configuration of Guest VMs should not 
+                        impact overall VS security. The overall goal is to ensure that the VMM, including the 
+                        environments internal to Service VMs, is properly configured and that all Guest 
+                        VM configurations are maintained consistent with the system security policy throughout 
                         their lifecycle.<h:br></h:br><h:br></h:br> Virtualization Systems are often managed remotely. For 
                         example, an administrator can remotely update virtualization software, start and shut down 
-                        <abbr linkend="VM"/>s, and manage virtualized network connections. If a console is required, it could be 
-                        run on a separate machine or it could itself run in a <abbr linkend="VM"/>. When performing remote management, 
+                        VMs, and manage virtualized network connections. If a console is required, it could be 
+                        run on a separate machine or it could itself run in a VM. When performing remote management, 
                         an administrator must communicate with a privileged management agent over a network. Communications with the 
-                        management infrastructure must be protected from Guest <abbr linkend="VM"/>s and operational networks.
+                        management infrastructure must be protected from Guest VMs and operational networks.
                       </description>
 		      <addressed-by>
 			FAU_GEN.1, FCS_CKM.1, FCS_CKM.2, FCS_COP.1, FCS_RBG_EXT.1,
@@ -598,7 +705,7 @@
                 </SO>
                 <SO id="O.PATCHED_SOFTWARE">
                     <description>The Virtualization System must be updated and patched when needed in order to prevent the potential 
-                        compromise of the <abbr linkend="VMM"/>, as well as the networks and <abbr linkend="VM"/>s that it hosts. 
+                        compromise of the VMM, as well as the networks and VMs that it hosts. 
                         Identifying and applying needed updates must be a normal part of the operating procedure to ensure that 
                         patches are applied in a timely and thorough manner. In order to facilitate this, the VS must support 
                         standards and protocols that help enhance the manageability of the VS as an IT product, enabling it to be 
@@ -609,9 +716,9 @@
 		      </addressed-by>
                 </SO>
                 <SO id="O.VM_ENTROPY">
-                    <description><abbr linkend="VM"/>s must have access to good entropy sources to support security-related features 
+                    <description>VMs must have access to good entropy sources to support security-related features 
                         that implement cryptographic algorithms. For example, in order to function as members of operational 
-                        networks, <abbr linkend="VM"/>s must be able to communicate securely with other network entities—whether 
+                        networks, VMs must be able to communicate securely with other network entities—whether 
                         virtual or physical. They must therefore have access to sources of good entropy to support that secure 
                         communication.
                     </description>
@@ -628,11 +735,11 @@
 		    </addressed-by>
                 </SO>
                 <SO id="O.CORRECTLY_APPLIED_CONFIGURATION">
-                    <description>The <abbr linkend="TOE"/> must not apply configurations that violate the current security policy.
-                        <h:br></h:br><h:br></h:br> The <abbr linkend="TOE"/> must correctly apply configurations and policies 
-                        to newly created Guest <abbr linkend="VM"/>s, as well as to existing Guest <abbr linkend="VM"/>s when 
+                    <description>The TOE must not apply configurations that violate the current security policy.
+                        <h:br></h:br><h:br></h:br> The TOE must correctly apply configurations and policies 
+                        to newly created Guest VM, as well as to existing Guest VMs when 
                         applicable configuration or policy changes are made. All changes to configuration and to policy must conform 
-                        to the existing security policy. Similarly, changes made to the configuration of the <abbr linkend="TOE"/> 
+                        to the existing security policy. Similarly, changes made to the configuration of the TOE 
                         itself must not violate the existing security policy.
                     </description>
 		    <addressed-by>
@@ -640,7 +747,7 @@
 		    </addressed-by>
                 </SO>
                 <SO id="O.RESOURCE_ALLOCATION">
-                    <description>The <abbr linkend="TOE"/> will provide mechanisms that enforce constraints on the allocation of 
+                    <description>The TOE will provide mechanisms that enforce constraints on the allocation of 
                         system resources in accordance with existing security policy.
                     </description>
 		    <addressed-by>
@@ -652,23 +759,28 @@
         <section id="secobjoe" title="Security Objectives for the Operational Environment">
             <SOEs>
                 <SOE id="OE.CONFIG">
-                    <description><abbr linkend="TOE"/> administrators will configure the Virtualization System correctly to create the intended security policy.
+                    <description>TOE administrators will configure the Virtualization System correctly to create the intended security
+			    policy.
                     </description>
                 </SOE>
                 <SOE id="OE.PHYSICAL">
-                    <description>Physical security, commensurate with the value of the <abbr linkend="TOE"/> and the data it contains, is provided by the environment.
+                    <description>Physical security, commensurate with the value of the TOE and the data it contains, is provided by 
+			    the environment.
                     </description>
                 </SOE>
                 <SOE id="OE.TRUSTED_ADMIN">
-                    <description><abbr linkend="TOE"/> Administrators are trusted to follow and apply all administrator guidance in a trusted manner.
+                    <description>TOE Administrators are trusted to follow and apply all administrator guidance in a trusted manner.
                     </description>
                 </SOE>
                 <SOE id="OE.COVERT_CHANNELS">
-                    <description>If the <abbr linkend="TOE"/> has covert storage or timing channels, then for all <abbr linkend="VM"/>s executing on that <abbr linkend="TOE"/>, it is assumed that those <abbr linkend="VM"/>s will have sufficient assurance relative to the IT assets to which they have access, to outweigh the risk that they will violate the security policy of the <abbr linkend="TOE"/> by using those covert channels.
+                    <description>If the TOE has covert storage or timing channels, then for all VMs executing on that TOE, it is
+			    assumed that those VMs will have sufficient assurance relative to the IT assets to which they have access,
+			    to outweigh the risk that they will violate the security policy of the TOE by using those covert channels.
                     </description>
                 </SOE>
                 <SOE id="OE.NON_MALICIOUS_USER">
-                    <description>Users are trusted to be not willfully negligent or hostile and use the VS in compliance with the applied enterprise security policy and guidance.
+                    <description>Users are trusted to be not willfully negligent or hostile and use the VS in compliance with the
+			    applied enterprise security policy and guidance.
                     </description>
                 </SOE>
             </SOEs>
