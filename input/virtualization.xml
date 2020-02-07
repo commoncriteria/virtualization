@@ -2310,7 +2310,9 @@
                 <!-- FDP_PPR_EXT.1 -->
                 <f-component id="fdp_ppr_ext.1" name="Physical Platform Resource Controls">
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall allow an authorized administrator to control Guest <abbr linkend="VM"/> access to the following physical platform resources: <assignable>list of physical platform resources the <abbr linkend="VMM"/> is able to control access to</assignable>.
+                        <title>The TSF shall allow an authorized administrator to control Guest VM access to the following physical
+				platform resources: <assignable>list of physical platform resources the VMM is
+				able to control access to</assignable>.
                         </title>
                     </f-element>
                     <f-element>
@@ -3341,7 +3343,8 @@
                 <!-- FPT_GVI_EXT.1 -->
                 <f-component id="fpt_gvi_ext.1" name="Guest VM Integrity"  status="optional">
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall verify the integrity of Guest <abbr linkend="VM"/>s through the following mechanisms: <assignable>list of Guest <abbr linkend="VM"/> integrity mechanisms</assignable>.
+                        <title>The TSF shall verify the integrity of Guest VMs through the following mechanisms: 
+				<assignable>list of Guest VM integrity mechanisms</assignable>.
                         </title>
                         <note role="application">The primary purpose of this requirement is to identify and describe the mechanisms used to verify the integrity of Guest <abbr linkend="VM"/>s that have been 'imported' in some fashion, though these mechanisms could also be applied to all Guest <abbr linkend="VM"/>s, depending on the mechanism used. Importation for this requirement could include <abbr linkend="VM"/> migration (live or otherwise), the importation of virtual disk files that were previously exported, <abbr linkend="VM"/>s in shared storage, etc. It is possible that a trusted <abbr linkend="VM"/> could have been modified during the migration or import/export process, or <abbr linkend="VM"/>s could have been obtained from untrusted sources in the first place, so integrity checks on these <abbr linkend="VM"/>s can be a prudent measure to take. These integrity checks could be as thorough as making sure the entire <abbr linkend="VM"/> exactly matches a previously known <abbr linkend="VM"/> (by hash for example), or by simply checking certain configuration settings to ensure that the <abbr linkend="VM"/>'s configuration will not violate the security model of the VS.</note>
                         <aactivity>
@@ -3438,17 +3441,19 @@
                 <!-- FPT_ML_EXT.1 -->
                 <f-component id="fpt_ml_ext.1" name="Measured Launch of Platform and VMM"  status="objective">
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall support a measured launch of the Virtualization System. Measured components of the Virtualization system shall include the static executable image of the Hypervisor and:
+                        <title>The TSF shall support a measured launch of the Virtualization System. Measured 
+				components of the Virtualization system shall include the static executable image of the Hypervisor
+				and:
                             <selectables linebreak="yes">
                                 <selectable>Static executable images of the Management Subsystem</selectable>
-                                <selectable><assignable>list of (static images of) Service <abbr linkend="VM"/>s</assignable></selectable>
+                                <selectable><assignable>list of (static images of) Service VMs</assignable></selectable>
                                 <selectable><assignable>list of configuration files</assignable></selectable>
                                 <selectable>no other components</selectable>
                             </selectables>
                         </title>
                     </f-element>
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall make these measurements available to the Management Subsystem.
+                        <title>The TSF shall make these measurements available to the Management Subsystem.
                         </title>
                         <note role="application">
                             A measured launch of the platform and Virtualization System, demonstrates that the proper <abbr linkend="TOE"/> software was loaded. A measured launch process employs verifiable integrity measurement mechanisms. For example, a VS may hash components such as: the hypervisor, service <abbr linkend="VM"/>s and/or the Management Subsystem. A measured launch process only allows components to be executed after the measurement has been recorded. An example process may add each component’s hash before it is executed so that the final hash reflects the evidence of a component’s state prior to execution. The measurement may be verified as the system boots, but this is not required.<h:br></h:br><h:br></h:br>
