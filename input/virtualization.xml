@@ -674,12 +674,6 @@
 				devices such as CD-ROMs). All such connection/disconnection events must be logged.
                         </note>
 			    
-			See <ctr-ref refid="audit-table">: Auditable Events</ctr-ref> for more information.
-
-			<!-- AUDIT TABLE for MANDATORY SFRs. This is Table 1 in this PP, but nothing maps it to that name. -->
-                        <ctr id="audit-table" ctr-type="Table">: Auditable Events</ctr>
-                        <audit-table table="mandatory"/><h:br/>
-		    
 			<aactivity>
                             <TSS>
                                 The evaluator shall check the <abbr linkend="TSS"/> and ensure that it lists all of the auditable events 
@@ -710,7 +704,11 @@
                         </aactivity>
                     </f-element>
 		    <audit-event />
-                </f-component>
+	   	    <!-- AUDIT TABLE for MANDATORY SFRs. This is Table 1 in this PP, but nothing maps it to that name. -->
+                    <audit-table table="mandatory">
+	               Auditable Events for Mandatory SFRs:<h:br/>
+		    </audit-table>		    
+		  </f-component>
                 
                 <!-- FAU_SAR.1 -->
                 <f-component id="fau_sar.1" name="Audit Review">
@@ -2329,12 +2327,13 @@
                         </note>
                         <aactivity>
                             <TSS>
-                                <Guidance>
-                                    The evaluator must ensure that the <abbr linkend="TSS"/> and Operational Guidance describes how
-                                    to create virtualized networks and connect <abbr linkend="VM"/>s to each other and to physical 
-                                    networks.
-                                </Guidance>
-                            </TSS>
+                               The evaluator must ensure that the TSS describes how to create virtualized networks and connect 
+			       VMs to each other and to physical networks.
+			    </TSS>
+                            <Guidance>
+                               The evaluator must ensure that the Operational Guidance describes how
+                               to create virtualized networks and connect VMs to each other and to physical networks.
+                            </Guidance>
                             <Tests>
                             <testlist>
                                 <test>The evaluator shall assume the role of the Administrator and attempt to configure a <abbr linkend="VM"/> to connect to a network component. The evaluator shall verify that the attempt is successful. The evaluator shall then assume the role of an unprivileged user and attempt the same connection. If the attempt fails, or there is no way for an unprivileged user to configure <abbr linkend="VM"/> network connections, the requirement is met.</test>
@@ -3576,7 +3575,8 @@
                     </a-element>
                   	
                     <a-element type="E">
-                        <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
+                        <title>The evaluator shall confirm that the information provided meets all requirements for content and 
+				presentation of evidence.</title>
                         <aactivity>
                             <Guidance>
                                 Some of the contents of the operational guidance will be verified by the assurance activities in 
@@ -3817,9 +3817,10 @@
         Depending on the specific requirements selected by the <abbr linkend="ST"/> author, the <abbr linkend="ST"/>/<abbr linkend="TOE"/> should include the appropriate auditable events from the table below in the <abbr linkend="ST"/> as part of the FAU_GEN.1 claim.<h:br></h:br><h:br></h:br>
 	    
         <audit-table table="optional">
-		<depends on="selection" uid="fau-gen-t2"/>
+	  <depends on="selection" uid="fau-gen-t2"/>
 	</audit-table>
         <ctr id="audit-table" ctr-type="Table">: Auditable Events</ctr>
+
     </appendix>
 
     <!-- ANNEX B: Selection-Based -->
