@@ -351,7 +351,7 @@
     <chapter id="desc" title="Security Problem Description">
         <section id="threats" title="Threats">
             <threats>
-                <threat id="T.DATA_LEAKAGE">
+                <threat name="T.DATA_LEAKAGE">
                     <description>
                         It is a fundamental property of VMs that the domains encapsulated by different VMs remain separate unless 
 			    data sharing is permitted by policy. For this reason, all Virtualization Systems shall support a policy
@@ -375,7 +375,7 @@
 				of data from one VM to another.</rationale>
                     </objective-refer>
                 </threat>
-                <threat id="T.UNAUTHORIZED_UPDATE">
+                <threat name="T.UNAUTHORIZED_UPDATE">
                     <description>
                         It is common for attackers to target outdated versions of software containing known flaws. This means it is extremely important to update Virtualization System software as soon as possible when updates are available. But the source of the updates and the updates themselves must be trusted. If an attacker can write their own update containing malicious code they can take control of the VS.
                     </description>
@@ -384,7 +384,7 @@
 				potentially malicious code.</rationale>
                     </objective-refer>
                 </threat>
-                <threat id="T.UNAUTHORIZED_MODIFICATION">
+                <threat name="T.UNAUTHORIZED_MODIFICATION">
                     <description>
                         System integrity is a core security objective for Virtualization Systems. To achieve system integrity, the
 			    integrity of each VMM component must be established and maintained. Malware running on the platform must
@@ -401,7 +401,7 @@
 				that abuse of legitimate authority can be detected.</rationale>
                     </objective-refer>
                 </threat>
-                <threat id="T.USER_ERROR">
+                <threat name="T.USER_ERROR">
                     <description>
                         If a Virtualization System is capable of simultaneously displaying VMs of different domains to the same user
 			    at the same time, there is always the chance that the user will become confused and unintentionally leak
@@ -414,7 +414,7 @@
 				the likelihood that a user inadvertently inputs or transfers data meant for one VM into another.</rationale>
                     </objective-refer>
                 </threat>
-                <threat id="T.3P_SOFTWARE">
+                <threat name="T.3P_SOFTWARE">
                     <description>
                         In some VS implementations, critical functions are by necessity performed by software not produced by the 
 			    virtualization vendor. Such software may include Host Operating Systems and physical device drivers. 
@@ -428,7 +428,7 @@
 				vulnerabilities in third-party software can be used to exploit the TOE.</rationale>
                     </objective-refer>
                 </threat>
-                <threat id="T.VMM_COMPROMISE">
+                <threat name="T.VMM_COMPROMISE">
                     <description>
                         The Virtualization System is designed to provide the appearance of exclusivity to the VMs and is designed
 			    to separate or isolate their functions except where specifically shared. Failure of security mechanisms
@@ -444,7 +444,7 @@
 				the risk that the VMM can be compromised or bypassed.</rationale>
                     </objective-refer>
                 </threat>
-                <threat id="T.PLATFORM_COMPROMISE">
+                <threat name="T.PLATFORM_COMPROMISE">
                     <description>
                         The VS must be capable of protecting the platform from threats that originate within VMs and operational
 			    networks connected to the VS. The hosting of untrusted—even malicious—domains by the VS cannot be 
@@ -458,7 +458,7 @@
 				of a VM and affect the platform on which the VS is running.</rationale>
                     </objective-refer>
                 </threat>
-                <threat id="T.UNAUTHORIZED_ACCESS">
+                <threat name="T.UNAUTHORIZED_ACCESS">
                     <description>
                         Functions performed by the management layer include VM configuration, virtualized network configuration, 
 			    allocation of physical resources, and reporting. Only certain authorized system users (administrators) 
@@ -476,7 +476,7 @@
 				subjects from modifying the behavior of the TOE in an unanticipated manner.</rationale>
                     </objective-refer>
                 </threat>
-                <threat id="T.WEAK_CRYPTO">
+                <threat name="T.WEAK_CRYPTO">
                     <description>
                         To the extent that VMs appear isolated within the Virtualization System, a threat of weak cryptography may 
 			    arise if the VMM does not provide good entropy to support security-related features that depend on
@@ -490,7 +490,7 @@
 				algorithms.</rationale>
                     </objective-refer>
                 </threat>
-                <threat id="T.UNPATCHED_SOFTWARE">
+                <threat name="T.UNPATCHED_SOFTWARE">
                     <description>
                         Vulnerabilities in outdated or unpatched software can be exploited by adversaries to compromise the
 			    Virtualization System or platform.
@@ -500,7 +500,7 @@
 				applied as they become available.</rationale>
                     </objective-refer>
                 </threat>
-                <threat id="T.MISCONFIGURATION">
+                <threat name="T.MISCONFIGURATION">
                     <description>
                         The Virtualization System may be misconfigured, which could impact its functioning and security. This 
 			    misconfiguration could be due to an administrative error or the use of faulty configuration data.
@@ -510,7 +510,7 @@
 				help prevent misconfigurations.</rationale>
                     </objective-refer>
                 </threat>
-                <threat id="T.DENIAL_OF_SERVICE">
+                <threat name="T.DENIAL_OF_SERVICE">
                     <description>
                         A VM may block others from system resources (e.g., system memory, persistent storage, and processing time)
 			    via a resource exhaustion attack.
