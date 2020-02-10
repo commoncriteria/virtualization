@@ -1312,7 +1312,16 @@
                                 If the TOE acts as a sender, the following assurance activity shall be performed to ensure the proper 
 				    operation of every TOE supported combination of RSA-based key establishment scheme: <h:br></h:br><h:br></h:br>
                                <h:ul>
-                                   <h:li>To conduct this test, the evaluator shall generate or obtain test vectors from a known good implementation of the <abbr linkend="TOE"/> supported schemes. For each combination of supported key establishment scheme and its options (with or without key confirmation if supported, for each supported key confirmation MAC function if key confirmation is supported, and for each supported mask generation function if KTS-OAEP is supported), the tester shall generate 10 sets of test vectors. Each test vector shall include the RSA public key, the plaintext keying material, any additional input parameters if applicable, the MacKey and MacTag if key confirmation is incorporated, and the outputted ciphertext. For each test vector, the evaluator shall perform a key establishment encryption operation on the <abbr linkend="TOE"/> with the same inputs (in cases where key confirmation is incorporated, the test shall use the MacKey from the test vector instead of the randomly generated MacKey used in normal operation) and ensure that the outputted ciphertext is equivalent to the ciphertext in the test vector.</h:li>
+                                   <h:li>To conduct this test, the evaluator shall generate or obtain test vectors from a known good implementation of the
+					   TOE supported schemes. For each combination of supported key establishment scheme and its options (with or without 
+					   key confirmation if supported, for each supported key confirmation MAC function if key confirmation is supported, 
+					   and for each supported mask generation function if KTS-OAEP is supported), the tester shall generate 10 sets of
+					   test vectors. Each test vector shall include the RSA public key, the plaintext keying material, any additional input 
+					   parameters if applicable, the MacKey and MacTag if key confirmation is incorporated, and the outputted ciphertext.
+					   For each test vector, the evaluator shall perform a key establishment encryption operation on the TOE with the same 
+					   inputs (in cases where key confirmation is incorporated, the test shall use the MacKey from the test vector instead 
+					   of the randomly generated MacKey used in normal operation) and ensure that the outputted ciphertext is equivalent to
+					   the ciphertext in the test vector.</h:li>
                                </h:ul>
                                 If the TOE acts as a receiver, the following assurance activities shall be performed to ensure the 
 				    proper operation of every TOE supported combination of RSA-based key establishment scheme:<h:br></h:br><h:br></h:br>
@@ -2970,20 +2979,25 @@
                 <!-- FDP_RIP_EXT.1 -->
                 <f-component id="fdp_rip_ext.1" name="Residual Information in Memory">
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall ensure that any previous information content of physical memory is cleared prior to allocation to a Guest <abbr linkend="VM"/>.
+                        <title>The TSF shall ensure that any previous information content of physical memory is cleared prior to 
+				allocation to a Guest VM.
                         </title>
-                        <note role="application">Physical memory must be zeroed before it is made accessible to a <abbr linkend="VM"/> for general use by a Guest OS.<h:br></h:br><h:br></h:br>
-                            The purpose of this requirement is to ensure that a <abbr linkend="VM"/> does not receive memory containing data previously used by another <abbr linkend="VM"/> or the host.<h:br></h:br><h:br></h:br>
-                            “For general use” means for use by the Guest OS in its page tables for running applications or system software.<h:br></h:br><h:br></h:br>
-                            This does not apply to pages shared by design or policy between <abbr linkend="VM"/>s or between the <abbr linkend="VMM"/>s and <abbr linkend="VM"/>s, such as read-only OS pages or pages used for virtual device buffers.
+                        <note role="application">Physical memory must be zeroed before it is made accessible to a VM for general use
+				by a Guest OS.<h:br></h:br><h:br></h:br>
+                            The purpose of this requirement is to ensure that a VM does not receive memory
+				containing data previously used by another VM or the host.<h:br></h:br><h:br></h:br>
+                            “For general use” means for use by the Guest OS in its page tables for running applications or system
+				software.<h:br></h:br><h:br></h:br>
+                            This does not apply to pages shared by design or policy between VMs or between the VMMs and VMs, such
+				as read-only OS pages or pages used for virtual device buffers.
                         </note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall ensure that the <abbr linkend="TSS"/> documents the process used for clearing
-                                physical memory prior to allocation to a Guest <abbr linkend="VM"/>, providing details on when 
-                                and how this is performed. Additionally, the evaluator shall ensure that the <abbr linkend="TSS"/>
+                                The evaluator shall ensure that the TSS documents the process used for clearing
+                                physical memory prior to allocation to a Guest VM, providing details on when 
+                                and how this is performed. Additionally, the evaluator shall ensure that the TSS
                                 documents the conditions under which physical memory is not cleared prior to allocation to a
-                                Guest <abbr linkend="VM"/>, and describes when and how the memory is cleared.
+                                Guest VM, and describes when and how the memory is cleared.
                             </TSS>
                         </aactivity>
                     </f-element>
@@ -2993,24 +3007,35 @@
                 <!-- FDP_RIP_EXT.2 -->
                 <f-component id="fdp_rip_ext.2" name="Residual Information on Disk">
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall ensure that any previous information content of physical disk storage is cleared prior to allocation to a Guest <abbr linkend="VM"/>.
+                        <title>The TSF shall ensure that any previous information content of physical disk storage is cleared prior
+				to allocation to a Guest VM.
                         </title>
-                        <note role="application">Disk storage must be zeroed before it is made accessible to a <abbr linkend="VM"/> for use by a Guest OS.<h:br></h:br><h:br></h:br>
-                            The purpose of this requirement is to ensure that a <abbr linkend="VM"/> does not receive disk storage containing data previously used by another <abbr linkend="VM"/> or the host.<h:br></h:br><h:br></h:br>
-                            This does not apply to disk-resident files shared by design or policy between <abbr linkend="VM"/>s or between the <abbr linkend="VMM"/>s and <abbr linkend="VM"/>s, such as read-only data files or files used for inter-VM data transfers permitted by policy. </note>
+                        <note role="application">Disk storage must be zeroed before it is made accessible to a VM for use by a Guest
+				OS.<h:br></h:br><h:br></h:br>
+                            The purpose of this requirement is to ensure that a VM does not receive disk storage containing data
+				previously used by another VM or the host.<h:br></h:br><h:br></h:br>
+                            This does not apply to disk-resident files shared by design or policy between VMs or between the VMMs and
+				VMs, such as read-only data files or files used for inter-VM data transfers permitted by policy. </note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall ensure that the <abbr linkend="TSS"/> documents the conditions under which 
-                                physical disk storage is not cleared prior to allocation to a Guest <abbr linkend="VM"/>. The 
-                                evaluator shall also ensure that the <abbr linkend="TSS"/> documents the metadata used in its
+                                The evaluator shall ensure that the TSS documents the conditions under which 
+                                physical disk storage is not cleared prior to allocation to a Guest VM. The 
+                                evaluator shall also ensure that the TSS documents the metadata used in its
                                 virtual disk files.
                             </TSS>
                             <Tests>
                                 The evaluator shall perform the following test:<h:br></h:br><h:br></h:br>
                                 <testlist>
-                                    <test>On the host, the evaluator creates a file that is more than half the size of a connected physical storage device (or multiple files whose individual sizes add up to more than half the size of the storage media).  This file (or files) shall be filled entirely with a non-zero value.  Then, the
-                                        file (or files) shall be released (freed for use but not cleared).  Next, the evaluator (as a <abbr linkend="VS"/> Administrator) creates a virtual disk at least that large on the same physical storage device and connects it to a powered-off <abbr linkend="VM"/>.  Then, from outside the
-                                        Guest <abbr linkend="VM"/>, scan through and check that all the non-metadata (as documented in the <abbr linkend="TSS"/>) in the file corresponding to that virtual disk is set to zero.</test>
+                                    <test>
+					On the host, the evaluator creates a file that is more than half the size of a connected 
+					physical storage device (or multiple files whose individual sizes add up to more than half the
+					size of the storage media).  This file (or files) shall be filled entirely with a non-zero
+					value.  Then, the file (or files) shall be released (freed for use but not cleared).  Next,
+					the evaluator (as a VS Administrator) creates a virtual disk at least that large on the same
+					physical storage device and connects it to a powered-off VM.  Then, from outside the
+                                        Guest VM, scan through and check that all the non-metadata (as documented in the TSS) in the
+					file corresponding to that virtual disk is set to zero.
+				   </test>
                                 </testlist>
                             </Tests>
                         </aactivity>
@@ -3021,7 +3046,7 @@
                 <!-- FDP_VMS_EXT.1 -->
                 <f-component id="fdp_vms_ext.1" name="VM Separation">
                     <f-element>
-                        <title>The VS shall provide the following mechanisms for transferring data between Guest <abbr linkend="VM"/>s:
+                        <title>The VS shall provide the following mechanisms for transferring data between Guest VMs:
                             <selectables linebreak="yes">
                                 <selectable>no mechanism</selectable>
                                 <selectable>virtual networking</selectable>
@@ -3030,33 +3055,47 @@
                         </title>
                     </f-element>
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall allow Administrators to configure these mechanisms to
+                        <title>The TSF shall allow Administrators to configure these mechanisms to
                             <selectables>
                                 <selectable>enable</selectable>
                                 <selectable>disable</selectable>
-                            </selectables> the transfer of data between Guest <abbr linkend="VM"/>s.
+                            </selectables> the transfer of data between Guest VMs.
                         </title>
                     </f-element>
                     <f-element>
-                        <title>The VS shall ensure that no Guest <abbr linkend="VM"/> is able to read or transfer data to or from another Guest <abbr linkend="VM"/> except through the mechanisms listed in FDP_VMS_EXT.1.1.
+                        <title>The VS shall ensure that no Guest VM is able to read or transfer data to or from another Guest VM except
+				through the mechanisms listed in FDP_VMS_EXT.1.1.
                         </title>
                         <note role="application">
-                            The fundamental requirement of a Virtualization System is the ability to enforce separation between information domains implemented as Virtual Machines and Virtual Networks. The intent of this requirement is to ensure that <abbr linkend="VM"/>s, <abbr linkend="VMM"/>s, and the Virtualization System as a whole is implemented with this fundamental requirement in mind.<h:br></h:br><h:br></h:br>
-                            The <abbr linkend="ST"/> author should select “no mechanism” in the unlikely event that the VS implements no mechanisms for transferring data between Guest <abbr linkend="VM"/>s. Otherwise, the <abbr linkend="ST"/> author should select “virtual networking” and identify all other mechanisms through which data can be transferred between Guest <abbr linkend="VM"/>s. This should be the same list of mechanisms supplied for FMT_MSA_EXT.1.<h:br></h:br><h:br></h:br>
+                            The fundamental requirement of a Virtualization System is the ability to enforce separation between
+				information domains implemented as Virtual Machines and Virtual Networks. The intent of this
+				requirement is to ensure that VMs, VMMs, and the Virtualization System as a whole is implemented with 
+				this fundamental requirement in mind.<h:br></h:br><h:br></h:br>
+                            The ST author should select “no mechanism” in the unlikely event that the VS implements no mechanisms for
+				transferring data between Guest VMs. Otherwise, the ST author should select “virtual networking” 
+				and identify all other mechanisms through which data can be transferred between Guest VMs. This should 
+				be the same list of mechanisms supplied for FMT_MSA_EXT.1.<h:br></h:br><h:br></h:br>
                             Examples of non-network inter-VM sharing mechanisms are:<h:br></h:br><h:br></h:br>
                             <h:ul>
                                 <h:li>User interface-based mechanisms, such as copy-paste and drag-and-drop</h:li>
                                 <h:li>Shared virtual or physical devices</h:li>
                                 <h:li>API-based mechanisms such as Hypercalls</h:li>
                             </h:ul>
-                            For data transfer mechanisms implemented in terms of Hypercall functions, FDP_VMS_EXT.1.2 is met if FPT_HCL_EXT.1.2 is met for those Hypercall functions (VM access to Hypercall functions is configurable).<h:br></h:br><h:br></h:br>
-                            For data transfer mechanisms that use shared physical devices, FDP_VMS_EXT.1.2 is met if the device is listed in and meets FDP_PPR_EXT.1.1 (VM access to the physical device is configurable).<h:br></h:br><h:br></h:br>
-                            For data transfer mechanisms that use virtual networking, FDP_VMS_EXT.1.2 is met if FDP_VNC_EXT.1.1 is met (VM access to virtual networks is configurable).<h:br></h:br><h:br></h:br>
-                            FDP_VMS_EXT.1.3 is an attestation requirement. The vendor must attest that data cannot be transferred between Guest <abbr linkend="VM"/>s except through the configurable mechanisms documented in FDP_VMS_EXT.1.1. The vendor must attest that there are no design or implementation flaws that permit the above mechanisms to be bypassed or defeated, or for data to be transferred through a different, undocumented mechanism.
+                            For data transfer mechanisms implemented in terms of Hypercall functions, FDP_VMS_EXT.1.2 is met if 
+				FPT_HCL_EXT.1.2 is met for those Hypercall functions (VM access to Hypercall functions is 
+				configurable).<h:br></h:br><h:br></h:br>
+                            For data transfer mechanisms that use shared physical devices, FDP_VMS_EXT.1.2 is met if the device is 
+				listed in and meets FDP_PPR_EXT.1.1 (VM access to the physical device is configurable).<h:br></h:br><h:br></h:br>
+                            For data transfer mechanisms that use virtual networking, FDP_VMS_EXT.1.2 is met if FDP_VNC_EXT.1.1 
+				is met (VM access to virtual networks is configurable).<h:br></h:br><h:br></h:br>
+                            FDP_VMS_EXT.1.3 is an attestation requirement. The vendor must attest that data cannot be transferred
+				between Guest VMs except through the configurable mechanisms documented in FDP_VMS_EXT.1.1. The vendor
+				must attest that there are no design or implementation flaws that permit the above mechanisms to be
+				bypassed or defeated, or for data to be transferred through a different, undocumented mechanism.
                         </note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall examine the <abbr linkend="TSS"/> to verify that it documents all inter-VM 
+                                The evaluator shall examine the TSS to verify that it documents all inter-VM 
                                 communications mechanisms (as defined above), including how the mechanisms are configured, how 
                                 they are invoked, and how they are disabled.
                             </TSS>
@@ -3065,19 +3104,30 @@
                                 <testlist>
                                     <test>
                                         <h:ol type="a">
-                                            <h:li>Create two <abbr linkend="VM"/>s, the first with the inter-VM communications channel currently being tested enabled, and the second with the inter-VM communications channel currently being tested disabled.</h:li>
-                                            <h:li>Test that communications cannot be passed between the <abbr linkend="VM"/>s through the channel.</h:li>
-                                            <h:li>As an Administrator, enable inter-VM communications between the <abbr linkend="VM"/>s on the second <abbr linkend="VM"/>.</h:li>
+                                            <h:li>Create two VMs, the first with the inter-VM communications channel currently being
+						    tested enabled, and the second with the inter-VM communications channel currently
+						    being tested disabled.</h:li>
+                                            <h:li>Test that communications cannot be passed between the VMs through the channel.</h:li>
+                                            <h:li>As an Administrator, enable inter-VM communications between the VMs on the second 
+						    VM.</h:li>
                                             <h:li>Test that communications can be passed through the inter-VM channel.</h:li>
-                                            <h:li>As an Administrator again, disable inter-VM communications between the two <abbr linkend="VM"/>s.</h:li>
+                                            <h:li>As an Administrator again, disable inter-VM communications between the two 
+						    VMs.</h:li>
                                             <h:li>Test that communications can no longer be passed through the channel.</h:li>
                                         </h:ol>
                                         FDP_VMS_EXT.1.2 is met if communication is successful in step (d) and unsuccessful in step (f).<h:br></h:br><h:br></h:br>
                                     </test>
                                 </testlist>
-                                FMT_MSA_EXT.1.1 is met if communication is unsuccessful in step (b). FMT_MSA_EXT.1.2 is met if communication is successful in step (d). Additionally, FMT_MSA_EXT.1 requires that the evaluator verifies that the <abbr linkend="TSS"/> documents the inter-VM communications mechanisms as described above.
-                                The evaluator must ensure that the <abbr linkend="ST"/> includes the following statement attesting that there are no other ways for data to be transferred between <abbr linkend="VM"/>s other than those listed in FDP_VMS_EXT.1.1:<h:br></h:br><h:br></h:br>
-                                A Guest <abbr linkend="VM"/> cannot access the data of another Guest <abbr linkend="VM"/>, or transfer data to another Guest <abbr linkend="VM"/> other than through the mechanisms described in FDP_VMS_EXT.1.1 when expressly enabled by an authorized Administrator. There are no design or implementation flaws that permit the above mechanisms to be bypassed or defeated, or for data to be transferred through undocumented mechanisms. This claim does not apply to covert channels or architectural side-channels.
+                                FMT_MSA_EXT.1.1 is met if communication is unsuccessful in step (b). FMT_MSA_EXT.1.2 is met if
+				    communication is successful in step (d). Additionally, FMT_MSA_EXT.1 requires that the evaluator
+				    verifies that the TSS documents the inter-VM communications mechanisms as described above.
+                                The evaluator must ensure that the ST includes the following statement attesting that there are no 
+				    other ways for data to be transferred between VMs other than those listed in FDP_VMS_EXT.1.1:<h:br></h:br><h:br></h:br>
+                                A Guest VM cannot access the data of another Guest VM, or transfer data to another Guest VM other than
+				    through the mechanisms described in FDP_VMS_EXT.1.1 when expressly enabled by an authorized
+				    Administrator. There are no design or implementation flaws that permit the above mechanisms to be
+				    bypassed or defeated, or for data to be transferred through undocumented mechanisms. This claim 
+				    does not apply to covert channels or architectural side-channels.
                             </Tests>
                          </aactivity>
                     </f-element>
@@ -3087,16 +3137,25 @@
                 <!-- FDP_VNC_EXT.1 -->
                 <f-component id="fdp_vnc_ext.1" name="Virtual Networking Components">
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall allow Administrators to configure virtual networking components to connect <abbr linkend="VM"/>s to each other, and to physical networks.
+                        <title>The TSF shall allow Administrators to configure virtual networking components to connect VMs to each
+				other, and to physical networks.
                         </title>
                     </f-element>
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall ensure that network traffic visible to a Guest <abbr linkend="VM"/> on a virtual network--or virtual segment of a physical network--is visible only to Guest <abbr linkend="VM"/>s configured to be on that virtual network or segment.
+                        <title>The TSF shall ensure that network traffic visible to a Guest VM on a virtual network--or virtual 
+				segment of a physical network--is visible only to Guest VMs configured to be on that virtual network
+				or segment.
                         </title>
                         <note role="application">
-                            Virtual networks must be isolated from one another to provide assurance commensurate with that provided by physically separate networks. It must not be possible for data to cross between properly configured virtual networks regardless of whether the traffic originated from a local Guest <abbr linkend="VM"/> or a remote host.<h:br></h:br><h:br></h:br>
-                            Unprivileged users must not be able to connect <abbr linkend="VM"/>s to each other or to external networks.<h:br></h:br><h:br></h:br>
-                            FDP_VNC_EXT.1.2 is an attestation requirement. The vendor must attest that traffic traversing a virtual network is visible only to Guest <abbr linkend="VM"/>s that are configured by an Administrator to be members of that virtual network, and that there are no design or implementation flaws that permit the virtual networking configuration to be bypassed or defeated, or for data to be transferred through undocumented mechanisms.
+                            Virtual networks must be isolated from one another to provide assurance commensurate with that provided by 
+				physically separate networks. It must not be possible for data to cross between properly configured
+				virtual networks regardless of whether the traffic originated from a local Guest VM or a remote host.<h:br></h:br><h:br></h:br>
+                            Unprivileged users must not be able to connect VMs to each other or to external networks.<h:br></h:br><h:br></h:br>
+                            FDP_VNC_EXT.1.2 is an attestation requirement. The vendor must attest that traffic traversing a virtual 
+				network is visible only to Guest VMs that are configured by an Administrator to be members of that
+				virtual network, and that there are no design or implementation flaws that permit the virtual 
+				networking configuration to be bypassed or defeated, or for data to be transferred through
+				undocumented mechanisms.
                         </note>
                         <aactivity>
                             <TSS>
@@ -3109,16 +3168,30 @@
                             </Guidance>
                             <Tests>
                             <testlist>
-                                <test>The evaluator shall assume the role of the Administrator and attempt to configure a <abbr linkend="VM"/> to connect to a network component. The evaluator shall verify that the attempt is successful. The evaluator shall then assume the role of an unprivileged user and attempt the same connection. If the attempt fails, or there is no way for an unprivileged user to configure <abbr linkend="VM"/> network connections, the requirement is met.</test>
-                                <test>The evaluator shall assume the role of the Administrator and attempt to configure a <abbr linkend="VM"/> to connect to a physical network. The evaluator shall verify that the attempt is successful. The evaluator shall then assume the role of an unprivileged user and make the same attempt. If the attempt fails, or there is no way for an unprivileged user to configure <abbr linkend="VM"/> network connections, the requirement is met.</test>
+                                <test>The evaluator shall assume the role of the Administrator and attempt to configure a VM to
+					connect to a network component. The evaluator shall verify that the attempt is successful. The
+					evaluator shall then assume the role of an unprivileged user and attempt the same connection.
+					If the attempt fails, or there is no way for an unprivileged user to configure VM network 
+					connections, the requirement is met.</test>
+                                <test>The evaluator shall assume the role of the Administrator and attempt to configure a VM to connect
+					to a physical network. The evaluator shall verify that the attempt is successful. The
+					evaluator shall then assume the role of an unprivileged user and make the same attempt.
+					If the attempt fails, or there is no way for an unprivileged user to configure VM network 
+					connections, the requirement is met.</test>
                             </testlist>
-                            The evaluator must ensure that the <abbr linkend="ST"/> includes the following statement attesting that virtual network traffic is visible only to <abbr linkend="VM"/>s configured to be on that virtual network:<h:br></h:br><h:br></h:br>
-                            “Traffic traversing a virtual network is visible only to Guest <abbr linkend="VM"/>s that are configured by an Administrator to be members of that virtual network. There are no design or implementation flaws that permit the virtual networking configuration to be bypassed or defeated, or for data to be transferred through undocumented mechanisms. This claim does not apply to covert channels or architectural side-channels.”
+                            The evaluator must ensure that the ST includes the following statement attesting that virtual network
+				    traffic is visible only to VMs configured to be on that virtual network:<h:br></h:br><h:br></h:br>
+                            “Traffic traversing a virtual network is visible only to Guest VMs that are configured by an Administrator 
+				    to be members of that virtual network. There are no design or implementation flaws that permit
+				    the virtual networking configuration to be bypassed or defeated, or for data to be transferred
+				    through undocumented mechanisms. This claim does not apply to covert channels or architectural
+				    side-channels.”
                             </Tests>
                          </aactivity>
                     </f-element>
 		    <audit-event>
-			<audit-event-descr>Successful and failed attempts to connect VMs to virtual and physical networking components.</audit-event-descr>
+			<audit-event-descr>Successful and failed attempts to connect VMs to virtual and physical networking
+				components.</audit-event-descr>
 			<audit-event-info>VM and virtual or physical networking component identifiers.</audit-event-info>
 		    </audit-event>
 		    <audit-event>
@@ -3138,14 +3211,15 @@
                 <!-- FIA_AFL_EXT.1 -->
                 <f-component id="fia_afl_ext.1" name="Authentication Failure Handling">
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall detect when
+                        <title>The TSF shall detect when
                             <selectables linebreak="yes">
                                 <selectable><assignable>a positive integer number</assignable></selectable>
                                 <selectable>an administrator configurable positive integer within a
                                     <assignable>range of acceptable values</assignable></selectable>
                             </selectables>
                             
-                            unsuccessful authentication attempts occur related to Administrators attempting to authenticate remotely using a
+                            unsuccessful authentication attempts occur related to Administrators attempting to authenticate remotely
+				using a
                             <selectables>
                                 <selectable>password</selectable>
                                 <selectable>PIN.</selectable>
@@ -3153,7 +3227,7 @@
                         </title>
                     </f-element>
                     <f-element>
-                        <title>When the defined number of unsuccessful authentication attempts has been met, the <abbr linkend="TSF"/>
+                        <title>When the defined number of unsuccessful authentication attempts has been met, the TSF
                             shall:
                             <selectables>
                                 <selectable>prevent the offending Administrator from successfully establishing remote session using
@@ -3164,7 +3238,7 @@
                                     period has elapsed</selectable>
                             </selectables>
                         </title>
-                        <note role="application">The action to be taken shall be populated in the selection of the <abbr linkend="ST"/>
+                        <note role="application">The action to be taken shall be populated in the selection of the ST
                             and defined in the Administrator guidance.<h:br></h:br><h:br></h:br>
                             This requirement applies to a defined number of successive unsuccessful remote password or PIN-based
                             authentication attempts and does not apply to local Administrative access. Compliant TOEs may optionally
@@ -3175,9 +3249,11 @@
                             <Tests>
                                 The evaluator shall perform the following tests for each credential selected in FIA_AFL_EXT.1.1:
                                 <testlist>
-                                <test>The evaluator will set an Administrator-configurable threshold n for failed attempts, or note the ST-specified assignment.</test>
+                                <test>The evaluator will set an Administrator-configurable threshold n for failed attempts, or note
+					the ST-specified assignment.</test>
                                 <testlist>
-                                    <test>The evaluator will attempt to authenticate remotely with the credential n-1 times. The evaluator will then attempt to authenticate
+                                    <test>The evaluator will attempt to authenticate remotely with the credential n-1 times. The 
+					    evaluator will then attempt to authenticate
                                         using a good credential and verify that authentication is successful.</test>
                                     <test> The evaluator will make n attempts to authenticate using a bad credential. The evaluator
                                         will then attempt to authenticate using a good credential and verify that the attempt is
@@ -3210,7 +3286,7 @@
                 <!-- FIA_UAU.5 -->
                 <f-component id="fia_uau.5" name="Multiple Authentication Mechanisms">
                     <f-element id="fil-aua">
-                        <title>The <abbr linkend="TSF"/> shall provide the following authentication mechanisms:
+                        <title>The TSF shall provide the following authentication mechanisms:
                             <selectables linebreak="yes">
                                 <selectable id="uau-pwd">
                                     <selectables>
@@ -3219,7 +3295,8 @@
                                     </selectables>
                                     authentication based on username and password
                                 </selectable>
-                                <selectable>authentication based on username and a PIN that releases an asymmetric key stored in OE-protected storage</selectable>
+                                <selectable>authentication based on username and a PIN that releases an asymmetric key stored in
+					OE-protected storage</selectable>
                                 <selectable id="uau-x509">
                                     <selectables>
                                         <selectable>local</selectable>
@@ -3237,34 +3314,63 @@
                             </selectables>                            
                             to support Administrator authentication.
                         </title>
-                        <note role="application">Selection of ‘authentication based on username and password’ requires that FIA_PMG_EXT.1 be included in the <abbr linkend="ST"/>. This also requires that the <abbr linkend="ST"/> include a management function for password management. If the <abbr linkend="ST"/> author selects ‘authentication based on an SSH public-key credential’, the <abbr linkend="TSF"/> shall be validated against the Extended Package for Secure Shell.<h:br></h:br><h:br></h:br>
-                            PINs used to access OE-protected storage are set and managed by the OE-protected storage mechanism. Thus requirements on PIN management are outside the scope of the <abbr linkend="TOE"/>.
+                        <note role="application">Selection of ‘authentication based on username and password’ requires that 
+				FIA_PMG_EXT.1 be included in the ST. This also requires that the ST include a management function for
+				password management. If the ST author selects ‘authentication based on an SSH public-key credential’,
+				the TSF shall be validated against the Extended Package for Secure Shell.<h:br></h:br><h:br></h:br>
+                            PINs used to access OE-protected storage are set and managed by the OE-protected storage mechanism. Thus
+				requirements on PIN management are outside the scope of the TOE.
                         </note>
                     </f-element>
                     <f-element>
-                        <title>The TSF shall authenticate any Administrator’s claimed identity according to the <assignable>rules describing how the multiple authentication mechanisms provide authentication</assignable>.
+                        <title>The TSF shall authenticate any Administrator’s claimed identity according to the <assignable>rules
+				describing how the multiple authentication mechanisms provide authentication</assignable>.
                         </title>
                         <aactivity>
                             <Tests>
-                                If ‘username and password authentication‘ is selected, the evaluator will configure the VS with a known username and password and conduct the following tests:
+                                If ‘username and password authentication‘ is selected, the evaluator will configure the VS with a 
+				    known username and password and conduct the following tests:
                             <testlist>
-                                <test>The evaluator will attempt to authenticate to the VS using the known username and password. The evaluator will ensure that the authentication attempt is successful.</test>
-                                <test>The evaluator will attempt to authenticate to the VS using the known username but an incorrect password. The evaluator will ensure that the authentication attempt is unsuccessful.</test>
+                                <test>The evaluator will attempt to authenticate to the VS using the known username and password.
+					The evaluator will ensure that the authentication attempt is successful.</test>
+                                <test>The evaluator will attempt to authenticate to the VS using the known username but an incorrect
+					password. The evaluator will ensure that the authentication attempt is unsuccessful.</test>
                             </testlist>
-                            If ‘username and PIN that releases an asymmetric key‘ is selected, the evaluator will examine the <abbr linkend="TSS"/> for guidance on supported protected storage and will then configure the <abbr linkend="TOE"/> or OE to establish a PIN which enables release of the asymmetric key from the protected storage (such as a TPM, a hardware token, or isolated execution environment) with which the VS can interface. The evaluator will then conduct the following tests:
+                            If ‘username and PIN that releases an asymmetric key‘ is selected, the evaluator will examine the TSS for
+				    guidance on supported protected storage and will then configure the TOE or OE to establish a PIN
+				    which enables release of the asymmetric key from the protected storage (such as a TPM, a hardware
+				    token, or isolated execution environment) with which the VS can interface. The evaluator will then
+				    conduct the following tests:
                             <testlist>
-                                <test>The evaluator will attempt to authenticate to the VS using the known user name and PIN. The evaluator will ensure that the authentication attempt is successful.</test>
-                                <test>The evaluator will attempt to authenticate to the VS using the known user name but an incorrect PIN. The evaluator will ensure that the authentication attempt is unsuccessful.</test>
+                                <test>The evaluator will attempt to authenticate to the VS using the known user name and PIN. The
+					evaluator will ensure that the authentication attempt is successful.</test>
+                                <test>The evaluator will attempt to authenticate to the VS using the known user name but an incorrect
+					PIN. The evaluator will ensure that the authentication attempt is unsuccessful.</test>
                             </testlist>
-                            If ‘X.509 certificate authentication‘ is selected, the evaluator will generate an X.509v3 certificate for an Administrator user with the Client Authentication Enhanced Key Usage field set. The evaluator will provision the VS for authentication with the X.509v3 certificate. The evaluator will ensure that the certificates are validated by the VS as per FIA_X509_EXT.1.1 and then conduct the following tests:
+                            If ‘X.509 certificate authentication‘ is selected, the evaluator will generate an X.509v3 certificate for 
+				    an Administrator user with the Client Authentication Enhanced Key Usage field set. The evaluator
+				    will provision the VS for authentication with the X.509v3 certificate. The evaluator will ensure
+				    that the certificates are validated by the VS as per FIA_X509_EXT.1.1 and then conduct the
+				    following tests:
                             <testlist>
-                                <test>The evaluator will attempt to authenticate to the VS using the X.509v3 certificate. The evaluator will ensure that the authentication attempt is successful.</test>
-                                <test>The evaluator will generate a second certificate identical to the first except for the public key and any values derived from the public key. The evaluator will attempt to authenticate to the VS with this certificate. The evaluator will ensure that the authentication attempt is unsuccessful.</test>
+                                <test>The evaluator will attempt to authenticate to the VS using the X.509v3 certificate. The 
+					evaluator will ensure that the authentication attempt is successful.</test>
+                                <test>The evaluator will generate a second certificate identical to the first except for the public
+					key and any values derived from the public key. The evaluator will attempt to authenticate to
+					the VS with this certificate. The evaluator will ensure that the authentication attempt is
+					unsuccessful.</test>
                             </testlist>
-                            If ‘SSH public-key credential authentication‘ is selected, the evaluator shall generate a public-private host key pair on the <abbr linkend="TOE"/> using RSA or ECDSA, and a second public-private key pair on a remote client. The evaluator shall provision the VS with the client public key for authentication over SSH, and conduct the following tests:
+                            If ‘SSH public-key credential authentication‘ is selected, the evaluator shall generate a public-private
+				    host key pair on the TOE using RSA or ECDSA, and a second public-private key pair on a remote
+				    client. The evaluator shall provision the VS with the client public key for authentication over
+				    SSH, and conduct the following tests:
                             <testlist>
-                                <test>The evaluator will attempt to authenticate to the VS using a message signed by the client private key that corresponds to provisioned client public key. The evaluator will ensure that the authentication attempt is successful.</test>
-                                <test>The evaluator will generate a second client key pair and will attempt to authenticate to the VS with the private key over SSH without first provisioning the VS to support the new key pair. The evaluator will ensure that the authentication attempt is unsuccessful.</test>
+                                <test>The evaluator will attempt to authenticate to the VS using a message signed by the client
+					private key that corresponds to provisioned client public key. The evaluator will ensure that 
+					the authentication attempt is successful.</test>
+                                <test>The evaluator will generate a second client key pair and will attempt to authenticate to the VS 
+					with the private key over SSH without first provisioning the VS to support the new key pair.
+					The evaluator will ensure that the authentication attempt is unsuccessful.</test>
                             </testlist>
                             </Tests>
                         </aactivity>
@@ -3275,14 +3381,14 @@
                 <!-- FIA_UIA_EXT.1 -->
                 <f-component id="fia_uia_ext.1" name="Administrator Identification and Authentication">
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall require Administrators to be successfully identified and authenticated
-                            using one of the methods in FIA_UAU.5 before allowing any <abbr linkend="TSF"/>-mediated management
+                        <title>The TSF shall require Administrators to be successfully identified and authenticated
+                            using one of the methods in FIA_UAU.5 before allowing any TSF-mediated management
                             function to be performed by that Administrator.
                         </title>
                         <note role="application">Users do not have to authenticate, only Administrators need to authenticate.</note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall examine the <abbr linkend="TSS"/> to determine that it describes the logon
+                                The evaluator shall examine the TSS to determine that it describes the logon
                                 process for each logon method (local, remote (HTTPS, SSH, etc.)) supported for the product. 
                                 This description shall contain information pertaining to the credentials allowed/used, any 
                                 protocol transactions that take place, and what constitutes a “successful logon”. The evaluator
@@ -3315,9 +3421,10 @@
                 <f-component id="fia_pmg_ext.1" name="Password Management"  status="sel-based">
                     <selection-depends req="fil-aua" ids="uau-pwd"/>
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall provide the following password management capabilities for administrative passwords:
+                        <title>The TSF shall provide the following password management capabilities for administrative passwords:
                             <h:ol type="a">
-                                <h:li>Passwords shall be able to be composed of any combination of upper and lower case characters, digits, and the following special characters:
+                                <h:li>Passwords shall be able to be composed of any combination of upper and lower case characters, 
+					digits, and the following special characters:
                                     <selectables>
                                         <selectable>“!”</selectable>
                                         <selectable>“@”</selectable>
@@ -3335,7 +3442,9 @@
                                 <h:li>Passwords of at least 15 characters in length shall be supported</h:li>
                             </h:ol>
                         </title>
-                        <note role="application">The <abbr linkend="ST"/> author selects the special characters that are supported by the <abbr linkend="TOE"/>; they may optionally list additional special characters supported using the assignment. “Administrative passwords” refers to passwords used by administrators to gain access to the Management Subsystem.</note>
+                        <note role="application">The ST author selects the special characters that are supported by the TOE; they may
+				optionally list additional special characters supported using the assignment. “Administrative
+				passwords” refers to passwords used by administrators to gain access to the Management Subsystem.</note>
                         <aactivity>
                             <Guidance>
                                 The evaluator shall examine the operational guideance to determine that it provides guidance to
@@ -3346,7 +3455,12 @@
                                 The evaluator shall also perform the following tests. 
                                 Note that one or more of these tests may be performed with a single test case.
                             <testlist>
-                                <test>The evaluator shall compose passwords that either meet the requirements, or fail to meet the requirements, in some way. For each password, the evaluator shall verify that the <abbr linkend="TOE"/> supports the password. While the evaluator is not required (nor is it feasible) to test all possible combinations of passwords, the evaluator shall ensure that all characters, rule characteristics, and a minimum length listed in the requirement are supported, and justify the subset of those characters chosen for testing.</test>
+                                <test>The evaluator shall compose passwords that either meet the requirements, or fail to meet the 
+					requirements, in some way. For each password, the evaluator shall verify that the TOE supports
+					the password. While the evaluator is not required (nor is it feasible) to test all possible
+					combinations of passwords, the evaluator shall ensure that all characters, rule 
+					characteristics, and a minimum length listed in the requirement are supported, and justify the
+					subset of those characters chosen for testing.</test>
                             </testlist>
                             </Tests>
                         </aactivity>
@@ -3363,46 +3477,58 @@
 		    <selection-depends req="fel-itc" ids="itc-tls" />
 		    <selection-depends req="fel-itc" ids="itc-https" />	
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall validate certificates in accordance with the following rules:
+                        <title>The TSF shall validate certificates in accordance with the following rules:
                             <h:ul>
                                 <h:li>RFC 5280 certificate validation and certificate path validation</h:li>
                                 <h:li>The certificate path must terminate with a trusted certificate</h:li>
-                                <h:li>The <abbr linkend="TSF"/> shall validate a certificate path by ensuring the presence of the basicConstraints extension and that the CA flag is set to TRUE for all CA certificates</h:li>
+                                <h:li>The TSF shall validate a certificate path by ensuring the presence of the basicConstraints extension and that the CA flag is set to TRUE for all CA certificates</h:li>
                                 <h:li>
-                                    The <abbr linkend="TSF"/> shall validate the revocation status of the certificate using
+                                    The TSF shall validate the revocation status of the certificate using
                                     <selectables>
                                         <selectable>the Online Certificate Status Protocol (OCSP) as specified in RFC 2560</selectable>
                                         <selectable>a Certificate Revocation List (CRL) as specified in RFC 5759</selectable>
                                     </selectables>
                                 </h:li>
                                 <h:li>
-                                    The <abbr linkend="TSF"/> shall validate the extendedKeyUsage field according to the following rules:
+                                    The TSF shall validate the extendedKeyUsage field according to the following rules:
                                     <h:ul>
-                                        <h:li>Certificates used for trusted updates and executable code integrity verification shall have the Code Signing purpose (id-kp 3 with OID 1.3.6.1.5.5.7.3.3) in the extendedKeyUsage field</h:li>
-                                        <h:li>Server certificates presented for TLS shall have the Server Authentication purpose (id-kp 1 with OID 1.3.6.1.5.5.7.3.1) in the extendedKeyUsage field</h:li>
-                                        <h:li>Client certificates presented for TLS shall have the Client Authentication purpose (id-kp 2 with OID 1.3.6.1.5.5.7.3.2) in the extendedKeyUsage field</h:li>
-                                        <h:li>OCSP certificates presented for OCSP responses shall have the OCSP Signing purpose (id-kp 9 with OID 1.3.6.1.5.5.7.3.9) in the extendedKeyUsage field</h:li>
+                                        <h:li>Certificates used for trusted updates and executable code integrity verification shall
+						have the Code Signing purpose (id-kp 3 with OID 1.3.6.1.5.5.7.3.3) in the 
+						extendedKeyUsage field</h:li>
+                                        <h:li>Server certificates presented for TLS shall have the Server Authentication purpose 
+						(id-kp 1 with OID 1.3.6.1.5.5.7.3.1) in the extendedKeyUsage field</h:li>
+                                        <h:li>Client certificates presented for TLS shall have the Client Authentication purpose
+						(id-kp 2 with OID 1.3.6.1.5.5.7.3.2) in the extendedKeyUsage field</h:li>
+                                        <h:li>OCSP certificates presented for OCSP responses shall have the OCSP Signing purpose
+						(id-kp 9 with OID 1.3.6.1.5.5.7.3.9) in the extendedKeyUsage field</h:li>
                                     </h:ul>
                                 </h:li>
                             </h:ul>
                         </title>
-                        <note role="application">This SFR must be included in the <abbr linkend="ST"/> if the selection for 
+                        <note role="application">This SFR must be included in the ST if the selection for 
 				FPT_TUD_EXT.1.3 is “digital signature mechanism,” or if the selection for FTP_ITC_EXT.1 includes 
 				“IPsec,” “TLS,” or “TLS/HTTPS,” or if FIA_UAU.5.1 requires the use of X.509 certificates.<h:br></h:br><h:br></h:br>
-                            FIA_X509_EXT.1.1 lists the rules for validating certificates. The <abbr linkend="ST"/> author shall select whether revocation status is verified using OCSP or CRLs. FIA_X509_EXT.2 requires that certificates are used for IPsec; this use requires that the extendedKeyUsage rules are verified. Certificates may optionally be used for SSH, TLS and HTTPS and, if implemented, must be validated to contain the corresponding extendedKeyUsage.<h:br></h:br><h:br></h:br>
-                            Regardless of the selection of <abbr linkend="TSF"/> or <abbr linkend="TOE"/> platform, the validation is expected to end in a trusted root CA certificate in a root store managed by the platform.</note>
+                            FIA_X509_EXT.1.1 lists the rules for validating certificates. The ST author shall select whether 
+				revocation status is verified using OCSP or CRLs. FIA_X509_EXT.2 requires that certificates are used
+				for IPsec; this use requires that the extendedKeyUsage rules are verified. Certificates may optionally
+				be used for SSH, TLS and HTTPS and, if implemented, must be validated to contain the corresponding 
+				extendedKeyUsage.<h:br></h:br><h:br></h:br>
+                            Regardless of the selection of TSF or TOE platform, the validation is expected to end in a trusted root
+				CA certificate in a root store managed by the platform.</note>
                     </f-element>
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall only treat a certificate as a CA certificate if the basicConstraints extension is present and the CA flag is set to TRUE.
+                        <title>The TSF shall only treat a certificate as a CA certificate if the basicConstraints extension is present 
+				and the CA flag is set to TRUE.
                         </title>
-                        <note role="application">This requirement applies to certificates that are used and processed by the <abbr linkend="TSF"/> and restricts the certificates that may be added as trusted CA certificates.</note>
+                        <note role="application">This requirement applies to certificates that are used and processed by the TSF and
+				restricts the certificates that may be added as trusted CA certificates.</note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall ensure the <abbr linkend="TSS"/> describes where the check of validity of the 
-                                certificates takes place. The evaluator ensures the <abbr linkend="TSS"/> also provides a description
+                                The evaluator shall ensure the TSS describes where the check of validity of the 
+                                certificates takes place. The evaluator ensures the TSS also provides a description
                                 of the certificate path validation algorithm.<h:br></h:br><h:br></h:br>
-                                The evaluator shall examine the <abbr linkend="TSS"/> to confirm that it describes the behavior of 
-                                the <abbr linkend="TOE"/> when a connection cannot be established during the validity check of a 
+                                The evaluator shall examine the TSS to confirm that it describes the behavior of 
+                                the TOE when a connection cannot be established during the validity check of a 
                                 certificate used in establishing a trusted channel. If the requirement that the administrator is able 
                                 to specify the default action, then the evaluator shall ensure that the operational guidance contains
                                 instructions on how this configuration action is performed.
@@ -3410,11 +3536,36 @@
                             <Tests>
                                 The tests described must be performed in conjunction with the other Certificate Services assurance activities, including the use cases in FIA_X509_EXT.2.1. The tests for the extendedKeyUsage rules are performed in conjunction with the uses that require those rules.<h:br></h:br><h:br></h:br>
                                 <testlist>
-                                    <test>The evaluator shall demonstrate that validating a certificate without a valid certification path results in the function (application validation, trusted channel setup, or trusted software update) failing. The evaluator shall then load a certificate or certificates needed to validate the certificate to be used in the function, and demonstrate that the function succeeds. The evaluator then shall delete one of the certificates, and show that the function fails.</test>
-                                    <test>The evaluator shall demonstrate that validating an expired certificate results in the function failing.</test>
-                                    <test>The evaluator shall test that the <abbr linkend="TOE"/> can properly handle revoked certificates –conditional on whether CRL or OCSP is selected; if both are selected, and then a test is performed for each method. The evaluator has to only test one up in the trust chain (future revisions may require to ensure the validation is done up the entire chain). The evaluator shall ensure that a valid certificate is used, and that the validation function succeeds. The evaluator then attempts the test with a certificate that will be revoked (for each method chosen in the selection) to ensure when the certificate is no longer valid that the validation function fails.</test>
-                                    <test>The evaluator shall ensure that at least one of the CAs in the chain does not contain the basicConstraints extension. The evaluator confirms that the TOE rejects such a certificate at one (or both) of the following points: (i) as part of the validation of the leaf certificate belonging to this chain; (ii) when attempting to add a CA certificate without the basicConstraints extension to the TOE’s trust store (i.e. when attempting to install the CA certificate as one which will be retrieved from the TOE itself when validating future certificate chains)</test>
-                                    <test>The evaluator shall ensure that at least one of the CA certificates in the chain has a basicConstraints extension in which the CA flag is set to FALSE. The evaluator confirms that the TOE rejects such a certificate at one (or both) of the following points: (i) as part of the validation of the leaf certificate belonging to this chain; (ii) when attempting to add a CA certificate with the CA flag set to FALSE to the TOE’s trust store (i.e. when attempting to install the CA certificate as one which will be retrieved from the TOE itself when validating future certificate chains).</test>
+                                    <test>The evaluator shall demonstrate that validating a certificate without a valid certification
+					    path results in the function (application validation, trusted channel setup, or trusted 
+					    software update) failing. The evaluator shall then load a certificate or certificates
+					    needed to validate the certificate to be used in the function, and demonstrate that the
+					    function succeeds. The evaluator then shall delete one of the certificates, and show that
+					    the function fails.</test>
+                                    <test>The evaluator shall demonstrate that validating an expired certificate results in the
+					    function failing.</test>
+                                    <test>The evaluator shall test that the <abbr linkend="TOE"/> can properly handle revoked 
+					    certificates –conditional on whether CRL or OCSP is selected; if both are selected, and 
+					    then a test is performed for each method. The evaluator has to only test one up in the
+					    trust chain (future revisions may require to ensure the validation is done up the entire
+					    chain). The evaluator shall ensure that a valid certificate is used, and that the
+					    validation function succeeds. The evaluator then attempts the test with a certificate that
+					    will be revoked (for each method chosen in the selection) to ensure when the certificate
+					    is no longer valid that the validation function fails.</test>
+                                    <test>The evaluator shall ensure that at least one of the CAs in the chain does not contain the
+					    basicConstraints extension. The evaluator confirms that the TOE rejects such a certificate 
+					    at one (or both) of the following points: (i) as part of the validation of the leaf 
+					    certificate belonging to this chain; (ii) when attempting to add a CA certificate without 
+					    the basicConstraints extension to the TOE’s trust store (i.e. when attempting to install
+					    the CA certificate as one which will be retrieved from the TOE itself when validating
+					    future certificate chains)</test>
+                                    <test>The evaluator shall ensure that at least one of the CA certificates in the chain has a
+					    basicConstraints extension in which the CA flag is set to FALSE. The evaluator confirms 
+					    that the TOE rejects such a certificate at one (or both) of the following points: (i) as
+					    part of the validation of the leaf certificate belonging to this chain; (ii) when
+					    attempting to add a CA certificate with the CA flag set to FALSE to the TOE’s trust
+					    store (i.e. when attempting to install the CA certificate as one which will be retrieved 
+					    from the TOE itself when validating future certificate chains).</test>
                                 </testlist>
                             </Tests>
                         </aactivity>
@@ -3434,7 +3585,7 @@
 		    <selection-depends req="fel-itc" ids="itc-tls" />
 		    <selection-depends req="fel-itc" ids="itc-https" />	
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall use X.509v3 certificates as defined by RFC 5280 to support authentication for
+                        <title>The TSF shall use X.509v3 certificates as defined by RFC 5280 to support authentication for
                             <selectables>
                                 <selectable>IPsec</selectable>
                                 <selectable>TLS</selectable>
@@ -3448,12 +3599,12 @@
                                 <selectable>no additional uses</selectable>
                             </selectables>
                         </title>
-                        <note role="application">This SFR must be included in the <abbr linkend="ST"/> if the selection for FPT_TUD_EXT.1.3
+                        <note role="application">This SFR must be included in the ST if the selection for FPT_TUD_EXT.1.3
 				is “digital signature mechanism,” or if the selection for FTP_ITC_EXT.1 includes “IPsec,” “TLS,” or 
 				“TLS/HTTPS,” or if FIA_UAU requires authentication using X.509 certificates.</note>
                     </f-element>
                     <f-element>
-                        <title>When the <abbr linkend="TSF"/> cannot establish a connection to determine the validity of a certificate, the <abbr linkend="TSF"/> shall
+                        <title>When the TSF cannot establish a connection to determine the validity of a certificate, the TSF shall
                             <selectables>
                                 <selectable>allow the administrator to choose whether to accept the certificate in these cases</selectable>
                                 <selectable>accept the certificate</selectable>
@@ -3463,21 +3614,32 @@
                         <note role="application">Often a connection must be established to check the revocation status of a certificate - either to download a CRL or to perform a lookup using OCSP. The selection is used to describe the behavior in the event that such a connection cannot be established (for example, due to a network error). If the <abbr linkend="TOE"/> has determined the certificate valid according to all other rules in FIA_X509_EXT.1, the behavior indicated in the selection shall determine the validity. The <abbr linkend="TOE"/> must not accept the certificate if it fails any of the other validation rules in FIA_X509_EXT.1. If the administrator-configured option is selected by the <abbr linkend="ST"/> Author, the <abbr linkend="ST"/> Author must ensure that this is also defined as a management function that is provided by the <abbr linkend="TOE"/>.</note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall check the <abbr linkend="TSS"/> to ensure that it describes how the 
-                                <abbr linkend="TOE"/> chooses which certificates to use, and any necessary instructions in the
-                                administrative guidance for configuring the operating environment so that the <abbr linkend="TOE"/> 
+                                The evaluator shall check the TSS to ensure that it describes how the 
+                                TOE chooses which certificates to use, and any necessary instructions in the
+                                administrative guidance for configuring the operating environment so that the TOE 
                                 can use the certificates.<h:br></h:br><h:br></h:br>
-                                The evaluator shall examine the <abbr linkend="TSS"/> to confirm that it describes the behavior of the
-                                <abbr linkend="TOE"/> when a connection cannot be established during the validity check of a
+                                The evaluator shall examine the TSS to confirm that it describes the behavior of the
+                                TOE when a connection cannot be established during the validity check of a
                                 certificate used in establishing a trusted channel. If the requirement that the administrator is able
                                 to specify the default action, then the evaluator shall ensure that the operational guidance contains
                                 instructions on how this configuration action is performed.
                             </TSS>
                             <Tests>
-                                The evaluator shall perform Test 1 for each function listed in FIA_X509_EXT.2.1 that requires the use of certificates:<h:br></h:br><h:br></h:br>
+                                The evaluator shall perform Test 1 for each function listed in FIA_X509_EXT.2.1 that requires the
+				    use of certificates:<h:br></h:br><h:br></h:br>
                                 <testlist>
-                                    <test>The evaluator shall demonstrate that using a certificate without a valid certification path results in the function failing. Using the administrative guidance, the evaluator shall then load a certificate or certificates needed to validate the certificate to be used in the function, and demonstrate that the function succeeds. The evaluator then shall delete one of the certificates, and show that the function fails.</test>
-                                    <test>The evaluator shall demonstrate that using a valid certificate that requires certificate validation checking to be performed in at least some part by communicating with a non-<abbr linkend="TOE"/> IT entity. The evaluator shall then manipulate the environment so that the <abbr linkend="TOE"/> is unable to verify the validity of the certificate, and observe that the action selected in FIA_X509_EXT.2.2 is performed. If the selected action is administrator-configurable, then the evaluator shall follow the operational guidance to determine that all supported administrator-configurable options behave in their documented manner.</test>
+                                    <test>The evaluator shall demonstrate that using a certificate without a valid certification path
+					    results in the function failing. Using the administrative guidance, the evaluator shall 
+					    then load a certificate or certificates needed to validate the certificate to be used in
+					    the function, and demonstrate that the function succeeds. The evaluator then shall delete
+					    one of the certificates, and show that the function fails.</test>
+                                    <test>The evaluator shall demonstrate that using a valid certificate that requires certificate 
+					    validation checking to be performed in at least some part by communicating with a non-TOE
+					    IT entity. The evaluator shall then manipulate the environment so that the TOE is unable
+					    to verify the validity of the certificate, and observe that the action selected in
+					    FIA_X509_EXT.2.2 is performed. If the selected action is administrator-configurable, then
+					    the evaluator shall follow the operational guidance to determine that all supported
+					    administrator-configurable options behave in their documented manner.</test>
                                 </testlist>
                             </Tests>
                         </aactivity>
@@ -3491,7 +3653,7 @@
                 <!-- FMT_MSA_EXT.1 -->
                 <f-component id="fmt_msa_ext.1" name="Default Data Sharing Configuration">
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall by default enforce a policy prohibiting sharing of data between Guest <abbr linkend="VM"/>s using
+                        <title>The TSF shall by default enforce a policy prohibiting sharing of data between Guest VMs using
                             <selectables linebreak="yes">
                                 <selectable>no mechanism</selectable>
                                 <selectable>virtual networking</selectable>
@@ -3500,10 +3662,17 @@
                         </title>
                     </f-element>
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall allow Administrators to specify alternative initial configuration values to override the default values when a Guest <abbr linkend="VM"/> is created.
+                        <title>The TSF shall allow Administrators to specify alternative initial configuration values to override the 
+				default values when a Guest VM is created.
                         </title>
-                        <note role="application">By default, the <abbr linkend="VMM"/> must enforce a policy prohibiting sharing of data between <abbr linkend="VM"/>s. The default policy applies to all mechanisms for sharing data between <abbr linkend="VM"/>s, including inter-VM communication channels, shared physical devices, shared virtual devices, and virtual networks. The default policy does not apply to covert channels and architectural side-channels.<h:br></h:br><h:br></h:br>
-                            The <abbr linkend="ST"/> author should select “no mechanism” in the unlikely event that the VS implements no mechanisms for transferring data between Guest <abbr linkend="VM"/>s. Otherwise, the <abbr linkend="ST"/> author should select “virtual networking” and all other mechanisms through which data can be transferred between Guest <abbr linkend="VM"/>s. This should be the same list of mechanisms supplied in FDP_VMS_EXT.1.<h:br></h:br><h:br></h:br>
+                        <note role="application">By default, the VMM must enforce a policy prohibiting sharing of data between 
+				VMs. The default policy applies to all mechanisms for sharing data between VMs, including inter-VM 
+				communication channels, shared physical devices, shared virtual devices, and virtual networks. The 
+				default policy does not apply to covert channels and architectural side-channels.<h:br></h:br><h:br></h:br>
+                            The ST author should select “no mechanism” in the unlikely event that the VS implements no mechanisms for
+				transferring data between Guest VMs. Otherwise, the ST author should select “virtual networking” and
+				all other mechanisms through which data can be transferred between Guest VMs. This should be the same 
+				list of mechanisms supplied in FDP_VMS_EXT.1.<h:br></h:br><h:br></h:br>
                             Examples of non-network inter-VM sharing mechanisms are:<h:br></h:br>
                             <h:ul>
                                 <h:li>User interface-based mechanisms, such as copy-paste and drag-and-drop</h:li>
@@ -3522,7 +3691,7 @@
                 <!-- FMT_SMO_EXT.1 -->
                 <f-component id="fmt_smo_ext.1" name="Separation of Management and Operational Networks">
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall support the configuration of separate management and operational networks through
+                        <title>The TSF shall support the configuration of separate management and operational networks through
                             <selectables>
                                 <selectable>physical means</selectable>
                                 <selectable>logical means</selectable>
@@ -3533,14 +3702,21 @@
                     <f-element>
                         <title>
                         </title>
-                        <note role="application">Management communications must be separate from user workloads. Administrative communications—including communications between physical hosts concerning load balancing, audit data, <abbr linkend="VM"/> startup and shutdown—must be separate from guest operational networks.<h:br></h:br><h:br></h:br>
-                            “Physical means” refers to using separate physical networks for management and operational networks. For example, the machines in the management network are connected by separate cables plugged into separate and dedicated physical ports on each physical host.<h:br></h:br><h:br></h:br>
-                            “Logical means” refers to using separate network cables to connect physical hosts together using general-purpose networking ports. The management and operational networks are kept separate within the hosts using separate virtualized networking components.<h:br></h:br><h:br></h:br>
-                            If the <abbr linkend="ST"/> author selects “trusted channel”, then the protocols used for network separation must be selected in FTP_ITC_EXT.1.
+                        <note role="application">Management communications must be separate from user workloads. Administrative 
+				communications—including communications between physical hosts concerning load balancing, audit data,
+				VM startup and shutdown—must be separate from guest operational networks.<h:br></h:br><h:br></h:br>
+                            “Physical means” refers to using separate physical networks for management and operational networks. For
+				example, the machines in the management network are connected by separate cables plugged into separate
+				and dedicated physical ports on each physical host.<h:br></h:br><h:br></h:br>
+                            “Logical means” refers to using separate network cables to connect physical hosts together using
+				general-purpose networking ports. The management and operational networks are kept separate within the
+				hosts using separate virtualized networking components.<h:br></h:br><h:br></h:br>
+                            If the ST author selects “trusted channel”, then the protocols used for network separation must be 
+				selected in FTP_ITC_EXT.1.
                         </note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall examine the <abbr linkend="TSS"/> to verify that it describes how management and
+                                The evaluator shall examine the TSS to verify that it describes how management and
                                 operational networks may be separated.
                             </TSS>
                             <Guidance>
@@ -3563,11 +3739,16 @@
                 <!-- FPT_DVD_EXT.1 -->
                 <f-component id="fpt_dvd_ext.1" name="Non-Existence of Disconnected Virtual Devices">
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall limit a Guest <abbr linkend="VM"/>’s access to virtual devices to those that are present in the <abbr linkend="VM"/>’s current virtual hardware configuration.
+                        <title>The TSF shall limit a Guest VM’s access to virtual devices to those that are present in the VM’s current
+				virtual hardware configuration.
                         </title>
-                        <note role="application">The virtualized hardware abstraction implemented by a particular VS might include the virtualized interfaces for many different devices. Sometimes these devices are not present in a particular instantiation of a <abbr linkend="VM"/>. The interface for devices not present must not accessible by the <abbr linkend="VM"/>.<h:br></h:br><h:br></h:br>
+                        <note role="application">The virtualized hardware abstraction implemented by a particular VS might include the
+				virtualized interfaces for many different devices. Sometimes these devices are not present in a
+				particular instantiation of a VM. The interface for devices not present must not accessible by the
+				VM.<h:br></h:br><h:br></h:br>
                             Such interfaces include memory buffers and processor I/O ports.<h:br></h:br><h:br></h:br>
-                            The purpose of this requirement is to reduce the attack surface of the <abbr linkend="VMM"/> by closing unused interfaces.</note>
+                            The purpose of this requirement is to reduce the attack surface of the VMM by closing unused interfaces.
+			    </note>
                         <aactivity>
                             <Tests>
                                 The evaluator shall connect a device to a VM, then using a device driver running in the guest, scan
@@ -3583,7 +3764,8 @@
                 <!-- FPT_EEM_EXT.1 -->
                 <f-component id="fpt_eem_ext.1" name="Execution Environment Mitigations">
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall take advantage of execution environment-based vulnerability mitigation mechanisms supported by the Platform such as:
+                        <title>The TSF shall take advantage of execution environment-based vulnerability mitigation mechanisms 
+				supported by the Platform such as:
                             <selectables linebreak="yes">
                                 <selectable>Address space randomization</selectable>
                                 <selectable>Memory execution protection (e.g., DEP)</selectable>
@@ -3593,14 +3775,21 @@
                                 <selectable>No mechanisms</selectable>
                             </selectables>
                         </title>
-                        <note role="application">Processor manufacturers, compiler developers, and operating system vendors have developed execution environment-based mitigations that increase the cost to attackers by adding complexity to the task of compromising systems. Software can often take advantage of these mechanisms by using APIs provided by the operating system or by enabling the mechanism through compiler or linker options.<h:br></h:br><h:br></h:br>
-                            This requirement does not mandate that these protections be enabled throughout the Virtualization System—only that they be enabled where they have likely impact. For example, code that receives and processes user input should take advantage of these mechanisms.<h:br></h:br><h:br></h:br>
-                            For the selection, the <abbr linkend="ST"/> author selects the supported mechanism(s) and uses the assignment to include mechanisms not listed in the selection, if any.</note>
+                        <note role="application">Processor manufacturers, compiler developers, and operating system vendors have 
+				developed execution environment-based mitigations that increase the cost to attackers by adding
+				complexity to the task of compromising systems. Software can often take advantage of these mechanisms
+				by using APIs provided by the operating system or by enabling the mechanism through compiler or linker
+				options.<h:br></h:br><h:br></h:br>
+                            This requirement does not mandate that these protections be enabled throughout the Virtualization 
+				System—only that they be enabled where they have likely impact. For example, code that receives and 
+				processes user input should take advantage of these mechanisms.<h:br></h:br><h:br></h:br>
+                            For the selection, the ST author selects the supported mechanism(s) and uses the assignment to include 
+				mechanisms not listed in the selection, if any.</note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it states, for each platform
-                                listed in the <abbr linkend="ST"/>, the execution environment-based vulnerability mitigation
-                                mechanisms used by the <abbr linkend="TOE"/> on that platform. The evaluator shall ensure that the
+                                The evaluator shall examine the TSS to ensure that it states, for each platform
+                                listed in the ST, the execution environment-based vulnerability mitigation
+                                mechanisms used by the TOE on that platform. The evaluator shall ensure that the
                                 lists correspond to what is specified in FPT_EEM_EXT.1.1.
                             </TSS>
                         </aactivity>
@@ -3611,21 +3800,33 @@
                 <!-- FPT_HAS_EXT.1 -->
                 <f-component id="fpt_has_ext.1" name="Hardware Assists">
                     <f-element>
-                        <title>The <abbr linkend="VMM"/> shall use <assignable>list of hardware-based virtualization assists</assignable> to reduce or eliminate the need for binary translation.
+                        <title>The VMM shall use <assignable>list of hardware-based virtualization assists</assignable> to reduce or 
+				eliminate the need for binary translation.
                         </title>
                     </f-element>
                     <f-element>
-                        <title>The <abbr linkend="VMM"/> shall use <assignable>list of hardware-based virtualization memory-handling assists</assignable> to reduce or eliminate the need for shadow page tables.
+                        <title>The VMM shall use <assignable>list of hardware-based virtualization memory-handling assists</assignable> to reduce or eliminate the need for shadow page tables.
                         </title>
-                        <note role="application">These hardware-assists help reduce the size and complexity of the <abbr linkend="VMM"/>, and thus, of the trusted computing base, by eliminating or reducing the need for paravirtualization or binary translation. Paravirtualization involves modifying guest software so that instructions that cannot be properly virtualized are never executed on the physical processor.<h:br></h:br><h:br></h:br>
-                            For the assignment in FPT_HAS_EXT.1, the <abbr linkend="ST"/> author lists the hardware-based virtualization assists on all platforms included in the <abbr linkend="ST"/> that are used by the <abbr linkend="VMM"/> to reduce or eliminate the need for software-based binary translation. Examples for the x86 platform are Intel VT-x and AMD-V. “None” is an acceptable assignment for platforms that do not require virtualization assists in order to eliminate the need for binary translation. This must be documented in the <abbr linkend="TSS"/>.<h:br></h:br><h:br></h:br>
-                            For the assignment in FPT_HAS_EXT.1.2, the <abbr linkend="ST"/> author lists the set of hardware-based virtualization memory-handling extensions for all platforms listed in the <abbr linkend="ST"/> that are used by the <abbr linkend="VMM"/> to reduce or eliminate the need for shadow page tables. Examples for the x86 platform are Intel EPT and AMD RVI. “None” is an acceptable assignment for platforms that do not require memory-handling assists in order to eliminate the need for shadow page tables. This must be documented in the <abbr linkend="TSS"/>.
+                        <note role="application">These hardware-assists help reduce the size and complexity of the VMM, and thus, of
+				the trusted computing base, by eliminating or reducing the need for paravirtualization or binary
+				translation. Paravirtualization involves modifying guest software so that instructions that cannot be
+				properly virtualized are never executed on the physical processor.<h:br></h:br><h:br></h:br>
+                            For the assignment in FPT_HAS_EXT.1, the ST author lists the hardware-based virtualization assists on all 
+				platforms included in the ST that are used by the VMM to reduce or eliminate the need for
+				software-based binary translation. Examples for the x86 platform are Intel VT-x and AMD-V. “None” is
+				an acceptable assignment for platforms that do not require virtualization assists in order to
+				eliminate the need for binary translation. This must be documented in the TSS.<h:br></h:br><h:br></h:br>
+                            For the assignment in FPT_HAS_EXT.1.2, the ST author lists the set of hardware-based virtualization
+				memory-handling extensions for all platforms listed in the ST that are used by the VMM to reduce or 
+				eliminate the need for shadow page tables. Examples for the x86 platform are Intel EPT and AMD RVI.
+				“None” is an acceptable assignment for platforms that do not require memory-handling assists in order 
+				to eliminate the need for shadow page tables. This must be documented in the TSS.
                         </note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall examine the <abbr linkend="TSS"/> to ensure that it states, for each platform
-                                listed in the <abbr linkend="ST"/>, the hardware assists and memory-handling extensions used by the
-                                <abbr linkend="TOE"/> on that platform. The evaluator shall ensure that these lists correspond to what 
+                                The evaluator shall examine the TSS to ensure that it states, for each platform
+                                listed in the ST, the hardware assists and memory-handling extensions used by the
+                                TOE on that platform. The evaluator shall ensure that these lists correspond to what 
                                 is specified in the applicable FPT_HAS_EXT component.
                             </TSS>
                         </aactivity>
