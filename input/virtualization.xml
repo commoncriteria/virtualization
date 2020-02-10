@@ -525,14 +525,14 @@
         
         <section id="assumptions" title="Assumptions">
             <assumptions>
-                <assumption id="A.PLATFORM_INTEGRITY">
+                <assumption name="A.PLATFORM_INTEGRITY">
                     <description>The platform has not been compromised prior to installation of the Virtualization System.</description>
                     <objective-refer ref="OE.PLATFORM_INTEGRITY">
                         <rationale>If the underlying platform has not been compromised prior to installation of the TOE, its integrity
 				can be assumed to be intact.</rationale>
                     </objective-refer>
                 </assumption>
-                <assumption id="A.PHYSICAL">
+                <assumption name="A.PHYSICAL">
                     <description>Physical security commensurate with the value of the TOE and the data it contains is assumed to 
 			    be provided by the environment.</description>
                     <objective-refer ref="OE.PHYSICAL">
@@ -540,14 +540,14 @@
 				to be physically secure.</rationale>
                     </objective-refer>
                 </assumption>
-                <assumption id="A.TRUSTED_ADMIN">
+                <assumption name="A.TRUSTED_ADMIN">
                     <description>TOE Administrators are trusted to follow and apply all administrator guidance.</description>
                     <objective-refer ref="OE.TRUSTED_ADMIN">
                         <rationale>Providing guidance to administrators and ensuring that individuals are properly trained and
 				vetted before being given administrative responsibilities will ensure that they are trusted.</rationale>
                     </objective-refer>
                 </assumption>
-                <assumption id="A.COVERT_CHANNELS">
+                <assumption name="A.COVERT_CHANNELS">
                     <description>If the TOE has covert storage or timing channels, then for all VMs executing on that TOE, it is
 			    assumed that relative to the IT assets to which they have access, those VMs will have assurance sufficient 
 			    to outweigh the risk that they will violate the security policy of the TOE by using those covert channels.</description>
@@ -557,7 +557,7 @@
 				timing channels.</rationale>
                     </objective-refer>
                 </assumption>
-                <assumption id="A.NON_MALICIOUS_USER">
+                <assumption name="A.NON_MALICIOUS_USER">
                     <description>The user of the VS is not willfully negligent or hostile, and uses the VS in compliance with the
 			    applied enterprise security policy and guidance. At the same time, malicious applications could act as
 			    the user, so requirements which confine malicious applications are still in scope.</description>
@@ -577,7 +577,7 @@
     <chapter id="obj" title="Security Objectives">
         <section id="secobjtoe" title="Security Objectives for the TOE">
             <SOs>
-                <SO id="O.VM_ISOLATION">
+                <SO name="O.VM_ISOLATION">
                     <description>VMs are the fundamental subject of the system. The VMM is 
                         responsible for applying the system security policy (SSP) to the VM and 
                         all resources. As basic functionality, the VMM must support a security policy that mandates 
@@ -614,7 +614,7 @@
 		      FPT_HAS_EXT.1, FPT_HCL_EXT.1, FPT_VDP_EXT.1, FPT_VIV_EXT.1
 		    </addressed-by>
                 </SO>
-                <SO id="O.VMM_INTEGRITY">
+                <SO name="O.VMM_INTEGRITY">
                     <description>Integrity is a core security objective for Virtualization Systems. To achieve system integrity, the 
                         integrity of each VMM component must be established and maintained. This objective concerns 
                         only the integrity of the Virtualization System—not the integrity of software running inside of Guest 
@@ -634,7 +634,7 @@
 		      FPT_VIV_EXT.1
 		    </addressed-by>
                 </SO>
-                <SO id="O.PLATFORM_INTEGRITY">
+                <SO name="O.PLATFORM_INTEGRITY">
                     <description>The integrity of the VMM depends on the integrity of the hardware and software on 
                         which the VMM relies. Although the VS does not have complete control over the integrity of 
                         the platform, the VS should as much as possible try to ensure that no users or software hosted by the VS is 
@@ -647,7 +647,7 @@
 		      FPT_VDP_EXT.1, FPT_VIV_EXT.1
 		    </addressed-by>
                 </SO>
-                <SO id="O.DOMAIN_INTEGRITY">
+                <SO name="O.DOMAIN_INTEGRITY">
                     <description>While the VS is not responsible for the contents or correct functioning of software that runs within 
                         Guest VMs, it is responsible for ensuring that the correct functioning of the software 
                         within a Guest VM is not interfered with by other VMs.
@@ -659,7 +659,7 @@
                     FTP_UIF_EXT.2
 		    </addressed-by>
                 </SO>
-                <SO id="O.MANAGEMENT_ACCESS">
+                <SO name="O.MANAGEMENT_ACCESS">
                   
                     <description>VMM management functions include VM> configuration, virtualized 
                         network configuration, allocation of physical resources, and reporting. Only certain authorized system users 
@@ -705,7 +705,7 @@
 			FIA_AFL_EXT.1, FIA_UAU.5, FIA_UIA_EXT.1, FMT_SMO_EXT.1, FTP_ITC_EXT.1
 		      </addressed-by>
                 </SO>
-                <SO id="O.PATCHED_SOFTWARE">
+                <SO name="O.PATCHED_SOFTWARE">
                     <description>The Virtualization System must be updated and patched when needed in order to prevent the potential 
                         compromise of the VMM, as well as the networks and VMs that it hosts. 
                         Identifying and applying needed updates must be a normal part of the operating procedure to ensure that 
@@ -717,7 +717,7 @@
 			FPT_TUD_EXT.1
 		      </addressed-by>
                 </SO>
-                <SO id="O.VM_ENTROPY">
+                <SO name="O.VM_ENTROPY">
                     <description>VMs must have access to good entropy sources to support security-related features 
                         that implement cryptographic algorithms. For example, in order to function as members of operational 
                         networks, VMs must be able to communicate securely with other network entities—whether 
@@ -728,7 +728,7 @@
 			FCS_ENT_EXT.1,FCS_RBG_EXT.1
 		      </addressed-by>
                 </SO>
-                <SO id="O.AUDIT">
+                <SO name="O.AUDIT">
                     <description>The purpose of audit is to capture and protect data about what happens on a system so that it can 
                         later be examined to determine what has happened in the past.
                     </description>
@@ -736,7 +736,7 @@
                       FAU_GEN.1, FAU_SAR.1, FAU_STG.1, FAU_STG_EXT.1,
 		    </addressed-by>
                 </SO>
-                <SO id="O.CORRECTLY_APPLIED_CONFIGURATION">
+                <SO name="O.CORRECTLY_APPLIED_CONFIGURATION">
                     <description>The TOE must not apply configurations that violate the current security policy.
                         <h:br></h:br><h:br></h:br> The TOE must correctly apply configurations and policies 
                         to newly created Guest VM, as well as to existing Guest VMs when 
@@ -748,7 +748,7 @@
                       FMT_MSA_EXT.1
 		    </addressed-by>
                 </SO>
-                <SO id="O.RESOURCE_ALLOCATION">
+                <SO name="O.RESOURCE_ALLOCATION">
                     <description>The TOE will provide mechanisms that enforce constraints on the allocation of 
                         system resources in accordance with existing security policy.
                     </description>
@@ -760,27 +760,27 @@
         </section>
         <section id="secobjoe" title="Security Objectives for the Operational Environment">
             <SOEs>
-                <SOE id="OE.CONFIG">
+                <SOE name="OE.CONFIG">
                     <description>TOE administrators will configure the Virtualization System correctly to create the intended security
 			    policy.
                     </description>
                 </SOE>
-                <SOE id="OE.PHYSICAL">
+                <SOE name="OE.PHYSICAL">
                     <description>Physical security, commensurate with the value of the TOE and the data it contains, is provided by 
 			    the environment.
                     </description>
                 </SOE>
-                <SOE id="OE.TRUSTED_ADMIN">
+                <SOE name="OE.TRUSTED_ADMIN">
                     <description>TOE Administrators are trusted to follow and apply all administrator guidance in a trusted manner.
                     </description>
                 </SOE>
-                <SOE id="OE.COVERT_CHANNELS">
+                <SOE name="OE.COVERT_CHANNELS">
                     <description>If the TOE has covert storage or timing channels, then for all VMs executing on that TOE, it is
 			    assumed that those VMs will have sufficient assurance relative to the IT assets to which they have access,
 			    to outweigh the risk that they will violate the security policy of the TOE by using those covert channels.
                     </description>
                 </SOE>
-                <SOE id="OE.NON_MALICIOUS_USER">
+                <SOE name="OE.NON_MALICIOUS_USER">
                     <description>Users are trusted to be not willfully negligent or hostile and use the VS in compliance with the
 			    applied enterprise security policy and guidance.
                     </description>
