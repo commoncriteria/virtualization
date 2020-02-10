@@ -2009,7 +2009,7 @@
                                The evaluator shall perform the following tests:
                                <testlist>
                                  <test>
-                                     The evaluator shall invoke entropy from each Guest <VM. The evaluator shall 
+                                     The evaluator shall invoke entropy from each Guest VM. The evaluator shall 
                                      verify that each VM acquires values from the interface.
                                  </test>
                                  <test>The evaluator shall invoke entropy from multiple VMs as nearly 
@@ -2205,7 +2205,15 @@
 					    audit trail, and packet captures that the TOE exhibited the expected
 					    behavior: appropriate packets were dropped, allowed to flow without modification, 
 					    encrypted by the IPsec implementation.</test>
-                                    <test>The evaluator shall devise several tests that cover a variety of scenarios for packet processing. As with Test 1, the evaluator ensures both positive and negative test cases are constructed. These scenarios shall exercise the range of possibilities for SPD entries and processing modes as outlined in the <abbr linkend="TSS"/> and operational guidance. Potential areas to cover include rules with overlapping ranges and conflicting entries, inbound and outbound packets, and packets that establish SAs as well as packets that belong to established SAs. The evaluator shall verify, via the audit trail and packet captures, for each scenario that the expected behavior is exhibited, and is consistent with both the <abbr linkend="TSS"/> and the operational guidance.</test>
+                                    <test>The evaluator shall devise several tests that cover a variety of scenarios for packet
+					    processing. As with Test 1, the evaluator ensures both positive and negative test cases
+					    are constructed. These scenarios shall exercise the range of possibilities for SPD entries 
+					    and processing modes as outlined in the TSS and operational guidance. Potential areas to
+					    cover include rules with overlapping ranges and conflicting entries, inbound and outbound
+					    packets, and packets that establish SAs as well as packets that belong to established SAs.
+					    The evaluator shall verify, via the audit trail and packet captures, for each scenario 
+					    that the expected behavior is exhibited, and is consistent with both the TSS and the
+					    operational guidance.</test>
                                 </testlist>
                             </Tests>
                         </aactivity>
@@ -2866,7 +2874,7 @@
                         </title>
                     </f-element>
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall explicitly deny all Guest <abbr linkend="VM"/>s access to the following physical platform resources:
+                        <title>The TSF shall explicitly deny all Guest VMs access to the following physical platform resources:
                             <selectables>
                                 <selectable>no physical platform resources</selectable>
                                 <selectable><assignable>list of physical platform resources to which access is explicitly denied</assignable></selectable>
@@ -2874,33 +2882,39 @@
                         </title>
                     </f-element>
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall explicitly allow all Guest <abbr linkend="VM"/>s access to the following physical platform resources:
+                        <title>The TSF shall explicitly allow all Guest VMs access to the following physical platform resources:
                             <selectables>
                                 <selectable>no physical platform resources</selectable>
                                 <selectable><assignable>list of physical platform resources to which access is always allowed</assignable></selectable>
                             </selectables>.
                         </title>
                         <note role="application">
-                            This requirement specifies that the <abbr linkend="VMM"/> controls access to physical platform resources, and indicates that it must be configurable, but does not specify the means by which that is done. The <abbr linkend="ST"/> author should list the physical platform resources that can be configured for Guest <abbr linkend="VM"/> access by the administrator. Guest <abbr linkend="VM"/>s may not be allowed direct access to certain physical resources; those resources are listed in the second element. If there are no such resources, the <abbr linkend="ST"/> author selects "no physical platform resources". Likewise, any resources to which all Guest <abbr linkend="VM"/>s automatically have access to are listed in the third element; if there are no such resources, then "no physical platform resources" is selected.
+                            This requirement specifies that the VMM controls access to physical platform resources, and indicates that 
+				it must be configurable, but does not specify the means by which that is done. The ST author should
+				list the physical platform resources that can be configured for Guest VM access by the administrator.
+				Guest VMs may not be allowed direct access to certain physical resources; those resources are listed
+				in the second element. If there are no such resources, the ST author selects "no physical platform 
+				resources". Likewise, any resources to which all Guest VMs automatically have access to are listed in 
+				the third element; if there are no such resources, then "no physical platform resources" is selected.
                         </note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall examine the <abbr linkend="TSS"/> to determine that it describes the 
-                                mechanism by which the <abbr linkend="VMM"/> controls a Guest <abbr linkend="VM"/>'s access to
+                                The evaluator shall examine the TSS to determine that it describes the 
+                                mechanism by which the VMM controls a Guest VM's access to
                                 physical platform resources is described. This description shall cover all of the physical
-                                platforms allowed in the evaluated configuration by the <abbr linkend="ST"/>. This description 
-                                shall include how the <abbr linkend="VMM"/> distinguishes among Guest <abbr linkend="VM"/>s, and 
+                                platforms allowed in the evaluated configuration by the ST. This description 
+                                shall include how the VMM distinguishes among Guest VMs, and 
                                 how each physical platform resource that is controllable (that is, listed in the assignment
                                 statement in the first element) is identified. The evaluator shall ensure that the 
-                                <abbr linkend="TSS"/> describes how the Guest <abbr linkend="VM"/> is associated with each 
-                                physical resources, and how other Guest <abbr linkend="VM"/>s cannot access a physical resource
-                                without being granted explicit access. For <abbr linkend="TOE"/>s that implement a robust 
+                                TSS describes how the Guest VM is associated with each 
+                                physical resources, and how other Guest VMs cannot access a physical resource
+                                without being granted explicit access. For TOEs that implement a robust 
                                 interface (other than just "allow access" or "deny access"), the evaluator shall ensure that the
-                                <abbr linkend="TSS"/> describes the possible operations or modes of access between a Guest 
-                                <abbr linkend="VM"/>s and physical platform resources.<h:br></h:br><h:br></h:br>
+                                TSS describes the possible operations or modes of access between a Guest 
+                                VMs and physical platform resources.<h:br></h:br><h:br></h:br>
                                 If physical resources are listed in the second element, the evaluator shall examine the 
-                                <abbr linkend="TSS"/> and operational guidance to determine that there appears to be no way to
-                                configure those resources for access by a Guest <abbr linkend="VM"/>. The evaluator shall
+                                TSS and operational guidance to determine that there appears to be no way to
+                                configure those resources for access by a Guest VM. The evaluator shall
                                 document in the evaluation report their analysis of why the controls offered to configure access
                                 to physical resources can't be used to specify access to the resources identified in the second 
                                 element (for example, if the interface offers a drop-down list of resources to assign, and the
@@ -2910,26 +2924,40 @@
                             <Guidance>
                                 The evaluator shall examine the operational guidance to determine that it describes how an 
                                 administrator is able to configure access to physical platform resources for Guest 
-                                <abbr linkend="VM"/>s for each platform allowed in the evaluated configuration according to the 
-                                <abbr linkend="ST"/>. The evaluator shall also determine that the operational guidance identifies
+                                VMs for each platform allowed in the evaluated configuration according to the 
+                                ST. The evaluator shall also determine that the operational guidance identifies
                                 those resources listed in the second and third elements of the component and notes that access to 
                                 these resources is explicitly denied/allowed, respectively.
                             </Guidance>
                             <Tests>
                                 Using the operational guidance, the evaluator shall perform the following tests for each physical platform identified in the <abbr linkend="ST"/>:<h:br></h:br><h:br></h:br>
                                <testlist>
-                                    <test>For each physical platform resource identified in the first element, the evaluator shall configure a Guest <abbr linkend="VM"/> to have access to that resource and show that the Guest <abbr linkend="VM"/> is able to successfully access that resource.</test>
-                                    <test>For each physical platform resource identified in the first element, the evaluator shall configure the system such that a Guest <abbr linkend="VM"/> does not have access to that resource and show that the Guest <abbr linkend="VM"/> is unable to successfully access that resource.</test>
-                                    <test>[conditional]: For <abbr linkend="TOE"/>s that have a robust control interface, the evaluator shall exercise each element of the interface as described in the <abbr linkend="TSS"/> and the operational guidance to ensure that the behavior described in the operational guidance is exhibited.</test>
-                                    <test>[conditional]: If the <abbr linkend="TOE"/> explicitly denies access to certain physical resources, the evaluator shall attempt to access each listed (in FDP_PPR_EXT.1.2) physical resource from a Guest <abbr linkend="VM"/> and observe that access is denied.</test>
-                                    <test>[conditional]: If the <abbr linkend="TOE"/> explicitly allows access to certain physical resources, the evaluator shall attempt to access each listed (in FDP_PPR_EXT.1.3) physical resource from a Guest <abbr linkend="VM"/> and observe that the access is allowed. If the operational guidance specifies that access is allowed simultaneously by more than one Guest <abbr linkend="VM"/>, the evaluator shall attempt to access each resource listed from more than one Guest <abbr linkend="VM"/> and show that access is allowed.</test>
+                                    <test>For each physical platform resource identified in the first element, the evaluator shall
+					    configure a Guest VM to have access to that resource and show that the Guest VM is able to
+					    successfully access that resource.</test>
+                                    <test>For each physical platform resource identified in the first element, the evaluator shall
+					    configure the system such that a Guest VM does not have access to that resource and show
+					    that the Guest VM is unable to successfully access that resource.</test>
+                                    <test>[conditional]: For TOEs that have a robust control interface, the evaluator shall exercise 
+					    each element of the interface as described in the TSS and the operational guidance to
+					    ensure that the behavior described in the operational guidance is exhibited.</test>
+                                    <test>[conditional]: If the TOE explicitly denies access to certain physical resources, the
+					    evaluator shall attempt to access each listed (in FDP_PPR_EXT.1.2) physical resource 
+					    from a Guest VM and observe that access is denied.</test>
+                                    <test>[conditional]: If the TOE explicitly allows access to certain physical resources, the 
+					    evaluator shall attempt to access each listed (in FDP_PPR_EXT.1.3) physical resource 
+					    from a Guest VM and observe that the access is allowed. If the operational guidance
+					    specifies that access is allowed simultaneously by more than one Guest VM, the evaluator
+					    shall attempt to access each resource listed from more than one Guest VM and show that
+					    access is allowed.</test>
                                 </testlist>
                             </Tests>
                         </aactivity>
                     </f-element>
 		    <audit-event>
 			<audit-event-descr>
-				Successful and failed VM connections to physical devices where connection is governed by configurable policy.
+				Successful and failed VM connections to physical devices where connection is governed by configurable
+				policy.
 			</audit-event-descr>
 			<audit-event-info>VM and physical device identifiers.</audit-event-info>
 		    </audit-event>
