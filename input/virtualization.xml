@@ -1422,8 +1422,15 @@
                             <Tests>
                                 For each key clearing situation the evaluator shall perform one of the following activities:<h:br></h:br><h:br></h:br>
                                 <h:ul>
-                                    <h:li>The evaluator shall use appropriate combinations of specialized operational or development environments, development tools (debuggers, emulators, simulators, etc.), or instrumented builds (developmental, debug, or release) to demonstrate that keys are cleared correctly, including all intermediate copies of the key that may have been created internally by the <abbr linkend="TOE"/> during normal cryptographic processing.</h:li>
-                                    <h:li>In cases where testing reveals that 3rd-party software modules or programming language run-time environments do not properly overwrite keys, this fact must be documented. Likewise, it must be documented if there is no practical way to determine whether such modules or environments destroy keys properly.</h:li>
+                                    <h:li>The evaluator shall use appropriate combinations of specialized operational or development 
+					    environments, development tools (debuggers, emulators, simulators, etc.), or instrumented
+					    builds (developmental, debug, or release) to demonstrate that keys are cleared correctly,
+					    including all intermediate copies of the key that may have been created internally by the
+					    TOE during normal cryptographic processing.</h:li>
+                                    <h:li>In cases where testing reveals that 3rd-party software modules or programming language
+					    run-time environments do not properly overwrite keys, this fact must be documented. 
+					    Likewise, it must be documented if there is no practical way to determine whether such
+					    modules or environments destroy keys properly.</h:li>
                                     <h:li>In cases where it is impossible or impracticable to perform the above tests, the evaluator shall describe how keys are destroyed in such cases, to include:
                                         <h:ul>
                                             <h:li>Which keys are affected</h:li>
@@ -3544,7 +3551,7 @@
 					    the function fails.</test>
                                     <test>The evaluator shall demonstrate that validating an expired certificate results in the
 					    function failing.</test>
-                                    <test>The evaluator shall test that the <abbr linkend="TOE"/> can properly handle revoked 
+                                    <test>The evaluator shall test that the TOE can properly handle revoked 
 					    certificates –conditional on whether CRL or OCSP is selected; if both are selected, and 
 					    then a test is performed for each method. The evaluator has to only test one up in the
 					    trust chain (future revisions may require to ensure the validation is done up the entire
@@ -3837,40 +3844,55 @@
                 <!-- FPT_HCL_EXT.1 -->
                 <f-component id="fpt_hcl_ext.1" name="Hypercall Controls">
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall provide a Hypercall interface for Guest <abbr linkend="VM"/>s to use to invoke functionality provided by the <abbr linkend="VMM"/>.
+                        <title>The TSF shall provide a Hypercall interface for Guest <VMs to use to invoke functionality provided by 
+				the VMM.
                         </title>
                     </f-element>
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall allow administrators to configure any <abbr linkend="VM"/>’s Hypercall interface to disable access to individual functions, all functions, or groups of functions.
+                        <title>The TSF shall allow administrators to configure any VM’s Hypercall interface to 
+				disable access to individual functions, all functions, or groups of functions.
                         </title>
                     </f-element>
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall permit exceptions to the configuration of the following Hypercall interface functions: <assignable>list of functions that are not subject to the configuration controls in FPT_HCL_EXT.1.2</assignable>.
+                        <title>The TSF shall permit exceptions to the configuration of the following Hypercall interface functions:
+				<assignable>list of functions that are not subject to the configuration controls in FPT_HCL_EXT.1.2</assignable>.
                         </title>
                     </f-element>
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall validate the parameters passed to the hypercall interface prior to execution of the <abbr linkend="VMM"/> functionality exposed by that interface.
+                        <title>The TSF shall validate the parameters passed to the hypercall interface prior to execution of the VMM 
+				functionality exposed by that interface.
                         </title>
                         <note role="application">The purpose of this requirement is to help ensure the integrity of the
-                            <abbr linkend="VMM"/> by defining the attack surface exposed to Guest VMs through Hypercalls,
+                            VMM by defining the attack surface exposed to Guest VMs through Hypercalls,
                             testing the mechanisms for reducing that attack surface by disabling Hypercalls, and ensuring that
-                            Hypercall parameters are properly validated prior to use by the <abbr linkend="VMM"/>.<h:br></h:br><h:br></h:br>
-                            A Hypercall interface allows a set of <abbr linkend="VMM"/> functions to be invoked by software running within a <abbr linkend="VM"/>. Hypercall interfaces are used by virtualization-aware <abbr linkend="VM"/>s to communicate and exchange data with the <abbr linkend="VMM"/>. For example, a <abbr linkend="VM"/> could use a hypercall interface to get information about the real world, such as the time of day or the underlying hardware of the host system. A hypercall could also be used to transfer data between <abbr linkend="VM"/>s through a copy-paste mechanism. Because hypercall interfaces expose the <abbr linkend="VMM"/> to Guest <abbr linkend="VM"/>s, these interfaces constitute attack surface. In order to minimize attack surface, these interfaces must be limited to the minimum needed to support <abbr linkend="VM"/> functionality.<h:br></h:br><h:br></h:br>
-                            For the selection in FPT_HCL_EXT.1.2, the <abbr linkend="ST"/> author selects the applicable actions that administrators can perform to configure functions supported by the interface.<h:br></h:br><h:br></h:br>
-                            For the assignment in FPT_HCL_EXT.1.3, the <abbr linkend="ST"/> author lists the interface functions that cannot be configured per FPT_HCL_EXT.1.2.<h:br></h:br><h:br></h:br>
+                            Hypercall parameters are properly validated prior to use by the VMM.<h:br></h:br><h:br></h:br>
+                            A Hypercall interface allows a set of VMM functions to be invoked by software running within a VM. 
+				Hypercall interfaces are used by virtualization-aware VMs to communicate and
+				exchange data with the VMM. For example, a VM could use a hypercall interface to get information about
+				the real world, such as the time of day or the underlying hardware of the host system. A hypercall 
+				could also be used to transfer data between VMs through a copy-paste mechanism. Because hypercall 
+				interfaces expose the VMM to Guest VMs, these interfaces constitute attack surface. In order to
+				minimize attack surface, these interfaces must be limited to the minimum needed to support VM 
+				functionality.<h:br></h:br><h:br></h:br>
+                            For the selection in FPT_HCL_EXT.1.2, the ST author selects the applicable actions that administrators can 
+				perform to configure functions supported by the interface.<h:br></h:br><h:br></h:br>
+                            For the assignment in FPT_HCL_EXT.1.3, the ST author lists the interface functions that cannot be 
+				configured per FPT_HCL_EXT.1.2.<h:br></h:br><h:br></h:br>
                             A vendor-provided test harness may reduce evaluation time.<h:br></h:br><h:br></h:br>
                             There is no expectation that the evaluator will need to review source code in order to accomplish the
                             Assurance Activity.  The evaluator documentation review should ensure that there are documented
-                            Hypercall functions in the <abbr linkend="TSS"/>, that each documented Hypercall function contains the specified
+                            Hypercall functions in the TSS, that each documented Hypercall function contains the specified
                             information, and that there are not obvious or publicly known Hypercall functions missing.
                         </note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall examine the <abbr linkend="TSS"/> or operational guidance to ensure it
-                                documentations all Hypercall functions at the level necessary for the evaluator to disable the functions
-                                and run tests 1 and 2, below. Documentation must include, for each function, how to call the function, function
+                                The evaluator shall examine the TSS or operational guidance to ensure it
+                                documentations all Hypercall functions at the level necessary for the evaluator to disable the
+				    functions
+                                and run tests 1 and 2, below. Documentation must include, for each function, how to call the function, 
+				    function
                                 parameters and legal values, configuration settings for enabling/disabling the function, and conditions under
-                                which the function can be disabled. The <abbr linkend="TSS"/> must also specify those functions that cannot be
+                                which the function can be disabled. The TSS must also specify those functions that cannot be
                                 disabled.  While there is no expectation that the evaluator will need to examine source code in order to
                                 accomplish this Assurance Activity, the evaluator must ensure that there are no obvious or publicly known
                                 Hypercall functions missing from the TSS.
@@ -3882,8 +3904,12 @@
                             <Tests>
                                 The evaluator shall perform the following tests:<h:br></h:br><h:br></h:br>
                                 <testlist>
-                                    <test>For each configurable function that meets FPT_HCL_EXT.1.2, the evaluator shall follow the operational guidance to enable the function. The evaluator shall then attempt to call each function from within the <abbr linkend="VM"/>. If the call is allowed, then the test succeeds.</test>
-                                    <test>For each configurable function that meets FPT_HCL_EXT.1.2, the evaluator shall configure the <abbr linkend="TSF"/> to disable the function. The evaluator shall then attempt to call the function from within the <abbr linkend="VM"/>. If the call is blocked, then the test succeeds.</test>
+                                    <test>For each configurable function that meets FPT_HCL_EXT.1.2, the evaluator shall follow the 
+					    operational guidance to enable the function. The evaluator shall then attempt to call
+					    each function from within the VM. If the call is allowed, then the test succeeds.</test>
+                                    <test>For each configurable function that meets FPT_HCL_EXT.1.2, the evaluator shall configure 
+					    the TSF to disable the function. The evaluator shall then attempt to call the function 
+					    from within the VM. If the call is blocked, then the test succeeds.</test>
                                 </testlist>
                             </Tests>
                         </aactivity>
@@ -3901,7 +3927,8 @@
                 <!-- FPT_RDM_EXT.1 -->
                 <f-component id="fpt_rdm_ext.1" name="Removable Devices and Media">
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall implement controls for handling the transfer of virtual and physical removable media and virtual and physical removable media devices between information domains.
+                        <title>The TSF shall implement controls for handling the transfer of virtual and physical removable media and
+				virtual and physical removable media devices between information domains.
                         </title>
                     </f-element>
                     <f-element>
@@ -3910,63 +3937,86 @@
 				information domains, then
                             
                             <selectables linebreak="yes">
-                                <selectable>the Administrator has granted explicit access for the media or device to be connected to the receiving domain</selectable>
-                                <selectable>the media in a device that is being transferred is ejected prior to the receiving domain being allowed access to the device</selectable>
+                                <selectable>the Administrator has granted explicit access for the media or device to be connected to
+					the receiving domain</selectable>
+                                <selectable>the media in a device that is being transferred is ejected prior to the receiving domain
+					being allowed access to the device</selectable>
                                 <selectable>the user of the receiving domain expressly authorizes the connection</selectable>
-                                <selectable>the device or media that is being transferred is prevented from being accessed by the receiving domain</selectable>
+                                <selectable>the device or media that is being transferred is prevented from being accessed by the 
+					receiving domain</selectable>
                             </selectables>
                         </title>
                         <note role="application">
-                            The purpose of these requirements is to ensure that <abbr linkend="VM"/>s are not given inadvertent access to information from different domains because of media or removable media devices left connected to physical machines.<h:br></h:br><h:br></h:br>
-                            Removable media is media that can be ejected from a device, such as a compact disc, floppy disk, SD, or compact flash memory card.<h:br></h:br><h:br></h:br>
-                            Removable media devices are removable devices that include media, such as USB flash drives and USB hard drives. Removable media devices can themselves contain removable media (e.g., USB CDROM drives).<h:br></h:br><h:br></h:br>
+                            The purpose of these requirements is to ensure that VMs are not given inadvertent access to information 
+				from different domains because of media or removable media devices left connected to physical machines.<h:br></h:br><h:br></h:br>
+                            Removable media is media that can be ejected from a device, such as a compact disc, floppy disk, SD, or
+				compact flash memory card.<h:br></h:br><h:br></h:br>
+                            Removable media devices are removable devices that include media, such as USB flash drives and USB hard
+				drives. Removable media devices can themselves contain removable media (e.g., USB CDROM drives).<h:br></h:br><h:br></h:br>
                             For purposes of this requirement, an Information Domain is:
                             <h:ol type="a">
-                                <h:li>A <abbr linkend="VM"/> or collection of <abbr linkend="VM"/>s</h:li>
+                                <h:li>A VM or collection of VMs</h:li>
                                 <h:li>The Virtualization System</h:li>
                                 <h:li>Host OS</h:li>
                                 <h:li>Management Subsystem</h:li>
                             </h:ol>
-                            These requirements also apply to virtualized removable media—such as virtual CD drives that connect to ISO images—as well as physical media—such as CDROMs and USB flash drives. In the case of virtual CDROMs, virtual ejection of the virtual media is sufficient.<h:br></h:br><h:br></h:br>
-                            In the first assignment, the <abbr linkend="ST"/> author lists all removable media and removable media devices (both virtual and real) that are supported by the <abbr linkend="TOE"/>. The <abbr linkend="ST"/> author then selects actions that are appropriate for all removable media and removable media devices (both virtual and real) that are being claimed in the assignment.<h:br></h:br><h:br></h:br>
-                            For clarity, the <abbr linkend="ST"/> author may iterate this requirement so that like actions are grouped with the removable media or devices to which they apply (e.g., the first iteration could contain all devices for which media is ejected on a switch; the second iteration could contain all devices for which access is prevented on switch, etc.).
+                            These requirements also apply to virtualized removable media—such as virtual CD drives that connect to
+				ISO images—as well as physical media—such as CDROMs and USB flash drives. In the case of virtual
+				CDROMs, virtual ejection of the virtual media is sufficient.<h:br></h:br><h:br></h:br>
+                            In the first assignment, the ST author lists all removable media and removable media devices (both virtual
+				and real) that are supported by the TOE. The ST author then
+				selects actions that are appropriate for all removable media and removable media devices (both 
+				virtual and real) that are being claimed in the assignment.<h:br></h:br><h:br></h:br>
+                            For clarity, the ST author may iterate this requirement so that like actions are grouped with the 
+				removable media or devices to which they apply (e.g., the first iteration could contain all devices
+				for which media is ejected on a switch; the second iteration could contain all devices for which 
+				access is prevented on switch, etc.).
                         </note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes the association between
-                                the media or devices supported by the <abbr linkend="TOE"/> and the actions that can occur when
+                                The evaluator shall examine the TSS to ensure it describes the association between
+                                the media or devices supported by the TOE and the actions that can occur when
                                 switching information domains. The evaluator shall examine the operational guidance to ensure it
                                 documents how an administrator or user configures the behavior of each media or device.
                             </TSS>
                             <Tests>
                                 The evaluator shall perform the following test for each listed media or device:
                                 <testlist>
-                                    <test>The evaluator shall configure two <abbr linkend="VM"/>s that are members of different information domains, with the media or device connected to one of the <abbr linkend="VM"/>s. The evaluator shall disconnect the media or device from the <abbr linkend="VM"/> and connect it to the other <abbr linkend="VM"/>. The evaluator shall verify that the action performed is consistent with the action assigned in the <abbr linkend="TSS"/>.</test>
+                                    <test>The evaluator shall configure two VMs that are members of different information domains,
+					    with the media or device connected to one of the VMs. The evaluator shall disconnect the
+					    media or device from the VM and connect it to the other VM. The evaluator shall verify 
+					    that the action performed is consistent with the action assigned in the TSS.</test>
                                 </testlist>
                             </Tests>
                         </aactivity>
                     </f-element>
 		    <audit-event>
 			<audit-event-descr>Connection/disconnection of removable media or device to/from a VM.</audit-event-descr>
-                        <audit-event-info>VM Identifier, Removable media/device identifier, event description or identifier (connect/disconnect, ejection/insertion, etc.)</audit-event-info>
+                        <audit-event-info>VM Identifier, Removable media/device identifier, event description or identifier
+				(connect/disconnect, ejection/insertion, etc.)</audit-event-info>
 		    </audit-event>
 		    <audit-event>
 			<audit-event-descr>Ejection/insertion of removable media or device from/to an already connected VM.</audit-event-descr>
-                        <audit-event-info>VM Identifier, Removable media/device identifier, event description or identifier (connect/disconnect, ejection/insertion, etc.)</audit-event-info>
+                        <audit-event-info>VM Identifier, Removable media/device identifier, event description or identifier 
+				(connect/disconnect, ejection/insertion, etc.)</audit-event-info>
 		    </audit-event>
                 </f-component>
 
                 <!-- FPT_TUD_EXT.1 -->
                 <f-component id="fpt_tud_ext.1" name="Trusted Updates to the Virtualization System">
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall provide administrators the ability to query the currently executed version of the <abbr linkend="TOE"/> firmware/software as well as the most recently installed version of the <abbr linkend="TOE"/> firmware/software.
+                        <title>The TSF shall provide administrators the ability to query the currently executed version of the TOE 
+				firmware/software as well as the most recently installed version of the TOE firmware/software.
                         </title>
                         <note role="application">
-                            The version currently running (being executed) may not be the version most recently installed. For instance, maybe the update was installed but the system requires a reboot before this update will run. Therefore, it needs to be clear that the query should indicate both the most recently executed version as well as the most recently installed update.
+                            The version currently running (being executed) may not be the version most recently installed. For
+				instance, maybe the update was installed but the system requires a reboot before this update will run. 
+				Therefore, it needs to be clear that the query should indicate both the most recently executed version
+				as well as the most recently installed update.
                         </note>
                     </f-element>
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall provide administrators the ability to manually initiate updates to <abbr linkend="TOE"/> firmware/software and
+                        <title>The TSF shall provide administrators the ability to manually initiate updates to	TOE firmware/software and
                             <selectables>
                                 <selectable>automatic updates</selectable>
                                 <selectable>no other update mechanism</selectable>
@@ -3974,45 +4024,71 @@
                         </title>
                     </f-element>
                     <f-element id="fil-auth-soft">
-                        <title>The <abbr linkend="TSF"/> shall provide means to authenticate firmware/software updates to the <abbr linkend="TOE"/> using a
+                        <title>The TSF shall provide means to authenticate firmware/software updates to the TOE using a
                             <selectables>
                                 <selectable id="tud-digsign">digital signature mechanism</selectable>
                                 <selectable>published hash</selectable>
                             </selectables> prior to installing those updates.
                         </title>
-                        <note role="application">The digital signature mechanism referenced in FPT_TUD_EXT.1.3 is one of the algorithms specified in FCS_COP.1(3).<h:br></h:br><h:br></h:br>
-                            If certificates are used by the update verification mechanism, certificates are validated in accordance with FIA_X509_EXT.1 and should be selected in FIA_X509_EXT.2.1. Additionally, FPT_TUD_EXT.2 must be included in the <abbr linkend="ST"/>.<h:br></h:br><h:br></h:br>
-                            “Update” in the context of this SFR refers to the process of replacing a non-volatile, system resident software component with another. The former is referred to as the NV image, and the latter is the update image. While the update image is typically newer than the NV image, this is not a requirement. There are legitimate cases where the system owner may want to rollback a component to an older version (e.g., when the component manufacturer releases a faulty update, or when the system relies on an undocumented feature no longer present in the update). Likewise, the owner may want to update with the same version as the NV image to recover from faulty storage.<h:br></h:br><h:br></h:br>
-                            All discrete software components (e.g., applications, drivers, kernel, firmware) of the <abbr linkend="TSF"/>, should be digitally signed by the corresponding manufacturer and subsequently verified by the mechanism performing the update. Since it is recognized that components may be signed by different manufacturers, it is essential that the update process verify that both the update and NV images were produced by the same manufacturer (e.g., by comparing public keys) or signed by legitimate signing keys (e.g., successful verification of certificates when using X.509 certificates).<h:br></h:br><h:br></h:br>
-                            The Digital Signature option is the preferred mechanism for authenticating updates. The Published Hash option will be removed from a future version of this PP.
+                        <note role="application">The digital signature mechanism referenced in FPT_TUD_EXT.1.3 is one of the 
+				algorithms specified in FCS_COP.1(3).<h:br></h:br><h:br></h:br>
+                            If certificates are used by the update verification mechanism, certificates are validated in accordance
+				with FIA_X509_EXT.1 and should be selected in FIA_X509_EXT.2.1. Additionally, FPT_TUD_EXT.2 must be
+				included in the ST.<h:br></h:br><h:br></h:br>
+                            “Update” in the context of this SFR refers to the process of replacing a non-volatile, system resident
+				software component with another. The former is referred to as the NV image, and the latter is the
+				update image. While the update image is typically newer than the NV image, this is not a requirement.
+				There are legitimate cases where the system owner may want to rollback a component to an older version
+				(e.g., when the component manufacturer releases a faulty update, or when the system relies on an 
+				undocumented feature no longer present in the update). Likewise, the owner may want to update with the
+				same version as the NV image to recover from faulty storage.<h:br></h:br><h:br></h:br>
+                            All discrete software components (e.g., applications, drivers, kernel, firmware) of the TSF, should be 
+				digitally signed by the corresponding manufacturer and subsequently verified by the mechanism
+				performing the update. Since it is recognized that components may be signed by different manufacturers,
+				it is essential that the update process verify that both the update and NV images were produced by the 
+				same manufacturer (e.g., by comparing public keys) or signed by legitimate signing keys (e.g.,
+				successful verification of certificates when using X.509 certificates).<h:br></h:br><h:br></h:br>
+                            The Digital Signature option is the preferred mechanism for authenticating updates. The Published Hash
+				option will be removed from a future version of this PP.
                         </note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall verify that the <abbr linkend="TSS"/> describes all <abbr linkend="TSF"/> software
-                                update mechanisms for updating the system software. Updates to the <abbr linkend="TOE"/> either have a 
+                                The evaluator shall verify that the TSS describes all TSF software
+                                update mechanisms for updating the system software. Updates to the TOE either have a 
                                 hash associated with them, or are signed by an authorized source. The evaluator shall verify that the
                                 description includes either a digital signature or published hash verification of the software before 
                                 installation and that installation fails if the verification fails. The evaluator shall verify that
-                                the <abbr linkend="TSS"/> describes the method by which the digital signature or published hash is
+                                the TSS describes the method by which the digital signature or published hash is
                                 verified to include how the candidate updates are obtained, the processing associated with verifying 
                                 the update, and the actions that take place for both successful and unsuccessful verification. If
                                 digital signatures are used, the evaluator shall also ensure the definition of an authorized source is 
-                                contained in the <abbr linkend="TSS"/>.<h:br></h:br><h:br></h:br>
-                                If the <abbr linkend="ST"/> author indicates that a certificate-based mechanism is used for software
-                                update digital signature verification, the evaluator shall verify that the <abbr linkend="TSS"/>
+                                contained in the TSS.<h:br></h:br><h:br></h:br>
+                                If the ST author indicates that a certificate-based mechanism is used for software
+                                update digital signature verification, the evaluator shall verify that the TSS
                                 contains a description of how the certificates are contained on the device. The evaluator also ensures
-                                that the <abbr linkend="TSS"/> (or administrator guidance) describes how the certificates are
+                                that the TSS (or administrator guidance) describes how the certificates are
                                 installed/updated/selected, if necessary.
                             </TSS>
                             <Tests>
                                 The evaluator shall perform the following tests:<h:br></h:br><h:br></h:br>
                                 <testlist>
-                                    <test>The evaluator performs the version verification activity to determine the current version of the product. The evaluator obtains a legitimate update using procedures described in the operational guidance and verifies that it is successfully installed on the <abbr linkend="TOE"/>. After the update, the evaluator performs the version verification activity again to verify the version correctly corresponds to that of the update.</test>
-                                    <test>The evaluator performs the version verification activity to determine the current version of the product. The evaluator obtains or produces illegitimate updates as defined below, and attempts to install them on the <abbr linkend="TOE"/>. The evaluator verifies that the <abbr linkend="TOE"/> rejects all of the illegitimate updates. The evaluator performs this test using all of the following forms of illegitimate updates:
+                                    <test>The evaluator performs the version verification activity to determine the current version 
+					    of the product. The evaluator obtains a legitimate update using procedures described in 
+					    the operational guidance and verifies that it is successfully installed on the TOE. After
+					    the update, the evaluator performs the version verification activity again to verify the
+					    version correctly corresponds to that of the update.</test>
+                                    <test>The evaluator performs the version verification activity to determine the current version 
+					    of the product. The evaluator obtains or produces illegitimate updates as defined below,
+					    and attempts to install them on the TOE. The evaluator verifies that the TOE rejects all 
+					    of the illegitimate updates. The evaluator performs this test using all of the following 
+					    forms of illegitimate updates:
                                         <h:ol>
-                                            <h:li>A modified version (e.g., using a hex editor) of a legitimately signed or hashed update</h:li>
+                                            <h:li>A modified version (e.g., using a hex editor) of a legitimately signed or hashed 
+						    update</h:li>
                                             <h:li>An image that has not been signed/hashed</h:li>
-                                            <h:li>An image signed with an invalid hash or invalid signature (e.g., by using a different key as expected for creating the signature or by manual modification of a legitimate hash/signature)</h:li>
+                                            <h:li>An image signed with an invalid hash or invalid signature (e.g., by using a
+						    different key as expected for creating the signature or by manual modification
+						    of a legitimate hash/signature)</h:li>
                                         </h:ol>
                                     </test>
                                 </testlist>
@@ -4032,13 +4108,18 @@
                 <f-component id="fpt_tud_ext.2" name="Trusted Update Based on Certificates"  status="sel-based">
                     <selection-depends req="fil-auth-soft" ids="tud-digsign" />
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall not install an update if the code signing certificate is deemed invalid.
+                        <title>The TSF shall not install an update if the code signing certificate is deemed invalid.
                         </title>
-                        <note role="application">Certificates may optionally be used for code signing of system software updates (FPT_TUD_EXT.1.3). This element must be included in the <abbr linkend="ST"/> if certificates are used for validating updates. If “code signing for system software updates” is selected in FIA_X509_EXT.2.1, FPT_TUD_EXT.2 must be included in the <abbr linkend="ST"/>.<h:br></h:br><h:br></h:br>
-                            Validity is determined by the certificate path, the expiration date, and the revocation status in accordance with FIA_X509_EXT.1.</note>
+                        <note role="application">Certificates may optionally be used for code signing of system software updates
+				(FPT_TUD_EXT.1.3). This element must be included in the ST if certificates are used for validating 
+				updates. If “code signing for system software updates” is selected in FIA_X509_EXT.2.1, FPT_TUD_EXT.2 
+				must be included in the ST.<h:br></h:br><h:br></h:br>
+                            Validity is determined by the certificate path, the expiration date, and the revocation status in 
+				accordance with FIA_X509_EXT.1.</note>
                         <aactivity>
                             <Tests>
-                                The assurance activity for this requirement is performed in conjunction with the assurance activity for FIA_X509_EXT.1 and FIA_X509_EXT.2.
+                                The assurance activity for this requirement is performed in conjunction with the assurance activity
+				    for FIA_X509_EXT.1 and FIA_X509_EXT.2.
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -4048,37 +4129,46 @@
                 <!-- FPT_VDP_EXT.1 -->
                 <f-component id="fpt_vdp_ext.1" name="Virtual Device Parameters">
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall provide interfaces for virtual devices implemented by the <abbr linkend="VMM"/> as part of the virtual hardware abstraction.
+                        <title>The TSF shall provide interfaces for virtual devices implemented by the VMM as part of the virtual
+				hardware abstraction.
                         </title>
                     </f-element>
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall validate the parameters passed to the virtual device interface prior to execution of the <abbr linkend="VMM"/> functionality exposed by those interfaces.
+                        <title>The TSF shall validate the parameters passed to the virtual device interface prior to execution of 
+				the VMM functionality exposed by those interfaces.
                         </title>
-                        <note role="application">The purpose of this requirement is to ensure that the <abbr linkend="VMM"/> is not vulnerable to compromise through the processing of malformed data passed to the virtual device interface from a Guest OS. The <abbr linkend="VMM"/> cannot assume that any data coming from a <abbr linkend="VM"/> is well-formed—even if the virtual device interface is unique to the Virtualization System and the data comes from a virtual device driver supplied by the Virtualization Vendor.<h:br></h:br><h:br></h:br>
-                            FPT_VDP_EXT.1.2 is an attestation requirement. The vendor must attest that parameters passed from a <abbr linkend="VM"/> to a virtual device interface are not able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform. The vendor must attest that there are no design or implementation flaws that permit the above.
+                        <note role="application">The purpose of this requirement is to ensure that the VMM is not vulnerable to
+				compromise through the processing of malformed data passed to the virtual device interface from a 
+				Guest OS. The VMM cannot assume that any data coming from a VM is well-formed—even if the virtual
+				device interface is unique to the Virtualization System and the data comes from a virtual device
+				driver supplied by the Virtualization Vendor.<h:br></h:br><h:br></h:br>
+                            FPT_VDP_EXT.1.2 is an attestation requirement. The vendor must attest that parameters passed from a VM
+				to a virtual device interface are not able to degrade or disrupt the functioning of other VMs, the 
+				VMM, or the Platform. The vendor must attest that there are no design or implementation flaws that 
+				permit the above.
                         </note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall examine the <abbr linkend="TSS"/> to ensure it documents all virtual device interfaces
+                                The evaluator shall examine the TSS to ensure it documents all virtual device interfaces
                                 at the virtual I/O port level, to specify port number (absolute or relative to a base), port name, and a
                                 description of legal input values.  The documentation must be sufficient to enable the evaluator to
                                 effectively run the tests in FPT_DVD_EXT.1.  The evaluator must ensure that there are no obvious or
-                                publicly known virtual I/O ports missing from the <abbr linkend="TSS"/>.
+                                publicly known virtual I/O ports missing from the TSS.
                                 <h:br /><h:br />
                                 There is no expectation that evaluators will examine source code to verify the “all” part of the 
                                 Assurance Activity.
                             </TSS>
                             <Tests>
-                                The evaluator ensures that the <abbr linkend="ST"/> includes the following statement attesting that
-                                parameters passed from a Guest <abbr linkend="VM"/> to virtual device interfaces are thoroughly
-                                validated, that all values outside the legal values specified in the <abbr linkend="TSS"/> are
+                                The evaluator ensures that the ST includes the following statement attesting that
+                                parameters passed from a Guest VM to virtual device interfaces are thoroughly
+                                validated, that all values outside the legal values specified in the TSS are
                                 rejected, and that any data passed to the virtual device interfaces is unable to degrade or disrupt
-                                the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform:
+                                the functioning of other VMs, the VMM, or the Platform:
                                 <h:br></h:br><h:br></h:br>
-                                “Parameters passed from Guest <abbr linkend="VM"/>s to virtual device interfaces are thoroughly
-                                validated and all illegal values (as specified in the <abbr linkend="TSS"/>) are rejected.
-                                Additionally, parameters passed from Guest <abbr linkend="VM"/>s to virtual device interfaces are not 
-                                able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>,
+                                “Parameters passed from Guest VMs to virtual device interfaces are thoroughly
+                                validated and all illegal values (as specified in the TSS) are rejected.
+                                Additionally, parameters passed from Guest VMs to virtual device interfaces are not 
+                                able to degrade or disrupt the functioning of other VMs, the VMM,
                                 or the Platform. Thorough testing and architectural design reviews have been conducted to ensure the
                                 accuracy of these claims, and there are no design or implementation flaws that bypass or defeat the
                                 security of the virtual device interfaces.”
