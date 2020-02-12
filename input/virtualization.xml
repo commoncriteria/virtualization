@@ -2952,7 +2952,7 @@
                                 these resources is explicitly denied/allowed, respectively.
                             </Guidance>
                             <Tests>
-                                Using the operational guidance, the evaluator shall perform the following tests for each physical platform identified in the <abbr linkend="ST"/>:<h:br></h:br><h:br></h:br>
+                                Using the operational guidance, the evaluator shall perform the following tests for each physical platform identified in the ST:<h:br></h:br><h:br></h:br>
                                <testlist>
                                     <test>For each physical platform resource identified in the first element, the evaluator shall
 					    configure a Guest VM to have access to that resource and show that the Guest VM is able to
@@ -4516,11 +4516,15 @@
                         <title>The TSF shall indicate to users which VM, if any, has the current input focus.
                         </title>
                         <note role="application">This requirement applies to all users—whether User or Administrator.
-                            In environments where multiple <abbr linkend="VM"/>s run at the same time, the user must have a way of knowing which <abbr linkend="VM"/> user input is directed to at any given moment. This is especially important in multiple-domain environments.<h:br></h:br><h:br></h:br>
-                            In the case of a human user, this is usually a visual indicator. In the case of headless <abbr linkend="VM"/>s, the user is considered to be a program, but this program still needs to know which <abbr linkend="VM"/> it is sending input to; this would typically be accomplished through programmatic means.</note>
+                            In environments where multiple VMs run at the same time, the user must have a way of knowing which
+				VM user input is directed to at any given moment. This is especially important in multiple-domain 
+				environments.<h:br></h:br><h:br></h:br>
+                            In the case of a human user, this is usually a visual indicator. In the case of headless VMs, the user is 
+				considered to be a program, but this program still needs to know which VM it is sending input to;
+				this would typically be accomplished through programmatic means.</note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall ensure that the <abbr linkend="TSS"/> lists the supported user input devices.
+                                The evaluator shall ensure that the TSS lists the supported user input devices.
                             </TSS>
                             <Guidance>
                                 The evaluator shall ensure that the operational guidance specifies how the current input focus is
@@ -4528,7 +4532,7 @@
                             </Guidance>
                             <Tests>
                                 For each supported input device, the evaluator shall demonstrate that the input from each device
-                                listed in the <abbr linkend="TSS"/> is directed to the <abbr linkend="VM"/> that is indicated to have
+                                listed in the TSS is directed to the VM that is indicated to have
                                 the input focus.
                             </Tests>
                         </aactivity>
@@ -4539,23 +4543,28 @@
                 <!-- FTP_UIF_EXT.2 -->
                 <f-component id="ftp_uif_ext.2" name="User Interface: Identification of VM">
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall support the unique identification of a <abbr linkend="VM"/>’s output display to users.
+                        <title>The TSF shall support the unique identification of a VM’s output display to users.
                         </title>
-                        <note role="application">In environments where a user has access to more than one <abbr linkend="VM"/> at the same time, the user must be able to determine the identity of each <abbr linkend="VM"/> displayed in order to avoid inadvertent cross-domain data entry.<h:br></h:br><h:br></h:br>
-                            There must be a mechanism for associating an identifier with a <abbr linkend="VM"/> so that an application or program displaying the <abbr linkend="VM"/> can identify the <abbr linkend="VM"/> to users. This is generally indicated visually for human users (e.g., a border around a <abbr linkend="VM"/>’s screen display) and programmatically for headless <abbr linkend="VM"/>s (e.g., an API function). The identification must be unique to the VS, but does not need to be universally unique.</note>
+                        <note role="application">In environments where a user has access to more than one VM at the same time, the 
+				user must be able to determine the identity of each VM displayed in order to avoid inadvertent 
+				cross-domain data entry.<h:br></h:br><h:br></h:br>
+                            There must be a mechanism for associating an identifier with a VM so that an application or program 
+				displaying the VM can identify the VM to users. This is generally indicated visually for human users
+				(e.g., a border around a VM’s screen display) and programmatically for headless VMs (e.g., an API
+				function). The identification must be unique to the VS, but does not need to be universally unique.</note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall ensure that the <abbr linkend="TSS"/> describes the mechanism for identifying 
-                                <abbr linkend="VM"/>s to the user, how identities are assigned to <abbr linkend="VM"/>s, and how 
+                                The evaluator shall ensure that the TSS describes the mechanism for identifying 
+                                VMs to the user, how identities are assigned to VMs, and how 
                                 conflicts are prevented.
                             </TSS>
                             <Tests>
                                 The evaluator shall perform the following test:<h:br></h:br><h:br></h:br>
-                                The evaluator shall attempt to create and start at least three Guest <abbr linkend="VM"/>s on a single 
-                                display device where the evaluator attempts to assign two of the <abbr linkend="VM"/>s the same
-                                identifier. If the user interface displays different identifiers for each <abbr linkend="VM"/>, then 
+                                The evaluator shall attempt to create and start at least three Guest VMs on a single 
+                                display device where the evaluator attempts to assign two of the VMs the same
+                                identifier. If the user interface displays different identifiers for each VM, then 
                                 the requirement is met. Likewise, the requirement is met if the system refuses to create or start a
-                                <abbr linkend="VM"/> when there is already a <abbr linkend="VM"/> with the same identifier.
+                                VM when there is already a VM with the same identifier.
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -4569,24 +4578,33 @@
                 <f-component id="ftp_trp.1" name="Trusted Path">  <!-- status="sel-based" -->
 <!--                    <selection-depends req="fel-itc"/> This is the wrong dependency.   -->
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall use a trusted channel as specified in FTP_ITC_EXT.1 to provide a trusted communication path between itself and [remote] administrators that is logically distinct from other communication paths and provides assured identification of its end points and protection of the communicated data from [modification, disclosure].
+                        <title>The TSF shall use a trusted channel as specified in FTP_ITC_EXT.1 to provide a trusted communication
+				path between itself and [remote] administrators that is logically distinct from other communication
+				paths and provides assured identification of its end points and protection of the communicated data 
+				from [modification, disclosure].
                         </title>
                     </f-element>
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall permit remote administrators to initiate communication via the trusted path.
+                        <title>The TSF shall permit remote administrators to initiate communication via the trusted path.
                         </title>
                     </f-element><f-element>
-                        <title>The <abbr linkend="TSF"/> shall require the use of the trusted path for [all remote administration actions].
+                        <title>The TSF shall require the use of the trusted path for [all remote administration actions].
                         </title>
-                        <note role="application">Protocols used to implement the remote administration trusted channel must be selected in FTP_ITC_EXT.1.<h:br></h:br><h:br></h:br>
-                            This requirement ensures that authorized remote administrators initiate all communication with the <abbr linkend="TOE"/> via a trusted path, and that all communications with the <abbr linkend="TOE"/> by remote administrators is performed over this path. The data passed in this trusted communication channel are encrypted as defined the protocol chosen in the first selection. The <abbr linkend="ST"/> author chooses the mechanism or mechanisms supported by the <abbr linkend="TOE"/>, and then ensures that the detailed requirements in Annex B corresponding to their selection are copied to the <abbr linkend="ST"/> if not already present.</note>
+                        <note role="application">Protocols used to implement the remote administration trusted channel must be
+				selected in FTP_ITC_EXT.1.<h:br></h:br><h:br></h:br>
+                            This requirement ensures that authorized remote administrators initiate all communication with the
+				TOE via a trusted path, and that all communications with the TOE by remote administrators is performed
+				over this path. The data passed in this trusted communication channel are encrypted as defined the 
+				protocol chosen in the first selection. The ST author chooses the mechanism or mechanisms supported by
+				the TOE, and then ensures that the detailed requirements in Annex B corresponding to their selection
+				are copied to the ST if not already present.</note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall examine the <abbr linkend="TSS"/> to determine that the methods of remote 
-                                <abbr linkend="TOE"/> administration are indicated, along with how those communications are protected.
-                                The evaluator shall also confirm that all protocols listed in the <abbr linkend="TSS"/> in support of 
-                                <abbr linkend="TOE"/> administration are consistent with those specified in the requirement, and are 
-                                included in the requirements in the <abbr linkend="ST"/>. 
+                                The evaluator shall examine the TSS to determine that the methods of remote 
+                                TOE administration are indicated, along with how those communications are protected.
+                                The evaluator shall also confirm that all protocols listed in the TSS in support of 
+                                TOE administration are consistent with those specified in the requirement, and are 
+                                included in the requirements in the ST. 
                             </TSS>
                             <Guidance>
                                 The evaluator shall confirm that the 
@@ -4596,10 +4614,18 @@
                             <Tests>
                                 The evaluator shall also perform the following tests:
                                 <testlist>
-                                    <test>The evaluators shall ensure that communications using each specified (in the operational guidance) remote administration method is tested during the course of the evaluation, setting up the connections as described in the operational guidance and ensuring that communication is successful.</test>
-                                    <test>For each method of remote administration supported, the evaluator shall follow the operational guidance to ensure that there is no available interface that can be used by a remote user to establish remote administrative sessions without invoking the trusted path.</test>
-                                    <test>The evaluator shall ensure, for each method of remote administration, the channel data is not sent in plaintext.</test>
-                                    <test>The evaluator shall ensure, for each method of remote administration, modification of the channel data is detected by the <abbr linkend="TOE"/>.</test>
+                                    <test>The evaluators shall ensure that communications using each specified (in the operational
+					    guidance) remote administration method is tested during the course of the evaluation,
+					    setting up the connections as described in the operational guidance and ensuring that
+					    communication is successful.</test>
+                                    <test>For each method of remote administration supported, the evaluator shall follow the 
+					    operational guidance to ensure that there is no available interface that can be used by
+					    a remote user to establish remote administrative sessions without invoking the trusted 
+					    path.</test>
+                                    <test>The evaluator shall ensure, for each method of remote administration, the channel data is
+					    not sent in plaintext.</test>
+                                    <test>The evaluator shall ensure, for each method of remote administration, modification of the 
+					    channel data is detected by the TOE.</test>
                              </testlist>
                             Further assurance activities are associated with the specific protocols.
                             </Tests>
