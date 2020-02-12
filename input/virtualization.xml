@@ -2701,7 +2701,13 @@
                                 <selectable>no other method</selectable>
                             </selectables>.
                         </title>
-                        <note role="application">At least one public-key-based Peer Authentication method is required in order to conform to this PP; one or more of the public key schemes is chosen by the <abbr linkend="ST"/> author to reflect what is implemented. The <abbr linkend="ST"/> author also ensures that appropriate FCS requirements reflecting the algorithms used (and key generation capabilities, if provided) are listed to support those methods. Note that the <abbr linkend="TSS"/> will elaborate on the way in which these algorithms are to be used (for example, 2409 specifies three authentication methods using public keys; each one supported will be described in the <abbr linkend="TSS"/>).</note>
+                        <note role="application">At least one public-key-based Peer Authentication method is required in order to conform
+				to this PP; one or more of the public key schemes is chosen by the ST author to reflect what is implemented. 
+				The ST author also ensures that appropriate FCS requirements reflecting the algorithms used (and key
+				generation capabilities, if provided) are listed to support those methods. Note that the
+				TSS will elaborate on the way in which these algorithms are to be used (for example, 2409 specifies
+				three authentication methods using public keys; each one supported will be described in the 
+				TSS).</note>
                         <aactivity>
                             <TSS>
                                 The evaluator ensures that the TSS identifies RSA and/or ECDSA as being used 
@@ -3844,7 +3850,7 @@
                 <!-- FPT_HCL_EXT.1 -->
                 <f-component id="fpt_hcl_ext.1" name="Hypercall Controls">
                     <f-element>
-                        <title>The TSF shall provide a Hypercall interface for Guest <VMs to use to invoke functionality provided by 
+                        <title>The TSF shall provide a Hypercall interface for Guest VMs to use to invoke functionality provided by 
 				the VMM.
                         </title>
                     </f-element>
@@ -4181,28 +4187,48 @@
                 <!-- FPT_VIV_EXT.1 -->
                 <f-component id="fpt_viv_ext.1" name="VMM Isolation from VMs">
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> must ensure that software running in a <abbr linkend="VM"/> is not able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform.
+                        <title>The TSF must ensure that software running in a VM is not able to degrade or disrupt the functioning of 
+				other VMs, the VMM, or the Platform.
                         </title>
                     </f-element>
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> must ensure that a Guest <abbr linkend="VM"/> is unable to invoke platform code that runs at a privilege level equal to or exceeding that of the <abbr linkend="VMM"/> without involvement of the <abbr linkend="VMM"/>.
+                        <title>The TSF must ensure that a Guest VM is unable to invoke platform code that runs at a privilege level 
+				equal to or exceeding that of the VMM without involvement of the VMM.
                         </title>
-                        <note role="application">This requirement is intended to ensure that software running within a Guest <abbr linkend="VM"/> cannot compromise other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the platform. This requirement is not met if Guest <abbr linkend="VM"/> software—whatever its privilege level—can crash the Virtualization System or the Platform, or breakout of its virtual hardware abstraction to gain execution on the platform, within or outside of the context of the <abbr linkend="VMM"/>.<h:br></h:br><h:br></h:br>
-                            This requirement is not violated if software running within a <abbr linkend="VM"/> can crash the Guest OS and there is no way for an attacker to gain execution in the <abbr linkend="VMM"/> or outside of the virtualized domain.<h:br></h:br><h:br></h:br>
-                            FPT_VIV_EXT.1.2 addresses several specific mechanisms that must not be permitted to bypass the <abbr linkend="VMM"/> and invoke privileged code on the Platform.<h:br></h:br><h:br></h:br>
-                            At a minimum, the <abbr linkend="TSF"/> should enforce the following:<h:br></h:br><h:br></h:br>
+                        <note role="application">This requirement is intended to ensure that software running within a Guest VM cannot
+				compromise other VMs, the VMM, or the platform. This requirement is not met if Guest VM 
+				software—whatever its privilege level—can crash the Virtualization System or the Platform, or breakout
+				of its virtual hardware abstraction to gain execution on the platform, within or outside of the context
+				of the VMM.<h:br></h:br><h:br></h:br>
+                            This requirement is not violated if software running within a VM can crash the Guest OS and there is no
+				way for an attacker to gain execution in the VMM or outside of the virtualized domain.<h:br></h:br><h:br></h:br>
+                            FPT_VIV_EXT.1.2 addresses several specific mechanisms that must not be permitted to bypass the VMM and
+				invoke privileged code on the Platform.<h:br></h:br><h:br></h:br>
+                            At a minimum, the TSF should enforce the following:<h:br></h:br><h:br></h:br>
                             <h:ol type="a">
-                                <h:li>On the x86 platform, a virtual System Management Interrupt (SMI) cannot invoke platform System Management Mode (SMM)</h:li>
-                                <h:li>An attempt to update virtual firmware or virtual BIOS cannot cause physical platform firmware or physical platform BIOS to be modified</h:li>
-                                <h:li>An attempt to update virtual firmware or virtual BIOS cannot cause the <abbr linkend="VMM"/> to be modified</h:li>
+                                <h:li>On the x86 platform, a virtual System Management Interrupt (SMI) cannot invoke platform System 
+					Management Mode (SMM)</h:li>
+                                <h:li>An attempt to update virtual firmware or virtual BIOS cannot cause physical platform firmware
+					or physical platform BIOS to be modified</h:li>
+                                <h:li>An attempt to update virtual firmware or virtual BIOS cannot cause the VMM to be modified</h:li>
                             </h:ol>
-                            Of the above, (a) does not apply to platforms that do not support SMM. The rationale behind activity (c) is that a firmware update of a single <abbr linkend="VM"/> must not affect other <abbr linkend="VM"/>s. So if multiple <abbr linkend="VM"/>s share the same firmware image as part of a common hardware abstraction, then the update of a single machine’s BIOS must not be allowed to change the common abstraction. The virtual hardware abstraction is part of the <abbr linkend="VMM"/>.<h:br></h:br><h:br></h:br>
-                            This is an attestation requirement. The vendor must attest that software running in a <abbr linkend="VM"/> is not able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform. The vendor must attest that there are no design or implementation flaws that permit the above.
+                            Of the above, (a) does not apply to platforms that do not support SMM. The rationale behind activity (c) 
+				is that a firmware update of a single VM must not affect other VMs. So if multiple VMs share the same
+				firmware image as part of a common hardware abstraction, then the update of a single machine’s BIOS 
+				must not be allowed to change the common abstraction. The virtual hardware abstraction is part of the
+				VMM.<h:br></h:br><h:br></h:br>
+                            This is an attestation requirement. The vendor must attest that software running in a VM is not able to 
+				degrade or disrupt the functioning of other VMs, the VMM, or the Platform. The vendor must attest 
+				that there are no design or implementation flaws that permit the above.
                         </note>
                         <aactivity>
                             <Tests>
-                                The evaluator ensures that the <abbr linkend="ST"/> includes the following statement attesting that software running in a <abbr linkend="VM"/> is not able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform:<h:br></h:br><h:br></h:br>
-                                “Software running in a <abbr linkend="VM"/> is not able to degrade or disrupt the functioning of other <abbr linkend="VM"/>s, the <abbr linkend="VMM"/>, or the Platform. There are no design or implementation flaws that bypass or defeat <abbr linkend="VM"/> isolation.”
+                                The evaluator ensures that the ST includes the following statement attesting that software running
+				    in a VM is not able to degrade or disrupt the functioning of other VMs, the VMM, or the
+				    Platform:<h:br></h:br><h:br></h:br>
+                                “Software running in a VM is not able to degrade or disrupt the functioning of other VMs, the 
+				    VMM, or the Platform. There are no design or implementation flaws that bypass or defeat VM
+				    isolation.”
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -4218,11 +4244,11 @@
                         <note role="application">The primary purpose of this requirement is to identify and describe the mechanisms used to verify the integrity of Guest <abbr linkend="VM"/>s that have been 'imported' in some fashion, though these mechanisms could also be applied to all Guest <abbr linkend="VM"/>s, depending on the mechanism used. Importation for this requirement could include <abbr linkend="VM"/> migration (live or otherwise), the importation of virtual disk files that were previously exported, <abbr linkend="VM"/>s in shared storage, etc. It is possible that a trusted <abbr linkend="VM"/> could have been modified during the migration or import/export process, or <abbr linkend="VM"/>s could have been obtained from untrusted sources in the first place, so integrity checks on these <abbr linkend="VM"/>s can be a prudent measure to take. These integrity checks could be as thorough as making sure the entire <abbr linkend="VM"/> exactly matches a previously known <abbr linkend="VM"/> (by hash for example), or by simply checking certain configuration settings to ensure that the <abbr linkend="VM"/>'s configuration will not violate the security model of the VS.</note>
                         <aactivity>
                             <TSS>
-                                For each mechanism listed in the assignment, the evaluator shall ensure that the <abbr linkend="TSS"/> 
-                                documents the mechanism, including how it verifies <abbr linkend="VM"/> integrity, which set of Guest
-                                <abbr linkend="VM"/>s it will check (all Guest <abbr linkend="VM"/>s, only migrated <abbr linkend="VM"/>
-                                s, etc.), when such checks occur (before <abbr linkend="VM"/> startup, immediately following 
-                                importation/migration, on demand, etc.), and which actions are taken if a <abbr linkend="VM"/> fails
+                                For each mechanism listed in the assignment, the evaluator shall ensure that the TSS 
+                                documents the mechanism, including how it verifies VM integrity, which set of Guest
+                                VMs it will check (all Guest VMs, only migrated VM
+                                s, etc.), when such checks occur (before VM startup, immediately following 
+                                importation/migration, on demand, etc.), and which actions are taken if a VM fails
                                 the integrity check (or which range of actions are possible if the action is configurable).
                             </TSS>
                         </aactivity>
@@ -4235,17 +4261,26 @@
                 <!-- FPT_DDI_EXT.1 -->
                 <f-component id="fpt_ddi_ext.1" name="Device Driver Isolation"  status="objective">
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall ensure that device drivers for physical devices are isolated from the <abbr linkend="VMM"/> and all other domains.
+                        <title>The TSF shall ensure that device drivers for physical devices are isolated from the VMM and all other
+				domains.
                         </title>
-                    <note role="application">In order to function on physical hardware, the <abbr linkend="VMM"/> must have access to the device drivers for the physical platform on which it runs. These drivers are often written by third parties, and yet are effectively a part of the <abbr linkend="VMM"/>. Thus the integrity of the <abbr linkend="VMM"/> in part depends on the quality of third party code that the virtualization vendor has no control over. By encapsulating these drivers within one or more dedicated driver domains (e.g., Service <abbr linkend="VM"/> or <abbr linkend="VM"/>s) the damage of a driver failure or vulnerability can be contained within the domain, and would not compromise the <abbr linkend="VMM"/>. When driver domains have exclusive access to a physical device, hardware isolation mechanisms, such as Intel's VT-d, AMD's Input/Output Memory Management Unit (IOMMU), or ARM's System Memory Management Unit (MMU) should be used to ensure that operations performed by Direct Memory Access (DMA) hardware are properly constrained.</note>
+                    <note role="application">In order to function on physical hardware, the VMM must have access to the device
+			    drivers for the physical platform on which it runs. These drivers are often written by third parties, 
+			    and yet are effectively a part of the VMM. Thus the integrity of the VMM in part depends on the quality 
+			    of third party code that the virtualization vendor has no control over. By encapsulating these drivers
+			    within one or more dedicated driver domains (e.g., Service VM or VMs) the damage of a driver failure or
+			    vulnerability can be contained within the domain, and would not compromise the VMM. When driver domains 
+			    have exclusive access to a physical device, hardware isolation mechanisms, such as Intel's VT-d, AMD's
+			    Input/Output Memory Management Unit (IOMMU), or ARM's System Memory Management Unit (MMU) should be used
+			    to ensure that operations performed by Direct Memory Access (DMA) hardware are properly constrained.</note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall examine the <abbr linkend="TSS"/> documentation to verify that it describes the
-                                mechanism used for device driver isolation. If the <abbr linkend="TSS"/> document indicates that a 
-                                hardware isolation mechanism is used, the evaluator shall verify that the <abbr linkend="TSS"/> 
+                                The evaluator shall examine the TSS documentation to verify that it describes the
+                                mechanism used for device driver isolation. If the TSS document indicates that a 
+                                hardware isolation mechanism is used, the evaluator shall verify that the TSS 
                                 documentation enumerates the hardware-isolated DMA-capable devices, and that it also provides a 
                                 complete list of the accessible targets for memory transactions for each of those DMA-capable 
-                                devices. (An example of information that might be included in the <abbr linkend="TSS"/> documentation:
+                                devices. (An example of information that might be included in the TSS documentation:
                                 a listing of all pages belonging to the driver domain, the identification of a subset of the driver 
                                 domain's pages that the driver domain has permitted the device access to, or the identification of a 
                                 dedicated area of memory reserved for the device or driver domain).
@@ -4258,23 +4293,29 @@
                 <!-- FPT_IDV_EXT.1 -->
                 <f-component id="fpt_idv_ext.1" name="Software Identification and Versions"  status="objective">
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall include software identification (SWID) tags that contain a SoftwareIdentity element and an Entity element as defined in ISO/IEC 19770-2:2009.
+                        <title>The TSF shall include software identification (SWID) tags that contain a SoftwareIdentity element and 
+				an Entity element as defined in ISO/IEC 19770-2:2009.
                         </title>
                     </f-element>
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall store SWIDs in a .swidtag file as defined in ISO/IEC 19770-2:2009.
+                        <title>The TSF shall store SWIDs in a .swidtag file as defined in ISO/IEC 19770-2:2009.
                         </title>
-                        <note role="application">SWID tags are XML files embedded within software that provide a standard method for IT departments to track and manage the software. The presence of SWIDs can greatly simplify the software management process and improve security by enhancing the ability of IT departments to manage updates.</note>
+                        <note role="application">SWID tags are XML files embedded within software that provide a standard method for
+				IT departments to track and manage the software. The presence of SWIDs can greatly simplify the
+				software management process and improve security by enhancing the ability of IT departments to manage 
+				updates.</note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall examine the <abbr linkend="TSS"/> to ensure it describes how SWID tags are
+                                The evaluator shall examine the TSS to ensure it describes how SWID tags are
                                 implemented and the format of the tags. The evaluator shall verify that the format complies with
                                 FPT_IDV_EXT.1.1 and that SWIDs are stored in accordance with FPT_IDV_EXT.1.2.
                             </TSS>
                             <Tests>
                                 The evaluator shall perform the following test:
                                 <testlist>
-                                    <test>The evaluator shall check for the existence of SWID tags in a .swidtag file. The evaluator shall open the file and verify that each SWID contains at least a SoftwareIdentity element and an Entity element.</test>
+                                    <test>The evaluator shall check for the existence of SWID tags in a .swidtag file. The evaluator 
+					    shall open the file and verify that each SWID contains at least a SoftwareIdentity element 
+					    and an Entity element.</test>
                                 </testlist>
                             </Tests>
                         </aactivity>
@@ -4285,15 +4326,22 @@
                 <!-- FPT_INT_EXT.1 -->
                 <f-component id="fpt_int_ext.1" name="Support for Introspection"  status="objective">
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall support a mechanism for permitting the <abbr linkend="VMM"/> or privileged <abbr linkend="VM"/>s to access the internals of another <abbr linkend="VM"/> for purposes of introspection.
+                        <title>The TSF shall support a mechanism for permitting the VMM or privileged VMs to access the internals of
+				another VM for purposes of introspection.
                         </title>
-                        <note role="application">Introspection can be used to support malware and anomaly detection from outside of the guest environment. This not only helps protect the Guest OS, it also protects the VS by providing an opportunity for the VS to detect threats to itself that originate within <abbr linkend="VM"/>s, and that may attempt to break out of the <abbr linkend="VM"/> and compromise the <abbr linkend="VMM"/> or other <abbr linkend="VM"/>s.<h:br></h:br><h:br></h:br>
-                            The hosting of malware detection software outside of the guest <abbr linkend="VM"/> helps protect the guest and helps ensure the integrity of the malware detection/antivirus software. This capability can be implemented in the <abbr linkend="VMM"/> itself, but ideally it should be hosted by a Service <abbr linkend="VM"/> so that it can be better contained and does not introduce bugs into the <abbr linkend="VMM"/>.</note>
+                        <note role="application">Introspection can be used to support malware and anomaly detection from outside of
+				the guest environment. This not only helps protect the Guest OS, it also protects the VS by providing 
+				an opportunity for the VS to detect threats to itself that originate within VMs, and that may attempt
+				to break out of the VM and compromise the VMM or other VMs.<h:br></h:br><h:br></h:br>
+                            The hosting of malware detection software outside of the guest VM helps protect the guest and helps ensure
+				the integrity of the malware detection/antivirus software. This capability can be implemented in 
+				the VMM itself, but ideally it should be hosted by a Service VM so that it can be better contained 
+				and does not introduce bugs into the VMM.</note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall examine the <abbr linkend="TSS"/> documentation to verify that it describes the
-                                interface for <abbr linkend="VM"/> introspection and whether the introspection is performed by the 
-                                <abbr linkend="VMM"/> or another <abbr linkend="VM"/>.
+                                The evaluator shall examine the TSS documentation to verify that it describes the
+                                interface for VM introspection and whether the introspection is performed by the 
+                                VMM or another VM.
                             </TSS>
                             <Guidance>
                                 The evaluator shall examine the operational guidance to ensure that it contains instructions for
@@ -4325,14 +4373,30 @@
                         <title>The TSF shall make these measurements available to the Management Subsystem.
                         </title>
                         <note role="application">
-                            A measured launch of the platform and Virtualization System, demonstrates that the proper <abbr linkend="TOE"/> software was loaded. A measured launch process employs verifiable integrity measurement mechanisms. For example, a VS may hash components such as: the hypervisor, service <abbr linkend="VM"/>s and/or the Management Subsystem. A measured launch process only allows components to be executed after the measurement has been recorded. An example process may add each component’s hash before it is executed so that the final hash reflects the evidence of a component’s state prior to execution. The measurement may be verified as the system boots, but this is not required.<h:br></h:br><h:br></h:br>
-                            The Platform is outside of the <abbr linkend="TOE"/>. However, this requirement specifies that the VS must be capable of receiving Platform measurements if the Platform provides them. This requirement is requiring <abbr linkend="TOE"/> support for Platform measurements if provided; it is not placing a requirement on the Platform to take such measurements.<h:br></h:br><h:br></h:br>
-                            If available, hardware should be used to store measurements in such a manner that they cannot be modified in any manner except to be extended. These measurements should be produced in a repeatable manner so that a third party can verify the measurements if given the inputs. Hardware devices, like Trusted Platform Modules (TPM), TrustZone, and MMU are some examples that may serve as foundations for storing and reporting measurements.<h:br></h:br><h:br></h:br>
-                            Platforms with a root of trust for measurement (RTM) should initiate the measured launch process. This may include core BIOS or the chipset. The chipset is the preferred RTM, but core BIOS or other firmware is acceptable. In system without a traditional RTM, the first component that boots would be considered the RTM, this is not preferred.
+                            A measured launch of the platform and Virtualization System, demonstrates that the proper TOE software was
+				loaded. A measured launch process employs verifiable integrity measurement mechanisms. For example, a
+				VS may hash components such as: the hypervisor, service VMs and/or the Management Subsystem. A 
+				measured launch process only allows components to be executed after the measurement has been recorded.
+				An example process may add each component’s hash before it is executed so that the final hash reflects
+				the evidence of a component’s state prior to execution. The measurement may be verified as the system
+				boots, but this is not required.<h:br></h:br><h:br></h:br>
+                            The Platform is outside of the TOE. However, this requirement specifies that the VS must be capable of 
+				receiving Platform measurements if the Platform provides them. This requirement is requiring TOE
+				support for Platform measurements if provided; it is not placing a requirement on the Platform to take
+				such measurements.<h:br></h:br><h:br></h:br>
+                            If available, hardware should be used to store measurements in such a manner that they cannot be modified 
+				in any manner except to be extended. These measurements should be produced in a repeatable manner so 
+				that a third party can verify the measurements if given the inputs. Hardware devices, like Trusted
+				Platform Modules (TPM), TrustZone, and MMU are some examples that may serve as foundations for storing 
+				and reporting measurements.<h:br></h:br><h:br></h:br>
+                            Platforms with a root of trust for measurement (RTM) should initiate the measured launch process. This may 
+				include core BIOS or the chipset. The chipset is the preferred RTM, but core BIOS or other firmware is
+				acceptable. In system without a traditional RTM, the first component that boots would be considered
+				the RTM, this is not preferred.
                         </note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall verify that the <abbr linkend="TSS"/> or Operational Guidance describes how 
+                                The evaluator shall verify that the TSS or Operational Guidance describes how 
                                 integrity measurements are performed and made available to the Management Subsystem. The evaluator 
                                 shall examine the operational guidance to verify that it documents how to access the measurements in 
                                 the Management Subsystem.
@@ -4357,9 +4421,9 @@
                 <!-- FTA_TAB.1 -->
                 <f-component id="fta_tab.1" name="TOE Access Banner">
                     <f-element>
-                        <title>Before establishing an administrative user session, the <abbr linkend="TSF"/> shall display a
+                        <title>Before establishing an administrative user session, the TSF shall display a
                             security Administrator-specifiedad advisory notice and consent warning message regarding
-                            use of the <abbr linkend="TOE"/>.
+                            use of the TOE.
                         </title>
                         <note role="application">
                             This requirement is intended to apply to interactive sessions between a human user and a TOE. IT
@@ -4368,7 +4432,7 @@
                         </note>
                     <aactivity>
                         <Tests>
-                            The evaluator shall configure the <abbr linkend="TOE"/> to display the advisory warning message 
+                            The evaluator shall configure the TOE to display the advisory warning message 
                             “TEST TEST Warning Message TEST TEST”. The evaluator shall then log out and confirm that the advisory 
                             message is displayed before logging can occur.
                         </Tests>
@@ -4383,12 +4447,13 @@
                 <!-- FTP_ITC_EXT.1 -->
                 <f-component id="ftp_itc_ext.1" name="Trusted Channel Communications">
                     <f-element id="fel-itc">
-                        <title>The <abbr linkend="TSF"/> shall use
+                        <title>The TSF shall use
                             <selectables linebreak="yes">
                                 <selectable id="itc-tls">TLS as conforming to the <h:a href="https://www.niap-ccevs.org/pp/"><h:i>Package for Transport Layer Security</h:i></h:a></selectable>
                                 <selectable id="itc-https">TLS/HTTPS as conforming to FCS_HTTPS_EXT.1</selectable>
                                 <selectable id="itc-ipsec">IPsec as conforming to FCS_IPSEC_EXT.1</selectable>
-                                <selectable id="itc-ssh">SSH as conforming to the <h:a href="https://www.niap-ccevs.org/pp/"><h:i><abbr linkend="EP"/> for Secure Shell</h:i></h:a></selectable>
+                                <selectable id="itc-ssh">SSH as conforming to the <h:a href="https://www.niap-ccevs.org/pp/"><h:i>EP
+					for Secure Shell</h:i></h:a></selectable>
                             </selectables>
                             <!-- <import-package-depends package="PKG_TLS_V1.1" req="fel-itc" ids="itc-https"/>  -->
                             <!-- <import-package-depends package="PKG_TLS_V1.1" req="fel-itc" ids="itc-tls"/>  -->
@@ -4404,27 +4469,27 @@
                             that is logically distinct from other communication paths and provides assured identification of its
                             endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.
                         </title>
-                        <note role="application">If the ST author selects either TLS or HTTPS, the <abbr linkend="TSF"/> shall be validated against the 
+                        <note role="application">If the ST author selects either TLS or HTTPS, the TSF shall be validated against the 
                             Functional Package for TLS. This PP does not mandate that a product implement TLS with mutual authentication, but if the product 
                             includes the capability to perform TLS with mutual authentication, it is expected that mutual authentication will be 
-                            included within the <abbr linkend="TOE"/> boundary. The TLS Package requires that the X509 requirements be included by 
+                            included within the TOE boundary. The TLS Package requires that the X509 requirements be included by 
 			    the base PP, so selection of TLS or HTTPS causes FIA_X509_EXT.* to be selected.<h:br></h:br><h:br></h:br>
-                            If the <abbr linkend="ST"/> author selects SSH, the <abbr linkend="TSF"/> shall be validated against the Extended
+                            If the ST author selects SSH, the TSF shall be validated against the Extended
                             Package for Secure Shell. The SSH package imports the X509 requirements if necessary, so selecting SSH here does not automatically
 			    cause their inclusion. <h:br /> <h:br />
 			    Selection of IPSec also automatically causes inclusion of the X509 requirements.  <h:br /> <h:br />
-			    The <abbr linkend="ST"/> author must include the security functional requirements for the
-                            trusted channel protocol selected in FTP_ITC_EXT.1 in the main body of the <abbr linkend="ST"/>.<h:br></h:br><h:br></h:br>
+			    The ST author must include the security functional requirements for the
+                            trusted channel protocol selected in FTP_ITC_EXT.1 in the main body of the ST.<h:br></h:br><h:br></h:br>
                         </note>
                         <aactivity>
                             <TSS>
-                                The evaluator will review the <abbr linkend="TSS"/> to determine that it lists all trusted channels 
-                                the <abbr linkend="TOE"/> uses for remote communications, including both the external entities and/or 
+                                The evaluator will review the TSS to determine that it lists all trusted channels 
+                                the TOE uses for remote communications, including both the external entities and/or 
                                 remote users used for the channel as well as the protocol that is used for each.
                             </TSS>
                             <Tests>
-                                The evaluator will configure the <abbr linkend="TOE"/> to communicate with each external IT entity 
-                                and/or type of remote user identified in the <abbr linkend="TSS"/>. The evaluator will monitor network
+                                The evaluator will configure the TOE to communicate with each external IT entity 
+                                and/or type of remote user identified in the TSS. The evaluator will monitor network
                                 traffic while the VS performs communication with each of these destinations. The evaluator will ensure
                                 that for each session a trusted channel was established in conformance with the protocols identified 
                                 in the selection.
@@ -4448,7 +4513,7 @@
                 <!-- FTP_UIF_EXT.1 -->
                 <f-component id="ftp_uif_ext.1" name="User Interface: I/O Focus">
                     <f-element>
-                        <title>The <abbr linkend="TSF"/> shall indicate to users which <abbr linkend="VM"/>, if any, has the current input focus.
+                        <title>The TSF shall indicate to users which VM, if any, has the current input focus.
                         </title>
                         <note role="application">This requirement applies to all users—whether User or Administrator.
                             In environments where multiple <abbr linkend="VM"/>s run at the same time, the user must have a way of knowing which <abbr linkend="VM"/> user input is directed to at any given moment. This is especially important in multiple-domain environments.<h:br></h:br><h:br></h:br>
