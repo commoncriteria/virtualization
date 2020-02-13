@@ -3624,7 +3624,14 @@
                                 <selectable>not accept the certificate</selectable>
                             </selectables>.
                         </title>
-                        <note role="application">Often a connection must be established to check the revocation status of a certificate - either to download a CRL or to perform a lookup using OCSP. The selection is used to describe the behavior in the event that such a connection cannot be established (for example, due to a network error). If the <abbr linkend="TOE"/> has determined the certificate valid according to all other rules in FIA_X509_EXT.1, the behavior indicated in the selection shall determine the validity. The <abbr linkend="TOE"/> must not accept the certificate if it fails any of the other validation rules in FIA_X509_EXT.1. If the administrator-configured option is selected by the <abbr linkend="ST"/> Author, the <abbr linkend="ST"/> Author must ensure that this is also defined as a management function that is provided by the <abbr linkend="TOE"/>.</note>
+                        <note role="application">Often a connection must be established to check the revocation status of a 
+				certificate - either to download a CRL or to perform a lookup using OCSP. The selection is used to 
+				describe the behavior in the event that such a connection cannot be established (for example, due to 
+				a network error). If the TOE has determined the certificate valid according to all other rules in 
+				FIA_X509_EXT.1, the behavior indicated in the selection shall determine the validity. The TOE must
+				not accept the certificate if it fails any of the other validation rules in FIA_X509_EXT.1. If the 
+				administrator-configured option is selected by the ST Author, the ST Author must ensure that this is
+				also defined as a management function that is provided by the TOE.</note>
                         <aactivity>
                             <TSS>
                                 The evaluator shall check the TSS to ensure that it describes how the 
@@ -4648,14 +4655,27 @@
         </section>
 
         <section id="sar" title="TOE Security Assurance Requirements">
-            The Security Objectives for the <abbr linkend="TOE"/> in Section 4 were constructed to address threats identified in Section 3.1. The Security Functional Requirements (SFRs) in Section 5.1 are a formal instantiation of the Security Objectives. The PP identifies the Security Assurance Requirements (SARs) to frame the extent to which the evaluator assesses the documentation applicable for the evaluation and performs independent testing.<h:br></h:br><h:br></h:br>
-            This section lists the set of Security Assurance Requirements (SARs) from Part 3 of the Common Criteria for Information Technology Security Evaluation, Version 3.1, Revision 4 that are required in evaluations against this PP. Individual assurance activities to be performed are specified in both Section 5.1 as well as in this section.<h:br></h:br><h:br></h:br>
-            After the <abbr linkend="ST"/> has been approved for evaluation, the Information Technology Security Evaluation Facility (ITSEF) will obtain the <abbr linkend="TOE"/>, supporting environmental IT, and the administrative/user guides for the <abbr linkend="TOE"/>. The ITSEF is expected to perform actions mandated by the <abbr linkend="CEM"/> for the ASE and ALC SARs. The ITSEF also performs the assurance activities contained within Section 5, which are intended to be an interpretation of the other <abbr linkend="CEM"/> assurance requirements as they apply to the specific technology instantiated in the <abbr linkend="TOE"/>. The assurance activities that are captured in Section 5 also provide clarification as to what the developer needs to provide to demonstrate the <abbr linkend="TOE"/> is compliant with the PP.
+            The Security Objectives for the TOE in Section 4 were constructed to address threats identified in Section 3.1. The 
+		Security Functional Requirements (SFRs) in Section 5.1 are a formal instantiation of the Security Objectives. The PP
+		identifies the Security Assurance Requirements (SARs) to frame the extent to which the evaluator assesses the
+		documentation applicable for the evaluation and performs independent testing.<h:br></h:br><h:br></h:br>
+            This section lists the set of Security Assurance Requirements (SARs) from Part 3 of the Common Criteria for Information 
+		Technology Security Evaluation, Version 3.1, Revision 4 that are required in evaluations against this PP. Individual
+		assurance activities to be performed are specified in both Section 5.1 as well as in this section.<h:br></h:br><h:br></h:br>
+            After the ST has been approved for evaluation, the Information Technology Security Evaluation Facility (ITSEF) will obtain
+		the TOE, supporting environmental IT, and the administrative/user guides for the TOE. The ITSEF is expected to perform
+		actions mandated by the CEM for the ASE and ALC SARs. The ITSEF also performs the assurance activities contained 
+		within Section 5, which are intended to be an interpretation of the other CEM assurance requirements as they apply 
+		to the specific technology instantiated in the TOE. The assurance activities that are captured in Section 5 also 
+		provide clarification as to what the developer needs to provide to demonstrate the TOE is compliant with the PP.
             <subsection id="ase" title="Class ASE: Security Target Evaluation">
-                As per ASE activities defined in [<abbr linkend="CEM"/>] plus the <abbr linkend="TSS"/> assurance activities defined for any SFRs claimed by the <abbr linkend="TOE"/>.
+                As per ASE activities defined in [CEM] plus the TSS assurance activities defined for any SFRs claimed by the TOE.
             </subsection>
             <subsection id="adv" title="Class ADV: Development">
-                The information about the <abbr linkend="TOE"/> is contained in the guidance documentation available to the end user as well as the <abbr linkend="TOE"/> Summary Specification (<abbr linkend="TSS"/>) portion of the <abbr linkend="ST"/>. The <abbr linkend="TOE"/> developer must concur with the description of the product that is contained in the <abbr linkend="TSS"/> as it relates to the functional requirements. The Assurance Activities contained in Section 5.2 should provide the <abbr linkend="ST"/> authors with sufficient information to determine the appropriate content for the <abbr linkend="TSS"/> section.
+                The information about the TOE is contained in the guidance documentation available to the end user as well as the TOE
+		    Summary Specification (TSS) portion of the ST. The TOE developer must concur with the description of the product that is
+		    contained in the TSS as it relates to the functional requirements. The Assurance Activities contained in Section 5.2 
+		    should provide the ST authors with sufficient information to determine the appropriate content for the TSS section.
 
                 <!-- ADV_FSP.1 -->
                 <a-component id="ADV_FSP.1" name="Basic functional specification">
@@ -4665,29 +4685,43 @@
                     <a-element type="D">
                         <title>The developer shall provide a tracing from the functional specification to the SFRs.</title>
                         <note role="developer">
-                            As indicated in the introduction to this section, the functional specification is composed of the information contained in the AGD_OPR and AGD_PRE documentation, coupled with the information provided in the <abbr linkend="TSS"/> of the <abbr linkend="ST"/>. The assurance activities in the functional requirements point to evidence that should exist in the documentation and <abbr linkend="TSS"/> section; since these are directly associated with the SFRs, the tracing in element ADV_FSP.1.2D is implicitly already done and no additional documentation is necessary.</note>
+                            As indicated in the introduction to this section, the functional specification is composed of the information
+				contained in the AGD_OPR and AGD_PRE documentation, coupled with the information provided in the TSS of the
+				ST. The assurance activities in the functional requirements point to evidence that should exist in the
+				documentation and TSS section; since these are directly associated with the SFRs, the tracing in element 
+				ADV_FSP.1.2D is implicitly already done and no additional documentation is necessary.</note>
                     </a-element>
                 	
                     <a-element type="C">
-                        <title>The functional specification shall describe the purpose and method of use for each SFR-enforcing and SFR-supporting TSFI.</title>
+                        <title>The functional specification shall describe the purpose and method of use for each SFR-enforcing and
+				SFR-supporting TSFI.</title>
                     </a-element>
                     <a-element type="C">
-                        <title>The functional specification shall identify all parameters associated with each SFR-enforcing and SFR-supporting TSFI.</title>
+                        <title>The functional specification shall identify all parameters associated with each SFR-enforcing and
+				SFR-supporting TSFI.</title>
                     </a-element>
                     <a-element type="C">
-                        <title>The functional specification shall provide rationale for the implicit categorization of interfaces as SFR-non-interfering.</title>
+                        <title>The functional specification shall provide rationale for the implicit categorization of interfaces as
+				SFR-non-interfering.</title>
                     </a-element>
                     <a-element type="C">
                         <title>The tracing shall demonstrate that the SFRs trace to TSFIs in the functional specification.</title>
                     </a-element>
                   	
                     <a-element type="E">
-                        <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</title>
+                        <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation
+				of evidence.</title>
                     </a-element>
                     <a-element type="E">
-                        <title>The evaluator shall determine that the functional specification is an accurate and complete instantiation of the SFRs.</title>
+                        <title>The evaluator shall determine that the functional specification is an accurate and complete instantiation of 
+				the SFRs.</title>
                         <note role="application">
-                            There are no specific assurance activities associated with these SARs. The functional specification documentation is provided to support the evaluation activities described in Section 5.2, and other activities described for AGD, ATE, and AVA SARs. The requirements on the content of the functional specification information is implicitly assessed by virtue of the other assurance activities being performed; if the evaluator is unable to perform an activity because the there is insufficient interface information, then an adequate functional specification has not been provided.
+                            There are no specific assurance activities associated with these SARs. The functional specification documentation
+				is provided to support the evaluation activities described in Section 5.2, and other activities described for
+				AGD, ATE, and AVA SARs. The requirements on the content of the functional specification information is 
+				implicitly assessed by virtue of the other assurance activities being performed; if the evaluator is unable 
+				to perform an activity because the there is insufficient interface information, then an adequate functional
+				specification has not been provided.
                         </note>
                     </a-element>
                 </a-component>
