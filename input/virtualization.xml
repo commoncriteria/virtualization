@@ -812,7 +812,7 @@
 		and refinements.
 
             <!-- FAU_GEN.1 -->
-            <subsection id="fau" title="Security Audit (FAU)">
+            <subsection id="fau" title="Security Audit (FAU)" status="mandatory">
                 <f-component id="fau_gen.1" name="Audit Data Generation">
                     <f-element>
                         <title>The TSF shall be able to generate an audit record of the following auditable events:
@@ -921,7 +921,7 @@
 		  </f-component>
                 
                 <!-- FAU_SAR.1 -->
-                <f-component id="fau_sar.1" name="Audit Review">
+                <f-component id="fau_sar.1" name="Audit Review" status="mandatory">
                     <f-element>
                         <title>The TSF shall provide [administrators] with the capability to read [all information] from the audit records.
                         </title>
@@ -946,7 +946,7 @@
                 </f-component>
                 
                 <!-- FAU_STG.1 -->
-                <f-component id="fau_stg.1" name="Protected Audit Trail Storage">
+                <f-component id="fau_stg.1" name="Protected Audit Trail Storage" status="mandatory">
                     <f-element>
                         <title>The TSF shall protect the stored audit records in the audit trail from unauthorized deletion.
                         </title>
@@ -979,7 +979,7 @@
                 </f-component>
 
                 <!-- FAU_STG_EXT.1 -->
-                <f-component id="fau_stg_ext.1" name="Off-Loading of Audit Data">
+                <f-component id="fau_stg_ext.1" name="Off-Loading of Audit Data" status="mandatory">
                     <f-element>
                         <title>The TSF shall be able to transmit the generated audit data to an external IT entity using a trusted 
 				channel as specified in FTP_ITC_EXT.1.
@@ -1119,7 +1119,7 @@
             <subsection id="fcs" title="Cryptographic Support">
                 
                 <!-- FCS_CKM.1 -->
-                <f-component id="fcs_ckm.1" name="Cryptographic Key Generation">
+                <f-component id="fcs_ckm.1" name="Cryptographic Key Generation" status="mandatory">
                     <f-element>
                         <title> The TSF shall generate asymmetric cryptographic keys in accordance with a specified cryptographic key
 				generation algorithm
@@ -1247,7 +1247,7 @@
                 </f-component>
                 
                 <!-- FCS_CKM.2 -->
-                <f-component id="fcs_ckm.2" name="Cryptographic Key Establishment">
+                <f-component id="fcs_ckm.2" name="Cryptographic Key Establishment" status="mandatory">
                     <f-element>
                         <title>The TSF shall perform cryptographic key establishment in accordance with a specified cryptographic
 				key establishment method:
@@ -1377,7 +1377,7 @@
                 </f-component>
 
                 <!-- FCS_CKM_EXT.4 -->
-                <f-component id="fcs_ckm_ext.4" name="Cryptographic Key Destruction">
+                <f-component id="fcs_ckm_ext.4" name="Cryptographic Key Destruction" status="mandatory">
                     <f-element>
                         <title>The TSF shall cause disused cryptographic keys in volatile memory to be destroyed or rendered 
 				unrecoverable.
@@ -1473,7 +1473,7 @@
        
                 <!-- FCS_COP.1/UDE (formerly FCS_COP.1(1)) -->
 		<!-- Removed AES-CTR because there are no tests 20190919 -->
-                <f-component id="fcs_cop.1" iteration="UDE" name="Cryptographic Operation (AES Data Encryption/ Decryption)">
+                <f-component id="fcs_cop.1" iteration="UDE" name="Cryptographic Operation (AES Data Encryption/ Decryption)" status="mandatory">
                     <f-element>
                         <title>
                             The TSF shall perform [encryption and decryption] in accordance with a specified cryptographic algorithm<h:br></h:br>
@@ -1723,7 +1723,7 @@
   	        </f-component>
                 
 		<!-- FCS_COP.1/HASH (formerly FCS_COP.1(2)) -->
-                <f-component id="fcs_cop.1" iteration="HASH" name="Cryptographic Operation (Hashing)">
+                <f-component id="fcs_cop.1" iteration="HASH" name="Cryptographic Operation (Hashing)" status="mandatory">
                     <f-element>
                         <title>The TSF shall perform [cryptographic hashing] in accordance with a specified cryptographic algorithm
                             <selectables>
@@ -1878,7 +1878,7 @@
                 
                 <!-- FCS_COP.1/SIG (formerly FCS_COP.1(3)) -->
     		<!-- Added SHA-3 hashes 20190919 -->
-                <f-component id="fcs_cop.1" iteration="SIG" name="Cryptographic Operation (Signature Algorithms)">
+                <f-component id="fcs_cop.1" iteration="SIG" name="Cryptographic Operation (Signature Algorithms)" status="mandatory">
                     <f-element>
                         <title>The TSF shall perform [<h:i>cryptographic signature services (generation and verification)</h:i>] in 
 				accordance with a specified cryptographic algorithm
@@ -1949,7 +1949,7 @@
                 
                 <!-- FCS_COP.1/KEYHASH (formerly FCS_COP.1(4)) -->
 		<!-- Added SHA-3 hashes 20190919 -->
-                <f-component id="fcs_cop.1" iteration="KEYHASH" name="Cryptographic Operation (Keyed Hash algorithms)">
+                <f-component id="fcs_cop.1" iteration="KEYHASH" name="Cryptographic Operation (Keyed Hash algorithms)" status="mandatory">
                     <f-element>
                         <title>The TSF shall perform [<h:i>keyed-hash message authentication</h:i>] in accordance with a specified
 				cryptographic algorithm
@@ -1999,7 +1999,7 @@
                 </f-component>
                 
                 <!-- FCS_ENT_EXT.1 -->
-                <f-component id="fcs_ent_ext.1" name="Extended: Entropy for Virtual Machines">
+                <f-component id="fcs_ent_ext.1" name="Extended: Entropy for Virtual Machines" status="mandatory">
                     <f-element>
                         <title>The TSF shall provide a mechanism to make available to VMs entropy that meets FCS_RBG_EXT.1 through
                             <selectables>
@@ -2064,7 +2064,7 @@
                 </f-component>
                 
                 <!-- FCS_RBG_EXT.1 -->
-                <f-component id="fcs_rbg_ext.1" name="Cryptographic Operation (Random Bit Generation)">
+                <f-component id="fcs_rbg_ext.1" name="Cryptographic Operation (Random Bit Generation)" status="mandatory">
                     <f-element>
                         <title>The TSF shall perform all deterministic random bit generation services in accordance with NIST Special 
 				Publication 800-90A using
@@ -2882,7 +2882,7 @@
             <subsection id="fdp" title="User Data Protection">
 
                 <!-- FDP_HBI_EXT.1 -->
-                <f-component id="fdp_hbi_ext.1" name="Hardware-Based Isolation Mechanisms">
+                <f-component id="fdp_hbi_ext.1" name="Hardware-Based Isolation Mechanisms" status="mandatory">
                     <f-element>
                         <title>The TSF shall use
                             <selectables>
@@ -2915,7 +2915,7 @@
                 </f-component>
 
                 <!-- FDP_PPR_EXT.1 -->
-                <f-component id="fdp_ppr_ext.1" name="Physical Platform Resource Controls">
+                <f-component id="fdp_ppr_ext.1" name="Physical Platform Resource Controls" status="mandatory">
                     <f-element>
                         <title>The TSF shall allow an authorized administrator to control Guest VM access to the following physical
 				platform resources: <assignable>list of physical platform resources the VMM is
@@ -3017,7 +3017,7 @@
                 </f-component>
                 
                 <!-- FDP_RIP_EXT.1 -->
-                <f-component id="fdp_rip_ext.1" name="Residual Information in Memory">
+                <f-component id="fdp_rip_ext.1" name="Residual Information in Memory" status="mandatory">
                     <f-element>
                         <title>The TSF shall ensure that any previous information content of physical memory is cleared prior to 
 				allocation to a Guest VM.
@@ -3045,7 +3045,7 @@
                 </f-component>
 
                 <!-- FDP_RIP_EXT.2 -->
-                <f-component id="fdp_rip_ext.2" name="Residual Information on Disk">
+                <f-component id="fdp_rip_ext.2" name="Residual Information on Disk" status="mandatory">
                     <f-element>
                         <title>The TSF shall ensure that any previous information content of physical disk storage is cleared prior
 				to allocation to a Guest VM.
@@ -3084,7 +3084,7 @@
                 </f-component>
 
                 <!-- FDP_VMS_EXT.1 -->
-                <f-component id="fdp_vms_ext.1" name="VM Separation">
+                <f-component id="fdp_vms_ext.1" name="VM Separation" status="mandatory">
                     <f-element>
                         <title>The VS shall provide the following mechanisms for transferring data between Guest VMs:
                             <selectables linebreak="yes">
@@ -3175,7 +3175,7 @@
                 </f-component>
                 
                 <!-- FDP_VNC_EXT.1 -->
-                <f-component id="fdp_vnc_ext.1" name="Virtual Networking Components">
+                <f-component id="fdp_vnc_ext.1" name="Virtual Networking Components" status="mandatory">
                     <f-element>
                         <title>The TSF shall allow Administrators to configure virtual networking components to connect VMs to each
 				other, and to physical networks.
@@ -3249,7 +3249,7 @@
             <subsection id="fia" title="Identification and Authentication">
                 
                 <!-- FIA_AFL_EXT.1 -->
-                <f-component id="fia_afl_ext.1" name="Authentication Failure Handling">
+                <f-component id="fia_afl_ext.1" name="Authentication Failure Handling" status="mandatory">
                     <f-element>
                         <title>The TSF shall detect when
                             <selectables linebreak="yes">
@@ -3324,7 +3324,7 @@
                 </f-component>
 
                 <!-- FIA_UAU.5 -->
-                <f-component id="fia_uau.5" name="Multiple Authentication Mechanisms">
+                <f-component id="fia_uau.5" name="Multiple Authentication Mechanisms" status="mandatory">
                     <f-element id="fil-aua">
                         <title>The TSF shall provide the following authentication mechanisms:
                             <selectables linebreak="yes">
@@ -3419,7 +3419,7 @@
                 </f-component>
 
                 <!-- FIA_UIA_EXT.1 -->
-                <f-component id="fia_uia_ext.1" name="Administrator Identification and Authentication">
+                <f-component id="fia_uia_ext.1" name="Administrator Identification and Authentication" status="mandatory">
                     <f-element>
                         <title>The TSF shall require Administrators to be successfully identified and authenticated
                             using one of the methods in FIA_UAU.5 before allowing any TSF-mediated management
@@ -3700,7 +3700,7 @@
             <subsection id="fmt" title="Security Management">
                 
                 <!-- FMT_MSA_EXT.1 -->
-                <f-component id="fmt_msa_ext.1" name="Default Data Sharing Configuration">
+                <f-component id="fmt_msa_ext.1" name="Default Data Sharing Configuration" status="mandatory">
                     <f-element>
                         <title>The TSF shall by default enforce a policy prohibiting sharing of data between Guest VMs using
                             <selectables linebreak="yes">
@@ -3738,7 +3738,7 @@
                 </f-component>
                 
                 <!-- FMT_SMO_EXT.1 -->
-                <f-component id="fmt_smo_ext.1" name="Separation of Management and Operational Networks">
+                <f-component id="fmt_smo_ext.1" name="Separation of Management and Operational Networks" status="mandatory">
                     <f-element>
                         <title>The TSF shall support the configuration of separate management and operational networks through
                             <selectables>
@@ -3786,7 +3786,7 @@
             <subsection id="fpt" title="Protection of the TSF">
                 
                 <!-- FPT_DVD_EXT.1 -->
-                <f-component id="fpt_dvd_ext.1" name="Non-Existence of Disconnected Virtual Devices">
+                <f-component id="fpt_dvd_ext.1" name="Non-Existence of Disconnected Virtual Devices" status="mandatory">
                     <f-element>
                         <title>The TSF shall limit a Guest VM’s access to virtual devices to those that are present in the VM’s current
 				virtual hardware configuration.
@@ -3811,7 +3811,7 @@
                 </f-component>
 
                 <!-- FPT_EEM_EXT.1 -->
-                <f-component id="fpt_eem_ext.1" name="Execution Environment Mitigations">
+                <f-component id="fpt_eem_ext.1" name="Execution Environment Mitigations" status="mandatory">
                     <f-element>
                         <title>The TSF shall take advantage of execution environment-based vulnerability mitigation mechanisms 
 				supported by the Platform such as:
@@ -3847,7 +3847,7 @@
                 </f-component>
                 
                 <!-- FPT_HAS_EXT.1 -->
-                <f-component id="fpt_has_ext.1" name="Hardware Assists">
+                <f-component id="fpt_has_ext.1" name="Hardware Assists" status="mandatory">
                     <f-element>
                         <title>The VMM shall use <assignable>list of hardware-based virtualization assists</assignable> to reduce or 
 				eliminate the need for binary translation.
@@ -3884,7 +3884,7 @@
                 </f-component>
 
                 <!-- FPT_HCL_EXT.1 -->
-                <f-component id="fpt_hcl_ext.1" name="Hypercall Controls">
+                <f-component id="fpt_hcl_ext.1" name="Hypercall Controls" status="mandatory">
                     <f-element>
                         <title>The TSF shall provide a Hypercall interface for Guest VMs to use to invoke functionality provided by 
 				the VMM.
@@ -3967,7 +3967,7 @@
                 </f-component>
 
                 <!-- FPT_RDM_EXT.1 -->
-                <f-component id="fpt_rdm_ext.1" name="Removable Devices and Media">
+                <f-component id="fpt_rdm_ext.1" name="Removable Devices and Media" status="mandatory">
                     <f-element>
                         <title>The TSF shall implement controls for handling the transfer of virtual and physical removable media and
 				virtual and physical removable media devices between information domains.
@@ -4045,7 +4045,7 @@
                 </f-component>
 
                 <!-- FPT_TUD_EXT.1 -->
-                <f-component id="fpt_tud_ext.1" name="Trusted Updates to the Virtualization System">
+                <f-component id="fpt_tud_ext.1" name="Trusted Updates to the Virtualization System" status="mandatory">
                     <f-element>
                         <title>The TSF shall provide administrators the ability to query the currently executed version of the TOE 
 				firmware/software as well as the most recently installed version of the TOE firmware/software.
@@ -4169,7 +4169,7 @@
                 </f-component>
 
                 <!-- FPT_VDP_EXT.1 -->
-                <f-component id="fpt_vdp_ext.1" name="Virtual Device Parameters">
+                <f-component id="fpt_vdp_ext.1" name="Virtual Device Parameters" status="mandatory">
                     <f-element>
                         <title>The TSF shall provide interfaces for virtual devices implemented by the VMM as part of the virtual
 				hardware abstraction.
@@ -4221,7 +4221,7 @@
                 </f-component>
 
                 <!-- FPT_VIV_EXT.1 -->
-                <f-component id="fpt_viv_ext.1" name="VMM Isolation from VMs">
+                <f-component id="fpt_viv_ext.1" name="VMM Isolation from VMs" status="mandatory">
                     <f-element>
                         <title>The TSF must ensure that software running in a VM is not able to degrade or disrupt the functioning of 
 				other VMs, the VMM, or the Platform.
@@ -4465,7 +4465,7 @@
             <subsection id="fta" title="TOE Access">
                 
                 <!-- FTA_TAB.1 -->
-                <f-component id="fta_tab.1" name="TOE Access Banner">
+                <f-component id="fta_tab.1" name="TOE Access Banner" status="mandatory">
                     <f-element>
                         <title>Before establishing an administrative user session, the TSF shall display a
                             security Administrator-specifiedad advisory notice and consent warning message regarding
@@ -4491,7 +4491,7 @@
             <subsection id="ftp" title="Trusted Path/Channel">
                 
                 <!-- FTP_ITC_EXT.1 -->
-                <f-component id="ftp_itc_ext.1" name="Trusted Channel Communications">
+                <f-component id="ftp_itc_ext.1" name="Trusted Channel Communications" status="mandatory">
                     <f-element id="fel-itc">
                         <title>The TSF shall use
                             <selectables linebreak="yes">
@@ -4557,7 +4557,7 @@
                 </f-component>
 
                 <!-- FTP_UIF_EXT.1 -->
-                <f-component id="ftp_uif_ext.1" name="User Interface: I/O Focus">
+                <f-component id="ftp_uif_ext.1" name="User Interface: I/O Focus" status="mandatory">
                     <f-element>
                         <title>The TSF shall indicate to users which VM, if any, has the current input focus.
                         </title>
@@ -4587,7 +4587,7 @@
                 </f-component>
 
                 <!-- FTP_UIF_EXT.2 -->
-                <f-component id="ftp_uif_ext.2" name="User Interface: Identification of VM">
+                <f-component id="ftp_uif_ext.2" name="User Interface: Identification of VM" status="mandatory">
                     <f-element>
                         <title>The TSF shall support the unique identification of a VM’s output display to users.
                         </title>
@@ -4621,7 +4621,7 @@
                 <!-- TODO: There is really no selection for bringing this in. -->
                 <!-- Need an SFR that allows selection of remote vs. local admin of the VS -->
                 <!-- If remote admin is required, then this should be a threshold requirement -->
-                <f-component id="ftp_trp.1" name="Trusted Path">  <!-- status="sel-based" -->
+                <f-component id="ftp_trp.1" name="Trusted Path" status="mandatory">  <!-- status="sel-based" -->
 <!--                    <selection-depends req="fel-itc"/> This is the wrong dependency.   -->
                     <f-element>
                         <title>The TSF shall use a trusted channel as specified in FTP_ITC_EXT.1 to provide a trusted communication
