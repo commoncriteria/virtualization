@@ -44,14 +44,13 @@
 
     - Added FIA_AFL_EXT to the audit table. It was inexplicably missing. 
 
-
 	Schema changes reflected herein:
 	- aactivity-sar replaces aactivity in SARs.
 	- pp-declarations and audit-table-decl added. Likely management-table-decl will be added later.
-	- audit-table tag for audit tables.
+	- audit-table tag for audit tables. These can live at equivalent to f-element level in f-components (usually only FAU_GEN) 
+		and at the top level within Annexe (appendix tag). 
 	- audit-event tag for defining audit events within f-components
-
-
+	- audit-event-descr and audit-event-info tags for contents of those columns in audit table
    
     -->
 
@@ -100,7 +99,7 @@
 	
     <!-- TABLE OF CONTENTS goes here -->
 
-    <!-- Declaration section. So far this is only for audit tables -->
+    <!-- Declaration section. So far this is only for audit tables.  In the future, management tables may be declared here as well. -->
     <pp-declarations>
       <audit-table-decl display-name="table1" event-name="mandatory" />
       <audit-table-decl display-name="table2" event-name="optional" fau-gen-sel="fau-gen-t2" />
