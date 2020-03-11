@@ -33,7 +33,7 @@
     - DONE: 0432: Corrections to FIA_AFL_EXT.1
     - DONE: 0433: Assurance activity for FIA_X509_EXT.1.2
 
-    - DONE: Add Equivalency section (Annex E)
+    - DONE: Add Equivalency (Annex E)
 
     - Removed AES-CTR from acceptable AES modes (because there are no tests)
     - Added SHA-3 to hashes (and tests)
@@ -108,8 +108,8 @@
 
     <!-- INTRODUCTION -->
     
-    <chapter id="intro" title="Introduction">
-        <section id="overview" title="Overview">
+    <chapter id="ch-intro" title="Introduction">
+        <section id="s-overview" title="Overview">
             The scope of this Protection Profile (PP) is to describe the security functionality of virtualization technologies in 
 		terms of [CC] and to define security functional and assurance requirements for such products. This PP is not complete 
 		in itself, but rather provides a set of requirements that are common to the Extended Packages (EP) for Server
@@ -216,7 +216,7 @@
 		  document, the VS consists of a Virtual Machine Manager (VMM), Virtual Machine abstractions, a management subsystem,
 		  and other components.</term>
 	</tech-terms>
-        <section id="complianttargets" title="Compliant Targets of Evaluation">
+        <section id="s-complianttargets" title="Compliant Targets of Evaluation">
             A Virtualization System (VS) is a software product that enables multiple independent computing systems to execute on the 
 		same physical hardware platform without interference from one other. A VS creates a virtualized hardware environment
 		(virtual machines or VMs) for each instance of an operating system permitting these environments to execute 
@@ -252,7 +252,7 @@
 		Guest VMs, it would be proper to classify the encryption VM as a Service 
 		VM. For the purposes of this document, Helper VMs are subject to all requirements
 		that apply to Guest VMs, unless specifically stated otherwise.<h:br></h:br><h:br></h:br>
-            <subsection id="toeboundary" title="TOE Boundary">
+            <subsection id="ss-toeboundary" title="TOE Boundary">
                 Figure 1 shows a greatly simplified view of a generic Virtualization System and Platform. TOE components are displayed
 		    in Red. Non-TOE components are in Blue. The Platform is the hardware, firmware, and software onto which the VS is 
 		    installed. The VMM includes the Hypervisor, Service VMs, and VM containers, but not the software that runs inside
@@ -273,7 +273,7 @@
 		    integrated into a commodity operating system, the components installed expressly for implementing and supporting
 		    virtualization are in the TOE, and the Platform comprises the hardware and Host OS.
             </subsection>
-            <subsection id="platformreqs" title="Requirements Met by the Platform">
+            <subsection id="ss-platformreqs" title="Requirements Met by the Platform">
                 Depending on the way the VS is installed, functions tested under this PP may be implemented by the TOE or by the
 		    Platform. There is no difference in the testing required whether the function is implemented by the TOE or by the
 		    Platform. In either case, the tests determine whether the function being tested provides a level of assurance 
@@ -282,7 +282,7 @@
 		    level does not change between instances of equivalent products on equivalent platforms—and also, of course, to
 		    ensure that the appropriate testing is done when the distinction is significant.
             </subsection>
-            <subsection id="scopecert" title="Scope of Certification">
+            <subsection id="ss-scopecert" title="Scope of Certification">
                 Successful evaluation of a Virtualization System against this profile does not constitute or imply successful 
 		    evaluation of any Host Operating System or Platform—no matter how tightly integrated with the VS. The Platform,
 		    including any Host OS, supports the VS through provision of services and resources. Specialized VS components 
@@ -290,7 +290,7 @@
 		    components and functions—whether or not they support the VS—are not part of the TOE, and thus
 		    are not evaluated under this PP.
             </subsection>
-            <subsection id="attestation" title="Vendor Attestation">
+            <subsection id="ss-attestation" title="Vendor Attestation">
                 This PP includes several SFRs that include elements that are met via vendor attestation. Attestation assurance 
 		    activities are reserved for SFRs that define properties that are critical to the system’s security functionality,
 		    but that are impossible or impractical to test in a repeatable and consistent manner. These Attestation assurance 
@@ -303,13 +303,13 @@
 		    be revoked. See FDP_VMS_EXT.1, FDP_VNC_EXT.1, FPT_VDP_EXT.1, and FPT_VIV_EXT.1 for the associated Attestation
 		    statements.
             </subsection>
-            <subsection id="equiv" title="Product and Platform Equivalence">
+            <subsection id="ss-equiv" title="Product and Platform Equivalence">
                 The tests in this Protection Profile must be run on all product versions and Platforms with which the Vendor would 
 		    like to claim compliance—subject to this Profile’s equivalency guidelines (see Annex E).
             </subsection>
         </section>
 
-        <section id="usecases" title="Use Cases">
+        <section id="s-usecases" title="Use Cases">
             This base PP does not define any use cases for virtualization technology. Client Virtualization and Server Virtualization
 		products have different use cases and so these are defined in their respective EPs.
         </section>
@@ -317,7 +317,7 @@
     
     <!-- CONFORMANCE CLAIMS -->
 
-    <chapter id="claims" title="Conformance Claims"/>
+    <chapter id="ch-claims" title="Conformance Claims"/>
 <!--        <cclaims>
             <cclaim id="statement">
                 <description>
@@ -355,8 +355,8 @@
 -->
     <!-- SECURITY PROBLEM DESCRIPTION -->
 
-    <chapter id="desc" title="Security Problem Description">
-        <section id="threats" title="Threats">
+    <chapter id="ch-desc" title="Security Problem Description">
+        <section id="s-threats" title="Threats">
             <threats>
                 <threat name="T.DATA_LEAKAGE">
                     <description>
@@ -533,7 +533,7 @@
             </threats>
         </section>
         
-        <section id="assumptions" title="Assumptions">
+        <section id="s-assumptions" title="Assumptions">
             <assumptions>
                 <assumption name="A.PLATFORM_INTEGRITY">
                     <description>The platform has not been compromised prior to installation of the Virtualization System.</description>
@@ -577,15 +577,15 @@
                 </assumption>
             </assumptions>
         </section>
-        <section id="secpolicies" title="Organizational Security Policies">
+        <section id="s-secpolicies" title="Organizational Security Policies">
             There are no organizational security policies defined for this PP.
         </section>
     </chapter>
     
     <!-- SECURITY OBJECTIVES -->
     
-    <chapter id="obj" title="Security Objectives">
-        <section id="secobjtoe" title="Security Objectives for the TOE">
+    <chapter id="ch-secobj" title="Security Objectives">
+        <section id="s-secobjtoe" title="Security Objectives for the TOE">
             <SOs>
                 <SO name="O.VM_ISOLATION">
                     <description>VMs are the fundamental subject of the system. The VMM is 
@@ -768,7 +768,7 @@
                 </SO>
             </SOs>
         </section>
-        <section id="secobjoe" title="Security Objectives for the Operational Environment">
+        <section id="s-secobjoe" title="Security Objectives for the Operational Environment">
             <SOEs>
                 <SOE name="OE.CONFIG">
                     <description>TOE administrators will configure the Virtualization System correctly to create the intended security
@@ -801,8 +801,8 @@
     
     <!-- SECURITY REQUIREMENTS -->
     
-    <chapter id="req" title="Security Requirements">
-        <section id="sfr" title="TOE Security Functional Requirements">
+    <chapter id="ch-secreq" title="Security Requirements">
+        <section id="s-sfr" title="TOE Security Functional Requirements">
             The Security Functional Requirements (SFRs) included in this section are derived from Part 2 of the Common Criteria for 
 		Information Technology Security Evaluation, Version 3.1, Revision 4, with additional extended functional
 		components.<h:br></h:br><h:br></h:br>
@@ -810,7 +810,7 @@
 		and refinements.
 
             <!-- FAU_GEN.1 -->
-            <subsection id="fau" title="Security Audit (FAU)">
+            <subsection id="ss-fau" title="Security Audit (FAU)">
                 <f-component id="fau_gen.1" name="Audit Data Generation" status="mandatory">
                     <f-element>
                         <title>The TSF shall be able to generate an audit record of the following auditable events:
@@ -1114,7 +1114,7 @@
 		</f-component>
             </subsection>
             
-            <subsection id="fcs" title="Cryptographic Support">
+            <subsection id="ss-fcs" title="Cryptographic Support">
                 
                 <!-- FCS_CKM.1 -->
                 <f-component id="fcs_ckm.1" name="Cryptographic Key Generation" status="mandatory">
@@ -2877,7 +2877,7 @@
                 </f-component>
             </subsection>
 
-            <subsection id="fdp" title="User Data Protection">
+            <subsection id="ss-fdp" title="User Data Protection">
 
                 <!-- FDP_HBI_EXT.1 -->
                 <f-component id="fdp_hbi_ext.1" name="Hardware-Based Isolation Mechanisms" status="mandatory">
@@ -3244,7 +3244,7 @@
                 </f-component>
             </subsection>
             
-            <subsection id="fia" title="Identification and Authentication">
+            <subsection id="ss-fia" title="Identification and Authentication">
                 
                 <!-- FIA_AFL_EXT.1 -->
                 <f-component id="fia_afl_ext.1" name="Authentication Failure Handling" status="mandatory">
@@ -3695,7 +3695,7 @@
                 </f-component>
             </subsection>
             
-            <subsection id="fmt" title="Security Management">
+            <subsection id="ss-fmt" title="Security Management">
                 
                 <!-- FMT_MSA_EXT.1 -->
                 <f-component id="fmt_msa_ext.1" name="Default Data Sharing Configuration" status="mandatory">
@@ -3781,7 +3781,7 @@
                 </f-component>
             </subsection>
             
-            <subsection id="fpt" title="Protection of the TSF">
+            <subsection id="ss-fpt" title="Protection of the TSF">
                 
                 <!-- FPT_DVD_EXT.1 -->
                 <f-component id="fpt_dvd_ext.1" name="Non-Existence of Disconnected Virtual Devices" status="mandatory">
@@ -4460,7 +4460,7 @@
                 </f-component>
             </subsection>
 
-            <subsection id="fta" title="TOE Access">
+            <subsection id="ss-fta" title="TOE Access">
                 
                 <!-- FTA_TAB.1 -->
                 <f-component id="fta_tab.1" name="TOE Access Banner" status="mandatory">
@@ -4486,7 +4486,7 @@
                 </f-component>
             </subsection>
             
-            <subsection id="ftp" title="Trusted Path/Channel">
+            <subsection id="ss-ftp" title="Trusted Path/Channel">
                 
                 <!-- FTP_ITC_EXT.1 -->
                 <f-component id="ftp_itc_ext.1" name="Trusted Channel Communications" status="mandatory">
@@ -4691,7 +4691,7 @@
             </subsection>
         </section>
 
-        <section id="sar" title="TOE Security Assurance Requirements">
+        <section id="s-sar" title="TOE Security Assurance Requirements">
             The Security Objectives for the TOE in Section 4 were constructed to address threats identified in Section 3.1. The 
 		Security Functional Requirements (SFRs) in Section 5.1 are a formal instantiation of the Security Objectives. The PP
 		identifies the Security Assurance Requirements (SARs) to frame the extent to which the evaluator assesses the
@@ -4705,10 +4705,10 @@
 		within Section 5, which are intended to be an interpretation of the other CEM assurance requirements as they apply 
 		to the specific technology instantiated in the TOE. The assurance activities that are captured in Section 5 also 
 		provide clarification as to what the developer needs to provide to demonstrate the TOE is compliant with the PP.
-            <subsection id="ase" title="Class ASE: Security Target Evaluation">
+            <subsection id="ss-ase" title="Class ASE: Security Target Evaluation">
                 As per ASE activities defined in [CEM] plus the TSS assurance activities defined for any SFRs claimed by the TOE.
             </subsection>
-            <subsection id="adv" title="Class ADV: Development">
+            <subsection id="ss-adv" title="Class ADV: Development">
                 The information about the TOE is contained in the guidance documentation available to the end user as well as the TOE
 		    Summary Specification (TSS) portion of the ST. The TOE developer must concur with the description of the product that is
 		    contained in the TSS as it relates to the functional requirements. The Assurance Activities contained in Section 5.2 
@@ -4764,7 +4764,7 @@
                 </a-component>
             </subsection>
 
-            <subsection id="agd" title="Class AGD: Guidance Documents">
+            <subsection id="ss-agd" title="Class AGD: Guidance Documents">
                 The guidance documents will be provided with the developer’s security target. Guidance must include a description of
 		    how the authorized user verifies that the Operational Environment can fulfill its role for the security
 		    functionality. The documentation should be in an informal style and readable by an authorized user.<h:br></h:br><h:br></h:br>
@@ -4897,7 +4897,7 @@
                 </a-component>
             </subsection>
 
-            <subsection id="alc" title="Class ALC: Life-Cycle Support">
+            <subsection id="ss-alc" title="Class ALC: Life-Cycle Support">
                 At the assurance level specified for TOEs conformant to this PP, life-cycle support is limited to an examination of 
 		    the TOE vendor’s development and configuration management process in order to provide a baseline level of 
 		    assurance that the TOE itself is developed in a secure manner and that the developer has a well-defined process 
@@ -5010,7 +5010,7 @@
                 </a-component>
 
             </subsection>
-            <subsection id="ate" title="Class ATE: Tests">
+            <subsection id="ss-ate" title="Class ATE: Tests">
                 Testing is specified for functional aspects of the system as well as aspects that take advantage of design or
 		    implementation weaknesses. The former is done through ATE_IND family, while the latter is through the AVA_VAN
 		    family. At the assurance level specified in this PP, testing is based on advertised functionality and interfaces
@@ -5076,7 +5076,7 @@
                 </a-component>
             </subsection>
             
-            <subsection id="ava" title="Class AVA: Vulnerability Assessment">
+            <subsection id="ss-ava" title="Class AVA: Vulnerability Assessment">
                 For the first generation of this Protection Profile, the evaluation lab is expected to survey open sources to learn
 		    what vulnerabilities have been discovered in these types of products. In most cases, these vulnerabilities will
 		    require sophistication beyond that of a basic attacker. Until penetration tools are created and uniformly
@@ -5132,7 +5132,7 @@
     
     <!-- Annex A: OPTIONAL Requirements -->
     
-    <appendix id="optional" title="Optional Requirements">
+    <appendix id="annex-a-optional" title="Optional Requirements">
         <h:br></h:br><h:br></h:br>
 
         See <ctr-ref refid="audit-table">: Auditable Events</ctr-ref> for more information.<h:br/><h:br/>
@@ -5148,7 +5148,7 @@
     </appendix>
 
     <!-- ANNEX B: Selection-Based -->
-    <appendix id="sel-based" title="Selection-Based Requirements">
+    <appendix id="annex-b-sel-based" title="Selection-Based Requirements">
         
 	<!-- Table 3 contains optional audit events within the selection-based requirements.
 	     Table 4 contains audit events that are mandatory if the corresponding SFR is selected. 
@@ -5171,7 +5171,7 @@
     </appendix>
 
     <!-- Annex C: Objective Requirements -->
-    <appendix id="objective" title="Objective Requirements">
+    <appendix id="annex-c-objective" title="Objective Requirements">
       
         <h:b>Auditable Events</h:b>
         Depending on the specific objective SFRs that are claimed by the ST/TOE, the ST author shall
@@ -5190,8 +5190,8 @@
     </appendix>
 
     <!-- Annex D: Entropy Documentation and Assessment -->
-    <appendix id="ent" title="Entropy Documentation and Assessment">
-        <section id="design" title="Design Description">
+    <appendix id="annex-d-entropy" title="Entropy Documentation and Assessment">
+        <section id="s-design" title="Design Description">
             Documentation shall include the design of the entropy source as a whole, including the interaction of all entropy source
 		components. It will describe the operation of the entropy source to include how it works, how entropy is produced, and
 		how unprocessed (raw) data can be obtained from within the entropy source for testing purposes. The documentation 
@@ -5203,7 +5203,7 @@
 		description of how the security boundary ensures that an adversary outside the boundary cannot affect the entropy
 		rate.
         </section>
-        <section id="justification" title="Entropy Justification">
+        <section id="s-justification" title="Entropy Justification">
             There should be a technical argument for where the unpredictability in the source comes from and why there is confidence 
 		in the entropy source exhibiting probabilistic behavior (an explanation of the probability distribution and
 		justification for that distribution given the particular source is one way to describe this). This argument will
@@ -5211,14 +5211,14 @@
 		the TOE randomizer seeding process. This discussion will be part of a justification for why the entropy source can be
 		relied upon to produce bits with entropy.
         </section>
-        <section id="oc" title="Operating Conditions">
+        <section id="s-oc" title="Operating Conditions">
             Documentation will also include the range of operating conditions under which the entropy source is expected to generate 
 		random data. It will clearly describe the measures that have been taken in the system design to ensure the entropy
 		source continues to operate under those conditions. Similarly, documentation shall describe the conditions under which
 		the entropy source is known to malfunction or become inconsistent. Methods used to detect failure or degradation of
 		the source shall be included.
         </section>
-        <section id="health" title="Health Testing">
+        <section id="s-health" title="Health Testing">
             More specifically, all entropy source health tests and their rationale will be documented. This will include a description
 		of the health tests, the rate and conditions under which each health test is performed (e.g., at startup,
 		continuously, or on-demand), the expected results for each health test, and rationale indicating why each test is
@@ -5226,9 +5226,9 @@
         </section>
     </appendix>
 
-    <!-- Annex E: Equivalency Cuidelines -->
-    <appendix id="equiv" title="Equivalency Guidlines">
-        <section id="vm-intro" title="Introduction">
+    <!-- Annex E: Equivalency Guidelines -->
+    <appendix id="annex-e-equiv" title="Equivalency Guidelines">
+        <section id="s-vm-intro" title="Introduction">
           The purpose of equivalence in PP-based evaluations is to find a balance between evaluation rigor and commercial
             practicability--to ensure that evaluations meet customer expectations while recognizing that there is little to be gained
             from requiring that every variation in a product or platform be fully tested. If a product is found to be compliant with
@@ -5264,7 +5264,7 @@
       The equivalency determination is made in accordance with these guidelines by the Validator and Scheme using information
             provided by the Evaluator/Vendor.
     </section>
-    <section id="approach" title="Approach to Equivalency Analysis">
+    <section id="s-approach" title="Approach to Equivalency Analysis">
       There are two scenarios for performing equivalency analysis. One is when a product has been certified and the vendor
       wants to show that a later product should be considered certified due to equivalence with the earlier product. The
       other is when multiple product variants are going though evaluation together and the vendor would like to reduce
@@ -5304,7 +5304,7 @@
       versions on equivalent platforms, then the functionality is considered different if the product invokes the platform
       differently to perform the function.
     </section>
-    <section id="modelequiv" title="Specific Guidance for Determining Product Model Equivalence">
+    <section id="s-modelequiv" title="Specific Guidance for Determining Product Model Equivalence">
       Product Model equivalence attempts to determine whether different feature levels of the same product across
       a product line are equivalent for purposes of PP testing. For example, if a product has a “basic” edition and an “enterprise”
       edition, is it necessary to test both models? Or does testing one model provide sufficient assurance that both models
@@ -5363,7 +5363,7 @@
       <h:br />
     </section>
         
-    <section id="versionequiv" title="Specific Guidance for Determining Product Version Equivalence">
+    <section id="s-versionequiv" title="Specific Guidance for Determining Product Version Equivalence">
       In cases of version equivalence, differences are expressed in terms of changes implemented in revisions
       of an evaluated Product. In general, versions are equivalent if the changes have no effect on any
       security-relevant claims about the TOE or assurance evidence. Non-security-relevant changes to TOE
@@ -5401,14 +5401,14 @@
       <h:br />
       <h:br />
     </section>
-    <section id="platformequiv" title="Specific Guidance for Determining Platform Equivalence">
+    <section id="s-platformequiv" title="Specific Guidance for Determining Platform Equivalence">
       Platform equivalence is used to determine the platforms that a product must be tested on. These guidelines are divided
         into sections for determining hardware equivalence and software (host OS/control domain) equivalence. If the Product is
         installed onto bare metal, then only hardware equivalence is relevant. If the Product is installed onto an OS—or is integrated
         into an OS—then both hardware and software equivalence are required. Likewise, if the Product can be installed either on bare
         metal or on an operating system, both hardware and software equivalence are relevant.
       <h:br /><h:br />
-      <subsection id="hardware-equiv" title="Hardware Platform Equivalence">
+      <subsection id="ss-hardware-equiv" title="Hardware Platform Equivalence">
         If a Virtualization Solution runs directly on hardware without an operating system, then platform equivalence is based primarily
           on processor architecture and instruction sets.
         <h:br /><h:br />
@@ -5451,7 +5451,7 @@
         <h:br />
         <h:br />
       </subsection>
-      <subsection id="os-equiv" title="Software Platform Equivalence">
+      <subsection id="ss-os-equiv" title="Software Platform Equivalence">
         If the Product installs onto or integrates with an operating system that is not installed with the product--and thus
           is not part of the TOE--then the Product must be tested on all non-equivalent Software Platforms.
         <h:br />
@@ -5500,7 +5500,7 @@
         <h:br />
     </subsection>
   </section>
-    <section id="specificity" title="Level of Specificity for Tested Configurations and Claimed Equivalent Configurations">
+    <section id="s-specificity" title="Level of Specificity for Tested Configurations and Claimed Equivalent Configurations">
       In order to make equivalency determinations, the vendor and evaluator must agree on the equivalency claims. They must
       then provide the scheme with sufficient information about the TOE instances and platforms that were evaluated, and the
       TOE instances and platforms that are claimed to be equivalent.
@@ -5526,7 +5526,7 @@
     </section>
     </appendix>
     
-    <appendix id="ref" title="References">
+    <appendix id="annex-f-ref" title="References">
       <bibliography>
         <cc-entry/>
         <entry id="bibCEM">
