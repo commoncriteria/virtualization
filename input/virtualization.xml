@@ -1250,13 +1250,13 @@
                         <title>The TSF shall perform cryptographic key establishment in accordance with a specified cryptographic
 				key establishment method:
                             <selectables linebreak="yes">
-                                <selectable id="ckm2-56B">RSA-based key establishment schemes that meets the following: NIST Special 
+                                <selectable id="ckm2-56B-rsa">RSA-based key establishment schemes that meets the following: NIST Special 
 					Publication 800-56B, “Recommendation for Pair-Wise Key Establishment Schemes Using Integer
 					Factorization Cryptography”</selectable>
-                                <selectable id="ckm2-56A">Elliptic curve-based key establishment schemes that meets the following:
+                                <selectable id="ckm2-56A-ec">Elliptic curve-based key establishment schemes that meets the following:
 					NIST Special Publication 800-56A, “Recommendation for Pair-Wise Key Establishment Schemes
 					Using Discrete Logarithm Cryptography”</selectable>
-                                <selectable id="ckm2-56A">Finite field-based key establishment schemes that meets the following: NIST
+                                <selectable id="ckm2-56A-ffc">Finite field-based key establishment schemes that meets the following: NIST
 					Special Publication 800-56A, “Recommendation for Pair-Wise Key Establishment Schemes Using
 					Discrete Logarithm Cryptography”]</selectable>
                             </selectables>
@@ -1276,7 +1276,7 @@
                                 The evaluator shall verify the implementation of the key establishment schemes of the supported by the TOE 
 				    using the applicable tests below.<h:br></h:br><h:br></h:br>
 			        <h:b>Key Establishment Schemes</h:b><h:br></h:br><h:br></h:br>
-<!--                            <selection-depends-include ids="ckm2-56A">   -->
+<!--                            <selection-depends-include ids="ckm2-56A-ec;ckm2-56A-ffc">   -->
                                 <h:b>SP800-56A Key Establishment Schemes</h:b><h:br></h:br><h:br></h:br>
                                 The evaluator shall verify a TOE's implementation of SP800-56A key agreement schemes using the following 
 				    Function and Validity tests. These validation tests for each key agreement scheme verify that a TOE has
@@ -1324,7 +1324,7 @@
 				    corresponding parameters. The evaluator shall compare the TOE’s results with the results using 
 				    a known good implementation verifying that the TOE detects these errors.<h:br></h:br><h:br></h:br>
 <!-- 				</selection-depends-include>    -->
-<!-- 				<selection-depends-include ids="ckm2-56B">  -->
+<!-- 				<selection-depends-include ids="ckm2-56B-rsa">  -->
 	  		        <h:b>SP800-56B Key Establishment Schemes</h:b><h:br></h:br><h:br></h:br>
                                 The evaluator shall verify that the TSS describes whether the TOE acts as a sender, a recipient, or 
 				    both for RSA-based key establishment schemes.<h:br></h:br><h:br></h:br>
@@ -1477,13 +1477,13 @@
                             The TSF shall perform [encryption and decryption] in accordance with a specified cryptographic algorithm<h:br></h:br>
                             <selectables linebreak="yes">
                                 <selectable id="cop1-aes-kw">AES Key Wrap (KW) (as defined in NIST SP 800-38F)</selectable>
-                                <selectable id="cop1-aes-kw">AES Key Wrap with Padding (KWP) (as defined in NIST SP 800-38F)</selectable>
+                                <selectable id="cop1-aes-kwp">AES Key Wrap with Padding (KWP) (as defined in NIST SP 800-38F)</selectable>
                                 <selectable id="cop1-aes-gcm">AES-GCM (as defined in NIST SP 800-38D),</selectable>
                                 <selectable id="cop1-aes-ccm">AES-CCM (as defined in NIST SP 800-38C),</selectable>
                                 <selectable id="cop1-aes-xts">AES-XTS (as defined in NIST SP 800-38E) mode,</selectable>
-                                <selectable id="cop1-aes-ccm">AES-CCMP-256 (as defined in NIST SP800-38C and IEEE 802.11ac-2013),</selectable>
-                                <selectable id="cop1-aes-gcm">AES-GCMP-256 (as defined in NIST SP800-38D and IEEE 802.11ac-2013),</selectable>
-                                <selectable id="cop1-aes-ccm">AES-CCMP (as defined in FIPS PUB 197, NIST SP 800-38C and IEEE 802.11-2012),</selectable>
+                                <selectable id="cop1-aes-ccmp-256">AES-CCMP-256 (as defined in NIST SP800-38C and IEEE 802.11ac-2013),</selectable>
+                                <selectable id="cop1-aes-gcmp-256">AES-GCMP-256 (as defined in NIST SP800-38D and IEEE 802.11ac-2013),</selectable>
+                                <selectable id="cop1-aes-ccmp">AES-CCMP (as defined in FIPS PUB 197, NIST SP 800-38C and IEEE 802.11-2012),</selectable>
                                 <selectable id="cop1-aes-cbc">AES-CBC (as defined in FIPS PUB 197, and NIST SP 800-38A) mode,</selectable>
 <!--   No tests!                <selectable id="cop1-aes-ctr">AES-CTR (as defined in NIST SP 800-38A) mode</selectable>   -->
                             </selectables>
@@ -1581,7 +1581,7 @@
                                 The evaluator shall test the decrypt functionality using the same test as for encrypt, exchanging CT
 				    and PT and replacing AES-CBC-Encrypt with AES-CBC-Decrypt.<h:br></h:br><h:br></h:br>
 <!--				</selection-depends-include>    -->
-<!--				<selection-depends-include ids="cop1-aes-ccm">    -->
+<!--				<selection-depends-include ids="cop1-aes-ccm;cop1-aes-ccmp;cop1-aes-ccmp-256">    -->
 				<h:b><h:u>AES-CCM Tests</h:u></h:b><h:br></h:br><h:br></h:br>
                                 The evaluator shall test the generation-encryption and decryption-verification functionality of 
 				    AES-CCM for the following input parameter and tag lengths:<h:br></h:br><h:br></h:br>
@@ -1632,7 +1632,7 @@
 				    Example and Section 2.2 Additional AES CCMP Test Vectors to further verify the IEEE 802.11-2007
 				    implementation of AES-CCMP.<h:br></h:br><h:br></h:br>
 <!--				</selection-depends-include>    -->
-<!--				<selection-depends-include ids="cop1-aes-gcm">    -->
+<!--				<selection-depends-include ids="cop1-aes-gcm;cop1-aes-gcmp-256">    -->
 				<h:b><h:u>AES-GCM Test</h:u></h:b><h:br></h:br><h:br></h:br>
                                 The evaluator shall test the authenticated encrypt functionality of AES-GCM for each combination of 
 				    the following input parameter lengths:<h:br></h:br><h:br></h:br>
@@ -1681,7 +1681,7 @@
 				    replacing plaintext values with ciphertext values and XTS-AES encrypt with XTS-AES decrypt.
                                 <h:br></h:br><h:br></h:br>
 <!--				</selection-depends-include>    -->
-<!--				<selection-depends-include ids="cop1-aes-kw">    -->
+<!--				<selection-depends-include ids="cop1-aes-kw;cop1-aes-kwp">    -->
 			        <h:b><h:u>AES Key Wrap (AES-KW) and Key Wrap with Padding (AES-KWP) Test</h:u></h:b>
                                 <h:br></h:br><h:br></h:br>
                                 The evaluator shall test the authenticated encryption functionality of AES-KW for EACH combination
