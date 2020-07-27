@@ -22,7 +22,6 @@
     - OBEV: 0244 FCS_TLSC_EXT - TLS Client Curves Allowed
     - PART: 0247 FPT_VDP_EXT.1 Clarification for Assurance Activity
     - DONE: 0249 Applicability of FTP_ITC_EXT.1
-    - DONE: 0250 Hypercall Controls - FPT_HCL_EXT.1 Clarification
     - OBEV: 0252 Inaccurate statement in application note of FCS_TLSC_EXT.2.4
     - DONE: 0264 Clarification of Auditable Events for FPT_RDM_EXT.1
     - DONE: 0265 Audit of TLS and HTTPS Session Terminations
@@ -982,7 +981,6 @@
                 
                 <!-- FAU_STG.1 -->
                 <f-component id="fau_stg.1" name="Protected Audit Trail Storage" status="mandatory">
-		    <audit-event />
                     <f-element>
                         <title>The TSF shall protect the stored audit records in the audit trail from unauthorized deletion.
                         </title>
@@ -1011,6 +1009,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event />
                 </f-component>
 			    
                 <!-- FAU_STG_EXT.1 -->
@@ -3661,7 +3660,6 @@
 		    <selection-depends req="fel-itc" ids="itc-ipsec" />
 		    <selection-depends req="fel-itc" ids="itc-tls" />
 		    <selection-depends req="fel-itc" ids="itc-https" />	
-		    <audit-event />
                     <f-element>
                         <title>The TSF shall use X.509v3 certificates as defined by RFC 5280 to support authentication for
                             <selectables>
@@ -3729,6 +3727,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+		    <audit-event />
                 </f-component>
             </subsection>
             
