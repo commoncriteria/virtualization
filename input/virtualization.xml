@@ -1781,6 +1781,20 @@
 			</audit-event>
 		</f-component-decl>
 
+		<!-- Test for audit events added to external package - FCS_COP.1/FLERM -->
+		<f-component id="fcs_cop.9" iteration="FLERM" name="Cryptographic Operation (Extreme Flerming)" status="feat-based">
+			<depends on="implements"><ref-id>justTesting</ref-id></depends>
+			<audit-event>
+				<audit-event-descr>All the things</audit-event-descr>
+				<audit-event-info>The thing about the place</audit-event-info>
+			</audit-event>
+			<audit-event type="optional">
+				<audit-event-descr>All the other things</audit-event-descr>
+				<audit-event-info>The thing about the place</audit-event-info>
+			</audit-event>
+		</f-component-decl>
+
+
 		    
 		<!-- FCS_COP.1/HASH (formerly FCS_COP.1(2)) -->
                 <f-component id="fcs_cop.1" iteration="HASH" name="Cryptographic Operation (Hashing)" status="mandatory">
@@ -5566,4 +5580,15 @@
     <appendix id="acro" title="Acronyms">
       <acronyms/>
     </appendix>
+	
+	 <implements>
+    <feature id="justTesting" title="Just Testing to See if It Works">
+      <description>If the TOE does a particular thing, then these SFRs are included:
+	      <h:ul>
+		  <h:li> FCS_COP.9/FLERM</h:li>
+	      </h:ul>
+      </description>
+    </feature>
+	</implements>
+	
 </PP>
