@@ -833,6 +833,7 @@
 		
          <subsection id="ss-audit-table" title="Auditable Events for Mandatory SFRs">
            <audit-table table="mandatory"/>
+		 <ctr ctr-type="Table" id="atref-mandatory">Auditable Events for Mandatory SFRs</ctr>
          </subsection>
 
             <!-- FAU_GEN.1 -->
@@ -845,9 +846,10 @@
                                 <h:li>All administrative actions</h:li>
 
 				<!-- Table 1 contains the audit events for mandatory SFRs.
-				     Table 2 contains the audit events for optional SFRs.
-				     Table 3 contains the audit events for selection-based SFRs.
-				     Table 4 contains the audit events for objective SFRs.
+				     Table 2 contains the audit events for strictly optional SFRs.
+				     Table 3 contains the audit events for objective SFRs.
+				     Table x contains the audit events for implementation-dependent SFRs (but there are none) 
+				     Table 4 contains the audit events for selection-based SFRs.
 
 				     The former Table 3 has been integrated into Table 1. Table 3 previously contained 
 				     a single optional audit event for FIA_UIA_EXT.1 (a mandatory requirement). Now that 
@@ -855,11 +857,11 @@
 
 				-->
 		    
-				    <h:li>[<refinement>Auditable events defined in Table 1</refinement>]</h:li>
+				    <h:li>[<refinement>Auditable events defined in <ctr-ref ref-id="atref-mandatory"/></refinement>]</h:li>
                                 <h:li><selectables>
-                                    <selectable id="fau-gen-t2">Auditable events defined in Table 2</selectable>
-				    <selectable id="fau-gen-t3">Auditable events defined in Table 3</selectable>
-                                    <selectable id="fau-gen-t4">Auditable events defined in Table 4</selectable>
+                                    <selectable id="fau-gen-t2">Auditable events defined in <ctr-ref ref-id="atref-optional"/></selectable>
+				    <selectable id="fau-gen-t3">Auditable events defined in <ctr-ref ref-id="atref-objective"/></selectable>
+                                    <selectable id="fau-gen-t4">Auditable events defined in <ctr-ref ref-id="atref-sel-based"/></selectable>
                                     <selectable>no other auditable events</selectable>
 				 </selectables></h:li>
                             </h:ol>
@@ -883,21 +885,22 @@
 				    
 				    <h:li>[<refinement>Additional information defined in Table 1</refinement>]</h:li>
                                 <h:li><selectables>
-                                    <selectable sel-iff="fau-gen-t2">Additional information defined in Table 2</selectable>
-                                    <selectable sel-iff="fau-gen-t3">Additional information defined in Table 3</selectable>
-                                    <selectable sel-iff="fau-gen-t4">Additional information defined in Table 4</selectable>
+                                    <selectable sel-iff="fau-gen-t2">Additional information defined in <ctr-ref ref-id="atref-optional"/></selectable>
+                                    <selectable sel-iff="fau-gen-t3">Additional information defined in <ctr-ref ref-id="atref-objective"/></selectable>
+                                    <selectable sel-iff="fau-gen-t4">Additional information defined in <ctr-ref ref-id="atref-sel-based"/></selectable>
                                     <selectable>no other information</selectable>
                                 </selectables></h:li>
                             </h:ol>
                         </title>
                         <note role="application">
-                            The ST author can include other auditable events directly in Table 1; they are not
+                            The ST author can include other auditable events directly in <ctr-ref ref-id="atref-mandatory"/>; they are not
 				limited to the list presented. The ST author should update the table in 
 				FAU_GEN.1.2 with any additional information generated. “Subject identity” in FAU_GEN.1.2 could be a 
 				user id or an identifier specifying a VM, for example.<h:br></h:br><h:br></h:br>
-			    Appropriate entries from Tables 2, 3, and 4 should be included in the ST if the 
+			    Appropriate entries from <ctr-ref ref-id="atref-optional"/>, <ctr-ref ref-id="atref-objective"/>, and
+				<ctr-ref ref-id="atref-sel-based"/>should be included in the ST if the 
 				associated SFRs and selections are included.<h:br></h:br><h:br></h:br>
-                            The Table 1 entry for FDP_VNC_EXT.1 refers to configuration settings that attach 
+                            The <ctr-ref ref-id="atref-mandatory"/> entry for FDP_VNC_EXT.1 refers to configuration settings that attach 
 				VMs to virtualized network components. Changes to these configurations can be made 
 				during VM execution or when VMs are not running. Audit records 
 				must be generated for either case.<h:br></h:br><h:br></h:br>
