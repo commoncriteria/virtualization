@@ -3524,10 +3524,10 @@
                 <!-- Depends on x509 certificates being used for administrator authentication -->
                 <f-component id="fia_x509_ext.1" name="X.509 Certificate Validation"  status="sel-based">
                     <selection-depends req="fpt_tud_ext-1e3" ids="sel-tud-digsign"/>
-                    <selection-depends req="fil-aua" ids="uau-x509" />   <!-- @@@@@@  -->
-		    <selection-depends req="fel-itc" ids="itc-ipsec" />
-		    <selection-depends req="fel-itc" ids="itc-tls" />
-		    <selection-depends req="fel-itc" ids="itc-https" />	
+                    <selection-depends req="fia_uau-5e1" ids="sel-uau-x509" /> 
+		    <selection-depends req="ftp_itc_ext-1e1" ids="sel-itc-ipsec" />
+		    <selection-depends req="ftp_itc_ext-1e1" ids="sel-itc-tls" />
+		    <selection-depends req="ftp_itc_ext-1e1" ids="sel-itc-https" />	
                     <f-element id="fia_x509_ext-1e1">
                         <title>The TSF shall validate certificates in accordance with the following rules:
                             <h:ul>
@@ -3633,11 +3633,11 @@
                 <!-- FIA_X509_EXT.2 -->
                 <!-- Depends on digital signatures being used for trusted updates or administrator authentication -->
                 <f-component id="fia_x509_ext.2" name="X.509 Certificate Authentication"  status="sel-based">
-                    <selection-depends req="fil-auth-soft" ids="tud-digsign"/>
-                    <selection-depends req="fil-aua" ids="uau-x509"/>
-		    <selection-depends req="fel-itc" ids="itc-ipsec" />
-		    <selection-depends req="fel-itc" ids="itc-tls" />
-		    <selection-depends req="fel-itc" ids="itc-https" />	
+                    <selection-depends req="fpt_tud_ext-1e3" ids="sel-tud-digsign"/>
+                    <selection-depends req="fia_uau-5e1" ids="sel-uau-x509"/>
+		    <selection-depends req="ftc_itc_ext-1e1" ids="sel-itc-ipsec" />
+		    <selection-depends req="ftc_itc_ext-1e1" ids="sel-itc-tls" />
+		    <selection-depends req="ftc_itc_ext-1e1" ids="sel-itc-https" />	
                     <f-element id="fia_x509_ext-2e1">
                         <title>The TSF shall use X.509v3 certificates as defined by RFC 5280 to support authentication for
                             <selectables>
@@ -4156,7 +4156,7 @@
                 <!-- FPT_TUD_EXT.2 -->
                 <!-- Depends on X509 certificates being used for code signing. -->
                 <f-component id="fpt_tud_ext.2" name="Trusted Update Based on Certificates"  status="sel-based">
-                    <selection-depends req="fil-auth-soft" ids="tud-digsign" />
+                    <selection-depends req="fpt_tud_ext-1e3" ids="sel-tud-digsign" />
                     <f-element id="fpt_tud_ext-2e1">
                         <title>The TSF shall not install an update if the code signing certificate is deemed invalid.
                         </title>
