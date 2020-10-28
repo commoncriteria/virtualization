@@ -96,10 +96,12 @@
 
     <include-pkg name="pkg-tls" product="" short="" url="" version="">
 	    <depends on="selection"><ref-id>sel-itc-tls</ref-id></depends>
+	    <depends on="selection"><ref-id>sel-x509-2-tls</ref-id></depends>
 	</include-pkg>
 	    
     <include-pkg name="pkg-ssh" product="" short="" url="" version="">    
 	    <depends on="selection"><ref-id>sel-itc-ssh</ref-id></depends>
+	    <depends on="selection"><ref-id>sel-x509-2-ssh</ref-id></depends>
     </include-pkg>	
 
 	
@@ -2147,6 +2149,7 @@
                 <!-- Depends on HTTPS being selected for trusted channel -->
                 <f-component cc-id="fcs_https_ext.1" name="HTTPS Protocol"  status="sel-based">
                     <selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-https"/>
+		    <selection-depends req="fia-x509-ext-2e1" ids="sel-x509-2-https"/>
                     <f-element id="fcs-https-ext-1e1">
                         <title>The TSF shall implement the HTTPS protocol that complies with RFC 2818.
                         </title>
@@ -2186,6 +2189,7 @@
                 <!-- Depends on IPSEC being selected for trusted channels -->
                 <f-component cc-id="fcs_ipsec_ext.1" name="IPsec Protocol"  status="sel-based">
                     <selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-ipsec"/>
+		    <selection-depends req="fia-x509-ext-2e1" ids="sel-x509-2-ipsec"/>
                     <f-element id="fcs-ipsec-ext-1e1">
                         <title>The TSF shall implement the IPsec architecture as specified in RFC 4301.
                         </title>
@@ -3652,10 +3656,10 @@
                     <f-element id="fia-x509-ext-2e1">
                         <title>The TSF shall use X.509v3 certificates as defined by RFC 5280 to support authentication for
                             <selectables>
-                                <selectable>IPsec</selectable>
-                                <selectable>TLS</selectable>
-                                <selectable>HTTPS</selectable>
-                                <selectable>SSH</selectable>
+                                <selectable id="sel-x509-2-ipsec">IPsec</selectable>
+                                <selectable id="sel-x509-2-tls">TLS</selectable>
+                                <selectable id="sel-x509-2-https">HTTPS</selectable>
+                                <selectable id="sel-x509-2-ssh">SSH</selectable>
                             </selectables>, and
                             <selectables>
                                 <selectable id="sel-x5092-signed-updates">code signing for system software updates</selectable>
@@ -4086,6 +4090,11 @@
                     </f-element>
                     <f-element id="fpt-tud-ext-1e3">
                         <title>The TSF shall provide means to authenticate firmware/software updates to the TOE using a
+				
+		<!-- TODO: Might need to add a selection to specify whether certificates are used to validate digital signatures -->
+		<!-- and then that would cause a selection in FIA_X509_EXT.2.1 or maybe inclusion of that SFR as well. -->
+		<!-- Also FPT_TUD_EXT.1 must be included in the ST. -->
+				
                             <selectables>
                                 <selectable id="sel-tud-digsign">digital signature mechanism</selectable>
                                 <selectable>published hash</selectable>
@@ -4520,12 +4529,9 @@
                                 <selectable id="sel-itc-tls">TLS as conforming to the <h:a href="https://www.niap-ccevs.org/pp/"><h:i>Package for Transport Layer Security</h:i></h:a></selectable>
                                 <selectable id="sel-itc-https">TLS/HTTPS as conforming to FCS_HTTPS_EXT.1</selectable>
                                 <selectable id="sel-itc-ipsec">IPsec as conforming to FCS_IPSEC_EXT.1</selectable>
-                                <selectable id="sel-itc-ssh">SSH as conforming to the <h:a href="https://www.niap-ccevs.org/pp/"><h:i>EP
+                                <selectable id="sel-itc-ssh">SSH as conforming to the <h:a href="https://www.niap-ccevs.org/pp/"><h:i>Extended Package
 					for Secure Shell</h:i></h:a></selectable>
                             </selectables>
-                            <!-- <import-package-depends package="PKG_TLS_V1.1" req="fel-itc" ids="itc-https"/>  -->
-                            <!-- <import-package-depends package="PKG_TLS_V1.1" req="fel-itc" ids="itc-tls"/>  -->
-                            <!-- <import-package-depends package="PP_SSH_EP_v1.0" req="fel-itc" ids="itc-ssh"/>  -->
                             to provide a trusted communication channel between itself, and<h:br></h:br><h:br></h:br>
                             <h:li>audit servers (as required by FAU_STG_EXT.1), and</h:li>
                             <selectables linebreak="yes">
