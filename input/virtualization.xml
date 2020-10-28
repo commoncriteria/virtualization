@@ -598,14 +598,19 @@
                         configured. The VMM must also support the mechanisms to control the configurations of 
                         virtual networks according to the SSP.
                     </description>
-		    <addressed-by>
-		      FAU_GEN.1, FCS_CKM_EXT.4, FDP_PPR_EXT.1, FDP_RIP_EXT.1,
-		      FDP_RIP_EXT.2, FDP_VMS_EXT.1,
-		      FDP_VNC_EXT.1, FPT_DVD_EXT.1, FPT_EEM_EXT.1,
-		      FPT_HAS_EXT.1, FPT_HCL_EXT.1, FPT_VDP_EXT.1, FPT_VIV_EXT.1
-		    </addressed-by>
-		    <rationale>BLAH BLAH BLAH. Does this show up anywhere?
-		   </rationale>
+			<addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events can report attempts to breach isolation.</rationale>
+			<addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to protect domain data in shared storage.</rationale>
+			<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
+			<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated.</rationale>
+		      	<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from storage before the storage is re-allocated.</rationale>
+			<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.</rationale>
+		      	<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>TODO</rationale>
+		      	<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>TODO</rationale>
                 </SO>
                 <SO name="O.VMM_INTEGRITY">
                     <description>Integrity is a core security objective for Virtualization Systems. To achieve system integrity, the 
@@ -620,13 +625,17 @@
                         hypercall interface and gain control of the VMM. The vendor must release patches for 
                         vulnerabilities as soon as practicable after discovery.
                     </description>
-		    <addressed-by>
-		      FAU_GEN.1, FAU_CKM.1, FCS_CKM.2, FCS_COP.1, FCS_RBG_EXT.1,
-		      FDP_PPR_EXT.1, FDP_VMS_EXT.1, FDP_VNC_EXT.1,
-		      FPT_EEM_EXT.1, FPT_HAS_EXT.1, FPT_VDP_EXT.1,
-		      FPT_VIV_EXT.1
-		    </addressed-by>
-			<rationale>TODO</rationale>
+		    	<addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events can report potential integrity breaches and attempts.</rationale>
+			<addressed-by>FCS_CKM.1</addressed-by><rationale>Requires generation of asymmetric keys for protection of integrity measures.</rationale>
+			<addressed-by>FCS_COP.1</addressed-by><rationale>Ensures proper functioning of cryptographic algorithms used to protect data integrity.</rationale>
+			<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+			<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
+			<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.</rationale>
+			<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>TODO</rationale>
+		      	<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>TODO</rationale>
                 </SO>
                 <SO name="O.PLATFORM_INTEGRITY">
                     <description>The integrity of the VMM depends on the integrity of the hardware and software on 
@@ -634,26 +643,36 @@
                         the platform, the VS should as much as possible try to ensure that no users or software hosted by the VS is 
                         capable of undermining the integrity of the platform.
                     </description>
-		    <addressed-by>
-		      FDP_HBI_EXT.1, FDP_PPR_EXT.1, FDP_VMS_EXT.1,
-		      FDP_VNC_EXT.1, FPT_DVD_EXT.1, FPT_EEM_EXT.1,
-		      FPT_HAS_EXT.1, FPT_HAS_EXT.1, FPT_HCL_EXT.1,
-		      FPT_VDP_EXT.1, FPT_VIV_EXT.1
-		    </addressed-by>
-		<rationale>TODO</rationale>
+		    	<addressed-by>FDP_HBI_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported mechanisms for access to physical devices.</rationale>
+			<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
+			<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.</rationale>
+		      	<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>TODO</rationale>
+		      	<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>TODO</rationale>
+		      	<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>TODO</rationale>
                 </SO>
                 <SO name="O.DOMAIN_INTEGRITY">
                     <description>While the VS is not responsible for the contents or correct functioning of software that runs within 
                         Guest VMs, it is responsible for ensuring that the correct functioning of the software 
                         within a Guest VM is not interfered with by other VMs.
                     </description>
-		    <addressed-by>
-                    FCS_CKM_EXT.4, FCS_ENT_EXT.1, FCS_RBG_EXT.1, FDP_RIP_EXT.1,
-                    FDP_RIP_EXT.2, FDP_VMS_EXT.1, FDP_VNC_EXT.1, FPT_EEM_EXT.1,
-		    FPT_HAS_EXT.1, FPT_RDM_EXT.1, FPT_VDP_EXT.1, FTP_UIF_EXT.1,
-                    FTP_UIF_EXT.2
-		    </addressed-by>
-			<rationale>TODO</rationale>
+		    	<addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to protect domain data in shared storage.</rationale>
+			<addressed-by>FCS_ENT_EXT.1</addressed-by><rationale>Requires that domains have access to high-quality entropy for cryptographic purposes.</rationale>
+			<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+			<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated to another domain.</rationale>
+                    	<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from storage before the storage is re-allocated to another domain.</rationale>
+			<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between domains are done securely.</rationale>
+			<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>TODO</rationale>
+		    	<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FPT_RDM_EXT.1</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FTP_UIF_EXT.1</addressed-by><rationale>TODO</rationale>
+                    	<addressed-by>FTP_UIF_EXT.2</addressed-by><rationale>TODO</rationale>
                 </SO>
                 <SO name="O.MANAGEMENT_ACCESS">
                   
@@ -696,11 +715,16 @@
                         an administrator must communicate with a privileged management agent over a network. Communications with the 
                         management infrastructure must be protected from Guest VMs and operational networks.
                       </description>
-		      <addressed-by>
-			FAU_GEN.1, FCS_CKM.1, FCS_CKM.2, FCS_COP.1, FCS_RBG_EXT.1,
-			FIA_AFL_EXT.1, FIA_UAU.5, FIA_UIA_EXT.1, FMT_SMO_EXT.1, FTP_ITC_EXT.1
-		      </addressed-by>
-			<rationale>TODO</rationale>
+		      	<addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events report attempts to access the management subsystem.</rationale>
+			<addressed-by>FCS_CKM.1</addressed-by><rationale>Requires generation of asymmetric keys for trusted communications channels.</rationale>
+			<addressed-by>FCS_CKM.2</addressed-by><rationale>Requires establishment of cryptographic keys for trusted communications channels.</rationale>
+			<addressed-by>FCS_COP.1</addressed-by><rationale>Ensures proper functioning of cryptographic algorithms used to implement access controls.</rationale>
+			<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+			<addressed-by>FIA_AFL_EXT.1</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FIA_UAU.5</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FIA_UIA_EXT.1</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FMT_SMO_EXT.1</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FTP_ITC_EXT.1</addressed-by><rationale>TODO</rationale>
                 </SO>
                 <SO name="O.PATCHED_SOFTWARE">
                     <description>The Virtualization System must be updated and patched when needed in order to prevent the potential 
@@ -710,10 +734,7 @@
                         standards and protocols that help enhance the manageability of the VS as an IT product, enabling it to be 
                         integrated as part of a manageable network (e.g., reporting current patch level and patchability).
                     </description>
-		      <addressed-by>
-			FPT_TUD_EXT.1
-		      </addressed-by>
-			<rationale>TODO</rationale>
+		      <addressed-by>FPT_TUD_EXT.1</addressed-by><rationale>TODO</rationale>
                 </SO>
                 <SO name="O.VM_ENTROPY">
                     <description>VMs must have access to good entropy sources to support security-related features 
@@ -722,19 +743,17 @@
                         virtual or physical. They must therefore have access to sources of good entropy to support that secure 
                         communication.
                     </description>
-		      <addressed-by>
-			FCS_ENT_EXT.1,FCS_RBG_EXT.1
-		      </addressed-by>
-			<rationale>TODO</rationale>
+		      	<addressed-by>FCS_ENT_EXT.1</addressed-by><rationale>Requires that domains have access to high-quality entropy for cryptographic purposes.</rationale>
+			<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
                 </SO>
                 <SO name="O.AUDIT">
                     <description>The purpose of audit is to capture and protect data about what happens on a system so that it can 
                         later be examined to determine what has happened in the past.
                     </description>
-		    <addressed-by>
-                      FAU_GEN.1, FAU_SAR.1, FAU_STG.1, FAU_STG_EXT.1,
-		    </addressed-by>
-			<rationale>TODO</rationale>
+		    	<addressed-by>FAU_GEN.1</addressed-by><rationale>Requires reporting of audit events.</rationale>
+			<addressed-by>FAU_SAR.1</addressed-by><rationale>Requires support for Administrator review of audit records.</rationale>
+			<addressed-by>FAU_STG.1</addressed-by><rationale>Requires protection of stored audit records.</rationale>
+			<addressed-by>FAU_STG_EXT.1</addressed-by><rationale>Requires support for protected transmission of audit records off the TOE.</rationale>
                 </SO>
                 <SO name="O.CORRECTLY_APPLIED_CONFIGURATION">
                     <description>The TOE must not apply configurations that violate the current security policy.
@@ -744,19 +763,15 @@
                         to the existing security policy. Similarly, changes made to the configuration of the TOE 
                         itself must not violate the existing security policy.
                     </description>
-		    <addressed-by>
-                      FMT_MSA_EXT.1
-		    </addressed-by>
-		    <rationale>TODO</rationale>
+		    	<addressed-by>FMT_MSA_EXT.1</addressed-by><rationale>TODO</rationale>
                 </SO>
                 <SO name="O.RESOURCE_ALLOCATION">
                     <description>The TOE will provide mechanisms that enforce constraints on the allocation of 
                         system resources in accordance with existing security policy.
                     </description>
-		    <addressed-by>
-                      FCS_CKM_EXT.4, FDP_RIP_EXT.1, FDP_RIP_EXT.2
-		    </addressed-by>
-			<rationale>TODO</rationale>
+		    	<addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to ensure residual data in shared storage is unrecoverable.</rationale>
+			<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated.</rationale>
+			<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from storage before the storage is re-allocated.</rationale>
                 </SO>
             </SOs>
         </section>
