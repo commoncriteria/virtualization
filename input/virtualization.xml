@@ -604,13 +604,13 @@
 			<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated.</rationale>
 		      	<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from storage before the storage is re-allocated.</rationale>
 			<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.</rationale>
-		      	<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>TODO</rationale>
-			<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>TODO</rationale>
-			<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>TODO</rationale>
-		      	<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>TODO</rationale>
-			<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>TODO</rationale>
-			<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>TODO</rationale>
-			<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>TODO</rationale>
+		      	<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
+			<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>Ensures that VMs can access only those virtual devices that they are configured to access.</rationale>
+			<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
+		      	<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+			<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Administrators can disable unneccessary hypercall interfaces to reduce attack surface.</rationale>
+			<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
+			<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke priviledged code without proper hypervisor mediation.</rationale>
                 </SO>
                 <SO name="O.VMM_INTEGRITY">
                     <description>Integrity is a core security objective for Virtualization Systems. To achieve system integrity, the 
@@ -631,11 +631,11 @@
 			<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
 			<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
 			<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.</rationale>
-			<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>TODO</rationale>
-			<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>TODO</rationale>
-			<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>TODO</rationale>
-			<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>TODO</rationale>
-		      	<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
+			<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
+			<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+			<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
+		      	<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke priviledged code without proper hypervisor mediation.</rationale>
                 </SO>
                 <SO name="O.PLATFORM_INTEGRITY">
                     <description>The integrity of the VMM depends on the integrity of the hardware and software on 
@@ -646,14 +646,13 @@
 		    	<addressed-by>FDP_HBI_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported mechanisms for access to physical devices.</rationale>
 			<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
 			<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.</rationale>
-		      	<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>TODO</rationale>
-			<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>TODO</rationale>
-			<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>TODO</rationale>
-		      	<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>TODO</rationale>
-			<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>TODO</rationale>
-			<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>TODO</rationale>
-		      	<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>TODO</rationale>
-			<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>TODO</rationale>
+		      	<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
+			<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>Ensures that VMs cannot access virtual devices that they are not onfigured to access.</rationale>
+			<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
+		      	<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+			<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Administrators can disable unneccessary hypercall interfaces to reduce attack surface.</rationale>
+		      	<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
+			<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke priviledged code without proper hypervisor mediation.</rationale>
                 </SO>
                 <SO name="O.DOMAIN_INTEGRITY">
                     <description>While the VS is not responsible for the contents or correct functioning of software that runs within 
@@ -666,13 +665,13 @@
 			<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated to another domain.</rationale>
                     	<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from storage before the storage is re-allocated to another domain.</rationale>
 			<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between domains are done securely.</rationale>
-			<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>TODO</rationale>
-			<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>TODO</rationale>
-		    	<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>TODO</rationale>
-			<addressed-by>FPT_RDM_EXT.1</addressed-by><rationale>TODO</rationale>
-			<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>TODO</rationale>
-			<addressed-by>FTP_UIF_EXT.1</addressed-by><rationale>TODO</rationale>
-                    	<addressed-by>FTP_UIF_EXT.2</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
+			<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
+		    	<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+			<addressed-by>FPT_RDM_EXT.1</addressed-by><rationale>Requires support for rules for switching removeable media between domains to reduce the chance of data spillage.</rationale>
+			<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
+			<addressed-by>FTP_UIF_EXT.1</addressed-by><rationale>Ensures that users are able to determine the domain with the current input focus.</rationale>
+                    	<addressed-by>FTP_UIF_EXT.2</addressed-by><rationale>Ensures that users can know the identity of any VM that they can access.</rationale>
                 </SO>
                 <SO name="O.MANAGEMENT_ACCESS">
                   
@@ -720,11 +719,11 @@
 			<addressed-by>FCS_CKM.2</addressed-by><rationale>Requires establishment of cryptographic keys for trusted communications channels.</rationale>
 			<addressed-by>FCS_COP.1</addressed-by><rationale>Ensures proper functioning of cryptographic algorithms used to implement access controls.</rationale>
 			<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
-			<addressed-by>FIA_AFL_EXT.1</addressed-by><rationale>TODO</rationale>
-			<addressed-by>FIA_UAU.5</addressed-by><rationale>TODO</rationale>
-			<addressed-by>FIA_UIA_EXT.1</addressed-by><rationale>TODO</rationale>
-			<addressed-by>FMT_SMO_EXT.1</addressed-by><rationale>TODO</rationale>
-			<addressed-by>FTP_ITC_EXT.1</addressed-by><rationale>TODO</rationale>
+			<addressed-by>FIA_AFL_EXT.1</addressed-by><rationale>Requires that the TOE detect failed authentication attempts for Administrator access.</rationale>
+			<addressed-by>FIA_UAU.5</addressed-by><rationale>Ensures that strong mechanisms are used for Administrator authentication.</rationale>
+			<addressed-by>FIA_UIA_EXT.1</addressed-by><rationale>Requires that Administrators be successfully authenticated before performing management functions.</rationale>
+			<addressed-by>FMT_SMO_EXT.1</addressed-by><rationale>Requires that the TOE support having separate management and operational networks.</rationale>
+			<addressed-by>FTP_ITC_EXT.1</addressed-by><rationale>Ensures that trusted communications channels are implemented using good cryptography.</rationale>
                 </SO>
                 <SO name="O.PATCHED_SOFTWARE">
                     <description>The Virtualization System must be updated and patched when needed in order to prevent the potential 
@@ -734,7 +733,7 @@
                         standards and protocols that help enhance the manageability of the VS as an IT product, enabling it to be 
                         integrated as part of a manageable network (e.g., reporting current patch level and patchability).
                     </description>
-		      <addressed-by>FPT_TUD_EXT.1</addressed-by><rationale>TODO</rationale>
+		      <addressed-by>FPT_TUD_EXT.1</addressed-by><rationale>Requires support for product updates.</rationale>
                 </SO>
                 <SO name="O.VM_ENTROPY">
                     <description>VMs must have access to good entropy sources to support security-related features 
@@ -763,7 +762,7 @@
                         to the existing security policy. Similarly, changes made to the configuration of the TOE 
                         itself must not violate the existing security policy.
                     </description>
-		    	<addressed-by>FMT_MSA_EXT.1</addressed-by><rationale>TODO</rationale>
+		    	<addressed-by>FMT_MSA_EXT.1</addressed-by><rationale>Ensures that data sharing between VMs is turned off by default.</rationale>
                 </SO>
                 <SO name="O.RESOURCE_ALLOCATION">
                     <description>The TOE will provide mechanisms that enforce constraints on the allocation of 
