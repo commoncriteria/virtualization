@@ -2150,7 +2150,8 @@
                     <f-element id="fcs-https-ext-1e1">
                         <title>The TSF shall implement the HTTPS protocol that complies with RFC 2818.
                         </title>
-                        <note role="application">The ST author must provide enough detail to determine how the implementation is 
+                        <note role="application">This SFR is included in the ST if the ST Author selects "TLS/HTTPS" in FTP_ITC_EXT.1.1.<h:br/><h:br/>
+				The ST author must provide enough detail to determine how the implementation is 
 				complying with the standard(s) identified; this can be done either by adding elements to this 
 				component, or by additional detail in the TSS.</note>
                     </f-element>
@@ -2188,13 +2189,15 @@
                     <f-element id="fcs-ipsec-ext-1e1">
                         <title>The TSF shall implement the IPsec architecture as specified in RFC 4301.
                         </title>
-                        <note role="application">RFC 4301 calls for an IPsec implementation to protect IP traffic through the use
+                        <note role="application">
+				This SFR is included in the ST if the ST Author selected "IPsec" in FTP_ITC_EXT.1.1.<h:br/><h:br/>
+				RFC 4301 calls for an IPsec implementation to protect IP traffic through the use
 				of a Security Policy Database (SPD). The SPD is used to define how IP packets are to be handled:
 				PROTECT the packet (e.g., encrypt the packet), BYPASS the IPsec services (e.g., no encryption), or
 				DISCARD the packet (e.g., drop the packet). The SPD can be implemented in various ways, including 
 				router access control lists, firewall rulesets, a “traditional” SPD, etc. Regardless of the 
 				implementation details, there is a notion of a “rule” that a packet is “matched” against and a
-				resulting action that takes place.<h:br></h:br><h:br></h:br>
+				resulting action that takes place.<h:br/><h:br/>
                             While there must be a means to order the rules, a general approach to ordering is not mandated, as long
 				as the SPD can distinguish the IP packets and apply the rules accordingly. There may be multiple SPDs
 				(one for each network interface), but this is not required.</note>
@@ -3319,7 +3322,7 @@
 		    </audit-event>
                 </f-component>
 		    
-		                    <!-- FIA_PMG_EXT.1 -->
+		<!-- FIA_PMG_EXT.1 -->
                 <!-- Depends on password-based authentication being used for administrator authentication -->
                 <f-component cc-id="fia_pmg_ext.1" name="Password Management"  status="sel-based">
                     <selection-depends req="fia-uau-5e1" ids="sel-uau-pwd"/>
@@ -3345,7 +3348,10 @@
                                 <h:li>Passwords of at least 15 characters in length shall be supported</h:li>
                             </h:ol>
                         </title>
-                        <note role="application">The ST author selects the special characters that are supported by the TOE; they may
+                        <note role="application">
+				This SFR is included in the ST if the ST Author selects ‘authentication based on username and password’ 
+				in FIA_UAU.5.1.<h:br/><h:br/>
+				The ST author selects the special characters that are supported by the TOE; they may
 				optionally list additional special characters supported using the assignment. “Administrative
 				passwords” refers to passwords used by administrators to gain access to the Management Subsystem.</note>
                         <aactivity>
@@ -3406,7 +3412,8 @@
                         <note role="application">Selection of ‘authentication based on username and password’ requires that 
 				FIA_PMG_EXT.1 be included in the ST. This also requires that the ST include a management function for
 				password management. If the ST author selects ‘authentication based on an SSH public-key credential’,
-				the TSF shall be validated against the Extended Package for Secure Shell.<h:br></h:br><h:br></h:br>
+				the TSF shall be validated against the Extended Package for Secure Shell. The ST must include 
+				FIA_X509_EXT.1 if 'authentication based on X.509 certificates' is selected. <h:br/><h:br/>
                             PINs used to access OE-protected storage are set and managed by the OE-protected storage mechanism. Thus
 				requirements on PIN management are outside the scope of the TOE.
                         </note>
@@ -3638,10 +3645,10 @@
                 <!-- Depends on digital signatures being used for trusted updates or administrator authentication -->
                 <f-component cc-id="fia_x509_ext.2" name="X.509 Certificate Authentication"  status="sel-based">
                     <selection-depends req="fpt-tud-ext-1e3" ids="sel-tud-digsign"/>
-                    <selection-depends req="fia-uau-5e1" ids="sel-uau-x509"/>
-		    <selection-depends req="ftc-itc-ext-1e1" ids="sel-itc-ipsec" />
-		    <selection-depends req="ftc-itc-ext-1e1" ids="sel-itc-tls" />
-		    <selection-depends req="ftc-itc-ext-1e1" ids="sel-itc-https" />	
+                    <selection-depends req="fia-uau-5e1" ids="sel-uau-x509" /> 
+		    <selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-ipsec" />
+		    <selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-tls" />
+		    <selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-https" />	
                     <f-element id="fia-x509-ext-2e1">
                         <title>The TSF shall use X.509v3 certificates as defined by RFC 5280 to support authentication for
                             <selectables>
@@ -3651,14 +3658,14 @@
                                 <selectable>SSH</selectable>
                             </selectables>, and
                             <selectables>
-                                <selectable>code signing for system software updates</selectable>
+                                <selectable id="sel-x5092-signed-updates">code signing for system software updates</selectable>
                                 <selectable>code signing for integrity verification</selectable>
                                 <selectable><assignable>other uses</assignable></selectable>
                                 <selectable>no additional uses</selectable>
                             </selectables>
                         </title>
                         <note role="application">This SFR must be included in the ST if the selection for FPT_TUD_EXT.1.3
-				is “digital signature mechanism,” or if the selection for FTP_ITC_EXT.1 includes “IPsec,” “TLS,” or 
+				is “digital signature mechanism,” or if the selection for FTP_ITC_EXT.1.1 includes “IPsec,” “TLS,” or 
 				“TLS/HTTPS,” or if FIA_UAU requires authentication using X.509 certificates.</note>
                     </f-element>
                     <f-element id="fia-x509-ext-2e2">
@@ -4161,6 +4168,7 @@
                 <!-- Depends on X509 certificates being used for code signing. -->
                 <f-component cc-id="fpt_tud_ext.2" name="Trusted Update Based on Certificates"  status="sel-based">
                     <selection-depends req="fpt-tud-ext-1e3" ids="sel-tud-digsign" />
+		    <selection-depends req="fia-x509-ext-2e1" ids="sel-x5092-signed-updates"/>
                     <f-element id="fpt-tud-ext-2e1">
                         <title>The TSF shall not install an update if the code signing certificate is deemed invalid.
                         </title>
