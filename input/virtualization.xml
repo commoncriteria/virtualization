@@ -4535,7 +4535,7 @@
                             to provide a trusted communication channel between itself, and<h:br></h:br><h:br></h:br>
                             <h:li>audit servers (as required by FAU_STG_EXT.1), and</h:li>
                             <selectables linebreak="yes">
-                                <selectable>remote administrators (as required by FTP_TRP.1.1 if selected in FMT_MOF_EXT.1.1 in the selected EP),</selectable>
+                                <selectable>remote administrators (as required by FTP_TRP.1.1 if selected in FMT_MOF_EXT.1.1 in the PP-Module),</selectable>
                                 <selectable>separation of management and operational networks (if selected in FMT_SMO_EXT.1),</selectable>
 				<selectable><assignable>other capabilities</assignable>,</selectable>
                                 <selectable>no other capabilities</selectable>
@@ -4646,11 +4646,9 @@
                 </f-component>
 
                 <!-- FTP_TRP.1 -->
-                <!-- TODO: There is really no selection for bringing this in. -->
-                <!-- Need an SFR that allows selection of remote vs. local admin of the VS -->
-                <!-- If remote admin is required, then this should be a threshold requirement -->
-                <f-component cc-id="ftp_trp.1" name="Trusted Path" status="mandatory">  <!-- status="sel-based" -->
-<!--                    <selection-depends req="fel-itc"/> This is the wrong dependency.   -->
+                <!-- Included in th ST if "remote" is selected in FMT_MOF_EXT.1.1 in the server or client Module. -->
+                <f-component cc-id="ftp_trp.1" name="Trusted Path" status="sel-based">
+                    <selection-depends req="fmt-mof-ext-1e1" ids="sel-mof-1e1-remote"/> 
                     <f-element id="ftp-trp-1e1">
                         <title>The TSF shall use a trusted channel as specified in FTP_ITC_EXT.1 to provide a trusted communication
 				path between itself and [remote] administrators that is logically distinct from other communication
@@ -4665,8 +4663,10 @@
 			<f-element id="ftp-trp-1e3">
                         <title>The TSF shall require the use of the trusted path for [all remote administration actions].
                         </title>
-                        <note role="application">Protocols used to implement the remote administration trusted channel must be
-				selected in FTP_ITC_EXT.1.<h:br></h:br><h:br></h:br>
+                        <note role="application">
+				This SFT is included in the ST if "remote" is selected in FMT_MOF_EXT.1.1 of the client or server Module.<h:br/><h:br/>
+				Protocols used to implement the remote administration trusted channel must be
+				selected in FTP_ITC_EXT.1.<h:br/><h:br/>
                             This requirement ensures that authorized remote administrators initiate all communication with the
 				TOE via a trusted path, and that all communications with the TOE by remote administrators is performed
 				over this path. The data passed in this trusted communication channel are encrypted as defined the 
