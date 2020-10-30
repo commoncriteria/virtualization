@@ -107,10 +107,20 @@
 
 	<!-- Rules - These are rules where selections in the base require selections in the Modules.
 			So, really these belong in a composition and not here. At worst they should be in the module.
-	<rule if="sel-uau-pwd" then="clientModule:sel-mf-2"/>
-	<rule if="sel-uau-pwd" then="serverModule:sel-mf-2"/>
-	<rule if="sel-uau-pwd" then="clientModule:sel-mf-17"/>
-	<rule if="sel-uau-pwd" then="serverModule:sel-mf-17"/>
+
+	<rule if="sel-uau-pwd" then="client:sel-mf-2"/>
+	<rule if="sel-uau-pwd" then="server:sel-mf-2"/>
+	<rule if="sel-uau-pwd" then="client:sel-mf-17"/>
+	<rule if="sel-uau-pwd" then="server:sel-mf-17"/>
+        <rule if="sel-uau-ssh-dirbased" then="client:sel-mf-17"/>
+        <rule if="sel-uau-ssh-dirbased" then="server:sel-mf-17"/>
+	<rule if="sel-uau-pwd-dirbased" then=="client:sel-mf-17"/>
+	<rule if="sel-uau-pwd-dirbased" then=="server:sel-mf-17"/>
+	<rule if="sel-uau-x509-dirbased" then="server:sel-mf-17"/> 
+	<rule if="sel-uau-x509-dirbased" then="client:sel-mf-17"/> 
+	<rule if="sel-x509-adminset" then="server:sel-mf-27"/>
+	<rule if="sel-x509-adminset" then="client:sel-mf-27"/>
+
 	-->
 
 	
@@ -3684,7 +3694,7 @@
                     <f-element id="fia-x509-ext-2e2">
                         <title>When the TSF cannot establish a connection to determine the validity of a certificate, the TSF shall
                             <selectables>
-                                <selectable>allow the administrator to choose whether to accept the certificate in these cases</selectable>
+                                <selectable id="sel-x509-adminset">allow the administrator to choose whether to accept the certificate in these cases</selectable>
                                 <selectable>accept the certificate</selectable>
                                 <selectable>not accept the certificate</selectable>
                             </selectables>.
