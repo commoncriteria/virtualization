@@ -94,13 +94,15 @@
         </entry>
     </RevisionHistory>
 
-    <include-pkg name="pkg-tls" product="" short="" url="" version="">
+    <include-pkg name="Network Encryption" product="" short="TLS" version="1.1"
+		url="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439">
 	    <depends on="selection"><ref-id>sel-itc-tls</ref-id></depends>
 	    <depends on="selection"><ref-id>sel-itc-https</ref-id></depends>
 	    <depends on="selection"><ref-id>sel-x509-2-tls</ref-id></depends>
 	</include-pkg>
 	    
-    <include-pkg name="pkg-ssh" product="" short="" url="" version="">    
+    <include-pkg name="Secure Shell" product="" short="SSH"  version="1.0"
+		url="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=389&amp;id=389">
 	    <depends on="selection"><ref-id>sel-itc-ssh</ref-id></depends>
 	    <depends on="selection"><ref-id>sel-x509-2-ssh</ref-id></depends>
     </include-pkg>	
@@ -343,30 +345,15 @@
     
     <!-- CONFORMANCE CLAIMS -->
 
- <chapter title="Conformance Claims" id="ccl" boilerplate="no">
+ <chapter title="Conformance Claims" id="ccl"><!-- boilerplate="no">-->
     <cclaims>
-      <cclaim title="Conformance Statement">
-        <description> An ST must claim exact conformance to this PP, as defined in the CC and CEM
-          addenda for Exact Conformance, Selection-Based SFRs, and Optional SFRs (dated May 2017).
-        </description>
-      </cclaim>
-      <cclaim title="CC Conformance Claims">
-        <description>This PP is conformant to Parts 2 (extended) and 3 (extended) of Common
-          Criteria Version 3.1, Revision 5.</description>
-      </cclaim>
-      <cclaim title="PP Claim">
-        <description>This PP does not claim conformance to any Protection Profile.</description>
-      </cclaim>
-      <cclaim title="Module Claim">
+      <cclaim name="Module Claim">
         <description>The following PP-Modules are allowed to be specified in a PP-Configuration with
           this PP.<h:ul>
             <h:li>PP-Module for Client Virtualization, Version 1.1</h:li>
             <h:li>PP-Module for Server Virtualization, Version 1.1</h:li>
           </h:ul>
         </description>
-      </cclaim>
-      <cclaim title="Package Claim">
-        <description>This PP is TLS Package Conformant and SSH Package Conformant.</description>
       </cclaim>
     </cclaims>
   </chapter>
