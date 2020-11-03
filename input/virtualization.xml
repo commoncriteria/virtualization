@@ -73,7 +73,7 @@
             <PPVersion>1.1</PPVersion>
             <PPAuthor>National Information Assurance Partnership</PPAuthor>
 <!--            <PPPubDate>2019-07-19</PPPubDate>  -->
-            <PPPubDate>2020-10-06</PPPubDate> 
+            <PPPubDate>2020-11-17</PPPubDate> 
             <Keywords>Virtualization</Keywords>
         </ReferenceTable>
     </PPReference>
@@ -89,8 +89,8 @@
         </entry>
         <entry>
             <version>1.1</version>
-            <date>2020-10-06</date>
-            <subject>Incorporate TDs and reference TLS Package, Add Equivalency Guidelines</subject>
+            <date>2020-11-17</date>
+            <subject>Incorporate TDs, Reference TLS Package, Add Equivalency Guidelines</subject>
         </entry>
     </RevisionHistory>
 
@@ -138,12 +138,12 @@
         <section id="s-overview" title="Overview">
             The scope of this Protection Profile (PP) is to describe the security functionality of virtualization technologies in 
 		terms of [CC] and to define security functional and assurance requirements for such products. This PP is not complete 
-		in itself, but rather provides a set of requirements that are common to the Extended Packages (EP) for Server
+		in itself, but rather provides a set of requirements that are common to the PP-Modules for Server
 		Virtualization and for Client Virtualization. These capabilities have been broken out into this generic ‘base’ PP due
 		to the high degree of similarity between the two product types.<h:br></h:br><h:br></h:br>
-            Due to the increasing prevalence of virtualization technology in enterprise computing environments, it is essential to
-		ensure that this technology is implemented securely in order to mitigate the risk introduced by sharing multiple
-		computers and their data across a single physical system. 
+            Due to the increasing prevalence of virtualization technology in enterprise computing environments and the shift
+		to cloud computing, it is essential to ensure that this technology is implemented securely in order to mitigate
+		the risk introduced by sharing multiple computers and their data across a single physical system. 
             <h:br></h:br>
 	</section>
 	    
@@ -277,15 +277,15 @@
 		be proper to classify the encryption VM as a Helper. But if the encryption VM is necessary for the VMM to isolate
 		Guest VMs, it would be proper to classify the encryption VM as a Service 
 		VM. For the purposes of this document, Helper VMs are subject to all requirements
-		that apply to Guest VMs, unless specifically stated otherwise.<h:br></h:br><h:br></h:br>
+		that apply to Guest VMs, unless specifically stated otherwise.<h:br/><h:br/>
             <subsection id="ss-toeboundary" title="TOE Boundary">
-                Figure 1 shows a greatly simplified view of a generic Virtualization System and Platform. TOE components are displayed
+                <ctr-ref ref-id="vsplatform"/> shows a greatly simplified view of a generic Virtualization System and Platform. TOE components are displayed
 		    in Red. Non-TOE components are in Blue. The Platform is the hardware, firmware, and software onto which the VS is 
 		    installed. The VMM includes the Hypervisor, Service VMs, and VM containers, but not the software that runs inside
 		    Guest VMs or Helper VMs. The Management Subsystem is part of the TOE, but may or may not be part of the VMM. 
 		    <h:br></h:br><h:br></h:br>
 
-                <figure entity="images/figure1.png" title="Figure 1: Virtualization System and Platform " id="vsplatform"/>
+                <figure entity="images/figure1.png" title="Virtualization System and Platform " id="vsplatform"/><h:br/><h:br/>
     
                 For purposes of this Protection Profile, the Virtualization System is the TOE, subject to some caveats. The Platform
 		    onto which the VS is installed (which includes hardware, platform firmware, and Host Operating System) is not
@@ -337,13 +337,40 @@
 
         <section id="s-usecases" title="Use Cases">
             This base PP does not define any use cases for virtualization technology. Client Virtualization and Server Virtualization
-		products have different use cases and so these are defined in their respective EPs.
+		products have different use cases and so these are defined in their respective PP-Modules.
         </section>
     </chapter>
     
     <!-- CONFORMANCE CLAIMS -->
 
-    <chapter id="ch-claims" title="Conformance Claims"/>
+ <chapter title="Conformance Claims" id="ccl" boilerplate="no">
+    <cclaims>
+      <cclaim title="Conformance Statement">
+        <description> An ST must claim exact conformance to this PP, as defined in the CC and CEM
+          addenda for Exact Conformance, Selection-Based SFRs, and Optional SFRs (dated May 2017).
+        </description>
+      </cclaim>
+      <cclaim title="CC Conformance Claims">
+        <description>This PP is conformant to Parts 2 (extended) and 3 (extended) of Common
+          Criteria Version 3.1, Revision 5.</description>
+      </cclaim>
+      <cclaim title="PP Claim">
+        <description>This PP does not claim conformance to any Protection Profile.</description>
+      </cclaim>
+      <cclaim title="Module Claim">
+        <description>The following PP-Modules are allowed to be specified in a PP-Configuration with
+          this PP.<htm:ul>
+            <htm:li>PP-Module for Client Virtualization, Version 1.1</htm:li>
+            <htm:li>PP-Module for Server Virtualization, Version 1.1</htm:li>
+          </htm:ul>
+        </description>
+      </cclaim>
+      <cclaim title="Package Claim">
+        <description>This PP is TLS Package Conformant and SSH Package Conformant.</description>
+      </cclaim>
+    </cclaims>
+  </chapter>
+	
 
     <!-- SECURITY PROBLEM DESCRIPTION -->
 
@@ -529,7 +556,7 @@
             <assumptions>
                 <assumption name="A.PLATFORM_INTEGRITY">
                     <description>The platform has not been compromised prior to installation of the Virtualization System.</description>
-                    <objective-refer ref="OE.PLATFORM_INTEGRITY">
+                    <objective-refer ref="OE.PHYSICAL">
                         <rationale>If the underlying platform has not been compromised prior to installation of the TOE, its integrity
 				can be assumed to be intact.</rationale>
                     </objective-refer>
@@ -877,9 +904,6 @@
 				    
 				    <h:li>[<refinement>Additional information defined in <ctr-ref ref-id="atref-mandatory"/></refinement>]</h:li>
                                 <h:li><selectables>
-<!--                                    <selectable sel-iff="sel-at2">Additional information defined in <ctr-ref ref-id="atref-optional"></ctr-ref></selectable>
-                                    <selectable sel-iff="sel-at3">Additional information defined in <ctr-ref ref-id="atref-objective"></ctr-ref></selectable>
-                                    <selectable sel-iff="sel-at4">Additional information defined in <ctr-ref ref-id="atref-sel-based"></ctr-ref></selectable>  -->
                                     <selectable>Additional information defined in <ctr-ref ref-id="atref-optional"></ctr-ref></selectable>
                                     <selectable>Additional information defined in <ctr-ref ref-id="atref-objective"></ctr-ref></selectable>
                                     <selectable>Additional information defined in <ctr-ref ref-id="atref-sel-based"></ctr-ref></selectable>
@@ -1296,7 +1320,6 @@
                                 The evaluator shall verify the implementation of the key establishment schemes of the supported by the TOE 
 				    using the applicable tests below.<h:br></h:br><h:br></h:br>
 			        <h:b>Key Establishment Schemes</h:b><h:br></h:br><h:br></h:br>
-<!--                            <selection-depends-include ids="ckm2-56A-ec;ckm2-56A-ffc">   -->
                                 <h:b>SP800-56A Key Establishment Schemes</h:b><h:br></h:br><h:br></h:br>
                                 The evaluator shall verify a TOE's implementation of SP800-56A key agreement schemes using the following 
 				    Function and Validity tests. These validation tests for each key agreement scheme verify that a TOE has
@@ -1343,8 +1366,6 @@
                                 The TOE shall use these modified test vectors to emulate the key agreement scheme using the 
 				    corresponding parameters. The evaluator shall compare the TOE’s results with the results using 
 				    a known good implementation verifying that the TOE detects these errors.<h:br></h:br><h:br></h:br>
-<!-- 				</selection-depends-include>    -->
-<!-- 				<selection-depends-include ids="ckm2-56B-rsa">  -->
 	  		        <h:b>SP800-56B Key Establishment Schemes</h:b><h:br></h:br><h:br></h:br>
                                 The evaluator shall verify that the TSS describes whether the TOE acts as a sender, a recipient, or 
 				    both for RSA-based key establishment schemes.<h:br></h:br><h:br></h:br>
@@ -1387,7 +1408,6 @@
 				    the three decryption error checks described in NIST Special Publication 800-56B section 7.2.3.3, 
 				    ensure that each decryption attempt results in an error, and ensure that any outputted or
 				    logged error message is identical for each.
-<!-- 				</selection-depends-include>    -->
 			    </Tests>
                          </aactivity>
                     </f-element>
@@ -1521,7 +1541,6 @@
                             The following tests require the developer to provide access to a test platform that provides the evaluator
 				with tools that are typically not found on factory products.<h:br></h:br><h:br></h:br>
                             <Tests>
-<!--				<selection-depends-include ids="cop1-aes-cbc">    -->
                                 <h:b><h:u>AES-CBC Tests</h:u></h:b><h:br></h:br><h:br></h:br>
                                 <h:b>AES-CBC Known Answer Tests</h:b><h:br></h:br><h:br></h:br>
                                 There are four Known Answer Tests (KATs), described below. In all KATs, the plaintext, ciphertext,
@@ -1600,8 +1619,6 @@
 				    known good implementation.<h:br></h:br><h:br></h:br>
                                 The evaluator shall test the decrypt functionality using the same test as for encrypt, exchanging CT
 				    and PT and replacing AES-CBC-Encrypt with AES-CBC-Decrypt.<h:br></h:br><h:br></h:br>
-<!--				</selection-depends-include>    -->
-<!--				<selection-depends-include ids="cop1-aes-ccm;cop1-aes-ccmp;cop1-aes-ccmp-256">    -->
 				<h:b><h:u>AES-CCM Tests</h:u></h:b><h:br></h:br><h:br></h:br>
                                 The evaluator shall test the generation-encryption and decryption-verification functionality of 
 				    AES-CCM for the following input parameter and tag lengths:<h:br></h:br><h:br></h:br>
@@ -1651,8 +1668,6 @@
 				    vectors for IEEE 802.11 TGi”, dated September 10, 2002, Section 2.1 AES-CCMP Encapsulation
 				    Example and Section 2.2 Additional AES CCMP Test Vectors to further verify the IEEE 802.11-2007
 				    implementation of AES-CCMP.<h:br></h:br><h:br></h:br>
-<!--				</selection-depends-include>    -->
-<!--				<selection-depends-include ids="cop1-aes-gcm;cop1-aes-gcmp-256">    -->
 				<h:b><h:u>AES-GCM Test</h:u></h:b><h:br></h:br><h:br></h:br>
                                 The evaluator shall test the authenticated encrypt functionality of AES-GCM for each combination of 
 				    the following input parameter lengths:<h:br></h:br><h:br></h:br>
@@ -1679,8 +1694,6 @@
 				    inputs to the implementer and receiving the results in response. To determine correctness, the 
 				    evaluator shall compare the resulting values to those obtained by submitting the same inputs to 
 				    a known good implementation.<h:br></h:br><h:br></h:br>
-<!--				</selection-depends-include>    -->
-<!--				<selection-depends-include ids="cop1-aes-xts">    -->
 				<h:b><h:u>XTS-AES Test</h:u></h:b><h:br></h:br><h:br></h:br>
                                 The evaluator shall test the encrypt functionality of XTS-AES for each combination of the following
 				    input parameter lengths:<h:br></h:br><h:br></h:br>
@@ -1700,8 +1713,6 @@
                                 The evaluator shall test the decrypt functionality of XTS-AES using the same test as for encrypt,
 				    replacing plaintext values with ciphertext values and XTS-AES encrypt with XTS-AES decrypt.
                                 <h:br></h:br><h:br></h:br>
-<!--				</selection-depends-include>    -->
-<!--				<selection-depends-include ids="cop1-aes-kw;cop1-aes-kwp">    -->
 			        <h:b><h:u>AES Key Wrap (AES-KW) and Key Wrap with Padding (AES-KWP) Test</h:u></h:b>
                                 <h:br></h:br><h:br></h:br>
                                 The evaluator shall test the authenticated encryption functionality of AES-KW for EACH combination
@@ -1733,7 +1744,6 @@
 				    for AES-KWP authenticated-encryption, replacing plaintext values with ciphertext values and 
 				    AES-KWP authenticated-encryption with AES-KWP authenticated-decryption.
                                 <h:br></h:br><h:br></h:br>
-<!--				</selection-depends-include>    -->
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -1788,7 +1798,6 @@
                                 be done to configure the functionality for the required hash sizes is present. 
                             </Guidance>
                             <Tests>
-<!--                            <selection-depends-include ids="cop1-sha12">     -->
 			        <h:b><h:u>SHA-1 and SHA-2 Tests</h:u></h:b>
                                 The TSF hashing functions can be implemented in one of two modes. The first mode is the byteoriented
 				    mode. In this mode the TSF only hashes messages that are an integral number of bytes in length;
@@ -1839,8 +1848,6 @@
                                 associated digests by following the algorithm provided in Figure 1 of [SHAVS]. The
                                 evaluators then ensure that the correct result is produced when the messages are
                                 provided to the TSF.<h:br></h:br><h:br></h:br>
-<!--				</selection-depends-include>   -->		    
-<!--				<selection-depends-include ids="cop1-sha3">		-->		    
 			        <h:b><h:u>SHA-3 Tests</h:u></h:b>
 				    The tests below are derived from the The Secure Hash Algorithm-3 Validation System (SHA3VS), 
 				    Updated: April 7, 2016, from the National Institute of Standards and Technology.<h:br/><h:br/>
@@ -1887,7 +1894,6 @@
 				    TOE then uses the same procedure to generate the same 100,000 message digests and 100 checkpoint
 				    values. The evaluators then compare the results generated ensure that the correct result is
 				    produced when the messages are generated by the TSF.<h:br/><h:br/>
-<!--				</selection-depends-include>   -->		    
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -1922,7 +1928,6 @@
                                 The following tests require the developer to provide access to a test platform that provides the 
 				    evaluator with tools that are typically not found on factory products.
                                 <h:br></h:br><h:br></h:br>
-<!--				<selection-depends-include ids="cop1-ecdsa">   -->
 				<h:b>ECDSA Algorithm Tests</h:b><h:br></h:br><h:br></h:br>
                                 <h:b><h:i>ECDSA FIPS 186-4 Signature Generation Test</h:i></h:b><h:br></h:br><h:br></h:br>
                                 For each supported NIST curve (i.e., P-256, P-384 and P-521) and SHA function pair, the evaluator
@@ -1936,8 +1941,6 @@
 				    the values (message, public key or signature) in five of the 10 tuples. The evaluator shall obtain 
 				    in response a set of 10 PASS/FAIL values.
                                 <h:br></h:br><h:br></h:br>
-<!--				</selection-depends-include>     -->
-<!--				<selection-depends-include ids="cop1-ecdsa">   -->  
                                 <h:b>RSA Signature Algorithm Tests</h:b><h:br></h:br><h:br></h:br>
                                 <h:b><h:i>Signature Generation Test</h:i></h:b><h:br></h:br><h:br></h:br>
                                 The evaluator shall verify the implementation of RSA Signature Generation by the TOE using the
@@ -1958,7 +1961,6 @@
                                 <h:br></h:br><h:br></h:br>
                                 The evaluator shall use these test vectors to emulate the signature verification test using the 
 				    corresponding parameters and verify that the TOE detects these errors.
-<!--				</selection-depends-include>     -->
 				</Tests>
                         </aactivity>
                     </f-element>
@@ -5258,7 +5260,7 @@
       <h:br />
       This document provides guidance for determining whether Products and Platforms are equivalent for purposes of
             evaluation against the Protection Profile for Virtualization (VPP) when instantiated with either the Client or Server
-            Extended Package.
+            PP-Module.
       <h:br />
       <h:br />
       Equivalence has two aspects:
@@ -5297,13 +5299,12 @@
       Each non-equivalent Product for which compliance is claimed must be fully tested on each non-equivalent platform
       for which compliance is claimed. For non-equivalent Products on equivalent platforms, only the differences that
       affect PP-specified security functionality must be tested for each product.
-      <h:br />
-      <h:br />
+      <h:br /><h:br />
       If the set of equivalent Products includes only bare-metal installations, then the equivalency analysis is complete.
         But if any members of the set include hosted installations or installations that integrate with an existing host operating
         system or control domain, then software platform equivalence must be taken into consideration. The Evaluator/Vendor and
         Validator should use the factors and guidance for software platform equivalence to determine whether different models or
-        versions of host or control domain operating systems require separate testing.
+        versions of host or control domain operating systems require separate testing.<h:br /><h:br />
       <h:b><h:i>“Differences in PP-Specified Security Functionality” Defined</h:i></h:b>
       <h:br />
       If PP-specified security functionality is implemented by the TOE, then differences in the actual implementation
@@ -5320,10 +5321,11 @@
       are compliant?
       <h:br />
       <h:br />
-      Table 1, below, lists the factors for determining Product Model equivalence.
+      <ctr-ref ref-id="equiv-prod-model"/>, below, lists the factors for determining Product Model equivalence.
       <h:br />
       <h:br />
       
+      <h:b><ctr ctr-type="Table" id="equiv-prod-model">: Factors for Determining Product Model Equivalence</ctr></h:b><h:br/>
       <h:table border="1">
         <h:tr class="header" bgcolor="#cccccc">
           <h:td valign="top">Factor</h:td>
@@ -5367,7 +5369,6 @@
           </h:td>
         </h:tr>
       </h:table>
-      <h:b>Table 1. Factors for Determining Product Model Equivalance</h:b>
       <h:br />
       <h:br />
     </section>
@@ -5378,7 +5379,8 @@
       security-relevant claims about the TOE or assurance evidence. Non-security-relevant changes to TOE
       functionality or the addition of non-security-relevant functionality does not affect equivalence.
       <h:br /><h:br />
-      
+
+      <h:b><ctr ctr-type="Table" id="equiv-version">: Factors for Determining Product Version Equivalence</ctr></h:b><h:br/>      
       <h:table border="1">
         <h:tr class="header" bgcolor="#cccccc">
           <h:td valign="top">Factor</h:td>
@@ -5406,10 +5408,10 @@
             no need to document the differences. </h:td>
         </h:tr>
       </h:table>
-      <h:b>Table 2. Factors for Determining Product Version Equivalence</h:b>
       <h:br />
       <h:br />
     </section>
+	    
     <section id="s-platformequiv" title="Specific Guidance for Determining Platform Equivalence">
       Platform equivalence is used to determine the platforms that a product must be tested on. These guidelines are divided
         into sections for determining hardware equivalence and software (host OS/control domain) equivalence. If the Product is
@@ -5436,6 +5438,8 @@
         <h:br /><h:br />
         The platforms are equivalent with respect to the VS if the platforms are equivalent with respect to all PP-specified
         security functionality.
+	      
+        <h:b><ctr ctr-type="Table" id="equiv-hw-platform">: Factors for Determining Hardware Platform Equivalence</ctr></h:b><h:br/>
         <h:table border="1">
           <h:tr class="header" bgcolor="#cccccc">
             <h:td valign="top">Factor</h:td>
@@ -5456,10 +5460,10 @@
                 both platforms.</h:td>
           </h:tr>
         </h:table>
-        <h:b>Table 3. Factors for Determining Hardware Platform Equivalence</h:b>
         <h:br />
         <h:br />
       </subsection>
+	    
       <subsection id="ss-os-equiv" title="Software Platform Equivalence">
         If the Product installs onto or integrates with an operating system that is not installed with the product--and thus
           is not part of the TOE--then the Product must be tested on all non-equivalent Software Platforms.
@@ -5473,7 +5477,9 @@
         <h:br />
           As a result, Software Platform equivalence is largely concerned with revisions and variations of operating systems that
           are substantially the same (e.g. different versions and revision levels of Windows or Linux).
-        <h:table border="1">
+	
+	      <h:b><ctr ctr-type="Table" id="equiv-sw-platform">: Factors for Determining Software Platform Equivalence</ctr></h:b><h:br/>
+	      <h:table border="1">
           <h:tr class="header" bgcolor="#cccccc">
             <h:td valign="top">Factor</h:td>
             <h:td valign="top">Same/Different/None</h:td>
@@ -5504,11 +5510,11 @@
               functionality. If the Products are fully tested on each platform, then there is no need to document the differences. </h:td>
         </h:tr>
         </h:table>
-        <h:b>Table 4. Factors for Software Platform Equivalence</h:b>
         <h:br />
         <h:br />
     </subsection>
   </section>
+	    
     <section id="s-specificity" title="Level of Specificity for Tested Configurations and Claimed Equivalent Configurations">
       In order to make equivalency determinations, the vendor and evaluator must agree on the equivalency claims. They must
       then provide the scheme with sufficient information about the TOE instances and platforms that were evaluated, and the
