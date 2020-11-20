@@ -333,7 +333,8 @@
             </subsection>
             <subsection id="ss-equiv" title="Product and Platform Equivalence">
                 The tests in this Protection Profile must be run on all product versions and Platforms with which the Vendor would 
-		    like to claim compliance—subject to this Profile’s equivalency guidelines (see Annex E).
+		    like to claim compliance—subject to this Profile’s equivalency guidelines (see <appref linkend="appendix-equiv"/>).
+		    					<!-- <appendix id="appendix-equiv" title="Equivalency Guidelines"> -->
             </subsection>
         </section>
 
@@ -345,8 +346,22 @@
     
     <!-- CONFORMANCE CLAIMS -->
 
- <chapter title="Conformance Claims" id="ccl"><!-- boilerplate="no">-->
+ <chapter title="Conformance Claims" id="ccl" boilerplate="no">
     <cclaims>
+        <cclaim name="Conformance Statement">
+            <description>
+                This PP-Module inherits exact conformance as required from the Virtualization PP and as
+		    defined in the CC and CEM addenda for Exact Conformance, Selection-Based SFRs, and
+		    Optional SFRs (dated May 2017). <htm:br/><htm:br/> 
+	    	There are no other PP-Modules that are allowed to be specified in a PP-Configuration with this PP-Module.
+            </description>
+        </cclaim>
+        <cclaim name="CC Conformance Claims">
+            <description>
+                This PP Module is conformant to Parts 2 (extended) and 3 (conformant) of Common Criteria Version 3.1, 
+                Release 5 [CC].
+            </description>
+        </cclaim>
       <cclaim name="Module Claim">
         <description>The following PP-Modules are allowed to be specified in a PP-Configuration with
           this PP.<h:ul>
@@ -355,6 +370,11 @@
           </h:ul>
         </description>
       </cclaim>
+        <cclaim name="Package Claims">
+           <description>
+                This PP-Module conforms to the Functional Package for TLS and the Extended Package for Secure Shell (SSH).
+            </description>
+        </cclaim>
     </cclaims>
   </chapter>
 	
@@ -3637,10 +3657,10 @@
 					    designated as a trusted anchor, where the elliptic curve parameters are specified as a
 					    named curve. The evaluator shall confirm that the TOE validates the certificate chain..</test>
 				    <test>(Conditional on support for EC certificates as indicated in FCS_COP.1(3)). The evaluator shall
-					    replace the intermediate certificate in the certificate chain for Test 5a with a modified 
+					    replace the intermediate certificate in the certificate chain for Test 5 with a modified 
 					    certificate, where the modified intermediate CA has a public key information field where
 					    the EC parameters uses an explicit format version of the Elliptic Curve parameters in the
-					    public key information field of the intermediate CA certificate from Test 5a, and the
+					    public key information field of the intermediate CA certificate from Test 5, and the
 					    modified Intermediate CA certificate is signed by the trusted EC root CA, but having no
 					    other changes. The evaluator shall confirm the TOE treats the certificate as invalid.
 					</test>	
@@ -3961,7 +3981,7 @@
                         <aactivity>
                             <TSS>
                                 The evaluator shall examine the TSS or operational guidance to ensure it
-                                documentations all Hypercall functions at the level necessary for the evaluator to disable the
+                                documents all Hypercall functions at the level necessary for the evaluator to disable the
 				    functions
                                 and run tests 1 and 2, below. Documentation must include, for each function, how to call the function, 
 				    function
