@@ -254,7 +254,7 @@
 		executing within them. Generally, the VMM consists of a Hypervisor, Service VMs, and other components of the VS,
 		such as virtual devices, binary translation systems, and physical device drivers. It manages concurrent execution of 
 		all VMs and virtualizes platform resources as needed.<h:br></h:br><h:br></h:br>
-            The Hypervisor is the software executive of the physical platform of a Virtualization System. A hypervisor operates at 
+            The Hypervisor is the software executive of the physical platform of a VS. A hypervisor operates at 
 		the highest CPU privilege level and manages access to all of the physical resources of the hardware platform. It
 		exports a well-defined, protected interface for access to the resources it manages. A Hypervisor’s primary function is 
 		to mediate access to all CPU and memory resources, but it is also responsible for either the direct management or the
@@ -413,7 +413,7 @@
                 <threat name="T.UNAUTHORIZED_UPDATE">
                     <description>
                         It is common for attackers to target outdated versions of software containing known flaws. This means it is
-			    extremely important to update Virtualization System software as soon as possible when updates are
+			    extremely important to update VS software as soon as possible when updates are
 			    available. But the source of the updates and the updates themselves must be trusted. If an attacker can
 			    write their own update containing malicious code they can take control of the VS.
                     </description>
@@ -426,7 +426,7 @@
                     <description>
                         System integrity is a core security objective for Virtualization Systems. To achieve system integrity, the
 			    integrity of each VMM component must be established and maintained. Malware running on the platform must
-			    not be able to undetectably modify Virtualization System components while the system is running or at 
+			    not be able to undetectably modify VS components while the system is running or at 
 			    rest. Likewise, malicious code running within a virtual machine must not be able to modify Virtualization
 			    System components.
                     </description>
@@ -468,10 +468,10 @@
                 </threat>
                 <threat name="T.VMM_COMPROMISE">
                     <description>
-                        The Virtualization System is designed to provide the appearance of exclusivity to the VMs and is designed
+                        The VS is designed to provide the appearance of exclusivity to the VMs and is designed
 			    to separate or isolate their functions except where specifically shared. Failure of security mechanisms
 			    could lead to unauthorized intrusion into or modification of the VMM, or bypass of the VMM altogether.
-			    This must be prevented to avoid compromising the Virtualization System.
+			    This must be prevented to avoid compromising the VS.
                     </description>
                     <objective-refer ref="O.VMM_INTEGRITY">
                         <rationale>Maintaining the integrity of the VMM and ensuring that VMs execute in isolated domains mitigate
@@ -488,7 +488,7 @@
 			    networks connected to the VS. The hosting of untrusted—even malicious—domains by the VS cannot be 
 			    permitted to compromise the security and integrity of the platform on which the VS executes. If an 
 			    attacker can access the underlying platform in a manner not controlled by the VMM, the attacker might 
-			    be able to modify system firmware or software—compromising both the Virtualization System and the 
+			    be able to modify system firmware or software—compromising both the VS and the 
 			    underlying platform.
                     </description>
                     <objective-refer ref="O.PLATFORM_INTEGRITY">
@@ -516,7 +516,7 @@
                 </threat>
                 <threat name="T.WEAK_CRYPTO">
                     <description>
-                        To the extent that VMs appear isolated within the Virtualization System, a threat of weak cryptography may 
+                        To the extent that VMs appear isolated within the VS, a threat of weak cryptography may 
 			    arise if the VMM does not provide good entropy to support security-related features that depend on
 			    entropy to implement cryptographic algorithms. For example, a random number generator keeps an estimate
 			    of the number of bits of noise in the entropy pool. From this entropy pool random numbers are created.
@@ -531,7 +531,7 @@
                 <threat name="T.UNPATCHED_SOFTWARE">
                     <description>
                         Vulnerabilities in outdated or unpatched software can be exploited by adversaries to compromise the
-			    Virtualization System or platform.
+			    VS or platform.
                     </description>
                     <objective-refer ref="O.PATCHED_SOFTWARE">
                         <rationale>The ability to patch the TOE software ensures that protections against vulnerabilities can be 
@@ -540,7 +540,7 @@
                 </threat>
                 <threat name="T.MISCONFIGURATION">
                     <description>
-                        The Virtualization System may be misconfigured, which could impact its functioning and security. This 
+                        The VS may be misconfigured, which could impact its functioning and security. This 
 			    misconfiguration could be due to an administrative error or the use of faulty configuration data.
                     </description>
                     <objective-refer ref="O.CORRECTLY_APPLIED_CONFIGURATION">
@@ -564,7 +564,7 @@
         <section id="s-assumptions" title="Assumptions">
             <assumptions>
                 <assumption name="A.PLATFORM_INTEGRITY">
-                    <description>The platform has not been compromised prior to installation of the Virtualization System.</description>
+                    <description>The platform has not been compromised prior to installation of the VS.</description>
                     <objective-refer ref="OE.PHYSICAL">
                         <rationale>If the underlying platform has not been compromised prior to installation of the TOE, its integrity
 				can be assumed to be intact.</rationale>
@@ -662,9 +662,9 @@
                 <SO name="O.VMM_INTEGRITY">
                     <description>Integrity is a core security objective for Virtualization Systems. To achieve system integrity, the 
                         integrity of each VMM component must be established and maintained. This objective concerns 
-                        only the integrity of the Virtualization System—not the integrity of software running inside of Guest 
+                        only the integrity of the VS—not the integrity of software running inside of Guest 
                         VMs or of the physical platform. The overall objective is to ensure the integrity of 
-                        critical components of a Virtualization System.<h:br></h:br><h:br></h:br>
+                        critical components of a VS.<h:br></h:br><h:br></h:br>
                         Initial integrity of a VS can be established through mechanisms such as a digitally signed installation or 
                         update package, or through integrity measurements made at launch. Integrity is maintained in a running system 
                         by careful protection of the VMM from untrusted users and software. For example, it must not
@@ -732,7 +732,7 @@
                         networks—including operational networks connected to the TOE.<h:br></h:br><h:br>
                         </h:br> VMMs include a set of management functions that collectively allow administrators 
                         to configure and manage the VMM, as well as configure Guest VMs. These 
-                        management functions are specific to the virtualization system, distinct from any other management functions 
+                        management functions are specific to the VS, distinct from any other management functions 
                         that might exist for the internal management of any given Guest VM. These 
                         VMM management functions are privileged, with the security of the entire system relying on 
                         their proper use. The VMM management functions can be classified into different categories 
@@ -773,7 +773,7 @@
 			<addressed-by>FTP_ITC_EXT.1</addressed-by><rationale>Ensures that trusted communications channels are implemented using good cryptography.</rationale>
                 </SO>
                 <SO name="O.PATCHED_SOFTWARE">
-                    <description>The Virtualization System must be updated and patched when needed in order to prevent the potential 
+                    <description>The VS must be updated and patched when needed in order to prevent the potential 
                         compromise of the VMM, as well as the networks and VMs that it hosts. 
                         Identifying and applying needed updates must be a normal part of the operating procedure to ensure that 
                         patches are applied in a timely and thorough manner. In order to facilitate this, the VS must support 
@@ -824,7 +824,7 @@
         <section id="s-secobjoe" title="Security Objectives for the Operational Environment">
             <SOEs>
                 <SOE name="OE.CONFIG">
-                    <description>TOE administrators will configure the Virtualization System correctly to create the intended security
+                    <description>TOE administrators will configure the VS correctly to create the intended security
 			    policy.
                     </description>
                 </SOE>
@@ -3143,7 +3143,7 @@
                         <note role="application">
                             The fundamental requirement of a Virtualization System is the ability to enforce separation between
 				information domains implemented as Virtual Machines and Virtual Networks. The intent of this
-				requirement is to ensure that VMs, VMMs, and the Virtualization System as a whole is implemented with 
+				requirement is to ensure that VMs, VMMs, and the VS as a whole is implemented with 
 				this fundamental requirement in mind.<h:br></h:br><h:br></h:br>
                             The ST author should select “no mechanism” in the unlikely event that the VS implements no mechanisms for
 				transferring data between Guest VMs. Otherwise, the ST author should select “virtual networking” 
@@ -4238,7 +4238,7 @@
                         <note role="application">The purpose of this requirement is to ensure that the VMM is not vulnerable to
 				compromise through the processing of malformed data passed to the virtual device interface from a 
 				Guest OS. The VMM cannot assume that any data coming from a VM is well-formed—even if the virtual
-				device interface is unique to the Virtualization System and the data comes from a virtual device
+				device interface is unique to the VS and the data comes from a virtual device
 				driver supplied by the Virtualization Vendor.<h:br></h:br><h:br></h:br>
                             FPT_VDP_EXT.1.2 is an attestation requirement. The vendor must attest that parameters passed from a VM
 				to a virtual device interface are not able to degrade or disrupt the functioning of other VMs, the 
@@ -4291,7 +4291,7 @@
                         </title>
                         <note role="application">This requirement is intended to ensure that software running within a Guest VM cannot
 				compromise other VMs, the VMM, or the platform. This requirement is not met if Guest VM 
-				software—whatever its privilege level—can crash the Virtualization System or the Platform, or breakout
+				software—whatever its privilege level—can crash the VS or the Platform, or breakout
 				of its virtual hardware abstraction to gain execution on the platform, within or outside of the context
 				of the VMM.<h:br></h:br><h:br></h:br>
                             This requirement is not violated if software running within a VM can crash the Guest OS and there is no
@@ -4463,7 +4463,7 @@
                 <f-component cc-id="fpt_ml_ext.1" name="Measured Launch of Platform and VMM"  status="objective">
                     <f-element id="fpt-ml-ext-1e1">
                         <title>The TSF shall support a measured launch of the Virtualization System. Measured 
-				components of the Virtualization system shall include the static executable image of the Hypervisor
+				components of the VS shall include the static executable image of the Hypervisor
 				and:
                             <selectables linebreak="yes">
                                 <selectable>Static executable images of the Management Subsystem</selectable>
@@ -4477,7 +4477,7 @@
                         <title>The TSF shall make these measurements available to the Management Subsystem.
                         </title>
                         <note role="application">
-                            A measured launch of the platform and Virtualization System, demonstrates that the proper TOE software was
+                            A measured launch of the platform and VS demonstrates that the proper TOE software was
 				loaded. A measured launch process employs verifiable integrity measurement mechanisms. For example, a
 				VS may hash components such as: the hypervisor, service VMs and/or the Management Subsystem. A 
 				measured launch process only allows components to be executed after the measurement has been recorded.
@@ -4894,7 +4894,7 @@
                                 number of allowed authentication attempt failures, the lockout period times for inactivity, and the
                                 notice and consent warning that is to be provided when authenticating.<h:br></h:br><h:br></h:br>
                                 The operational guidance shall contain step-by-step instructions suitable for use by an end-user
-                                of the Virtualization System to configure a new, out-of-the-box system into the configuration
+                                of the VS to configure a new, out-of-the-box system into the configuration
                                 evaluated under this Protection Profile.<h:br></h:br><h:br></h:br>
                                 The documentation shall describe the process for verifying updates to the TOE, 
                                 either by checking the hash or by verifying a digital signature. The evaluator shall verify that 
@@ -4950,7 +4950,7 @@
                                 TOE adequately addresses all platforms (that is, combination of hardware and 
                                 operating system) claimed for the TOE in the ST.<h:br></h:br><h:br></h:br>
                                 The operational guidance shall contain step-by-step instructions suitable for use by an end-user of
-                                the Virtualization System to configure a new, out-of-the-box system into the configuration evaluated 
+                                the VS to configure a new, out-of-the-box system into the configuration evaluated 
                                 under this Protection Profile.
                         </aactivity>
                     </a-element>
@@ -5031,7 +5031,7 @@
 		<!-- ALC_TSU_EXT -->
                 <a-component cc-id="alc_tsu_ext.1" name="Timely Security Updates">
                     This component requires the TOE developer, in conjunction with any other necessary parties, to provide information 
-			as to how the Virtualization System is updated to address security issues in a timely manner. The
+			as to how the VS is updated to address security issues in a timely manner. The
 			documentation describes the process of providing updates to the public from the time a security flaw is
 			reported/discovered, to the time an update is released. This description includes the parties involved
 			(e.g., the developer, hardware vendors) and the steps that are performed (e.g., developer testing), including 
