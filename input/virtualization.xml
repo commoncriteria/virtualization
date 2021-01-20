@@ -43,7 +43,7 @@
 
     - DONE: Add Equivalency (Appendix E)
 
-    - Removed AES-CTR from acceptable AES modes (because there are no tests)
+    - Removed AES-CTR from acceptable AES modes (because there are no tests), and then added it back.
     - Added SHA-3 to hashes (and tests)
     - Added SHA-3 to keyed hashes (test needn't change)
 
@@ -1534,7 +1534,7 @@
                                 <selectable id="sel-cop1-aes-gcmp-256">AES-GCMP-256 (as defined in NIST SP800-38D and IEEE 802.11ac-2013),</selectable>
                                 <selectable id="sel-cop1-aes-ccmp">AES-CCMP (as defined in FIPS PUB 197, NIST SP 800-38C and IEEE 802.11-2012),</selectable>
                                 <selectable id="sel-cop1-aes-cbc">AES-CBC (as defined in FIPS PUB 197, and NIST SP 800-38A) mode,</selectable>
-<!--   No tests!                <selectable id="sel-cop1-aes-ctr">AES-CTR (as defined in NIST SP 800-38A) mode</selectable>   -->
+		                <selectable id="sel-cop1-aes-ctr">AES-CTR (as defined in NIST SP 800-38A) mode</selectable>
                             </selectables>
                             and cryptographic key sizes
                             <selectables>
@@ -1752,7 +1752,105 @@
                                 The evaluator shall test the authenticated-decryption functionality of AES-KWP using the same test as
 				    for AES-KWP authenticated-encryption, replacing plaintext values with ciphertext values and 
 				    AES-KWP authenticated-encryption with AES-KWP authenticated-decryption.
-                                <h:br></h:br><h:br></h:br>
+                                <h:br></h:br>		    
+    				<h:b><h:u>AES-GCM Test</h:u></h:b><h:br></h:br><h:br></h:br>
+	 		         <testlist>
+            				<test>
+				              Known Answer Tests (KATs)
+					      <h:p/>
+					      There are four Known Answer Tests (KATs) described below.  For all KATs, the plaintext,
+					      initialization vector (IV), and ciphertext values shall be 128-bit blocks.  The results from each test may
+					      either be obtained by the validator directly or by supplying the inputs to the implementer
+					      and receiving the results in response.  To determine correctness, the evaluator shall
+					      compare the resulting values to those obtained by submitting the same inputs to a known
+					      good implementation.
+				              <h:p/>
+					      <h:b>Test 1a:</h:b> To test the encrypt functionality, the evaluator shall supply a set of 10 plaintext 
+					      values and obtain the ciphertext value that results from encryption of the given plaintext
+					      using a key value of all zeros and an IV of all zeros.  Five plaintext values shall be encrypted
+					      with a 128-bit all zeros key, and the other five shall be encrypted with a 256-bit all zeros key. 
+					      To test the decrypt functionality, the evaluator shall perform the same 
+					      test as for encrypt, using 10 ciphertext values as input.
+					      <h:p/>
+					      <h:b>Test 1b:</h:b> To test the encrypt functionality, the evaluator shall supply a set of 10 key values
+					      and obtain the ciphertext value that results from encryption of an all zeros plaintext
+					      using the given key value and an IV of all zeros.  Five of the key values shall be 128-bit
+					      keys, and the other five shall be 256-bit keys. To test the decrypt functionality, the
+					      evaluator shall perform the same test as for encrypt, using an all zero ciphertext
+					      value as input.
+					      <h:p/>
+					      <h:b>Test 1c:</h:b> To test the encrypt functionality, the evaluator shall supply the two sets of key values
+					      described below and obtain the ciphertext values that result from AES encryption of an
+					      all zeros plaintext using the given key values and an IV of all zeros.  The first set of
+					      keys shall have 128 128-bit keys, and the second shall have 256 256-bit keys.  Key_i in
+					      each set shall have the leftmost i bits be ones and the rightmost N-i bits be zeros,
+					      for i in [1, N]. To test the decrypt functionality, the evaluator shall supply the two
+					      sets of key and ciphertext value pairs described below and obtain the plaintext value
+					      that results from decryption of the given ciphertext using the given key values and an
+					      IV of all zeros.  The first set of key/ciphertext pairs shall have 128 128-bit
+					      key/ciphertext pairs, and the second set of key/ciphertext pairs shall have 256 256-bit
+					      pairs. Key_i in each set shall have the leftmost i bits be ones and the rightmost N-i
+					      bits be zeros for i in [1, N].  The ciphertext value in each pair shall be the value 
+					      that results in an all zeros plaintext when decrypted with its corresponding key.
+					      <h:p/>
+					      <h:b>Test 1d:</h:b> To test the encrypt functionality, the evaluator shall supply the set of
+					      128 plaintext values described below and obtain the two ciphertext values that
+					      result from encryption of the given plaintext using a 128-bit key value of all
+					      zeros and using a 256 bit key value of all zeros, respectively, and an IV of all
+					      zeros. Plaintext value i in each set shall have the leftmost bits be ones and
+					      the rightmost 128-i bits be zeros, for i in [1, 128].  To test the decrypt functionality,
+					      the evaluator shall perform the same test as for encrypt, using ciphertext
+					      values of the same form as the plaintext in the encrypt test as input.
+					      <h:p/>
+					    </test>
+					    <test>
+					      Multi-Block Message Test
+					      <h:p/>
+					      The evaluator shall test the encrypt functionality by encrypting an i-block 
+					      message where 1 less-than i less-than-or-equal to 10. For each i the evaluator 
+					      shall choose a key, IV, and plaintext message of length i blocks and encrypt
+					      the message, using the mode to be tested, with the chosen key. The ciphertext
+					      shall be compared to the result of encrypting the same plaintext message with
+					      the same key and IV using a known good implementation. The evaluator shall also 
+					      test the decrypt functionality by decrypting an i-block message where 1 less-than
+					      i less-than-or-equal to 10. For each i the evaluator shall choose a key and
+					      a ciphertext message of length i blocks and decrypt the message, using the mode 
+					      to be tested, with the chosen key. The plaintext shall be compared to the result
+					      of decrypting the same ciphertext message with the same key using a known good implementation.
+					      <h:p/>
+					    </test>
+					    <test>
+					      Monte-Carlo Test
+					      <h:p/>
+					      For AES-CTR mode perform the Monte Carlo Test for ECB Mode on the encryption 
+					      engine of the counter mode implementation. There is no need to test the decryption engine.
+					      <h:p/>
+					      The evaluator shall test the encrypt functionality using 200 plaintext/key pairs. 
+					      100 of these shall use 128 bit keys, and 100 of these shall use 256 bit keys.  
+					      The plaintext values shall be 128-bit blocks.  For each pair, 1000 iterations shall be run as follows:
+					      <h:p/>
+					      For AES-ECB mode<h:br />
+					      # Input: PT, Key<h:br />
+					      for i = 1 to 1000:<h:br />
+					      CT[i] = AES-ECB-Encrypt(Key, PT)<h:br />
+					      PT = CT[i]
+					      <h:p/>
+					      The ciphertext computed in the 1000th iteration is the result for that 
+					      trial.  This result shall be compared to the result of running 1000 
+					      iterations with the same values using a known good implementation.  
+					    </test>
+					  </testlist>
+					    If "invoke platform-provided" is selected, the evaluator confirms that SSH connections are only successful if appropriate algorithms and appropriate key sizes are configured. To do this, the evaluator shall perform the following tests:
+					    <testlist>
+					      <test>
+						[Conditional: TOE is an SSH server] The evaluator shall configure an SSH client to connect with an invalid cryptographic algorithm and key size for each listening SSH socket connection on the TOE.  
+						The evaluator initiates SSH client connections to each listening SSH socket connection on the TOE and observes that the connection fails in each attempt.
+					      </test>
+					    <test>
+					      [Conditional: TOE is an SSH client] The evaluator shall configure a listening SSH socket on a remote SSH server that accepts only invalid cryptographic algorithms and keys. 
+					      The evaluator uses the TOE to attempt an SSH connection to this server and observes that the connection fails.  
+					    </test>
+				</testlist>
                             </Tests>
                         </aactivity>
                     </f-element>
