@@ -26,7 +26,7 @@
     - DONE: 0249 Applicability of FTP_ITC_EXT.1
     - DONE: 0264 Clarification of Auditable Events for FPT_RDM_EXT.1
     - OBEV: 0267 TLSS testing - Empty Certificate Authorities list (TLS Package incorporated)
-    - DONE: 0360 AD Server configuration in FMT_MOF_EXT.1 (also done in Modules)
+    - DONE: 0360 AD Server configuration in FMT_MOF_EXT.1 (also done in PP-Modules)
     - DONE: 0363 Access Banner and applicability to programmatic interfaces
     - DONE: 0432: Corrections to FIA_AFL_EXT.1
     - DONE: 0443: FPT_VDP_EXT.1 Clarification for Assurance Activity
@@ -43,13 +43,15 @@
 
     - DONE: Add Equivalency (Appendix E)
 
-    - Removed AES-CTR from acceptable AES modes (because there are no tests), and then added it back.
     - Added SHA-3 to hashes (and tests)
     - Added SHA-3 to keyed hashes (test needn't change)
 
     - Updated to handle "iteration" attribute in f-components
     - Audit requirements attached to SFRs.
     - Added FIA_AFL_EXT to the audit table. It was inexplicably missing. 
+
+    - See Issues for resolution of coments from Jan 2021.
+
 
     Schema changes reflected herein:
 	- pp-declarations and audit-table-decl added. Likely management-table-decl will be added later.
@@ -106,7 +108,7 @@
 	    <depends on="selection"><ref-id>sel-x509-2-ssh</ref-id></depends>
     </include-pkg>	
 
-	<!-- Rules - These are rules where selections in the base require selections in the Modules.
+	<!-- Rules - These are rules where selections in the base require selections in the PP-Modules.
 			So, really these belong in a composition and not here. At worst they should be in the module.
 
 	<rule if="sel-uau-pwd" then="client:sel-mf-2"/>
@@ -323,7 +325,7 @@
 		    but that are impossible or impractical to test in a repeatable and consistent manner. These Attestation assurance 
 		    activities require the vendor to make an assertion in the ST that their product meets the 
 		    specified SFR—no further testing or assessment of the product regarding these SFRs or elements is performed by the
-		    CCTL. The CCTL will simply verify that the ST includes a pre-determined Attestation statement.
+		    ITSEF. The ITSEF will simply verify that the ST includes a pre-determined Attestation statement.
 		    By including this statement in the ST, the vendor is accepting responsibility for the assurance
 		    of their product in these particular areas. If at any time evidence is produced that indicates that these
 		    statements are false (and the product does not meet the specified security functionality), the CC certificate may
@@ -374,7 +376,7 @@
       </cclaim>
         <cclaim name="Package Claims">
            <description>
-                This PP conforms to the Functional Package for TLS. 
+                This PP is Functional Package for TLS-conformant. 
             </description>
         </cclaim>
     </cclaims>
@@ -586,11 +588,10 @@
                     </objective-refer>
                 </assumption>
                 <assumption name="A.COVERT_CHANNELS">
-                    <description>If the TOE has covert storage or timing channels, then for all VMs executing on that TOE, it is
-			    assumed that relative to the IT assets to which they have access, those VMs will have assurance sufficient 
-			    to outweigh the risk that they will violate the security policy of the TOE by using those covert channels.</description>
+                    <description>There is sufficient assurance relative to the value of the VM’s IT assets to address the 
+			    risk of covert storage and timing channels to the VMs executing on the TOE.</description>
                     <objective-refer ref="OE.COVERT_CHANNELS">
-                        <rationale>It is expected that any data contained within VMs is commensurate with the security provided by 
+                        <rationale>It is expected that the value of any data contained within VMs is commensurate with the security provided by 
 				the TOE, which includes any vulnerabilities due to the potential presence of covert storage or 
 				timing channels.</rationale>
                     </objective-refer>
@@ -622,7 +623,7 @@
                         no information transfer between VMs.<h:br></h:br><h:br></h:br>
                         The VMM must support the necessary mechanisms to isolate the resources of all 
                         VMs. The VMM partitions a platform's physical resources for use by the 
-                        supported virtual environments. Depending on the use case, a VM may require a completely 
+                        supported virtual environments. Depending on customer requirements, a VM may need a completely 
                         isolated environment with exclusive access to system resources, or share some of its resources with other 
                         VMs. It must be possible to enforce a security policy that prohibits the transfer of data 
                         between VMs through shared devices. When the platform security policy allows the sharing of 
@@ -722,7 +723,7 @@
                 </SO>
                 <SO name="O.MANAGEMENT_ACCESS">
                   
-                    <description>VMM management functions include VM> configuration, virtualized 
+                    <description>VMM management functions include VM configuration, virtualized 
                         network configuration, allocation of physical resources, and reporting. Only certain authorized system users 
                         (administrators) are allowed to exercise management functions.<h:br></h:br><h:br></h:br>
                         Because of the privileges exercised by the VMM management functions, it must not be possible 
@@ -793,8 +794,10 @@
 			<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
                 </SO>
                 <SO name="O.AUDIT">
-                    <description>The purpose of audit is to capture and protect data about what happens on a system so that it can 
-                        later be examined to determine what has happened in the past.
+                    <description>An audit log must be created that captures accesses to the objects the TOE protects. The log 
+			    of these accesses, or audit events, must be protected from modification, unauthorized access,
+			    and destruction. The audit log must be sufficiently detailed to indicate the date and time of
+			    the event, the identify of the user, the type of event, and the success or failure of the event.
                     </description>
 		    	<addressed-by>FAU_GEN.1</addressed-by><rationale>Requires reporting of audit events.</rationale>
 			<addressed-by>FAU_SAR.1</addressed-by><rationale>Requires support for Administrator review of audit records.</rationale>
@@ -1519,21 +1522,20 @@
                 </f-component>
        
                 <!-- FCS_COP.1/UDE (formerly FCS_COP.1(1)) -->
-		<!-- Removed AES-CTR because there are no tests 20190919 -->
-                <f-component cc-id="fcs_cop.1" iteration="UDE" name="Cryptographic Operation (AES Data Encryption/ Decryption)" status="mandatory">
+                <f-component cc-id="fcs_cop.1" iteration="UDE" name="Cryptographic Operation (AES Data Encryption/Decryption)" status="mandatory">
                     <f-element id="fcs-cop-1e1-ude">
                         <title>
                             The TSF shall perform [encryption and decryption] in accordance with a specified cryptographic algorithm<h:br></h:br>
                             <selectables linebreak="yes">
                                 <selectable id="sel-cop1-aes-kw">AES Key Wrap (KW) (as defined in NIST SP 800-38F)</selectable>
                                 <selectable id="sel-cop1-aes-kwp">AES Key Wrap with Padding (KWP) (as defined in NIST SP 800-38F)</selectable>
-                                <selectable id="sel-cop1-aes-gcm">AES-GCM (as defined in NIST SP 800-38D),</selectable>
-                                <selectable id="sel-cop1-aes-ccm">AES-CCM (as defined in NIST SP 800-38C),</selectable>
-                                <selectable id="sel-cop1-aes-xts">AES-XTS (as defined in NIST SP 800-38E) mode,</selectable>
-                                <selectable id="sel-cop1-aes-ccmp-256">AES-CCMP-256 (as defined in NIST SP800-38C and IEEE 802.11ac-2013),</selectable>
-                                <selectable id="sel-cop1-aes-gcmp-256">AES-GCMP-256 (as defined in NIST SP800-38D and IEEE 802.11ac-2013),</selectable>
-                                <selectable id="sel-cop1-aes-ccmp">AES-CCMP (as defined in FIPS PUB 197, NIST SP 800-38C and IEEE 802.11-2012),</selectable>
-                                <selectable id="sel-cop1-aes-cbc">AES-CBC (as defined in FIPS PUB 197, and NIST SP 800-38A) mode,</selectable>
+                                <selectable id="sel-cop1-aes-gcm">AES-GCM (as defined in NIST SP 800-38D)</selectable>
+                                <selectable id="sel-cop1-aes-ccm">AES-CCM (as defined in NIST SP 800-38C)</selectable>
+                                <selectable id="sel-cop1-aes-xts">AES-XTS (as defined in NIST SP 800-38E) mode</selectable>
+                                <selectable id="sel-cop1-aes-ccmp-256">AES-CCMP-256 (as defined in NIST SP800-38C and IEEE 802.11ac-2013)</selectable>
+                                <selectable id="sel-cop1-aes-gcmp-256">AES-GCMP-256 (as defined in NIST SP800-38D and IEEE 802.11ac-2013)</selectable>
+                                <selectable id="sel-cop1-aes-ccmp">AES-CCMP (as defined in FIPS PUB 197, NIST SP 800-38C and IEEE 802.11-2012)</selectable>
+                                <selectable id="sel-cop1-aes-cbc">AES-CBC (as defined in FIPS PUB 197, and NIST SP 800-38A) mode</selectable>
 		                <selectable id="sel-cop1-aes-ctr">AES-CTR (as defined in NIST SP 800-38A) mode</selectable>
                             </selectables>
                             and cryptographic key sizes
@@ -1542,7 +1544,7 @@
                                 <selectable>256-bit key sizes</selectable>
                             </selectables>.
                         </title>
-                        <note role="application">For the first selection of FCS_COP.1.1(1), the ST author should choose the mode or
+                        <note role="application">For the first selection of FCS_COP.1.1/UDE, the ST author should choose the mode or
 				modes in which AES operates. For the second selection, the ST author should choose the key sizes that
 				are supported by this functionality.</note>
                         <aactivity>
@@ -1884,8 +1886,7 @@
 			    </selectables>   
                         </title>
                         <note role="application">
-                            The TSF shall provide the audit records in a manner suitable for the user to interpret the information. 
-				Per NIST SP 800-131A, SHA-1 for generating digital signatures is no longer allowed, and SHA-1 for 
+                            Per NIST SP 800-131A, SHA-1 for generating digital signatures is no longer allowed, and SHA-1 for 
 				verification of digital signatures is strongly discouraged as there may be risk in accepting these
 				signatures. It is expected that vendors will implement SHA-2 algorithms in accordance with SP 800-131A.
                             <h:br></h:br><h:br></h:br>
@@ -2076,7 +2077,7 @@
                 
                 <!-- FCS_COP.1/KEYHASH (formerly FCS_COP.1(4)) -->
 		<!-- Added SHA-3 hashes 20190919 -->
-                <f-component cc-id="fcs_cop.1" iteration="KEYHASH" name="Cryptographic Operation (Keyed Hash algorithms)" status="mandatory">
+                <f-component cc-id="fcs_cop.1" iteration="KEYHASH" name="Cryptographic Operation (Keyed Hash Algorithms)" status="mandatory">
                     <f-element id="fcs-cop-1e1-keyhash">
                         <title>The TSF shall perform [<h:i>keyed-hash message authentication</h:i>] in accordance with a specified
 				cryptographic algorithm
@@ -2222,7 +2223,7 @@
 				SHA-44 512) <!-- here check this 512 -->are allowed for Hash_DRBG or HMAC_DRBG, only AES-based 
 				implementations for CTR_DRBG are allowed.<h:br></h:br><h:br></h:br>
                             If the key length for the AES implementation used here is different than that used to encrypt the user 
-				data, then FCS_COP.1 may have to be adjusted or iterated to reflect the different key length. For the
+				data, then FCS_COP.1/UDE may have to be adjusted or iterated to reflect the different key length. For the
 				selection in FCS_RBG_EXT.1.2, the ST author selects the minimum number of bits of
 				entropy that is used to seed the RBG.
                         </note>
@@ -2333,7 +2334,8 @@
 				resulting action that takes place.<h:br/><h:br/>
                             While there must be a means to order the rules, a general approach to ordering is not mandated, as long
 				as the SPD can distinguish the IP packets and apply the rules accordingly. There may be multiple SPDs
-				(one for each network interface), but this is not required.</note>
+				(one for each network interface), but this is not required.<h:br/><h:br/>
+			</note>
                         <aactivity>
                             <TSS>
                                 The evaluator shall examine the TSS and determine that it describes what takes 
@@ -2391,33 +2393,8 @@
                         </aactivity>
                     </f-element>
                     <f-element id="fcs-ipsec-ext-1e2">
-                        <title>The TSF shall have a nominal, final entry in the SPD that matches anything that is otherwise unmatched, 
-				and discards it.
-                        </title>
-                        <aactivity>
-                            The assurance activity for this element is performed in conjunction with the activities for
-				FCS_IPSEC_EXT.1.1.<h:br></h:br><h:br></h:br>
-                            <Tests>
-                                The evaluator uses the operational guidance to configure the TOE to carry out 
-                                the following tests:
-                                <testlist>
-                                    <test>The evaluator shall configure the SPD such that there is a rule for dropping a packet,
-					    encrypting a packet, and allowing a packet to flow in plaintext. The evaluator may use 
-					    the SPD that was created for verification of FCS_IPSEC_EXT.1.1. The evaluator shall 
-					    construct a network packet that matches the rule to allow the packet to flow in plaintext
-					    and send that packet. The evaluator should observe that the network packet is passed to 
-					    the proper destination interface with no modification. The evaluator shall then modify a 
-					    field in the packet header; such that it no longer matches the evaluator-created entries 
-					    (there may be a “TOE/platform created” final entry that discards packets
-					    that do not match any previous entries). The evaluator sends the packet, and observes 
-					    that the packet was dropped.</test>
-                                </testlist>
-                            </Tests>
-                        </aactivity>
-                    </f-element>
-                    <f-element id="fcs-ipsec-ext-1e3">
                         <title>The TSF shall implement transport mode and
-                            <selectables linebreak="yes">
+                            <selectables>
                                 <selectable>tunnel mode</selectable>
                                 <selectable>no other mode</selectable>
                             </selectables>.
@@ -2453,6 +2430,31 @@
                             </Tests>
                         </aactivity>
                     </f-element>
+                    <f-element id="fcs-ipsec-ext-1e3">
+                        <title>The TSF shall have a nominal, final entry in the SPD that matches anything that is otherwise unmatched, 
+				and discards it.
+                        </title>
+                        <aactivity>
+                            The assurance activity for this element is performed in conjunction with the activities for
+				FCS_IPSEC_EXT.1.1.<h:br></h:br><h:br></h:br>
+                            <Tests>
+                                The evaluator uses the operational guidance to configure the TOE to carry out 
+                                the following tests:
+                                <testlist>
+                                    <test>The evaluator shall configure the SPD such that there is a rule for dropping a packet,
+					    encrypting a packet, and allowing a packet to flow in plaintext. The evaluator may use 
+					    the SPD that was created for verification of FCS_IPSEC_EXT.1.1. The evaluator shall 
+					    construct a network packet that matches the rule to allow the packet to flow in plaintext
+					    and send that packet. The evaluator should observe that the network packet is passed to 
+					    the proper destination interface with no modification. The evaluator shall then modify a 
+					    field in the packet header; such that it no longer matches the evaluator-created entries 
+					    (there may be a “TOE/platform created” final entry that discards packets
+					    that do not match any previous entries). The evaluator sends the packet, and observes 
+					    that the packet was dropped.</test>
+                                </testlist>
+                            </Tests>
+                        </aactivity>
+                    </f-element>
                     <f-element id="fcs-ipsec-ext-1e4">
                         <title>The TSF shall implement the IPsec protocol ESP as defined by RFC 4303 using the cryptographic 
 				algorithms AES-CBC-128, AES-CBC-256 (both specified by RFC 3602) and
@@ -2468,8 +2470,8 @@
                                 and AES-CBC-256 are implemented. If the "ST" author has selected either 
                                 AES-GCM-128 or AES-GCM-256 in the requirement, then the evaluator verifies the
                                 TSS describes these as well. In addition, the evaluator ensures that the 
-                                SHA-based HMAC algorithm conforms to the algorithms specified in FCS_COP.1(4) Cryptographic 
-                                Operations (for keyed-hash message authentication).
+                                SHA-based HMAC algorithm conforms to the algorithms specified in FCS_COP.1/KEYHASH Cryptographic 
+                                Operations (Keyed Hash Algorithms).
                             </TSS>
                             <Guidance>
                                 The evaluator checks the operational guidance to ensure it provides instructions on how to 
@@ -2488,15 +2490,15 @@
                     <f-element id="fcs-ipsec-ext-1e5">
                         <title>The TSF shall implement the protocol: <h:br></h:br><h:br></h:br>
                             <selectables linebreak="yes">
-                                <selectable>IKEv1, using Main Mode for Phase 1 exchanges, as defined in RFCs 2407, 2408, 2409, RFC 4109, <selectables>
-                                    <selectable>no other RFCs for extended sequence numbers</selectable>
-                                    <selectable>RFC 4304 for extended sequence numbers</selectable>
-                                </selectables>  and
+                                <selectable>IKEv1, using Main Mode for Phase 1 exchanges, as defined in RFC 2407, RFC 2408, RFC 2409, RFC 4109, 
+					<selectables>
+                                    		<selectable>no other RFCs for extended sequence numbers</selectable>
+                                    		<selectable>RFC 4304 for extended sequence numbers</selectable>
+                                	</selectables>  and
                                     <selectables>
                                         <selectable>no other RFCs for hash functions</selectable>
                                         <selectable>RFC 4868 for hash functions</selectable>
-                                    </selectables> </selectable>
-                               
+					</selectables> </selectable>
                                 <selectable>IKEv2 as defined in RFC 5996 and
                                     <selectables>
                                         <selectable>with no support for NAT traversal</selectable>
@@ -2871,7 +2873,7 @@
                             <TSS>
                                 The evaluator ensures that the TSS identifies RSA and/or ECDSA as being used 
                                 to perform peer authentication. The description shall be consistent with the algorithms as 
-                                specified in FCS_COP.1(2) Cryptographic Operations (for cryptographic signature).<h:br></h:br><h:br></h:br>
+                                specified in FCS_COP.1/SIG Cryptographic Operations (Signature Algorithms).<h:br></h:br><h:br></h:br>
                                 If pre-shared keys are chosen in the selection, the evaluator shall check to ensure that the TSS 
 				    describes how pre-shared keys are established and used in authentication of IPsec connections. 
 				    The evaluator shall check that the operational guidance describes how pre-shared keys are to be
@@ -3227,7 +3229,7 @@
                         </title>
                     </f-element>
                     <f-element id="fdp-vms-ext-1e2">
-                        <title>The TSF shall allow Administrators to configure these mechanisms to
+                        <title>The TSF shall allow Administrators to configure the mechanisms selected in FDP_VMS_EXT.1.1 to
                             <selectables>
                                 <selectable>enable</selectable>
                                 <selectable>disable</selectable>
@@ -3664,8 +3666,8 @@
 				<h:li>The TSF shall validate that any CA certificate includes caSigning purpose in the key usage field</h:li>
 				<h:li>The TSF shall validate revocation status of the certificate using 
 					<selectables>
-						<selectable>OCSP as specified in RFC6960</selectable>
-						<selectable>a CRL as specified in RFC5759</selectable>
+						<selectable>OCSP as specified in RFC 6960</selectable>
+						<selectable>a CRL as specified in RFC 5759</selectable>
 						<selectable>an OCSP TLS Status Request Extension (OCSP stapling) as specified in 
 							RFC 6066</selectable>
 						<selectable>OCSP TLS Multi-Certificate Status Request Extension (i.e., OCSP 
@@ -3721,7 +3723,7 @@
                             </TSS>
                             <Tests>
                                 The tests described must be performed in conjunction with the other Certificate Services assurance 
-				    activities, including the use cases in FIA_X509_EXT.2.1. The tests for the extendedKeyUsage rules 
+				    activities, including the uses listed in FIA_X509_EXT.2.1. The tests for the extendedKeyUsage rules 
 				    are performed in conjunction with the uses that require those rules.<h:br/><h:br/>
                                 <testlist>
                                     <test>The evaluator shall demonstrate that validating a certificate without a valid certification
@@ -3751,12 +3753,12 @@
 					    and verify that validation of the OCSP response fails. If CRL is selected, the evaluator
 					    shall configure the CA to sign a CRL with a certificate that does not have the cRLsign key 
 					    usage bit set and verify that validation of the CRL fails.</test>
-                                    <test>(Conditional on support for EC certificates as indicated in FCS_COP.1(3)). The evaluator
+                                    <test>(Conditional on support for EC certificates as indicated in FCS_COP.1/SIG). The evaluator
 					    shall establish a valid, trusted certificate chain consisting of an EC leaf certificate, 
 					    an EC Intermediate CA certificate not designated as a trust anchor, and an EC certificate
 					    designated as a trusted anchor, where the elliptic curve parameters are specified as a
 					    named curve. The evaluator shall confirm that the TOE validates the certificate chain..</test>
-				    <test>(Conditional on support for EC certificates as indicated in FCS_COP.1(3)). The evaluator shall
+				    <test>(Conditional on support for EC certificates as indicated in FCS_COP.1/SIG). The evaluator shall
 					    replace the intermediate certificate in the certificate chain for Test 5 with a modified 
 					    certificate, where the modified intermediate CA has a public key information field where
 					    the EC parameters uses an explicit format version of the Elliptic Curve parameters in the
@@ -4226,7 +4228,7 @@
                             </selectables> prior to installing those updates.
                         </title>
                         <note role="application">The digital signature mechanism referenced in FPT_TUD_EXT.1.3 is one of the 
-				algorithms specified in FCS_COP.1(3).<h:br></h:br><h:br></h:br>
+				algorithms specified in FCS_COP.1/SIG.<h:br></h:br><h:br></h:br>
                             If certificates are used by the update verification mechanism, certificates are validated in accordance
 				with FIA_X509_EXT.1 and should be selected in FIA_X509_EXT.2.1. Additionally, FPT_TUD_EXT.2 must be
 				included in the ST.<h:br></h:br><h:br></h:br>
@@ -4572,7 +4574,7 @@
                         </title>
                     </f-element>
                     <f-element id="fpt-ml-ext-1e2">
-                        <title>The TSF shall make these measurements available to the Management Subsystem.
+                        <title>The TSF shall make the measurements selected in FPT_ML_EXT.1.1 available to the Management Subsystem.
                         </title>
                         <note role="application">
                             A measured launch of the platform and VS demonstrates that the proper TOE software was
@@ -4651,7 +4653,8 @@
                     <f-element id="ftp-itc-ext-1e1">
                         <title>The TSF shall use
                             <selectables linebreak="yes">
-                                <selectable id="sel-itc-tls">TLS as conforming to the <h:a href="https://www.niap-ccevs.org/MMO/PP/-439-/"><h:i>Functional Package for Transport Layer Security</h:i></h:a></selectable>
+                                <selectable id="sel-itc-tls">TLS as conforming to the <h:a href="https://www.niap-ccevs.org/MMO/PP/-439-/">
+					<h:i>Functional Package for Transport Layer Security</h:i></h:a></selectable>
                                 <selectable id="sel-itc-https">TLS/HTTPS as conforming to FCS_HTTPS_EXT.1</selectable>
                                 <selectable id="sel-itc-ipsec">IPsec as conforming to FCS_IPSEC_EXT.1</selectable>
                                 <selectable id="sel-itc-ssh">SSH as conforming to the
@@ -4661,19 +4664,19 @@
                             to provide a trusted communication channel between itself, and<h:br></h:br><h:br></h:br>
                             <h:li>audit servers (as required by FAU_STG_EXT.1), and</h:li>
                             <selectables linebreak="yes">
-                                <selectable>remote administrators (as required by FTP_TRP.1.1 if selected in FMT_MOF_EXT.1.1 in the PP-Module),</selectable>
-                                <selectable>separation of management and operational networks (if selected in FMT_SMO_EXT.1),</selectable>
-				<selectable><assignable>other capabilities</assignable>,</selectable>
+                                <selectable>remote administrators (as required by FTP_TRP.1.1 if selected in FMT_MOF_EXT.1.1 in the PP-Module)</selectable>
+                                <selectable>separation of management and operational networks (if selected in FMT_SMO_EXT.1)</selectable>
+				<selectable><assignable>other capabilities</assignable></selectable>
                                 <selectable>no other capabilities</selectable>
                             </selectables>
                             that is logically distinct from other communication paths and provides assured identification of its
                             endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.
                         </title>
                         <note role="application">If the ST author selects either TLS or HTTPS, the TSF shall be validated against the 
-                            Functional Package for TLS. This PP does not mandate that a product implement TLS with mutual authentication, but if the product 
-                            includes the capability to perform TLS with mutual authentication, it is expected that mutual authentication will be 
-                            included within the TOE boundary. The TLS Package requires that the X509 requirements be included by 
-			    the base PP, so selection of TLS or HTTPS causes FIA_X509_EXT.* to be selected.<h:br></h:br><h:br></h:br>
+                            Functional Package for TLS. This PP does not mandate that a product implement TLS with mutual authentication,
+				but if the product includes the capability to perform TLS with mutual authentication, it is expected that
+				mutual authentication will be included within the TOE boundary. The TLS Package requires that the X509 
+				requirements be included by the PP, so selection of TLS or HTTPS causes FIA_X509_EXT.* to be selected.<h:br></h:br><h:br></h:br>
                             If the ST author selects SSH, the TSF shall be validated against the Extended
                             Package for Secure Shell. The SSH package imports the X509 requirements if necessary, so selecting SSH here does not automatically
 			    cause their inclusion. <h:br /> <h:br />
@@ -4750,7 +4753,7 @@
 				cross-domain data entry.<h:br></h:br><h:br></h:br>
                             There must be a mechanism for associating an identifier with a VM so that an application or program 
 				displaying the VM can identify the VM to users. This is generally indicated visually for human users
-				(e.g., a border around a VM’s screen display) and programmatically for headless VMs (e.g., an API
+				(e.g., VM identity in the window title bar) and programmatically for headless VMs (e.g., an API
 				function). The identification must be unique to the VS, but does not need to be universally unique.</note>
                         <aactivity>
                             <TSS>
@@ -4772,7 +4775,7 @@
                 </f-component>
 
                 <!-- FTP_TRP.1 -->
-                <!-- Included in th ST if "remote" is selected in FMT_MOF_EXT.1.1 in the server or client Module. -->
+                <!-- Included in th ST if "remote" is selected in FMT_MOF_EXT.1.1 in the server or client PP-Module. -->
 		<!-- QQQQ: Need to have a way to reference this selection that is in a module.  Otherwise this does not display properly. -->
                 <f-component cc-id="ftp_trp.1" name="Trusted Path" status="sel-based">
                     <selection-depends req="fmt-mof-ext-1e1" ids="sel-mof-1e1-remote"/> 
@@ -4791,7 +4794,7 @@
                         <title>The TSF shall require the use of the trusted path for [all remote administration actions].
                         </title>
                         <note role="application">
-				This SFT is included in the ST if "remote" is selected in FMT_MOF_EXT.1.1 of the client or server Module.<h:br/><h:br/>
+				This SFR is included in the ST if "remote" is selected in FMT_MOF_EXT.1.1 of the client or server PP-Module.<h:br/><h:br/>
 				Protocols used to implement the remote administration trusted channel must be
 				selected in FTP_ITC_EXT.1.<h:br/><h:br/>
                             This requirement ensures that authorized remote administrators initiate all communication with the
@@ -5001,7 +5004,7 @@
                                     <h:li>Instructions for querying the current version of the TOE software.</h:li>
                                     <h:li>For hashes, a description of where the hash for a given update can be obtained. For digital 
 					    signatures, instructions for obtaining the certificate that will be used by the
-					    FCS_COP.1(2) mechanism to ensure that a signed update has been received from the
+					    FCS_COP.1/SIG mechanism to ensure that a signed update has been received from the
 					    certificate owner. This may be supplied with the product initially, or may be obtained by
 					    some other means.</h:li>
                                     <h:li>Instructions for obtaining the update itself. This should include instructions for making 
@@ -5450,8 +5453,8 @@
         <h:tr>
           <h:td valign="top">Installation Types</h:td>
           <h:td valign="top">Different</h:td>
-          <h:td valign="top">If a Product can be installed either on bare metal or onto an operating system (either Type 1 or Type
-              2), and the vendor wants to claim that both installation types constitute a single Model, then see the guidance
+          <h:td valign="top">If a Product can be installed either on bare metal or onto an operating system 
+		  and the vendor wants to claim that both installation types constitute a single Model, then see the guidance
               for “PP-Specified Functionality,” below.</h:td>
         </h:tr>
         <h:tr>
@@ -5558,7 +5561,7 @@
           <h:tr valign="top">
             <h:td valign="top">Platform Architectures</h:td>
             <h:td valign="top">Different</h:td>
-            <h:td valign="top">Haardware platforms that implement different processor architectures and instruction sets are not 
+            <h:td valign="top">Hardware platforms that implement different processor architectures and instruction sets are not 
 		    equivalent.</h:td>
           </h:tr>
           <h:tr>
