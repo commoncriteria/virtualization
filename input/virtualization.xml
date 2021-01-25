@@ -135,9 +135,11 @@
 <!--    	<pp-pref name="audit-events-in-sfrs">1</pp-pref> -->
     	<audit-events-in-sfrs/>
     </pp-preferences>
-    <!-- INTRODUCTION -->
-    
+	
+    <!-- 1. Introduction -->
     <chapter id="ch-intro" title="Introduction">
+	    
+	<!-- 1.1 Overview -->
         <section id="s-overview" title="Overview">
             The scope of this Protection Profile (PP) is to describe the security functionality of virtualization technologies in 
 		terms of [CC] and to define security functional and assurance requirements for such products. This PP is not complete 
@@ -150,6 +152,10 @@
             <h:br></h:br>
 	</section>
 	    
+	<!-- 1.2 Terms -->
+	<!-- 1.2.1 Common Criteria Terms -->
+	<!--  (boilerlate) -->
+	<!-- 1.2.2 Technical Terms -->
 	<tech-terms>
 	  <term full="Administrator">Administrators perform management activities on the VS. These management functions do not 
 		  include administration of software running within Guest VMs, such as the Guest OS. Administrators need not be human 
@@ -245,6 +251,7 @@
 		  and other components.</term>
 	</tech-terms>
 	    
+	<!-- 1.3 Compliant Targets of Evaluation -->
         <section id="s-complianttargets" title="Compliant Targets of Evaluation">
             A Virtualization System (VS) is a software product that enables multiple independent computing systems to execute on the 
 		same physical hardware platform without interference from one other. A VS creates a virtualized hardware environment
@@ -281,6 +288,8 @@
 		Guest VMs, it would be proper to classify the encryption VM as a Service 
 		VM. For the purposes of this document, Helper VMs are subject to all requirements
 		that apply to Guest VMs, unless specifically stated otherwise.<h:br/><h:br/>
+		
+	    <!-- 1.3.1 TOE Boundary -->
             <subsection id="ss-toeboundary" title="TOE Boundary">
                 Figure 1 shows a greatly simplified view of a generic Virtualization System and Platform. TOE components are displayed
 		    in Red. Non-TOE components are in Blue. The Platform is the hardware, firmware, and software onto which the VS is 
@@ -298,10 +307,12 @@
 		    runs inside a Service VM or control domain. Software that runs within Guest and Helper VMs is not part of the 
 		    TOE.<h:br></h:br><h:br></h:br>
                 In general, for virtualization products that are installed onto “bare metal,” the entire set of installed components
-		    constitute the TOE, and the hardware constitute the Platform. Also in general, for products that are hosted by or
+		    constitute the TOE, and the hardware constitutes the Platform. Also in general, for products that are hosted by or
 		    integrated into a commodity operating system, the components installed expressly for implementing and supporting
 		    virtualization are in the TOE, and the Platform comprises the hardware and Host OS.
             </subsection>
+		
+	    <!-- 1.3.2 Requirements Met by the Platform -->
             <subsection id="ss-platformreqs" title="Requirements Met by the Platform">
                 Depending on the way the VS is installed, functions tested under this PP may be implemented by the TOE or by the
 		    Platform. There is no difference in the testing required whether the function is implemented by the TOE or by the
@@ -311,6 +322,8 @@
 		    level does not change between instances of equivalent products on equivalent platforms—and also, of course, to
 		    ensure that the appropriate testing is done when the distinction is significant.
             </subsection>
+		
+	    <!-- 1.3.3 Scope of Certification -->
             <subsection id="ss-scopecert" title="Scope of Certification">
                 Successful evaluation of a Virtualization System against this profile does not constitute or imply successful 
 		    evaluation of any Host Operating System or Platform—no matter how tightly integrated with the VS. The Platform,
@@ -319,6 +332,8 @@
 		    components and functions—whether or not they support the VS—are not part of the TOE, and thus
 		    are not evaluated under this PP.
             </subsection>
+		
+	    <!-- 1.3.4 Vendor Attestation -->
             <subsection id="ss-attestation" title="Vendor Attestation">
                 This PP includes several SFRs that include elements that are met via vendor attestation. Attestation assurance 
 		    activities are reserved for SFRs that define properties that are critical to the system’s security functionality,
@@ -332,20 +347,23 @@
 		    be revoked. See FDP_VMS_EXT.1, FDP_VNC_EXT.1, FPT_VDP_EXT.1, and FPT_VIV_EXT.1 for the associated Attestation
 		    statements.
             </subsection>
+		
+	    <!-- 1.3.5 Product and Platform Equivalance -->
             <subsection id="ss-equiv" title="Product and Platform Equivalence">
                 The tests in this Protection Profile must be run on all product versions and Platforms with which the Vendor would 
 		    like to claim compliance—subject to this Profile’s equivalency guidelines (see <appref linkend="appendix-equiv"/>).
-		    					<!-- <appendix id="appendix-equiv" title="Equivalency Guidelines"> -->
+		<!-- <appendix id="appendix-equiv" title="Equivalency Guidelines"> -->
             </subsection>
         </section>
 
+	<!-- 1.4 Use Cases -->
         <section id="s-usecases" title="Use Cases">
             This base PP does not define any use cases for virtualization technology. Client Virtualization and Server Virtualization
 		products have different use cases and so these are defined in their respective PP-Modules.
         </section>
     </chapter>
     
-    <!-- CONFORMANCE CLAIMS -->
+ <!-- 2. Conformance Claims -->
  <chapter title="Conformance Claims" id="ccl" boilerplate="no">
     <cclaims>
         <cclaim name="Conformance Statement">
@@ -383,9 +401,10 @@
   </chapter>
 	
 
-    <!-- SECURITY PROBLEM DESCRIPTION -->
-
+    <!-- 3. Security Problem Description -->
     <chapter id="ch-desc" title="Security Problem Description">
+	    
+	<!-- 3.1 Threats -->
         <section id="s-threats" title="Threats">
             <threats>
                 <threat name="T.DATA_LEAKAGE">
@@ -472,7 +491,8 @@
                     <description>
                         The VS is designed to provide the appearance of exclusivity to the VMs and is designed
 			    to separate or isolate their functions except where specifically shared. Failure of security mechanisms
-			    could lead to unauthorized intrusion into or modification of the VMM, or bypass of the VMM altogether.
+			    could lead to unauthorized intrusion into or modification of the VMM, or bypass of the VMM altogether,
+			    by non-TOE software, such as that running in Guest or Helper VMs or on the host platform. 
 			    This must be prevented to avoid compromising the VS.
                     </description>
                     <objective-refer ref="O.VMM_INTEGRITY">
@@ -523,7 +543,9 @@
 			    entropy to implement cryptographic algorithms. For example, a random number generator keeps an estimate
 			    of the number of bits of noise in the entropy pool. From this entropy pool random numbers are created.
 			    Good random numbers are essential to implementing strong cryptography. Cryptography implemented using
-			    poor random numbers can be defeated by a sophisticated adversary.
+			    poor random numbers can be defeated by a sophisticated adversary. Such defeat can result in the compromise
+			    of Guest VM data and credentials, and of VS data and credentials, and can enable anauthorized access 
+			    to the VS or VMs.
                     </description>
                     <objective-refer ref="O.VM_ENTROPY">
                         <rationale>Acquisition of good entropy is necessary to support the TOE's security-related cryptographic
@@ -563,6 +585,7 @@
             </threats>
         </section>
         
+	<!-- 3.2 Assumptions -->
         <section id="s-assumptions" title="Assumptions">
             <assumptions>
                 <assumption name="A.PLATFORM_INTEGRITY">
@@ -606,14 +629,17 @@
                 </assumption>
             </assumptions>
         </section>
+	    
+	<!-- 3.3 Organizational Security Policies -->
         <section id="s-secpolicies" title="Organizational Security Policies">
             There are no organizational security policies defined for this PP.
         </section>
     </chapter>
     
-    <!-- SECURITY OBJECTIVES -->
-    
+    <!-- 4. Security Objectives -->
     <chapter id="ch-secobj" title="Security Objectives">
+	    
+	<!-- 4.1 Security Objectives for the TOE -->
         <section id="s-secobjtoe" title="Security Objectives for the TOE">
             <SOs>
                 <SO name="O.VM_ISOLATION">
@@ -824,6 +850,8 @@
                 </SO>
             </SOs>
         </section>
+	    
+	<!-- 4.2 Security Objectives for the Operational Environment -->
         <section id="s-secobjoe" title="Security Objectives for the Operational Environment">
             <SOEs>
                 <SOE name="OE.CONFIG">
@@ -853,23 +881,30 @@
                 </SOE>
             </SOEs>
         </section>
+	    
+	<!-- 4.3 Security Objectives Rationale -->
 	<section title="Security Objectives Rationale" id="secobjrat"/>    
+	    <!-- Auto-generated table -->
      </chapter>
     
-    <!-- SECURITY REQUIREMENTS -->
-    
+    <!-- 5. Security Requirements -->    
     <chapter id="ch-secreq" title="Security Requirements">
 
+	<!-- 5.1 Security Functional Requirements -->
         <section id="s-sfr" title="Security Functional Requirements">
+		
+	<!-- 5.1.1 Auditable Events for Mandatory SFRs -->
         <subsection id="ss-audit-table" title="Auditable Events for Mandatory SFRs">
            <audit-table table="mandatory">
   	     <h:br/><h:b><ctr ctr-type="Table" id="atref-mandatory">: Auditable Events for Mandatory SFRs</ctr></h:b>
 	   </audit-table>
          </subsection>
 
-	 <!-- FAU_GEN.1 -->
+	    <!-- 5.1.2 Security Audit (FAU) -->
             <subsection id="ss-fau" title="Security Audit (FAU)">
-                <f-component cc-id="fau_gen.1" name="Audit Data Generation">
+
+		<!-- FAU_GEN.1 -->
+		<f-component cc-id="fau_gen.1" name="Audit Data Generation">
                     <f-element id="fau-gen-1e1">
                         <title>The TSF shall be able to generate an audit record of the following auditable events:
                             <h:ol type="a">
@@ -1170,7 +1205,8 @@
 		</f-component>
             </subsection>
             
-            <subsection id="ss-fcs" title="Cryptographic Support">
+	    <!-- 5.1.3 Cryptographic Support (FCS) -->
+            <subsection id="ss-fcs" title="Cryptographic Support (FCS)">
                 
                 <!-- FCS_CKM.1 -->
                 <f-component cc-id="fcs_ckm.1" name="Cryptographic Key Generation" status="mandatory">
@@ -2016,7 +2052,7 @@
 				accordance with a specified cryptographic algorithm
                             <selectables linebreak="yes">
                                 <selectable id="sel-cop1-rsa">RSA schemes using cryptographic key sizes [2048-bit or greater] that meet
-					the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Section 4]</selectable>
+					the following: [<h:i>FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Section 4</h:i>]</selectable>
                                 <selectable id="sel-cop1-ecdsa">ECDSA schemes using [“NIST curves” P-256, P-384 and
                                     <selectables>
                                         <selectable>P-521</selectable>
@@ -3013,7 +3049,8 @@
                 </f-component>
             </subsection>
 
-            <subsection id="ss-fdp" title="User Data Protection">
+	    <!-- 5.1.4 User Data Protection -->
+            <subsection id="ss-fdp" title="User Data Protection (FDP)">
 
                 <!-- FDP_HBI_EXT.1 -->
                 <f-component cc-id="fdp_hbi_ext.1" name="Hardware-Based Isolation Mechanisms" status="mandatory">
@@ -3380,7 +3417,8 @@
                 </f-component>
             </subsection>
             
-            <subsection id="ss-fia" title="Identification and Authentication">
+	    <!-- 5.1.5 Identification and Authentication (FIA) -->
+            <subsection id="ss-fia" title="Identification and Authentication (FIA)">
                 
                 <!-- FIA_AFL_EXT.1 -->
                 <f-component cc-id="fia_afl_ext.1" name="Authentication Failure Handling" status="mandatory">
@@ -3855,7 +3893,8 @@
                 </f-component>
             </subsection>
             
-            <subsection id="ss-fmt" title="Security Management">
+	    <!-- 5.1.6 Security Management (FMT) -->
+            <subsection id="ss-fmt" title="Security Management (FMT)">
                 
                 <!-- FMT_MSA_EXT.1 -->
                 <f-component cc-id="fmt_msa_ext.1" name="Default Data Sharing Configuration" status="mandatory">
@@ -3937,7 +3976,8 @@
                 </f-component>
             </subsection>
             
-            <subsection id="ss-fpt" title="Protection of the TSF">
+	    <!-- 5.1.7 Protection of the TSF (FPT) -->
+            <subsection id="ss-fpt" title="Protection of the TSF (FPT)">
                 
                 <!-- FPT_DVD_EXT.1 -->
                 <f-component cc-id="fpt_dvd_ext.1" name="Non-Existence of Disconnected Virtual Devices" status="mandatory">
@@ -4008,7 +4048,8 @@
                         </title>
                     </f-element>
                     <f-element id="fpt-has-ext-1e2">
-                        <title>The VMM shall use <assignable>list of hardware-based virtualization memory-handling assists</assignable> to reduce or eliminate the need for shadow page tables.
+                        <title>The VMM shall use <assignable>list of hardware-based virtualization memory-handling assists</assignable>
+				to reduce or eliminate the need for shadow page tables.
                         </title>
                         <note role="application">These hardware-assists help reduce the size and complexity of the VMM, and thus, of
 				the trusted computing base, by eliminating or reducing the need for paravirtualization or binary
@@ -4620,7 +4661,8 @@
                 </f-component>
             </subsection>
 
-            <subsection id="ss-fta" title="TOE Access">
+	    <!-- 5.1.8 TOE Access -->
+            <subsection id="ss-fta" title="TOE Access (FTA)">
                 
                 <!-- FTA_TAB.1 -->
                 <f-component cc-id="fta_tab.1" name="TOE Access Banner" status="mandatory">
@@ -4646,7 +4688,8 @@
                 </f-component>
             </subsection>
             
-            <subsection id="ss-ftp" title="Trusted Path/Channel">
+	    <!-- 5.1.9 Trusted Path / Channel (FTP) -->
+	    <subsection id="ss-ftp" title="Trusted Path/Channel (FPT)">
                 
                 <!-- FTP_ITC_EXT.1 -->
                 <f-component cc-id="ftp_itc_ext.1" name="Trusted Channel Communications" status="mandatory">
@@ -4791,7 +4834,7 @@
                         </title>
                     </f-element>
 			<f-element id="ftp-trp-1e3">
-                        <title>The TSF shall require the use of the trusted path for [all remote administration actions].
+                        <title>The TSF shall require the use of the trusted path for [[all remote administration actions]].
                         </title>
                         <note role="application">
 				This SFR is included in the ST if "remote" is selected in FMT_MOF_EXT.1.1 of the client or server PP-Module.<h:br/><h:br/>
@@ -4850,8 +4893,12 @@
 		    </audit-event>    
                 </f-component>
             </subsection>
+		
+	    <!-- 5.1.10 TOE Security Functional Requirements Rationale -->
+	     <!-- auto generated -->
         </section>
 
+	<!-- 5.2 Security Assurance Requirements -->
         <section id="s-sar" title="Security Assurance Requirements">
             The Security Objectives for the TOE in Section 4 were constructed to address threats identified in Section 3.1. The 
 		Security Functional Requirements (SFRs) in Section 5.1 are a formal instantiation of the Security Objectives. The PP
@@ -4866,9 +4913,13 @@
 		within Section 5, which are intended to be an interpretation of the other CEM assurance requirements as they apply 
 		to the specific technology instantiated in the TOE. The assurance activities that are captured in Section 5 also 
 		provide clarification as to what the developer needs to provide to demonstrate the TOE is compliant with the PP.
+
+	    <!-- 5.2.1 Class ASE: Security Target Evaluation -->
             <subsection id="ss-ase" title="Class ASE: Security Target Evaluation">
                 As per ASE activities defined in [CEM] plus the TSS assurance activities defined for any SFRs claimed by the TOE.
             </subsection>
+		
+	    <!-- 5.2.2 Class ADV: Development  -->
             <subsection id="ss-adv" title="Class ADV: Development">
                 The information about the TOE is contained in the guidance documentation available to the end user as well as the TOE
 		    Summary Specification (TSS) portion of the ST. The TOE developer must concur with the description of the product that is
@@ -4924,7 +4975,8 @@
                     </a-element>
                 </a-component>
             </subsection>
-
+		
+	    <!-- 5.2.3 Class AGD: Guidance Document  -->
             <subsection id="ss-agd" title="Class AGD: Guidance Documents">
                 The guidance documents will be provided with the developer’s security target. Guidance must include a description of
 		    how the authorized user verifies that the Operational Environment can fulfill its role for the security
@@ -5058,6 +5110,7 @@
                 </a-component>
             </subsection>
 
+	    <!-- 5.2.4 Class ALC: Life-Cycle Development -->
             <subsection id="ss-alc" title="Class ALC: Life-Cycle Support">
                 At the assurance level specified for TOEs conformant to this PP, life-cycle support is limited to an examination of 
 		    the TOE vendor’s development and configuration management process in order to provide a baseline level of 
@@ -5171,6 +5224,8 @@
                 </a-component>
 
             </subsection>
+		
+	    <!-- 5.2.5 Class ATE: Tests -->
             <subsection id="ss-ate" title="Class ATE: Tests">
                 Testing is specified for functional aspects of the system as well as aspects that take advantage of design or
 		    implementation weaknesses. The former is done through ATE_IND family, while the latter is through the AVA_VAN
@@ -5237,6 +5292,7 @@
                 </a-component>
             </subsection>
             
+	    <!-- 5.2.6 Class AVA: Vulnerability Assessment -->
             <subsection id="ss-ava" title="Class AVA: Vulnerability Assessment">
                 For the first generation of this Protection Profile, the evaluation lab is expected to survey open sources to learn
 		    what vulnerabilities have been discovered in these types of products. In most cases, these vulnerabilities will
@@ -5292,7 +5348,9 @@
     </chapter>
     
     <!-- Appendix A: OPTIONAL Requirements -->
-    
+    <!-- A.1 Strictly Optional Requirements -->
+    <!-- A.2 Objective Requirements -->
+    <!-- A.3 Implementation-based Requirements -->
     <appendix id="appendix-optional-plus" title="Optional Requirements">  
 
     <!-- Contents of the appendix are totally generated by "optional-appendix" xsl template. 
@@ -5302,7 +5360,7 @@
 	</audit-table>  -->
     </appendix> 
 
-    <!-- Appendix B: Selection-Based -->
+    <!-- Appendix B: Selection-Based Requirements -->
     <appendix id="appendix-sel-based" title="Selection-Based Requirements"> 
        
     <!-- Contents of the appendix are totally generated by "optional-appendix" xsl template. 
@@ -5653,6 +5711,7 @@
     </section>
     </appendix>
     
+    <!-- Appendix E: References -->
     <appendix id="appendix-ref" title="References">
       <bibliography>
         <cc-entry/>
@@ -5666,11 +5725,14 @@
         </entry>
       </bibliography>
     </appendix>
-    <appendix id="acro" title="Acronyms">
+
+    <!-- Appendix F: Acronyms -->
+	<appendix id="acro" title="Acronyms">
       <acronyms/>
     </appendix>
-	
-	 <implements>
+
+<!--
+ <implements>
     <feature id="justTesting" title="Title for this Feature ">
       <description>This feature is a feature about something. If it is implemented in the TOE, then the following SFRs are included:
       </description>
@@ -5680,7 +5742,7 @@
       </description>
     </feature>
 	</implements>
-	
+-->	
 <!--	
    <rules>
 	<rule if="sel-tud-digsign-cert" then="sel-x5092-signed-updates"/>  
