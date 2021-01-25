@@ -3,7 +3,7 @@
 
 <!-- to do
 
-    This branch is the same as the OldMaster branch with all the TDs unincorporated.
+    This branch is the same as the OldMaster v1.0 branch with all the TDs unincorporated.
     It is intended to be built against the latest version of the schema.
 
     - DONE: fix all of the objective-refer tags in the threats
@@ -52,6 +52,7 @@
 
     - See Issues for resolution of coments from Jan 2021.
 
+    - Wondering whether to refer to SSH as an EP or FP. Timing is everything.
 
     Schema changes reflected herein:
 	- pp-declarations and audit-table-decl added. Likely management-table-decl will be added later.
@@ -395,6 +396,7 @@
         <cclaim name="Package Claims">
            <description>
                 This PP is Functional Package for TLS-conformant. 
+		<!-- This PP is Functional Package for Secure Shell (SSH)-conformant. -->
             </description>
         </cclaim>
     </cclaims>
@@ -924,12 +926,12 @@
 				-->
 		    
 				    <h:li>[<refinement>Auditable events defined in <ctr-ref ref-id="atref-mandatory"/></refinement>]</h:li>
-                                <h:li><selectables>
+                                <h:li><refinement><selectables>
                                     <selectable id="sel-at2">Auditable events defined in <ctr-ref ref-id="atref-optional-dep"></ctr-ref></selectable>
 				    <selectable id="sel-at3">Auditable events defined in <ctr-ref ref-id="atref-objective-dep"></ctr-ref></selectable>
                                     <selectable id="sel-at4">Auditable events defined in <ctr-ref ref-id="atref-sel-based-dep"></ctr-ref></selectable>
                                     <selectable>no other auditable events</selectable>
-				 </selectables></h:li>
+				</selectables></refinement></h:li>
                             </h:ol>
                         </title>
                     </f-element>
@@ -950,12 +952,12 @@
 				-->
 				    
 				    <h:li>[<refinement>Additional information defined in <ctr-ref ref-id="atref-mandatory"/></refinement>]</h:li>
-                                <h:li><selectables>
+                                <h:li><refinement><selectables>
                                     <selectable>Additional information defined in <ctr-ref ref-id="atref-optional-dep"></ctr-ref></selectable>
                                     <selectable>Additional information defined in <ctr-ref ref-id="atref-objective-dep"></ctr-ref></selectable>
                                     <selectable>Additional information defined in <ctr-ref ref-id="atref-sel-based-dep"></ctr-ref></selectable>
                                     <selectable>no other information</selectable>
-                                </selectables></h:li>
+				</selectables></refinement></h:li>
                             </h:ol>
                         </title>
                         <note role="application">
@@ -1041,7 +1043,7 @@
                         </title>
                     </f-element> 
                     <f-element id="fau-stg-1e2">
-                        <title>The TSF shall be able to [prevent] modifications to the stored audit records in the audit trail.
+                        <title>The TSF shall be able to [prevent] unauthorized modifications to the stored audit records in the audit trail.
                         </title>
                         <note role="application">The assurance activity for this SFR is not intended to imply that the TOE must
 				support an administrator’s ability to designate individual audit records for deletion. That level 
@@ -4823,10 +4825,11 @@
                 <f-component cc-id="ftp_trp.1" name="Trusted Path" status="sel-based">
                     <selection-depends req="fmt-mof-ext-1e1" ids="sel-mof-1e1-remote"/> 
                     <f-element id="ftp-trp-1e1">
-                        <title>The TSF shall use a trusted channel as specified in FTP_ITC_EXT.1 to provide a trusted communication
-				path between itself and [remote] administrators that is logically distinct from other communication
+			    <title>The TSF shall use a <refinement>trusted</refinement> channel as specified in FTP_ITC_EXT.1 to provide 
+				    a <refinement>trusted</refinement> communication
+				    path between itself and [<h:i>remote</h:i>] administrators that is logically distinct from other communication
 				paths and provides assured identification of its end points and protection of the communicated data 
-				from [modification, disclosure].
+				    from [<h:i>modification, disclosure</h:i>].
                         </title>
                     </f-element>
                     <f-element id="ftp-trp-1e2">
@@ -5004,21 +5007,21 @@
                     </a-element>
                     
                     <a-element type="C">
-                        <title>The operational user guidance shall describe what the authorized user-accessible functions and
+                        <title>The operational user guidance shall describe what <refinement>the authorized user-</refinement>accessible functions and
 				privileges that should be controlled in a secure processing environment, including appropriate
 				warnings.</title>
                     </a-element>
                     <a-element type="C">
-                        <title>The operational user guidance shall describe, for the authorized user, how to use the available
+                        <title>The operational user guidance shall describe, for <refinement>the authorized user</refinement>, how to use the available
 				interfaces provided by the TOE in a secure manner.</title>
                     </a-element>
                     <a-element type="C">
-                        <title>The operational user guidance shall describe, for the authorized user, the available functions and 
+                        <title>The operational user guidance shall describe, for <refinement>the authorized user</refinement>, the available functions and 
 				interfaces, in particular all security parameters under the control of the user, indicating secure
 				values as appropriate.</title>
                     </a-element>
                     <a-element type="C">
-                        <title>The operational user guidance shall, for the authorized user, clearly present each type of 
+                        <title>The operational user guidance shall, for <refinement>the authorized user</refinement>, clearly present each type of 
 				security-relevant event relative to the user-accessible functions that need to be performed,
 				including changing the security characteristics of entities under the control of the TSF.</title>
                     </a-element>
@@ -5028,7 +5031,7 @@
 				maintaining secure operation.</title>
                     </a-element>
                     <a-element type="C">
-                        <title>The operational user guidance shall, for the authorized user, describe the security measures to be 
+                        <title>The operational user guidance shall, for <refinement>the authorized user</refinement>, describe the security measures to be 
 				followed in order to fulfill the security objectives for the operational environment as described in 
 				the ST.</title>
                     </a-element>
@@ -5234,7 +5237,7 @@
 		    the test report as specified in the following requirements.
 
 		<!-- ATE_IND.1 -->
-	 	<a-component cc-id="ate_ind.1" name="Independent Testing - Sample">
+	 	<a-component cc-id="ate_ind.1" name="Independent Testing - Conformance">
                     Testing is performed to confirm the functionality described in the TSS as well as the administrative (including
 			configuration and operation) documentation provided. The focus of the testing is to confirm that the
 			requirements specified in Section 5.1 are being met, although some additional testing is specified for SARs 
