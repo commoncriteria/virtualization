@@ -143,290 +143,287 @@
 	<!-- 1.1 Overview -->
         <section id="s-overview" title="Overview">
             The scope of this Protection Profile (PP) is to describe the security functionality of virtualization technologies in 
-		terms of [CC] and to define security functional and assurance requirements for such products. This PP is not complete 
-		in itself, but rather provides a set of requirements that are common to the PP-Modules for Server
-		Virtualization and for Client Virtualization. These capabilities have been broken out into this generic ‘base’ PP due
-		to the high degree of similarity between the two product types.<h:br></h:br><h:br></h:br>
+			terms of [CC] and to define security functional and assurance requirements for such products. This PP is not complete 
+			in itself, but rather provides a set of requirements that are common to the PP-Modules for Server
+			Virtualization and for Client Virtualization. These capabilities have been broken out into this generic ‘base’ PP due
+			to the high degree of similarity between the two product types.<h:br></h:br><h:br></h:br>
             Due to the increasing prevalence of virtualization technology in enterprise computing environments and the shift
-		to cloud computing, it is essential to ensure that this technology is implemented securely in order to mitigate
-		the risk introduced by sharing multiple computers and their data across a single physical system. 
+			to cloud computing, it is essential to ensure that this technology is implemented securely in order to mitigate
+			the risk introduced by sharing multiple computers and their data across a single physical system. 
             <h:br></h:br>
-	</section>
+		</section>
 	    
 	<!-- 1.2 Terms -->
 	<!-- 1.2.1 Common Criteria Terms -->
 	<!--  (boilerlate) -->
 	<!-- 1.2.2 Technical Terms -->
-	<tech-terms>
-	  <term full="Administrator">Administrators perform management activities on the VS. These management functions do not 
-		  include administration of software running within Guest VMs, such as the Guest OS. Administrators need not be human 
-		  as in the case of embedded or headless VMs. Administrators are often nothing more than software entities that 
-		  operate within the VM.</term>
-	  <term abbr="AES" full="Advanced Encryption Standard"/>
-	  <term full="Auditor">Auditors are responsible for managing the audit capabilities of the TOE. An Auditor may also be an
-		  Administrator. It is not a requirement that the TOE be capable of supporting an Auditor role that is separate from
-		  that of an Administrator.</term>
-          <term abbr="CPU" full="Central Processing Unit"/>
-          <term abbr="DEP" full="Data Execution Prevention"/>
-          <term abbr="DKM" full="Derived Keying Material"/>
-	  <term full="Domain">A Domain or Information Domain is a policy construct that groups together execution environments and 
-		  networks by sensitivity of information and access control policy. For example, classification levels represent 
-		  information domains. Within classification levels, there might be other domains representing communities of interest
-		  or coalitions. In the context of a VS, information domains are generally implemented as collections of VMs connected
-		  by virtual networks. The VS itself can be considered an Information Domain, as can its Management Subsystem.</term>
-          <term abbr="DSS" full="Digital Signature Standard"/>
-          <term abbr="ECC" full="Elliptic Curve Cryptography"/>
-          <term abbr="FIPS" full="Federal Information Processing Standard"/>
-          <term abbr="FFC" full="Finite-Field Cryptography"/>
-	  <term full="Guest Network">See Operational Network.</term>
-	  <term full="Guest Operating System (OS)">An operating system that runs within a Guest VM.</term>
-	  <term full="Guest VM">A Guest VM is a VM that contains a virtual environment for the execution of an independent computing
-		  system. Virtual environments execute mission workloads and implement customer-specific client or server functionality
-		  in Guest VMs, such as a web server or desktop productivity applications.</term>
-	  <term full="Helper VM">A Helper VM is a VM that performs services on behalf of one or more Guest VMs, but does not qualify
-		  as a Service VM—and therefore is not part of the VMM. Helper VMs implement functions or services that are particular
-		  to the workloads of Guest VMs. For example, a VM that provides a virus scanning service for a Guest VM would be
-		  considered a Helper VM. For the purposes of this document, Helper VMs are considered a type of Guest VM, and are 
-		  therefore subject to all the same requirements, unless specifically stated otherwise.</term>
-	  <term full="Host Operating System (OS)">An operating system onto which a VS is installed. Relative to the VS, the Host OS is 
-		  part of the Platform.</term>
-	  <term full="Hypervisor">The Hypervisor is part of the VMM. It is the software executive of the physical platform of a VS.
-		  A Hypervisor’s primary function is to mediate access to all CPU and memory resources, but it is also responsible 
-		  for either the direct management or the delegation of the management of all other hardware devices on the hardware 
-		  platform.</term>
-	  <term full="Hypercall">An API function that allows VM-aware software running within a VM to invoke VMM functionality.</term>
-          <term abbr="IEC" full="International Electrotechnical Commission"/>
-	  <term full="Information Domain">See Domain.</term>
-	  <term full="Introspection">A capability that allows a specially designated and privileged domain to have visibility into 
-		  another domain for purposes of anomaly detection or monitoring.</term>
-          <term abbr="ISO" full="International Organization for Standardization"/>
-          <term abbr="IP" full="Internet Protocol"/>
-          <term abbr="IT" full="Information Technology"/>
-          <term abbr="ITSEF" full="Information Technology Security Evaluation Facility"/>
-          <term abbr="KDF" full="Key Derivation Function"/>
-          <term abbr="MAC" full="Message Authentication Code"/>
-	  <term full="Management Network">A network, which may have both physical and virtualized components, used to manage and 
-		  administer a VS. Management networks include networks used by VS Administrators to communicate with management
-		  components of the VS, and networks used by the VS for communications between VS components. For purposes of this
-		  document, networks that connect physical hosts for purposes of VM transfer or coordinate, and backend storage 
-		  networks are considered management networks. </term>
-	  <term full="Management Subsystem">Components of the VS that allow VS Administrators to configure and manage the VMM, as 
-		  well as configure Guest VMs. VMM management functions include VM configuration, virtualized network configuration,
-		  and allocation of physical resources.</term>
-          <term abbr="NIST" full="National Institute of Standards and Technology"/>
-          <term abbr="NVLAP" full="National Voluntary Laboratory Accreditation Program"/>
-	  <term full="Operational Network">An Operational Network is a network, which may have both physical and virtualized 
-		  components, used to connect Guest VMs to each other and potentially to other entities outside of the VS. Operational
-		  Networks support mission workloads and customer-specific client or server functionality. Also called a 
-		  “Guest Network.”</term>
-          <term abbr="OS" full="Operating System"/>
-	  <term full="Physical Platform">The hardware environment on which a VS executes. Physical platform resources include
-		  processors, memory, devices, and associated firmware.</term>
-          <term abbr="PKV" full="Public Key Verification"/>
-	  <term full="Platform">The hardware, firmware, and software environment into which a VS is installed and executes.</term>
-          <term abbr="RSA" full="Rivest, Shamir, Adleman"/>
-	  <term full="Service VM">A Service VM is a VM whose purpose is to support the Hypervisor in providing the resources or
-		  services necessary to support Guest VMs. Service VMs may implement some portion of Hypervisor functionality, but 
-		  also may contain important system functionality that is not necessary for Hypervisor operation. As with any VM,
-		  Service VMs necessarily execute without full Hypervisor privileges—only the privileges required to perform its 
-		  designed functionality. Examples of Service VMs include device driver VMs that manage access to a physical devices,
-		  and name-service VMs that help establish communication paths between VMs.</term>
-          <term abbr="SP" full="Special Publication"/>
-          <term abbr="SPD" full="Security Policy Database"/>
-	  <term full="System Security Policy" abbr="SSP">The overall policy enforced by the VS defining constraints on the behavior
-		  of VMs and users.</term>
-          <term abbr="SWID" full="Software Identification"/>
-          <term abbr="TPM" full="Trusted Platform Module"/>
-	  <term full="User">Users operate Guest VMs and are subject to configuration policies applied to the VS by Administrators.
-		  Users need not be human as in the case of embedded or headless VMs, users are often nothing more than software
-		  entities that operate within the VM.</term>
-	  <term full="Virtual Machine" abbr="VM">A Virtual Machine is a virtualized hardware environment in which an operating system
-		  may execute.</term>
-	  <term full="Virtual Machine Manager" abbr="VMM">A VMM is a collection of software components responsible for enabling VMs to
-		  function as expected by the software executing within them. Generally, the VMM consists of a Hypervisor, Service 
-		  VMs, and other components of the VS, such as virtual devices, binary translation systems, and physical device
-		  drivers. It manages concurrent execution of all VMs and virtualizes platform resources as needed.</term>
-	  <term full="Virtualization System" abbr="VS">A software product that enables multiple independent computing systems to 
-		  execute on the same physical hardware platform without interference from one other. For the purposes of this 
-		  document, the VS consists of a Virtual Machine Manager (VMM), Virtual Machine abstractions, a management subsystem,
-		  and other components.</term>
-	</tech-terms>
+		<tech-terms>
+		  <term full="Administrator">Administrators perform management activities on the VS. These management functions do not 
+			  include administration of software running within Guest VMs, such as the Guest OS. Administrators need not be human 
+			  as in the case of embedded or headless VMs. Administrators are often nothing more than software entities that 
+			  operate within the VM.</term>
+		  <term abbr="AES" full="Advanced Encryption Standard"/>
+		  <term full="Auditor">Auditors are responsible for managing the audit capabilities of the TOE. An Auditor may also be an
+			  Administrator. It is not a requirement that the TOE be capable of supporting an Auditor role that is separate from
+			  that of an Administrator.</term>
+			  <term abbr="CPU" full="Central Processing Unit"/>
+			  <term abbr="DEP" full="Data Execution Prevention"/>
+			  <term abbr="DKM" full="Derived Keying Material"/>
+		  <term full="Domain">A Domain or Information Domain is a policy construct that groups together execution environments and 
+			  networks by sensitivity of information and access control policy. For example, classification levels represent 
+			  information domains. Within classification levels, there might be other domains representing communities of interest
+			  or coalitions. In the context of a VS, information domains are generally implemented as collections of VMs connected
+			  by virtual networks. The VS itself can be considered an Information Domain, as can its Management Subsystem.</term>
+			  <term abbr="DSS" full="Digital Signature Standard"/>
+			  <term abbr="ECC" full="Elliptic Curve Cryptography"/>
+			  <term abbr="FIPS" full="Federal Information Processing Standard"/>
+			  <term abbr="FFC" full="Finite-Field Cryptography"/>
+		  <term full="Guest Network">See Operational Network.</term>
+		  <term full="Guest Operating System (OS)">An operating system that runs within a Guest VM.</term>
+		  <term full="Guest VM">A Guest VM is a VM that contains a virtual environment for the execution of an independent computing
+			  system. Virtual environments execute mission workloads and implement customer-specific client or server functionality
+			  in Guest VMs, such as a web server or desktop productivity applications.</term>
+		  <term full="Helper VM">A Helper VM is a VM that performs services on behalf of one or more Guest VMs, but does not qualify
+			  as a Service VM—and therefore is not part of the VMM. Helper VMs implement functions or services that are particular
+			  to the workloads of Guest VMs. For example, a VM that provides a virus scanning service for a Guest VM would be
+			  considered a Helper VM. For the purposes of this document, Helper VMs are considered a type of Guest VM, and are 
+			  therefore subject to all the same requirements, unless specifically stated otherwise.</term>
+		  <term full="Host Operating System (OS)">An operating system onto which a VS is installed. Relative to the VS, the Host OS is 
+			  part of the Platform.</term>
+		  <term full="Hypervisor">The Hypervisor is part of the VMM. It is the software executive of the physical platform of a VS.
+			  A Hypervisor’s primary function is to mediate access to all CPU and memory resources, but it is also responsible 
+			  for either the direct management or the delegation of the management of all other hardware devices on the hardware 
+			  platform.</term>
+		  <term full="Hypercall">An API function that allows VM-aware software running within a VM to invoke VMM functionality.</term>
+			  <term abbr="IEC" full="International Electrotechnical Commission"/>
+		  <term full="Information Domain">See Domain.</term>
+		  <term full="Introspection">A capability that allows a specially designated and privileged domain to have visibility into 
+			  another domain for purposes of anomaly detection or monitoring.</term>
+			  <term abbr="ISO" full="International Organization for Standardization"/>
+			  <term abbr="IP" full="Internet Protocol"/>
+			  <term abbr="IT" full="Information Technology"/>
+			  <term abbr="ITSEF" full="Information Technology Security Evaluation Facility"/>
+			  <term abbr="KDF" full="Key Derivation Function"/>
+			  <term abbr="MAC" full="Message Authentication Code"/>
+		  <term full="Management Network">A network, which may have both physical and virtualized components, used to manage and 
+			  administer a VS. Management networks include networks used by VS Administrators to communicate with management
+			  components of the VS, and networks used by the VS for communications between VS components. For purposes of this
+			  document, networks that connect physical hosts for purposes of VM transfer or coordinate, and backend storage 
+			  networks are considered management networks. </term>
+		  <term full="Management Subsystem">Components of the VS that allow VS Administrators to configure and manage the VMM, as 
+			  well as configure Guest VMs. VMM management functions include VM configuration, virtualized network configuration,
+			  and allocation of physical resources.</term>
+			  <term abbr="NIST" full="National Institute of Standards and Technology"/>
+			  <term abbr="NVLAP" full="National Voluntary Laboratory Accreditation Program"/>
+		  <term full="Operational Network">An Operational Network is a network, which may have both physical and virtualized 
+			  components, used to connect Guest VMs to each other and potentially to other entities outside of the VS. Operational
+			  Networks support mission workloads and customer-specific client or server functionality. Also called a 
+			  “Guest Network.”</term>
+			  <term abbr="OS" full="Operating System"/>
+		  <term full="Physical Platform">The hardware environment on which a VS executes. Physical platform resources include
+			  processors, memory, devices, and associated firmware.</term>
+			  <term abbr="PKV" full="Public Key Verification"/>
+		  <term full="Platform">The hardware, firmware, and software environment into which a VS is installed and executes.</term>
+			  <term abbr="RSA" full="Rivest, Shamir, Adleman"/>
+		  <term full="Service VM">A Service VM is a VM whose purpose is to support the Hypervisor in providing the resources or
+			  services necessary to support Guest VMs. Service VMs may implement some portion of Hypervisor functionality, but 
+			  also may contain important system functionality that is not necessary for Hypervisor operation. As with any VM,
+			  Service VMs necessarily execute without full Hypervisor privileges—only the privileges required to perform its 
+			  designed functionality. Examples of Service VMs include device driver VMs that manage access to a physical devices,
+			  and name-service VMs that help establish communication paths between VMs.</term>
+			  <term abbr="SP" full="Special Publication"/>
+			  <term abbr="SPD" full="Security Policy Database"/>
+		  <term full="System Security Policy" abbr="SSP">The overall policy enforced by the VS defining constraints on the behavior
+			  of VMs and users.</term>
+			  <term abbr="SWID" full="Software Identification"/>
+			  <term abbr="TPM" full="Trusted Platform Module"/>
+		  <term full="User">Users operate Guest VMs and are subject to configuration policies applied to the VS by Administrators.
+			  Users need not be human as in the case of embedded or headless VMs, users are often nothing more than software
+			  entities that operate within the VM.</term>
+		  <term full="Virtual Machine" abbr="VM">A Virtual Machine is a virtualized hardware environment in which an operating system
+			  may execute.</term>
+		  <term full="Virtual Machine Manager" abbr="VMM">A VMM is a collection of software components responsible for enabling VMs to
+			  function as expected by the software executing within them. Generally, the VMM consists of a Hypervisor, Service 
+			  VMs, and other components of the VS, such as virtual devices, binary translation systems, and physical device
+			  drivers. It manages concurrent execution of all VMs and virtualizes platform resources as needed.</term>
+		  <term full="Virtualization System" abbr="VS">A software product that enables multiple independent computing systems to 
+			  execute on the same physical hardware platform without interference from one other. For the purposes of this 
+			  document, the VS consists of a Virtual Machine Manager (VMM), Virtual Machine abstractions, a management subsystem,
+			  and other components.</term>
+		</tech-terms>
 	    
 	<!-- 1.3 Compliant Targets of Evaluation -->
-        <section id="s-complianttargets" title="Compliant Targets of Evaluation">
-            A Virtualization System (VS) is a software product that enables multiple independent computing systems to execute on the 
-		same physical hardware platform without interference from one other. A VS creates a virtualized hardware environment
-		(virtual machines or VMs) for each instance of an operating system permitting these environments to execute 
-		concurrently while maintaining isolation and the appearance of exclusive control over assigned computing resources.
-		For the purposes of this document, the VS consists of a Virtual Machine Manager (VMM), Virtual Machine (VM) 
-		abstractions, a management subsystem, and other components.<h:br></h:br><h:br></h:br>
-            A VMM is a collection of software components responsible for enabling VMs to function as expected by the software
-		executing within them. Generally, the VMM consists of a Hypervisor, Service VMs, and other components of the VS,
-		such as virtual devices, binary translation systems, and physical device drivers. It manages concurrent execution of 
-		all VMs and virtualizes platform resources as needed.<h:br></h:br><h:br></h:br>
-            The Hypervisor is the software executive of the physical platform of a VS. A hypervisor operates at 
-		the highest CPU privilege level and manages access to all of the physical resources of the hardware platform. It
-		exports a well-defined, protected interface for access to the resources it manages. A Hypervisor’s primary function is 
-		to mediate access to all CPU and memory resources, but it is also responsible for either the direct management or the
-		delegation of the management of all other hardware devices on the hardware platform. This document does not specify
-		any Hypervisor-specific requirements, though many VMM requirements would naturally apply to a Hypervisor.<h:br></h:br><h:br></h:br>
-            A Service VM is a VM whose purpose is to support the Hypervisor in providing the resources or services necessary to
-		support Guest VMs. Service VMs may implement some portion of Hypervisor functionality, but also may contain important
-		system functionality that is not necessary for Hypervisor operation. As with any VM, Service VMs necessarily execute
-		without full Hypervisor privileges—only the privileges required to perform its designed functionality. Examples of 
-		Service VMs include device driver VMs that manage access to physical devices, and name-service VMs that help establish 
-		communication paths between VMs.<h:br></h:br><h:br></h:br>
-            A Guest VM is a VM that contains a virtual environment for the execution of an independent computing system. Virtual 
-		environments execute mission workloads and implement customer-specific client or server functionality in Guest VMs, 
-		such as a web server or desktop productivity applications. A Helper VM is a VM that performs services on behalf of
-		one or more Guest VMs, but does not qualify as a Service VM—and therefore is not part of the VMM. Helper VMs implement
-		functions or services that are particular to the workloads of Guest VMs. For example, a VM that provides a virus 
-		scanning service for a Guest VM would be considered a Helper VM. The line between Helper and Service VMs can easily
-		be blurred. For instance, a VM that implements a cryptographic function—such as an in-line encryption VM—could be 
-		identified as either a Service or Helper VM depending on the particular virtualization solution. If the cryptographic
-		functions are necessary only for the privacy of Guest VM data in support of the Guest’s mission applications, it would
-		be proper to classify the encryption VM as a Helper. But if the encryption VM is necessary for the VMM to isolate
-		Guest VMs, it would be proper to classify the encryption VM as a Service 
-		VM. For the purposes of this document, Helper VMs are subject to all requirements
-		that apply to Guest VMs, unless specifically stated otherwise.<h:br/><h:br/>
-		
-	    <!-- 1.3.1 TOE Boundary -->
-            <subsection id="ss-toeboundary" title="TOE Boundary">
-                Figure 1 shows a greatly simplified view of a generic Virtualization System and Platform. TOE components are displayed
-		    in Red. Non-TOE components are in Blue. The Platform is the hardware, firmware, and software onto which the VS is 
-		    installed. The VMM includes the Hypervisor, Service VMs, and VM containers, but not the software that runs inside
-		    Guest VMs or Helper VMs. The Management Subsystem is part of the TOE, but may or may not be part of the VMM. 
-		    <h:br></h:br><h:br></h:br>
+		<section id="s-complianttargets" title="Compliant Targets of Evaluation">
+				A Virtualization System (VS) is a software product that enables multiple independent computing systems to execute on the 
+			same physical hardware platform without interference from one other. A VS creates a virtualized hardware environment
+			(virtual machines or VMs) for each instance of an operating system permitting these environments to execute 
+			concurrently while maintaining isolation and the appearance of exclusive control over assigned computing resources.
+			For the purposes of this document, the VS consists of a Virtual Machine Manager (VMM), Virtual Machine (VM) 
+			abstractions, a management subsystem, and other components.<h:br></h:br><h:br></h:br>
+				A VMM is a collection of software components responsible for enabling VMs to function as expected by the software
+			executing within them. Generally, the VMM consists of a Hypervisor, Service VMs, and other components of the VS,
+			such as virtual devices, binary translation systems, and physical device drivers. It manages concurrent execution of 
+			all VMs and virtualizes platform resources as needed.<h:br></h:br><h:br></h:br>
+				The Hypervisor is the software executive of the physical platform of a VS. A hypervisor operates at 
+			the highest CPU privilege level and manages access to all of the physical resources of the hardware platform. It
+			exports a well-defined, protected interface for access to the resources it manages. A Hypervisor’s primary function is 
+			to mediate access to all CPU and memory resources, but it is also responsible for either the direct management or the
+			delegation of the management of all other hardware devices on the hardware platform. This document does not specify
+			any Hypervisor-specific requirements, though many VMM requirements would naturally apply to a Hypervisor.<h:br></h:br><h:br></h:br>
+				A Service VM is a VM whose purpose is to support the Hypervisor in providing the resources or services necessary to
+			support Guest VMs. Service VMs may implement some portion of Hypervisor functionality, but also may contain important
+			system functionality that is not necessary for Hypervisor operation. As with any VM, Service VMs necessarily execute
+			without full Hypervisor privileges—only the privileges required to perform its designed functionality. Examples of 
+			Service VMs include device driver VMs that manage access to physical devices, and name-service VMs that help establish 
+			communication paths between VMs.<h:br></h:br><h:br></h:br>
+				A Guest VM is a VM that contains a virtual environment for the execution of an independent computing system. Virtual 
+			environments execute mission workloads and implement customer-specific client or server functionality in Guest VMs, 
+			such as a web server or desktop productivity applications. A Helper VM is a VM that performs services on behalf of
+			one or more Guest VMs, but does not qualify as a Service VM—and therefore is not part of the VMM. Helper VMs implement
+			functions or services that are particular to the workloads of Guest VMs. For example, a VM that provides a virus 
+			scanning service for a Guest VM would be considered a Helper VM. The line between Helper and Service VMs can easily
+			be blurred. For instance, a VM that implements a cryptographic function—such as an in-line encryption VM—could be 
+			identified as either a Service or Helper VM depending on the particular virtualization solution. If the cryptographic
+			functions are necessary only for the privacy of Guest VM data in support of the Guest’s mission applications, it would
+			be proper to classify the encryption VM as a Helper. But if the encryption VM is necessary for the VMM to isolate
+			Guest VMs, it would be proper to classify the encryption VM as a Service 
+			VM. For the purposes of this document, Helper VMs are subject to all requirements
+			that apply to Guest VMs, unless specifically stated otherwise.<h:br/><h:br/>
+			
+			<!-- 1.3.1 TOE Boundary -->
+			<subsection id="ss-toeboundary" title="TOE Boundary">
+				Figure 1 shows a greatly simplified view of a generic Virtualization System and Platform. TOE components are displayed
+				in Red. Non-TOE components are in Blue. The Platform is the hardware, firmware, and software onto which the VS is 
+				installed. The VMM includes the Hypervisor, Service VMs, and VM containers, but not the software that runs inside
+				Guest VMs or Helper VMs. The Management Subsystem is part of the TOE, but may or may not be part of the VMM. 
+				<h:br></h:br><h:br></h:br>
 
-                <figure entity="images/figure1.png" title="Virtualization System and Platform " id="vsplatform"/><h:br/><h:br/>
+				<figure entity="images/figure1.png" title="Virtualization System and Platform " id="vsplatform"/><h:br/><h:br/>
     
-                For purposes of this Protection Profile, the Virtualization System is the TOE, subject to some caveats. The Platform
-		    onto which the VS is installed (which includes hardware, platform firmware, and Host Operating System) is not
-		    part of the TOE. Software installed with the VS on the Host OS specifically to support the VS
-		    or implement VS functionality is part of the TOE. General purpose software—such as device drivers for physical 
-		    devices and the Host OS itself—is not part of the TOE, regardless of whether it supports VS functionality or 
-		    runs inside a Service VM or control domain. Software that runs within Guest and Helper VMs is not part of the 
-		    TOE.<h:br></h:br><h:br></h:br>
-                In general, for virtualization products that are installed onto “bare metal,” the entire set of installed components
-		    constitute the TOE, and the hardware constitutes the Platform. Also in general, for products that are hosted by or
-		    integrated into a commodity operating system, the components installed expressly for implementing and supporting
-		    virtualization are in the TOE, and the Platform comprises the hardware and Host OS.
-            </subsection>
+				For purposes of this Protection Profile, the Virtualization System is the TOE, subject to some caveats. The Platform
+				onto which the VS is installed (which includes hardware, platform firmware, and Host Operating System) is not
+				part of the TOE. Software installed with the VS on the Host OS specifically to support the VS
+				or implement VS functionality is part of the TOE. General purpose software—such as device drivers for physical 
+				devices and the Host OS itself—is not part of the TOE, regardless of whether it supports VS functionality or 
+				runs inside a Service VM or control domain. Software that runs within Guest and Helper VMs is not part of the 
+				TOE.<h:br></h:br><h:br></h:br>
+					In general, for virtualization products that are installed onto “bare metal,” the entire set of installed components
+				constitute the TOE, and the hardware constitutes the Platform. Also in general, for products that are hosted by or
+				integrated into a commodity operating system, the components installed expressly for implementing and supporting
+				virtualization are in the TOE, and the Platform comprises the hardware and Host OS.
+			</subsection>
 		
-	    <!-- 1.3.2 Requirements Met by the Platform -->
-            <subsection id="ss-platformreqs" title="Requirements Met by the Platform">
-                Depending on the way the VS is installed, functions tested under this PP may be implemented by the TOE or by the
-		    Platform. There is no difference in the testing required whether the function is implemented by the TOE or by the
-		    Platform. In either case, the tests determine whether the function being tested provides a level of assurance 
-		    acceptable to meet the goals of this Profile with respect to a particular product and platform. The equivalency 
-		    guidelines are intended in part to address this TOE vs. Platform distinction, and to ensure that the assurance 
-		    level does not change between instances of equivalent products on equivalent platforms—and also, of course, to
-		    ensure that the appropriate testing is done when the distinction is significant.
-            </subsection>
+			<!-- 1.3.2 Requirements Met by the Platform -->
+			<subsection id="ss-platformreqs" title="Requirements Met by the Platform">
+				Depending on the way the VS is installed, functions tested under this PP may be implemented by the TOE or by the
+				Platform. There is no difference in the testing required whether the function is implemented by the TOE or by the
+				Platform. In either case, the tests determine whether the function being tested provides a level of assurance 
+				acceptable to meet the goals of this Profile with respect to a particular product and platform. The equivalency 
+				guidelines are intended in part to address this TOE vs. Platform distinction, and to ensure that the assurance 
+				level does not change between instances of equivalent products on equivalent platforms—and also, of course, to
+				ensure that the appropriate testing is done when the distinction is significant.
+			</subsection>
 		
-	    <!-- 1.3.3 Scope of Certification -->
-            <subsection id="ss-scopecert" title="Scope of Certification">
-                Successful evaluation of a Virtualization System against this profile does not constitute or imply successful 
-		    evaluation of any Host Operating System or Platform—no matter how tightly integrated with the VS. The Platform,
-		    including any Host OS, supports the VS through provision of services and resources. Specialized VS components 
-		    installed on or in a Host OS to support the VS may be considered part of the TOE. But general-purpose OS
-		    components and functions—whether or not they support the VS—are not part of the TOE, and thus
-		    are not evaluated under this PP.
-            </subsection>
+			<!-- 1.3.3 Scope of Certification -->
+			<subsection id="ss-scopecert" title="Scope of Certification">
+				Successful evaluation of a Virtualization System against this profile does not constitute or imply successful 
+				evaluation of any Host Operating System or Platform—no matter how tightly integrated with the VS. The Platform,
+				including any Host OS, supports the VS through provision of services and resources. Specialized VS components 
+				installed on or in a Host OS to support the VS may be considered part of the TOE. But general-purpose OS
+				components and functions—whether or not they support the VS—are not part of the TOE, and thus
+				are not evaluated under this PP.
+			</subsection>
 		
-	    <!-- 1.3.4 Vendor Attestation -->
-            <subsection id="ss-attestation" title="Vendor Attestation">
-                This PP includes several SFRs that include elements that are met via vendor attestation. Attestation assurance 
-		    activities are reserved for SFRs that define properties that are critical to the system’s security functionality,
-		    but that are impossible or impractical to test in a repeatable and consistent manner. These Attestation assurance 
-		    activities require the vendor to make an assertion in the ST that their product meets the 
-		    specified SFR—no further testing or assessment of the product regarding these SFRs or elements is performed by the
-		    ITSEF. The ITSEF will simply verify that the ST includes a pre-determined Attestation statement.
-		    By including this statement in the ST, the vendor is accepting responsibility for the assurance
-		    of their product in these particular areas. If at any time evidence is produced that indicates that these
-		    statements are false (and the product does not meet the specified security functionality), the CC certificate may
-		    be revoked. See FDP_VMS_EXT.1, FDP_VNC_EXT.1, FPT_VDP_EXT.1, and FPT_VIV_EXT.1 for the associated Attestation
-		    statements.
-            </subsection>
+			<!-- 1.3.4 Vendor Attestation -->
+			<subsection id="ss-attestation" title="Vendor Attestation">
+				This PP includes several SFRs that include elements that are met via vendor attestation. Attestation assurance 
+				activities are reserved for SFRs that define properties that are critical to the system’s security functionality,
+				but that are impossible or impractical to test in a repeatable and consistent manner. These Attestation assurance 
+				activities require the vendor to make an assertion in the ST that their product meets the 
+				specified SFR—no further testing or assessment of the product regarding these SFRs or elements is performed by the
+				ITSEF. The ITSEF will simply verify that the ST includes a pre-determined Attestation statement.
+				By including this statement in the ST, the vendor is accepting responsibility for the assurance
+				of their product in these particular areas. If at any time evidence is produced that indicates that these
+				statements are false (and the product does not meet the specified security functionality), the CC certificate may
+				be revoked. See FDP_VMS_EXT.1, FDP_VNC_EXT.1, FPT_VDP_EXT.1, and FPT_VIV_EXT.1 for the associated Attestation
+				statements.
+			</subsection>
 		
-	    <!-- 1.3.5 Product and Platform Equivalance -->
-            <subsection id="ss-equiv" title="Product and Platform Equivalence">
-                The tests in this Protection Profile must be run on all product versions and Platforms with which the Vendor would 
-		    like to claim compliance—subject to this Profile’s equivalency guidelines (see <appref linkend="appendix-equiv"/>).
-		<!-- <appendix id="appendix-equiv" title="Equivalency Guidelines"> -->
-            </subsection>
-        </section>
+			<!-- 1.3.5 Product and Platform Equivalance -->
+			<subsection id="ss-equiv" title="Product and Platform Equivalence">
+				The tests in this Protection Profile must be run on all product versions and Platforms with which the Vendor would 
+				like to claim compliance—subject to this Profile’s equivalency guidelines (see <appref linkend="appendix-equiv"/>).
+				<!-- <appendix id="appendix-equiv" title="Equivalency Guidelines"> -->
+			</subsection>
+		</section>
 
-	<!-- 1.4 Use Cases -->
-        <section id="s-usecases" title="Use Cases">
+		<!-- 1.4 Use Cases -->
+		<section id="s-usecases" title="Use Cases">
             This base PP does not define any use cases for virtualization technology. Client Virtualization and Server Virtualization
-		products have different use cases and so these are defined in their respective PP-Modules.
+			products have different use cases and so these are defined in their respective PP-Modules.
         </section>
     </chapter>
     
  <!-- 2. Conformance Claims -->
- <chapter title="Conformance Claims" id="ccl" boilerplate="no">
-    <cclaims>
-        <cclaim name="Conformance Statement">
-            <description>
-		A Security Target must claim exact conformance to this Protection Profile, 
-		    as defined in the CC and CEM addenda for Exact Conformance, Selection-Based SFRs, and 
-		    Optional SFRs (dated May 2017).
-            </description>
-        </cclaim>
-        <cclaim name="CC Conformance Claims">
-            <description>
-                This PP is conformant to Parts 2 (extended) and 3 (conformant) of Common Criteria Version 3.1, 
-                Release 5 [CC].
-            </description>
-        </cclaim>
-        <cclaim name="PP Claims">
-            <description>
-                This PP does not claim conformance to any other PP. 
-            </description>
-        </cclaim>
-      <cclaim name="Module Claim">
-        <description>The following PP-Modules are allowed to be specified in a PP-Configuration with
-          this PP.<h:ul>
-            <h:li>PP-Module for Client Virtualization, Version 1.1</h:li>
-            <h:li>PP-Module for Server Virtualization, Version 1.1</h:li>
-          </h:ul>
-        </description>
-      </cclaim>
-        <cclaim name="Package Claims">
-           <description>
-                This PP is Functional Package for TLS-conformant. 
-		<!-- This PP is Functional Package for Secure Shell (SSH)-conformant. -->
-            </description>
-        </cclaim>
-    </cclaims>
-  </chapter>
+	<chapter title="Conformance Claims" id="ccl" boilerplate="no">
+		<cclaims>
+			<cclaim name="Conformance Statement">
+				<description>A Security Target must claim exact conformance to this Protection Profile, 
+					as defined in the CC and CEM addenda for Exact Conformance, Selection-Based SFRs, and 
+					Optional SFRs (dated May 2017).
+				</description>
+			</cclaim>
+			<cclaim name="CC Conformance Claims">
+				<description>
+					This PP is conformant to Parts 2 (extended) and 3 (conformant) of Common Criteria Version 3.1, 
+					Release 5 [CC].
+				</description>
+			</cclaim>
+			<cclaim name="PP Claims">
+				<description>This PP does not claim conformance to any other PP. </description>
+			</cclaim>
+			<cclaim name="Module Claim">
+				<description>The following PP-Modules are allowed to be specified in a PP-Configuration with
+					this PP.<h:ul>
+						<h:li>PP-Module for Client Virtualization, Version 1.1</h:li>
+						<h:li>PP-Module for Server Virtualization, Version 1.1</h:li>
+					</h:ul>
+				</description>
+			</cclaim>
+			<cclaim name="Package Claims">
+				<description>
+					This PP is Functional Package for TLS-conformant. 
+					<!-- QQQQ: This PP is Functional Package for Secure Shell (SSH)-conformant. -->
+				</description>
+			</cclaim>
+		</cclaims>
+	</chapter>
 	
 
     <!-- 3. Security Problem Description -->
     <chapter id="ch-desc" title="Security Problem Description">
 	    
-	<!-- 3.1 Threats -->
+		<!-- 3.1 Threats -->
         <section id="s-threats" title="Threats">
             <threats>
                 <threat name="T.DATA_LEAKAGE">
                     <description>
-                        It is a fundamental property of VMs that the domains encapsulated by different VMs remain separate unless 
-			    data sharing is permitted by policy. For this reason, all Virtualization Systems shall support a policy
-			    that prohibits information transfer between VMs.<h:br></h:br><h:br></h:br>
+                    It is a fundamental property of VMs that the domains encapsulated by different VMs remain separate unless 
+					data sharing is permitted by policy. For this reason, all Virtualization Systems shall support a policy
+					that prohibits information transfer between VMs.<h:br></h:br><h:br></h:br>
                         It shall be possible to configure VMs such that data cannot be moved between domains from VM to VM, or
-			    through virtual or physical network components under the control of the VS. When VMs are configured as
-			    such, it shall not be possible for data to leak between domains, neither by the express efforts of
-			    software or users of a VM, nor because of vulnerabilities or errors in the implementation of the VMM or
-			    other VS components.<h:br></h:br><h:br></h:br>
+					through virtual or physical network components under the control of the VS. When VMs are configured as
+					such, it shall not be possible for data to leak between domains, neither by the express efforts of
+					software or users of a VM, nor because of vulnerabilities or errors in the implementation of the VMM or
+					other VS components.<h:br></h:br><h:br></h:br>
                         If it is possible for data to leak between domains when prohibited by policy, then an adversary on one domain 
-			    or network can obtain data from another domain. Such cross-domain data leakage can, for example, cause
-			    classified information, corporate proprietary information, or personally identifiable information to be
-			    made accessible to unauthorized entities.
+					or network can obtain data from another domain. Such cross-domain data leakage can, for example, cause
+					classified information, corporate proprietary information, or personally identifiable information to be
+					made accessible to unauthorized entities.
                     </description>
                     <objective-refer ref="O.VM_ISOLATION">
                         <rationale>Logical separation of VMs and enforcement of domain integrity prevent unauthorized transmission 
-				of data from one VM to another.</rationale>
+						of data from one VM to another.</rationale>
                     </objective-refer>
                     <objective-refer ref="O.DOMAIN_INTEGRITY">
                         <rationale>Logical separation of VMs and enforcement of domain integrity prevent unauthorized transmission 
@@ -674,19 +671,19 @@
                         configured. The VMM must also support the mechanisms to control the configurations of 
                         virtual networks according to the SSP.
                     </description>
-			<addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events can report attempts to breach isolation.</rationale>
-			<addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to protect domain data in shared storage.</rationale>
-			<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
-			<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated.</rationale>
-		      	<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from storage before the storage is re-allocated.</rationale>
-			<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.</rationale>
-		      	<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
-			<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>Ensures that VMs can access only those virtual devices that they are configured to access.</rationale>
-			<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
-		      	<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-			<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Administrators can disable unneccessary hypercall interfaces to reduce attack surface.</rationale>
-			<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
-			<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke priviledged code without proper hypervisor mediation.</rationale>
+					<addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events can report attempts to breach isolation.</rationale>
+					<addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to protect domain data in shared storage.</rationale>
+					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
+					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated.</rationale>
+					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from storage before the storage is re-allocated.</rationale>
+					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.</rationale>
+					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
+					<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>Ensures that VMs can access only those virtual devices that they are configured to access.</rationale>
+					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
+					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Administrators can disable unneccessary hypercall interfaces to reduce attack surface.</rationale>
+					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
+					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke priviledged code without proper hypervisor mediation.</rationale>
                 </SO>
                 <SO name="O.VMM_INTEGRITY">
                     <description>Integrity is a core security objective for Virtualization Systems. To achieve system integrity, the 
@@ -701,17 +698,17 @@
                         hypercall interface and gain control of the VMM. The vendor must release patches for 
                         vulnerabilities as soon as practicable after discovery.
                     </description>
-		    	<addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events can report potential integrity breaches and attempts.</rationale>
-			<addressed-by>FCS_CKM.1</addressed-by><rationale>Requires generation of asymmetric keys for protection of integrity measures.</rationale>
-			<addressed-by>FCS_COP.1</addressed-by><rationale>Ensures proper functioning of cryptographic algorithms used to protect data integrity.</rationale>
-			<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
-			<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
-			<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.</rationale>
-			<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
-			<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
-			<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-			<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
-		      	<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke priviledged code without proper hypervisor mediation.</rationale>
+					<addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events can report potential integrity breaches and attempts.</rationale>
+					<addressed-by>FCS_CKM.1</addressed-by><rationale>Requires generation of asymmetric keys for protection of integrity measures.</rationale>
+					<addressed-by>FCS_COP.1</addressed-by><rationale>Ensures proper functioning of cryptographic algorithms used to protect data integrity.</rationale>
+					<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
+					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.</rationale>
+					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
+					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
+					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
+					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke priviledged code without proper hypervisor mediation.</rationale>
                 </SO>
                 <SO name="O.PLATFORM_INTEGRITY">
                     <description>The integrity of the VMM depends on the integrity of the hardware and software on 
@@ -719,35 +716,35 @@
                         the platform, the VS should as much as possible try to ensure that no users or software hosted by the VS is 
                         capable of undermining the integrity of the platform.
                     </description>
-		    	<addressed-by>FDP_HBI_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported mechanisms for access to physical devices.</rationale>
-			<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
-			<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.</rationale>
-		      	<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
-			<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>Ensures that VMs cannot access virtual devices that they are not onfigured to access.</rationale>
-			<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
-		      	<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-			<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Administrators can disable unneccessary hypercall interfaces to reduce attack surface.</rationale>
-		      	<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
-			<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke priviledged code without proper hypervisor mediation.</rationale>
-                </SO>
-                <SO name="O.DOMAIN_INTEGRITY">
+					<addressed-by>FDP_HBI_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported mechanisms for access to physical devices.</rationale>
+					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
+					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.</rationale>
+					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
+					<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>Ensures that VMs cannot access virtual devices that they are not onfigured to access.</rationale>
+					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
+					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Administrators can disable unneccessary hypercall interfaces to reduce attack surface.</rationale>
+					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
+					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke priviledged code without proper hypervisor mediation.</rationale>
+				</SO>
+				<SO name="O.DOMAIN_INTEGRITY">
                     <description>While the VS is not responsible for the contents or correct functioning of software that runs within 
                         Guest VMs, it is responsible for ensuring that the correct functioning of the software 
                         within a Guest VM is not interfered with by other VMs.
                     </description>
-		    	<addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to protect domain data in shared storage.</rationale>
-			<addressed-by>FCS_ENT_EXT.1</addressed-by><rationale>Requires that domains have access to high-quality entropy for cryptographic purposes.</rationale>
-			<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
-			<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated to another domain.</rationale>
-                    	<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from storage before the storage is re-allocated to another domain.</rationale>
-			<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between domains are done securely.</rationale>
-			<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
-			<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
-		    	<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-			<addressed-by>FPT_RDM_EXT.1</addressed-by><rationale>Requires support for rules for switching removeable media between domains to reduce the chance of data spillage.</rationale>
-			<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
-			<addressed-by>FTP_UIF_EXT.1</addressed-by><rationale>Ensures that users are able to determine the domain with the current input focus.</rationale>
-                    	<addressed-by>FTP_UIF_EXT.2</addressed-by><rationale>Ensures that users can know the identity of any VM that they can access.</rationale>
+					<addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to protect domain data in shared storage.</rationale>
+					<addressed-by>FCS_ENT_EXT.1</addressed-by><rationale>Requires that domains have access to high-quality entropy for cryptographic purposes.</rationale>
+					<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated to another domain.</rationale>
+					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from storage before the storage is re-allocated to another domain.</rationale>
+					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between domains are done securely.</rationale>
+					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
+					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
+					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+					<addressed-by>FPT_RDM_EXT.1</addressed-by><rationale>Requires support for rules for switching removeable media between domains to reduce the chance of data spillage.</rationale>
+					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
+					<addressed-by>FTP_UIF_EXT.1</addressed-by><rationale>Ensures that users are able to determine the domain with the current input focus.</rationale>
+					<addressed-by>FTP_UIF_EXT.2</addressed-by><rationale>Ensures that users can know the identity of any VM that they can access.</rationale>
                 </SO>
                 <SO name="O.MANAGEMENT_ACCESS">
                   
@@ -789,18 +786,18 @@
                         run on a separate machine or it could itself run in a VM. When performing remote management, 
                         an administrator must communicate with a privileged management agent over a network. Communications with the 
                         management infrastructure must be protected from Guest VMs and operational networks.
-                      </description>
-		      	<addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events report attempts to access the management subsystem.</rationale>
-			<addressed-by>FCS_CKM.1</addressed-by><rationale>Requires generation of asymmetric keys for trusted communications channels.</rationale>
-			<addressed-by>FCS_CKM.2</addressed-by><rationale>Requires establishment of cryptographic keys for trusted communications channels.</rationale>
-			<addressed-by>FCS_COP.1</addressed-by><rationale>Ensures proper functioning of cryptographic algorithms used to implement access controls.</rationale>
-			<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
-			<addressed-by>FIA_AFL_EXT.1</addressed-by><rationale>Requires that the TOE detect failed authentication attempts for Administrator access.</rationale>
-			<addressed-by>FIA_UAU.5</addressed-by><rationale>Ensures that strong mechanisms are used for Administrator authentication.</rationale>
-			<addressed-by>FIA_UIA_EXT.1</addressed-by><rationale>Requires that Administrators be successfully authenticated before performing management functions.</rationale>
-			<addressed-by>FMT_SMO_EXT.1</addressed-by><rationale>Requires that the TOE support having separate management and operational networks.</rationale>
-			<addressed-by>FTP_ITC_EXT.1</addressed-by><rationale>Ensures that trusted communications channels are implemented using good cryptography.</rationale>
-                </SO>
+                    </description>
+					<addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events report attempts to access the management subsystem.</rationale>
+					<addressed-by>FCS_CKM.1</addressed-by><rationale>Requires generation of asymmetric keys for trusted communications channels.</rationale>
+					<addressed-by>FCS_CKM.2</addressed-by><rationale>Requires establishment of cryptographic keys for trusted communications channels.</rationale>
+					<addressed-by>FCS_COP.1</addressed-by><rationale>Ensures proper functioning of cryptographic algorithms used to implement access controls.</rationale>
+					<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+					<addressed-by>FIA_AFL_EXT.1</addressed-by><rationale>Requires that the TOE detect failed authentication attempts for Administrator access.</rationale>
+					<addressed-by>FIA_UAU.5</addressed-by><rationale>Ensures that strong mechanisms are used for Administrator authentication.</rationale>
+					<addressed-by>FIA_UIA_EXT.1</addressed-by><rationale>Requires that Administrators be successfully authenticated before performing management functions.</rationale>
+					<addressed-by>FMT_SMO_EXT.1</addressed-by><rationale>Requires that the TOE support having separate management and operational networks.</rationale>
+					<addressed-by>FTP_ITC_EXT.1</addressed-by><rationale>Ensures that trusted communications channels are implemented using good cryptography.</rationale>
+				</SO>
                 <SO name="O.PATCHED_SOFTWARE">
                     <description>The VS must be updated and patched when needed in order to prevent the potential 
                         compromise of the VMM, as well as the networks and VMs that it hosts. 
@@ -809,7 +806,7 @@
                         standards and protocols that help enhance the manageability of the VS as an IT product, enabling it to be 
                         integrated as part of a manageable network (e.g., reporting current patch level and patchability).
                     </description>
-		      <addressed-by>FPT_TUD_EXT.1</addressed-by><rationale>Requires support for product updates.</rationale>
+					<addressed-by>FPT_TUD_EXT.1</addressed-by><rationale>Requires support for product updates.</rationale>
                 </SO>
                 <SO name="O.VM_ENTROPY">
                     <description>VMs must have access to good entropy sources to support security-related features 
@@ -818,8 +815,8 @@
                         virtual or physical. They must therefore have access to sources of good entropy to support that secure 
                         communication.
                     </description>
-		      	<addressed-by>FCS_ENT_EXT.1</addressed-by><rationale>Requires that domains have access to high-quality entropy for cryptographic purposes.</rationale>
-			<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+					<addressed-by>FCS_ENT_EXT.1</addressed-by><rationale>Requires that domains have access to high-quality entropy for cryptographic purposes.</rationale>
+					<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
                 </SO>
                 <SO name="O.AUDIT">
                     <description>An audit log must be created that captures accesses to the objects the TOE protects. The log 
@@ -827,11 +824,11 @@
 			    and destruction. The audit log must be sufficiently detailed to indicate the date and time of
 			    the event, the identify of the user, the type of event, and the success or failure of the event.
                     </description>
-		    	<addressed-by>FAU_GEN.1</addressed-by><rationale>Requires reporting of audit events.</rationale>
-			<addressed-by>FAU_SAR.1</addressed-by><rationale>Requires support for Administrator review of audit records.</rationale>
-			<addressed-by>FAU_STG.1</addressed-by><rationale>Requires protection of stored audit records.</rationale>
-			<addressed-by>FAU_STG_EXT.1</addressed-by><rationale>Requires support for protected transmission of audit records off the TOE.</rationale>
-                </SO>
+					<addressed-by>FAU_GEN.1</addressed-by><rationale>Requires reporting of audit events.</rationale>
+					<addressed-by>FAU_SAR.1</addressed-by><rationale>Requires support for Administrator review of audit records.</rationale>
+					<addressed-by>FAU_STG.1</addressed-by><rationale>Requires protection of stored audit records.</rationale>
+					<addressed-by>FAU_STG_EXT.1</addressed-by><rationale>Requires support for protected transmission of audit records off the TOE.</rationale>
+				</SO>
                 <SO name="O.CORRECTLY_APPLIED_CONFIGURATION">
                     <description>The TOE must not apply configurations that violate the current security policy.
                         <h:br></h:br><h:br></h:br> The TOE must correctly apply configurations and policies 
@@ -840,15 +837,15 @@
                         to the existing security policy. Similarly, changes made to the configuration of the TOE 
                         itself must not violate the existing security policy.
                     </description>
-		    	<addressed-by>FMT_MSA_EXT.1</addressed-by><rationale>Ensures that data sharing between VMs is turned off by default.</rationale>
+					<addressed-by>FMT_MSA_EXT.1</addressed-by><rationale>Ensures that data sharing between VMs is turned off by default.</rationale>
                 </SO>
                 <SO name="O.RESOURCE_ALLOCATION">
                     <description>The TOE will provide mechanisms that enforce constraints on the allocation of 
                         system resources in accordance with existing security policy.
                     </description>
-		    	<addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to ensure residual data in shared storage is unrecoverable.</rationale>
-			<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated.</rationale>
-			<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from storage before the storage is re-allocated.</rationale>
+					<addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to ensure residual data in shared storage is unrecoverable.</rationale>
+					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated.</rationale>
+					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from storage before the storage is re-allocated.</rationale>
                 </SO>
             </SOs>
         </section>
@@ -858,12 +855,12 @@
             <SOEs>
                 <SOE name="OE.CONFIG">
                     <description>TOE administrators will configure the VS correctly to create the intended security
-			    policy.
+						policy.
                     </description>
                 </SOE>
                 <SOE name="OE.PHYSICAL">
                     <description>Physical security, commensurate with the value of the TOE and the data it contains, is provided by 
-			    the environment.
+						the environment.
                     </description>
                 </SOE>
                 <SOE name="OE.TRUSTED_ADMIN">
@@ -872,13 +869,13 @@
                 </SOE>
                 <SOE name="OE.COVERT_CHANNELS">
                     <description>If the TOE has covert storage or timing channels, then for all VMs executing on that TOE, it is
-			    assumed that those VMs will have sufficient assurance relative to the IT assets to which they have access,
-			    to outweigh the risk that they will violate the security policy of the TOE by using those covert channels.
+						assumed that those VMs will have sufficient assurance relative to the IT assets to which they have access,
+						to outweigh the risk that they will violate the security policy of the TOE by using those covert channels.
                     </description>
                 </SOE>
                 <SOE name="OE.NON_MALICIOUS_USER">
                     <description>Users are trusted to be not willfully negligent or hostile and use the VS in compliance with the
-			    applied enterprise security policy and guidance.
+						applied enterprise security policy and guidance.
                     </description>
                 </SOE>
             </SOEs>
@@ -892,46 +889,52 @@
     <!-- 5. Security Requirements -->    
     <chapter id="ch-secreq" title="Security Requirements">
 
-	<!-- 5.1 Security Functional Requirements -->
+		<!-- 5.1 Security Functional Requirements -->
         <section id="s-sfr" title="Security Functional Requirements">
 		
-	<!-- 5.1.1 Auditable Events for Mandatory SFRs -->
-        <subsection id="ss-audit-table" title="Auditable Events for Mandatory SFRs">
-           <audit-table table="mandatory">
-  	     <h:br/><h:b><ctr ctr-type="Table" id="atref-mandatory">: Auditable Events for Mandatory SFRs</ctr></h:b>
-	   </audit-table>
-         </subsection>
+			<!-- 5.1.1 Auditable Events for Mandatory SFRs -->
+			<subsection id="ss-audit-table" title="Auditable Events for Mandatory SFRs">
+				<audit-table table="mandatory">
+					<h:br/><h:b><ctr ctr-type="Table" id="atref-mandatory">: Auditable Events for Mandatory SFRs</ctr></h:b>
+				</audit-table>
+			</subsection>
 
-	    <!-- 5.1.2 Security Audit (FAU) -->
+			<!-- 5.1.2 Security Audit (FAU) -->
             <subsection id="ss-fau" title="Security Audit (FAU)">
+			
+			    <ext-comp-def title="Off-Loading of Audit Data" fam-id="FPT_STG_EXT">
+					<fam-behavior>This family defines requirements for the TSF to be able to securely 
+						transmit audit data between the TOE and an external IT entity.</fam-behavior>
+				</ext-comp-def>
 
-		<!-- FAU_GEN.1 -->
-		<f-component cc-id="fau_gen.1" name="Audit Data Generation">
+
+			<!-- FAU_GEN.1 -->
+			<f-component cc-id="fau_gen.1" name="Audit Data Generation">
                     <f-element id="fau-gen-1e1">
                         <title>The TSF shall be able to generate an audit record of the following auditable events:
                             <h:ol type="a">
                                 <h:li>Start-up and shutdown of audit functions</h:li>
                                 <h:li>All administrative actions</h:li>
 
-				<!-- Table 1 contains the audit events for mandatory SFRs.
-				     Table 2 contains the audit events for strictly optional SFRs.
-				     Table 3 contains the audit events for objective SFRs.
-				     Table x contains the audit events for implementation-dependent SFRs (but there are none) 
-				     Table 4 contains the audit events for selection-based SFRs.
+						<!-- Table 1 contains the audit events for mandatory SFRs.
+							 Table 2 contains the audit events for strictly optional SFRs.
+							 Table 3 contains the audit events for objective SFRs.
+							 Table x contains the audit events for implementation-dependent SFRs (but there are none) 
+							 Table 4 contains the audit events for selection-based SFRs.
 
-				     The former Table 3 has been integrated into Table 1. Table 3 previously contained 
-				     a single optional audit event for FIA_UIA_EXT.1 (a mandatory requirement). Now that 
-			 	     event appears in Table 1 as an optional event.
+							 The former Table 3 has been integrated into Table 1. Table 3 previously contained 
+							 a single optional audit event for FIA_UIA_EXT.1 (a mandatory requirement). Now that 
+							 event appears in Table 1 as an optional event.
 
 				-->
 		    
-				    <h:li>[<refinement>Auditable events defined in <ctr-ref ref-id="atref-mandatory"/></refinement>]</h:li>
+								<h:li>[<refinement>Auditable events defined in <ctr-ref ref-id="atref-mandatory"/></refinement>]</h:li>
                                 <h:li><refinement><selectables>
                                     <selectable id="sel-at2">Auditable events defined in <ctr-ref ref-id="atref-optional-dep"></ctr-ref></selectable>
-				    <selectable id="sel-at3">Auditable events defined in <ctr-ref ref-id="atref-objective-dep"></ctr-ref></selectable>
+									<selectable id="sel-at3">Auditable events defined in <ctr-ref ref-id="atref-objective-dep"></ctr-ref></selectable>
                                     <selectable id="sel-at4">Auditable events defined in <ctr-ref ref-id="atref-sel-based-dep"></ctr-ref></selectable>
                                     <selectable>no other auditable events</selectable>
-				</selectables></refinement></h:li>
+								</selectables></refinement></h:li>
                             </h:ol>
                         </title>
                     </f-element>
@@ -943,43 +946,43 @@
                                 <h:li>Subject and object identity (if applicable)</h:li>
                                 <h:li>The outcome (success or failure) of the event</h:li>
 	
-				<!-- I would like this selection to go away. Additional informaiton should come along with the 
-				     audit events in the tables. If the additional information is not needed it can be
- 				     made a selection within the table.
+								<!-- I would like this selection to go away. Additional informaiton should come along with the 
+									 audit events in the tables. If the additional information is not needed it can be
+									 made a selection within the table.
 
-				     If this selection cannot go away, then I want the selections tied to the corresponding selections
-				     in FAU_GEN.1.1.
-				-->
+									 If this selection cannot go away, then I want the selections tied to the corresponding selections
+									 in FAU_GEN.1.1.
+								-->
 				    
-				    <h:li>[<refinement>Additional information defined in <ctr-ref ref-id="atref-mandatory"/></refinement>]</h:li>
+								<h:li>[<refinement>Additional information defined in <ctr-ref ref-id="atref-mandatory"/></refinement>]</h:li>
                                 <h:li><refinement><selectables>
                                     <selectable>Additional information defined in <ctr-ref ref-id="atref-optional-dep"></ctr-ref></selectable>
                                     <selectable>Additional information defined in <ctr-ref ref-id="atref-objective-dep"></ctr-ref></selectable>
                                     <selectable>Additional information defined in <ctr-ref ref-id="atref-sel-based-dep"></ctr-ref></selectable>
                                     <selectable>no other information</selectable>
-				</selectables></refinement></h:li>
+								</selectables></refinement></h:li>
                             </h:ol>
                         </title>
                         <note role="application">
                             The ST author can include other auditable events directly in <ctr-ref ref-id="atref-mandatory"/>; they are not
-				limited to the list presented. The ST author should update the table in 
-				FAU_GEN.1.2 with any additional information generated. “Subject identity” in FAU_GEN.1.2 could be a 
-				user id or an identifier specifying a VM, for example.<h:br></h:br><h:br></h:br>
-			    Appropriate entries from <ctr-ref ref-id="atref-optional-dep"/>, <ctr-ref ref-id="atref-objective-dep"/>, and
-				<ctr-ref ref-id="atref-sel-based-dep"/> should be included in the ST if the 
-				associated SFRs and selections are included.<h:br></h:br><h:br></h:br>
-                            The <ctr-ref ref-id="atref-mandatory"/> entry for FDP_VNC_EXT.1 refers to configuration settings that attach 
-				VMs to virtualized network components. Changes to these configurations can be made 
-				during VM execution or when VMs are not running. Audit records 
-				must be generated for either case.<h:br></h:br><h:br></h:br>
-                            The intent of the audit requirement for FDP_PPR_EXT.1 is to log that the VM is connected 
-				to a physical device (when the device becomes part of the VM's hardware view), not
-				to log every time that the device is accessed. Generally, this is only once at VM
-				startup. However, some devices can be connected and disconnected during operation (e.g., virtual USB
-				devices such as CD-ROMs). All such connection/disconnection events must be logged.
+							limited to the list presented. The ST author should update the table in 
+							FAU_GEN.1.2 with any additional information generated. “Subject identity” in FAU_GEN.1.2 could be a 
+							user id or an identifier specifying a VM, for example.<h:br></h:br><h:br></h:br>
+							Appropriate entries from <ctr-ref ref-id="atref-optional-dep"/>, <ctr-ref ref-id="atref-objective-dep"/>, and
+							<ctr-ref ref-id="atref-sel-based-dep"/> should be included in the ST if the 
+							associated SFRs and selections are included.<h:br></h:br><h:br></h:br>
+							The <ctr-ref ref-id="atref-mandatory"/> entry for FDP_VNC_EXT.1 refers to configuration settings that attach 
+							VMs to virtualized network components. Changes to these configurations can be made 
+							during VM execution or when VMs are not running. Audit records 
+							must be generated for either case.<h:br></h:br><h:br></h:br>
+							The intent of the audit requirement for FDP_PPR_EXT.1 is to log that the VM is connected 
+							to a physical device (when the device becomes part of the VM's hardware view), not
+							to log every time that the device is accessed. Generally, this is only once at VM
+							startup. However, some devices can be connected and disconnected during operation (e.g., virtual USB
+							devices such as CD-ROMs). All such connection/disconnection events must be logged.
                         </note>
 			    
-			<aactivity>
+						<aactivity>
                             <TSS>
                                 The evaluator shall check the TSS and ensure that it lists all of the auditable events 
                                 and provides a format for audit records. Each audit record format type shall be covered, along with a 
@@ -1008,8 +1011,8 @@
                             </Tests>   
                         </aactivity>
                     </f-element>
-		    <audit-event />
-		  </f-component>
+					<audit-event />
+				</f-component>
                 
                 <!-- FAU_SAR.1 -->
                 <f-component cc-id="fau_sar.1" name="Audit Review" status="mandatory">
@@ -1033,7 +1036,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event />
+					<audit-event />
                 </f-component>
                 
                 <!-- FAU_STG.1 -->
@@ -1046,13 +1049,18 @@
                         <title>The TSF shall be able to [prevent] unauthorized modifications to the stored audit records in the audit trail.
                         </title>
                         <note role="application">The assurance activity for this SFR is not intended to imply that the TOE must
-				support an administrator’s ability to designate individual audit records for deletion. That level 
-				of granularity is not required.</note>
-                        <aactivity>The evaluator shall ensure that the TSS describes how the audit records are protected from 
-				unauthorized modification or deletion. The evaluator shall ensure that the TSS describes the
-				conditions that must be met for authorized deletion of audit records. The evaluator shall perform 
-				the following tests:<h:br></h:br><h:br></h:br>
+							support an administrator’s ability to designate individual audit records for deletion. That level 
+							of granularity is not required.
+						</note>
+						<aactivity>
+							<TSS>
+								The evaluator shall ensure that the TSS describes how the audit records are protected from 
+								unauthorized modification or deletion. The evaluator shall ensure that the TSS describes the
+								conditions that must be met for authorized deletion of audit records. 
+							</TSS>
+							<Guidance/>
                             <Tests>
+								The evaluator shall perform the following tests:
                                 <testlist>
                                     <test>The evaluator shall access the audit trail as an unauthorized Administrator and attempt 
                                         to modify and delete the audit records. The evaluator shall verify that these attempts 
@@ -1066,11 +1074,27 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event />
+					<audit-event />
                 </f-component>
 			    
                 <!-- FAU_STG_EXT.1 -->
                 <f-component cc-id="fau_stg_ext.1" name="Off-Loading of Audit Data" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TSF to transmit audit data using a trusted channel to an outside entity and to specify 
+						the action to be taken when local audit storage is full.</comp-lev>
+					<management>The following actions could be considered for the management functions in FMT:
+						<h:ol type="a">
+							<h:li>Ability to configure and manage the audit system and audit data.</h:li>
+						</h:ol>
+					</management>
+					<audit>The following actions should be auditable if FAU_GEN Security audit data generation 
+						is included in the PP/ST:
+						<h:ol type="a">
+							<h:li>Failure of audit data capture due to lack of disk space or pre-defined limit.</h:li>
+							<h:li>On failure of logging function, capture record of failure and record upon restart of logging function.</h:li>
+						</h:ol>
+					</audit>
+					<dependencies></dependencies>
                     <f-element id="fau-stg-ext-1e1">
                         <title>The TSF shall be able to transmit the generated audit data to an external IT entity using a trusted 
 				channel as specified in FTP_ITC_EXT.1.
@@ -1209,6 +1233,11 @@
             
 	    <!-- 5.1.3 Cryptographic Support (FCS) -->
             <subsection id="ss-fcs" title="Cryptographic Support (FCS)">
+			
+			    <ext-comp-def title="QQQQ" fam-id="FPT_TST_EXT">
+					<fam-behavior>Components in this family describe requirements for self-test to verify
+					functionality and integrity of the TOE.</fam-behavior>
+				</ext-comp-def>
                 
                 <!-- FCS_CKM.1 -->
                 <f-component cc-id="fcs_ckm.1" name="Cryptographic Key Generation" status="mandatory">
@@ -1466,6 +1495,12 @@
 
                 <!-- FCS_CKM_EXT.4 -->
                 <f-component cc-id="fcs_ckm_ext.4" name="Cryptographic Key Destruction" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fcs-ckm-4e1">
                         <title>The TSF shall cause disused cryptographic keys in volatile memory to be destroyed or rendered 
 				unrecoverable.
@@ -2049,6 +2084,12 @@
                 <!-- FCS_COP.1/SIG (formerly FCS_COP.1(3)) -->
     		<!-- Added SHA-3 hashes 20190919 -->
                 <f-component cc-id="fcs_cop.1" iteration="SIG" name="Cryptographic Operation (Signature Algorithms)" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fcs-cop-1e1-sig">
                         <title>The TSF shall perform [<h:i>cryptographic signature services (generation and verification)</h:i>] in 
 				accordance with a specified cryptographic algorithm
@@ -2116,6 +2157,12 @@
                 <!-- FCS_COP.1/KEYHASH (formerly FCS_COP.1(4)) -->
 		<!-- Added SHA-3 hashes 20190919 -->
                 <f-component cc-id="fcs_cop.1" iteration="KEYHASH" name="Cryptographic Operation (Keyed Hash Algorithms)" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fcs-cop-1e1-keyhash">
                         <title>The TSF shall perform [<h:i>keyed-hash message authentication</h:i>] in accordance with a specified
 				cryptographic algorithm
@@ -2166,6 +2213,12 @@
                 
                 <!-- FCS_ENT_EXT.1 -->
                 <f-component cc-id="fcs_ent_ext.1" name="Extended: Entropy for Virtual Machines" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fcs-ent-ext-1e1">
                         <title>The TSF shall provide a mechanism to make available to VMs entropy that meets FCS_RBG_EXT.1 through
                             <selectables>
@@ -2231,6 +2284,12 @@
                 
                 <!-- FCS_RBG_EXT.1 -->
                 <f-component cc-id="fcs_rbg_ext.1" name="Cryptographic Operation (Random Bit Generation)" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fcs-rbg-ext-1e1">
                         <title>The TSF shall perform all deterministic random bit generation services in accordance with NIST Special 
 				Publication 800-90A using
@@ -2318,6 +2377,12 @@
                 <f-component cc-id="fcs_https_ext.1" name="HTTPS Protocol"  status="sel-based">
                     <selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-https"/>
 		    <selection-depends req="fia-x509-ext-2e1" ids="sel-x509-2-https"/>
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fcs-https-ext-1e1">
                         <title>The TSF shall implement the HTTPS protocol that complies with RFC 2818.
                         </title>
@@ -2358,6 +2423,12 @@
                 <f-component cc-id="fcs_ipsec_ext.1" name="IPsec Protocol"  status="sel-based">
                     <selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-ipsec"/>
 		    <selection-depends req="fia-x509-ext-2e1" ids="sel-x509-2-ipsec"/>
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fcs-ipsec-ext-1e1">
                         <title>The TSF shall implement the IPsec architecture as specified in RFC 4301.
                         </title>
@@ -3053,9 +3124,20 @@
 
 	    <!-- 5.1.4 User Data Protection -->
             <subsection id="ss-fdp" title="User Data Protection (FDP)">
+			
+			    <ext-comp-def title="QQQQ" fam-id="FPT_TST_EXT">
+					<fam-behavior>Components in this family describe requirements for self-test to verify
+					functionality and integrity of the TOE.</fam-behavior>
+				</ext-comp-def>
 
                 <!-- FDP_HBI_EXT.1 -->
                 <f-component cc-id="fdp_hbi_ext.1" name="Hardware-Based Isolation Mechanisms" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fdp-hbi-ext-1e1">
                         <title>The TSF shall use
                             <selectables>
@@ -3089,6 +3171,12 @@
 
                 <!-- FDP_PPR_EXT.1 -->
                 <f-component cc-id="fdp_ppr_ext.1" name="Physical Platform Resource Controls" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fdp-ppr-ext-1e1">
                         <title>The TSF shall allow an authorized administrator to control Guest VM access to the following physical
 				platform resources: <assignable>list of physical platform resources the VMM is
@@ -3191,6 +3279,12 @@
                 
                 <!-- FDP_RIP_EXT.1 -->
                 <f-component cc-id="fdp_rip_ext.1" name="Residual Information in Memory" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fdp-rip-ext-1e1">
                         <title>The TSF shall ensure that any previous information content of physical memory is cleared prior to 
 				allocation to a Guest VM.
@@ -3219,6 +3313,12 @@
 
                 <!-- FDP_RIP_EXT.2 -->
                 <f-component cc-id="fdp_rip_ext.2" name="Residual Information on Disk" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fdp-rip-ext-2e1">
                         <title>The TSF shall ensure that any previous information content of physical disk storage is cleared prior
 				to allocation to a Guest VM.
@@ -3258,6 +3358,12 @@
 
                 <!-- FDP_VMS_EXT.1 -->
                 <f-component cc-id="fdp_vms_ext.1" name="VM Separation" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fdp-vms-ext-1e1">
                         <title>The VS shall provide the following mechanisms for transferring data between Guest VMs:
                             <selectables linebreak="yes">
@@ -3349,6 +3455,12 @@
                 
                 <!-- FDP_VNC_EXT.1 -->
                 <f-component cc-id="fdp_vnc_ext.1" name="Virtual Networking Components" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fdp-vnc-ext-1e1">
                         <title>The TSF shall allow Administrators to configure virtual networking components to connect VMs to each
 				other, and to physical networks.
@@ -3421,9 +3533,20 @@
             
 	    <!-- 5.1.5 Identification and Authentication (FIA) -->
             <subsection id="ss-fia" title="Identification and Authentication (FIA)">
+			
+			    <ext-comp-def title="QQQQ" fam-id="FPT_TST_EXT">
+					<fam-behavior>Components in this family describe requirements for self-test to verify
+					functionality and integrity of the TOE.</fam-behavior>
+				</ext-comp-def>
                 
                 <!-- FIA_AFL_EXT.1 -->
                 <f-component cc-id="fia_afl_ext.1" name="Authentication Failure Handling" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fia-afl-ext-1e1">
                         <title>The TSF shall detect when
                             <selectables linebreak="yes">
@@ -3501,6 +3624,12 @@
                 <!-- Depends on password-based authentication being used for administrator authentication -->
                 <f-component cc-id="fia_pmg_ext.1" name="Password Management"  status="sel-based">
                     <selection-depends req="fia-uau-5e1" ids="sel-uau-pwd"/>
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fia-pmg-ext-1e1">
                         <title>The TSF shall provide the following password management capabilities for administrative passwords:
                             <h:ol type="a">
@@ -3651,6 +3780,12 @@
 
                 <!-- FIA_UIA_EXT.1 -->
                 <f-component cc-id="fia_uia_ext.1" name="Administrator Identification and Authentication" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fia-uia-ext-1e1">
                         <title>The TSF shall require Administrators to be successfully identified and authenticated
                             using one of the methods in FIA_UAU.5 before allowing any TSF-mediated management
@@ -3695,6 +3830,12 @@
 		    <selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-ipsec" />
 		    <selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-tls" />
 		    <selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-https" />	
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fia-x509-ext-1e1">
                         <title>The TSF shall validate certificates in accordance with the following rules:
                             <h:ul>
@@ -3824,6 +3965,12 @@
 		    <selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-ipsec" />
 		    <selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-tls" />
 		    <selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-https" />	
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fia-x509-ext-2e1">
                         <title>The TSF shall use X.509v3 certificates as defined by RFC 5280 to support authentication for
                             <selectables>
@@ -3897,9 +4044,20 @@
             
 	    <!-- 5.1.6 Security Management (FMT) -->
             <subsection id="ss-fmt" title="Security Management (FMT)">
+			
+				<ext-comp-def title="QQQQ" fam-id="FPT_TST_EXT">
+					<fam-behavior>Components in this family describe requirements for self-test to verify
+					functionality and integrity of the TOE.</fam-behavior>
+				</ext-comp-def>
                 
                 <!-- FMT_MSA_EXT.1 -->
                 <f-component cc-id="fmt_msa_ext.1" name="Default Data Sharing Configuration" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fmt-msa-ext-1e1">
                         <title>The TSF shall by default enforce a policy prohibiting sharing of data between Guest VMs using
                             <selectables linebreak="yes">
@@ -3938,6 +4096,12 @@
                 
                 <!-- FMT_SMO_EXT.1 -->
                 <f-component cc-id="fmt_smo_ext.1" name="Separation of Management and Operational Networks" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fmt-smo-ext-1e1">
                         <title>The TSF shall support the configuration of separate management and operational networks through
                             <selectables>
@@ -3980,9 +4144,20 @@
             
 	    <!-- 5.1.7 Protection of the TSF (FPT) -->
             <subsection id="ss-fpt" title="Protection of the TSF (FPT)">
+			
+			    <ext-comp-def title="QQQQ" fam-id="FPT_TST_EXT">
+					<fam-behavior>Components in this family describe requirements for self-test to verify
+					functionality and integrity of the TOE.</fam-behavior>
+				</ext-comp-def>
                 
                 <!-- FPT_DVD_EXT.1 -->
                 <f-component cc-id="fpt_dvd_ext.1" name="Non-Existence of Disconnected Virtual Devices" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fpt-dvd-ext-1e1">
                         <title>The TSF shall limit a Guest VM’s access to virtual devices to those that are present in the VM’s current
 				virtual hardware configuration.
@@ -4008,6 +4183,12 @@
 
                 <!-- FPT_EEM_EXT.1 -->
                 <f-component cc-id="fpt_eem_ext.1" name="Execution Environment Mitigations" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fpt-eem-ext-1e1">
                         <title>The TSF shall take advantage of execution environment-based vulnerability mitigation mechanisms 
 				supported by the Platform such as:
@@ -4044,6 +4225,12 @@
                 
                 <!-- FPT_HAS_EXT.1 -->
                 <f-component cc-id="fpt_has_ext.1" name="Hardware Assists" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fpt-has-ext-1e1">
                         <title>The VMM shall use <assignable>list of hardware-based virtualization assists</assignable> to reduce or 
 				eliminate the need for binary translation.
@@ -4082,6 +4269,12 @@
 
                 <!-- FPT_HCL_EXT.1 -->
                 <f-component cc-id="fpt_hcl_ext.1" name="Hypercall Controls" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fpt-hcl-ext-1e1">
                         <title>The TSF shall provide a Hypercall interface for Guest VMs to use to invoke functionality provided by 
 				the VMM.
@@ -4165,6 +4358,12 @@
 
                 <!-- FPT_RDM_EXT.1 -->
                 <f-component cc-id="fpt_rdm_ext.1" name="Removable Devices and Media" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fpt-rdm-ext-1e1">
                         <title>The TSF shall implement controls for handling the transfer of virtual and physical removable media and
 				virtual and physical removable media devices between information domains.
@@ -4243,6 +4442,12 @@
 
                 <!-- FPT_TUD_EXT.1 -->
                 <f-component cc-id="fpt_tud_ext.1" name="Trusted Updates to the Virtualization System" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fpt-tud-ext-1e1">
                         <title>The TSF shall provide administrators the ability to query the currently executed version of the TOE 
 				firmware/software as well as the most recently installed version of the TOE firmware/software.
@@ -4347,7 +4552,13 @@
                 <!-- Depends on X509 certificates being used for code signing. -->
                 <f-component cc-id="fpt_tud_ext.2" name="Trusted Update Based on Certificates"  status="sel-based">
                     <selection-depends req="fpt-tud-ext-1e3" ids="sel-tud-digsign-cert" />
-		    <selection-depends req="fia-x509-ext-2e1" ids="sel-x5092-signed-updates"/>
+					<selection-depends req="fia-x509-ext-2e1" ids="sel-x5092-signed-updates"/>
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fpt-tud-ext-2e1">
                         <title>The TSF shall not install an update if the code signing certificate is deemed invalid.
                         </title>
@@ -4369,6 +4580,12 @@
 
                 <!-- FPT_VDP_EXT.1 -->
                 <f-component cc-id="fpt_vdp_ext.1" name="Virtual Device Parameters" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fpt-vdp-ext-1e1">
                         <title>The TSF shall provide interfaces for virtual devices implemented by the VMM as part of the virtual
 				hardware abstraction.
@@ -4423,6 +4640,12 @@
 
                 <!-- FPT_VIV_EXT.1 -->
                 <f-component cc-id="fpt_viv_ext.1" name="VMM Isolation from VMs" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fpt-viv-ext-1e1">
                         <title>The TSF must ensure that software running in a VM is not able to degrade or disrupt the functioning of 
 				other VMs, the VMM, or the Platform.
@@ -4474,6 +4697,12 @@
 
                 <!-- FPT_GVI_EXT.1 -->
                 <f-component cc-id="fpt_gvi_ext.1" name="Guest VM Integrity"  status="optional">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fpt-gvi-ext-1e1">
                         <title>The TSF shall verify the integrity of Guest VMs through the following mechanisms: 
 				<assignable>list of Guest VM integrity mechanisms</assignable>.
@@ -4507,6 +4736,12 @@
 
                 <!-- FPT_DDI_EXT.1 -->
                 <f-component cc-id="fpt_ddi_ext.1" name="Device Driver Isolation"  status="objective">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fpt-ddi-ext-1e1">
                         <title>The TSF shall ensure that device drivers for physical devices are isolated from the VMM and all other
 				domains.
@@ -4539,7 +4774,13 @@
 
                 <!-- FPT_IDV_EXT.1 -->
                 <f-component cc-id="fpt_idv_ext.1" name="Software Identification and Versions"  status="objective">
-                    <f-element id="fpt-idv-ext-1e1">
+ 					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
+                   <f-element id="fpt-idv-ext-1e1">
                         <title>The TSF shall include software identification (SWID) tags that contain a SoftwareIdentity element and 
 				an Entity element as defined in ISO/IEC 19770-2:2009.
                         </title>
@@ -4572,6 +4813,12 @@
 
                 <!-- FPT_INT_EXT.1 -->
                 <f-component cc-id="fpt_int_ext.1" name="Support for Introspection"  status="objective">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fpt-int-ext-1e1">
                         <title>The TSF shall support a mechanism for permitting the VMM or privileged VMs to access the internals of
 				another VM for purposes of introspection.
@@ -4604,6 +4851,12 @@
 
                 <!-- FPT_ML_EXT.1 -->
                 <f-component cc-id="fpt_ml_ext.1" name="Measured Launch of Platform and VMM"  status="objective">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="fpt-ml-ext-1e1">
                         <title>The TSF shall support a measured launch of the Virtualization System. Measured 
 				components of the VS shall include the static executable image of the Hypervisor
@@ -4665,7 +4918,7 @@
 
 	    <!-- 5.1.8 TOE Access -->
             <subsection id="ss-fta" title="TOE Access (FTA)">
-                
+	
                 <!-- FTA_TAB.1 -->
                 <f-component cc-id="fta_tab.1" name="TOE Access Banner" status="mandatory">
                     <f-element id="fta-tab-ext-1e1">
@@ -4691,10 +4944,21 @@
             </subsection>
             
 	    <!-- 5.1.9 Trusted Path / Channel (FTP) -->
-	    <subsection id="ss-ftp" title="Trusted Path/Channel (FPT)">
+	    <subsection id="ss-ftp" title="Trusted Path/Channel (FTP)">
+		
+			    <ext-comp-def title="QQQQ" fam-id="FPT_TST_EXT">
+					<fam-behavior>Components in this family describe requirements for self-test to verify
+					functionality and integrity of the TOE.</fam-behavior>
+				</ext-comp-def>
                 
                 <!-- FTP_ITC_EXT.1 -->
                 <f-component cc-id="ftp_itc_ext.1" name="Trusted Channel Communications" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="ftp-itc-ext-1e1">
                         <title>The TSF shall use
                             <selectables linebreak="yes">
@@ -4760,6 +5024,12 @@
 
                 <!-- FTP_UIF_EXT.1 -->
                 <f-component cc-id="ftp_uif_ext.1" name="User Interface: I/O Focus" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="ftp-uif-ext-1e1">
                         <title>The TSF shall indicate to users which VM, if any, has the current input focus.
                         </title>
@@ -4790,6 +5060,12 @@
 
                 <!-- FTP_UIF_EXT.2 -->
                 <f-component cc-id="ftp_uif_ext.2" name="User Interface: Identification of VM" status="mandatory">
+					<consistency-rationale/>
+					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
+						the integrity of its stored executable code.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
                     <f-element id="ftp-uif-ext-2e1">
                         <title>The TSF shall support the unique identification of a VM’s output display to users.
                         </title>
