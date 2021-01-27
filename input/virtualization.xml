@@ -4335,13 +4335,10 @@
 						isolated from its Guest VMs</fam-behavior>
 				</ext-comp-def>
 				
-				<!-- QQQQQQ Start here -->
-				
                 <!-- FPT_DDI_EXT.1 -->
                 <f-component cc-id="fpt_ddi_ext.1" name="Device Driver Isolation"  status="objective">
 					<consistency-rationale/>
-					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
-						the integrity of its stored executable code.</comp-lev>
+					<comp-lev>requires the TSF to isolate device drivers for physical devices from all virtual domains.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
 					<dependencies></dependencies>
@@ -4378,8 +4375,8 @@
                 <!-- FPT_DVD_EXT.1 -->
                 <f-component cc-id="fpt_dvd_ext.1" name="Non-Existence of Disconnected Virtual Devices" status="mandatory">
 					<consistency-rationale/>
-					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
-						the integrity of its stored executable code.</comp-lev>
+					<comp-lev>requires the TSF to prevent Guest VMs from accessing virtual devices
+						that it is not configured to have access to.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
 					<dependencies></dependencies>
@@ -4409,8 +4406,8 @@
                 <!-- FPT_EEM_EXT.1 -->
                 <f-component cc-id="fpt_eem_ext.1" name="Execution Environment Mitigations" status="mandatory">
 					<consistency-rationale/>
-					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
-						the integrity of its stored executable code.</comp-lev>
+					<comp-lev>requires the TSF to identify the execution environment-based
+						protection mechanisms that it can use for self-protection.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
 					<dependencies></dependencies>
@@ -4448,11 +4445,55 @@
 		    <audit-event />
                 </f-component>
                 
+                <!-- FPT_GVI_EXT.1 -->
+                <f-component cc-id="fpt_gvi_ext.1" name="Guest VM Integrity"  status="optional">
+					<consistency-rationale/>
+					<comp-lev>requires the TSF to specify the mechanisms it uses to verify the
+						integrity of Guest VMs.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>The following actions should be auditable if FAU_GEN Security 
+						audit data generation is included in the PP/ST:
+						<h:ol type="a">
+							<h:li>Actions taken due to failed integrity check.</h:li>
+						</h:ol>
+					</audit>
+					<dependencies></dependencies>
+                    <f-element id="fpt-gvi-ext-1e1">
+                        <title>The TSF shall verify the integrity of Guest VMs through the following mechanisms: 
+				<assignable>list of Guest VM integrity mechanisms</assignable>.
+                        </title>
+                        <note role="application">The primary purpose of this requirement is to identify and describe 
+				the mechanisms used to verify the integrity of Guest VMs that have been 'imported' in some fashion,
+				though these mechanisms could also be applied to all Guest VMs, depending on the mechanism used.
+				Importation for this requirement could include VM migration (live or otherwise), the importation of
+				virtual disk files that were previously exported, VMs in shared storage, etc. It is possible that a 
+				trusted VM could have been modified during the migration or import/export process, or VMs could have 
+				been obtained from untrusted sources in the first place, so integrity checks on these VMs can be a 
+				prudent measure to take. These integrity checks could be as thorough as making sure the entire VM
+				exactly matches a previously known VM (by hash for example), or by simply checking certain 
+				configuration settings to ensure that the VM's configuration will not violate the security model 
+				of the VS.</note>
+                        <aactivity>
+                            <TSS>
+                                For each mechanism listed in the assignment, the evaluator shall ensure that the TSS 
+                                documents the mechanism, including how it verifies VM integrity, which set of Guest
+                                VMs it will check (all Guest VMs, only migrated VM
+                                s, etc.), when such checks occur (before VM startup, immediately following 
+                                importation/migration, on demand, etc.), and which actions are taken if a VM fails
+                                the integrity check (or which range of actions are possible if the action is configurable).
+                            </TSS>
+                        </aactivity>
+                    </f-element>
+		    <audit-event>
+			<audit-event-descr>Actions taken due to failed integrity check.</audit-event-descr>
+		    </audit-event>
+                </f-component>
+		    
                 <!-- FPT_HAS_EXT.1 -->
                 <f-component cc-id="fpt_has_ext.1" name="Hardware Assists" status="mandatory">
 					<consistency-rationale/>
-					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
-						the integrity of its stored executable code.</comp-lev>
+					<comp-lev>requires the TSF to identify the hardware assists it uses to reduce
+						TOE complexity.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
 					<dependencies></dependencies>
@@ -4495,10 +4536,21 @@
                 <!-- FPT_HCL_EXT.1 -->
                 <f-component cc-id="fpt_hcl_ext.1" name="Hypercall Controls" status="mandatory">
 					<consistency-rationale/>
-					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
-						the integrity of its stored executable code.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>There are no auditable events foreseen.</audit>
+					<comp-lev>requires the TSF to implement a Hypercall interface with appropriate access controls
+						to protect Guest VMs from unauthorized access via this interface.</comp-lev>
+						<management>The following actions could be considered for the management functions
+							in FMT:
+							<h:ol type="a">
+								<h:li>Ability to enable/disable VM access to Hypercall functions.</h:li>
+							</h:ol>
+						</management>
+					<audit>The following actions should be auditable if FAU_GEN Security
+						audit data generation is included in the PP/ST:
+						<h:ol type="a">
+							<h:li>Attempts to access disabled Hypercall interfaces.</h:li>
+							<h:li>Security policy violations.</h:li>
+						</h:ol>
+					</audit>
 					<dependencies></dependencies>
                     <f-element id="fpt-hcl-ext-1e1">
                         <title>The TSF shall provide a Hypercall interface for Guest VMs to use to invoke functionality provided by 
@@ -4581,13 +4633,177 @@
 		    </audit-event>
                 </f-component>
 
+                <!-- FPT_IDV_EXT.1 -->
+                <f-component cc-id="fpt_idv_ext.1" name="Software Identification and Versions"  status="objective">
+ 					<consistency-rationale/>
+					<comp-lev>requires the TSF to identify itself using SWID tags.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>There are no auditable events foreseen.</audit>
+					<dependencies></dependencies>
+                   <f-element id="fpt-idv-ext-1e1">
+                        <title>The TSF shall include software identification (SWID) tags that contain a SoftwareIdentity element and 
+				an Entity element as defined in ISO/IEC 19770-2:2009.
+                        </title>
+                    </f-element>
+                    <f-element id="fpt-idv-ext-1e2">
+                        <title>The TSF shall store SWIDs in a .swidtag file as defined in ISO/IEC 19770-2:2009.
+                        </title>
+                        <note role="application">SWID tags are XML files embedded within software that provide a standard method for
+				IT departments to track and manage the software. The presence of SWIDs can greatly simplify the
+				software management process and improve security by enhancing the ability of IT departments to manage 
+				updates.</note>
+                        <aactivity>
+                            <TSS>
+                                The evaluator shall examine the TSS to ensure it describes how SWID tags are
+                                implemented and the format of the tags. The evaluator shall verify that the format complies with
+                                FPT_IDV_EXT.1.1 and that SWIDs are stored in accordance with FPT_IDV_EXT.1.2.
+                            </TSS>
+                            <Tests>
+                                The evaluator shall perform the following test:
+                                <testlist>
+                                    <test>The evaluator shall check for the existence of SWID tags in a .swidtag file. The evaluator 
+					    shall open the file and verify that each SWID contains at least a SoftwareIdentity element 
+					    and an Entity element.</test>
+                                </testlist>
+                            </Tests>
+                        </aactivity>
+                    </f-element>
+		    <audit-event />
+                </f-component>
+
+                <!-- FPT_INT_EXT.1 -->
+                <f-component cc-id="fpt_int_ext.1" name="Support for Introspection"  status="objective">
+					<consistency-rationale/>
+					<comp-lev>requires the TSF to support introspection.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>The following actions should be auditable if FAU_GEN Security 
+						audit data generation is included in the PP/ST:
+						<h:ol type="a">
+							<h:li>Introspection initiated/enabled.</h:li>
+						</h:ol>
+					</audit>
+					<dependencies></dependencies>
+                    <f-element id="fpt-int-ext-1e1">
+                        <title>The TSF shall support a mechanism for permitting the VMM or privileged VMs to access the internals of
+				another VM for purposes of introspection.
+                        </title>
+                        <note role="application">Introspection can be used to support malware and anomaly detection from outside of
+				the guest environment. This not only helps protect the Guest OS, it also protects the VS by providing 
+				an opportunity for the VS to detect threats to itself that originate within VMs, and that may attempt
+				to break out of the VM and compromise the VMM or other VMs.<h:br></h:br><h:br></h:br>
+                            The hosting of malware detection software outside of the guest VM helps protect the guest and helps ensure
+				the integrity of the malware detection/antivirus software. This capability can be implemented in 
+				the VMM itself, but ideally it should be hosted by a Service VM so that it can be better contained 
+				and does not introduce bugs into the VMM.</note>
+                        <aactivity>
+                            <TSS>
+                                The evaluator shall examine the TSS documentation to verify that it describes the
+                                interface for VM introspection and whether the introspection is performed by the 
+                                VMM or another VM.
+                            </TSS>
+                            <Guidance>
+                                The evaluator shall examine the operational guidance to ensure that it contains instructions for
+                                configuration of the introspection mechanism.
+                            </Guidance>
+                        </aactivity>
+                    </f-element>
+		    <audit-event>
+			<audit-event-descr>Introspection initiated/enabled.</audit-event-descr>
+                        <audit-event-info>The VM introspected.</audit-event-info>
+		    </audit-event>
+                </f-component>
+
+                <!-- FPT_ML_EXT.1 -->
+                <f-component cc-id="fpt_ml_ext.1" name="Measured Launch of Platform and VMM"  status="objective">
+					<consistency-rationale/>
+					<comp-lev>requires the TSF to support a measured launch of itself.</comp-lev>
+					<management>No specific management functions are identified.</management>
+					<audit>The following actions should be auditable if FAU_GEN Security 
+						audit data generation is included in the PP/ST:
+						<h:ol type="a">
+							<h:li>Integrity measurements collected.<h:li>
+						</h:ol>
+					</audit>
+					<dependencies></dependencies>
+                    <f-element id="fpt-ml-ext-1e1">
+                        <title>The TSF shall support a measured launch of the Virtualization System. Measured 
+				components of the VS shall include the static executable image of the Hypervisor
+				and:
+                            <selectables linebreak="yes">
+                                <selectable>Static executable images of the Management Subsystem</selectable>
+                                <selectable><assignable>list of (static images of) Service VMs</assignable></selectable>
+                                <selectable><assignable>list of configuration files</assignable></selectable>
+                                <selectable>no other components</selectable>
+                            </selectables>
+                        </title>
+                    </f-element>
+                    <f-element id="fpt-ml-ext-1e2">
+                        <title>The TSF shall make the measurements selected in FPT_ML_EXT.1.1 available to the Management Subsystem.
+                        </title>
+                        <note role="application">
+                            A measured launch of the platform and VS demonstrates that the proper TOE software was
+				loaded. A measured launch process employs verifiable integrity measurement mechanisms. For example, a
+				VS may hash components such as: the hypervisor, service VMs and/or the Management Subsystem. A 
+				measured launch process only allows components to be executed after the measurement has been recorded.
+				An example process may add each component’s hash before it is executed so that the final hash reflects
+				the evidence of a component’s state prior to execution. The measurement may be verified as the system
+				boots, but this is not required.<h:br></h:br><h:br></h:br>
+                            The Platform is outside of the TOE. However, this requirement specifies that the VS must be capable of 
+				receiving Platform measurements if the Platform provides them. This requirement is requiring TOE
+				support for Platform measurements if provided; it is not placing a requirement on the Platform to take
+				such measurements.<h:br></h:br><h:br></h:br>
+                            If available, hardware should be used to store measurements in such a manner that they cannot be modified 
+				in any manner except to be extended. These measurements should be produced in a repeatable manner so 
+				that a third party can verify the measurements if given the inputs. Hardware devices, like Trusted
+				Platform Modules (TPM), TrustZone, and MMU are some examples that may serve as foundations for storing 
+				and reporting measurements.<h:br></h:br><h:br></h:br>
+                            Platforms with a root of trust for measurement (RTM) should initiate the measured launch process. This may 
+				include core BIOS or the chipset. The chipset is the preferred RTM, but core BIOS or other firmware is
+				acceptable. In system without a traditional RTM, the first component that boots would be considered
+				the RTM, this is not preferred.
+                        </note>
+                        <aactivity>
+                            <TSS>
+                                The evaluator shall verify that the TSS or Operational Guidance describes how 
+                                integrity measurements are performed and made available to the Management Subsystem. The evaluator 
+                                shall examine the operational guidance to verify that it documents how to access the measurements in 
+                                the Management Subsystem.
+                            </TSS>
+                            <Tests>
+                                The evaluator shall perform the following tests:<h:br></h:br><h:br></h:br>
+                                <testlist>
+                                    <test>The evaluator shall start the VS, login as an Administrator, and verify that the measurements for the specified components are viewable in the Management Subsystem.</test>
+                              </testlist>
+                            </Tests>
+                        </aactivity>
+                    </f-element>
+		    <audit-event>
+			<audit-event-descr>Integrity initiated/enabled.</audit-event-descr>
+                        <audit-event-info>Integrity measurement values.</audit-event-info>
+		    </audit-event>
+                </f-component>
+		    
                 <!-- FPT_RDM_EXT.1 -->
                 <f-component cc-id="fpt_rdm_ext.1" name="Removable Devices and Media" status="mandatory">
 					<consistency-rationale/>
-					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
-						the integrity of its stored executable code.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>There are no auditable events foreseen.</audit>
+					<comp-lev>requires the TSF to ensure that VMs are not inadvertently given access to information
+						in different domains because removable media is simultaneously accessible from separate
+						domains.</comp-lev>
+					<management>The following actions could be considered for the 
+						management functions in FMT:
+						<h:ol type="a">
+							<h:li>Ability to configure removable media policy.</h:li>
+						</h:ol>
+					</management>
+					<audit>The following actions should be auditable if FAU_GEN Security 
+						audit data generation is included in the PP/ST:
+						<h:ol type="a">
+							<h:li>Connection/disconnection of removable media or device
+								to/from a VM.</h:li>
+							<h:li>Ejection/insertion of removable media or device from/to 
+								an already connected VM.</h:li>
+						</h:ol>
+					</audit>
 					<dependencies></dependencies>
                     <f-element id="fpt-rdm-ext-1e1">
                         <title>The TSF shall implement controls for handling the transfer of virtual and physical removable media and
@@ -4668,10 +4884,20 @@
                 <!-- FPT_TUD_EXT.1 -->
                 <f-component cc-id="fpt_tud_ext.1" name="Trusted Updates to the Virtualization System" status="mandatory">
 					<consistency-rationale/>
-					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
-						the integrity of its stored executable code.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>There are no auditable events foreseen.</audit>
+					<comp-lev>requires the TSF to define the mechanism for applying and verifying TOE updates.</comp-lev>
+					<management>The following actions could be considered for the 
+						management functions in FMT:
+						<h:ol type="a">
+							<h:li>Ability to update the Virtualization System.</h:li>
+						</h:ol>
+					</management>
+					<audit>The following actions should be auditable if FAU_GEN Security
+						audit data generation is included in the PP/ST:
+						<h:ol type="a">
+							<h:li>Initiation of update.</h:li>
+							<h:li>Failure of signature verification.</h:li>
+						</h:ol>
+					</audit>
 					<dependencies></dependencies>
                     <f-element id="fpt-tud-ext-1e1">
                         <title>The TSF shall provide administrators the ability to query the currently executed version of the TOE 
@@ -4779,8 +5005,7 @@
                     <selection-depends req="fpt-tud-ext-1e3" ids="sel-tud-digsign-cert" />
 					<selection-depends req="fia-x509-ext-2e1" ids="sel-x5092-signed-updates"/>
 					<consistency-rationale/>
-					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
-						the integrity of its stored executable code.</comp-lev>
+					<comp-lev>requires the TSF to validate updates using a code signing certificate.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
 					<dependencies></dependencies>
@@ -4806,8 +5031,9 @@
                 <!-- FPT_VDP_EXT.1 -->
                 <f-component cc-id="fpt_vdp_ext.1" name="Virtual Device Parameters" status="mandatory">
 					<consistency-rationale/>
-					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
-						the integrity of its stored executable code.</comp-lev>
+					<comp-lev>, requires the TSF to interface with Guest VMs through virtual hardware abstractions
+						so that any data transmitted to the TOE from a Guest VM can be validated 
+						as well-formed.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
 					<dependencies></dependencies>
@@ -4866,8 +5092,8 @@
                 <!-- FPT_VIV_EXT.1 -->
                 <f-component cc-id="fpt_viv_ext.1" name="VMM Isolation from VMs" status="mandatory">
 					<consistency-rationale/>
-					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
-						the integrity of its stored executable code.</comp-lev>
+					<comp-lev>requires the TSF to ensure that there is no mechanism by which a Guest VM can interface
+						with the TOE, other VMs, or the hardware platform without authorization.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
 					<dependencies></dependencies>
@@ -4919,189 +5145,6 @@
                     </f-element>
 		    <audit-event />
                 </f-component>
-
-                <!-- FPT_GVI_EXT.1 -->
-                <f-component cc-id="fpt_gvi_ext.1" name="Guest VM Integrity"  status="optional">
-					<consistency-rationale/>
-					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
-						the integrity of its stored executable code.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
-                    <f-element id="fpt-gvi-ext-1e1">
-                        <title>The TSF shall verify the integrity of Guest VMs through the following mechanisms: 
-				<assignable>list of Guest VM integrity mechanisms</assignable>.
-                        </title>
-                        <note role="application">The primary purpose of this requirement is to identify and describe 
-				the mechanisms used to verify the integrity of Guest VMs that have been 'imported' in some fashion,
-				though these mechanisms could also be applied to all Guest VMs, depending on the mechanism used.
-				Importation for this requirement could include VM migration (live or otherwise), the importation of
-				virtual disk files that were previously exported, VMs in shared storage, etc. It is possible that a 
-				trusted VM could have been modified during the migration or import/export process, or VMs could have 
-				been obtained from untrusted sources in the first place, so integrity checks on these VMs can be a 
-				prudent measure to take. These integrity checks could be as thorough as making sure the entire VM
-				exactly matches a previously known VM (by hash for example), or by simply checking certain 
-				configuration settings to ensure that the VM's configuration will not violate the security model 
-				of the VS.</note>
-                        <aactivity>
-                            <TSS>
-                                For each mechanism listed in the assignment, the evaluator shall ensure that the TSS 
-                                documents the mechanism, including how it verifies VM integrity, which set of Guest
-                                VMs it will check (all Guest VMs, only migrated VM
-                                s, etc.), when such checks occur (before VM startup, immediately following 
-                                importation/migration, on demand, etc.), and which actions are taken if a VM fails
-                                the integrity check (or which range of actions are possible if the action is configurable).
-                            </TSS>
-                        </aactivity>
-                    </f-element>
-		    <audit-event>
-			<audit-event-descr>Actions taken due to failed integrity check.</audit-event-descr>
-		    </audit-event>
-                </f-component>
-
-
-                <!-- FPT_IDV_EXT.1 -->
-                <f-component cc-id="fpt_idv_ext.1" name="Software Identification and Versions"  status="objective">
- 					<consistency-rationale/>
-					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
-						the integrity of its stored executable code.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
-                   <f-element id="fpt-idv-ext-1e1">
-                        <title>The TSF shall include software identification (SWID) tags that contain a SoftwareIdentity element and 
-				an Entity element as defined in ISO/IEC 19770-2:2009.
-                        </title>
-                    </f-element>
-                    <f-element id="fpt-idv-ext-1e2">
-                        <title>The TSF shall store SWIDs in a .swidtag file as defined in ISO/IEC 19770-2:2009.
-                        </title>
-                        <note role="application">SWID tags are XML files embedded within software that provide a standard method for
-				IT departments to track and manage the software. The presence of SWIDs can greatly simplify the
-				software management process and improve security by enhancing the ability of IT departments to manage 
-				updates.</note>
-                        <aactivity>
-                            <TSS>
-                                The evaluator shall examine the TSS to ensure it describes how SWID tags are
-                                implemented and the format of the tags. The evaluator shall verify that the format complies with
-                                FPT_IDV_EXT.1.1 and that SWIDs are stored in accordance with FPT_IDV_EXT.1.2.
-                            </TSS>
-                            <Tests>
-                                The evaluator shall perform the following test:
-                                <testlist>
-                                    <test>The evaluator shall check for the existence of SWID tags in a .swidtag file. The evaluator 
-					    shall open the file and verify that each SWID contains at least a SoftwareIdentity element 
-					    and an Entity element.</test>
-                                </testlist>
-                            </Tests>
-                        </aactivity>
-                    </f-element>
-		    <audit-event />
-                </f-component>
-
-                <!-- FPT_INT_EXT.1 -->
-                <f-component cc-id="fpt_int_ext.1" name="Support for Introspection"  status="objective">
-					<consistency-rationale/>
-					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
-						the integrity of its stored executable code.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
-                    <f-element id="fpt-int-ext-1e1">
-                        <title>The TSF shall support a mechanism for permitting the VMM or privileged VMs to access the internals of
-				another VM for purposes of introspection.
-                        </title>
-                        <note role="application">Introspection can be used to support malware and anomaly detection from outside of
-				the guest environment. This not only helps protect the Guest OS, it also protects the VS by providing 
-				an opportunity for the VS to detect threats to itself that originate within VMs, and that may attempt
-				to break out of the VM and compromise the VMM or other VMs.<h:br></h:br><h:br></h:br>
-                            The hosting of malware detection software outside of the guest VM helps protect the guest and helps ensure
-				the integrity of the malware detection/antivirus software. This capability can be implemented in 
-				the VMM itself, but ideally it should be hosted by a Service VM so that it can be better contained 
-				and does not introduce bugs into the VMM.</note>
-                        <aactivity>
-                            <TSS>
-                                The evaluator shall examine the TSS documentation to verify that it describes the
-                                interface for VM introspection and whether the introspection is performed by the 
-                                VMM or another VM.
-                            </TSS>
-                            <Guidance>
-                                The evaluator shall examine the operational guidance to ensure that it contains instructions for
-                                configuration of the introspection mechanism.
-                            </Guidance>
-                        </aactivity>
-                    </f-element>
-		    <audit-event>
-			<audit-event-descr>Introspection initiated/enabled.</audit-event-descr>
-                        <audit-event-info>The VM introspected.</audit-event-info>
-		    </audit-event>
-                </f-component>
-
-                <!-- FPT_ML_EXT.1 -->
-                <f-component cc-id="fpt_ml_ext.1" name="Measured Launch of Platform and VMM"  status="objective">
-					<consistency-rationale/>
-					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
-						the integrity of its stored executable code.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
-                    <f-element id="fpt-ml-ext-1e1">
-                        <title>The TSF shall support a measured launch of the Virtualization System. Measured 
-				components of the VS shall include the static executable image of the Hypervisor
-				and:
-                            <selectables linebreak="yes">
-                                <selectable>Static executable images of the Management Subsystem</selectable>
-                                <selectable><assignable>list of (static images of) Service VMs</assignable></selectable>
-                                <selectable><assignable>list of configuration files</assignable></selectable>
-                                <selectable>no other components</selectable>
-                            </selectables>
-                        </title>
-                    </f-element>
-                    <f-element id="fpt-ml-ext-1e2">
-                        <title>The TSF shall make the measurements selected in FPT_ML_EXT.1.1 available to the Management Subsystem.
-                        </title>
-                        <note role="application">
-                            A measured launch of the platform and VS demonstrates that the proper TOE software was
-				loaded. A measured launch process employs verifiable integrity measurement mechanisms. For example, a
-				VS may hash components such as: the hypervisor, service VMs and/or the Management Subsystem. A 
-				measured launch process only allows components to be executed after the measurement has been recorded.
-				An example process may add each component’s hash before it is executed so that the final hash reflects
-				the evidence of a component’s state prior to execution. The measurement may be verified as the system
-				boots, but this is not required.<h:br></h:br><h:br></h:br>
-                            The Platform is outside of the TOE. However, this requirement specifies that the VS must be capable of 
-				receiving Platform measurements if the Platform provides them. This requirement is requiring TOE
-				support for Platform measurements if provided; it is not placing a requirement on the Platform to take
-				such measurements.<h:br></h:br><h:br></h:br>
-                            If available, hardware should be used to store measurements in such a manner that they cannot be modified 
-				in any manner except to be extended. These measurements should be produced in a repeatable manner so 
-				that a third party can verify the measurements if given the inputs. Hardware devices, like Trusted
-				Platform Modules (TPM), TrustZone, and MMU are some examples that may serve as foundations for storing 
-				and reporting measurements.<h:br></h:br><h:br></h:br>
-                            Platforms with a root of trust for measurement (RTM) should initiate the measured launch process. This may 
-				include core BIOS or the chipset. The chipset is the preferred RTM, but core BIOS or other firmware is
-				acceptable. In system without a traditional RTM, the first component that boots would be considered
-				the RTM, this is not preferred.
-                        </note>
-                        <aactivity>
-                            <TSS>
-                                The evaluator shall verify that the TSS or Operational Guidance describes how 
-                                integrity measurements are performed and made available to the Management Subsystem. The evaluator 
-                                shall examine the operational guidance to verify that it documents how to access the measurements in 
-                                the Management Subsystem.
-                            </TSS>
-                            <Tests>
-                                The evaluator shall perform the following tests:<h:br></h:br><h:br></h:br>
-                                <testlist>
-                                    <test>The evaluator shall start the VS, login as an Administrator, and verify that the measurements for the specified components are viewable in the Management Subsystem.</test>
-                              </testlist>
-                            </Tests>
-                        </aactivity>
-                    </f-element>
-		    <audit-event>
-			<audit-event-descr>Integrity initiated/enabled.</audit-event-descr>
-                        <audit-event-info>Integrity measurement values.</audit-event-info>
-		    </audit-event>
-                </f-component>
             </subsection>
 
 	    <!-- 5.1.8 TOE Access -->
@@ -5134,18 +5177,34 @@
 	    <!-- 5.1.9 Trusted Path / Channel (FTP) -->
 	    <subsection id="ss-ftp" title="Trusted Path/Channel (FTP)">
 		
-			    <ext-comp-def title="QQQQ" fam-id="FPT_TST_EXT">
-					<fam-behavior>Components in this family describe requirements for self-test to verify
-					functionality and integrity of the TOE.</fam-behavior>
+			    <ext-comp-def title="Trusted Channel Communications" fam-id="FTP_ITC_EXT">
+					<fam-behavior>This family defines requirements for protection of
+						data in transit between the TOE and its operational environment.</fam-behavior>
+				</ext-comp-def>
+			    <ext-comp-def title="User Interface" fam-id="FTP_UIF_EXT">
+					<fam-behavior>This family defines requirements for unambiguously identifying the specific
+						Guest VM that a TOE user is interacting with at any given point in time.</fam-behavior>
 				</ext-comp-def>
                 
                 <!-- FTP_ITC_EXT.1 -->
                 <f-component cc-id="ftp_itc_ext.1" name="Trusted Channel Communications" status="mandatory">
 					<consistency-rationale/>
-					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
-						the integrity of its stored executable code.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>There are no auditable events foreseen.</audit>
+					<comp-lev>requires the TSF to implement one or more cryptographic protocols
+						to secure connectivity between the TSF and various external entities.</comp-lev>
+					<management>The following actions could be considered for the
+						management functions in FMT:
+						<h:ol type="a">
+							<h:li>Ability to configure the cryptographic functionality.</h:li>
+						</h:ol>
+					</management>
+					<audit>The following actions should be auditable if FAU_GEN Security audit data
+						generation is included in the PP/ST:
+						<h:ol type="a">
+							<h:li>Initiation of the trusted channel.</h:li>
+							<h:li>Termination of the trusted channel.</h:li>
+							<h:li>Failures of the trusted path functions.</h:li>
+						</h:ol>
+					</audit>
 					<dependencies></dependencies>
                     <f-element id="ftp-itc-ext-1e1">
                         <title>The TSF shall use
@@ -5213,8 +5272,8 @@
                 <!-- FTP_UIF_EXT.1 -->
                 <f-component cc-id="ftp_uif_ext.1" name="User Interface: I/O Focus" status="mandatory">
 					<consistency-rationale/>
-					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
-						the integrity of its stored executable code.</comp-lev>
+					<comp-lev>requires the TSF to unambiguously identify the Guest VM that has
+						the current input focus for input peripherals.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
 					<dependencies></dependencies>
