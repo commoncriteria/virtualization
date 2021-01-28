@@ -3,20 +3,10 @@
 
 <!-- to do
 
-    This branch is the same as the OldMaster v1.0 branch with all the TDs unincorporated.
-    It is intended to be built against the latest version of the schema.
+    It is intended to be built against the latest version of the schema (currently the dev branch).
 
-    - DONE: fix all of the objective-refer tags in the threats
-    - DONE: fix all of the objective-refer tags in the assumptions
-    - DONE: fix all of the component-refer tags in the security objectives
-    - TODO: check all the sel-based requirements and make sure I used the correct selection-depends reqs
-       There are certainly some that are wrong.
-    - TODO: Check that the SSH and TLS PAckages are brought in at all the right places.
- 
-    - Incorporate TLS Package
-        - DONE: Remove TLSC and TLSS requirements
-        - DONE: Fix all references to TLSC and TLSS requirements
-        - DONE: Edit FTP_ITC_EXT.1
+    - DONE: Incorporated TLS Package
+	- Incorporate SSH as an FP rather than EP. Waiting for SSH to be published as an FP.
 
     - Incorporate TDs
     - DONE: 0139 Clarification of testing for FDP_RIP_EXT.2
@@ -46,21 +36,11 @@
     - Added SHA-3 to hashes (and tests)
     - Added SHA-3 to keyed hashes (test needn't change)
 
-    - Updated to handle "iteration" attribute in f-components
     - Audit requirements attached to SFRs.
     - Added FIA_AFL_EXT to the audit table. It was inexplicably missing. 
 
-    - See Issues for resolution of coments from Jan 2021.
+    - See Issues for resolution of comments from Jan 2021.
 
-    - Wondering whether to refer to SSH as an EP or FP. Timing is everything.
-
-    Schema changes reflected herein:
-	- pp-declarations and audit-table-decl added. Likely management-table-decl will be added later.
-	- audit-table tag for audit tables. These can live at equivalent to f-element level in f-components (usually only FAU_GEN) 
-		and at the top level within Annexe (appendix tag). 
-	- audit-event tag for defining audit events within f-components
-	- audit-event-descr and audit-event-info tags for contents of those columns in audit table
-	- too many others to document 
     -->
 
 <?xml-model href="CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>    
@@ -293,7 +273,7 @@
 			that apply to Guest VMs, unless specifically stated otherwise.<h:br/><h:br/>
 			
 			<!-- 1.3.1 TOE Boundary -->
-			<subsection id="ss-toeboundary" title="TOE Boundary">
+			<section id="ss-toeboundary" title="TOE Boundary">
 				Figure 1 shows a greatly simplified view of a generic Virtualization System and Platform. TOE components are displayed
 				in Red. Non-TOE components are in Blue. The Platform is the hardware, firmware, and software onto which the VS is 
 				installed. The VMM includes the Hypervisor, Service VMs, and VM containers, but not the software that runs inside
@@ -313,10 +293,10 @@
 				constitute the TOE, and the hardware constitutes the Platform. Also in general, for products that are hosted by or
 				integrated into a commodity operating system, the components installed expressly for implementing and supporting
 				virtualization are in the TOE, and the Platform comprises the hardware and Host OS.
-			</subsection>
+			</section>
 		
 			<!-- 1.3.2 Requirements Met by the Platform -->
-			<subsection id="ss-platformreqs" title="Requirements Met by the Platform">
+			<section id="ss-platformreqs" title="Requirements Met by the Platform">
 				Depending on the way the VS is installed, functions tested under this PP may be implemented by the TOE or by the
 				Platform. There is no difference in the testing required whether the function is implemented by the TOE or by the
 				Platform. In either case, the tests determine whether the function being tested provides a level of assurance 
@@ -324,20 +304,20 @@
 				guidelines are intended in part to address this TOE vs. Platform distinction, and to ensure that the assurance 
 				level does not change between instances of equivalent products on equivalent platforms—and also, of course, to
 				ensure that the appropriate testing is done when the distinction is significant.
-			</subsection>
+			</section>  -->
 		
 			<!-- 1.3.3 Scope of Certification -->
-			<subsection id="ss-scopecert" title="Scope of Certification">
+			<section id="ss-scopecert" title="Scope of Certification">
 				Successful evaluation of a Virtualization System against this profile does not constitute or imply successful 
 				evaluation of any Host Operating System or Platform—no matter how tightly integrated with the VS. The Platform,
 				including any Host OS, supports the VS through provision of services and resources. Specialized VS components 
 				installed on or in a Host OS to support the VS may be considered part of the TOE. But general-purpose OS
 				components and functions—whether or not they support the VS—are not part of the TOE, and thus
 				are not evaluated under this PP.
-			</subsection>
+			</section>
 		
 			<!-- 1.3.4 Vendor Attestation -->
-			<subsection id="ss-attestation" title="Vendor Attestation">
+			<section id="ss-attestation" title="Vendor Attestation">
 				This PP includes several SFRs that include elements that are met via vendor attestation. Attestation assurance 
 				activities are reserved for SFRs that define properties that are critical to the system’s security functionality,
 				but that are impossible or impractical to test in a repeatable and consistent manner. These Attestation assurance 
@@ -349,14 +329,14 @@
 				statements are false (and the product does not meet the specified security functionality), the CC certificate may
 				be revoked. See FDP_VMS_EXT.1, FDP_VNC_EXT.1, FPT_VDP_EXT.1, and FPT_VIV_EXT.1 for the associated Attestation
 				statements.
-			</subsection>
+			</section>
 		
 			<!-- 1.3.5 Product and Platform Equivalance -->
-			<subsection id="ss-equiv" title="Product and Platform Equivalence">
+			<section id="ss-equiv" title="Product and Platform Equivalence">
 				The tests in this Protection Profile must be run on all product versions and Platforms with which the Vendor would 
-				like to claim compliance—subject to this Profile’s equivalency guidelines (see <appref linkend="appendix-equiv"/>).
+				like to claim compliance—subject to this Profile’s equivalency guidelines (see <xref to="appendix-equiv"/>).
 				<!-- <appendix id="appendix-equiv" title="Equivalency Guidelines"> -->
-			</subsection>
+			</section>
 		</section>
 
 		<!-- 1.4 Use Cases -->
@@ -905,14 +885,14 @@
         <section id="s-sfr" title="Security Functional Requirements">
 		
 			<!-- 5.1.1 Auditable Events for Mandatory SFRs -->
-			<subsection id="ss-audit-table" title="Auditable Events for Mandatory SFRs">
+			<section id="ss-audit-table" title="Auditable Events for Mandatory SFRs">
 				<audit-table table="mandatory">
 					<h:br/><h:b><ctr ctr-type="Table" id="atref-mandatory">: Auditable Events for Mandatory SFRs</ctr></h:b>
 				</audit-table>
-			</subsection>
+			</section>
 
 			<!-- 5.1.2 Security Audit (FAU) -->
-            <subsection id="ss-fau" title="Security Audit (FAU)">
+            <section id="ss-fau" title="Security Audit (FAU)">
 			
 			    <ext-comp-def title="Off-Loading of Audit Data" fam-id="FPT_STG_EXT">
 					<fam-behavior>This family defines requirements for the TSF to be able to securely 
@@ -940,11 +920,11 @@
 
 				-->
 		    
-								<h:li>[<refinement>Auditable events defined in <ctr-ref ref-id="atref-mandatory"/></refinement>]</h:li>
+								<h:li>[<refinement>Auditable events defined in <xref to="atref-mandatory"/></refinement>]</h:li>
                                 <h:li><refinement><selectables>
-                                    <selectable id="sel-at2">Auditable events defined in <ctr-ref ref-id="atref-optional-dep"></ctr-ref></selectable>
-									<selectable id="sel-at3">Auditable events defined in <ctr-ref ref-id="atref-objective-dep"></ctr-ref></selectable>
-                                    <selectable id="sel-at4">Auditable events defined in <ctr-ref ref-id="atref-sel-based-dep"></ctr-ref></selectable>
+                                    <selectable id="sel-at2">Auditable events defined in <xref g="atref-optional-dep"></xref></selectable>
+									<selectable id="sel-at3">Auditable events defined in <xref g="atref-objective-dep"></xref></selectable>
+                                    <selectable id="sel-at4">Auditable events defined in <xref g="atref-sel-based-dep"></xref></selectable>
                                     <selectable>no other auditable events</selectable>
 								</selectables></refinement></h:li>
                             </h:ol>
@@ -966,24 +946,24 @@
 									 in FAU_GEN.1.1.
 								-->
 				    
-								<h:li>[<refinement>Additional information defined in <ctr-ref ref-id="atref-mandatory"/></refinement>]</h:li>
+								<h:li>[<refinement>Additional information defined in <xref to="atref-mandatory"/></refinement>]</h:li>
                                 <h:li><refinement><selectables>
-                                    <selectable>Additional information defined in <ctr-ref ref-id="atref-optional-dep"></ctr-ref></selectable>
-                                    <selectable>Additional information defined in <ctr-ref ref-id="atref-objective-dep"></ctr-ref></selectable>
-                                    <selectable>Additional information defined in <ctr-ref ref-id="atref-sel-based-dep"></ctr-ref></selectable>
+                                    <selectable>Additional information defined in <xref g="atref-optional-dep"></xref></selectable>
+                                    <selectable>Additional information defined in <xref g="atref-objective-dep"></xref></selectable>
+                                    <selectable>Additional information defined in <xref g="atref-sel-based-dep"></xref></selectable>
                                     <selectable>no other information</selectable>
 								</selectables></refinement></h:li>
                             </h:ol>
                         </title>
                         <note role="application">
-                            The ST author can include other auditable events directly in <ctr-ref ref-id="atref-mandatory"/>; they are not
+                            The ST author can include other auditable events directly in <xref to="atref-mandatory"/>; they are not
 							limited to the list presented. The ST author should update the table in 
 							FAU_GEN.1.2 with any additional information generated. “Subject identity” in FAU_GEN.1.2 could be a 
 							user id or an identifier specifying a VM, for example.<h:br></h:br><h:br></h:br>
-							Appropriate entries from <ctr-ref ref-id="atref-optional-dep"/>, <ctr-ref ref-id="atref-objective-dep"/>, and
-							<ctr-ref ref-id="atref-sel-based-dep"/> should be included in the ST if the 
+							Appropriate entries from <xref g="atref-optional-dep"/>, <xref g="atref-objective-dep"/>, and
+							<xref g="atref-sel-based-dep"/> should be included in the ST if the 
 							associated SFRs and selections are included.<h:br></h:br><h:br></h:br>
-							The <ctr-ref ref-id="atref-mandatory"/> entry for FDP_VNC_EXT.1 refers to configuration settings that attach 
+							The <xref to="atref-mandatory"/> entry for FDP_VNC_EXT.1 refers to configuration settings that attach 
 							VMs to virtualized network components. Changes to these configurations can be made 
 							during VM execution or when VMs are not running. Audit records 
 							must be generated for either case.<h:br></h:br><h:br></h:br>
@@ -1027,7 +1007,7 @@
 				</f-component>
                 
                 <!-- FAU_SAR.1 -->
-                <f-component cc-id="fau_sar.1" name="Audit Review" status="mandatory">
+                <f-component cc-id="fau_sar.1" name="Audit Review">
                     <f-element id="fau-sar-1e1">
                         <title>The TSF shall provide [administrators] with the capability to read [all information] from the audit records.
                         </title>
@@ -1052,7 +1032,7 @@
                 </f-component>
                 
                 <!-- FAU_STG.1 -->
-                <f-component cc-id="fau_stg.1" name="Protected Audit Trail Storage" status="mandatory">
+                <f-component cc-id="fau_stg.1" name="Protected Audit Trail Storage">
                     <f-element id="fau-stg-1e1">
                         <title>The TSF shall protect the stored audit records in the audit trail from unauthorized deletion.
                         </title>
@@ -1090,7 +1070,7 @@
                 </f-component>
 			    
                 <!-- FAU_STG_EXT.1 -->
-                <f-component cc-id="fau_stg_ext.1" name="Off-Loading of Audit Data" status="mandatory">
+                <f-component cc-id="fau_stg_ext.1" name="Off-Loading of Audit Data">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to transmit audit data using a trusted channel to an outside entity and to specify 
 						the action to be taken when local audit storage is full.</comp-lev>
@@ -1243,10 +1223,10 @@
                         <audit-event-descr>Automated responses performed by the TSF.</audit-event-descr>
 					</audit-event>
 				</f-component>
-            </subsection>
+            </section>
             
 			<!-- 5.1.3 Cryptographic Support (FCS) -->
-            <subsection id="ss-fcs" title="Cryptographic Support (FCS)">
+            <section id="ss-fcs" title="Cryptographic Support (FCS)">
 			
 			    <ext-comp-def title="Cryptographic Key Management" fam-id="FCS_CKM_EXT">
 					<fam-behavior>
@@ -1277,7 +1257,7 @@
 				</ext-comp-def>
                 
                 <!-- FCS_CKM.1 -->
-                <f-component cc-id="fcs_ckm.1" name="Cryptographic Key Generation" status="mandatory">
+                <f-component cc-id="fcs_ckm.1" name="Cryptographic Key Generation">
                     <f-element id="fcs-ckm-1e1">
                         <title> The TSF shall generate asymmetric cryptographic keys in accordance with a specified cryptographic key
 							generation algorithm
@@ -1405,7 +1385,7 @@
                 </f-component>
                 
                 <!-- FCS_CKM.2 -->
-                <f-component cc-id="fcs_ckm.2" name="Cryptographic Key Establishment" status="mandatory">
+                <f-component cc-id="fcs_ckm.2" name="Cryptographic Key Establishment">
                     <f-element id="fcs-ckm-2e1">
                         <title>The TSF shall perform cryptographic key establishment in accordance with a specified cryptographic
 							key establishment method:
@@ -1531,7 +1511,7 @@
                 </f-component>
 
                 <!-- FCS_CKM_EXT.4 -->
-                <f-component cc-id="fcs_ckm_ext.4" name="Cryptographic Key Destruction" status="mandatory">
+                <f-component cc-id="fcs_ckm_ext.4" name="Cryptographic Key Destruction">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to destroy or make unrecoverable empty keys in volatile and 
 						non-volatile memory. Note that component level 4 is used here because of this
@@ -1638,7 +1618,7 @@
                 </f-component>
        
                 <!-- FCS_COP.1/UDE (formerly FCS_COP.1(1)) -->
-                <f-component cc-id="fcs_cop.1" iteration="UDE" name="Cryptographic Operation (AES Data Encryption/Decryption)" status="mandatory">
+                <f-component cc-id="fcs_cop.1" iteration="UDE" name="Cryptographic Operation (AES Data Encryption/Decryption)">
                     <f-element id="fcs-cop-1e1-ude">
                         <title>
                             The TSF shall perform [encryption and decryption] in accordance with a specified cryptographic algorithm<h:br></h:br>
@@ -1976,7 +1956,7 @@
 				</f-component>
                
 				<!-- FCS_COP.1/HASH (formerly FCS_COP.1(2)) -->
-                <f-component cc-id="fcs_cop.1" iteration="HASH" name="Cryptographic Operation (Hashing)" status="mandatory">
+                <f-component cc-id="fcs_cop.1" iteration="HASH" name="Cryptographic Operation (Hashing)">
                     <f-element id="fcs-cop-1e1-hash">
                         <title>The TSF shall perform [cryptographic hashing] in accordance with a specified cryptographic algorithm
                             <selectables>
@@ -2126,7 +2106,7 @@
                 
                 <!-- FCS_COP.1/SIG (formerly FCS_COP.1(3)) -->
 				<!-- Added SHA-3 hashes 20190919 -->
-                <f-component cc-id="fcs_cop.1" iteration="SIG" name="Cryptographic Operation (Signature Algorithms)" status="mandatory">
+                <f-component cc-id="fcs_cop.1" iteration="SIG" name="Cryptographic Operation (Signature Algorithms)">
                     <f-element id="fcs-cop-1e1-sig">
                         <title>The TSF shall perform [<h:i>cryptographic signature services (generation and verification)</h:i>] in 
 							accordance with a specified cryptographic algorithm
@@ -2193,7 +2173,7 @@
                 
                 <!-- FCS_COP.1/KEYHASH (formerly FCS_COP.1(4)) -->
 				<!-- Added SHA-3 hashes 20190919 -->
-                <f-component cc-id="fcs_cop.1" iteration="KEYHASH" name="Cryptographic Operation (Keyed Hash Algorithms)" status="mandatory">
+                <f-component cc-id="fcs_cop.1" iteration="KEYHASH" name="Cryptographic Operation (Keyed Hash Algorithms)">
                     <f-element id="fcs-cop-1e1-keyhash">
                         <title>The TSF shall perform [<h:i>keyed-hash message authentication</h:i>] in accordance with a specified
 							cryptographic algorithm
@@ -2243,7 +2223,7 @@
                 </f-component>
                 
                 <!-- FCS_ENT_EXT.1 -->
-                <f-component cc-id="fcs_ent_ext.1" name="Extended: Entropy for Virtual Machines" status="mandatory">
+                <f-component cc-id="fcs_ent_ext.1" name="Extended: Entropy for Virtual Machines">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to provide entropy data to VMs in a specified manner.</comp-lev>
 					<management>No specific management functions are identified.</management>
@@ -3078,7 +3058,7 @@
                 </f-component>
 				
                 <!-- FCS_RBG_EXT.1 -->
-                <f-component cc-id="fcs_rbg_ext.1" name="Cryptographic Operation (Random Bit Generation)" status="mandatory">
+                <f-component cc-id="fcs_rbg_ext.1" name="Cryptographic Operation (Random Bit Generation)">
 					<consistency-rationale/>
 					<comp-lev>requires random bit generation to be performed in accordance with
 						selected standards and seeded by an entropy source.</comp-lev>
@@ -3171,10 +3151,10 @@
 						<audit-event-descr>Failure of the randomization process</audit-event-descr>
 					</audit-event>
                 </f-component>		
-            </subsection>
+            </section>
 
 			<!-- 5.1.4 User Data Protection -->
-            <subsection id="ss-fdp" title="User Data Protection (FDP)">
+            <section id="ss-fdp" title="User Data Protection (FDP)">
 			
 			    <ext-comp-def title="Hardware-Based Isolation Mechanisms" fam-id="FDP_HBI_EXT">
 					<fam-behavior>This family defines requirements for isolation of Guest VMs from the hardware resources
@@ -3198,7 +3178,7 @@
 				</ext-comp-def>
 
                 <!-- FDP_HBI_EXT.1 -->
-                <f-component cc-id="fdp_hbi_ext.1" name="Hardware-Based Isolation Mechanisms" status="mandatory">
+                <f-component cc-id="fdp_hbi_ext.1" name="Hardware-Based Isolation Mechanisms">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to identify the mechanisms used to isolate Guest VMs from platform
 						hardware resources.</comp-lev>
@@ -3237,7 +3217,7 @@
                 </f-component>
 
                 <!-- FDP_PPR_EXT.1 -->
-                <f-component cc-id="fdp_ppr_ext.1" name="Physical Platform Resource Controls" status="mandatory">
+                <f-component cc-id="fdp_ppr_ext.1" name="Physical Platform Resource Controls">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to define the hardware resources that Guest VMs may always access, may never access,
 						and may conditionally access based on administrative configuration.</comp-lev>
@@ -3356,7 +3336,7 @@
                 </f-component>
                 
                 <!-- FDP_RIP_EXT.1 -->
-                <f-component cc-id="fdp_rip_ext.1" name="Residual Information in Memory" status="mandatory">
+                <f-component cc-id="fdp_rip_ext.1" name="Residual Information in Memory">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to ensure that physical memory is purged prior to its allocation to a
 						Guest VM.</comp-lev>
@@ -3390,7 +3370,7 @@
                 </f-component>
 
                 <!-- FDP_RIP_EXT.2 -->
-                <f-component cc-id="fdp_rip_ext.2" name="Residual Information on Disk" status="mandatory">
+                <f-component cc-id="fdp_rip_ext.2" name="Residual Information on Disk">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to ensure that physical disk storage is purged prior to its
 						allocation to a Guest VM.</comp-lev>
@@ -3435,7 +3415,7 @@
                 </f-component>
 
                 <!-- FDP_VMS_EXT.1 -->
-                <f-component cc-id="fdp_vms_ext.1" name="VM Separation" status="mandatory">
+                <f-component cc-id="fdp_vms_ext.1" name="VM Separation">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to maintain logical separation between Guest VMs
 						except through the use of specific configurable methods.</comp-lev>
@@ -3537,7 +3517,7 @@
                 </f-component>
                 
                 <!-- FDP_VNC_EXT.1 -->
-                <f-component cc-id="fdp_vnc_ext.1" name="Virtual Networking Components" status="mandatory">
+                <f-component cc-id="fdp_vnc_ext.1" name="Virtual Networking Components">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to support the configuration of virtual networking between Guest VMs.</comp-lev>
 					<management>The following actions could be considered for the management
@@ -3625,10 +3605,10 @@
 						<audit-event-info>VM and virtual or physical networking component identifiers.</audit-event-info>
 					</audit-event>
                 </f-component>
-            </subsection>
+            </section>
             
 			<!-- 5.1.5 Identification and Authentication (FIA) -->
-            <subsection id="ss-fia" title="Identification and Authentication (FIA)">
+            <section id="ss-fia" title="Identification and Authentication (FIA)">
 			
 			    <ext-comp-def title="Authentication Failure Handling" fam-id="FIA_AFL_EXT">
 					<fam-behavior>This family defines requirements for detection and prevention
@@ -3647,7 +3627,7 @@
 				</ext-comp-def>
                 
                 <!-- FIA_AFL_EXT.1 -->
-                <f-component cc-id="fia_afl_ext.1" name="Authentication Failure Handling" status="mandatory">
+                <f-component cc-id="fia_afl_ext.1" name="Authentication Failure Handling">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to lock an administrator account when an excessive number of failed authentication attempts
 						have been observed until some restorative event occurs to enable the account.</comp-lev>
@@ -3807,7 +3787,7 @@
 
 
                 <!-- FIA_UAU.5 -->
-                <f-component cc-id="fia_uau.5" name="Multiple Authentication Mechanisms" status="mandatory">
+                <f-component cc-id="fia_uau.5" name="Multiple Authentication Mechanisms">
                     <f-element id="fia-uau-5e1">
                         <title>The TSF shall provide the following authentication mechanisms:
                             <selectables linebreak="yes">
@@ -3903,7 +3883,7 @@
                 </f-component>
 
                 <!-- FIA_UIA_EXT.1 -->
-                <f-component cc-id="fia_uia_ext.1" name="Administrator Identification and Authentication" status="mandatory">
+                <f-component cc-id="fia_uia_ext.1" name="Administrator Identification and Authentication">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to ensure that all subjects attempting to perform TSF-mediated actions
 						are identified and authenticated prior to authorizing these actions to be performed.</comp-lev>
@@ -4183,10 +4163,10 @@
                     </f-element>
 					<audit-event />
                 </f-component>
-            </subsection>
+            </section>
             
 	    <!-- 5.1.6 Security Management (FMT) -->
-            <subsection id="ss-fmt" title="Security Management (FMT)">
+            <section id="ss-fmt" title="Security Management (FMT)">
 			
 				<ext-comp-def title="Default Data Sharing Configuration" fam-id="FMT_MSA_EXT">
 					<fam-behavior>This family defines requirements for the default data sharing behavior
@@ -4198,7 +4178,7 @@
 				</ext-comp-def>
                 
                 <!-- FMT_MSA_EXT.1 -->
-                <f-component cc-id="fmt_msa_ext.1" name="Default Data Sharing Configuration" status="mandatory">
+                <f-component cc-id="fmt_msa_ext.1" name="Default Data Sharing Configuration">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to define its default security posture for sharing of data between Guest
 						VMs.</comp-lev>
@@ -4248,7 +4228,7 @@
                 </f-component>
                 
                 <!-- FMT_SMO_EXT.1 -->
-                <f-component cc-id="fmt_smo_ext.1" name="Separation of Management and Operational Networks" status="mandatory">
+                <f-component cc-id="fmt_smo_ext.1" name="Separation of Management and Operational Networks">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to separate its management and operational networks through a defined 
 						mechanism.</comp-lev>
@@ -4293,10 +4273,10 @@
                     </f-element>
 					<audit-event />
                 </f-component>
-            </subsection>
+            </section>
             
 			<!-- 5.1.7 Protection of the TSF (FPT) -->
-            <subsection id="ss-fpt" title="Protection of the TSF (FPT)">
+            <section id="ss-fpt" title="Protection of the TSF (FPT)">
 			
 			    <ext-comp-def title="Device Driver Isolation" fam-id="FPT_DDI_EXT">
 					<fam-behavior>This family defines requirements for isolation of device drivers</fam-behavior>
@@ -4385,7 +4365,7 @@
                 </f-component>
                 
                 <!-- FPT_DVD_EXT.1 -->
-                <f-component cc-id="fpt_dvd_ext.1" name="Non-Existence of Disconnected Virtual Devices" status="mandatory">
+                <f-component cc-id="fpt_dvd_ext.1" name="Non-Existence of Disconnected Virtual Devices">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to prevent Guest VMs from accessing virtual devices
 						that it is not configured to have access to.</comp-lev>
@@ -4416,7 +4396,7 @@
                 </f-component>
 
                 <!-- FPT_EEM_EXT.1 -->
-                <f-component cc-id="fpt_eem_ext.1" name="Execution Environment Mitigations" status="mandatory">
+                <f-component cc-id="fpt_eem_ext.1" name="Execution Environment Mitigations">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to identify the execution environment-based
 						protection mechanisms that it can use for self-protection.</comp-lev>
@@ -4502,7 +4482,7 @@
                 </f-component>
 		    
                 <!-- FPT_HAS_EXT.1 -->
-                <f-component cc-id="fpt_has_ext.1" name="Hardware Assists" status="mandatory">
+                <f-component cc-id="fpt_has_ext.1" name="Hardware Assists">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to identify the hardware assists it uses to reduce
 						TOE complexity.</comp-lev>
@@ -4546,7 +4526,7 @@
                 </f-component>
 
                 <!-- FPT_HCL_EXT.1 -->
-                <f-component cc-id="fpt_hcl_ext.1" name="Hypercall Controls" status="mandatory">
+                <f-component cc-id="fpt_hcl_ext.1" name="Hypercall Controls">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to implement a Hypercall interface with appropriate access controls
 						to protect Guest VMs from unauthorized access via this interface.</comp-lev>
@@ -4796,7 +4776,7 @@
                 </f-component>
 		    
                 <!-- FPT_RDM_EXT.1 -->
-                <f-component cc-id="fpt_rdm_ext.1" name="Removable Devices and Media" status="mandatory">
+                <f-component cc-id="fpt_rdm_ext.1" name="Removable Devices and Media">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to ensure that VMs are not inadvertently given access to information
 						in different domains because removable media is simultaneously accessible from separate
@@ -4894,7 +4874,7 @@
                 </f-component>
 
                 <!-- FPT_TUD_EXT.1 -->
-                <f-component cc-id="fpt_tud_ext.1" name="Trusted Updates to the Virtualization System" status="mandatory">
+                <f-component cc-id="fpt_tud_ext.1" name="Trusted Updates to the Virtualization System">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to define the mechanism for applying and verifying TOE updates.</comp-lev>
 					<management>The following actions could be considered for the 
@@ -5041,7 +5021,7 @@
                 </f-component>
 
                 <!-- FPT_VDP_EXT.1 -->
-                <f-component cc-id="fpt_vdp_ext.1" name="Virtual Device Parameters" status="mandatory">
+                <f-component cc-id="fpt_vdp_ext.1" name="Virtual Device Parameters">
 					<consistency-rationale/>
 					<comp-lev>, requires the TSF to interface with Guest VMs through virtual hardware abstractions
 						so that any data transmitted to the TOE from a Guest VM can be validated 
@@ -5102,7 +5082,7 @@
                 </f-component>
 
                 <!-- FPT_VIV_EXT.1 -->
-                <f-component cc-id="fpt_viv_ext.1" name="VMM Isolation from VMs" status="mandatory">
+                <f-component cc-id="fpt_viv_ext.1" name="VMM Isolation from VMs">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to ensure that there is no mechanism by which a Guest VM can interface
 						with the TOE, other VMs, or the hardware platform without authorization.</comp-lev>
@@ -5157,13 +5137,13 @@
                     </f-element>
 		    <audit-event />
                 </f-component>
-            </subsection>
+            </section>
 
 	    <!-- 5.1.8 TOE Access -->
-            <subsection id="ss-fta" title="TOE Access (FTA)">
+            <section id="ss-fta" title="TOE Access (FTA)">
 	
                 <!-- FTA_TAB.1 -->
-                <f-component cc-id="fta_tab.1" name="TOE Access Banner" status="mandatory">
+                <f-component cc-id="fta_tab.1" name="TOE Access Banner">
                     <f-element id="fta-tab-ext-1e1">
                         <title>Before establishing an administrative user session, the TSF shall display a
                             security Administrator-specifiedad advisory notice and consent warning message regarding
@@ -5184,10 +5164,10 @@
                     </f-element>
 		    <audit-event />
                 </f-component>
-            </subsection>
+            </section>
             
 	    <!-- 5.1.9 Trusted Path / Channel (FTP) -->
-	    <subsection id="ss-ftp" title="Trusted Path/Channel (FTP)">
+	    <section id="ss-ftp" title="Trusted Path/Channel (FTP)">
 		
 			    <ext-comp-def title="Trusted Channel Communications" fam-id="FTP_ITC_EXT">
 					<fam-behavior>This family defines requirements for protection of
@@ -5199,7 +5179,7 @@
 				</ext-comp-def>
                 
                 <!-- FTP_ITC_EXT.1 -->
-                <f-component cc-id="ftp_itc_ext.1" name="Trusted Channel Communications" status="mandatory">
+                <f-component cc-id="ftp_itc_ext.1" name="Trusted Channel Communications">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to implement one or more cryptographic protocols
 						to secure connectivity between the TSF and various external entities.</comp-lev>
@@ -5282,7 +5262,7 @@
                 </f-component>
 
                 <!-- FTP_UIF_EXT.1 -->
-                <f-component cc-id="ftp_uif_ext.1" name="User Interface: I/O Focus" status="mandatory">
+                <f-component cc-id="ftp_uif_ext.1" name="User Interface: I/O Focus">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to unambiguously identify the Guest VM that has
 						the current input focus for input peripherals.</comp-lev>
@@ -5318,7 +5298,7 @@
                 </f-component>
 
                 <!-- FTP_UIF_EXT.2 -->
-                <f-component cc-id="ftp_uif_ext.2" name="User Interface: Identification of VM" status="mandatory">
+                <f-component cc-id="ftp_uif_ext.2" name="User Interface: Identification of VM">
 					<consistency-rationale/>
 					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
 						the integrity of its stored executable code.</comp-lev>
@@ -5430,7 +5410,7 @@
                         <audit-event-info>User ID and remote source (IP Address) if feasible.</audit-event-info>
 		    </audit-event>    
                 </f-component>
-            </subsection>
+            </section>
 		
 	    <!-- 5.1.10 TOE Security Functional Requirements Rationale -->
 	     <!-- auto generated -->
@@ -5453,12 +5433,12 @@
 		provide clarification as to what the developer needs to provide to demonstrate the TOE is compliant with the PP.
 
 	    <!-- 5.2.1 Class ASE: Security Target Evaluation -->
-            <subsection id="ss-ase" title="Class ASE: Security Target Evaluation">
+            <section id="ss-ase" title="Class ASE: Security Target Evaluation">
                 As per ASE activities defined in [CEM] plus the TSS assurance activities defined for any SFRs claimed by the TOE.
-            </subsection>
+            </section>
 		
 	    <!-- 5.2.2 Class ADV: Development  -->
-            <subsection id="ss-adv" title="Class ADV: Development">
+            <section id="ss-adv" title="Class ADV: Development">
                 The information about the TOE is contained in the guidance documentation available to the end user as well as the TOE
 		    Summary Specification (TSS) portion of the ST. The TOE developer must concur with the description of the product that is
 		    contained in the TSS as it relates to the functional requirements. The Assurance Activities contained in Section 5.2 
@@ -5512,10 +5492,10 @@
                         </note>
                     </a-element>
                 </a-component>
-            </subsection>
+            </section>
 		
 	    <!-- 5.2.3 Class AGD: Guidance Document  -->
-            <subsection id="ss-agd" title="Class AGD: Guidance Documents">
+            <section id="ss-agd" title="Class AGD: Guidance Documents">
                 The guidance documents will be provided with the developer’s security target. Guidance must include a description of
 		    how the authorized user verifies that the Operational Environment can fulfill its role for the security
 		    functionality. The documentation should be in an informal style and readable by an authorized user.<h:br></h:br><h:br></h:br>
@@ -5646,10 +5626,10 @@
                         </aactivity>
                     </a-element>
                 </a-component>
-            </subsection>
+            </section>
 
 	    <!-- 5.2.4 Class ALC: Life-Cycle Development -->
-            <subsection id="ss-alc" title="Class ALC: Life-Cycle Support">
+            <section id="ss-alc" title="Class ALC: Life-Cycle Support">
                 At the assurance level specified for TOEs conformant to this PP, life-cycle support is limited to an examination of 
 		    the TOE vendor’s development and configuration management process in order to provide a baseline level of 
 		    assurance that the TOE itself is developed in a secure manner and that the developer has a well-defined process 
@@ -5761,10 +5741,10 @@
                     </a-element>
                 </a-component>
 
-            </subsection>
+            </section>
 		
 	    <!-- 5.2.5 Class ATE: Tests -->
-            <subsection id="ss-ate" title="Class ATE: Tests">
+            <section id="ss-ate" title="Class ATE: Tests">
                 Testing is specified for functional aspects of the system as well as aspects that take advantage of design or
 		    implementation weaknesses. The former is done through ATE_IND family, while the latter is through the AVA_VAN
 		    family. At the assurance level specified in this PP, testing is based on advertised functionality and interfaces
@@ -5828,10 +5808,10 @@
                          </aactivity>
                     </a-element>
                 </a-component>
-            </subsection>
+            </section>
             
 	    <!-- 5.2.6 Class AVA: Vulnerability Assessment -->
-            <subsection id="ss-ava" title="Class AVA: Vulnerability Assessment">
+            <section id="ss-ava" title="Class AVA: Vulnerability Assessment">
                 For the first generation of this Protection Profile, the evaluation lab is expected to survey open sources to learn
 		    what vulnerabilities have been discovered in these types of products. In most cases, these vulnerabilities will
 		    require sophistication beyond that of a basic attacker. Until penetration tools are created and uniformly
@@ -5881,7 +5861,7 @@
 			  </aactivity>
                     </a-element>
                 </a-component>
-            </subsection>
+            </section>
         </section>
 	<sec:Security_Requirements>
 <!--    </chapter>  -->
@@ -6030,7 +6010,7 @@
       are compliant?
       <h:br />
       <h:br />
-      <ctr-ref ref-id="equiv-prod-model"/>, below, lists the factors for determining Product Model equivalence.
+      <xref to="equiv-prod-model"/>, below, lists the factors for determining Product Model equivalence.
       <h:br />
       <h:br />
       
@@ -6128,7 +6108,7 @@
         into an OS—then both hardware and software equivalence are required. Likewise, if the Product can be installed either on bare
         metal or on an operating system, both hardware and software equivalence are relevant.
       <h:br /><h:br />
-      <subsection id="ss-hardware-equiv" title="Hardware Platform Equivalence">
+      <section id="ss-hardware-equiv" title="Hardware Platform Equivalence">
         If a Virtualization Solution runs directly on hardware without an operating system, then platform equivalence is based primarily
           on processor architecture and instruction sets.
         <h:br /><h:br />
@@ -6171,9 +6151,9 @@
         </h:table>
         <h:br />
         <h:br />
-      </subsection>
+      </section>
 	    
-      <subsection id="ss-os-equiv" title="Software Platform Equivalence">
+      <section id="ss-os-equiv" title="Software Platform Equivalence">
         If the Product installs onto or integrates with an operating system that is not installed with the product--and thus
           is not part of the TOE--then the Product must be tested on all non-equivalent Software Platforms.
         <h:br />
@@ -6221,7 +6201,7 @@
         </h:table>
         <h:br />
         <h:br />
-    </subsection>
+    </section>
   </section>
 	    
     <section id="s-specificity" title="Level of Specificity for Tested Configurations and Claimed Equivalent Configurations">
