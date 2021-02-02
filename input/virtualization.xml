@@ -5906,7 +5906,70 @@
 	</audit-table>   -->
     </appendix> 
 	
-    <!-- Annex C: Entropy Documentation and Assessment -->
+	<!-- Appendix C: Implicity Satisfied Requirements -->
+	<appendix title="Implicitly Satisfied Requirements" id="satisfiedreqs">
+	This appendix lists requirements that should be considered satisfied by products
+	successfully evaluated against this PP. These requirements are not featured
+	explicitly as SFRs and should not be included in the ST. They are not included as 
+	standalone SFRs because it would increase the time, cost, and complexity of evaluation.
+	This approach is permitted by [CC] Part 1, 8.2 Dependencies between components.<h:p/>
+	This information benefits systems engineering activities which call for inclusion of particular
+	security controls. Evaluation against the PP provides evidence that these controls are present 
+	and have been evaluated.<h:p/>
+	<h:b><ctr ctr-type="Table" pre="Table " id="imp-sat-reqs-table">: Implicitly Satisfied Requirements</ctr></h:b>
+    <h:table>	
+		<h:tr class="header"><h:td>Requirement</h:td><h:td>Rationale for Satisfaction</h:td></h:tr>
+		<h:tr>
+	<h:td>FAU_GEN.1 – Audit Data Generatio</h:td>
+	<h:td>
+	  FAU_GEN.1 has a dependency on FPT_STM.1. While not explicitly stated in the PP, it is assumed
+	  that this will be provided by the underlying hardware platform on which the TOE is installed. 
+	  This is because the TOE is installed as a software or firmware product that runs on general-purpose 
+	  computing hardware so a hardware clock is assumed to be available.
+	</h:td>
+	</h:tr>
+	<h:tr>
+	<h:td>FCS_CKM.1 – Cryptographic Key Generation</h:td>
+	<h:td>
+	  FCS_CKM.1 has a dependency on FCS_CKM.4. The extended SFR FCS_CKM_EXT.4 addresses this dependency 
+	  by defining an alternate requirement for key destruction.
+	</h:td>
+	</h:tr>
+	<h:tr>
+	<h:td>FCS_CKM.2 – Cryptographic Key Establishment</h:td>
+	<h:td>
+	  FCS_CKM.2 has a dependency on FCS_CKM.4. The extended SFR FCS_CKM_EXT.4 addresses this dependency by 
+	  defining an alternate requirement for key destruction.
+	</h:td>
+	</h:tr>
+	<h:tr>
+	<h:td>FCS_COP.1 – Cryptographic Operation</h:td>
+	<h:td>
+	  Each iteration of FCS_COP.1 has a dependency on FCS_CKM.4. The extended SFR FCS_CKM_EXT.4 addresses this 
+	  dependency by defining an alternate requirement for key destruction.
+	</h:td>
+	</h:tr>
+	<h:tr>
+	<h:td>FIA_X509_EXT.1 – X.509 Certificate Validation</h:td>
+	<h:td>
+ 	  FIA_X509_EXT.1 has a dependency on FPT_STM.1. While not explicitly stated in the PP, it is assumed that
+	  this will be provided by the underlying hardware platform on which the TOE is installed. This is 
+	  because the TOE is installed as a software or firmware product that runs on general-purpose computing
+	  hardware so a hardware clock is assumed to be available.
+	</h:td>
+	</h:tr>
+	<h:tr>
+	<h:td>FMT_SMR.2 – Restrictions on Security Roles</h:td>
+	<h:td>
+	  FMT_SMR.2 has a dependency on FIA_UID.1. The extended SFR FIA_UID_EXT.1 expresses this dependency by also requiring
+	  user identification for use of the TOE.
+	</h:td>
+	</h:tr>
+    </h:table>
+  </appendix>
+
+	
+    <!-- Annex D: Entropy Documentation and Assessment -->
     <appendix id="appendix-entropy" title="Entropy Documentation and Assessment">
         <section id="s-design" title="Design Description">
             Documentation shall include the design of the entropy source as a whole, including the interaction of all entropy source
@@ -5943,7 +6006,7 @@
         </section>
     </appendix>
 
-    <!-- Appendix D: Equivalency Guidelines -->
+    <!-- Appendix E: Equivalency Guidelines -->
     <appendix id="appendix-equiv" title="Equivalency Guidelines">
         <section id="s-vm-intro" title="Introduction">
           The purpose of equivalence in PP-based evaluations is to find a balance between evaluation rigor and commercial
@@ -6247,7 +6310,7 @@
     </section>
     </appendix>
     
-    <!-- Appendix E: References -->
+    <!-- Appendix F: References -->
     <appendix id="appendix-ref" title="References">
       <bibliography>
         <cc-entry/>
@@ -6262,7 +6325,7 @@
       </bibliography>
     </appendix>
 
-    <!-- Appendix F: Acronyms -->
+    <!-- Appendix G: Acronyms -->
 	<appendix id="acro" title="Acronyms">
       <acronyms/>
     </appendix>
