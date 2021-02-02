@@ -1086,7 +1086,8 @@
 							<h:li>On failure of logging function, capture record of failure and record upon restart of logging function.</h:li>
 						</h:ol>
 					</audit>
-					<dependencies></dependencies>
+					<dependencies>FAU_GEN.1 Audit Data Generation<h:p/>
+								FTP_ITC_EXT.1 Trusted Channel Communications</dependencies>
                     <f-element id="fau-stg-ext-1e1">
                         <title>The TSF shall be able to transmit the generated audit data to an external IT entity using a trusted 
 							channel as specified in FTP_ITC_EXT.1.
@@ -1522,7 +1523,8 @@
 						</h:ol>
 					</management>
 					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
+					<dependencies>[FCS_CKM.1 Cryptographic Key Generation, or<h:p/>
+								FCS_CKM.2 Cryptographic Key Distribution]</dependencies>
                     <f-element id="fcs-ckm-4e1">
                         <title>The TSF shall cause disused cryptographic keys in volatile memory to be destroyed or rendered 
 							unrecoverable.
@@ -2228,7 +2230,7 @@
 					<comp-lev>requires the TSF to provide entropy data to VMs in a specified manner.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
+					<dependencies>FCS_RBG_EXT.1 Cryptographic Operation (Random Bit Generation)</dependencies>
                     <f-element id="fcs-ent-ext-1e1">
                         <title>The TSF shall provide a mechanism to make available to VMs entropy that meets FCS_RBG_EXT.1 through
                             <selectables>
@@ -2308,7 +2310,10 @@
 							<h:li>Establishment/termination of an HTTPS session.</h:li>
 						</h:ol>
 					</audit>
-					<dependencies></dependencies>
+					<dependencies>[FCS_TLSC_EXT.1 TLS Client Protocol, or<h:p/>
+								FCS_TLSC_EXT.2 TLS Client Protocol with Mutual Authentication, or<h:p/>
+								FCS_TLSS_EXT.1 TLS Server Protocol, or<h:p/>
+								FCS_TLSS_EXT.2 TLS Server Protocol with Mutual Authentication]</dependencies>
                     <f-element id="fcs-https-ext-1e1">
                         <title>The TSF shall implement the HTTPS protocol that complies with RFC 2818.
                         </title>
@@ -2364,7 +2369,11 @@
 							<h:li>Establishment/Termination of an IPsec SA.</h:li>
 						</h:ol>
 					</audit>
-					<dependencies></dependencies>
+					<dependencies>FCS_CKM.1 Cryptographic Key Generation<h:p/>
+								FCS_CKM.2 Cryptographic Key Establishment<h:p/>
+								FCS_COP.1 Cryptographic Operation<h:p/>
+								FCS_RBG_EXT.1 Cryptographic Operation (Random Bit Generation)<h:p/>
+								FIA_X509_EXT.1 X.509 Certificate Validation</dependencies>
                     <f-element id="fcs-ipsec-ext-1e1">
                         <title>The TSF shall implement the IPsec architecture as specified in RFC 4301.
                         </title>
@@ -3069,7 +3078,7 @@
 							<h:li>Failure of the randomization process.</h:li>
 						</h:ol>
 					</audit>
-					<dependencies></dependencies>
+					<dependencies>FCS_COP.1 Cryptographic Operation</dependencies>
                     <f-element id="fcs-rbg-ext-1e1">
                         <title>The TSF shall perform all deterministic random bit generation services in accordance with NIST Special 
 							Publication 800-90A using
@@ -3184,7 +3193,7 @@
 						hardware resources.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
+					<dependencies>FDP_VMS_EXT.1 VM Separation</dependencies>
                     <f-element id="fdp-hbi-ext-1e1">
                         <title>The TSF shall use
                             <selectables>
@@ -3234,7 +3243,8 @@
 							<h:li>Security policy violations.</h:li>
 						</h:ol>
 					</audit>
-					<dependencies></dependencies>
+					<dependencies>FDP_HBI_EXT.1 Hardware-Based Isolation Mechanisms<h:p/>
+							FMT_SMR.1 Security Roles</dependencies>
                     <f-element id="fdp-ppr-ext-1e1">
                         <title>The TSF shall allow an authorized administrator to control Guest VM access to the following physical
 							platform resources: <assignable>list of physical platform resources the VMM is
@@ -3342,7 +3352,7 @@
 						Guest VM.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
+					<dependencies>No dependencies.</dependencies>
                     <f-element id="fdp-rip-ext-1e1">
                         <title>The TSF shall ensure that any previous information content of physical memory is cleared prior to 
 							allocation to a Guest VM.
@@ -3376,7 +3386,7 @@
 						allocation to a Guest VM.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
+					<dependencies>No dependencies.</dependencies>
                     <f-element id="fdp-rip-ext-2e1">
                         <title>The TSF shall ensure that any previous information content of physical disk storage is cleared prior
 							to allocation to a Guest VM.
@@ -3426,7 +3436,8 @@
 						</h:ol>
 					</management>
 					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
+					<dependencies>FMT_MSA_EXT.1 Default Data Sharing Configuration<h:p/>
+						FMT_SMR.1 Security Roles</dependencies>
                     <f-element id="fdp-vms-ext-1e1">
                         <title>The VS shall provide the following mechanisms for transferring data between Guest VMs:
                             <selectables linebreak="yes">
@@ -3536,7 +3547,8 @@
 								VMs.</h:li>
 						</h:ol>
 					</audit>
-					<dependencies></dependencies>
+					<dependencies>FDP_VMS_EXT.1 VM Separation<h:p/>
+						FMT_SMR.1 Security Roles</dependencies>
                     <f-element id="fdp-vnc-ext-1e1">
                         <title>The TSF shall allow Administrators to configure virtual networking components to connect VMs to each
 							other, and to physical networks.
@@ -3645,7 +3657,8 @@
 							<h:li>Threshold reached for successive failed authentication attempts.</h:li>
 						</h:ol>
 					</audit>
-					<dependencies></dependencies>
+					<dependencies>FIA_UIA_EXT.1 Administrator Identification and Authentication<h:p/>
+						FMT_SMR.1 Security Roles</dependencies>
                     <f-element id="fia-afl-ext-1e1">
                         <title>The TSF shall detect when
                             <selectables linebreak="yes">
@@ -3733,7 +3746,7 @@
 						</h:ol>
 					</management>
 					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
+					<dependencies>FIA_UIA_EXT.1 Administrator Identification and Authentication</dependencies>
                     <f-element id="fia-pmg-ext-1e1">
                         <title>The TSF shall provide the following password management capabilities for administrative passwords:
                             <h:ol type="a">
@@ -3896,7 +3909,7 @@
 							<h:li>Administrator session start time and end time.</h:li>
 						</h:ol>
 					</audit>
-					<dependencies></dependencies>
+					<dependencies>FIA_UAU.5 Multiple Authentication Mechanisms</dependencies>
                     <f-element id="fia-uia-ext-1e1">
                         <title>The TSF shall require Administrators to be successfully identified and authenticated
                             using one of the methods in FIA_UAU.5 before allowing any TSF-mediated management
@@ -3954,7 +3967,7 @@
 							<h:li>Failure to validate a certificate.</h:li>
 						</h:ol>
 					</audit>
-					<dependencies></dependencies>
+					<dependencies>FPT_STM.1 Reliable Time Stamps</dependencies>
                     <f-element id="fia-x509-ext-1e1">
                         <title>The TSF shall validate certificates in accordance with the following rules:
                             <h:ul>
@@ -4093,7 +4106,8 @@
 						</h:ol>
 					</management>
 					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
+					<dependencies>FIA_X509_EXT.1 X.509 Certificate Validation<h:p/>
+						FTP_ITC_EXT.1 Trusted Channel Communications</dependencies>
                     <f-element id="fia-x509-ext-2e1">
                         <title>The TSF shall use X.509v3 certificates as defined by RFC 5280 to support authentication for
                             <selectables>
@@ -4189,7 +4203,7 @@
 						</h:ol>
 					</management>
 					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
+					<dependencies>FDP_VMS_EXT.1 VM Separation</dependencies>
                     <f-element id="fmt-msa-ext-1e1">
                         <title>The TSF shall by default enforce a policy prohibiting sharing of data between Guest VMs using
                             <selectables linebreak="yes">
@@ -4234,7 +4248,7 @@
 						mechanism.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
+					<dependencies>No dependencies.</dependencies>
                     <f-element id="fmt-smo-ext-1e1">
                         <title>The TSF shall support the configuration of separate management and operational networks through
                             <selectables>
@@ -4333,7 +4347,7 @@
 					<comp-lev>requires the TSF to isolate device drivers for physical devices from all virtual domains.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
+					<dependencies>No dependencies.</dependencies>
                     <f-element id="fpt-ddi-ext-1e1">
                         <title>The TSF shall ensure that device drivers for physical devices are isolated from the VMM and all other
 							domains.
@@ -4371,7 +4385,7 @@
 						that it is not configured to have access to.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
+					<dependencies>FPT_VDP_EXT.1 Virtual Device Parameters</dependencies>
                     <f-element id="fpt-dvd-ext-1e1">
                         <title>The TSF shall limit a Guest VM’s access to virtual devices to those that are present in the VM’s current
 				virtual hardware configuration.
@@ -4402,7 +4416,7 @@
 						protection mechanisms that it can use for self-protection.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
+					<dependencies>No dependencies.</dependencies>
                     <f-element id="fpt-eem-ext-1e1">
                         <title>The TSF shall take advantage of execution environment-based vulnerability mitigation mechanisms 
 				supported by the Platform such as:
@@ -4449,7 +4463,7 @@
 							<h:li>Actions taken due to failed integrity check.</h:li>
 						</h:ol>
 					</audit>
-					<dependencies></dependencies>
+					<dependencies>No dependencies.</dependencies>
                     <f-element id="fpt-gvi-ext-1e1">
                         <title>The TSF shall verify the integrity of Guest VMs through the following mechanisms: 
 				<assignable>list of Guest VM integrity mechanisms</assignable>.
@@ -4488,7 +4502,7 @@
 						TOE complexity.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
+					<dependencies>No dependencies.</dependencies>
                     <f-element id="fpt-has-ext-1e1">
                         <title>The VMM shall use <assignable>list of hardware-based virtualization assists</assignable> to reduce or 
 				eliminate the need for binary translation.
@@ -4543,7 +4557,7 @@
 							<h:li>Security policy violations.</h:li>
 						</h:ol>
 					</audit>
-					<dependencies></dependencies>
+					<dependencies>FMT_SMR.1 Security Roles</dependencies>
                     <f-element id="fpt-hcl-ext-1e1">
                         <title>The TSF shall provide a Hypercall interface for Guest VMs to use to invoke functionality provided by 
 				the VMM.
@@ -4631,7 +4645,7 @@
 					<comp-lev>requires the TSF to identify itself using SWID tags.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
+					<dependencies>No dependencies.</dependencies>
                    <f-element id="fpt-idv-ext-1e1">
                         <title>The TSF shall include software identification (SWID) tags that contain a SoftwareIdentity element and 
 				an Entity element as defined in ISO/IEC 19770-2:2009.
@@ -4674,7 +4688,7 @@
 							<h:li>Introspection initiated/enabled.</h:li>
 						</h:ol>
 					</audit>
-					<dependencies></dependencies>
+					<dependencies>No dependencies.</dependencies>
                     <f-element id="fpt-int-ext-1e1">
                         <title>The TSF shall support a mechanism for permitting the VMM or privileged VMs to access the internals of
 				another VM for purposes of introspection.
@@ -4716,7 +4730,7 @@
 							<h:li>Integrity measurements collected.</h:li>
 						</h:ol>
 					</audit>
-					<dependencies></dependencies>
+					<dependencies>No dependencies.</dependencies>
                     <f-element id="fpt-ml-ext-1e1">
                         <title>The TSF shall support a measured launch of the Virtualization System. Measured 
 				components of the VS shall include the static executable image of the Hypervisor
@@ -4796,7 +4810,7 @@
 								an already connected VM.</h:li>
 						</h:ol>
 					</audit>
-					<dependencies></dependencies>
+					<dependencies>FDP_VMS_EXT.1 VM Separation</dependencies>
                     <f-element id="fpt-rdm-ext-1e1">
                         <title>The TSF shall implement controls for handling the transfer of virtual and physical removable media and
 				virtual and physical removable media devices between information domains.
@@ -4890,7 +4904,7 @@
 							<h:li>Failure of signature verification.</h:li>
 						</h:ol>
 					</audit>
-					<dependencies></dependencies>
+					<dependencies>FCS_COP.1 Cryptographic Operation</dependencies>
                     <f-element id="fpt-tud-ext-1e1">
                         <title>The TSF shall provide administrators the ability to query the currently executed version of the TOE 
 				firmware/software as well as the most recently installed version of the TOE firmware/software.
@@ -5000,7 +5014,9 @@
 					<comp-lev>requires the TSF to validate updates using a code signing certificate.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
+					<dependencies>FPT_TUD_EXT.1 Trusted Updates to the Virtualization System<h:p/>
+							FIA_X509_EXT.1 X.509 Validation<h:p/>
+							FIA_X509_EXT.2 X.509 Authentication</dependencies>
                     <f-element id="fpt-tud-ext-2e1">
                         <title>The TSF shall not install an update if the code signing certificate is deemed invalid.
                         </title>
@@ -5028,7 +5044,7 @@
 						as well-formed.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
+					<dependencies>FPT_VIV_EXT.1 VMM Isolation from VMs</dependencies>
                     <f-element id="fpt-vdp-ext-1e1">
                         <title>The TSF shall provide interfaces for virtual devices implemented by the VMM as part of the virtual
 				hardware abstraction.
@@ -5088,7 +5104,8 @@
 						with the TOE, other VMs, or the hardware platform without authorization.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
+					<dependencies>FDP_PPR_EXT.1 Physical Platform Resource Controls<h:p/>
+						FDP_VMS_EXT.1 VM Separation</dependencies>
                     <f-element id="fpt-viv-ext-1e1">
                         <title>The TSF must ensure that software running in a VM is not able to degrade or disrupt the functioning of 
 				other VMs, the VMM, or the Platform.
@@ -5197,7 +5214,7 @@
 							<h:li>Failures of the trusted path functions.</h:li>
 						</h:ol>
 					</audit>
-					<dependencies></dependencies>
+					<dependencies>FAU_STG_EXT.1 Off-Loading of Audit Data</dependencies>
                     <f-element id="ftp-itc-ext-1e1">
                         <title>The TSF shall use
                             <selectables linebreak="yes">
@@ -5268,7 +5285,7 @@
 						the current input focus for input peripherals.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
+					<dependencies>No dependencies</dependencies>
                     <f-element id="ftp-uif-ext-1e1">
                         <title>The TSF shall indicate to users which VM, if any, has the current input focus.
                         </title>
@@ -5304,7 +5321,7 @@
 						the integrity of its stored executable code.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
-					<dependencies></dependencies>
+					<dependencies>No dependencies</dependencies>
                     <f-element id="ftp-uif-ext-2e1">
                         <title>The TSF shall support the unique identification of a VM’s output display to users.
                         </title>
