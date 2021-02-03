@@ -22,7 +22,7 @@
     - DONE: 0443: FPT_VDP_EXT.1 Clarification for Assurance Activity
     - DONE: 0526: Updates to Certificate Revocation (FIA_X509_EXT.1)
 
-    - Achived TDs Status
+    - Archived TDs Status
     - OBEV: 0166 Optional authentication of TLS Client
     - DONE: 0213 Corrections to App Note references to FCS_TLS, FCS_IPSEC, and FTP_ITC
     - DONE: 0247 FPT_VDP_EXT.1 Clarification for Assurance Activity (superseded by TD0443)
@@ -40,6 +40,7 @@
     - Added FIA_AFL_EXT to the audit table. It was inexplicably missing. 
 
     - See Issues for resolution of comments from Jan 2021.
+    - Incluldes updating IPsec requirement to match vpnclient 2.2
 
     -->
 
@@ -2378,18 +2379,20 @@
                         <title>The TSF shall implement the IPsec architecture as specified in RFC 4301.
                         </title>
                         <note role="application">
-							This SFR is included in the ST if the ST Author selected "IPsec" in FTP_ITC_EXT.1.1.<h:br/><h:br/>
-							RFC 4301 calls for an IPsec implementation to protect IP traffic through the use
-							of a Security Policy Database (SPD). The SPD is used to define how IP packets are to be handled:
-							PROTECT the packet (e.g., encrypt the packet), BYPASS the IPsec services (e.g., no encryption), or
-							DISCARD the packet (e.g., drop the packet). The SPD can be implemented in various ways, including 
-							router access control lists, firewall rulesets, a “traditional” SPD, etc. Regardless of the 
-							implementation details, there is a notion of a “rule” that a packet is “matched” against and a
-							resulting action that takes place.<h:br/><h:br/>
-                            While there must be a means to order the rules, a general approach to ordering is not mandated, as long
-							as the SPD can distinguish the IP packets and apply the rules accordingly. There may be multiple SPDs
-							(one for each network interface), but this is not required.<h:br/><h:br/>
-						</note>
+				This SFR is included in the ST if the ST Author selected "IPsec" in FTP_ITC_EXT.1.1.<h:br/><h:br/>
+				RFC 4301 calls for an IPsec implementation to protect IP traffic through the use
+				of a Security Policy Database (SPD). The SPD is used to define how IP packets are
+				to be handled: PROTECT the packet (e.g., encrypt the packet), BYPASS the IPsec
+				services (e.g., no encryption), or DISCARD the packet (e.g., drop the packet). The
+				SPD can be implemented in various ways, including router access control lists,
+				firewall rulesets, a "traditional" SPD, etc. Regardless of the implementation
+				details, there is a notion of a "rule" that a packet is "matched" against and a
+				resulting action that takes place. <h:br/><h:br/>
+       				While there must be a means to order the rules, a general approach to ordering
+				is not mandated, as long as the TOE can distinguish the IP packets and apply the
+				rules accordingly. There may be multiple SPDs (one for each network interface),
+				but this is not required. <h:br/><h:br/>
+			</note>
                         <aactivity>
                             <TSS>
                                 The evaluator shall examine the TSS and determine that it describes what takes 
