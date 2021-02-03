@@ -462,11 +462,13 @@
                 </threat>
                 <threat name="T.3P_SOFTWARE">
                     <description>
-                        In some VS implementations, critical functions are by necessity performed by software not produced by the 
-			    virtualization vendor. Such software may include Host Operating Systems and physical device drivers. 
-			    Vulnerabilities in this software can be exploited by an adversary and result in VM compromise. Where 
-			    possible, the VS should mitigate the results of potential vulnerabilities or malicious content in
-			    third-party code.
+                        In some VS implementations, functions critical to the secuity of the TOE are by necessity performed by 
+			    software not produced by the virtualization vendor. Such software may include physical device drivers, 
+			    and even non-TOE entities such as Host Operating Systems. Since this software has the same or similar
+			    privilege level as the VS, vulnerabilities can be exploited by an adversary to compromise the VS and VMs.
+			    Where possible, the VS should mitigate the results of potential vulnerabilities or malicious content in
+			    third-party code on which it relies. For example, physical device drivers (potentially the Host OS) could 
+			    be encapsulated within VMs in order to limit the effects of compromise. 
                     </description>
                     <objective-refer ref="O.VMM_INTEGRITY">
                         <rationale>The VMM integrity mechanisms include environment-based vulnerability mitigation and potentially
