@@ -2419,7 +2419,7 @@
 								allowable for the TSF to rely on low-level platform-provided networking functions to implement the SPD
 								from the client (e.g., enforcement of packet routing decisions).
 							</Guidance>
-							<Test>
+							<Tests>
 								As a prerequisite for performing the Test EAs for the individual FCS_IPSEC_EXT.1 elements below, the
 								evaluator shall do the following:<h:p/>
 								The evaluator shall minimally create a test environment equivalent to the test environment illustrated
@@ -2429,9 +2429,9 @@
 								<figure entity="images/network.png" title="IPsec Test Environment" id="fig-ipsectest"/>
 								Note that the evaluator shall perform all tests using the Virtualization System and a representative sample of
 								platforms listed in the ST (for TOEs that claim to support multiple platforms).
-							</Test>
+							</Tests>
 						</aactivity>							
-                        <aactivity>
+                        <aactivity level="element">
                             <TSS>
                                 The evaluator shall examine the TSS and determine that it describes what takes 
                                 place when a packet is processed by the TOE, e.g., the algorithm used to 
@@ -2494,7 +2494,7 @@
                                 <selectable>no other mode</selectable>
                             </selectables>.
                         </title>
-                        <aactivity>
+                        <aactivity level="element">
                             <TSS>
                                 The evaluator checks the TSS to ensure it states that the VPN can be 
                                 established to operate in tunnel mode and/or transport mode (as identified in FCS_IPSEC_EXT.1.3).
@@ -2529,7 +2529,7 @@
                         <title>The TSF shall have a nominal, final entry in the SPD that matches anything that is otherwise unmatched, 
 							and discards it.
                         </title>
-                        <aactivity>
+                        <aactivity level="element">
                             The assurance activity for this element is performed in conjunction with the activities for
 							FCS_IPSEC_EXT.1.1.<h:br></h:br><h:br></h:br>
                             <Tests>
@@ -2559,7 +2559,7 @@
                                 <selectable>no other algorithms</selectable>
                             </selectables> together with a Secure Hash Algorithm (SHA)-based HMAC.
                         </title>
-                        <aactivity>
+                        <aactivity level="element">
                             <TSS>
                                 The evaluator shall examine the TSS to verify that the algorithms AES-CBC-128 
                                 and AES-CBC-256 are implemented. If the "ST" author has selected either 
@@ -2608,7 +2608,7 @@
                         <note role="application">If the TOE implements SHA-2 hash algorithms for IKEv1 or IKEv2, the ST author shall
 							select RFC 4868. If the ST author selects IKEv1, FCS_IPSEC_EXT.1.15 must also be included in the
 							ST.</note>
-                        <aactivity>
+                        <aactivity level="element">
                             <TSS>
                                 The evaluator shall examine the TSS to verify that IKEv1 and/or IKEv2 are 
                                 implemented. If IKEv1 is claimed, the evaluator shall examine the TSS to 
@@ -2655,7 +2655,7 @@
                         </title>
                         <note role="application">AES-GCM-128 and AES-GCM-256 may only be selected if IKEv2 is also selected, as there 
 							is no RFC defining AES-GCM for IKEv1.</note>
-                        <aactivity>
+                        <aactivity level="element">
                             <TSS>
                                 The evaluator shall ensure the TSS identifies the algorithms used for 
                                 encrypting the IKEv1 and/or IKEv2 payload, and that the algorithms AES-CBC-128, AES-CBC-256 are 
@@ -2704,7 +2704,7 @@
 							AGD_OPE). Hardcoded limits are not acceptable. In general, instructions for setting the parameters 
 							of the implementation, including lifetime of the SAs, should be included in the operational guidance
 							generated for AGD_OPE.</note>
-                        <aactivity>
+                        <aactivity level="element">
                             <Guidance>
                                The evaluator shall verify that the values for SA lifetimes can be configured and that the
                                 instructions for doing so are located in the operational guidance. If time-based limits are
@@ -2766,7 +2766,7 @@
 							Hardcoded limits are not acceptable. In general, instructions for setting the parameters of the 
 							implementation, including lifetime of the SAs, should be included in the operational guidance 
 							generated for AGD_OPE.</note>
-                        <aactivity>
+                        <aactivity level="element">
                             <Guidance>
                                 The evaluator shall verify that the values for SA lifetimes can be configured and that the 
                                 instructions for doing so are located in the operational guidance. If time-based limits are
@@ -2817,7 +2817,7 @@
 							unique value is then used to fill in the assignment. For example, suppose the implementation supports
 							DH group 14 (2048-bit MODP) and group 20 (ECDH using NIST curve P-384). From Table 2, the bits of 
 							security value for group 14 is 112, and for group 20 it is 192.</note>
-                        <aactivity>
+                        <aactivity level="element">
                             <TSS>
                                 The evaluator shall check to ensure that, for each DH group supported, the TSS
                                 describes the process for generating "x" (as defined in FCS_IPSEC_EXT.1.). The evaluator shall
@@ -2853,7 +2853,7 @@
 							is 192.<h:br></h:br><h:br></h:br>
                             Because nonces may be exchanged before the DH group is negotiated, the nonce used should be large enough
 							to support all TOE-chosen proposals in the exchange.</note>
-                        <aactivity>
+                        <aactivity level="element">
                             <TSS>
                                 <testlist>
                                     <test>(conditional) If the first selection is chosen, the evaluator shall check to ensure that,
@@ -2884,7 +2884,7 @@
 							IKEv1 and IKEv2 exchanges. It should be noted that if any additional DH groups are specified, they
 							must comply with the requirements (in terms of the ephemeral keys that are established) listed in
 							FCS_CKM.1.</note>
-                        <aactivity>
+                        <aactivity level="element">
                             <TSS>
                                 The evaluator shall check to ensure that the DH groups specified in the requirement are listed
                                 as being supported in the TSS. If there is more than one DH group supported, 
@@ -2915,7 +2915,7 @@
 							While it is acceptable for this capability to be configurable, the default configuration in the
 							evaluated configuration (either "out of the box" or by configuration guidance in the AGD documentation)
 							must enable this functionality.</note>
-                        <aactivity>
+                        <aactivity level="element">
                             <TSS>
                                 The evaluator shall check that the TSS describes the potential strengths 
                                 (in terms of the number of bits in the symmetric key) of the algorithms that are allowed for the
@@ -2964,7 +2964,7 @@
 							TSS will elaborate on the way in which these algorithms are to be used (for example, 2409 specifies
 							three authentication methods using public keys; each one supported will be described in the 
 							TSS).</note>
-                        <aactivity>
+                        <aactivity level="element">
                             <TSS>
                                 The evaluator ensures that the TSS identifies RSA and/or ECDSA as being used 
                                 to perform peer authentication. The description shall be consistent with the algorithms as 
@@ -3015,7 +3015,7 @@
 							TOE will be required to support all of these identifier types. The TOE is expected to support as many
 							IP address formats (IPv4 and IPv6) as IP versions supported by the TOE in general. The ST author
 							may assign additional supported identifier types in the second selection.</note>
-                        <aactivity>
+                        <aactivity level="element">
                             <Tests>
                                 The assurance activities for this element are performed in conjunction with the assurance activities 
                                 for the next element.
@@ -3042,7 +3042,7 @@
 							presented identifier in the SAN only, ignoring the Common Name.<h:br></h:br><h:br></h:br>
                             The configuration of the peer reference identifier is addressed by FMT_MOF_EXT.1.2 in the selected EP.
 			    </note>
-                        <aactivity>
+                        <aactivity level="element">
                             <TSS>
                                 The evaluator shall ensure that the TSS describes how the TOE
                                 compares the peer’s presented identifier to the reference identifier. This description shall
