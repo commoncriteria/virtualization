@@ -2381,20 +2381,57 @@
                         <title>The TSF shall implement the IPsec architecture as specified in RFC 4301.
                         </title>
                         <note role="application">
-				This SFR is included in the ST if the ST Author selected "IPsec" in FTP_ITC_EXT.1.1.<h:br/><h:br/>
-				RFC 4301 calls for an IPsec implementation to protect IP traffic through the use
-				of a Security Policy Database (SPD). The SPD is used to define how IP packets are
-				to be handled: PROTECT the packet (e.g., encrypt the packet), BYPASS the IPsec
-				services (e.g., no encryption), or DISCARD the packet (e.g., drop the packet). The
-				SPD can be implemented in various ways, including router access control lists,
-				firewall rulesets, a "traditional" SPD, etc. Regardless of the implementation
-				details, there is a notion of a "rule" that a packet is "matched" against and a
-				resulting action that takes place. <h:br/><h:br/>
-       				While there must be a means to order the rules, a general approach to ordering
-				is not mandated, as long as the TOE can distinguish the IP packets and apply the
-				rules accordingly. There may be multiple SPDs (one for each network interface),
-				but this is not required. <h:br/><h:br/>
-			</note>
+							This SFR is included in the ST if the ST Author selected "IPsec" in FTP_ITC_EXT.1.1.<h:br/><h:br/>
+							RFC 4301 calls for an IPsec implementation to protect IP traffic through the use
+							of a Security Policy Database (SPD). The SPD is used to define how IP packets are
+							to be handled: PROTECT the packet (e.g., encrypt the packet), BYPASS the IPsec
+							services (e.g., no encryption), or DISCARD the packet (e.g., drop the packet). The
+							SPD can be implemented in various ways, including router access control lists,
+							firewall rulesets, a "traditional" SPD, etc. Regardless of the implementation
+							details, there is a notion of a "rule" that a packet is "matched" against and a
+							resulting action that takes place. <h:br/><h:br/>
+								While there must be a means to order the rules, a general approach to ordering
+							is not mandated, as long as the TOE can distinguish the IP packets and apply the
+							rules accordingly. There may be multiple SPDs (one for each network interface),
+							but this is not required. <h:br/><h:br/>
+						</note>
+<?flerm						<aactivity level="component">
+							<!-- Coponent-level EA from vpnclient module -->
+							<TSS>
+								In addition to the TSS EAs for the individual FCS_IPSEC_EXT.1 elements below, the
+								evaluator shall perform the following:<h:p/>
+								If the TOE boundary includes a general-purpose operating system or mobile device, the evaluator shall
+								examine the TSS to ensure that it describes whether the VPN client capability is architecturally integrated
+								with the platform itself or whether it is a separate executable that is bundled with the platform.
+							</TSS>
+							<Guidance>
+								In addition to the Operational Guidance EAs for the individual FCS_IPSEC_EXT.1 elements below, the
+								evaluator shall perform the following:<h:p/>
+								If the configuration of the IPsec behavior is from an environmental source, most notably a VPN gateway
+								(e.g through receipt of required connection parameters from a VPN gateway), the evaluator shall ensure
+								that the operational guidance contains any appropriate information for ensuring that this configuration
+								can be properly applied.<h:p/>
+								Note in this case that the implementation of the IPsec protocol must be enforced entirely within the TOE
+								boundary; i.e. it is not permissible for a software application TOE to be a graphical front-end for IPsec
+								functionality implemented totally or in part by the underlying OS platform. The behavior referenced here
+								is for the possibility that the configuration of the IPsec connection is initiated from outside the TOE, which
+								is permissible so long as the TSF is solely responsible for enforcing the configured behavior. However, it is
+								allowable for the TSF to rely on low-level platform-provided networking functions to implement the SPD
+								from the client (e.g., enforcement of packet routing decisions).
+							</Guidance>
+							<Test>
+								As a prerequisite for performing the Test EAs for the individual FCS_IPSEC_EXT.1 elements below, the
+								evaluator shall do the following:<h:p/>
+								The evaluator shall minimally create a test environment equivalent to the test environment illustrated
+								below. It is expected that the traffic generator is used to construct network packets and will provide the
+								evaluator with the ability manipulate fields in the ICMP, IPv4, IPv6, UDP, and TCP packet headers. The
+								evaluator shall provide justification for any differences in the test environment.<h:p/>
+								<figure entity="images/network.png" title="IPsec Test Environment" id="fig-ipsectest"/>
+								Note that the evaluator shall perform all tests using the Virtualization System and a representative sample of
+								platforms listed in the ST (for TOEs that claim to support multiple platforms).
+							</Test>
+						</aactivity>	
+?>						
                         <aactivity>
                             <TSS>
                                 The evaluator shall examine the TSS and determine that it describes what takes 
