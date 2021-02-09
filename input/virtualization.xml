@@ -910,26 +910,15 @@
                         <title>The TSF shall be able to generate an audit record of the following auditable events:
                             <h:ol type="a">
                                 <h:li>Start-up and shutdown of audit functions</h:li>
-                                <h:li>All administrative actions relevant to claimed SFRs</h:li>
-
-						<!-- Table 1 contains the audit events for mandatory SFRs.
-							 Table 2 contains the audit events for strictly optional SFRs.
-							 Table 3 contains the audit events for objective SFRs.
-							 Table 4 contains the audit events for selection-based SFRs.
-
-							 The former Table 3 has been integrated into Table 1. Table 3 previously contained 
-							 a single optional audit event for FIA_UIA_EXT.1 (a mandatory requirement). Now that 
-							 event appears in Table 1 as an optional event.
-
-				-->
-		    
+                                <h:li>[<refinement>All administrative actions relevant to claimed SFRs as defined in the 
+									Auditable Events Table from the Client and Server PP-Modules</refinement>]</h:li>		    
 								<h:li>[<refinement>Auditable events defined in <xref to="atref-mandatory"/></refinement>]</h:li>
                                 <h:li><refinement><selectables>
                                     <selectable id="sel-at2">Auditable events defined in <xref g="atref-optional-dep"></xref>for Strictly Optional SFRs</selectable>
 									<selectable id="sel-at3">Auditable events defined in <xref g="atref-objective-dep"></xref>for Objective SFRs</selectable>
                                     <selectable id="sel-at4">Auditable events defined in <xref g="atref-sel-based-dep"></xref>for Selection-Based SFRs</selectable>
-									<selectable>Auditable events defined in the audit table for the TLS Functional Package (see <xref to="atref-pkgs"/>)</selectable>
-									<selectable>Auditable events defined in the audit table for the SSH Functional Package (see <xref to="atref-pkgs"/>)</selectable>
+									<selectable id="sel-attls">Auditable events defined in the audit table for the TLS Functional Package (see <xref to="atref-pkgs"/>)</selectable>
+									<selectable id="sel-atssh">Auditable events defined in the audit table for the SSH Functional Package (see <xref to="atref-pkgs"/>)</selectable>
                                     <selectable>no other auditable events</selectable>
 								</selectables></refinement></h:li>
                             </h:ol>
@@ -979,7 +968,7 @@
 							to log every time that the device is accessed. Generally, this is only once at VM
 							startup. However, some devices can be connected and disconnected during operation (e.g., virtual USB
 							devices such as CD-ROMs). All such connection/disconnection events must be logged.<h:p/>
-							The following table contains the events expected to be in the auditable events tables for 
+							The following table contains the events enumerated in the auditable events tables for 
 							the SSH and TLS Functional Packages. Inclusion of these events in the ST is subject to selection above,
 							inclusion of the corresponding SFRs in the ST, and support in the FP as represented by a selection in the 
 							FP audit table. This list is included here for reference.<h:p/>
@@ -1593,7 +1582,7 @@
                         </title>
                         <note role="application">The threat addressed by this element is the recovery of disused cryptographic keys
 							from volatile memory by unauthorized processes.<h:br></h:br><h:br></h:br>
-                            The TSF is expected to destroy or cause to be destroyed all copies of cryptographic keys created and
+                            The TSF must to destroy or cause to be destroyed all copies of cryptographic keys created and
 							managed by the TOE once the keys are no longer needed. This requirement is the same for all instances
 							of keys within TOE volatile memory regardless of whether the memory is controlled by TOE manufacturer 
 							software or by 3rd party TOE modules. The assurance activities are designed with flexibility to
@@ -1630,11 +1619,11 @@
                             Key storage areas in non-volatile storage can be overwritten with any value that renders the keys 
 							unrecoverable. The value used can be all zeros, all ones, or any other pattern or combination of
 							values significantly different than the value of the key itself.<h:br></h:br><h:br></h:br>
-                            The TSF is expected to destroy all copies of cryptographic keys created and managed by the TOE once the
+                            The TSF must destroy all copies of cryptographic keys created and managed by the TOE once the
 							keys are no longer needed. Since this is a software-only TOE, the hardware controllers that manage
 							non-volatile storage media are necessarily outside the TOE boundary. Thus, the TOE manufacturer is
 							likely to have little control over—or insight into—the functioning of these storage devices. The 
-							TOE is expected to make a “best-effort” to destroy disused cryptographic keys by invoking the 
+							TOE must make a “best-effort” to destroy disused cryptographic keys by invoking the 
 							appropriate platform interfaces—recognizing that the specific actions taken by the platform are out of
 							the TOE’s control.<h:br></h:br><h:br></h:br>
                             But in cases where the TOE has insight into the non-volatile storage technologies used by the platform, 
@@ -1671,9 +1660,9 @@
                                         </h:ul>
                                         </h:li>
                                 </h:ul>
-                                Note: using debug or instrumented builds of the TOE and TOE components is permitted in order to 
-								demonstrate that the TOE takes appropriate action to destroy keys. It is expected that these
-								builds are based on the same source code as are release builds (of course, with instrumentation
+                                Use of debug or instrumented builds of the TOE and TOE components is permitted in order to 
+								demonstrate that the TOE takes appropriate action to destroy keys. These builds should be 
+								based on the same source code as are release builds (of course, with instrumentation
 								and debug-specific code added).
                             </Tests>
                         </aactivity>
@@ -2483,7 +2472,7 @@
 								As a prerequisite for performing the Test EAs for the individual FCS_IPSEC_EXT.1 elements below, the
 								evaluator shall do the following:<h:p/>
 								The evaluator shall minimally create a test environment equivalent to the test environment illustrated
-								below. It is expected that the traffic generator is used to construct network packets and will provide the
+								below. The traffic generator used to construct network packets should provide the
 								evaluator with the ability manipulate fields in the ICMP, IPv4, IPv6, UDP, and TCP packet headers. The
 								evaluator shall provide justification for any differences in the test environment.<h:p/>
 								<figure entity="images/network.png" title="IPsec Test Environment" id="fig-ipsectest"/><h:p/>
@@ -2558,11 +2547,11 @@
                         </title>
 			<note role="application">
 				If the TOE is used to connect to a VPN gateway for the purposes of establishing a
-				secure connection to a private network, the ST author is expected to select
+				secure connection to a private network, the ST author shall select
 				tunnel mode. If the TOE uses IPsec to establish an end-to-end connection to
-				another IPsec VPN Client, the ST author is expected to select transport mode. If
+				another IPsec VPN Client, the ST author shall select transport mode. If
 				the TOE uses IPsec to establish a connection to a specific endpoint device for the
-				purpose of secure remote administration, the ST author is expected to select
+				purpose of secure remote administration, the ST author shall select
 				transport mode.<h:p/>
 			 </note>
                         <aactivity level="element">
@@ -3456,7 +3445,7 @@
                 <!-- FDP_RIP_EXT.1 -->
                 <f-component cc-id="fdp_rip_ext.1" name="Residual Information in Memory">
 					<consistency-rationale/>
-					<comp-lev>requires the TSF to ensure that physical memory is purged prior to its allocation to a
+					<comp-lev>requires the TSF to ensure that physical memory is cleared to zeros prior to its allocation to a
 						Guest VM.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
@@ -3466,7 +3455,7 @@
 							allocation to a Guest VM.
                         </title>
                         <note role="application">Physical memory must be zeroed before it is made accessible to a VM for general use
-							by a Guest OS.<h:br></h:br><h:br></h:br>
+							by a Guest OS. <h:br></h:br><h:br></h:br>
                             The purpose of this requirement is to ensure that a VM does not receive memory
 							containing data previously used by another VM or the host.<h:br></h:br><h:br></h:br>
                             “For general use” means for use by the Guest OS in its page tables for running applications or system
@@ -3490,13 +3479,13 @@
                 <!-- FDP_RIP_EXT.2 -->
                 <f-component cc-id="fdp_rip_ext.2" name="Residual Information on Disk">
 					<consistency-rationale/>
-					<comp-lev>requires the TSF to ensure that physical disk storage is purged prior to its
+					<comp-lev>requires the TSF to ensure that physical disk storage is cleared prior to its
 						allocation to a Guest VM.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
 					<dependencies>No dependencies.</dependencies>
                     <f-element id="fdp-rip-ext-2e1">
-                        <title>The TSF shall ensure that any previous information content of physical disk storage is cleared prior
+                        <title>The TSF shall ensure that any previous information content of physical disk storage is cleared to zeros prior
 							to allocation to a Guest VM.
                         </title>
                         <note role="application">Disk storage must be zeroed before it is made accessible to a VM for use by a Guest
@@ -3781,13 +3770,14 @@
                                 <selectable>an administrator configurable positive integer within a
                                     <assignable>range of acceptable values</assignable></selectable>
                             </selectables>
-                            
-                            unsuccessful authentication attempts occur related to Administrators attempting to authenticate remotely
-							using a
+                            unsuccessful authentication attempts occur related to Administrators attempting 
+							to authenticate remotely using
                             <selectables>
-                                <selectable>password</selectable>
-                                <selectable>PIN.</selectable>
-                            </selectables>
+                                <selectable>username and password</selectable>
+                                <selectable>username and PIN</selectable>
+<!--							<selectable>X.509 certificate</selectable>
+								<selectable>SSH Public-Key Credential</selectable>   -->
+                            </selectables>.
                         </title>
                     </f-element>
                     <f-element id="fia-afl-ext-1e2">
@@ -3943,12 +3933,13 @@
                                     authentication based on an SSH public key credential
                                 </selectable>
                             </selectables>                            
+                            </selectables>                            
                             to support Administrator authentication.
                         </title>
                         <note role="application">Selection of ‘authentication based on username and password’ requires that 
 							FIA_PMG_EXT.1 be included in the ST. This also requires that the ST include a management function for
 							password management. If the ST author selects ‘authentication based on an SSH public-key credential’,
-							the TSF shall be validated against the Extended Package for Secure Shell. The ST must include 
+							the TSF shall be validated against the Functional Package for Secure Shell. The ST must include 
 							FIA_X509_EXT.1 if 'authentication based on X.509 certificates' is selected. <h:br/><h:br/>
 							PINs used to access OE-protected storage are set and managed by the OE-protected storage mechanism. Thus
 							requirements on PIN management are outside the scope of the TOE.
@@ -4124,10 +4115,10 @@
 							this use requires that the extendedKeyUsage rules are verified. Certificates may optionally be used 
 							for SSH, TLS, and HTTPs and, if implemented, must be validated to contain the corresponding 
 							extendedKeyUsage.<h:br/><h:br/>
-                            OCSP stapling and OCSP multi-stapling only support TLS server certificate validation. If other certificate 
-							types are validated, either OCSP or CRL should be claimed. If OCSP is not supported the EKU provision 
+                            OCSP stapling and OCSP multi-stapling support only TLS server certificate validation. If other certificate 
+							types are validated, either OCSP or CRL must be claimed. If OCSP is not supported the EKU provision 
 							for checking the OCSP Signing purpose is met by default.<h:br/><h:br/>
-							Regardless of the selection of TSF or TOE platform, the validation is expected to end in a trusted root
+							Regardless of the selection of TSF or TOE platform, the validation must result in a trusted root
 							CA certificate in a root store managed by the platform.
 						</note>
                     </f-element>
@@ -5351,7 +5342,7 @@
                             to provide a trusted communication channel between itself, and<h:br></h:br><h:br></h:br>
                             <h:li>audit servers (as required by FAU_STG_EXT.1), and</h:li>
                             <selectables linebreak="yes">
-                                <selectable>remote administrators (as required by FTP_TRP.1.1 if selected in FMT_MOF_EXT.1.1 in the PP-Module)</selectable>
+                                <selectable>remote administrators (as required by FTP_TRP.1.1 if selected in FMT_MOF_EXT.1.1 in the Client or Server PP-Module)</selectable>
                                 <selectable>separation of management and operational networks (if selected in FMT_SMO_EXT.1)</selectable>
 				<selectable><assignable>other capabilities</assignable></selectable>
                                 <selectable>no other capabilities</selectable>
@@ -5361,8 +5352,8 @@
                         </title>
                         <note role="application">If the ST author selects either TLS or HTTPS, the TSF shall be validated against the 
                             Functional Package for TLS. This PP does not mandate that a product implement TLS with mutual authentication,
-				but if the product includes the capability to perform TLS with mutual authentication, it is expected that
-				mutual authentication will be included within the TOE boundary. The TLS Package requires that the X509 
+				but if the product includes the capability to perform TLS with mutual authentication, then
+				mutual authentication must be included within the TOE boundary. The TLS Package requires that the X509 
 				requirements be included by the PP, so selection of TLS or HTTPS causes FIA_X509_EXT.* to be selected.<h:br></h:br><h:br></h:br>
                             If the ST author selects SSH, the TSF shall be validated against the Extended
                             Package for Secure Shell. The SSH package imports the X509 requirements if necessary, so selecting SSH here does not automatically
