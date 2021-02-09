@@ -914,7 +914,6 @@
 						<!-- Table 1 contains the audit events for mandatory SFRs.
 							 Table 2 contains the audit events for strictly optional SFRs.
 							 Table 3 contains the audit events for objective SFRs.
-							 Table x contains the audit events for implementation-dependent SFRs (but there are none) 
 							 Table 4 contains the audit events for selection-based SFRs.
 
 							 The former Table 3 has been integrated into Table 1. Table 3 previously contained 
@@ -928,6 +927,8 @@
                                     <selectable id="sel-at2">Auditable events defined in <xref g="atref-optional-dep"></xref></selectable>
 									<selectable id="sel-at3">Auditable events defined in <xref g="atref-objective-dep"></xref></selectable>
                                     <selectable id="sel-at4">Auditable events defined in <xref g="atref-sel-based-dep"></xref></selectable>
+									<selectable>Auditable events defined in the audit table for the TLS Functional Package (see <xref to="atref-pkgs"/>)</selectable>
+									<selectable>Auditable events defined in the audit table for the SSH Functional Package (see <xref to="atref-pkgs"/>)</selectable>
                                     <selectable>no other auditable events</selectable>
 								</selectables></refinement></h:li>
                             </h:ol>
@@ -954,6 +955,8 @@
                                     <selectable>Additional information defined in <xref g="atref-optional-dep"></xref></selectable>
                                     <selectable>Additional information defined in <xref g="atref-objective-dep"></xref></selectable>
                                     <selectable>Additional information defined in <xref g="atref-sel-based-dep"></xref></selectable>
+									<selectable>Additional information defined in the audit table for the TLS Functional Package (see <xref to="atref-pkgs"/>)</selectable>
+									<selectable>Additional information defined in the audit table for the SSH Functional Package (see <xref to="atref-pkgs"/>)</selectable>
                                     <selectable>no other information</selectable>
 								</selectables></refinement></h:li>
                             </h:ol>
@@ -974,7 +977,62 @@
 							to a physical device (when the device becomes part of the VM's hardware view), not
 							to log every time that the device is accessed. Generally, this is only once at VM
 							startup. However, some devices can be connected and disconnected during operation (e.g., virtual USB
-							devices such as CD-ROMs). All such connection/disconnection events must be logged.
+							devices such as CD-ROMs). All such connection/disconnection events must be logged.<h:p/>
+							The following table contains the events expected to be in the auditable events tables for 
+							the SSH and TLS Functional Packages. Inclusion of these events in the ST is subject to selection above,
+							inclusion of the corresponding SFRs in the ST, and support in the FP as represented by a selection in the 
+							FP audit table. This list is included here for reference.
+							<ctr ctr-type='Table' id="atref-pkgs">: Auditable Events for Functional Packages</ctr><h:br/>							
+							<h:table>
+								<h:tr class="header"><h:td>Requirement</h:td><h:td>Auditable Events</h:td><h:td>Additional Audit Record Contents</h:td></h:tr>
+								<h:tr><h:td>FCS_SSHC_EXT.1</h:td>
+								<h:td>Failure to establish a session.</h:td>
+								<h:td>Reason for failure,<h:br/>Non-TOE endpoint of attempted connection (IP Address).</h:td></h:tr>
+								
+								<h:tr><h:td>FCS_SSHC_EXT.1</h:td>
+								<h:td>Establishment of a session.</h:td>
+								<h:td>Non-TOE endpoint of connection (IP Address).</h:td></h:tr>
+
+								<h:tr><h:td>FCS_SSHC_EXT.1</h:td>
+								<h:td>Termination of a session.</h:td>
+								<h:td>Non-TOE endpoint of connection (IP Address).</h:td></h:tr>
+  
+								<h:tr><h:td>FCS_SSHS_EXT.1</h:td>
+								<h:td>Failure to establish a session.</h:td>
+								<h:td>Reason for failure,<h:br/>Non-TOE endpoint of attempted connection (IP Address).</h:td></h:tr>
+								
+								<h:tr><h:td>FCS_SSHS_EXT.1</h:td>
+								<h:td>Establishment of a session.</h:td>
+								<h:td>Non-TOE endpoint of connection (IP Address).</h:td></h:tr>
+
+								<h:tr><h:td>FCS_SSHS_EXT.1</h:td>
+								<h:td>Termination of a session.</h:td>
+								<h:td>Non-TOE endpoint of connection (IP Address).</h:td></h:tr>
+
+								<h:tr><h:td>FCS_TLSC_EXT.1</h:td>
+								<h:td>Failure to establish a session.</h:td>
+								<h:td>Reason for failure.</h:td></h:tr>
+								
+								<h:tr><h:td>FCS_TLSC_EXT.1</h:td>
+								<h:td>Failure to verify presented identifier.</h:td>
+								<h:td>Presented identifier and reference identifier.</h:td></h:tr>
+
+								<h:tr><h:td>FCS_TLSC_EXT.1</h:td>
+								<h:td>Establishment/termination of a TLS session.</h:td>
+								<h:td>Non-TOE endpoint of connection.</h:td></h:tr>
+
+								<h:tr><h:td>FCS_TLSS_EXT.1</h:td>
+								<h:td>Failure to establish a session.</h:td>
+								<h:td>Reason for failure.</h:td></h:tr>
+
+								<h:tr><h:td>FCS_DTLSC_EXT.1</h:td>
+								<h:td>Failure of the certificate validity check.</h:td>
+								<h:td>Issuer Name and Subject Name of certificate.</h:td></h:tr>
+							
+								<h:tr><h:td>FCS_DTLSS_EXT.1</h:td>
+								<h:td>Failure of the certificate validity check.</h:td>
+								<h:td>Issuer Name and Subject Name of certificate.</h:td></h:tr>
+							</h:table>
                         </note>
 			    
 						<aactivity>
