@@ -12,7 +12,7 @@
     - DONE: 0139 Clarification of testing for FDP_RIP_EXT.2
     - DONE: 0206 Testing for Non-Existence of Disconnected Virtual Devices
     - DONE: 0230 ALC Assurance Activities for Server Virtualization and Base Virtualization PPs
-    - OBEV: 0244 FCS_TLSC_EXT - TLS Client Curves Allowed (TLS PAckage incorporated)
+    - OBEV: 0244 FCS_TLSC_EXT - TLS Client Curves Allowed (TLS Package incorporated)
     - DONE: 0249 Applicability of FTP_ITC_EXT.1
     - DONE: 0264 Clarification of Auditable Events for FPT_RDM_EXT.1
     - OBEV: 0267 TLSS testing - Empty Certificate Authorities list (TLS Package incorporated)
@@ -41,6 +41,7 @@
 
     - See Issues for resolution of comments from Jan 2021.
     - Incluldes updating IPsec requirement to match vpnclient 2.2
+	- Removed attestation requirements
 
     -->
 
@@ -318,7 +319,7 @@
 			</section>
 		
 			<!-- 1.3.4 Vendor Attestation -->
-			<section id="ss-attestation" title="Vendor Attestation">
+<!--			<section id="ss-attestation" title="Vendor Attestation">
 				This PP includes several SFRs that include elements that are met via vendor attestation. Attestation assurance 
 				activities are reserved for SFRs that define properties that are critical to the system’s security functionality,
 				but that are impossible or impractical to test in a repeatable and consistent manner. These Attestation assurance 
@@ -328,11 +329,11 @@
 				By including this statement in the ST, the vendor is accepting responsibility for the assurance
 				of their product in these particular areas. If at any time evidence is produced that indicates that these
 				statements are false (and the product does not meet the specified security functionality), the CC certificate may
-				be revoked. See FDP_VMS_EXT.1, FDP_VNC_EXT.1, FPT_VDP_EXT.1, and FPT_VIV_EXT.1 for the associated Attestation
+				be revoked. See FDP_VMS_EXT.1, FDP_VNC_EXT.1, FPT_VDP_EXT.1 and FPT_VIV_EXT.1 for the associated Attestation
 				statements.
 			</section>
-		
-			<!-- 1.3.5 Product and Platform Equivalance -->
+-->		
+			<!-- 1.3.4 Product and Platform Equivalance -->
 			<section id="ss-equiv" title="Product and Platform Equivalence">
 				The tests in this Protection Profile must be run on all product versions and Platforms with which the Vendor would 
 				like to claim compliance—subject to this Profile’s equivalency guidelines (see <xref to="appendix-equiv"/>).
@@ -368,7 +369,7 @@
 				<description>This PP does not claim conformance to any other PP. </description>
 			</cclaim>
 			<cclaim name="Module Claim">
-				<description>The following PP-Modules are allowed to be specified in a PP-Configuration with
+				<description>One or more of the following modules must be specified in a PP-Configuration with
 					this PP.<h:ul>
 						<h:li>PP-Module for Client Virtualization, Version 1.1</h:li>
 						<h:li>PP-Module for Server Virtualization, Version 1.1</h:li>
@@ -924,9 +925,9 @@
 		    
 								<h:li>[<refinement>Auditable events defined in <xref to="atref-mandatory"/></refinement>]</h:li>
                                 <h:li><refinement><selectables>
-                                    <selectable id="sel-at2">Auditable events defined in <xref g="atref-optional-dep"></xref></selectable>
-									<selectable id="sel-at3">Auditable events defined in <xref g="atref-objective-dep"></xref></selectable>
-                                    <selectable id="sel-at4">Auditable events defined in <xref g="atref-sel-based-dep"></xref></selectable>
+                                    <selectable id="sel-at2">Auditable events defined in <xref g="atref-optional-dep"></xref>for Strictly Optional SFRs</selectable>
+									<selectable id="sel-at3">Auditable events defined in <xref g="atref-objective-dep"></xref>for Objective SFRs</selectable>
+                                    <selectable id="sel-at4">Auditable events defined in <xref g="atref-sel-based-dep"></xref>for Selection-Based SFRs</selectable>
 									<selectable>Auditable events defined in the audit table for the TLS Functional Package (see <xref to="atref-pkgs"/>)</selectable>
 									<selectable>Auditable events defined in the audit table for the SSH Functional Package (see <xref to="atref-pkgs"/>)</selectable>
                                     <selectable>no other auditable events</selectable>
@@ -952,9 +953,9 @@
 				    
 								<h:li>[<refinement>Additional information defined in <xref to="atref-mandatory"/></refinement>]</h:li>
                                 <h:li><refinement><selectables>
-                                    <selectable>Additional information defined in <xref g="atref-optional-dep"></xref></selectable>
-                                    <selectable>Additional information defined in <xref g="atref-objective-dep"></xref></selectable>
-                                    <selectable>Additional information defined in <xref g="atref-sel-based-dep"></xref></selectable>
+                                    <selectable>Additional information defined in <xref g="atref-optional-dep"></xref>for Strictly Optional SFRs</selectable>
+                                    <selectable>Additional information defined in <xref g="atref-objective-dep"></xref>for Objective SFRs</selectable>
+                                    <selectable>Additional information defined in <xref g="atref-sel-based-dep"></xref>for Selection-Based SFRs</selectable>
 									<selectable>Additional information defined in the audit table for the TLS Functional Package (see <xref to="atref-pkgs"/>)</selectable>
 									<selectable>Additional information defined in the audit table for the SSH Functional Package (see <xref to="atref-pkgs"/>)</selectable>
                                     <selectable>no other information</selectable>
@@ -1040,16 +1041,16 @@
                                 The evaluator shall check the TSS and ensure that it lists all of the auditable events 
                                 and provides a format for audit records. Each audit record format type shall be covered, along with a 
                                 brief description of each field. The evaluator shall check to make sure that every audit event type 
-                                mandated by the PP is described in the TSS.<h:br></h:br><h:br></h:br>
+                                mandated by the PP-Configuration is described in the TSS.<h:br></h:br><h:br></h:br>
                             </TSS>
                             <Guidance>
                                 The evaluator shall also make a determination of the administrative actions that are relevant in the 
-                                context of this PP. The evaluator shall examine the administrative guide and make a determination of which 
+                                context of this PP-Configuration. The evaluator shall examine the administrative guide and make a determination of which 
                                 administrative commands, including subcommands, scripts, and configuration files, are related to the 
                                 configuration (including enabling or disabling) of the mechanisms implemented in the TOE 
-                                that are necessary to enforce the requirements specified in the PP. The evaluator shall document the 
+                                that are necessary to enforce the requirements specified in the PP and PP-Module(s). The evaluator shall document the 
                                 methodology or approach taken while determining which actions in the administrative guide are 
-                                security-relevant with respect to this PP.<h:br></h:br><h:br></h:br>
+                                security-relevant with respect to this PP-Configuration.<h:br></h:br><h:br></h:br>
                             </Guidance>
                             <Tests>
                                 The evaluator shall test the TOE’s ability to correctly generate audit records by 
@@ -3556,10 +3557,7 @@
                     </f-element>
                     <f-element id="fdp-vms-ext-1e2">
                         <title>The TSF shall allow Administrators to configure the mechanisms selected in FDP_VMS_EXT.1.1 to
-                            <selectables>
-                                <selectable>enable</selectable>
-                                <selectable>disable</selectable>
-                            </selectables> the transfer of data between Guest VMs.
+                            enable and disable the transfer of data between Guest VMs.
                         </title>
                     </f-element>
                     <f-element id="fdp-vms-ext-1e3">
@@ -3588,23 +3586,33 @@
 							listed in and meets FDP_PPR_EXT.1.1 (VM access to the physical device is configurable).<h:br></h:br><h:br></h:br>
                             For data transfer mechanisms that use virtual networking, FDP_VMS_EXT.1.2 is met if FDP_VNC_EXT.1.1 
 							is met (VM access to virtual networks is configurable).<h:br></h:br><h:br></h:br>
-                            FDP_VMS_EXT.1.3 is an attestation requirement. The vendor must attest that data cannot be transferred
+<!--                            FDP_VMS_EXT.1.3 is an attestation requirement. The vendor must attest that data cannot be transferred
 							between Guest VMs except through the configurable mechanisms documented in FDP_VMS_EXT.1.1. The vendor
 							must attest that there are no design or implementation flaws that permit the above mechanisms to be
-							bypassed or defeated, or for data to be transferred through a different, undocumented mechanism.
+							bypassed or defeated, or for data to be transferred through a different, undocumented mechanism.  -->
                         </note>
                         <aactivity>
                             <TSS>
                                 The evaluator shall examine the TSS to verify that it documents all inter-VM 
-                                communications mechanisms (as defined above), including how the mechanisms are configured, how 
-                                they are invoked, and how they are disabled.
+                                communications mechanisms (as defined above), and explains how the TSF prevents the transfer of data
+								between VMs outside of the mechanisms listed in FDP_VMS_EXT.1.1.
                             </TSS>
+							<Guidance>
+								The evaluator shall examine the operational guidance to ensure that it documents how to configure all inter-VM
+								communications mechanisms, including how they are invoked and how they are disabled.
+							</Guidance>
                             <Tests>
                                 The evaluator shall perform the following tests for each documented inter-VM communications channel:
                                 <testlist>
                                     <test>
                                         <h:ol type="a">
-                                            <h:li>Create two VMs, the first with the inter-VM communications channel currently being
+                                            <h:li>Create two VMs without specifying any communications mechanism or overriding
+												the default configuration. </h:li>
+                                            <h:li>Test that the two VMs cannot communicate through the mechanisms selected in FMT_MSA_EXT.1.1.</h:li>
+											<h:li>Create two new VMs, overriding the default configuration to allow communications through a
+												channel selected in FMT_MSA_EXT.1.1.
+                                            <h:li>Test that communications can be passed between the VMs through the channel.</h:li>												
+                                            <h:li>Create two new VMs, the first with the inter-VM communications channel currently being
 												tested enabled, and the second with the inter-VM communications channel currently
 												being tested disabled.</h:li>
                                             <h:li>Test that communications cannot be passed between the VMs through the channel.</h:li>
@@ -3621,13 +3629,13 @@
                                 FMT_MSA_EXT.1.1 is met if communication is unsuccessful in step (b). FMT_MSA_EXT.1.2 is met if
 								communication is successful in step (d). Additionally, FMT_MSA_EXT.1 requires that the evaluator
 								verifies that the TSS documents the inter-VM communications mechanisms as described above.
-                                The evaluator must ensure that the ST includes the following statement attesting that there are no 
+<!--                                The evaluator must ensure that the ST includes the following statement attesting that there are no 
 								other ways for data to be transferred between VMs other than those listed in FDP_VMS_EXT.1.1:<h:br></h:br><h:br></h:br>
                                 A Guest VM cannot access the data of another Guest VM, or transfer data to another Guest VM other than
 								through the mechanisms described in FDP_VMS_EXT.1.1 when expressly enabled by an authorized
 								Administrator. There are no design or implementation flaws that permit the above mechanisms to be
 								bypassed or defeated, or for data to be transferred through undocumented mechanisms. This claim 
-								does not apply to covert channels or architectural side-channels.
+								does not apply to covert channels or architectural side-channels.   -->
                             </Tests>
                          </aactivity>
                     </f-element>
@@ -3671,16 +3679,16 @@
 							physically separate networks. It must not be possible for data to cross between properly configured
 							virtual networks regardless of whether the traffic originated from a local Guest VM or a remote host.<h:br></h:br><h:br></h:br>
                             Unprivileged users must not be able to connect VMs to each other or to external networks.<h:br></h:br><h:br></h:br>
-                            FDP_VNC_EXT.1.2 is an attestation requirement. The vendor must attest that traffic traversing a virtual 
+<!--                            FDP_VNC_EXT.1.2 is an attestation requirement. The vendor must attest that traffic traversing a virtual 
 							network is visible only to Guest VMs that are configured by an Administrator to be members of that
 							virtual network, and that there are no design or implementation flaws that permit the virtual 
 							networking configuration to be bypassed or defeated, or for data to be transferred through
-							undocumented mechanisms.
+							undocumented mechanisms.   -->
                         </note>
                         <aactivity>
                             <TSS>
-                               The evaluator must ensure that the TSS describes how to create virtualized networks and connect 
-								VMs to each other and to physical networks.
+                               The evaluator shall examine the TSS (or a proprietary annex) to verify that it describes the mechanism 
+							   by which virtual network traffic is ensured to be visible only to Guest VMs configured to be on that virtual network.
 							</TSS>
 							<Guidance>
                                The evaluator must ensure that the Operational Guidance describes how
@@ -3699,13 +3707,13 @@
 									If the attempt fails, or there is no way for an unprivileged user to configure VM network 
 									connections, the requirement is met.</test>
                             </testlist>
-                            The evaluator must ensure that the ST includes the following statement attesting that virtual network
+<!--                            The evaluator must ensure that the ST includes the following statement attesting that virtual network
 							traffic is visible only to VMs configured to be on that virtual network:<h:br></h:br><h:br></h:br>
                             “Traffic traversing a virtual network is visible only to Guest VMs that are configured by an Administrator 
 							to be members of that virtual network. There are no design or implementation flaws that permit
 							the virtual networking configuration to be bypassed or defeated, or for data to be transferred
 							through undocumented mechanisms. This claim does not apply to covert channels or architectural
-							side-channels.”
+							side-channels.”  -->
                             </Tests>
                          </aactivity>
                     </f-element>
@@ -4312,12 +4320,7 @@
 					<audit>There are no auditable events foreseen.</audit>
 					<dependencies>FDP_VMS_EXT.1 VM Separation</dependencies>
                     <f-element id="fmt-msa-ext-1e1">
-                        <title>The TSF shall by default enforce a policy prohibiting sharing of data between Guest VMs using
-                            <selectables linebreak="yes">
-                                <selectable>no mechanism</selectable>
-                                <selectable>virtual networking</selectable>
-                                <selectable><assignable>other inter-VM data sharing mechanisms</assignable></selectable>
-                            </selectables>.
+                        <title>The TSF shall by default enforce a policy prohibiting sharing of data between Guest VMs.
                         </title>
                     </f-element>
                     <f-element id="fmt-msa-ext-1e2">
@@ -4328,10 +4331,7 @@
 							VMs. The default policy applies to all mechanisms for sharing data between VMs, including inter-VM 
 							communication channels, shared physical devices, shared virtual devices, and virtual networks. The 
 							default policy does not apply to covert channels and architectural side-channels.<h:br></h:br><h:br></h:br>
-                            The ST author should select “no mechanism” in the unlikely event that the VS implements no mechanisms for
-							transferring data between Guest VMs. Otherwise, the ST author should select “virtual networking” and
-							all other mechanisms through which data can be transferred between Guest VMs. This should be the same 
-							list of mechanisms supplied in FDP_VMS_EXT.1.<h:br></h:br><h:br></h:br>
+                            The list of data sharing mechanisms implemented by the TOE is contained in the selection in FDP_VMS_EXT.1.1.<h:br></h:br>
 							Examples of non-network inter-VM sharing mechanisms are:<h:br></h:br>
                             <h:ul>
                                 <h:li>User interface-based mechanisms, such as copy-paste and drag-and-drop</h:li>
@@ -4460,29 +4460,29 @@
 							domains.
                         </title>
                     <note role="application">In order to function on physical hardware, the VMM must have access to the device
-			    drivers for the physical platform on which it runs. These drivers are often written by third parties, 
-			    and yet are effectively a part of the VMM. Thus the integrity of the VMM in part depends on the quality 
-			    of third party code that the virtualization vendor has no control over. By encapsulating these drivers
-			    within one or more dedicated driver domains (e.g., Service VM or VMs) the damage of a driver failure or
-			    vulnerability can be contained within the domain, and would not compromise the VMM. When driver domains 
-			    have exclusive access to a physical device, hardware isolation mechanisms, such as Intel's VT-d, AMD's
-			    Input/Output Memory Management Unit (IOMMU), or ARM's System Memory Management Unit (MMU) should be used
-			    to ensure that operations performed by Direct Memory Access (DMA) hardware are properly constrained.</note>
-                        <aactivity>
-                            <TSS>
-                                The evaluator shall examine the TSS documentation to verify that it describes the
-                                mechanism used for device driver isolation. If the TSS document indicates that a 
-                                hardware isolation mechanism is used, the evaluator shall verify that the TSS 
-                                documentation enumerates the hardware-isolated DMA-capable devices, and that it also provides a 
-                                complete list of the accessible targets for memory transactions for each of those DMA-capable 
-                                devices. (An example of information that might be included in the TSS documentation:
-                                a listing of all pages belonging to the driver domain, the identification of a subset of the driver 
-                                domain's pages that the driver domain has permitted the device access to, or the identification of a 
-                                dedicated area of memory reserved for the device or driver domain).
-                            </TSS>
-                        </aactivity>
-                    </f-element>
-		    <audit-event />
+						drivers for the physical platform on which it runs. These drivers are often written by third parties, 
+						and yet are effectively a part of the VMM. Thus the integrity of the VMM in part depends on the quality 
+						of third party code that the virtualization vendor has no control over. By encapsulating these drivers
+						within one or more dedicated driver domains (e.g., Service VM or VMs) the damage of a driver failure or
+						vulnerability can be contained within the domain, and would not compromise the VMM. When driver domains 
+						have exclusive access to a physical device, hardware isolation mechanisms, such as Intel's VT-d, AMD's
+						Input/Output Memory Management Unit (IOMMU), or ARM's System Memory Management Unit (MMU) should be used
+						to ensure that operations performed by Direct Memory Access (DMA) hardware are properly constrained.</note>
+                    <aactivity>
+                        <TSS>
+                            The evaluator shall examine the TSS documentation to verify that it describes the
+                            mechanism used for device driver isolation. If the TSS document indicates that a 
+                            hardware isolation mechanism is used, the evaluator shall verify that the TSS 
+                            documentation enumerates the hardware-isolated DMA-capable devices, and that it also provides a 
+                            complete list of the accessible targets for memory transactions for each of those DMA-capable 
+                            devices. (An example of information that might be included in the TSS documentation:
+                            a listing of all pages belonging to the driver domain, the identification of a subset of the driver 
+                            domain's pages that the driver domain has permitted the device access to, or the identification of a 
+                            dedicated area of memory reserved for the device or driver domain).
+                        </TSS>
+                    </aactivity>
+                </f-element>
+				<audit-event />
                 </f-component>
                 
                 <!-- FPT_DVD_EXT.1 -->
@@ -4513,7 +4513,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event />
+				<audit-event />
                 </f-component>
 
                 <!-- FPT_EEM_EXT.1 -->
@@ -4526,7 +4526,7 @@
 					<dependencies>No dependencies.</dependencies>
                     <f-element id="fpt-eem-ext-1e1">
                         <title>The TSF shall take advantage of execution environment-based vulnerability mitigation mechanisms 
-				supported by the Platform such as:
+							supported by the Platform such as:
                             <selectables linebreak="yes">
                                 <selectable>Address space randomization</selectable>
                                 <selectable>Memory execution protection (e.g., DEP)</selectable>
@@ -5165,27 +5165,33 @@
 				compromise through the processing of malformed data passed to the virtual device interface from a 
 				Guest OS. The VMM cannot assume that any data coming from a VM is well-formed—even if the virtual
 				device interface is unique to the VS and the data comes from a virtual device
-				driver supplied by the Virtualization Vendor.<h:br></h:br><h:br></h:br>
-                            FPT_VDP_EXT.1.2 is an attestation requirement. The vendor must attest that parameters passed from a VM
+				driver supplied by the Virtualization Vendor.<h:br></h:br>
+<!--                            FPT_VDP_EXT.1.2 is an attestation requirement. The vendor must attest that parameters passed from a VM
 				to a virtual device interface are not able to degrade or disrupt the functioning of other VMs, the 
 				VMM, or the Platform. The vendor must attest that there are no design or implementation flaws that 
-				permit the above.
+				permit the above.  -->
                         </note>
                         <aactivity>
                             <TSS>
                                 The evaluator shall examine the TSS to ensure it lists all virtual devices
-				    accessible by the guest OS. The TSS, or a separate proprietary document, must
-				    also document all virtual device interfaces at the level of I/O ports - including
-				    port number(s) (absolute or relative to a base), port name, and a description of
-				    legal input values.  The documentation must be sufficient to enable the evaluator
-				    to effectively run the tests in FPT_DVD_EXT.1.  The evaluator must ensure that 
-				    there are no obvious or publicly known virtual I/O ports missing from the TSS.
-                                <h:br /><h:br />
+								accessible by the guest OS. The TSS, or a separate proprietary document, must
+								also document all virtual device interfaces at the level of I/O ports - including
+								port number(s) (absolute or relative to a base), port name, and a description of
+								legal input values.<h:p/>
+								The TSS must also describe the expected behavior of the interface when presented with illegal input 
+								values. This behavior must be deterministic and indicative of parameter checking by the TSF.<h:p/>
+								The evaluator must ensure that there are no obvious or publicly known virtual I/O 
+								ports missing from the TSS.<h:p/>
                                	There is no expectation that evaluators will examine source code to verify the “all” part of the 
                                	Assurance Activity.
                             </TSS>
                             <Tests>
-                                The evaluator ensures that the ST includes the following statement attesting that
+								For each virtual device interface, the evaluator shall attempt to access the interface 
+								using at least one parameter value that is out of range or illegal. The test is passed if the
+								interface behaves in the manner documented in the TSS. Interfaces that do not
+								have input parameters need not be tested. This test can be performed in conjunction with 
+								the tests for FPT_DVD_EXT.1.
+<!--                                The evaluator ensures that the ST includes the following statement attesting that
                                 parameters passed from a Guest VM to virtual device interfaces are thoroughly
                                 validated, that all values outside the legal values specified in the TSS are
                                 rejected, and that any data passed to the virtual device interfaces is unable to degrade or disrupt
@@ -5197,11 +5203,11 @@
                                 able to degrade or disrupt the functioning of other VMs, the VMM,
                                 or the Platform. Thorough testing and architectural design reviews have been conducted to ensure the
                                 accuracy of these claims, and there are no design or implementation flaws that bypass or defeat the
-                                security of the virtual device interfaces.”
+                                security of the virtual device interfaces.”   -->
                             </Tests>
                         </aactivity>
                     </f-element>
-		    <audit-event />
+				<audit-event />
                 </f-component>
 
                 <!-- FPT_VIV_EXT.1 -->
@@ -5215,47 +5221,56 @@
 						FDP_VMS_EXT.1 VM Separation</dependencies>
                     <f-element id="fpt-viv-ext-1e1">
                         <title>The TSF must ensure that software running in a VM is not able to degrade or disrupt the functioning of 
-				other VMs, the VMM, or the Platform.
+							other VMs, the VMM, or the Platform.
                         </title>
                     </f-element>
                     <f-element id="fpt-viv-ext-1e2">
                         <title>The TSF must ensure that a Guest VM is unable to invoke platform code that runs at a privilege level 
-				equal to or exceeding that of the VMM without involvement of the VMM.
+							equal to or exceeding that of the VMM without involvement of the VMM.
                         </title>
                         <note role="application">This requirement is intended to ensure that software running within a Guest VM cannot
-				compromise other VMs, the VMM, or the platform. This requirement is not met if Guest VM 
-				software—whatever its privilege level—can crash the VS or the Platform, or breakout
-				of its virtual hardware abstraction to gain execution on the platform, within or outside of the context
-				of the VMM.<h:br></h:br><h:br></h:br>
+							compromise other VMs, the VMM, or the platform. This requirement is not met if Guest VM 
+							software—whatever its privilege level—can crash the VS or the Platform, or breakout
+							of its virtual hardware abstraction to gain execution on the platform, within or outside of the context
+							of the VMM.<h:br></h:br><h:br></h:br>
                             This requirement is not violated if software running within a VM can crash the Guest OS and there is no
-				way for an attacker to gain execution in the VMM or outside of the virtualized domain.<h:br></h:br><h:br></h:br>
+							way for an attacker to gain execution in the VMM or outside of the virtualized domain.<h:br></h:br><h:br></h:br>
                             FPT_VIV_EXT.1.2 addresses several specific mechanisms that must not be permitted to bypass the VMM and
-				invoke privileged code on the Platform.<h:br></h:br><h:br></h:br>
+							invoke privileged code on the Platform.<h:br></h:br><h:br></h:br>
                             At a minimum, the TSF should enforce the following:<h:br></h:br><h:br></h:br>
                             <h:ol type="a">
                                 <h:li>On the x86 platform, a virtual System Management Interrupt (SMI) cannot invoke platform System 
-					Management Mode (SMM)</h:li>
+									Management Mode (SMM)</h:li>
                                 <h:li>An attempt to update virtual firmware or virtual BIOS cannot cause physical platform firmware
-					or physical platform BIOS to be modified</h:li>
+									or physical platform BIOS to be modified</h:li>
                                 <h:li>An attempt to update virtual firmware or virtual BIOS cannot cause the VMM to be modified</h:li>
                             </h:ol>
                             Of the above, (a) does not apply to platforms that do not support SMM. The rationale behind activity (c) 
-				is that a firmware update of a single VM must not affect other VMs. So if multiple VMs share the same
-				firmware image as part of a common hardware abstraction, then the update of a single machine’s BIOS 
-				must not be allowed to change the common abstraction. The virtual hardware abstraction is part of the
-				VMM.<h:br></h:br><h:br></h:br>
-                            This is an attestation requirement. The vendor must attest that software running in a VM is not able to 
-				degrade or disrupt the functioning of other VMs, the VMM, or the Platform. The vendor must attest 
-				that there are no design or implementation flaws that permit the above.
+							is that a firmware update of a single VM must not affect other VMs. So if multiple VMs share the same
+							firmware image as part of a common hardware abstraction, then the update of a single machine’s BIOS 
+							must not be allowed to change the common abstraction. The virtual hardware abstraction is part of the
+							VMM.<h:br></h:br>
+<!--                            This is an attestation requirement. The vendor must attest that software running in a VM is not able to 
+							degrade or disrupt the functioning of other VMs, the VMM, or the Platform. The vendor must attest 
+							that there are no design or implementation flaws that permit the above.  -->
                         </note>
                         <aactivity>
+							<TSS>
+								The evaluator shall verify that the TSS (or a proprietary annex to the TSS) describes how the TSF ensures 
+								that guest software cannot degrade or disrupt the functioning of other VMs, the VMM or the platform. And 
+								how the TSF prevents guests from invoking higher-privilege platform code, such as the examples in the note.
+							</TSS>
+							<Guidance>
+								There is no operational guidance for this requirement.
+								</Guidance>
                             <Tests>
-                                The evaluator ensures that the ST includes the following statement attesting that software running
-				    in a VM is not able to degrade or disrupt the functioning of other VMs, the VMM, or the
-				    Platform:<h:br></h:br><h:br></h:br>
+								There are no tests for this requirement.
+<!--                                The evaluator ensures that the ST includes the following statement attesting that software running
+								in a VM is not able to degrade or disrupt the functioning of other VMs, the VMM, or the
+								Platform:<h:br></h:br><h:br></h:br>
                                 “Software running in a VM is not able to degrade or disrupt the functioning of other VMs, the 
-				    VMM, or the Platform. There are no design or implementation flaws that bypass or defeat VM
-				    isolation.”
+								VMM, or the Platform. There are no design or implementation flaws that bypass or defeat VM
+								isolation.”   -->
                             </Tests>
                         </aactivity>
                     </f-element>
