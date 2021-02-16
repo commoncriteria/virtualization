@@ -1,6 +1,6 @@
 Protection Profile for Virtualization 
 ============
-[![Build Status](https://travis-ci.com/commoncriteria/virtualization.svg?branch=master)](https://travis-ci.com/commoncriteria/virtualization) 
+[![Build Status](https://github.com/commoncriteria/virtualization/actions)](https://github.com/commoncriteria/virtualization/actions) 
 [![GitHub issues Open](https://img.shields.io/github/issues/commoncriteria/virtualization.svg?maxAge=2592000)](https://github.com/commoncriteria/virtualization/issues) 
 ![license](https://img.shields.io/badge/license-Unlicensed-blue.svg)
 
@@ -13,7 +13,7 @@ A list of products that have passed evaluation against this Protection Profile c
 ## Draft Version
 
 * [Protection Profile for Virtualization](https://commoncriteria.github.io/virtualization/virtualization-release.html) (html)
-* [Protection Profile for Virtualization](https://commoncriteria.github.io/pp/virtualization/virtualization-release.pdf) (pdf)
+* [Protection Profile for Virtualization](https://commoncriteria.github.io/virtualization/virtualization-release.pdf) (pdf)
 
 ## Release Version
 * [Protection Profile for Virtualization](https://www.niap-ccevs.org/Profile/Info.cfm?id=409)
