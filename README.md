@@ -1,6 +1,6 @@
 Protection Profile for Virtualization 
 ============
-[![Build Status](https://github.com/commoncriteria/virtualization/actions)](https://github.com/commoncriteria/virtualization/actions) 
+[![Build Status](https://travis-ci.com/commoncriteria/servervirtualization.svg?branch=master)](https://github.com/commoncriteria/virtualization/actions) 
 [![GitHub issues Open](https://img.shields.io/github/issues/commoncriteria/virtualization.svg?maxAge=2592000)](https://github.com/commoncriteria/virtualization/issues) 
 ![license](https://img.shields.io/badge/license-Unlicensed-blue.svg)
 
