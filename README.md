@@ -12,7 +12,7 @@ A list of products that have passed evaluation against this Protection Profile c
 
 ## Draft Version
 
-* [Protection Profile for Virtualization](https://commoncriteria.github.io/pp/virtualization/virtualization-release.html) (html)
+* [Protection Profile for Virtualization](https://commoncriteria.github.io/virtualization/virtualization-release.html) (html)
 * [Protection Profile for Virtualization](https://commoncriteria.github.io/pp/virtualization/virtualization-release.pdf) (pdf)
 
 ## Release Version
