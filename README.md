@@ -12,8 +12,8 @@ A list of products that have passed evaluation against this Protection Profile c
 
 ## Draft Version
 
-* [Protection Profile for Virtualization](https://commoncriteria.github.io/virtualization/virtualization-release.html) (html)
-* [Protection Profile for Virtualization](https://commoncriteria.github.io/virtualization/virtualization-release.pdf) (pdf)
+* [Protection Profile for Virtualization](https://commoncriteria.github.io/virtualization/pp/virtualization-release.html) (html)
+* [Protection Profile for Virtualization](https://commoncriteria.github.io/virtualization/pp/virtualization-release.pdf) (pdf)
 
 ## Release Version
 * [Protection Profile for Virtualization](https://www.niap-ccevs.org/Profile/Info.cfm?id=409)
