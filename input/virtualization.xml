@@ -903,7 +903,6 @@
 						transmit audit data between the TOE and an external IT entity.</fam-behavior>
 				</ext-comp-def>
 
-
 			<!-- FAU_GEN.1 -->
 			<f-component cc-id="fau_gen.1" name="Audit Data Generation">
                     <f-element id="fau-gen-1e1">
@@ -1080,6 +1079,33 @@
                         </aactivity>
                     </f-element>
 					<audit-event />
+                </f-component>
+
+                <!-- FAU_SAR.1 -->
+                <f-component cc-id="fau_fak.1" name="Fake Audit Review" status="invisible">
+                    <f-element id="fau-fak-1e1">
+                        <title>The TSF shall provide [administrators] with the capability to read [all information] from the audit records.
+                        </title>
+                    </f-element>
+                    <f-element id="fau-fak-1e2">
+                        <title>The TSF shall provide the audit records in a manner suitable for the user to interpret the information.
+                        </title>
+                        <aactivity>
+                            <Guidance>
+                                The evaluator shall review the operational guidance for the procedure on how to review the audit 
+                                records.
+                            </Guidance>
+                            <Tests>
+                                The evaluator shall verify that the audit records provide all of the information specified in 
+                                FAU_GEN.1 and that this information is suitable for human interpretation. The assurance 
+                                activity for this requirement is performed in conjunction with the assurance activity for 
+                                FAU_GEN.1.
+                            </Tests>
+                        </aactivity>
+                    </f-element>
+					<audit-event>
+						<audit-event-desc>Fake audit event</audit-event-descr>
+					</audit-event>						
                 </f-component>
                 
                 <!-- FAU_STG.1 -->
