@@ -1,6 +1,6 @@
 Protection Profile for Virtualization 
 ============
-![Build](https://github.com/commoncriteria/virtualization/workflows/Build/badge.svg)
+[![Build](https://github.com/commoncriteria/virtualization/workflows/Build/badge.svg)](https://github.com/commoncriteria/virtualization/actions)
 [![GitHub issues Open](https://img.shields.io/github/issues/commoncriteria/virtualization.svg?maxAge=2592000)](https://github.com/commoncriteria/virtualization/issues) 
 ![license](https://img.shields.io/badge/license-Unlicensed-blue.svg)
 
