@@ -902,6 +902,9 @@
 					<fam-behavior>This family defines requirements for the TSF to be able to securely 
 						transmit audit data between the TOE and an external IT entity.</fam-behavior>
 				</ext-comp-def>
+			    <ext-comp-def title="Fake Audit Data" fam-id="FAU_FAK_EXT">
+					<fam-behavior>This family defines requirements that are totally fake.</fam-behavior>
+				</ext-comp-def>
 
 			<!-- FAU_GEN.1 -->
 			<f-component cc-id="fau_gen.1" name="Audit Data Generation">
@@ -1081,31 +1084,29 @@
 					<audit-event />
                 </f-component>
 
-                <!-- FAU_SAR.1 -->
-                <f-component cc-id="fau_fak.1" name="Fake Audit Review" status="invisible">
-                    <f-element id="fau-fak-1e1">
-                        <title>The TSF shall provide [administrators] with the capability to read [all information] from the audit records.
-                        </title>
-                    </f-element>
-                    <f-element id="fau-fak-1e2">
-                        <title>The TSF shall provide the audit records in a manner suitable for the user to interpret the information.
-                        </title>
-                        <aactivity>
-                            <Guidance>
-                                The evaluator shall review the operational guidance for the procedure on how to review the audit 
-                                records.
-                            </Guidance>
-                            <Tests>
-                                The evaluator shall verify that the audit records provide all of the information specified in 
-                                FAU_GEN.1 and that this information is suitable for human interpretation. The assurance 
-                                activity for this requirement is performed in conjunction with the assurance activity for 
-                                FAU_GEN.1.
-                            </Tests>
-                        </aactivity>
-                    </f-element>
-					<audit-event>
-						<audit-event-desc>Fake audit event</audit-event-descr>
-					</audit-event>						
+                <!-- FAU_FAK_EXT.1 -->
+                <f-component cc-id="fau_fak_ext.1" name="Fake Audit Review" status="invisible">
+			<consistency-rationale/>
+			<comp-lev>requires the TSF to transmit fake audit data using a cup-and-string trusted channel to an outside entity and to specify 
+				the action to be taken when local audit storage is overflown.</comp-lev>
+			<management>The following actions could be considered for the management functions in FAU:
+				<h:ol type="a">
+					<h:li>Ability to configure and manage the fake audit system and audit data.</h:li>
+				</h:ol>
+			</management>
+			<audit>The following actions should be auditable if FAU_GEN Security audit data generation 
+				is included in the PP/ST:
+				<h:ol type="a">
+					<h:li>Failure of fake audit data capture due to lack of disk space or pre-defined limit.</h:li>
+					<h:li>On failure of logging function, capture record of failure and record upon restart of logging function.</h:li>
+				</h:ol>
+			</audit>
+			<dependencies>FAU_GEN.1 Audit Data Generation<h:p/>
+			FTP_ITC_EXT.1 Trusted Channel Communications</dependencies>
+                    <f-element id="fau-fak-faux"><title/></f-element>
+<!--		    <audit-event>
+			<audit-event-desc>Fake audit event</audit-event-descr>
+		    </audit-event>				-->		
                 </f-component>
                 
                 <!-- FAU_STG.1 -->
