@@ -899,9 +899,7 @@
 		
 			<!-- 5.1.1 Auditable Events for Mandatory SFRs -->
 			<section id="ss-audit-table" title="Auditable Events for Mandatory SFRs">
-				<audit-table table="mandatory">
-					<h:br/><h:b><ctr ctr-type="Table" pre="Table " id="atref-mandatory">: Auditable Events for Mandatory SFRs</ctr></h:b>
-				</audit-table>
+				<audit-table table="mandatory"/>
 			</section>
 
 			<!-- 5.1.2 Security Audit (FAU) -->
@@ -923,7 +921,7 @@
                                 <h:li>Start-up and shutdown of audit functions</h:li>
                                 <h:li>[<refinement>All administrative actions relevant to claimed SFRs as defined in the 
 									Auditable Events Table from the Client and Server PP-Modules</refinement>]</h:li>		    
-								<h:li>[<refinement>Auditable events defined in <xref to="atref-mandatory"/></refinement>]</h:li>
+								<h:li>[<refinement>Auditable events defined in <xref g="t-audit-mandatory"/></refinement>]</h:li>
                                 <h:li><refinement><selectables>
                                     <selectable id="sel-at2">Auditable events defined in <xref g="atref-optional-dep"></xref>for Strictly Optional SFRs</selectable>
 									<selectable id="sel-at3">Auditable events defined in <xref g="atref-objective-dep"></xref>for Objective SFRs</selectable>
@@ -951,7 +949,7 @@
 									 in FAU_GEN.1.1.
 								-->
 				    
-								<h:li>[<refinement>Additional information defined in <xref to="atref-mandatory"/></refinement>]</h:li>
+								<h:li>[<refinement>Additional information defined in <xref g="t-audit-mandatory"/></refinement>]</h:li>
                                 <h:li><refinement><selectables>
                                     <selectable>Additional information defined in <xref g="atref-optional-dep"></xref>for Strictly Optional SFRs</selectable>
                                     <selectable>Additional information defined in <xref g="atref-objective-dep"></xref>for Objective SFRs</selectable>
@@ -963,14 +961,14 @@
                             </h:ol>
                         </title>
                         <note role="application">
-                            The ST author can include other auditable events directly in <xref to="atref-mandatory"/>; they are not
+                            The ST author can include other auditable events directly in <xref g="t-audit-mandatory"/>; they are not
 							limited to the list presented. The ST author should update the table in 
 							FAU_GEN.1.2 with any additional information generated. “Subject identity” in FAU_GEN.1.2 could be a 
 							user id or an identifier specifying a VM, for example.<h:br></h:br><h:br></h:br>
 							Appropriate entries from <xref g="atref-optional-dep"/>, <xref g="atref-objective-dep"/>, and
 							<xref g="atref-sel-based-dep"/> should be included in the ST if the 
 							associated SFRs and selections are included.<h:br></h:br><h:br></h:br>
-							The <xref to="atref-mandatory"/> entry for FDP_VNC_EXT.1 refers to configuration settings that attach 
+							The <xref g="t-audit-mandatory"/> entry for FDP_VNC_EXT.1 refers to configuration settings that attach 
 							VMs to virtualized network components. Changes to these configurations can be made 
 							during VM execution or when VMs are not running. Audit records 
 							must be generated for either case.<h:br></h:br><h:br></h:br>
