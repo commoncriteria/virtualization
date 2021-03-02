@@ -81,9 +81,12 @@
 
     <include-pkg id="tls" name="Network Encryption" product="" short="TLS" version="1.1"
 		url="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439">
-	    <depends on="selection"><ref-id>sel-itc-tls</ref-id></depends>
+	    <depends on-sel="sel-itc-tls"/>
+	    <depends on-sel="sel-itc-https"/>
+	    <depends on-sel="sel-x509-2-tls"/>
+<!--	    <depends on="selection"><ref-id>sel-itc-tls</ref-id></depends>
 	    <depends on="selection"><ref-id>sel-itc-https</ref-id></depends>
-	    <depends on="selection"><ref-id>sel-x509-2-tls</ref-id></depends>
+	    <depends on="selection"><ref-id>sel-x509-2-tls</ref-id></depends>  -->
 		<url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439</url>
 
                <raw-url>https://github.com/commoncriteria/tls/raw/
@@ -97,8 +100,10 @@
                 <raw-url>https://github.com/commoncriteria/ssh/raw/
                          de9b38dc426a4ac14d4016510d1ef477d419f7ae
                          /input/ssh.xml</raw-url>
-	    <depends on="selection"><ref-id>sel-itc-ssh</ref-id></depends>
-	    <depends on="selection"><ref-id>sel-x509-2-ssh</ref-id></depends>
+	    <depends on-sel="sel-itc-ssh"/>
+	    <depends on-sel="sel-x509-2-ssh"/>
+<!--	    <depends on="selection"><ref-id>sel-itc-ssh</ref-id></depends>
+	    <depends on="selection"><ref-id>sel-x509-2-ssh</ref-id></depends>  -->
     </include-pkg>	
 
 	<!-- Rules - These are rules where selections in the base require selections in the PP-Modules.
@@ -2383,8 +2388,10 @@
                 <!-- FCS_HTTPS_EXT.1 -->
                 <!-- Depends on HTTPS being selected for trusted channel -->
                 <f-component cc-id="fcs_https_ext.1" name="HTTPS Protocol"  status="sel-based">
-                    <selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-https"/>
-					<selection-depends req="fia-x509-ext-2e1" ids="sel-x509-2-https"/>
+                    <depends on-sel="sel-itc-https"/>
+					<depends on-sel="sel-x509-2-https"/>
+<!--                    <selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-https"/>
+					<selection-depends req="fia-x509-ext-2e1" ids="sel-x509-2-https"/>  -->
 					<consistency-rationale/>
 					<comp-lev>defines requirements for the implementation of the HTTPS protocol.</comp-lev>
 					<management>No specific management functions are identified.</management>
@@ -2438,8 +2445,10 @@
                 <!-- Depends on IPSEC being selected for trusted channels -->
 		<!-- This should be roughly the same as the IPsec requirement in VPNClient -->
                 <f-component cc-id="fcs_ipsec_ext.1" name="IPsec Protocol" status="sel-based">
-                    <selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-ipsec"/>
-					<selection-depends req="fia-x509-ext-2e1" ids="sel-x509-2-ipsec"/>
+<!--                    <selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-ipsec"/>
+					<selection-depends req="fia-x509-ext-2e1" ids="sel-x509-2-ipsec"/>  -->
+                    <depends on-sel="sel-itc-ipsec"/>
+					<depends on-sel="sel-x509-2-ipsec"/>
 					<consistency-rationale/>
 					<comp-lev>requires that IPsec be implemented as specified.</comp-lev>
 					<management>The following actions could be considered for the management 
@@ -3874,7 +3883,8 @@
 				<!-- FIA_PMG_EXT.1 -->
                 <!-- Depends on password-based authentication being used for administrator authentication -->
                 <f-component cc-id="fia_pmg_ext.1" name="Password Management"  status="sel-based">
-                    <selection-depends req="fia-uau-5e1" ids="sel-uau-pwd"/>
+<!--                    <selection-depends req="fia-uau-5e1" ids="sel-uau-pwd"/>  -->
+                    <depends on-sel="sel-uau-pwd"/>
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to ensure that administrator passwords meet a
 						defined password policy.</comp-lev>
@@ -4088,11 +4098,16 @@
                 <!-- FIA_X509_EXT.1 -->
                 <!-- Depends on x509 certificates being used for administrator authentication -->
                 <f-component cc-id="fia_x509_ext.1" name="X.509 Certificate Validation"  status="sel-based">
-                    <selection-depends req="fpt-tud-ext-1e3" ids="sel-tud-digsign"/>
+<!--                    <selection-depends req="fpt-tud-ext-1e3" ids="sel-tud-digsign"/>
                     <selection-depends req="fia-uau-5e1" ids="sel-uau-x509" /> 
 					<selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-ipsec" />
 					<selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-tls" />
-					<selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-https" />	
+					<selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-https" />	 -->
+                    <depends on-sel="sel-tud-digsign"/>
+                    <depends on-sel="sel-uau-x509"/> 
+					<depends on-sel="sel-itc-ipsec"/>
+					<depends on-sel="sel-itc-tls"/>
+					<depends on-sel="sel-itc-https"/>	
 					<consistency-rationale/>
 					<comp-lev>defines how the TSF must validate X.509 certificates that are presented to it.</comp-lev>
 					<management>The following actions could be considered for the management functions in FMT:
@@ -4230,11 +4245,16 @@
                 <!-- FIA_X509_EXT.2 -->
                 <!-- Depends on digital signatures being used for trusted updates or administrator authentication -->
                 <f-component cc-id="fia_x509_ext.2" name="X.509 Certificate Authentication"  status="sel-based">
-                    <selection-depends req="fpt-tud-ext-1e3" ids="sel-tud-digsign-cert"/>
+<!--                    <selection-depends req="fpt-tud-ext-1e3" ids="sel-tud-digsign-cert"/>
                     <selection-depends req="fia-uau-5e1" ids="sel-uau-x509" /> 
 					<selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-ipsec" />
 					<selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-tls" />
-					<selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-https" />	
+					<selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-https" />	-->
+                    <depends on-sel="sel-tud-digsign-cert"/>
+                    <depends on-sel="sel-uau-x509" /> 
+					<depends on-sel="sel-itc-ipsec" />
+					<depends on-sel="sel-itc-tls" />
+					<depends on-sel="sel-itc-https" />	
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to identify the functions for which it uses X.509 
 						certificates for authentication</comp-lev>
@@ -5139,8 +5159,10 @@
                 <!-- FPT_TUD_EXT.2 -->
                 <!-- Depends on X509 certificates being used for code signing. -->
                 <f-component cc-id="fpt_tud_ext.2" name="Trusted Update Based on Certificates"  status="sel-based">
-                    <selection-depends req="fpt-tud-ext-1e3" ids="sel-tud-digsign-cert" />
-					<selection-depends req="fia-x509-ext-2e1" ids="sel-x5092-signed-updates"/>
+<!--                    <selection-depends req="fpt-tud-ext-1e3" ids="sel-tud-digsign-cert" />
+					<selection-depends req="fia-x509-ext-2e1" ids="sel-x5092-signed-updates"/>  -->
+                    <depends on-sel="sel-tud-digsign-cert" />
+					<depends on-sel="sel-x5092-signed-updates"/>
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to validate updates using a code signing certificate.</comp-lev>
 					<management>No specific management functions are identified.</management>
@@ -5501,7 +5523,8 @@
                 <!-- Included in th ST if "remote" is selected in FMT_MOF_EXT.1.1 in the server or client PP-Module. -->
 		<!-- QQQQ: Need to have a way to reference this selection that is in a module.  Otherwise this does not display properly. -->
                 <f-component cc-id="ftp_trp.1" name="Trusted Path" status="sel-based">
-                    <selection-depends req="fmt-mof-ext-1e1" ids="sel-mof-1e1-remote"/> 
+<!--                    <selection-depends req="fmt-mof-ext-1e1" ids="sel-mof-1e1-remote"/>  -->
+                    <depends on-sel="sel-mof-1e1-remote"/> 
                     <f-element id="ftp-trp-1e1">
 			    <title>The TSF shall use a <refinement>trusted</refinement> channel as specified in FTP_ITC_EXT.1 to provide 
 				    a <refinement>trusted</refinement> communication
