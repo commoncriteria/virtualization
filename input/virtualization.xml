@@ -1117,7 +1117,7 @@
 			FTP_ITC_EXT.1 Trusted Channel Communications</dependencies>
                     <f-element id="fau-fak-faux"><title>This is an invisible requirement. It should not be displayed.</title></f-element>
 		    <audit-event>
-			<audit-event-desc>Fake audit event</audit-event-descr>
+			<audit-event-descr>Fake audit event</audit-event-descr>
 		    </audit-event>			
                 </f-component>
                 
@@ -5524,7 +5524,8 @@
 		<!-- QQQQ: Need to have a way to reference this selection that is in a module.  Otherwise this does not display properly. -->
                 <f-component cc-id="ftp_trp.1" name="Trusted Path" status="sel-based">
 <!--                    <selection-depends req="fmt-mof-ext-1e1" ids="sel-mof-1e1-remote"/>  -->
-                    <depends on-sel="sel-mof-1e1-remote"/> 
+                    <depends on-sel="sel-mof-1e1-remote-client"/> 
+                    <depends on-sel="sel-mof-1e1-remote-server"/> 
                     <f-element id="ftp-trp-1e1">
 			    <title>The TSF shall use a <refinement>trusted</refinement> channel as specified in FTP_ITC_EXT.1 to provide 
 				    a <refinement>trusted</refinement> communication
