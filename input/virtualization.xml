@@ -79,11 +79,7 @@
         </entry>
     </RevisionHistory>
 
-    <include-pkg id="tls" name="Network Encryption" product="" short="TLS" version="1.1"
-		url="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439">
-	    <depends on-sel="sel-itc-tls"/>
-	    <depends on-sel="sel-itc-https"/>
-	    <depends on-sel="sel-x509-2-tls"/>
+    <include-pkg id="tls">
 <!--	    <depends on="selection"><ref-id>sel-itc-tls</ref-id></depends>
 	    <depends on="selection"><ref-id>sel-itc-https</ref-id></depends>
 	    <depends on="selection"><ref-id>sel-x509-2-tls</ref-id></depends>  -->
@@ -92,10 +88,12 @@
                <raw-url>https://github.com/commoncriteria/tls/raw/
                         562626874aacfbb9beb397fca5be128c86ec4ebf
                         /input/tls.xml</raw-url>
-	</include-pkg>
+            <depends on-sel="sel-itc-tls"/>
+	    <depends on-sel="sel-itc-https"/>
+	    <depends on-sel="sel-x509-2-tls"/>
+    </include-pkg>
 	    
-    <include-pkg id="ssh" name="Secure Shell" product="" short="SSH"  version="1.0"
-		url="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=389&amp;id=389">
+    <include-pkg id="ssh">
 		<url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=389&amp;id=389</url>
                 <raw-url>https://github.com/commoncriteria/ssh/raw/
                          de9b38dc426a4ac14d4016510d1ef477d419f7ae
@@ -104,8 +102,15 @@
 	    <depends on-sel="sel-x509-2-ssh"/>
 <!--	    <depends on="selection"><ref-id>sel-itc-ssh</ref-id></depends>
 	    <depends on="selection"><ref-id>sel-x509-2-ssh</ref-id></depends>  -->
-    </include-pkg>	
-
+    </include-pkg>
+    <modules required="yes">
+    <module><name>Client Virtualization</name>
+            <url></url>
+            <version>1.1</version></module>
+    <module><name>Server Virtualization</name>
+            <url></url>
+            <version>1.1</version></module>
+    </modules>
 	<!-- Rules - These are rules where selections in the base require selections in the PP-Modules.
 			So, really these belong in a composition and not here. At worst they should be in the module.
 
@@ -364,9 +369,9 @@
 <!--    </chapter>  -->
 	
  <!-- 2. Conformance Claims -->
-	<sec:cclaims title="Conformance Claims">
+	<sec:Conformance_Claims/>
 <!--	<chapter title="Conformance Claims" id="ccl" boilerplate="no">  -->
-		<cclaims>
+		<!-- <cclaims>
 			<cclaim name="Conformance Statement">
 				<description>A Security Target must claim exact conformance to this Protection Profile, 
 					as defined in the CC and CEM addenda for Exact Conformance, Selection-Based SFRs, and 
@@ -393,11 +398,10 @@
 			<cclaim name="Package Claims">
 				<description>
 					This PP is Functional Package for TLS-conformant. 
-					<!-- QQQQ: This PP is Functional Package for Secure Shell (SSH)-conformant. -->
 				</description>
 			</cclaim>
 		</cclaims>
-	</sec:cclaims>
+	</sec:cclaims>-->
 <!--	</chapter>  -->
 	
 
@@ -636,9 +640,7 @@
         </section>
 	    
 	<!-- 3.3 Organizational Security Policies -->
-        <section id="s-secpolicies" title="Organizational Security Policies">
-            There are no organizational security policies defined for this PP.
-        </section>
+        <sec:Organizational_Security_Policies><OSPs/></sec:Organizational_Security_Policies>
 	</sec:spd>
 <!--    </chapter>  -->
     
