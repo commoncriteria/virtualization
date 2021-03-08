@@ -3985,7 +3985,7 @@
 							FIA_PMG_EXT.1 be included in the ST. This also requires that the ST include a management function for
 							password management. If the ST author selects ‘authentication based on an SSH public-key credential’,
 							the TSF shall be validated against the Functional Package for Secure Shell. The ST must include 
-							FIA_X509_EXT.1 if 'authentication based on X.509 certificates' is selected. <h:br/><h:br/>
+							FIA_X509_EXT.1 and FIA_X509_EXT.2 if 'authentication based on X.509 certificates' is selected. <h:br/><h:br/>
 							PINs used to access OE-protected storage are set and managed by the OE-protected storage mechanism. Thus
 							requirements on PIN management are outside the scope of the TOE.
                         </note>
@@ -4107,9 +4107,10 @@
 					<selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-https" />	 -->
                     <depends on-sel="sel-tud-digsign"/>
                     <depends on-sel="sel-uau-x509"/> 
-					<depends on-sel="sel-itc-ipsec"/>
-					<depends on-sel="sel-itc-tls"/>
-					<depends on-sel="sel-itc-https"/>	
+			<depends on-sel="sel-itc-certauth"/>
+<!--					<depends on-sel="sel-itc-ipsec" />
+					<depends on-sel="sel-itc-tls" />
+					<depends on-sel="sel-itc-https" />  -->	
 					<consistency-rationale/>
 					<comp-lev>defines how the TSF must validate X.509 certificates that are presented to it.</comp-lev>
 					<management>The following actions could be considered for the management functions in FMT:
@@ -4254,9 +4255,10 @@
 					<selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-https" />	-->
                     <depends on-sel="sel-tud-digsign-cert"/>
                     <depends on-sel="sel-uau-x509" /> 
-					<depends on-sel="sel-itc-ipsec" />
+			<depends on-sel="sel-itc-certauth"/>
+<!--					<depends on-sel="sel-itc-ipsec" />
 					<depends on-sel="sel-itc-tls" />
-					<depends on-sel="sel-itc-https" />	
+					<depends on-sel="sel-itc-https" />  -->	
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to identify the functions for which it uses X.509 
 						certificates for authentication</comp-lev>
@@ -5087,8 +5089,9 @@
                         </title>
                         <note role="application">The digital signature mechanism referenced in FPT_TUD_EXT.1.3 is one of the 
 				algorithms specified in FCS_COP.1/SIG.<h:br></h:br><h:br></h:br>
-                            If certificates are used by the update verification mechanism, certificates are validated in accordance
-				with FIA_X509_EXT.1 and should be selected in FIA_X509_EXT.2.1. Additionally, FPT_TUD_EXT.2 must be
+                            If certificates are used by the update verification mechanism, then FIA_X509_EXT.1 and FIA_X509_EXT.2
+				must be included in the ST. Certificates are validated in accordance with FIA_X509_EXT.1 and 
+				the appropriate selections should be made in FIA_X509_EXT.2.1. Additionally, FPT_TUD_EXT.2 must be
 				included in the ST.<h:br></h:br><h:br></h:br>
                             “Update” in the context of this SFR refers to the process of replacing a non-volatile, system resident
 				software component with another. The former is referred to as the NV image, and the latter is the
@@ -5396,6 +5399,12 @@
 					<h:a href="https://www.niap-ccevs.org/MMO/PP/-389-/"><h:i>Extended Package
 					for Secure Shell</h:i></h:a></selectable>
                             </selectables>
+			    and
+			    <selectables linebreak="yes">
+				    <selectable id="sel-itc-certauth">cerfificate-based authentication of the remote peer</selectable>
+				    <selectable>non-certificate-based authentication of the remote peer</selectable>
+				    <selectable>no authentication of the remote peer</selectable>
+				</selectables>
                             to provide a trusted communication channel between itself, and<h:br></h:br><h:br></h:br>
                             <h:li>audit servers (as required by FAU_STG_EXT.1), and</h:li>
                             <selectables linebreak="yes">
@@ -5412,10 +5421,10 @@
 				but if the product includes the capability to perform TLS with mutual authentication, then
 				mutual authentication must be included within the TOE boundary. The TLS Package requires that the X509 
 				requirements be included by the PP, so selection of TLS or HTTPS causes FIA_X509_EXT.* to be selected.<h:br></h:br><h:br></h:br>
-                            If the ST author selects SSH, the TSF shall be validated against the Extended
-                            Package for Secure Shell. The SSH package imports the X509 requirements if necessary, so selecting SSH here does not automatically
-			    cause their inclusion. <h:br /> <h:br />
-			    Selection of IPSec also automatically causes inclusion of the X509 requirements.  <h:br /> <h:br />
+                            If the ST author selects SSH, the TSF shall be validated against the Extended Package for Secure Shell.<h:br/> <h:br/>
+			    If the ST author selects "certificate-based authentication of the remote peer," then FIA_X509_EXT.1 and FIA_X509_EXT.2
+				must be included in the ST. "No authentication of the remote peer" should be selected only if the TOE is acting 
+				as a server in a non-mutual authentication configuration.<h:p/>			    
 			    The ST author must include the security functional requirements for the
                             trusted channel protocol selected in FTP_ITC_EXT.1 in the main body of the ST.<h:br></h:br><h:br></h:br>
                         </note>
