@@ -3346,7 +3346,7 @@
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to define the hardware resources that Guest VMs may always access, may never access,
 						and may conditionally access based on administrative configuration.</comp-lev>
-					<management>The following actions could be considered for the management functions in					FMT:
+					<management>The following actions could be considered for the management functions in FMT:
 						<h:ol type="a">
 							<h:li>Ability to configure VM access to physical devices.</h:li>
 						</h:ol>
@@ -3383,13 +3383,15 @@
                             </selectables>.
                         </title>
                         <note role="application">
-                            This requirement specifies that the VMM controls access to physical platform resources, and indicates that 
-							it must be configurable, but does not specify the means by which that is done. The ST author should
-							list the physical platform resources that can be configured for Guest VM access by the administrator.
-							Guest VMs may not be allowed direct access to certain physical resources; those resources are listed
-							in the second element. If there are no such resources, the ST author selects "no physical platform 
-							resources". Likewise, any resources to which all Guest VMs automatically have access to are listed in 
-							the third element; if there are no such resources, then "no physical platform resources" is selected.
+                            This requirement specifies that the VMM must be capable of controlling Guest VM access to physical platform 
+				resources, and indicates that this access must be configurable, but does not specify the means by which 
+				that may be done. 
+				The ST author should list the physical platform resources that can be configured for Guest VM access by 
+				the administrator.
+				Guest VMs may not be allowed direct access to certain physical resources; those resources are listed
+				in the second element. If there are no such resources, the ST author selects "no physical platform 
+				resources". Likewise, any resources to which all Guest VMs automatically have access to are listed in 
+				the third element; if there are no such resources, then "no physical platform resources" is selected.
                         </note>
                         <aactivity>
                             <TSS>
