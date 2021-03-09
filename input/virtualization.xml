@@ -3383,26 +3383,26 @@
                             </selectables>.
                         </title>
                         <note role="application">
-                            This requirement specifies that the VMM must be capable of controlling Guest VM access to physical platform 
-				resources, and indicates that this access must be configurable, but does not specify the means by which 
-				that may be done. 
-				The ST author should list the physical platform resources that can be configured for Guest VM access by 
-				the administrator.
-				Guest VMs may not be allowed direct access to certain physical resources; those resources are listed
-				in the second element. If there are no such resources, the ST author selects "no physical platform 
-				resources". Likewise, any resources to which all Guest VMs automatically have access to are listed in 
-				the third element; if there are no such resources, then "no physical platform resources" is selected.
+				For purposes of this requirement, physical platform resources are divided into three categories: 
+				<h:ol a="1">
+					<h:li>those to which Guest OS access is configurable and moderated buy the VMM,</h:li>
+					<h:li>those to which the Guest OS is never allowed to have direct access, and</h:li>
+					<h:li>those to which the Guest OS is always allowed to have direct access.</h:li>
+				</h:ol>
+                            	For element 1, The ST author lists the physical platform resources that can be configured for Guest VM access by 
+				an administrator. For element 2, the ST author lists the physical platform resources to which 
+				Guest VMs may never be allowed direct access. If there are no such resources, the ST author selects "no physical platform 
+				resources". Likewise, any resources to which all Guest VMs automatically have access to are to be listed in 
+				the third element. If there are no such resources, then "no physical platform resources" is selected.
                         </note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall examine the TSS to determine that it describes the 
-                                mechanism by which the VMM controls a Guest VM's access to
-                                physical platform resources is described. This description shall cover all of the physical
-                                platforms allowed in the evaluated configuration by the ST. This description 
-                                shall include how the VMM distinguishes among Guest VMs, and 
+                                The evaluator shall examine the TSS to determine that it describes the mechanism by which the VMM controls a Guest VM's access to
+                                physical platform resources. This description shall cover all of the physical
+                                platforms allowed in the evaluated configuration by the ST. It should explain how the VMM distinguishes among Guest VMs, and 
                                 how each physical platform resource that is controllable (that is, listed in the assignment
-                                statement in the first element) is identified. The evaluator shall ensure that the 
-                                TSS describes how the Guest VM is associated with each 
+                                statement in the first element) is identified to an Administrator.<h:p/> 
+				The evaluator shall ensure that the TSS describes how the Guest VM is associated with each 
                                 physical resources, and how other Guest VMs cannot access a physical resource
                                 without being granted explicit access. For TOEs that implement a robust 
                                 interface (other than just "allow access" or "deny access"), the evaluator shall ensure that the
