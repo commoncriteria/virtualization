@@ -4356,8 +4356,12 @@
                                 </testlist>
                             </Tests>
                         </aactivity>
+			<rule id="rule-admin-action-cert-validity">
+				<description>If <xref to="sel-x509-adminset" is selected then <xref to="sel-mf-cert-no-validity-action"> in the Client or Server module 
+					must also be selected.</description>
+				<or><and><ref-id>sel-x509-adminset</ref-id><ref-if>sel-mf-cert-no-validity-action</ref-id></and><not><ref-id>sel-x509-adminset</ref-id></not></or></rule>
                     </f-element>
-					<audit-event />
+			<audit-event />
                 </f-component>
             </section>
             
