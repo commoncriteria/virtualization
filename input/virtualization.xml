@@ -85,21 +85,20 @@
 <!--	    <depends on="selection"><ref-id>sel-itc-tls</ref-id></depends>
 	    <depends on="selection"><ref-id>sel-itc-https</ref-id></depends>
 	    <depends on="selection"><ref-id>sel-x509-2-tls</ref-id></depends>  -->
-		<url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439</url>
-
                <raw-url>https://github.com/commoncriteria/tls/raw/
                         562626874aacfbb9beb397fca5be128c86ec4ebf
                         /input/tls.xml</raw-url>
+		<url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439</url>
             <depends on-sel="sel-itc-tls"/>
 	    <depends on-sel="sel-itc-https"/>
 	    <depends on-sel="sel-x509-2-tls"/>
     </include-pkg>
 	    
     <include-pkg id="ssh">
-		<url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=389&amp;id=389</url>
                 <raw-url>https://github.com/commoncriteria/ssh/raw/
                          de9b38dc426a4ac14d4016510d1ef477d419f7ae
                          /input/ssh.xml</raw-url>
+		<url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=389&amp;id=389</url>
 	    <depends on-sel="sel-itc-ssh"/>
 	    <depends on-sel="sel-x509-2-ssh"/>
 <!--	    <depends on="selection"><ref-id>sel-itc-ssh</ref-id></depends>
@@ -2250,7 +2249,7 @@
                                 <selectable id="sel-hmac-sha-1">HMAC-SHA-1</selectable>
                                 <selectable id="sel-hmac-sha-256">HMAC-SHA-256</selectable>
                                 <selectable id="sel-hmac-sha-384">HMAC-SHA-384</selectable>
-                                <selectable id="sel-hmac-sha-384">HMAC-SHA-512</selectable>
+                                <selectable id="sel-hmac-sha-512">HMAC-SHA-512</selectable>
 				<selectable id="sel-hmac-sha-3-224">SHA-3-224</selectable>
 				<selectable id="sel-hmac-sha-3-256">SHA-3-256</selectable>
 				<selectable id="sel-hmac-sha-3-384">SHA-3-384</selectable>
@@ -2287,7 +2286,10 @@
 								tags with the same key and IV using a known good implementation.
                             </Tests>
                         </aactivity>
-			<rule id="keyhash-alg-match-sha-1"><or><and><ref-id>sel-hmac-sha-1</ref-id><ref-id>sel-hash-sha-1</ref-id></and><not><ref-id>sel-hmac-sha-1</ref-id></not></or></rule>
+			<rule id="keyhash-alg-match-sha-1">
+                          <description>If <xref to="sel-hmac-sha-1"/> is selected then <xref to="sel-hash-sha-1"/>
+                                        must also be selected.</description>
+                          <or><and><ref-id>sel-hmac-sha-1</ref-id><ref-id>sel-hash-sha-1</ref-id></and><not><ref-id>sel-hmac-sha-1</ref-id></not></or></rule>
 			<rule id="keyhash-alg-match-sha-256"><or><and><ref-id>sel-hmac-sha-256</ref-id><ref-id>sel-hash-sha-256</ref-id></and><not><ref-id>sel-hmac-sha-256</ref-id></not></or></rule>
 			<rule id="keyhash-alg-match-sha-384"><or><and><ref-id>sel-hmac-sha-384</ref-id><ref-id>sel-hash-sha-384</ref-id></and><not><ref-id>sel-hmac-sha-384</ref-id></not></or></rule>
 			<rule id="keyhash-alg-match-sha-512"><or><and><ref-id>sel-hmac-sha-512</ref-id><ref-id>sel-hash-sha-512</ref-id></and><not><ref-id>sel-hmac-sha-512</ref-id></not></or></rule>
