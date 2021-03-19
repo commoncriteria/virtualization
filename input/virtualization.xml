@@ -2288,17 +2288,38 @@
                         </aactivity>
 			<rule id="keyhash-alg-match-sha-1">
                           <description>If <xref to="sel-hmac-sha-1"/> is selected then <xref to="sel-hash-sha-1"/>
-                                        must also be selected.</description>
-                          <or><and><ref-id>sel-hmac-sha-1</ref-id><ref-id>sel-hash-sha-1</ref-id></and><not><ref-id>sel-hmac-sha-1</ref-id></not></or></rule>
-			<rule id="keyhash-alg-match-sha-256"><or><and><ref-id>sel-hmac-sha-256</ref-id><ref-id>sel-hash-sha-256</ref-id></and><not><ref-id>sel-hmac-sha-256</ref-id></not></or></rule>
-			<rule id="keyhash-alg-match-sha-384"><or><and><ref-id>sel-hmac-sha-384</ref-id><ref-id>sel-hash-sha-384</ref-id></and><not><ref-id>sel-hmac-sha-384</ref-id></not></or></rule>
-			<rule id="keyhash-alg-match-sha-512"><or><and><ref-id>sel-hmac-sha-512</ref-id><ref-id>sel-hash-sha-512</ref-id></and><not><ref-id>sel-hmac-sha-512</ref-id></not></or></rule>
-			<rule id="keyhash-alg-match-sha-3-224"><or><and><ref-id>sel-hmac-sha-3-224</ref-id><ref-id>sel-hash-sha-3-224</ref-id></and><not><ref-id>sel-hmac-sha-3-224</ref-id></not></or></rule>
-			<rule id="keyhash-alg-match-sha-3-256"><or><and><ref-id>sel-hmac-sha-3-256</ref-id><ref-id>sel-hash-sha-3-256</ref-id></and><not><ref-id>sel-hmac-sha-3-256</ref-id></not></or></rule>
-			<rule id="keyhash-alg-match-sha-3-384"><or><and><ref-id>sel-hmac-sha-3-384</ref-id><ref-id>sel-hash-sha-3-384</ref-id></and><not><ref-id>sel-hmac-sha-3-384</ref-id></not></or></rule>
-			<rule id="keyhash-alg-match-sha-3-512"><or><and><ref-id>sel-hmac-sha-3-512</ref-id><ref-id>sel-hash-sha-3-512</ref-id></and><not><ref-id>sel-hmac-sha-3-512</ref-id></not></or></rule>
+                          must also be selected.</description>
+                        <or><and><ref-id>sel-hmac-sha-1</ref-id><ref-id>sel-hash-sha-1</ref-id></and><not><ref-id>sel-hmac-sha-1</ref-id></not></or></rule>
+			<rule id="keyhash-alg-match-sha-256">
+			  <description>If <xref to="sel-hmac-sha-256"/> is selected then <xref to="sel-hash-sha-256"/>
+                          must also be selected.</description>
+			<or><and><ref-id>sel-hmac-sha-256</ref-id><ref-id>sel-hash-sha-256</ref-id></and><not><ref-id>sel-hmac-sha-256</ref-id></not></or></rule>
+			<rule id="keyhash-alg-match-sha-384">
+			  <description>If <xref to="sel-hmac-sha-384"/> is selected then <xref to="sel-hash-sha-384"/>
+                          must also be selected.</description>
+			<or><and><ref-id>sel-hmac-sha-384</ref-id><ref-id>sel-hash-sha-384</ref-id></and><not><ref-id>sel-hmac-sha-384</ref-id></not></or></rule>
+			<rule id="keyhash-alg-match-sha-512">
+			  <description>If <xref to="sel-hmac-sha-512"/> is selected then <xref to="sel-hash-sha-512"/>
+                          must also be selected.</description>
+			<or><and><ref-id>sel-hmac-sha-512</ref-id><ref-id>sel-hash-sha-512</ref-id></and><not><ref-id>sel-hmac-sha-512</ref-id></not></or></rule>
+			<rule id="keyhash-alg-match-sha-3-224">
+			  <description>If <xref to="sel-hmac-sha-3-224"/> is selected then <xref to="sel-hash-sha-3-224"/>
+                          must also be selected.</description>
+			<or><and><ref-id>sel-hmac-sha-3-224</ref-id><ref-id>sel-hash-sha-3-224</ref-id></and><not><ref-id>sel-hmac-sha-3-224</ref-id></not></or></rule>
+			<rule id="keyhash-alg-match-sha-3-256">
+			  <description>If <xref to="sel-hmac-sha-3-256"/> is selected then <xref to="sel-hash-sha-3-256"/>
+                          must also be selected.</description>
+			<or><and><ref-id>sel-hmac-sha-3-256</ref-id><ref-id>sel-hash-sha-3-256</ref-id></and><not><ref-id>sel-hmac-sha-3-256</ref-id></not></or></rule>
+			<rule id="keyhash-alg-match-sha-3-384">
+			  <description>If <xref to="sel-hmac-sha-3-384"/> is selected then <xref to="sel-hash-sha-3-384"/>
+                          must also be selected.</description>
+			<or><and><ref-id>sel-hmac-sha-3-384</ref-id><ref-id>sel-hash-sha-3-384</ref-id></and><not><ref-id>sel-hmac-sha-3-384</ref-id></not></or></rule>
+			<rule id="keyhash-alg-match-sha-3-512">
+			  <description>If <xref to="sel-hmac-sha-3-512"/> is selected then <xref to="sel-hash-sha-3-512"/>
+                          must also be selected.</description>
+			<or><and><ref-id>sel-hmac-sha-3-512</ref-id><ref-id>sel-hash-sha-3-512</ref-id></and><not><ref-id>sel-hmac-sha-3-512</ref-id></not></or></rule>
                     </f-element>
-					<audit-event />
+		    <audit-event />
                 </f-component>
                 
                 <!-- FCS_ENT_EXT.1 -->
@@ -4274,6 +4295,10 @@
                                 <selectable>no additional uses</selectable>
                             </selectables>
                         </title>
+			<ext-comp-def-title>
+			                        <title>The TSF shall use X.509v3 certificates as defined by RFC 5280 to support authentication for <assignable>secure transport protocols</assignable>
+, and <assignable> other uses </assignable>.</title>
+			</ext-comp-def-title>
                         <note role="application">This SFR must be included in the ST if the selection for FPT_TUD_EXT.1.3 is “digital
 							signature mechanism,” if "certificate-based authentication of the remote peer" is
 							selected in FTP_ITC_EXT.1, or if "authentication based on X.509 certificates"
@@ -4287,6 +4312,9 @@
                                 <selectable>not accept the certificate</selectable>
                             </selectables>.
                         </title>
+			<ext-comp-def-title><title>When the TSF cannot establish a connection to determine the validity of a certificate, the TSF shall <assignable>action to take</assignable>.
+                        </title></ext-comp-def-title>
+
                         <note role="application">
 				
 				Often a connection must be established to check the revocation status of a 
@@ -5078,6 +5106,9 @@
                                 <selectable>published hash</selectable> 
                             </selectables> prior to installing those updates.
                         </title>
+			<ext-comp-def-title><title>The TSF shall provide means to authenticate firmware/software updates to the TOE using a <assignable>integrity action</assignable> prior to installing those updates.
+                         </title></ext-comp-def-title>
+
                         <note role="application">The digital signature mechanism referenced in FPT_TUD_EXT.1.3 is one of the 
 				algorithms specified in FCS_COP.1/SIG.<h:br></h:br><h:br></h:br>
                             If certificates are used by the update verification mechanism, then FIA_X509_EXT.1 and FIA_X509_EXT.2
@@ -5407,6 +5438,16 @@
                             that is logically distinct from other communication paths and provides assured identification of its
                             endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.
                         </title>
+			<ext-comp-def-title>
+                        <title>The TSF shall use
+			<assignable> transport mechanism </assignable>
+			and <assignable>authentication mechanism</assignable>
+                            to provide a trusted communication channel between itself, and<h:br></h:br><h:br></h:br>
+                            <h:li>audit servers (as required by FAU_STG_EXT.1), and</h:li>
+			    <assignable>remote entities</assignable>
+                            that is logically distinct from other communication paths and provides assured identification of its
+                            endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.
+                          </title></ext-comp-def-title>
                         <note role="application">If the ST author selects either TLS or HTTPS, the TSF shall be validated against the 
                             Functional Package for TLS. This PP does not mandate that a product implement TLS with mutual authentication,
 				but if the product includes the capability to perform TLS with mutual authentication, then
