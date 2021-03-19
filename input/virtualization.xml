@@ -4046,12 +4046,26 @@
 										the authentication attempt is successful.</test>
 									<test>The evaluator will generate a second client key pair and will attempt to authenticate to the VS 
 										with the private key over SSH without first provisioning the VS to support the new key pair.
-										The evaluator will ensure that the authentication attempt is unsuccessful.</test>
+										The evaluator will ensure that the authentication attempt is unsuccessful.<h:p/></test>
 								</testlist>
                             </Tests>
                         </aactivity>
+			<rule id="rule-mf-dir-based">
+				<!-- <xref to="sel-mf-dir-server"/> -->
+				<description>If "<h:i>directory-based</h:i>" is selected anywhere in FIA_UAU.5.1 then 
+					"<h:i>Ability to configure name/address of directory server to bind with</h:i>" must be selected in the Client or Server module 
+					management function table.</description>
+				<or><and><or><ref-id>sel-uau-x509-dirbased</ref-id><ref-id>sel-uau-ssh-dirbased</ref-id><ref-id>sel-uau-pwd-dirbased</ref-id></or><ref-id>sel-mf-dir-server</ref-id></and>
+					<not><ref-id>sel-uau-x509-dirbased</ref-id><ref-id>sel-uau-ssh-dirbased</ref-id><ref-id>sel-uau-pwd-dirbased</ref-id></not></or></rule>					     
+			<rule id="rule-mf-pwd-policy">
+				<!-- <xref to="sel-mf-pwd-policy"/> -->
+				<description>If "<h:i><xref to="sel-uau-pwd"/></h:i>" is selected in FIA_UAU.5.1 then 
+					"<h:i>Ability to configure Administrator password policy as defined in FIA_PMG_EXT.1</h:i>" must be selected in the Client or Server module 
+					management function table.</description>
+				<or><and><ref-id>sel-uau-pwd</ref-id><ref-id>sel-mf-pwd-policy</ref-id></and>
+					<not><ref-id>sel-uau-pwd</ref-id></not></or></rule>					     
                     </f-element>
-					<audit-event />
+			<audit-event />
                 </f-component>
 
                 <!-- FIA_UIA_EXT.1 -->
@@ -4352,13 +4366,15 @@
 										to verify the validity of the certificate, and observe that the action selected in
 										FIA_X509_EXT.2.2 is performed. If the selected action is administrator-configurable, then
 										the evaluator shall follow the operational guidance to determine that all supported
-										administrator-configurable options behave in their documented manner.</test>
+										administrator-configurable options behave in their documented manner.<h:p/></test>
                                 </testlist>
                             </Tests>
                         </aactivity>
 			<rule id="rule-admin-action-cert-validity">
-				<description>If <xref to="sel-x509-adminset"/> is selected then <xref to="sel-mf-cert-no-validity-action"/> in the Client or Server module 
-					must also be selected.</description>
+				<!-- <xref to="sel-mf-cert-no-validity-action"/> -->
+				<description>If "<h:i><xref to="sel-x509-adminset"/></h:i>" is selected then 
+					"<h:i>Ability to configure action taken if unable to determine the validity of a certificate</h:i>" in the Client or Server module 
+					management function table must also be selected.</description>
 				<or><and><ref-id>sel-x509-adminset</ref-id><ref-id>sel-mf-cert-no-validity-action</ref-id></and><not><ref-id>sel-x509-adminset</ref-id></not></or></rule>
                     </f-element>
 			<audit-event />
