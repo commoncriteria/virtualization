@@ -1691,21 +1691,21 @@
                         <title>
                             The TSF shall perform [encryption and decryption] in accordance with a specified cryptographic algorithm<h:br></h:br>
                             <selectables linebreak="yes">
-                                <selectable id="sel-cop1-aes-kw">AES Key Wrap (KW) (as defined in NIST SP 800-38F)</selectable>
-                                <selectable id="sel-cop1-aes-kwp">AES Key Wrap with Padding (KWP) (as defined in NIST SP 800-38F)</selectable>
-                                <selectable id="sel-cop1-aes-gcm">AES-GCM (as defined in NIST SP 800-38D)</selectable>
-                                <selectable id="sel-cop1-aes-ccm">AES-CCM (as defined in NIST SP 800-38C)</selectable>
-                                <selectable id="sel-cop1-aes-xts">AES-XTS (as defined in NIST SP 800-38E) mode</selectable>
-                                <selectable id="sel-cop1-aes-ccmp-256">AES-CCMP-256 (as defined in NIST SP800-38C and IEEE 802.11ac-2013)</selectable>
-                                <selectable id="sel-cop1-aes-gcmp-256">AES-GCMP-256 (as defined in NIST SP800-38D and IEEE 802.11ac-2013)</selectable>
-                                <selectable id="sel-cop1-aes-ccmp">AES-CCMP (as defined in FIPS PUB 197, NIST SP 800-38C and IEEE 802.11-2012)</selectable>
-                                <selectable id="sel-cop1-aes-cbc">AES-CBC (as defined in FIPS PUB 197, and NIST SP 800-38A) mode</selectable>
-								<selectable id="sel-cop1-aes-ctr">AES-CTR (as defined in NIST SP 800-38A) mode</selectable>
+                                <selectable id="sel-ude-aes-kw">AES Key Wrap (KW) (as defined in NIST SP 800-38F)</selectable>
+                                <selectable id="sel-ude-aes-kwp">AES Key Wrap with Padding (KWP) (as defined in NIST SP 800-38F)</selectable>
+                                <selectable id="sel-ude-aes-gcm">AES-GCM (as defined in NIST SP 800-38D)</selectable>
+                                <selectable id="sel-ude-aes-ccm">AES-CCM (as defined in NIST SP 800-38C)</selectable>
+                                <selectable id="sel-ude-aes-xts">AES-XTS (as defined in NIST SP 800-38E) mode</selectable>
+                                <selectable id="sel-ude-aes-ccmp-256">AES-CCMP-256 (as defined in NIST SP800-38C and IEEE 802.11ac-2013)</selectable>
+                                <selectable id="sel-ude-aes-gcmp-256">AES-GCMP-256 (as defined in NIST SP800-38D and IEEE 802.11ac-2013)</selectable>
+                                <selectable id="sel-ude-aes-ccmp">AES-CCMP (as defined in FIPS PUB 197, NIST SP 800-38C and IEEE 802.11-2012)</selectable>
+                                <selectable id="sel-ude-aes-cbc">AES-CBC (as defined in FIPS PUB 197, and NIST SP 800-38A) mode</selectable>
+								<selectable id="sel-ude-aes-ctr">AES-CTR (as defined in NIST SP 800-38A) mode</selectable>
 							</selectables>
                             and cryptographic key sizes
                             <selectables>
-                                <selectable>128-bit key sizes</selectable>
-                                <selectable>256-bit key sizes</selectable>
+                                <selectable id="sel-ude-keysize-128">128-bit key sizes</selectable>
+                                <selectable id="sel-ude-keysize-256">256-bit key sizes</selectable>
                             </selectables>.
                         </title>
                         <note role="application">For the first selection of FCS_COP.1.1/UDE, the ST author should choose the mode or
@@ -2019,6 +2019,27 @@
 					</testlist>
 					</Tests>
 					</aactivity>
+					<!--
+						<rule id="rule-ssh-included-ude">
+							<description>If the SSH Package is included in the ST then <xref to="sel-ude-aes-ctr"/>,  
+								<xref to="sel-use-keysize-128"/> and <xref to="sel-use-keysize-256"/> must be selected in FCS_COP.1/UDE.
+							</description>
+							<if-then><or><ref-id>sel-itc-ssh</ref-id><ref-id>sel-x509-2-ssh</ref-id></or>
+									 <and><and><ref-id>sel-ude-aes-ctr</ref-id><ref-id>sel-ude-keysize-128</ref-id></and><ref-id>sel-ude-keysize-256</ref-id></and>
+							</if-then>
+						</rule>
+						
+						<rule id="rule-ipsec-included-ude">
+							<description>If the TOE implements IPSec then <xref to="sel-ude-aes-cbc"/>, <xref to="sel-ude-aes-gcm"/>,
+								<xref to="sel-use-keysize-128"/> and <xref to="sel-use-keysize-256"/> must be selected in FCS_COP.1/UDE.
+							</description>
+							<if-then><ref-id>sel-itc-ipsec</ref-id>
+									 <and><and><and><ref-id>sel-ude-aes-cbc</ref-id><ref-id>sel-ude-aes-gcm</ref-id></and>
+											<ref-id>sel-ude-keysize-128</ref-id></and>
+											<ref-id>sel-ude-keysize-256</ref-id></and>
+							</if-then>							
+						</rule>
+					-->
                     </f-element>
 				<audit-event />
 				</f-component>
@@ -2179,9 +2200,9 @@
                         <title>The TSF shall perform [<h:i>cryptographic signature services (generation and verification)</h:i>] in 
 							accordance with a specified cryptographic algorithm
                             <selectables linebreak="yes">
-                                <selectable id="sel-cop1-rsa">RSA schemes using cryptographic key sizes [2048-bit or greater] that meet
+                                <selectable id="sel-sig-rsa">RSA schemes using cryptographic key sizes [2048-bit or greater] that meet
 									the following: [<h:i>FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Section 4</h:i>]</selectable>
-                                <selectable id="sel-cop1-ecdsa">ECDSA schemes using [“NIST curves” P-256, P-384 and
+                                <selectable id="sel-sig-ecdsa">ECDSA schemes using [“NIST curves” P-256, P-384 and
                                     <selectables>
                                         <selectable>P-521</selectable>
                                         <selectable>no other curves</selectable>
