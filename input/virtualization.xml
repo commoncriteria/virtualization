@@ -5194,6 +5194,12 @@
                                 </testlist>
                             </Tests>
                         </aactivity>
+						<rule id="rule-certs-for-update">
+							<description>If <xref to="sel-tud-digsign-cert"/> is selected in FPT_TUD_EXT.1.3 
+								then <xref to="sel-x5092-signed-updates"/> must be selected in FIA_X509_EXT.2.1.</description>
+							<or><and><ref-id>sel-tud-digsign-cert</ref-id><ref-id>sel-x5092-signed-updates</ref-if></and>
+								<not><ref-id>sel-tud-digsign-cert</ref-id></not></or>
+						</rule>
                     </f-element>
 		    <audit-event>
 			<audit-event-descr>Initiation of update.</audit-event-descr>
@@ -5493,7 +5499,31 @@
                                 that for each session a trusted channel was established in conformance with the protocols identified 
                                 in the selection.
                             </Tests>
-                        </aactivity>
+                        </aactivity>						
+						<rule id="rule-cert-based-tls">
+							<description>If <xref to="sel-itc-certauth"/> and <xref to="sel-itc-tls"/> are selected in FTP_ITC_EXT.1.1
+								then <xref to="sel-x509-2-tls"/> in FIA_X509_EXT.2.1 must be selected.</description>
+							<or><and><and><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-tls</ref-id></and><ref-id>sel-x509-2-tls</ref-id></and>
+								<not><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-tls</ref-id></and></not></and></or>
+						</rule>
+						<rule id="rule-cert-based-httpd">
+							<description>If <xref to="sel-itc-certauth"/> and <xref to="sel-itc-https"/> are selected in FTP_ITC_EXT.1.1
+								then <xref to="sel-x509-2-https"/> in FIA_X509_EXT.2.1 must be selected.</description>
+							<or><and><and><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-https</ref-id></and><ref-id>sel-x509-2-https</ref-id></and>
+								<not><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-https</ref-id></and></not></and></or>
+						</rule>
+						<rule id="rule-cert-based-httpd">
+							<description>If <xref to="sel-itc-certauth"/> and <xref to="sel-itc-ipsec"/> are selected in FTP_ITC_EXT.1.1
+								then <xref to="sel-x509-2-ipsec"/> in FIA_X509_EXT.2.1 must be selected.</description>
+							<or><and><and><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-ipsec</ref-id></and><ref-id>sel-x509-2-ipsec</ref-id></and>
+								<not><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-ipsec</ref-id></and></not></and></or>
+						</rule>
+						<rule id="rule-cert-based-httpd">
+							<description>If <xref to="sel-itc-certauth"/> and <xref to="sel-itc-ssh"/> are selected in FTP_ITC_EXT.1.1
+								then <xref to="sel-x509-2-ssh"/> in FIA_X509_EXT.2.1 must be selected.</description>
+							<or><and><and><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-ssh</ref-id></and><ref-id>sel-x509-2-ssh</ref-id></and>
+								<not><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-ssh</ref-id></and></not></and></or>
+						</rule>
                     </f-element>
 		    <audit-event>
 			<audit-event-descr>Initiation of the trusted channel.</audit-event-descr>
