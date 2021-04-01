@@ -5519,7 +5519,7 @@
 							<description>If <xref to="sel-itc-certauth"/> and <xref to="sel-itc-tls"/> are selected in FTP_ITC_EXT.1.1
 								then <xref to="sel-x509-2-tls"/> must be selected in FIA_X509_EXT.2.1.</description>
 							<or><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-tls</ref-id><ref-id>sel-x509-2-tls</ref-id></and>
-								<not><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-tls</ref-id></and></not></or>
+								<and><not><ref-id>sel-itc-certauth</ref-id></not><not><ref-id>sel-itc-tls</ref-id></not></and></or>
 						</rule>
 						<rule id="rule-cert-based-https">
 							<description>If <xref to="sel-itc-certauth"/> and <xref to="sel-itc-https"/> are selected in FTP_ITC_EXT.1.1
