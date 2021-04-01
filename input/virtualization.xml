@@ -2017,16 +2017,16 @@
 					</Tests>
 					</aactivity>
 					<rule id="rule-ssh-included-ude">
-						<description>If the SSH Package is included in the ST then "<xref to="sel-ude-aes-ctr"/>,"  
-								"<xref to="sel-ude-keysize-128"/>," and "<xref to="sel-ude-keysize-256"/>" must be selected in FCS_COP.1/UDE.
+						<description>If the SSH Package is included in the ST then "<h:i><xref to="sel-ude-aes-ctr"/></h:i>,"  
+								"<h:i><xref to="sel-ude-keysize-128"/></h:i>," and "<h:i><xref to="sel-ude-keysize-256"/></h:i>" must be selected in FCS_COP.1/UDE.
 						</description>
 						<if><or><ref-id>sel-itc-ssh</ref-id><ref-id>sel-x509-2-ssh</ref-id></or></if>
 						 <then><and><ref-id>sel-ude-aes-ctr</ref-id><ref-id>sel-ude-keysize-128</ref-id><ref-id>sel-ude-keysize-256</ref-id></and></then>
 						</rule>
 						
-						<rule id="rule-ipsec-included-ude">
-							<description>If the TOE implements IPSec then "<xref to="sel-ude-aes-cbc"/>," "<xref to="sel-ude-aes-gcm"/>,"
-								"<xref to="sel-ude-keysize-128"/>," and "<xref to="sel-ude-keysize-256"/>" must be selected in FCS_COP.1/UDE.
+					<rule id="rule-ipsec-included-ude">
+							<description>If the TOE implements IPSec then "<h:i><xref to="sel-ude-aes-cbc"/></h:i>," "<h:i><xref to="sel-ude-aes-gcm"/></h:i>,"
+								"<h:i><xref to="sel-ude-keysize-128"/></h:i>," and "<h:i><xref to="sel-ude-keysize-256"/></h:i>" must be selected in FCS_COP.1/UDE.
 							</description>
 							<if><ref-id>sel-itc-ipsec</ref-id></if>
 							<then><and><ref-id>sel-ude-aes-cbc</ref-id><ref-id>sel-ude-aes-gcm</ref-id>
@@ -4071,7 +4071,7 @@
 				<description>If <h:i>"directory-based"</h:i> is selected anywhere in FIA_UAU.5.1 then 
 					"<h:i>Ability to configure name/address of directory server to bind with</h:i>" must be selected in the Client or Server module 
 					management function table.</description>
-				<if><or><ref-id>sel-uau-x509-dirbased</ref-id><ref-id>sel-uau-ssh-dirbased</ref-id><ref-id>sel-uau-pwd-dirbased</ref-id></or>
+				<if><or><ref-id>sel-uau-x509-dirbased</ref-id><ref-id>sel-uau-ssh-dirbased</ref-id><ref-id>sel-uau-pwd-dirbased</ref-id></or></if>
 				<then><ref-id>sel-mf-dir-server</ref-id></then></rule>
 			<rule id="rule-mf-pwd-policy">
 				<!-- <xref to="sel-mf-pwd-policy"/> -->
