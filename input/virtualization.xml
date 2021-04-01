@@ -2034,7 +2034,6 @@
 											<ref-id>sel-ude-keysize-256</ref-id></and>
 							</then>							
 						</rule>
-					-->
                     </f-element>
 				<audit-event />
 				</f-component>
@@ -2303,9 +2302,10 @@
                             </Tests>
                         </aactivity>
 			<rule id="keyhash-alg-match-sha-1">
-                          <description>If <xref to="sel-hmac-sha-1"/> is selected in FCS_COP.1/KeyHash 
-						  then <xref to="sel-hash-sha-1"/> must be selected in FCS_COP.1/Hash.</description>
-                        <or><and><ref-id>sel-hmac-sha-1</ref-id><ref-id>sel-hash-sha-1</ref-id></and><not><ref-id>sel-hmac-sha-1</ref-id></not></or></rule>
+                          <description>If "<xref to="sel-hmac-sha-1"/>" is selected in FCS_COP.1/KeyHash 
+						  then "<xref to="sel-hash-sha-1"/>" must be selected in FCS_COP.1/Hash.</description>
+                        <if><ref-id>sel-hmac-sha-1</ref-id></if>
+						<then><ref-id>sel-hash-sha-1</ref-id></then></rule>
 			<rule id="keyhash-alg-match-sha-256">
 			  <description>If <xref to="sel-hmac-sha-256"/> is selected in FCS_COP.1/KeyHash then <xref to="sel-hash-sha-256"/> 
 						must be selected in FCS_COP.1/Hash.</description>
@@ -4071,8 +4071,8 @@
 				<description>If <h:i>"directory-based"</h:i> is selected anywhere in FIA_UAU.5.1 then 
 					"<h:i>Ability to configure name/address of directory server to bind with</h:i>" must be selected in the Client or Server module 
 					management function table.</description>
-				<or><and><or><ref-id>sel-uau-x509-dirbased</ref-id><ref-id>sel-uau-ssh-dirbased</ref-id><ref-id>sel-uau-pwd-dirbased</ref-id></or><ref-id>sel-mf-dir-server</ref-id></and>
-					<not><or><ref-id>sel-uau-x509-dirbased</ref-id><ref-id>sel-uau-ssh-dirbased</ref-id><ref-id>sel-uau-pwd-dirbased</ref-id></or></not></or></rule>					     
+				<if><or><ref-id>sel-uau-x509-dirbased</ref-id><ref-id>sel-uau-ssh-dirbased</ref-id><ref-id>sel-uau-pwd-dirbased</ref-id></or>
+				<then><ref-id>sel-mf-dir-server</ref-id></then></rule>
 			<rule id="rule-mf-pwd-policy">
 				<!-- <xref to="sel-mf-pwd-policy"/> -->
 				<description>If <h:i>"authentication based on username and password"</h:i> is selected in FIA_UAU.5.1 then 
