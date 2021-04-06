@@ -105,12 +105,14 @@
 	    <depends on="selection"><ref-id>sel-x509-2-ssh</ref-id></depends>  -->
     </include-pkg>
     <modules required="yes">
-    <module><name>Client Virtualization</name>
-            <url></url>
-            <version>1.1</version></module>
-    <module><name>Server Virtualization</name>
-            <url></url>
-            <version>1.1</version></module>
+    <module id="client-virt">
+		<raw-url>https://raw.githubusercontent.com/commoncriteria/clientvirtualization/master/input/clientvirtualization.xml</raw-url>
+        <url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=409&amp;id=409</url>
+    </module>
+    <module id="server-virt">
+		<raw-url>https://raw.githubusercontent.com/commoncriteria/servervirtualization/master/input/servervirtualization.xml</raw-url>
+		<url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=410&amp;id=410</url>
+	</module>
     </modules>
 	<!-- Rules - These are rules where selections in the base require selections in the PP-Modules.
 			So, really these belong in a composition and not here. At worst they should be in the module.
@@ -4071,13 +4073,13 @@
 					"<h:i>Ability to configure name/address of directory server to bind with</h:i>" must be selected in the Client or Server module 
 					management function table.</description>
 				<if><or><ref-id>sel-uau-x509-dirbased</ref-id><ref-id>sel-uau-ssh-dirbased</ref-id><ref-id>sel-uau-pwd-dirbased</ref-id></or></if>
-				<then><ref-id alt="Select 'Ability to configure name/address of directory Server...' (func 17) in Client/Server Module">sel-mf-dir-server</ref-id></then></rule>
+				<then><doc ref="server-virt"><ref-id>sel-mf-dir-server</ref-id></doc></then></rule>
 			<rule id="rule-mf-pwd-policy">
 				<!-- <xref to="sel-mf-pwd-policy"/> -->
 				<description>If <h:i>"authentication based on username and password"</h:i> is selected in FIA_UAU.5.1 then 
 					<h:i>"Ability to configure Administrator password policy as defined in FIA_PMG_EXT.1"</h:i> must be selected in the Client or Server module 
 					management function table.</description>
-				<if><ref-id>sel-uau-pwd</ref-id></if><then><ref-id alt="Select 'Ability to configure Administrator password policy...' (func 2) in Client/Server Module">sel-mf-pwd-policy</ref-id></then>
+				<if><ref-id>sel-uau-pwd</ref-id></if><then><doc ref="server-virt"><ref-id>sel-mf-pwd-policy</ref-id></doc><doc ref="client-virt"><ref-id>sel-mf-pwd-policy</ref-id></doc></then>
 					</rule>					     
                     </f-element>
 			<audit-event />
@@ -4391,7 +4393,10 @@
 					"<h:i>Ability to configure action taken if unable to determine the validity of a certificate</h:i>" in the Client or Server module 
 					management function table must also be selected.</description>
 				<if><ref-id>sel-x509-adminset</ref-id></if>
-					<then><ref-id alt="Select 'Ability to Configure action taken...' (func 27) in Client/Server Module">sel-mf-cert-no-validity-action</ref-id></then></rule>
+				<then>
+					<doc ref="client-virt"><ref-id>sel-mf-cert-no-validity-action</ref-id></doc>
+					<doc ref="server-virt"><ref-id>sel-mf-cert-no-validity-action</ref-id></doc>
+				</then></rule>
                     </f-element>
 			<audit-event />
                 </f-component>
