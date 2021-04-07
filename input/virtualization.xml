@@ -4079,7 +4079,7 @@
 				<description>If <h:i>"authentication based on username and password"</h:i> is selected in FIA_UAU.5.1 then 
 					<h:i>"Ability to configure Administrator password policy as defined in FIA_PMG_EXT.1"</h:i> must be selected in the Client or Server module 
 					management function table.</description>
-				<if><ref-id>sel-uau-pwd</ref-id></if><then><doc ref="server-virt"><ref-id>sel-mf-pwd-policy</ref-id></doc><doc ref="client-virt"><ref-id>sel-mf-pwd-policy</ref-id></doc></then>
+				<if><ref-id>sel-uau-pwd</ref-id></if><then><or><doc ref="server-virt"><ref-id>sel-mf-pwd-policy</ref-id></doc><doc ref="client-virt"><ref-id>sel-mf-pwd-policy</ref-id></doc></or></then>
 					</rule>					     
                     </f-element>
 			<audit-event />
@@ -4393,10 +4393,12 @@
 					"<h:i>Ability to configure action taken if unable to determine the validity of a certificate</h:i>" in the Client or Server module 
 					management function table must also be selected.</description>
 				<if><ref-id>sel-x509-adminset</ref-id></if>
-				<then>
+				<then><or>
 					<doc ref="client-virt"><ref-id>sel-mf-cert-no-validity-action</ref-id></doc>
 					<doc ref="server-virt"><ref-id>sel-mf-cert-no-validity-action</ref-id></doc>
-				</then></rule>
+                               
+			        </or></then>
+                         </rule>
                     </f-element>
 			<audit-event />
                 </f-component>
