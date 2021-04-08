@@ -832,7 +832,7 @@
                         to the existing security policy. Similarly, changes made to the configuration of the TOE 
                         itself must not violate the existing security policy.
                     </description>
-					<addressed-by>FMT_MSA_EXT.1</addressed-by><rationale>Ensures that data sharing between VMs is turned off by default.</rationale>
+					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that data sharing between VMs is turned off by default.</rationale>
                 </SO>
                 <SO name="O.RESOURCE_ALLOCATION">
                     <description>The TOE will provide mechanisms that enforce constraints on the allocation of 
@@ -3585,8 +3585,7 @@
 						</h:ol>
 					</management>
 					<audit>There are no auditable events foreseen.</audit>
-					<dependencies>FMT_MSA_EXT.1 Default Data Sharing Configuration<h:p/>
-						FMT_SMR.1 Security Roles</dependencies>
+					<dependencies>No dependencies.</dependencies>
                     <f-element id="fdp-vms-ext-1e1">
                         <title>The VS shall provide the following mechanisms for transferring data between Guest VMs:
                             <selectables linebreak="yes">
@@ -3597,11 +3596,14 @@
                         </title>
                     </f-element>
                     <f-element id="fdp-vms-ext-1e2">
+			<title>The TSF shall by default enforce a policy prohibiting sharing of data between Guest VMs.</title>
+		    </f-element>			
+                    <f-element id="fdp-vms-ext-1e3">
                         <title>The TSF shall allow Administrators to configure the mechanisms selected in FDP_VMS_EXT.1.1 to
                             enable and disable the transfer of data between Guest VMs.
                         </title>
                     </f-element>
-                    <f-element id="fdp-vms-ext-1e3">
+                    <f-element id="fdp-vms-ext-1e4">
                         <title>The VS shall ensure that no Guest VM is able to read or transfer data to or from another Guest VM except
 							through the mechanisms listed in FDP_VMS_EXT.1.1.
                         </title>
@@ -3612,25 +3614,20 @@
 							this fundamental requirement in mind.<h:br></h:br><h:br></h:br>
                             The ST author should select “no mechanism” in the unlikely event that the VS implements no mechanisms for
 							transferring data between Guest VMs. Otherwise, the ST author should select “virtual networking” 
-							and identify all other mechanisms through which data can be transferred between Guest VMs. This should 
-							be the same list of mechanisms supplied for FMT_MSA_EXT.1.<h:br></h:br><h:br></h:br>
+							and identify all other mechanisms through which data can be transferred between Guest VMs. <h:br></h:br><h:br></h:br>
 							Examples of non-network inter-VM sharing mechanisms are:<h:br></h:br><h:br></h:br>
                             <h:ul>
                                 <h:li>User interface-based mechanisms, such as copy-paste and drag-and-drop</h:li>
                                 <h:li>Shared virtual or physical devices</h:li>
                                 <h:li>API-based mechanisms such as Hypercalls</h:li>
                             </h:ul>
-                            For data transfer mechanisms implemented in terms of Hypercall functions, FDP_VMS_EXT.1.2 is met if 
+                            For data transfer mechanisms implemented in terms of Hypercall functions, FDP_VMS_EXT.1.3 is met if 
 							FPT_HCL_EXT.1.2 is met for those Hypercall functions (VM access to Hypercall functions is 
 							configurable).<h:br></h:br><h:br></h:br>
-                            For data transfer mechanisms that use shared physical devices, FDP_VMS_EXT.1.2 is met if the device is 
+                            For data transfer mechanisms that use shared physical devices, FDP_VMS_EXT.1.3 is met if the device is 
 							listed in and meets FDP_PPR_EXT.1.1 (VM access to the physical device is configurable).<h:br></h:br><h:br></h:br>
-                            For data transfer mechanisms that use virtual networking, FDP_VMS_EXT.1.2 is met if FDP_VNC_EXT.1.1 
+                            For data transfer mechanisms that use virtual networking, FDP_VMS_EXT.1.3 is met if FDP_VNC_EXT.1.1 
 							is met (VM access to virtual networks is configurable).<h:br></h:br><h:br></h:br>
-<!--                            FDP_VMS_EXT.1.3 is an attestation requirement. The vendor must attest that data cannot be transferred
-							between Guest VMs except through the configurable mechanisms documented in FDP_VMS_EXT.1.1. The vendor
-							must attest that there are no design or implementation flaws that permit the above mechanisms to be
-							bypassed or defeated, or for data to be transferred through a different, undocumented mechanism.  -->
                         </note>
                         <aactivity>
                             <TSS>
@@ -3649,38 +3646,28 @@
                                         <h:ol type="a">
                                             <h:li>Create two VMs without specifying any communications mechanism or overriding
 												the default configuration. </h:li>
-                                            <h:li>Test that the two VMs cannot communicate through the mechanisms selected in FMT_MSA_EXT.1.1.</h:li>
-											<h:li>Create two new VMs, overriding the default configuration to allow communications through a
-												channel selected in FMT_MSA_EXT.1.1.</h:li>
+                                            <h:li>Test that the two VMs cannot communicate through the mechanisms selected in FDP_VMS_EXT.1.1.</h:li>
+						<h:li>Create two new VMs, overriding the default configuration to allow communications through a
+												channel selected in FDP_VMS_EXT.1.1.</h:li>
                                             <h:li>Test that communications can be passed between the VMs through the channel.</h:li>												
                                             <h:li>Create two new VMs, the first with the inter-VM communications channel currently being
-												tested enabled, and the second with the inter-VM communications channel currently
-												being tested disabled.</h:li>
+								tested enabled, and the second with the inter-VM communications channel currently
+								being tested disabled.</h:li>
                                             <h:li>Test that communications cannot be passed between the VMs through the channel.</h:li>
-                                            <h:li>As an Administrator, enable inter-VM communications between the VMs on the second 
-												VM.</h:li>
+                                            <h:li>As an Administrator, enable inter-VM communications between the VMs on the second VM.</h:li>
                                             <h:li>Test that communications can be passed through the inter-VM channel.</h:li>
-                                            <h:li>As an Administrator again, disable inter-VM communications between the two 
-												VMs.</h:li>
+                                            <h:li>As an Administrator again, disable inter-VM communications between the two VMs.</h:li>
                                             <h:li>Test that communications can no longer be passed through the channel.</h:li>
                                         </h:ol>
-                                        FDP_VMS_EXT.1.2 is met if communication is successful in step (d) and unsuccessful in step (f).<h:br></h:br><h:br></h:br>
+					FDP_VMS_EXT.1.2 is met if communication is unsuccessful in step (b).
+                                        FDP_VMS_EXT.1.3 is met if communication is successful in step (d) and unsuccessful in step (f).
+					    <h:br></h:br><h:br></h:br>
                                     </test>
                                 </testlist>
-                                FMT_MSA_EXT.1.1 is met if communication is unsuccessful in step (b). FMT_MSA_EXT.1.2 is met if
-								communication is successful in step (d). Additionally, FMT_MSA_EXT.1 requires that the evaluator
-								verifies that the TSS documents the inter-VM communications mechanisms as described above.
-<!--                                The evaluator must ensure that the ST includes the following statement attesting that there are no 
-								other ways for data to be transferred between VMs other than those listed in FDP_VMS_EXT.1.1:<h:br></h:br><h:br></h:br>
-                                A Guest VM cannot access the data of another Guest VM, or transfer data to another Guest VM other than
-								through the mechanisms described in FDP_VMS_EXT.1.1 when expressly enabled by an authorized
-								Administrator. There are no design or implementation flaws that permit the above mechanisms to be
-								bypassed or defeated, or for data to be transferred through undocumented mechanisms. This claim 
-								does not apply to covert channels or architectural side-channels.   -->
                             </Tests>
                          </aactivity>
                     </f-element>
-					<audit-event />
+			<audit-event />
                 </f-component>
                 
                 <!-- FDP_VNC_EXT.1 -->
@@ -4389,56 +4376,10 @@
 	    <!-- 5.1.6 Security Management (FMT) -->
             <section id="ss-fmt" title="Security Management (FMT)">
 			
-				<ext-comp-def title="Default Data Sharing Configuration" fam-id="FMT_MSA_EXT">
-					<fam-behavior>This family defines requirements for the default data sharing behavior
-						for Guest VMs.</fam-behavior>
-				</ext-comp-def>
 				<ext-comp-def title="Separation of Management and Operational Networks" fam-id="FMT_SMO_EXT">
 					<fam-behavior>This family defines requirements for separation of management and operational 
 						networks.</fam-behavior>
 				</ext-comp-def>
-                
-                <!-- FMT_MSA_EXT.1 -->
-                <f-component cc-id="fmt_msa_ext.1" name="Default Data Sharing Configuration">
-					<consistency-rationale/>
-					<comp-lev>requires the TSF to define its default security posture for sharing of data between Guest
-						VMs.</comp-lev>
-					<management>The following actions could be considered for the management functions
-						in FMT:
-						<h:ol type="a">
-							<h:li>Ability to set default initial VM configurations.</h:li>
-						</h:ol>
-					</management>
-					<audit>There are no auditable events foreseen.</audit>
-					<dependencies>FDP_VMS_EXT.1 VM Separation</dependencies>
-                    <f-element id="fmt-msa-ext-1e1">
-                        <title>The TSF shall by default enforce a policy prohibiting sharing of data between Guest VMs.
-                        </title>
-                    </f-element>
-                    <f-element id="fmt-msa-ext-1e2">
-                        <title>The TSF shall allow Administrators to specify alternative initial configuration values to override the 
-							default values when a Guest VM is created.
-                        </title>
-                        <note role="application">By default, the VMM must enforce a policy prohibiting sharing of data between 
-							VMs. The default policy applies to all mechanisms for sharing data between VMs, including inter-VM 
-							communication channels, shared physical devices, shared virtual devices, and virtual networks. The 
-							default policy does not apply to covert channels and architectural side-channels.<h:br></h:br><h:br></h:br>
-                            The list of data sharing mechanisms implemented by the TOE is contained in the selection in FDP_VMS_EXT.1.1.<h:br></h:br>
-							Examples of non-network inter-VM sharing mechanisms are:<h:br></h:br>
-                            <h:ul>
-                                <h:li>User interface-based mechanisms, such as copy-paste and drag-and-drop</h:li>
-                                <h:li>Shared virtual or physical devices</h:li>
-                                <h:li>API-based mechanisms such as Hypercalls</h:li>
-                            </h:ul>.
-						</note>
-                        <aactivity>
-                            <Tests>
-                                This requirement is met if FDP_VMS_EXT.1 is met.
-                            </Tests>
-                        </aactivity>
-                    </f-element>
-					<audit-event />
-                </f-component>
                 
                 <!-- FMT_SMO_EXT.1 -->
                 <f-component cc-id="fmt_smo_ext.1" name="Separation of Management and Operational Networks">
