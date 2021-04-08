@@ -323,10 +323,10 @@
 			<section id="ss-platformreqs" title="Requirements Met by the Platform">
 				Depending on the way the VS is installed, functions tested under this PP may be implemented by the TOE or by the
 				Platform. There is no difference in the testing required whether the function is implemented by the TOE or by the
-				Platform. In either case, the tests determine whether the function being tested provides a level of assurance 
+				Platform. In either case, the tests determine whether the function being tested provides a level of confidence 
 				acceptable to meet the goals of this Profile with respect to a particular product and platform. The equivalency 
-				guidelines are intended in part to address this TOE vs. Platform distinction, and to ensure that the assurance 
-				level does not change between instances of equivalent products on equivalent platforms—and also, of course, to
+				guidelines are intended in part to address this TOE vs. Platform distinction, and to ensure that confidence 
+				in the evaluation results do not erode between instances of equivalent products on equivalent platforms—and also, of course, to
 				ensure that the appropriate testing is done when the distinction is significant.
 			</section>
 		
@@ -1074,8 +1074,8 @@
                             </Guidance>
                             <Tests>
                                 The evaluator shall verify that the audit records provide all of the information specified in 
-                                FAU_GEN.1 and that this information is suitable for human interpretation. The assurance 
-                                activity for this requirement is performed in conjunction with the assurance activity for 
+                                FAU_GEN.1 and that this information is suitable for human interpretation. The evaluation 
+                                activity for this requirement is performed in conjunction with the evaluation activity for 
                                 FAU_GEN.1.
                             </Tests>
                         </aactivity>
@@ -1117,7 +1117,7 @@
                     <f-element id="fau-stg-1e2">
                         <title>The TSF shall be able to [prevent] unauthorized modifications to the stored audit records in the audit trail.
                         </title>
-                        <note role="application">The assurance activity for this SFR is not intended to imply that the TOE must
+                        <note role="application">The evaluation activity for this SFR is not intended to imply that the TOE must
 							support an administrator’s ability to designate individual audit records for deletion. That level 
 							of granularity is not required.
 						</note>
@@ -1182,7 +1182,7 @@
                                 as configuration of the TOE needed to communicate with the audit server.
                             </Guidance>
                             <Tests>
-                                Testing of the trusted channel mechanism is to be performed as specified in the assurance 
+                                Testing of the trusted channel mechanism is to be performed as specified in the evaluation 
                                 activities for FTP_ITC_EXT.1. <h:br></h:br><h:br></h:br>
                                 The evaluator shall perform the following test for this requirement:<h:br></h:br><h:br></h:br>
                                 <testlist>
@@ -1584,7 +1584,7 @@
                             The TSF must destroy or cause to be destroyed all copies of cryptographic keys created and
 							managed by the TOE once the keys are no longer needed. This requirement is the same for all instances
 							of keys within TOE volatile memory regardless of whether the memory is controlled by TOE manufacturer 
-							software or by 3rd party TOE modules. The assurance activities are designed with flexibility to
+							software or by 3rd party TOE modules. The evaluation activities are designed with flexibility to
 							address cases where the TOE manufacturer has limited insight into the behavior of 3rd party TOE 
 							components.<h:br></h:br><h:br></h:br>
 							The preferred method for destroying keys in TOE volatile memory is by direct overwrite of the memory
@@ -1696,7 +1696,6 @@
 							modes in which AES operates. For the second selection, the ST author should choose the key sizes that
 							are supported by this functionality.</note>
 						<aactivity>
-                            <h:b>Assurance Activity Note:</h:b><h:br />
                             The following tests require the developer to provide access to a test platform that provides the evaluator
 							with tools that are typically not found on factory products.<h:br></h:br><h:br></h:br>
                             <Tests>
@@ -2083,7 +2082,7 @@
                                 The evaluator shall perform all of the following tests for each hash algorithm implemented by the TSF
 								and used to satisfy the requirements of this PP.
                                 <h:br></h:br><h:br></h:br>
-                                <h:b>Assurance Activity Note:</h:b><h:br /> The following tests require the developer to provide access
+                                The following tests require the developer to provide access
 								to a test platform that provides the evaluator with tools that are typically not found on factory 
 								products.
                                 <h:br></h:br><h:br></h:br>
@@ -2198,7 +2197,6 @@
                         </note>
                         <aactivity>
                             <Tests>
-                                <h:b>Assurance Activity Note:</h:b><h:br />
                                 The following tests require the developer to provide access to a test platform that provides the 
 								evaluator with tools that are typically not found on factory products.
                                 <h:br></h:br><h:br></h:br>
@@ -2279,7 +2277,6 @@
                                 length used.
                             </TSS>
                             <Tests> 
-                                <h:b>Assurance Activity Note:</h:b><h:br />
                                 The following tests require the developer to provide access to a test platform that provides the 
 								evaluator with tools that are typically not found on factory products.<h:br></h:br><h:br></h:br>
                                 For each of the supported parameter sets, the evaluator shall compose 15 sets of test data. Each set
@@ -3719,7 +3716,7 @@
 							or segment.
                         </title>
                         <note role="application">
-                            Virtual networks must be isolated from one another to provide assurance commensurate with that provided by 
+                            Virtual networks must be separated from one another to provide isolation commensurate with that provided by 
 							physically separate networks. It must not be possible for data to cross between properly configured
 							virtual networks regardless of whether the traffic originated from a local Guest VM or a remote host.<h:br></h:br><h:br></h:br>
                             Unprivileged users must not be able to connect VMs to each other or to external networks.<h:br></h:br><h:br></h:br>
@@ -4216,7 +4213,7 @@
 								this configuration action is performed.
 							</TSS>
                             <Tests>
-                                The tests described must be performed in conjunction with the other Certificate Services assurance 
+                                The tests described must be performed in conjunction with the other Certificate Services evaluation 
 								activities, including the uses listed in FIA_X509_EXT.2.1. The tests for the extendedKeyUsage rules 
 								are performed in conjunction with the uses that require those rules.<h:br/><h:br/>
                                 <testlist>
@@ -4797,7 +4794,7 @@
 				configured per FPT_HCL_EXT.1.2.<h:br></h:br><h:br></h:br>
                             A vendor-provided test harness may reduce evaluation time.<h:br></h:br><h:br></h:br>
                             There is no expectation that the evaluator will need to review source code in order to accomplish the
-                            Assurance Activity.  The evaluator documentation review should ensure that there are documented
+                            evaluation activity.  The evaluator documentation review should ensure that there are documented
                             Hypercall functions in the TSS, that each documented Hypercall function contains the specified
                             information, and that there are not obvious or publicly known Hypercall functions missing.
                         </note>
@@ -4811,7 +4808,7 @@
                                 parameters and legal values, configuration settings for enabling/disabling the function, and conditions under
                                 which the function can be disabled. The TSS must also specify those functions that cannot be
                                 disabled.  While there is no expectation that the evaluator will need to examine source code in order to
-                                accomplish this Assurance Activity, the evaluator must ensure that there are no obvious or publicly known
+                                accomplish this evaluation activity, the evaluator must ensure that there are no obvious or publicly known
                                 Hypercall functions missing from the TSS.
                             </TSS>
                             <Guidance>
@@ -5240,7 +5237,7 @@
 				accordance with FIA_X509_EXT.1.</note>
                         <aactivity>
                             <Tests>
-                                The assurance activity for this requirement is performed in conjunction with the assurance activity
+                                The evaluation activity for this requirement is performed in conjunction with the evaluation activity
 				    for FIA_X509_EXT.1 and FIA_X509_EXT.2.
                             </Tests>
                         </aactivity>
@@ -5288,7 +5285,7 @@
 								The evaluator must ensure that there are no obvious or publicly known virtual I/O 
 								ports missing from the TSS.<h:p/>
                                	There is no expectation that evaluators will examine source code to verify the “all” part of the 
-                               	Assurance Activity.
+                               	evaluation activity.
                             </TSS>
                             <Tests>
 								For each virtual device interface, the evaluator shall attempt to access the interface 
@@ -5675,7 +5672,7 @@
                                     <test>The evaluator shall ensure, for each method of remote administration, modification of the 
 					    channel data is detected by the TOE.</test>
                              </testlist>
-                            Further assurance activities are associated with the specific protocols.
+                            Additional evaluation activities are associated with the specific protocols.
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -5706,24 +5703,24 @@
 		documentation applicable for the evaluation and performs independent testing.<h:br></h:br><h:br></h:br>
             This section lists the set of Security Assurance Requirements (SARs) from Part 3 of the Common Criteria for Information 
 		Technology Security Evaluation, Version 3.1, Revision 4 that are required in evaluations against this PP. Individual
-		assurance activities to be performed are specified in both Section 5.1 as well as in this section.<h:br></h:br><h:br></h:br>
+		evaluation activities to be performed are specified in both Section 5.1 as well as in this section.<h:br></h:br><h:br></h:br>
             After the ST has been approved for evaluation, the Information Technology Security Evaluation Facility (ITSEF) will obtain
 		the TOE, supporting environmental IT, and the administrative/user guides for the TOE. The ITSEF is expected to perform
-		actions mandated by the CEM for the ASE and ALC SARs. The ITSEF also performs the assurance activities contained 
+		actions mandated by the CEM for the ASE and ALC SARs. The ITSEF also performs the evaluation activities contained 
 		within Section 5, which are intended to be an interpretation of the other CEM assurance requirements as they apply 
-		to the specific technology instantiated in the TOE. The assurance activities that are captured in Section 5 also 
+		to the specific technology instantiated in the TOE. The evaluation activities that are captured in Section 5 also 
 		provide clarification as to what the developer needs to provide to demonstrate the TOE is compliant with the PP.
 
 	    <!-- 5.2.1 Class ASE: Security Target Evaluation -->
             <section id="ss-ase" title="Class ASE: Security Target Evaluation">
-                As per ASE activities defined in [CEM] plus the TSS assurance activities defined for any SFRs claimed by the TOE.
+                As per ASE activities defined in [CEM] plus the TSS evaluation activities defined for any SFRs claimed by the TOE.
             </section>
 		
 	    <!-- 5.2.2 Class ADV: Development  -->
             <section id="ss-adv" title="Class ADV: Development">
                 The information about the TOE is contained in the guidance documentation available to the end user as well as the TOE
 		    Summary Specification (TSS) portion of the ST. The TOE developer must concur with the description of the product that is
-		    contained in the TSS as it relates to the functional requirements. The Assurance Activities contained in Section 5.2 
+		    contained in the TSS as it relates to the functional requirements. The evaluation activities contained in Section 5.2 
 		    should provide the ST authors with sufficient information to determine the appropriate content for the TSS section.
 
                 <!-- ADV_FSP.1 -->
@@ -5736,7 +5733,7 @@
                         <note role="developer">
                             As indicated in the introduction to this section, the functional specification is composed of the information
 				contained in the AGD_OPR and AGD_PRE documentation, coupled with the information provided in the TSS of the
-				ST. The assurance activities in the functional requirements point to evidence that should exist in the
+				ST. The evaluation activities in the functional requirements point to evidence that should exist in the
 				documentation and TSS section; since these are directly associated with the SFRs, the tracing in element 
 				ADV_FSP.1.2D is implicitly already done and no additional documentation is necessary.</note>
                     </a-element>
@@ -5765,10 +5762,10 @@
                         <title>The evaluator shall determine that the functional specification is an accurate and complete instantiation of 
 				the SFRs.</title>
                         <note role="application">
-                            There are no specific assurance activities associated with these SARs. The functional specification documentation
+                            There are no specific evaluation activities associated with these SARs. The functional specification documentation
 				is provided to support the evaluation activities described in Section 5.2, and other activities described for
 				AGD, ATE, and AVA SARs. The requirements on the content of the functional specification information is 
-				implicitly assessed by virtue of the other assurance activities being performed; if the evaluator is unable 
+				implicitly assessed by virtue of the other evaluation activities being performed; if the evaluator is unable 
 				to perform an activity because the there is insufficient interface information, then an adequate functional
 				specification has not been provided.
                         </note>
@@ -5789,7 +5786,7 @@
 			    environment.</h:li>
                 </h:ul>
                 Guidance pertaining to particular security functionality is also provided; specific requirements on such guidance are
-		    contained in the assurance activities specified with individual SFRs where applicable.
+		    contained in the evaluation activities specified with individual SFRs where applicable.
                 
 		<!-- AGD_OPE.1 -->
 		<a-component cc-id="agd_ope.1" name="Operational User Guidance">
@@ -5798,7 +5795,7 @@
                         <title>The developer shall provide operational user guidance.
                         </title>
                         <note role="developer">
-                            Rather than repeat information here, the developer should review the assurance activities for this 
+                            Rather than repeat information here, the developer should review the evaluation activities for this 
 				component to ascertain the specifics of the guidance that the evaluators will be checking for. This
 				will provide the necessary information for the preparation of acceptable guidance.</note>
                     </a-element>
@@ -5840,7 +5837,7 @@
                         <title>The evaluator shall confirm that the information provided meets all requirements for content and 
 				presentation of evidence.</title>
                         <aactivity>
-                                Some of the contents of the operational guidance will be verified by the assurance activities in 
+                                Some of the contents of the operational guidance will be verified by the evaluation activities in 
                                 Section 5.2 and evaluation of the TOE according to the CEM. The 
                                 following additional information is also required.<h:br></h:br><h:br></h:br>
                                 The operational guidance shall contain instructions for configuring the password characteristics,
@@ -5874,7 +5871,7 @@
                     <a-element type="D">
                         <title>The developer shall provide the TOE including its preparative procedures.
                         </title>
-                        <note role="developer">As with the operational guidance, the developer should look to the assurance activities 
+                        <note role="developer">As with the operational guidance, the developer should look to the evaluation activities 
 				to determine the required content with respect to preparative procedures.
                         </note>
                     </a-element>
@@ -6038,7 +6035,7 @@
                     Testing is performed to confirm the functionality described in the TSS as well as the administrative (including
 			configuration and operation) documentation provided. The focus of the testing is to confirm that the
 			requirements specified in Section 5.1 are being met, although some additional testing is specified for SARs 
-			in Section 5.2. The Assurance Activities identify the additional testing activities associated with these
+			in Section 5.2. The evaluation activities identify the additional testing activities associated with these
 			components. The evaluator produces a test report documenting the plan for and results of testing, as well 
 			as coverage arguments focused on the platform/TOE combinations that are claiming conformance to this PP.
             	    
@@ -6061,7 +6058,7 @@
                         </title>
                         <aactivity>
                                 The evaluator shall prepare a test plan and report documenting the testing aspects of the system.
-				    While it is not necessary to have one test case per test listed in an Assurance Activity, the
+				    While it is not necessary to have one test case per test listed in an evaluation activity, the
 				    evaluators must document in the test plan that each applicable testing requirement in the 
 				    ST is covered.<h:br></h:br><h:br></h:br>
                                 The Test Plan identifies the platforms to be tested, and for those platforms not included in the test
@@ -6354,7 +6351,7 @@
     <section id="s-modelequiv" title="Specific Guidance for Determining Product Model Equivalence">
       Product Model equivalence attempts to determine whether different feature levels of the same product across
       a product line are equivalent for purposes of PP testing. For example, if a product has a “basic” edition and an “enterprise”
-      edition, is it necessary to test both models? Or does testing one model provide sufficient assurance that both models
+      edition, is it necessary to test both models? Or does testing one model provide sufficient confidence that both models
       are compliant?
       <h:br />
       <h:br />
@@ -6413,7 +6410,7 @@
     <section id="s-versionequiv" title="Specific Guidance for Determining Product Version Equivalence">
       In cases of version equivalence, differences are expressed in terms of changes implemented in revisions
       of an evaluated Product. In general, versions are equivalent if the changes have no effect on any
-      security-relevant claims about the TOE or assurance evidence. Non-security-relevant changes to TOE
+      security-relevant claims about the TOE or evaluation evidence. Non-security-relevant changes to TOE
       functionality or the addition of non-security-relevant functionality does not affect equivalence.
       <h:br /><h:br />
 
