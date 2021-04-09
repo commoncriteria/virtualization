@@ -323,12 +323,12 @@
 			<section id="ss-platformreqs" title="Requirements Met by the Platform">
 				Depending on the way the VS is installed, functions tested under this PP may be implemented by the TOE or by the
 				Platform. There is no difference in the testing required whether the function is implemented by the TOE or by the
-				Platform. In either case, the tests determine whether the function being tested provides a level of assurance 
+				Platform. In either case, the tests determine whether the function being tested provides a level of confidence 
 				acceptable to meet the goals of this Profile with respect to a particular product and platform. The equivalency 
-				guidelines are intended in part to address this TOE vs. Platform distinction, and to ensure that the assurance 
-				level does not change between instances of equivalent products on equivalent platforms—and also, of course, to
+				guidelines are intended in part to address this TOE vs. Platform distinction, and to ensure that confidence 
+				in the evaluation results do not erode between instances of equivalent products on equivalent platforms—and also, of course, to
 				ensure that the appropriate testing is done when the distinction is significant.
-			</section>  -->
+			</section>
 		
 			<!-- 1.3.3 Scope of Certification -->
 			<section id="ss-scopecert" title="Scope of Certification">
@@ -340,21 +340,6 @@
 				are not evaluated under this PP.
 			</section>
 		
-			<!-- 1.3.4 Vendor Attestation -->
-<!--			<section id="ss-attestation" title="Vendor Attestation">
-				This PP includes several SFRs that include elements that are met via vendor attestation. Attestation assurance 
-				activities are reserved for SFRs that define properties that are critical to the system’s security functionality,
-				but that are impossible or impractical to test in a repeatable and consistent manner. These Attestation assurance 
-				activities require the vendor to make an assertion in the ST that their product meets the 
-				specified SFR—no further testing or assessment of the product regarding these SFRs or elements is performed by the
-				ITSEF. The ITSEF will simply verify that the ST includes a pre-determined Attestation statement.
-				By including this statement in the ST, the vendor is accepting responsibility for the assurance
-				of their product in these particular areas. If at any time evidence is produced that indicates that these
-				statements are false (and the product does not meet the specified security functionality), the CC certificate may
-				be revoked. See FDP_VMS_EXT.1, FDP_VNC_EXT.1, FPT_VDP_EXT.1 and FPT_VIV_EXT.1 for the associated Attestation
-				statements.
-			</section>
--->		
 			<!-- 1.3.4 Product and Platform Equivalance -->
 			<section id="ss-equiv" title="Product and Platform Equivalence">
 				The tests in this Protection Profile must be run on all product versions and Platforms with which the Vendor would 
@@ -481,7 +466,7 @@
                 </threat>
                 <threat name="T.3P_SOFTWARE">
                     <description>
-                        In some VS implementations, functions critical to the secuity of the TOE are by necessity performed by 
+                        In some VS implementations, functions critical to the security of the TOE are by necessity performed by 
 			    software not produced by the virtualization vendor. Such software may include physical device drivers, 
 			    and even non-TOE entities such as Host Operating Systems. Since this software has the same or similar
 			    privilege level as the VS, vulnerabilities can be exploited by an adversary to compromise the VS and VMs.
@@ -552,7 +537,7 @@
 			    of the number of bits of noise in the entropy pool. From this entropy pool random numbers are created.
 			    Good random numbers are essential to implementing strong cryptography. Cryptography implemented using
 			    poor random numbers can be defeated by a sophisticated adversary. Such defeat can result in the compromise
-			    of Guest VM data and credentials, and of VS data and credentials, and can enable anauthorized access 
+			    of Guest VM data and credentials, and of VS data and credentials, and can enable unauthorized access 
 			    to the VS or VMs.
                     </description>
                     <objective-refer ref="O.VM_ENTROPY">
@@ -691,9 +676,9 @@
 					<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>Ensures that VMs can access only those virtual devices that they are configured to access.</rationale>
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
 					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Administrators can disable unneccessary hypercall interfaces to reduce attack surface.</rationale>
+					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Administrators can disable unnecessary hypercall interfaces to reduce attack surface.</rationale>
 					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
-					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke priviledged code without proper hypervisor mediation.</rationale>
+					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                 </SO>
                 <SO name="O.VMM_INTEGRITY">
                     <description>Integrity is a core security objective for Virtualization Systems. To achieve system integrity, the 
@@ -718,7 +703,7 @@
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
 					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
 					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
-					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke priviledged code without proper hypervisor mediation.</rationale>
+					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                 </SO>
                 <SO name="O.PLATFORM_INTEGRITY">
                     <description>The integrity of the VMM depends on the integrity of the hardware and software on 
@@ -733,9 +718,9 @@
 					<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>Ensures that VMs cannot access virtual devices that they are not onfigured to access.</rationale>
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
 					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Administrators can disable unneccessary hypercall interfaces to reduce attack surface.</rationale>
+					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Administrators can disable unnecessary hypercall interfaces to reduce attack surface.</rationale>
 					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
-					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke priviledged code without proper hypervisor mediation.</rationale>
+					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
 				</SO>
 				<SO name="O.DOMAIN_INTEGRITY">
                     <description>While the VS is not responsible for the contents or correct functioning of software that runs within 
@@ -847,7 +832,7 @@
                         to the existing security policy. Similarly, changes made to the configuration of the TOE 
                         itself must not violate the existing security policy.
                     </description>
-					<addressed-by>FMT_MSA_EXT.1</addressed-by><rationale>Ensures that data sharing between VMs is turned off by default.</rationale>
+					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that data sharing between VMs is turned off by default.</rationale>
                 </SO>
                 <SO name="O.RESOURCE_ALLOCATION">
                     <description>The TOE will provide mechanisms that enforce constraints on the allocation of 
@@ -1089,8 +1074,8 @@
                             </Guidance>
                             <Tests>
                                 The evaluator shall verify that the audit records provide all of the information specified in 
-                                FAU_GEN.1 and that this information is suitable for human interpretation. The assurance 
-                                activity for this requirement is performed in conjunction with the assurance activity for 
+                                FAU_GEN.1 and that this information is suitable for human interpretation. The evaluation 
+                                activity for this requirement is performed in conjunction with the evaluation activity for 
                                 FAU_GEN.1.
                             </Tests>
                         </aactivity>
@@ -1132,7 +1117,7 @@
                     <f-element id="fau-stg-1e2">
                         <title>The TSF shall be able to [prevent] unauthorized modifications to the stored audit records in the audit trail.
                         </title>
-                        <note role="application">The assurance activity for this SFR is not intended to imply that the TOE must
+                        <note role="application">The evaluation activity for this SFR is not intended to imply that the TOE must
 							support an administrator’s ability to designate individual audit records for deletion. That level 
 							of granularity is not required.
 						</note>
@@ -1197,7 +1182,7 @@
                                 as configuration of the TOE needed to communicate with the audit server.
                             </Guidance>
                             <Tests>
-                                Testing of the trusted channel mechanism is to be performed as specified in the assurance 
+                                Testing of the trusted channel mechanism is to be performed as specified in the evaluation 
                                 activities for FTP_ITC_EXT.1. <h:br></h:br><h:br></h:br>
                                 The evaluator shall perform the following test for this requirement:<h:br></h:br><h:br></h:br>
                                 <testlist>
@@ -1596,10 +1581,10 @@
                         </title>
                         <note role="application">The threat addressed by this element is the recovery of disused cryptographic keys
 							from volatile memory by unauthorized processes.<h:br></h:br><h:br></h:br>
-                            The TSF must to destroy or cause to be destroyed all copies of cryptographic keys created and
+                            The TSF must destroy or cause to be destroyed all copies of cryptographic keys created and
 							managed by the TOE once the keys are no longer needed. This requirement is the same for all instances
 							of keys within TOE volatile memory regardless of whether the memory is controlled by TOE manufacturer 
-							software or by 3rd party TOE modules. The assurance activities are designed with flexibility to
+							software or by 3rd party TOE modules. The evaluation activities are designed with flexibility to
 							address cases where the TOE manufacturer has limited insight into the behavior of 3rd party TOE 
 							components.<h:br></h:br><h:br></h:br>
 							The preferred method for destroying keys in TOE volatile memory is by direct overwrite of the memory
@@ -1711,7 +1696,6 @@
 							modes in which AES operates. For the second selection, the ST author should choose the key sizes that
 							are supported by this functionality.</note>
 						<aactivity>
-                            <h:b>Assurance Activity Note:</h:b><h:br />
                             The following tests require the developer to provide access to a test platform that provides the evaluator
 							with tools that are typically not found on factory products.<h:br></h:br><h:br></h:br>
                             <Tests>
@@ -2098,7 +2082,7 @@
                                 The evaluator shall perform all of the following tests for each hash algorithm implemented by the TSF
 								and used to satisfy the requirements of this PP.
                                 <h:br></h:br><h:br></h:br>
-                                <h:b>Assurance Activity Note:</h:b><h:br /> The following tests require the developer to provide access
+                                The following tests require the developer to provide access
 								to a test platform that provides the evaluator with tools that are typically not found on factory 
 								products.
                                 <h:br></h:br><h:br></h:br>
@@ -2213,7 +2197,6 @@
                         </note>
                         <aactivity>
                             <Tests>
-                                <h:b>Assurance Activity Note:</h:b><h:br />
                                 The following tests require the developer to provide access to a test platform that provides the 
 								evaluator with tools that are typically not found on factory products.
                                 <h:br></h:br><h:br></h:br>
@@ -2294,7 +2277,6 @@
                                 length used.
                             </TSS>
                             <Tests> 
-                                <h:b>Assurance Activity Note:</h:b><h:br />
                                 The following tests require the developer to provide access to a test platform that provides the 
 								evaluator with tools that are typically not found on factory products.<h:br></h:br><h:br></h:br>
                                 For each of the supported parameter sets, the evaluator shall compose 15 sets of test data. Each set
@@ -3434,7 +3416,7 @@
                         <note role="application">
 				For purposes of this requirement, physical platform resources are divided into three categories: 
 				<h:ol a="1">
-					<h:li>those to which Guest OS access is configurable and moderated buy the VMM,</h:li>
+					<h:li>those to which Guest OS access is configurable and moderated by the VMM,</h:li>
 					<h:li>those to which the Guest OS is never allowed to have direct access, and</h:li>
 					<h:li>those to which the Guest OS is always allowed to have direct access.</h:li>
 				</h:ol>
@@ -3603,8 +3585,7 @@
 						</h:ol>
 					</management>
 					<audit>There are no auditable events foreseen.</audit>
-					<dependencies>FMT_MSA_EXT.1 Default Data Sharing Configuration<h:p/>
-						FMT_SMR.1 Security Roles</dependencies>
+					<dependencies>No dependencies.</dependencies>
                     <f-element id="fdp-vms-ext-1e1">
                         <title>The VS shall provide the following mechanisms for transferring data between Guest VMs:
                             <selectables linebreak="yes">
@@ -3615,11 +3596,14 @@
                         </title>
                     </f-element>
                     <f-element id="fdp-vms-ext-1e2">
+			<title>The TSF shall by default enforce a policy prohibiting sharing of data between Guest VMs.</title>
+		    </f-element>			
+                    <f-element id="fdp-vms-ext-1e3">
                         <title>The TSF shall allow Administrators to configure the mechanisms selected in FDP_VMS_EXT.1.1 to
                             enable and disable the transfer of data between Guest VMs.
                         </title>
                     </f-element>
-                    <f-element id="fdp-vms-ext-1e3">
+                    <f-element id="fdp-vms-ext-1e4">
                         <title>The VS shall ensure that no Guest VM is able to read or transfer data to or from another Guest VM except
 							through the mechanisms listed in FDP_VMS_EXT.1.1.
                         </title>
@@ -3630,25 +3614,20 @@
 							this fundamental requirement in mind.<h:br></h:br><h:br></h:br>
                             The ST author should select “no mechanism” in the unlikely event that the VS implements no mechanisms for
 							transferring data between Guest VMs. Otherwise, the ST author should select “virtual networking” 
-							and identify all other mechanisms through which data can be transferred between Guest VMs. This should 
-							be the same list of mechanisms supplied for FMT_MSA_EXT.1.<h:br></h:br><h:br></h:br>
+							and identify all other mechanisms through which data can be transferred between Guest VMs. <h:br></h:br><h:br></h:br>
 							Examples of non-network inter-VM sharing mechanisms are:<h:br></h:br><h:br></h:br>
                             <h:ul>
                                 <h:li>User interface-based mechanisms, such as copy-paste and drag-and-drop</h:li>
                                 <h:li>Shared virtual or physical devices</h:li>
                                 <h:li>API-based mechanisms such as Hypercalls</h:li>
                             </h:ul>
-                            For data transfer mechanisms implemented in terms of Hypercall functions, FDP_VMS_EXT.1.2 is met if 
+                            For data transfer mechanisms implemented in terms of Hypercall functions, FDP_VMS_EXT.1.3 is met if 
 							FPT_HCL_EXT.1.2 is met for those Hypercall functions (VM access to Hypercall functions is 
 							configurable).<h:br></h:br><h:br></h:br>
-                            For data transfer mechanisms that use shared physical devices, FDP_VMS_EXT.1.2 is met if the device is 
+                            For data transfer mechanisms that use shared physical devices, FDP_VMS_EXT.1.3 is met if the device is 
 							listed in and meets FDP_PPR_EXT.1.1 (VM access to the physical device is configurable).<h:br></h:br><h:br></h:br>
-                            For data transfer mechanisms that use virtual networking, FDP_VMS_EXT.1.2 is met if FDP_VNC_EXT.1.1 
+                            For data transfer mechanisms that use virtual networking, FDP_VMS_EXT.1.3 is met if FDP_VNC_EXT.1.1 
 							is met (VM access to virtual networks is configurable).<h:br></h:br><h:br></h:br>
-<!--                            FDP_VMS_EXT.1.3 is an attestation requirement. The vendor must attest that data cannot be transferred
-							between Guest VMs except through the configurable mechanisms documented in FDP_VMS_EXT.1.1. The vendor
-							must attest that there are no design or implementation flaws that permit the above mechanisms to be
-							bypassed or defeated, or for data to be transferred through a different, undocumented mechanism.  -->
                         </note>
                         <aactivity>
                             <TSS>
@@ -3667,38 +3646,28 @@
                                         <h:ol type="a">
                                             <h:li>Create two VMs without specifying any communications mechanism or overriding
 												the default configuration. </h:li>
-                                            <h:li>Test that the two VMs cannot communicate through the mechanisms selected in FMT_MSA_EXT.1.1.</h:li>
-											<h:li>Create two new VMs, overriding the default configuration to allow communications through a
-												channel selected in FMT_MSA_EXT.1.1.</h:li>
+                                            <h:li>Test that the two VMs cannot communicate through the mechanisms selected in FDP_VMS_EXT.1.1.</h:li>
+						<h:li>Create two new VMs, overriding the default configuration to allow communications through a
+												channel selected in FDP_VMS_EXT.1.1.</h:li>
                                             <h:li>Test that communications can be passed between the VMs through the channel.</h:li>												
                                             <h:li>Create two new VMs, the first with the inter-VM communications channel currently being
-												tested enabled, and the second with the inter-VM communications channel currently
-												being tested disabled.</h:li>
+								tested enabled, and the second with the inter-VM communications channel currently
+								being tested disabled.</h:li>
                                             <h:li>Test that communications cannot be passed between the VMs through the channel.</h:li>
-                                            <h:li>As an Administrator, enable inter-VM communications between the VMs on the second 
-												VM.</h:li>
+                                            <h:li>As an Administrator, enable inter-VM communications between the VMs on the second VM.</h:li>
                                             <h:li>Test that communications can be passed through the inter-VM channel.</h:li>
-                                            <h:li>As an Administrator again, disable inter-VM communications between the two 
-												VMs.</h:li>
+                                            <h:li>As an Administrator again, disable inter-VM communications between the two VMs.</h:li>
                                             <h:li>Test that communications can no longer be passed through the channel.</h:li>
                                         </h:ol>
-                                        FDP_VMS_EXT.1.2 is met if communication is successful in step (d) and unsuccessful in step (f).<h:br></h:br><h:br></h:br>
+					FDP_VMS_EXT.1.2 is met if communication is unsuccessful in step (b).
+                                        FDP_VMS_EXT.1.3 is met if communication is successful in step (d) and unsuccessful in step (f).
+					    <h:br></h:br><h:br></h:br>
                                     </test>
                                 </testlist>
-                                FMT_MSA_EXT.1.1 is met if communication is unsuccessful in step (b). FMT_MSA_EXT.1.2 is met if
-								communication is successful in step (d). Additionally, FMT_MSA_EXT.1 requires that the evaluator
-								verifies that the TSS documents the inter-VM communications mechanisms as described above.
-<!--                                The evaluator must ensure that the ST includes the following statement attesting that there are no 
-								other ways for data to be transferred between VMs other than those listed in FDP_VMS_EXT.1.1:<h:br></h:br><h:br></h:br>
-                                A Guest VM cannot access the data of another Guest VM, or transfer data to another Guest VM other than
-								through the mechanisms described in FDP_VMS_EXT.1.1 when expressly enabled by an authorized
-								Administrator. There are no design or implementation flaws that permit the above mechanisms to be
-								bypassed or defeated, or for data to be transferred through undocumented mechanisms. This claim 
-								does not apply to covert channels or architectural side-channels.   -->
                             </Tests>
                          </aactivity>
                     </f-element>
-					<audit-event />
+			<audit-event />
                 </f-component>
                 
                 <!-- FDP_VNC_EXT.1 -->
@@ -3734,7 +3703,7 @@
 							or segment.
                         </title>
                         <note role="application">
-                            Virtual networks must be isolated from one another to provide assurance commensurate with that provided by 
+                            Virtual networks must be separated from one another to provide isolation commensurate with that provided by 
 							physically separate networks. It must not be possible for data to cross between properly configured
 							virtual networks regardless of whether the traffic originated from a local Guest VM or a remote host.<h:br></h:br><h:br></h:br>
                             Unprivileged users must not be able to connect VMs to each other or to external networks.<h:br></h:br><h:br></h:br>
@@ -4111,10 +4080,10 @@
                                 The evaluator shall examine the TSS to determine that it describes the logon
                                 process for each logon method (local, remote (HTTPS, SSH, etc.)) supported for the product. 
                                 This description shall contain information pertaining to the credentials allowed/used, any 
-                                protocol transactions that take place, and what constitutes a “successful logon”. The evaluator
+                                protocol transactions that take place, and what constitutes a “successful logon.” The evaluator
                                 shall examine the operational guidance to determine that any necessary preparatory steps (e.g., 
-                                establishing credential material such as pre-shared keys, tunnels, certificates, etc.) to logging
-                                in are described. For each supported the login method, the evaluator shall ensure the operational
+                                establishing credential material such as pre-shared keys, tunnels, certificates) to logging
+                                in are described. For each supported login method, the evaluator shall ensure the operational
                                 guidance provides clear instructions for successfully logging on. If configuration is necessary
                                 to ensure the services provided before login are limited, the evaluator shall determine that the
                                 operational guidance provides sufficient instruction on limiting the allowed services.
@@ -4231,7 +4200,7 @@
 								this configuration action is performed.
 							</TSS>
                             <Tests>
-                                The tests described must be performed in conjunction with the other Certificate Services assurance 
+                                The tests described must be performed in conjunction with the other Certificate Services evaluation 
 								activities, including the uses listed in FIA_X509_EXT.2.1. The tests for the extendedKeyUsage rules 
 								are performed in conjunction with the uses that require those rules.<h:br/><h:br/>
                                 <testlist>
@@ -4407,56 +4376,10 @@
 	    <!-- 5.1.6 Security Management (FMT) -->
             <section id="ss-fmt" title="Security Management (FMT)">
 			
-				<ext-comp-def title="Default Data Sharing Configuration" fam-id="FMT_MSA_EXT">
-					<fam-behavior>This family defines requirements for the default data sharing behavior
-						for Guest VMs.</fam-behavior>
-				</ext-comp-def>
 				<ext-comp-def title="Separation of Management and Operational Networks" fam-id="FMT_SMO_EXT">
 					<fam-behavior>This family defines requirements for separation of management and operational 
 						networks.</fam-behavior>
 				</ext-comp-def>
-                
-                <!-- FMT_MSA_EXT.1 -->
-                <f-component cc-id="fmt_msa_ext.1" name="Default Data Sharing Configuration">
-					<consistency-rationale/>
-					<comp-lev>requires the TSF to define its default security posture for sharing of data between Guest
-						VMs.</comp-lev>
-					<management>The following actions could be considered for the management functions
-						in FMT:
-						<h:ol type="a">
-							<h:li>Ability to set default initial VM configurations.</h:li>
-						</h:ol>
-					</management>
-					<audit>There are no auditable events foreseen.</audit>
-					<dependencies>FDP_VMS_EXT.1 VM Separation</dependencies>
-                    <f-element id="fmt-msa-ext-1e1">
-                        <title>The TSF shall by default enforce a policy prohibiting sharing of data between Guest VMs.
-                        </title>
-                    </f-element>
-                    <f-element id="fmt-msa-ext-1e2">
-                        <title>The TSF shall allow Administrators to specify alternative initial configuration values to override the 
-							default values when a Guest VM is created.
-                        </title>
-                        <note role="application">By default, the VMM must enforce a policy prohibiting sharing of data between 
-							VMs. The default policy applies to all mechanisms for sharing data between VMs, including inter-VM 
-							communication channels, shared physical devices, shared virtual devices, and virtual networks. The 
-							default policy does not apply to covert channels and architectural side-channels.<h:br></h:br><h:br></h:br>
-                            The list of data sharing mechanisms implemented by the TOE is contained in the selection in FDP_VMS_EXT.1.1.<h:br></h:br>
-							Examples of non-network inter-VM sharing mechanisms are:<h:br></h:br>
-                            <h:ul>
-                                <h:li>User interface-based mechanisms, such as copy-paste and drag-and-drop</h:li>
-                                <h:li>Shared virtual or physical devices</h:li>
-                                <h:li>API-based mechanisms such as Hypercalls</h:li>
-                            </h:ul>.
-						</note>
-                        <aactivity>
-                            <Tests>
-                                This requirement is met if FDP_VMS_EXT.1 is met.
-                            </Tests>
-                        </aactivity>
-                    </f-element>
-					<audit-event />
-                </f-component>
                 
                 <!-- FMT_SMO_EXT.1 -->
                 <f-component cc-id="fmt_smo_ext.1" name="Separation of Management and Operational Networks">
@@ -4812,7 +4735,7 @@
 				configured per FPT_HCL_EXT.1.2.<h:br></h:br><h:br></h:br>
                             A vendor-provided test harness may reduce evaluation time.<h:br></h:br><h:br></h:br>
                             There is no expectation that the evaluator will need to review source code in order to accomplish the
-                            Assurance Activity.  The evaluator documentation review should ensure that there are documented
+                            evaluation activity.  The evaluator documentation review should ensure that there are documented
                             Hypercall functions in the TSS, that each documented Hypercall function contains the specified
                             information, and that there are not obvious or publicly known Hypercall functions missing.
                         </note>
@@ -4826,7 +4749,7 @@
                                 parameters and legal values, configuration settings for enabling/disabling the function, and conditions under
                                 which the function can be disabled. The TSS must also specify those functions that cannot be
                                 disabled.  While there is no expectation that the evaluator will need to examine source code in order to
-                                accomplish this Assurance Activity, the evaluator must ensure that there are no obvious or publicly known
+                                accomplish this evaluation activity, the evaluator must ensure that there are no obvious or publicly known
                                 Hypercall functions missing from the TSS.
                             </TSS>
                             <Guidance>
@@ -5255,7 +5178,7 @@
 				accordance with FIA_X509_EXT.1.</note>
                         <aactivity>
                             <Tests>
-                                The assurance activity for this requirement is performed in conjunction with the assurance activity
+                                The evaluation activity for this requirement is performed in conjunction with the evaluation activity
 				    for FIA_X509_EXT.1 and FIA_X509_EXT.2.
                             </Tests>
                         </aactivity>
@@ -5303,7 +5226,7 @@
 								The evaluator must ensure that there are no obvious or publicly known virtual I/O 
 								ports missing from the TSS.<h:p/>
                                	There is no expectation that evaluators will examine source code to verify the “all” part of the 
-                               	Assurance Activity.
+                               	evaluation activity.
                             </TSS>
                             <Tests>
 								For each virtual device interface, the evaluator shall attempt to access the interface 
@@ -5690,7 +5613,7 @@
                                     <test>The evaluator shall ensure, for each method of remote administration, modification of the 
 					    channel data is detected by the TOE.</test>
                              </testlist>
-                            Further assurance activities are associated with the specific protocols.
+                            Additional evaluation activities are associated with the specific protocols.
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -5721,24 +5644,24 @@
 		documentation applicable for the evaluation and performs independent testing.<h:br></h:br><h:br></h:br>
             This section lists the set of Security Assurance Requirements (SARs) from Part 3 of the Common Criteria for Information 
 		Technology Security Evaluation, Version 3.1, Revision 4 that are required in evaluations against this PP. Individual
-		assurance activities to be performed are specified in both Section 5.1 as well as in this section.<h:br></h:br><h:br></h:br>
+		evaluation activities to be performed are specified in both Section 5.1 as well as in this section.<h:br></h:br><h:br></h:br>
             After the ST has been approved for evaluation, the Information Technology Security Evaluation Facility (ITSEF) will obtain
 		the TOE, supporting environmental IT, and the administrative/user guides for the TOE. The ITSEF is expected to perform
-		actions mandated by the CEM for the ASE and ALC SARs. The ITSEF also performs the assurance activities contained 
+		actions mandated by the CEM for the ASE and ALC SARs. The ITSEF also performs the evaluation activities contained 
 		within Section 5, which are intended to be an interpretation of the other CEM assurance requirements as they apply 
-		to the specific technology instantiated in the TOE. The assurance activities that are captured in Section 5 also 
+		to the specific technology instantiated in the TOE. The evaluation activities that are captured in Section 5 also 
 		provide clarification as to what the developer needs to provide to demonstrate the TOE is compliant with the PP.
 
 	    <!-- 5.2.1 Class ASE: Security Target Evaluation -->
             <section id="ss-ase" title="Class ASE: Security Target Evaluation">
-                As per ASE activities defined in [CEM] plus the TSS assurance activities defined for any SFRs claimed by the TOE.
+                As per ASE activities defined in [CEM] plus the TSS evaluation activities defined for any SFRs claimed by the TOE.
             </section>
 		
 	    <!-- 5.2.2 Class ADV: Development  -->
             <section id="ss-adv" title="Class ADV: Development">
                 The information about the TOE is contained in the guidance documentation available to the end user as well as the TOE
 		    Summary Specification (TSS) portion of the ST. The TOE developer must concur with the description of the product that is
-		    contained in the TSS as it relates to the functional requirements. The Assurance Activities contained in Section 5.2 
+		    contained in the TSS as it relates to the functional requirements. The evaluation activities contained in Section 5.2 
 		    should provide the ST authors with sufficient information to determine the appropriate content for the TSS section.
 
                 <!-- ADV_FSP.1 -->
@@ -5751,7 +5674,7 @@
                         <note role="developer">
                             As indicated in the introduction to this section, the functional specification is composed of the information
 				contained in the AGD_OPR and AGD_PRE documentation, coupled with the information provided in the TSS of the
-				ST. The assurance activities in the functional requirements point to evidence that should exist in the
+				ST. The evaluation activities in the functional requirements point to evidence that should exist in the
 				documentation and TSS section; since these are directly associated with the SFRs, the tracing in element 
 				ADV_FSP.1.2D is implicitly already done and no additional documentation is necessary.</note>
                     </a-element>
@@ -5780,10 +5703,10 @@
                         <title>The evaluator shall determine that the functional specification is an accurate and complete instantiation of 
 				the SFRs.</title>
                         <note role="application">
-                            There are no specific assurance activities associated with these SARs. The functional specification documentation
+                            There are no specific evaluation activities associated with these SARs. The functional specification documentation
 				is provided to support the evaluation activities described in Section 5.2, and other activities described for
 				AGD, ATE, and AVA SARs. The requirements on the content of the functional specification information is 
-				implicitly assessed by virtue of the other assurance activities being performed; if the evaluator is unable 
+				implicitly assessed by virtue of the other evaluation activities being performed; if the evaluator is unable 
 				to perform an activity because the there is insufficient interface information, then an adequate functional
 				specification has not been provided.
                         </note>
@@ -5804,7 +5727,7 @@
 			    environment.</h:li>
                 </h:ul>
                 Guidance pertaining to particular security functionality is also provided; specific requirements on such guidance are
-		    contained in the assurance activities specified with individual SFRs where applicable.
+		    contained in the evaluation activities specified with individual SFRs where applicable.
                 
 		<!-- AGD_OPE.1 -->
 		<a-component cc-id="agd_ope.1" name="Operational User Guidance">
@@ -5813,7 +5736,7 @@
                         <title>The developer shall provide operational user guidance.
                         </title>
                         <note role="developer">
-                            Rather than repeat information here, the developer should review the assurance activities for this 
+                            Rather than repeat information here, the developer should review the evaluation activities for this 
 				component to ascertain the specifics of the guidance that the evaluators will be checking for. This
 				will provide the necessary information for the preparation of acceptable guidance.</note>
                     </a-element>
@@ -5855,7 +5778,7 @@
                         <title>The evaluator shall confirm that the information provided meets all requirements for content and 
 				presentation of evidence.</title>
                         <aactivity>
-                                Some of the contents of the operational guidance will be verified by the assurance activities in 
+                                Some of the contents of the operational guidance will be verified by the evaluation activities in 
                                 Section 5.2 and evaluation of the TOE according to the CEM. The 
                                 following additional information is also required.<h:br></h:br><h:br></h:br>
                                 The operational guidance shall contain instructions for configuring the password characteristics,
@@ -5889,7 +5812,7 @@
                     <a-element type="D">
                         <title>The developer shall provide the TOE including its preparative procedures.
                         </title>
-                        <note role="developer">As with the operational guidance, the developer should look to the assurance activities 
+                        <note role="developer">As with the operational guidance, the developer should look to the evaluation activities 
 				to determine the required content with respect to preparative procedures.
                         </note>
                     </a-element>
@@ -6053,7 +5976,7 @@
                     Testing is performed to confirm the functionality described in the TSS as well as the administrative (including
 			configuration and operation) documentation provided. The focus of the testing is to confirm that the
 			requirements specified in Section 5.1 are being met, although some additional testing is specified for SARs 
-			in Section 5.2. The Assurance Activities identify the additional testing activities associated with these
+			in Section 5.2. The evaluation activities identify the additional testing activities associated with these
 			components. The evaluator produces a test report documenting the plan for and results of testing, as well 
 			as coverage arguments focused on the platform/TOE combinations that are claiming conformance to this PP.
             	    
@@ -6076,7 +5999,7 @@
                         </title>
                         <aactivity>
                                 The evaluator shall prepare a test plan and report documenting the testing aspects of the system.
-				    While it is not necessary to have one test case per test listed in an Assurance Activity, the
+				    While it is not necessary to have one test case per test listed in an evaluation activity, the
 				    evaluators must document in the test plan that each applicable testing requirement in the 
 				    ST is covered.<h:br></h:br><h:br></h:br>
                                 The Test Plan identifies the platforms to be tested, and for those platforms not included in the test
@@ -6369,7 +6292,7 @@
     <section id="s-modelequiv" title="Specific Guidance for Determining Product Model Equivalence">
       Product Model equivalence attempts to determine whether different feature levels of the same product across
       a product line are equivalent for purposes of PP testing. For example, if a product has a “basic” edition and an “enterprise”
-      edition, is it necessary to test both models? Or does testing one model provide sufficient assurance that both models
+      edition, is it necessary to test both models? Or does testing one model provide sufficient confidence that both models
       are compliant?
       <h:br />
       <h:br />
@@ -6428,7 +6351,7 @@
     <section id="s-versionequiv" title="Specific Guidance for Determining Product Version Equivalence">
       In cases of version equivalence, differences are expressed in terms of changes implemented in revisions
       of an evaluated Product. In general, versions are equivalent if the changes have no effect on any
-      security-relevant claims about the TOE or assurance evidence. Non-security-relevant changes to TOE
+      security-relevant claims about the TOE or evaluation evidence. Non-security-relevant changes to TOE
       functionality or the addition of non-security-relevant functionality does not affect equivalence.
       <h:br /><h:br />
 
