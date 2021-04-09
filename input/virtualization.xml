@@ -3548,23 +3548,23 @@
 							VMs, such as read-only data files or files used for inter-VM data transfers permitted by policy. </note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall ensure that the TSS documents the conditions under which 
-                                physical disk storage is not cleared prior to allocation to a Guest VM. The 
-                                evaluator shall also ensure that the TSS documents the metadata used in its
-                                virtual disk files.
+                                The evaluator shall ensure that the TSS documents how the TSF ensures that disk storage is zeroed prior to allocation to 
+				    Guest VMs. Also, the TSS must document any conditions under which disk storage is not cleared prior to allocation to a Guest VM. 
+				    Any file system format and metadata information needed by the evaluator to perform the below test shall be made available
+				    to the evaluator, but need not be published in the TSS.
                             </TSS>
                             <Tests>
                                 The evaluator shall perform the following test:<h:br></h:br><h:br></h:br>
                                 <testlist>
                                     <test>
-										On the host, the evaluator creates a file that is more than half the size of a connected 
-										physical storage device (or multiple files whose individual sizes add up to more than half the
-										size of the storage media).  This file (or files) shall be filled entirely with a non-zero
-										value.  Then, the file (or files) shall be released (freed for use but not cleared).  Next,
-										the evaluator (as a VS Administrator) creates a virtual disk at least that large on the same
-										physical storage device and connects it to a powered-off VM.  Then, from outside the
-                                        Guest VM, scan through and check that all the non-metadata (as documented in the TSS) in the
-										file corresponding to that virtual disk is set to zero.
+						On the host, the evaluator creates a file that is more than half the size of a connected 
+						physical storage device or device partition (or multiple files whose individual sizes add up to more than half the
+						size of the storage media).  This file (or files) shall be filled entirely with a non-zero
+						value.  Then, the file (or files) shall be released (freed for use but not cleared by the 
+					        Guest OS.).  Next, the evaluator (as a VS Administrator) creates a virtual disk at least that large on the same
+						physical storage device and connects it to a powered-off VM.  Then, from outside the
+                                        	Guest VM, scan through and check that all the non-metadata (as documented in the TSS) in the
+						file corresponding to that virtual disk is set to zero.
 									</test>
                                 </testlist>
                             </Tests>
