@@ -604,21 +604,16 @@
 				vetted before being given administrative responsibilities will ensure that they are trusted.</rationale>
                     </objective-refer>
                 </assumption>
-                <assumption name="A.COVERT_CHANNELS">
-                    <description>There is sufficient assurance relative to the value of the VM’s IT assets to address the 
-			    risk of covert storage and timing channels to the VMs executing on the TOE.</description>
-                    <objective-refer ref="OE.COVERT_CHANNELS">
-                        <rationale>It is expected that the value of any data contained within VMs is commensurate with the security provided by 
-				the TOE, which includes any vulnerabilities due to the potential presence of covert storage or 
-				timing channels.</rationale>
-                    </objective-refer>
-                </assumption>
                 <assumption name="A.NON_MALICIOUS_USER">
                     <description>The user of the VS is not willfully negligent or hostile, and uses the VS in compliance with the
 			    applied enterprise security policy and guidance. At the same time, malicious applications could act as
 			    the user, so requirements which confine malicious applications are still in scope.</description>
                     <objective-refer ref="OE.NON_MALICIOUS_USER">
                         <rationale>If the organization properly vets and trains users, it is expected that they will be non-malicious.</rationale>
+                    </objective-refer>
+                    <objective-refer ref="OE.CONFIG">
+                        <rationale>If the TOE is administered by a non-malicious and non-negligent user, the expected result is that the TOE
+				will be configured in a correct and secure manner.</rationale>
                     </objective-refer>
                 </assumption>
             </assumptions>
@@ -860,12 +855,6 @@
                 </SOE>
                 <SOE name="OE.TRUSTED_ADMIN">
                     <description>TOE Administrators are trusted to follow and apply all administrator guidance in a trusted manner.
-                    </description>
-                </SOE>
-                <SOE name="OE.COVERT_CHANNELS">
-                    <description>If the TOE has covert storage or timing channels, then for all VMs executing on that TOE, it is
-						assumed that those VMs will have sufficient assurance relative to the IT assets to which they have access,
-						to outweigh the risk that they will violate the security policy of the TOE by using those covert channels.
                     </description>
                 </SOE>
                 <SOE name="OE.NON_MALICIOUS_USER">
@@ -1168,7 +1157,7 @@
                         <title>The TSF shall be able to transmit the generated audit data to an external IT entity using a trusted 
 							channel as specified in FTP_ITC_EXT.1.
                         </title>
-                        <aactivity>
+                        <aactivity level="element">
                             Protocols used for implementing the trusted channel must be selected in FTP_ITC_EXT.1.
                             <TSS>
                                 The evaluator shall examine the TSS to ensure it describes the means by which 
@@ -1213,7 +1202,7 @@
 							in case the local storage space is full. An ‘other action’ could be defined in this case as ‘send the
 							new audit data to an external IT entity’.
 						</note>
-                        <aactivity>
+                        <aactivity level="element">
                             <TSS>
                                 The evaluator shall examine the TSS to ensure it describes what happens when the 
                                 local audit data store is full. 
@@ -3840,10 +3829,9 @@
                         </note>
                         <aactivity>
                             <Tests>
-                                The evaluator shall perform the following tests for each credential selected in FIA_AFL_EXT.1.1:
-                                <testlist>
-                                <test>The evaluator will set an Administrator-configurable threshold n for failed attempts, or note
-									the ST-specified assignment.</test>
+                                The evaluator shall perform the following tests for each credential selected in FIA_AFL_EXT.1.1:<h:p/>
+                                The evaluator will set an Administrator-configurable threshold n for failed attempts, or note
+									the ST-specified assignment.
                                 <testlist>
                                     <test>The evaluator will attempt to authenticate remotely with the credential n-1 times. The 
 										evaluator will then attempt to authenticate
@@ -3852,11 +3840,12 @@
                                         will then attempt to authenticate using a good credential and verify that the attempt is
                                         unsuccessful. Note that the authentication attempts and lockouts must also be logged as
                                         specified in FAU_GEN.1.</test>
-                                    <test>After reaching the limit for unsuccessful authentication attempts the evaluator will proceed
-                                        as follows:</test>
-                                    <testlist>
-                                        <test>If the Administrator action selection in FIA_AFL_EXT.1.2 is selected, then the evaluator
-                                            will confirm by testing that following the operational guidance and performing each action
+				    </testlist><h:p/>
+                                    After reaching the limit for unsuccessful authentication attempts the evaluator will proceed
+                                        as follows:
+                                 <testlist>
+                                      <test>If the Administrator action selection in FIA_AFL_EXT.1.2 is selected, then the evaluator
+                                           will confirm by testing that following the operational guidance and performing each action
                                             specified in the ST to re-enable the remote Administrator’s access results in successful
                                             access (when using valid credentials for that Administrator).</test>
                                         <test>If the time period selection in FIA_AFL_EXT.1.2 is selected, the evaluator will wait for
@@ -3864,9 +3853,7 @@
                                             valid credentials does not result in successful access. The evaluator will then wait until
                                             just after the time period configured and show that an authentication attempt using valid
                                             credentials results in successful access.</test>
-                                        </testlist>
-                                </testlist>
-                            </testlist>
+                                 </testlist>
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -5001,9 +4988,12 @@
                             <TSS>
                                 The evaluator shall examine the TSS to ensure it describes the association between
                                 the media or devices supported by the TOE and the actions that can occur when
-                                switching information domains. The evaluator shall examine the operational guidance to ensure it
-                                documents how an administrator or user configures the behavior of each media or device.
+                                switching information domains. 
                             </TSS>
+			    <Guidance>
+				The evaluator shall examine the operational guidance to ensure it
+                                documents how an administrator or user configures the behavior of each media or device.
+			    </Guidance>
                             <Tests>
                                 The evaluator shall perform the following test for each listed media or device:
                                 <testlist>
@@ -5303,18 +5293,6 @@
 								that guest software cannot degrade or disrupt the functioning of other VMs, the VMM or the platform. And 
 								how the TSF prevents guests from invoking higher-privilege platform code, such as the examples in the note.
 							</TSS>
-							<Guidance>
-								There is no operational guidance for this requirement.
-								</Guidance>
-                            <Tests>
-								There are no tests for this requirement.
-<!--                                The evaluator ensures that the ST includes the following statement attesting that software running
-								in a VM is not able to degrade or disrupt the functioning of other VMs, the VMM, or the
-								Platform:<h:br></h:br><h:br></h:br>
-                                “Software running in a VM is not able to degrade or disrupt the functioning of other VMs, the 
-								VMM, or the Platform. There are no design or implementation flaws that bypass or defeat VM
-								isolation.”   -->
-                            </Tests>
                         </aactivity>
                     </f-element>
 		    <audit-event />
@@ -5557,8 +5535,8 @@
 		<!-- QQQQ: Need to have a way to reference this selection that is in a module.  Otherwise this does not display properly. -->
                 <f-component cc-id="ftp_trp.1" name="Trusted Path" status="sel-based">
 <!--                    <selection-depends req="fmt-mof-ext-1e1" ids="sel-mof-1e1-remote"/>  -->
-                    <depends on-sel="sel-mof-1e1-remote-client"/> 
-                    <depends on-sel="sel-mof-1e1-remote-server"/> 
+			<doc ref="client-virt"><depends on-sel="sel-mof-1e1-remote-client"/></doc> 
+			<doc ref="server-virt"><depends on-sel="sel-mof-1e1-remote-server"/></doc>
                     <f-element id="ftp-trp-1e1">
 			    <title>The TSF shall use a <refinement>trusted</refinement> channel as specified in FTP_ITC_EXT.1 to provide 
 				    a <refinement>trusted</refinement> communication
