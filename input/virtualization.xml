@@ -665,7 +665,7 @@
 					<addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to protect domain data in shared storage.</rationale>
 					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
 					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated.</rationale>
-					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from storage before the storage is re-allocated.</rationale>
+					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from physical storage upon re-allocation of the storage.</rationale>
 					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.</rationale>
 					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
 					<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>Ensures that VMs can access only those virtual devices that they are configured to access.</rationale>
@@ -726,7 +726,7 @@
 					<addressed-by>FCS_ENT_EXT.1</addressed-by><rationale>Requires that domains have access to high-quality entropy for cryptographic purposes.</rationale>
 					<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
 					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated to another domain.</rationale>
-					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from storage before the storage is re-allocated to another domain.</rationale>
+					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from physical storage upon re-allocation of the storage to another domain.</rationale>
 					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between domains are done securely.</rationale>
 					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
@@ -835,7 +835,7 @@
                     </description>
 					<addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to ensure residual data in shared storage is unrecoverable.</rationale>
 					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated.</rationale>
-					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from storage before the storage is re-allocated.</rationale>
+					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from storage upon re-allocation of the storage.</rationale>
                 </SO>
             </SOs>
         </section>
@@ -3520,24 +3520,24 @@
                 <!-- FDP_RIP_EXT.2 -->
                 <f-component cc-id="fdp_rip_ext.2" name="Residual Information on Disk">
 					<consistency-rationale/>
-					<comp-lev>requires the TSF to ensure that physical disk storage is cleared prior to its
+					<comp-lev>requires the TSF to ensure that physical disk storage is cleared upon 
 						allocation to a Guest VM.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
 					<dependencies>No dependencies.</dependencies>
                     <f-element id="fdp-rip-ext-2e1">
-                        <title>The TSF shall ensure that any previous information content of physical disk storage is cleared to zeros prior
-							to allocation to a Guest VM.
+                        <title>The TSF shall ensure that any previous information content of physical disk storage is cleared to zeros upon
+							allocation to a Guest VM.
                         </title>
-                        <note role="application">Disk storage must be zeroed before it is made accessible to a VM for use by a Guest
-							OS.<h:br></h:br><h:br></h:br>
+                        <note role="application">
                             The purpose of this requirement is to ensure that a VM does not receive disk storage containing data
-							previously used by another VM or the host.<h:br></h:br><h:br></h:br>
+							previously used by another VM or by the host.<h:p/>
+			    Clearing of disk storage only upon deallocation does not meet this requirement. <h:p/>
                             This does not apply to disk-resident files shared by design or policy between VMs or between the VMMs and
-							VMs, such as read-only data files or files used for inter-VM data transfers permitted by policy. </note>
+				VMs, such as read-only data files or files used for inter-VM data transfers permitted by policy. </note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall ensure that the TSS documents how the TSF ensures that disk storage is zeroed prior to allocation to 
+                                The evaluator shall ensure that the TSS documents how the TSF ensures that disk storage is zeroed upon allocation to 
 				    Guest VMs. Also, the TSS must document any conditions under which disk storage is not cleared prior to allocation to a Guest VM. 
 				    Any file system format and metadata information needed by the evaluator to perform the below test shall be made available
 				    to the evaluator, but need not be published in the TSS.
@@ -3546,15 +3546,15 @@
                                 The evaluator shall perform the following test:<h:br></h:br><h:br></h:br>
                                 <testlist>
                                     <test>
-						On the host, the evaluator creates a file that is more than half the size of a connected 
-						physical storage device or device partition (or multiple files whose individual sizes add up to more than half the
-						size of the storage media).  This file (or files) shall be filled entirely with a non-zero
-						value.  Then, the file (or files) shall be released (freed for use but not cleared by the 
-					        Guest OS.).  Next, the evaluator (as a VS Administrator) creates a virtual disk at least that large on the same
-						physical storage device and connects it to a powered-off VM.  Then, from outside the
-                                        	Guest VM, scan through and check that all the non-metadata (as documented in the TSS) in the
-						file corresponding to that virtual disk is set to zero.
-									</test>
+					On the host, the evaluator creates a file that is more than half the size of a connected physical 
+					    storage device (or multiple files whose individual sizes add up to more than half the size of 
+					    the storage media).  This file (or files) shall be filled entirely with a non-zero value. 
+					    Then, the file (or files) shall be released (freed for use but not cleared).  Next, the 
+					    evaluator (as a VS Administrator) creates a virtual disk at least that large on the same
+					    physical storage device and connects it to a powered-off VM.  Then, from outside the Guest VM,
+					    scan through and check that all the non-metadata (as documented in the TSS) in the file
+					    corresponding to that virtual disk is set to zero.
+					</test>
                                 </testlist>
                             </Tests>
                         </aactivity>
@@ -4424,7 +4424,7 @@
 				</ext-comp-def>
 			    <ext-comp-def title="Non-Existence of Disconnected Virtual Devices" fam-id="FPT_DVD_EXT">
 					<fam-behavior>This family defines requirements for ensuring that Guest VMs cannot access
-						the device drivers for disabled or disconnected virtual devices.</fam-behavior>
+						the virtual hardware interfaces disabled or disconnected virtual devices.</fam-behavior>
 				</ext-comp-def>
 			    <ext-comp-def title="Execution Environment Mitigations" fam-id="FPT_EEM_EXT">
 					<fam-behavior>This family defines requirements for the TOE’s compatibility with platform mechanisms that prevent
@@ -4514,22 +4514,23 @@
 					<audit>There are no auditable events foreseen.</audit>
 					<dependencies>FPT_VDP_EXT.1 Virtual Device Parameters</dependencies>
                     <f-element id="fpt-dvd-ext-1e1">
-                        <title>The TSF shall limit a Guest VM’s access to virtual devices to those that are present in the VM’s current
+                        <title>The TSF shall prevent Guest VMs from accessing virtual device interfaces that are not present in the VM’s current
 				virtual hardware configuration.
                         </title>
                         <note role="application">The virtualized hardware abstraction implemented by a particular VS might include the
 				virtualized interfaces for many different devices. Sometimes these devices are not present in a
 				particular instantiation of a VM. The interface for devices not present must not accessible by the
-				VM.<h:br></h:br><h:br></h:br>
-                            Such interfaces include memory buffers and processor I/O ports.<h:br></h:br><h:br></h:br>
-                            The purpose of this requirement is to reduce the attack surface of the VMM by closing unused interfaces.
+				VM.<h:p/>
+                            Such interfaces include memory buffers, PCI Bus interfaces, and processor I/O ports.<h:p/>
+                            The purpose of this requirement is to reduce the attack surface of the VMM by blocking access to unused interfaces.
 			    </note>
                         <aactivity>
                             <Tests>
                                 The evaluator shall connect a device to a VM, then using a device driver running in the guest, scan
-                                the VM's processor I/O ports to ensure that the device's ports are present. (The device's interface 
-                                should be documented in the TSS under FPT_VDP_EXT.1.) The evaluator shall remove the device from the
-                                VM and run the scan again. This requirement is met if the device's I/O ports are no longer present.
+                                the VM's processor I/O ports or PCI Bus interfaces to ensure that the device's ports are present. 
+				    (The device's interface should be documented in the TSS under FPT_VDP_EXT.1.) The evaluator shall
+				    remove the device from the VM and run the scan again. This requirement is met if the device's 
+				    interfaces are no longer present.
                             </Tests>
                         </aactivity>
                     </f-element>
