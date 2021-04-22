@@ -280,7 +280,8 @@
 			support Guest VMs. Service VMs may implement some portion of Hypervisor functionality, but also may contain important
 			system functionality that is not necessary for Hypervisor operation. As with any VM, Service VMs necessarily execute
 			without full Hypervisor privileges—only the privileges required to perform its designed functionality. Examples of 
-			Service VMs include device driver VMs that manage access to physical devices, and name-service VMs that help establish 
+			Service VMs include device driver VMs that manage access to physical devices, VMs that provide life-cycle management and 
+			provisioning of Hypervisor and Guest VMs, and name-service VMs that help establish 
 			communication paths between VMs.<h:br></h:br><h:br></h:br>
 				A Guest VM is a VM that contains a virtual environment for the execution of an independent computing system. Virtual 
 			environments execute mission workloads and implement customer-specific client or server functionality in Guest VMs, 
@@ -5213,8 +5214,9 @@
                             <TSS>
                                 The evaluator shall examine the TSS to ensure it lists all virtual devices
 								accessible by the guest OS. The TSS, or a separate proprietary document, must
-								also document all virtual device interfaces at the level of I/O ports - including
-								port number(s) (absolute or relative to a base), port name, and a description of
+								also document all virtual device interfaces at the level of I/O ports or PCI Bus 
+				    				interfaces - including
+								port number(s) (absolute or relative to a base), port name, address range, and a description of
 								legal input values.<h:p/>
 								The TSS must also describe the expected behavior of the interface when presented with illegal input 
 								values. This behavior must be deterministic and indicative of parameter checking by the TSF.<h:p/>
