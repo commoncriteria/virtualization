@@ -4526,8 +4526,9 @@
 			    </note>
                         <aactivity>
                             <Tests>
-                                The evaluator shall connect a device to a VM, then using a device driver running in the guest, scan
-                                the VM's processor I/O ports or PCI Bus interfaces to ensure that the device's ports are present. 
+                                The evaluator shall connect a device to a VM, then from within the guest scan the VM's devices
+                                to ensure that the connected device is present--using a device driver or other available means
+				    to scan the VM's I/O ports or PCI Bus interfaces. 
 				    (The device's interface should be documented in the TSS under FPT_VDP_EXT.1.) The evaluator shall
 				    remove the device from the VM and run the scan again. This requirement is met if the device's 
 				    interfaces are no longer present.
