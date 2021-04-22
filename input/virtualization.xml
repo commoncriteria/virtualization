@@ -4407,16 +4407,20 @@
                         <aactivity>
                             <TSS>
                                 The evaluator shall examine the TSS to verify that it describes how management and
-                                operational networks may be separated.
+                                operational traffic is separated.
                             </TSS>
                             <Guidance>
                                 The evaluator shall examine the operational guidance to verify that it details how to configure the 
-                                VS with separate Management and Operational Networks.
+                                VS to keep Management and Operational traffic separate.
                             </Guidance>
                             <Tests>
-                                The evaluator shall configure the management network as documented. If separation is cryptographic or 
-                                logical, then the evaluator shall capture packets on the management network. If Guest network traffic 
-                                is detected, the requirement is not met.
+                                The evaluator shall configure the TOE as documented in the guidance. If separation is logical, then the evaluator shall 
+								capture packets on the management network. If plaintext Guest network traffic is detected, the requirement is not met.<h:p/>
+								If separation is tunnel-based, then the evaluator shall capture packets on the network over which traffic is tunneled. 
+								If plaintext Guest network traffic is detected, the requirement is not met.<h:p/>
+								If data encryption is used, then the evaluator shall capture packets on the network over which the data is sent
+								while a VM or other large data structure is being transmitted. If plaintext VM contents are detected, the
+								requirement is not met.<h:p/>
                             </Tests>
                         </aactivity>
                     </f-element>
