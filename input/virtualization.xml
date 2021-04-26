@@ -107,7 +107,7 @@
     <modules required="yes">
     <module id="client-virt">
 		<raw-url>https://raw.githubusercontent.com/commoncriteria/clientvirtualization/master/input/clientvirtualization.xml</raw-url>
-        <url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=409&amp;id=409</url>
+        <url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=409&amp;id=409</url> 
     </module>
     <module id="server-virt">
 		<raw-url>https://raw.githubusercontent.com/commoncriteria/servervirtualization/master/input/servervirtualization.xml</raw-url>
@@ -4700,21 +4700,16 @@
 					</audit>
 					<dependencies>FMT_SMR.1 Security Roles</dependencies>
                     <f-element id="fpt-hcl-ext-1e1">
-                        <title>The TSF shall provide a Hypercall interface for Guest VMs to use to invoke functionality provided by 
-				the VMM.
-                        </title>
-                    </f-element>
-                    <f-element id="fpt-hcl-ext-1e2">
                         <title>The TSF shall allow administrators to configure any VM’s Hypercall interface to 
 				disable access to individual functions, all functions, or groups of functions.
                         </title>
                     </f-element>
-                    <f-element id="fpt-hcl-ext-1e3">
+                    <f-element id="fpt-hcl-ext-1e2">
                         <title>The TSF shall permit exceptions to the configuration of the following Hypercall interface functions:
-				<assignable>list of functions that are not subject to the configuration controls in FPT_HCL_EXT.1.2</assignable>.
+				<assignable>list of functions that are not subject to the configuration controls in FPT_HCL_EXT.1.1</assignable>.
                         </title>
                     </f-element>
-                    <f-element id="fpt-hcl-ext-1e4">
+                    <f-element id="fpt-hcl-ext-1e3">
                         <title>The TSF shall validate the parameters passed to the hypercall interface prior to execution of the VMM 
 				functionality exposed by that interface.
                         </title>
@@ -4730,10 +4725,10 @@
 				interfaces expose the VMM to Guest VMs, these interfaces constitute attack surface. In order to
 				minimize attack surface, these interfaces must be limited to the minimum needed to support VM 
 				functionality.<h:br></h:br><h:br></h:br>
-                            For the selection in FPT_HCL_EXT.1.2, the ST author selects the applicable actions that administrators can 
+                            For the selection in FPT_HCL_EXT.1.1, the ST author selects the applicable actions that administrators can 
 				perform to configure functions supported by the interface.<h:br></h:br><h:br></h:br>
-                            For the assignment in FPT_HCL_EXT.1.3, the ST author lists the interface functions that cannot be 
-				configured per FPT_HCL_EXT.1.2.<h:br></h:br><h:br></h:br>
+                            For the assignment in FPT_HCL_EXT.1.2, the ST author lists the interface functions that cannot be 
+				configured per FPT_HCL_EXT.1.1.<h:br></h:br><h:br></h:br>
                             A vendor-provided test harness may reduce evaluation time.<h:br></h:br><h:br></h:br>
                             There is no expectation that the evaluator will need to review source code in order to accomplish the
                             evaluation activity.  The evaluator documentation review should ensure that there are documented
@@ -4755,15 +4750,15 @@
                             </TSS>
                             <Guidance>
                                 The evaluator shall examine the operational guidance to ensure it contains instructions for how to 
-                                configure interface functions per FPT_HCL_EXT.1.2.
+                                configure interface functions per FPT_HCL_EXT.1.1.
                             </Guidance>
                             <Tests>
                                 The evaluator shall perform the following tests:<h:br></h:br><h:br></h:br>
                                 <testlist>
-                                    <test>For each configurable function that meets FPT_HCL_EXT.1.2, the evaluator shall follow the 
+                                    <test>For each configurable function that meets FPT_HCL_EXT.1.1, the evaluator shall follow the 
 					    operational guidance to enable the function. The evaluator shall then attempt to call
 					    each function from within the VM. If the call is allowed, then the test succeeds.</test>
-                                    <test>For each configurable function that meets FPT_HCL_EXT.1.2, the evaluator shall configure 
+                                    <test>For each configurable function that meets FPT_HCL_EXT.1.1, the evaluator shall configure 
 					    the TSF to disable the function. The evaluator shall then attempt to call the function 
 					    from within the VM. If the call is blocked, then the test succeeds.</test>
                                 </testlist>
