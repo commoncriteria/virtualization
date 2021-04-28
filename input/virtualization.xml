@@ -4378,7 +4378,7 @@
 					<audit>There are no auditable events foreseen.</audit>
 					<dependencies>No dependencies.</dependencies>
                     <f-element id="fmt-smo-ext-1e1">
-                        <title>The TSF shall support the separation of management and operational information through
+                        <title>The TSF shall support the separation of management and operational network traffic through
                             <selectables>
                                 <selectable>physical means</selectable>
                                 <selectable>logical means</selectable>
@@ -4386,16 +4386,16 @@
 								<selectable>data encryption using an algorithm specified in FCS_COP.1/UDE</selectable>
                             </selectables>.
                         </title>
-                        <note role="application">Management communications must be separate from user workloads. Administrative 
-							communications—including communications between physical hosts concerning load balancing, audit data,
-							VM startup and shutdown—must be separate from guest operational networks. For purposes of this requirement, 
+                        <note role="application">Management communications must be separate from user workload communications. Administrative 
+							network traffic—including communications between physical hosts concerning load balancing, audit data,
+							VM startup and shutdown—must be isolated from guest operational networks. For purposes of this requirement, 
 							management traffic also includes VMs transmitted over management networks whether for backup, live migration,
 							or deployment.<h:p/>
                             “Physical means” refers to using separate physical networks for management and operational networks. For
 							example, the machines in the management network are connected by separate cables plugged into separate
 							and dedicated physical ports on each physical host.<h:p/>
                             “Logical means” refers to using logical networking constructs to isolate traffic across general-purpose networking ports. 
-							The management and operational networks are kept separate within the
+							Management and operational networks are kept separate within the
 							hosts using separate virtualized networking components.<h:p/>
                             If the ST author selects “trusted channel...” then the protocols used for network separation must be 
 							selected in FTP_ITC_EXT.1.<h:p/>
@@ -4744,7 +4744,8 @@
 					    each function from within the VM. If the call is blocked, then the test succeeds.</test>
                                     <test>For each hypercall interface documented in the TSS or proprietary TSS Annex, the evaluator shall attempt to  
 					    invoke the function from within the VM using an invalid parameter (if any). If the VMM or VS crashes
-					    or generates an exception, then the test fails. If an error is returned to the guest, then the test succeeds.</test>
+					    or generates an exception, or if no error is returned to the guest, then the test fails. If an error is 
+					    returned to the guest, then the test succeeds.</test>
                                 </testlist>
                             </Tests>
                         </aactivity>
