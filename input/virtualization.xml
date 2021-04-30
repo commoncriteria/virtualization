@@ -4380,9 +4380,9 @@
                     <f-element id="fmt-smo-ext-1e1">
                         <title>The TSF shall support the separation of management and operational network traffic through
                             <selectables>
-                                <selectable>physical means</selectable>
-                                <selectable>logical means</selectable>
-                                <selectable>trusted channel as defined in FTP_ITC_EXT.1</selectable>
+                                <selectable>separate physical networks</selectable>
+                                <selectable>separate logical networks</selectable>
+                                <selectable>trusted channels as defined in FTP_ITC_EXT.1</selectable>
 								<selectable>data encryption using an algorithm specified in FCS_COP.1/UDE</selectable>
                             </selectables>.
                         </title>
@@ -4391,13 +4391,13 @@
 							VM startup and shutdown—must be isolated from guest operational networks. For purposes of this requirement, 
 							management traffic also includes VMs transmitted over management networks whether for backup, live migration,
 							or deployment.<h:p/>
-                            “Physical means” refers to using separate physical networks for management and operational networks. For
-							example, the machines in the management network are connected by separate cables plugged into separate
-							and dedicated physical ports on each physical host.<h:p/>
-                            “Logical means” refers to using logical networking constructs to isolate traffic across general-purpose networking ports. 
+                            “Separate physical networks” refers to using separate physical interfaces and cables to isolate management and operational networks from
+							each other.<h:p/>
+                            “Separate logical networks” refers to using logical networking constructs, such as separate IP spaces or virtual networks to isolate traffic
+							across general-purpose networking ports. 
 							Management and operational networks are kept separate within the
 							hosts using separate virtualized networking components.<h:p/>
-                            If the ST author selects “trusted channel...” then the protocols used for network separation must be 
+                            If the ST author selects “trusted channels...” then the protocols used for network separation must be 
 							selected in FTP_ITC_EXT.1.<h:p/>
 							The ST author selects "data encryption..." if, for example, the TOE encrypts VMs as data blobs for backup, storage,
 							deployment, or live migration, and does not send the data through a tunnel. 
@@ -4414,13 +4414,14 @@
                                 VS to keep Management and Operational traffic separate.
                             </Guidance>
                             <Tests>
-                                The evaluator shall configure the TOE as documented in the guidance. If separation is logical, then the evaluator shall 
-								capture packets on the management network. If plaintext Guest network traffic is detected, the requirement is not met.<h:p/>
-								If separation is tunnel-based, then the evaluator shall capture packets on the network over which traffic is tunneled. 
-								If plaintext Guest network traffic is detected, the requirement is not met.<h:p/>
-								If data encryption is used, then the evaluator shall capture packets on the network over which the data is sent
-								while a VM or other large data structure is being transmitted. If plaintext VM contents are detected, the
-								requirement is not met.<h:p/>
+                                The evaluator shall configure the TOE as documented in the guidance. 
+				    If separation is logical, then the evaluator shall capture packets on the management network. If plaintext Guest network traffic is 
+				    detected, the requirement is not met.<h:p/>
+				If separation uses trusted channels, then the evaluator shall capture packets on the network over which traffic is tunneled. 
+				If plaintext Guest network traffic is detected, the requirement is not met.<h:p/>
+				If data encryption is used, then the evaluator shall capture packets on the network over which the data is sent
+					while a VM or other large data structure is being transmitted. If plaintext VM contents are detected, the
+					requirement is not met.<h:p/>
                             </Tests>
                         </aactivity>
                     </f-element>
