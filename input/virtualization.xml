@@ -4682,78 +4682,56 @@
                 </f-component>
 
                 <!-- FPT_HCL_EXT.1 -->
-                <f-component cc-id="fpt_hcl_ext.1" name="Hypercall Controls">
+                <f-component cc-id="fpt_hcl_ext.1" name="Hypercall Functions">
 					<consistency-rationale/>
-					<comp-lev>requires the TSF to implement a Hypercall interface with appropriate access controls
-						to protect Guest VMs from unauthorized access via this interface.</comp-lev>
-						<management>The following actions could be considered for the management functions
-							in FMT:
-							<h:ol type="a">
-								<h:li>Ability to enable/disable VM access to Hypercall functions.</h:li>
-							</h:ol>
-						</management>
+					<comp-lev>requires the TSF to implement appropriate parameter validation and access controls
+						to protect the VMM from unauthorized access through a hypercall interface.</comp-lev>
+						<management>No specific management functions are identified.</management>
 					<audit>The following actions should be auditable if FAU_GEN Security
 						audit data generation is included in the PP/ST:
 						<h:ol type="a">
-							<h:li>Attempts to access disabled Hypercall interfaces.</h:li>
+							<h:li>Attempts to access Hypercall interfaces using illegal input values.</h:li>
 							<h:li>Security policy violations.</h:li>
 						</h:ol>
 					</audit>
 					<dependencies>FMT_SMR.1 Security Roles</dependencies>
-                    <f-element id="fpt-hcl-ext-1e1">
-                        <title>The TSF shall support disabling of unnecessary Hypercall interfaces.
-                        </title>
-                    </f-element>
                     <f-element id="fpt-hcl-ext-1e2">
                         <title>The TSF shall validate the parameters passed to Hypercall interfaces prior to execution of the VMM 
 				functionality exposed by each interface.
                         </title>
                         <note role="application">The purpose of this requirement is to help ensure the integrity of the
-                            VMM by minimizing the attack surface exposed to Guest VMs through Hypercalls. <h:p/>
+                            VMM by protecting the attack surface exposed to untrusted Guest VMs through Hypercalls. <h:p/>
                             A Hypercall interface allows VMM functionality to be invoked by VM-aware guest software. 
 				For example, a VM could use a hypercall interface to get information about
 				the real world, such as the time of day or the underlying hardware of the host system. A hypercall 
 				could also be used to transfer data between VMs through a copy-paste mechanism. Because hypercall 
-				interfaces expose the VMM to Guest software, these interfaces constitute attack surface. In order to
-				minimize attack surface, these interfaces must be limited to those needed to support VM 
-				functionality.<h:p/>
-				A hypercall interface is "unnecessary" if there is no chance for it to be used by a particular Guest OS configuration. 
-				For example, if a VS exposes hypercalls to improve the performance of a particular Guest OS, these hypercalls should
-				not be made available to a different Guest OS that cannot take advantage of them. The developer cannot assume that 
-				software that was not intended to access the interface will not access the interface.<h:p/>
-				Hypercall interfaces can be disabled automatically or manually by an Admnistrator.<h:p/>
-                            There is no expectation that the evaluator will need to review source code in order to accomplish the
-                            evaluation activity.  
+				interfaces expose the VMM to Guest software, these interfaces constitute attack surface.<h:p/>
+                There is no expectation that the evaluator will need to review source code in order to accomplish the
+                evaluation activity.  
                         </note>
                         <aactivity>
                             <TSS>
                                 The evaluator shall examine the TSS (or proprietary TSS Annex) to ensure that all hypercall functions are 
-                                documented at the level necessary for the evaluator to disable the functions if configurable, and to run
-				    tests 1 and 2, below. Documentation for each hypercall interface must include: how to invoke the interface, 
-				    parameters and legal values, and whether the interface can be disabled. If the hypercall cannot be disabled 
-				    the TSS (or proprietary TSS Annex) must explain why the hypercall is always necessary. 
+                                documented at the level necessary for the evaluator to run the below test. Documentation for each hypercall
+								interface must include: how to invoke the interface, parameters and legal values, 
+								and any conditions under which the interface can be invoked (e.g., from guest user mode, guest privileged mode,
+								during guest boot only). 
                             </TSS>
                             <Guidance>
-                                The evaluator shall examine the operational guidance to ensure it contains instructions for how to 
-                                enable/disable configurable hypercall interfaces, and how to programmatically invoke hypercall interfaces.
+								There is no operational guidance for this component.
                             </Guidance>
                             <Tests>
-                                The evaluator shall perform the following tests:<h:p/>
-                                <testlist>
-                                    <test>For each configurable interface documented in the TSS or proprietary TSS Annex, the evaluator shall follow the 
-					    operational guidance to disable the function. The evaluator shall then attempt to invoke 
-					    each function from within the VM. If the call is blocked, then the test succeeds.</test>
-                                    <test>For each hypercall interface documented in the TSS or proprietary TSS Annex, the evaluator shall attempt to  
+                                The evaluator shall perform the following test:<h:p/>
+                                For each hypercall interface documented in the TSS or proprietary TSS Annex, the evaluator shall attempt to  
 					    invoke the function from within the VM using an invalid parameter (if any). If the VMM or VS crashes
 					    or generates an exception, or if no error is returned to the guest, then the test fails. If an error is 
-					    returned to the guest, then the test succeeds.</test>
-                                </testlist>
+					    returned to the guest, then the test succeeds.
                             </Tests>
                         </aactivity>
                     </f-element>
 		    <audit-event>
-			<audit-event-descr>Attempts to access disabled hypercall interfaces</audit-event-descr>
-			<audit-event-info>Interface for which access was attempted.</audit-event-info>
+			<audit-event-descr>Invalid parameter to hypercall detected</audit-event-descr>
+			<audit-event-info>Hypercall interface for which access was attempted.</audit-event-info>
 		    </audit-event>
 		    <audit-event>
 			<audit-event-descr>Security policy violations.</audit-event-descr>
