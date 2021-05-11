@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="../transforms/pp2html.xsl"?>
 
-<!-- to do
-
-    It is intended to be built against the latest version of the schema (currently the dev branch).
+<!-- 
 
     - DONE: Incorporated TLS Package
 	- Incorporate SSH as an FP rather than EP. Waiting for SSH to be published as an FP.
@@ -34,6 +32,8 @@
     - DONE: 0433: Assurance activity for FIA_X509_EXT.1.2
 
     - DONE: Add Equivalency (Appendix E)
+	- DONE: Added consistency rationale
+	- DONE: Added rules (probably not complete)
 
     - Added SHA-3 to hashes (and tests)
     - Added SHA-3 to keyed hashes (test needn't change)
@@ -42,8 +42,9 @@
     - Added FIA_AFL_EXT to the audit table. It was inexplicably missing. 
 
     - See Issues for resolution of comments from Jan 2021.
-    - Incluldes updating IPsec requirement to match vpnclient 2.2
+    - Includes updating IPsec requirement to match vpnclient 2.2
 	- Removed attestation requirements
+	- Addressed comments from April 2021.
 
     -->
 
@@ -236,7 +237,8 @@
 			  also may contain important system functionality that is not necessary for Hypervisor operation. As with any VM,
 			  Service VMs necessarily execute without full Hypervisor privileges—only the privileges required to perform its 
 			  designed functionality. Examples of Service VMs include device driver VMs that manage access to a physical devices,
-			  and name-service VMs that help establish communication paths between VMs.</term>
+			  VMs that provide life-cycle management and provisioning of Hypervisor and Guest VMs, and name-service VMs that 
+			  help establish communication paths between VMs.</term>
 			  <term abbr="SP" full="Special Publication"/>
 			  <term abbr="SPD" full="Security Policy Database"/>
 		  <term full="System Security Policy" abbr="SSP">The overall policy enforced by the VS defining constraints on the behavior
@@ -672,7 +674,6 @@
 					<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>Ensures that VMs can access only those virtual devices that they are configured to access.</rationale>
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
 					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Administrators can disable unnecessary hypercall interfaces to reduce attack surface.</rationale>
 					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                 </SO>
@@ -698,6 +699,7 @@
 					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
 					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Hypercall parameters be validated.</rationale>
 					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                 </SO>
@@ -714,7 +716,7 @@
 					<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>Ensures that VMs cannot access virtual devices that they are not configured to access.</rationale>
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
 					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Administrators can disable unnecessary hypercall interfaces to reduce attack surface.</rationale>
+					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Hypercall parameters be validated.</rationale>
 					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
 				</SO>
@@ -1142,7 +1144,9 @@
 						the action to be taken when local audit storage is full.</comp-lev>
 					<management>The following actions could be considered for the management functions in FMT:
 						<h:ol type="a">
-							<h:li>Ability to configure and manage the audit system and audit data.</h:li>
+							<h:li>Ability to configure and manage the audit system and audit data,
+							including the ability to configure name/address of audit/logging server
+							to which to send audit/logging records.</h:li>
 						</h:ol>
 					</management>
 					<audit>The following actions should be auditable if FAU_GEN Security audit data generation 
@@ -3572,6 +3576,7 @@
 						functions in FMT:
 						<h:ol type="a">
 							<h:li>Ability to configure inter-VM data sharing.</h:li>
+							<h:li>Ability to configure virtual networking.</h:li>
 						</h:ol>
 					</management>
 					<audit>There are no auditable events foreseen.</audit>
@@ -3601,23 +3606,22 @@
                             The fundamental requirement of a Virtualization System is the ability to enforce separation between
 							information domains implemented as Virtual Machines and Virtual Networks. The intent of this
 							requirement is to ensure that VMs, VMMs, and the VS as a whole is implemented with 
-							this fundamental requirement in mind.<h:br></h:br><h:br></h:br>
+							this fundamental requirement in mind.<h:p/>
                             The ST author should select “no mechanism” in the unlikely event that the VS implements no mechanisms for
 							transferring data between Guest VMs. Otherwise, the ST author should select “virtual networking” 
-							and identify all other mechanisms through which data can be transferred between Guest VMs. <h:br></h:br><h:br></h:br>
-							Examples of non-network inter-VM sharing mechanisms are:<h:br></h:br><h:br></h:br>
+							and identify all other mechanisms through which data can be transferred between Guest VMs. <h:p/>
+							Examples of non-network inter-VM sharing mechanisms are:<h:p/>
                             <h:ul>
                                 <h:li>User interface-based mechanisms, such as copy-paste and drag-and-drop</h:li>
                                 <h:li>Shared virtual or physical devices</h:li>
                                 <h:li>API-based mechanisms such as Hypercalls</h:li>
                             </h:ul>
                             For data transfer mechanisms implemented in terms of Hypercall functions, FDP_VMS_EXT.1.3 is met if 
-							FPT_HCL_EXT.1.2 is met for those Hypercall functions (VM access to Hypercall functions is 
-							configurable).<h:br></h:br><h:br></h:br>
+							FPT_HCL_EXT.1.1 is met for those Hypercall functions (Hypercall function parameters are checked).<h:p/>
                             For data transfer mechanisms that use shared physical devices, FDP_VMS_EXT.1.3 is met if the device is 
-							listed in and meets FDP_PPR_EXT.1.1 (VM access to the physical device is configurable).<h:br></h:br><h:br></h:br>
+							listed in and meets FDP_PPR_EXT.1.1 (VM access to the physical device is configurable).<h:p/>
                             For data transfer mechanisms that use virtual networking, FDP_VMS_EXT.1.3 is met if FDP_VNC_EXT.1.1 
-							is met (VM access to virtual networks is configurable).<h:br></h:br><h:br></h:br>
+							is met (VM access to virtual networks is configurable).<h:p/>
                         </note>
                         <aactivity>
                             <TSS>
@@ -3779,8 +3783,7 @@
 					<management>The following actions could be considered for the management functions
 						in FMT:
 						<h:ol type="a">
-							<h:li>Ability to configure lockout policy through unsuccessful 
-								authentication attempts.</h:li>
+							<h:li>Ability to configure lockout policy through unsuccessful authentication attempts.</h:li>
 							<h:li>Ability to unlock a locked administrator account.</h:li>
 						</h:ol>
 					</management>
@@ -3875,7 +3878,8 @@
 					<management>The following actions could be considered for the management functions 
 						in FMT:
 						<h:ol type="a">
-							<h:li>Ability to configure Administrator password policy.</h:li>
+							<h:li>Ability to configure Administrator password policy, including
+								the ability to change default authorization factors.</h:li>
 						</h:ol>
 					</management>
 					<audit>There are no auditable events foreseen.</audit>
@@ -4684,14 +4688,14 @@
                 <!-- FPT_HCL_EXT.1 -->
                 <f-component cc-id="fpt_hcl_ext.1" name="Hypercall Functions">
 					<consistency-rationale/>
-					<comp-lev>requires the TSF to implement appropriate parameter validation and access controls
+					<comp-lev>requires the TSF to implement appropriate parameter validation
 						to protect the VMM from unauthorized access through a hypercall interface.</comp-lev>
 						<management>No specific management functions are identified.</management>
 					<audit>The following actions should be auditable if FAU_GEN Security
 						audit data generation is included in the PP/ST:
 						<h:ol type="a">
-							<h:li>Attempts to access Hypercall interfaces using illegal input values.</h:li>
-							<h:li>Security policy violations.</h:li>
+							<h:li>Attempts to invoke Hypercall interfaces using illegal input values.</h:li>
+							<h:li>Attempts to invoke Hypercall interfaces when documented preconditions are not met.</h:li>
 						</h:ol>
 					</audit>
 					<dependencies>FMT_SMR.1 Security Roles</dependencies>
@@ -4734,8 +4738,7 @@
 			<audit-event-info>Hypercall interface for which access was attempted.</audit-event-info>
 		    </audit-event>
 		    <audit-event>
-			<audit-event-descr>Security policy violations.</audit-event-descr>
-			<audit-event-info>Identifier for the security policy that was violated.</audit-event-info>
+			<audit-event-descr>Hypercall interface invoked when documented preconditions are not met.</audit-event-descr>
 		    </audit-event>
                 </f-component>
 
@@ -4899,6 +4902,7 @@
 						management functions in FMT:
 						<h:ol type="a">
 							<h:li>Ability to configure removable media policy.</h:li>
+							<h:li>Ability to connect/disconnect removable devices to/from a VM.</h:li>
 						</h:ol>
 					</management>
 					<audit>The following actions should be auditable if FAU_GEN Security 
@@ -5292,7 +5296,7 @@
                         <Tests>
                             The evaluator shall configure the TOE to display the advisory warning message 
                             “TEST TEST Warning Message TEST TEST”. The evaluator shall then log out and confirm that the advisory 
-                            message is displayed before logging can occur.
+                            message is displayed before login can occur.
                         </Tests>
                         </aactivity>
                     </f-element>
