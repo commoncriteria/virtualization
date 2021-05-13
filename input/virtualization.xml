@@ -395,10 +395,8 @@
 
     <!-- 3. Security Problem Description -->
 	<sec:spd title="Security Problem Description">
-<!--    <chapter id="ch-desc" title="Security Problem Description">  -->
 	    
 		<!-- 3.1 Threats -->
-<!--    <section id="s-threats" title="Threats">  -->
 		<sec:Threats>
             <threats>
                 <threat name="T.DATA_LEAKAGE">
@@ -629,7 +627,6 @@
     
     <!-- 4. Security Objectives -->
 	<sec:Security_Objectives>
-<!--    <chapter id="ch-secobj" title="Security Objectives">  -->
 	    
 	<!-- 4.1 Security Objectives for the TOE -->
         <section id="s-secobjtoe" title="Security Objectives for the TOE">
@@ -872,11 +869,9 @@
 	<section title="Security Objectives Rationale" id="secobjrat"/>    
 	    <!-- Auto-generated table -->
 	</sec:Security_Objectives>
-     <!-- </chapter>  -->
     
     <!-- 5. Security Requirements -->  
 	<sec:Security_Requirements>
-<!--    <chapter id="ch-secreq" title="Security Requirements">   -->
 
 		<!-- 5.1 Security Functional Requirements -->
         <section id="s-sfr" title="Security Functional Requirements">
@@ -893,9 +888,6 @@
 					<fam-behavior>This family defines requirements for the TSF to be able to securely 
 						transmit audit data between the TOE and an external IT entity.</fam-behavior>
 				</ext-comp-def>
-<!--			<ext-comp-def title="Fake Audit Data" fam-id="FAU_FAK_EXT">
-					<fam-behavior>This family defines requirements that are totally fake.</fam-behavior>
-				</ext-comp-def>  -->
 
 			<!-- FAU_GEN.1 -->
 			<f-component cc-id="fau_gen.1" name="Audit Data Generation">
@@ -924,15 +916,6 @@
                                 <h:li>Type of event</h:li>
                                 <h:li>Subject and object identity (if applicable)</h:li>
                                 <h:li>The outcome (success or failure) of the event</h:li>
-	
-								<!-- I would like this selection to go away. Additional informaiton should come along with the 
-									 audit events in the tables. If the additional information is not needed it can be
-									 made a selection within the table.
-
-									 If this selection cannot go away, then I want the selections tied to the corresponding selections
-									 in FAU_GEN.1.1.
-								-->
-				    
 								<h:li>[<refinement>Additional information defined in <xref g="t-audit-mandatory"/></refinement>]</h:li>
                                 <h:li><refinement><selectables linebreak="yes">
                                     <selectable>Additional information defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable>
@@ -1075,31 +1058,6 @@
 					<audit-event />
                 </f-component>
 
-               <!-- FAU_FAK_EXT.1 -->
-<!--                <f-component cc-id="fau_fak_ext.1" name="Fake Audit Review" status="invisible">
-			<consistency-rationale/>
-			<comp-lev>requires the TSF to transmit fake audit data using a cup-and-string trusted channel to an outside entity and to specify 
-				the action to be taken when local audit storage is overflown.</comp-lev>
-			<management>The following actions could be considered for the management functions in FAU:
-				<h:ol type="a">
-					<h:li>Ability to configure and manage the fake audit system and audit data.</h:li>
-				</h:ol>
-			</management>
-			<audit>The following actions should be auditable if FAU_GEN Security audit data generation 
-				is included in the PP/ST:
-				<h:ol type="a">
-					<h:li>Failure of fake audit data capture due to lack of disk space or pre-defined limit.</h:li>
-					<h:li>On failure of logging function, capture record of failure and record upon restart of logging function.</h:li>
-				</h:ol>
-			</audit>
-			<dependencies>FAU_GEN.1 Audit Data Generation<h:p/>
-			FTP_ITC_EXT.1 Trusted Channel Communications</dependencies>
-                    <f-element id="fau-fak-faux"><title>This is an invisible requirement. It should not be displayed.</title></f-element>
-		    <audit-event>
-			<audit-event-descr>Fake audit event</audit-event-descr>
-		    </audit-event>			
-                </f-component>
-   -->             
                 <!-- FAU_STG.1 -->
                 <f-component cc-id="fau_stg.1" name="Protected Audit Trail Storage">
                     <f-element id="fau-stg-1e1">
@@ -2391,8 +2349,6 @@
                 <f-component cc-id="fcs_https_ext.1" name="HTTPS Protocol"  status="sel-based">
                     <depends on-sel="sel-itc-https"/>
 					<depends on-sel="sel-x509-2-https"/>
-<!--                    <selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-https"/>
-					<selection-depends req="fia-x509-ext-2e1" ids="sel-x509-2-https"/>  -->
 					<consistency-rationale/>
 					<comp-lev>defines requirements for the implementation of the HTTPS protocol.</comp-lev>
 					<management>No specific management functions are identified.</management>
@@ -2444,10 +2400,8 @@
 
                 <!-- FCS_IPSEC_EXT.1 -->
                 <!-- Depends on IPSEC being selected for trusted channels -->
-		<!-- This should be roughly the same as the IPsec requirement in VPNClient -->
+				<!-- This should be roughly the same as the IPsec requirement in VPNClient -->
                 <f-component cc-id="fcs_ipsec_ext.1" name="IPsec Protocol" status="sel-based">
-<!--                    <selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-ipsec"/>
-					<selection-depends req="fia-x509-ext-2e1" ids="sel-x509-2-ipsec"/>  -->
                     <depends on-sel="sel-itc-ipsec"/>
 					<depends on-sel="sel-x509-2-ipsec"/>
 					<consistency-rationale/>
@@ -3303,7 +3257,6 @@
             </section>
 
 			<!-- 5.1.4 User Data Protection -->
-<!--            <section id="ss-fdp" title="User Data Protection (FDP)">   -->
             <sec:User_Data_Protection title="User Data Protection (FDP)">
 			
 			    <ext-comp-def title="Hardware-Based Isolation Mechanisms" fam-id="FDP_HBI_EXT">
@@ -3701,11 +3654,6 @@
 							physically separate networks. It must not be possible for data to cross between properly configured
 							virtual networks regardless of whether the traffic originated from a local Guest VM or a remote host.<h:br></h:br><h:br></h:br>
                             Unprivileged users must not be able to connect VMs to each other or to external networks.<h:br></h:br><h:br></h:br>
-<!--                            FDP_VNC_EXT.1.2 is an attestation requirement. The vendor must attest that traffic traversing a virtual 
-							network is visible only to Guest VMs that are configured by an Administrator to be members of that
-							virtual network, and that there are no design or implementation flaws that permit the virtual 
-							networking configuration to be bypassed or defeated, or for data to be transferred through
-							undocumented mechanisms.   -->
                         </note>
                         <aactivity>
                             <TSS>
@@ -3729,13 +3677,6 @@
 									If the attempt fails, or there is no way for an unprivileged user to configure VM network 
 									connections, the requirement is met.</test>
                             </testlist>
-<!--                            The evaluator must ensure that the ST includes the following statement attesting that virtual network
-							traffic is visible only to VMs configured to be on that virtual network:<h:br></h:br><h:br></h:br>
-                            “Traffic traversing a virtual network is visible only to Guest VMs that are configured by an Administrator 
-							to be members of that virtual network. There are no design or implementation flaws that permit
-							the virtual networking configuration to be bypassed or defeated, or for data to be transferred
-							through undocumented mechanisms. This claim does not apply to covert channels or architectural
-							side-channels.”  -->
                             </Tests>
                          </aactivity>
                     </f-element>
@@ -3870,7 +3811,6 @@
 				<!-- FIA_PMG_EXT.1 -->
                 <!-- Depends on password-based authentication being used for administrator authentication -->
                 <f-component cc-id="fia_pmg_ext.1" name="Password Management"  status="sel-based">
-<!--                    <selection-depends req="fia-uau-5e1" ids="sel-uau-pwd"/>  -->
                     <depends on-sel="sel-uau-pwd"/>
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to ensure that administrator passwords meet a
@@ -4100,17 +4040,9 @@
                 <!-- FIA_X509_EXT.1 -->
                 <!-- Depends on x509 certificates being used for administrator authentication -->
                 <f-component cc-id="fia_x509_ext.1" name="X.509 Certificate Validation"  status="sel-based">
-<!--                    <selection-depends req="fpt-tud-ext-1e3" ids="sel-tud-digsign"/>
-                    <selection-depends req="fia-uau-5e1" ids="sel-uau-x509" /> 
-					<selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-ipsec" />
-					<selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-tls" />
-					<selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-https" />	 -->
                     <depends on-sel="sel-tud-digsign"/>
                     <depends on-sel="sel-uau-x509"/> 
-			<depends on-sel="sel-itc-certauth"/>
-<!--					<depends on-sel="sel-itc-ipsec" />
-					<depends on-sel="sel-itc-tls" />
-					<depends on-sel="sel-itc-https" />  -->	
+					<depends on-sel="sel-itc-certauth"/>
 					<consistency-rationale/>
 					<comp-lev>defines how the TSF must validate X.509 certificates that are presented to it.</comp-lev>
 					<management>The following actions could be considered for the management functions in FMT:
@@ -4249,17 +4181,9 @@
                 <!-- FIA_X509_EXT.2 -->
                 <!-- Depends on digital signatures being used for trusted updates or administrator authentication -->
                 <f-component cc-id="fia_x509_ext.2" name="X.509 Certificate Authentication"  status="sel-based">
-<!--                    <selection-depends req="fpt-tud-ext-1e3" ids="sel-tud-digsign-cert"/>
-                    <selection-depends req="fia-uau-5e1" ids="sel-uau-x509" /> 
-					<selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-ipsec" />
-					<selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-tls" />
-					<selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-https" />	-->
                     <depends on-sel="sel-tud-digsign-cert"/>
                     <depends on-sel="sel-uau-x509" /> 
-			<depends on-sel="sel-itc-certauth"/>
-<!--					<depends on-sel="sel-itc-ipsec" />
-					<depends on-sel="sel-itc-tls" />
-					<depends on-sel="sel-itc-https" />  -->	
+					<depends on-sel="sel-itc-certauth"/>
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to identify the functions for which it uses X.509 
 						certificates for authentication</comp-lev>
@@ -4279,12 +4203,8 @@
                                 <selectable id="sel-x509-2-tls">TLS</selectable>
                                 <selectable id="sel-x509-2-https">HTTPS</selectable>
                                 <selectable id="sel-x509-2-ssh">SSH</selectable>
-                            </selectables>, and
-                            <selectables>
                                 <selectable id="sel-x5092-signed-updates">code signing for system software updates</selectable>
-                                <selectable>code signing for integrity verification</selectable>
                                 <selectable><assignable>other uses</assignable></selectable>
-                                <selectable>no additional uses</selectable>
                             </selectables>
                         </title>
 			<ext-comp-def-title>
@@ -4294,7 +4214,9 @@
                         <note role="application">This SFR must be included in the ST if the selection for FPT_TUD_EXT.1.3 is “digital
 							signature mechanism,” if "certificate-based authentication of the remote peer" is
 							selected in FTP_ITC_EXT.1, or if "authentication based on X.509 certificates"
-							is selected in FIA_UAU.5.1.</note>
+							is selected in FIA_UAU.5.1.<h:p/>
+							This SFR must also be included in the ST if X.509 certificate-based authentication is used for "other uses"
+							as listed in the assignment in FIA_X509_EXT.2.1.</note>
 					</f-element>
                     <f-element id="fia-x509-ext-2e2">
                         <title>When the TSF cannot establish a connection to determine the validity of a certificate, the TSF shall
@@ -5123,8 +5045,6 @@
                 <!-- FPT_TUD_EXT.2 -->
                 <!-- Depends on X509 certificates being used for code signing. -->
                 <f-component cc-id="fpt_tud_ext.2" name="Trusted Update Based on Certificates"  status="sel-based">
-<!--                    <selection-depends req="fpt-tud-ext-1e3" ids="sel-tud-digsign-cert" />
-					<selection-depends req="fia-x509-ext-2e1" ids="sel-x5092-signed-updates"/>  -->
                     <depends on-sel="sel-tud-digsign-cert" />
 					<depends on-sel="sel-x5092-signed-updates"/>
 					<consistency-rationale/>
@@ -5176,10 +5096,6 @@
 				Guest OS. The VMM cannot assume that any data coming from a VM is well-formed—even if the virtual
 				device interface is unique to the VS and the data comes from a virtual device
 				driver supplied by the Virtualization Vendor.<h:br></h:br>
-<!--                            FPT_VDP_EXT.1.2 is an attestation requirement. The vendor must attest that parameters passed from a VM
-				to a virtual device interface are not able to degrade or disrupt the functioning of other VMs, the 
-				VMM, or the Platform. The vendor must attest that there are no design or implementation flaws that 
-				permit the above.  -->
                         </note>
                         <aactivity>
                             <TSS>
@@ -5202,19 +5118,6 @@
 								interface behaves in the manner documented in the TSS. Interfaces that do not
 								have input parameters need not be tested. This test can be performed in conjunction with 
 								the tests for FPT_DVD_EXT.1.
-<!--                                The evaluator ensures that the ST includes the following statement attesting that
-                                parameters passed from a Guest VM to virtual device interfaces are thoroughly
-                                validated, that all values outside the legal values specified in the TSS are
-                                rejected, and that any data passed to the virtual device interfaces is unable to degrade or disrupt
-                                the functioning of other VMs, the VMM, or the Platform:
-                                <h:br></h:br><h:br></h:br>
-                                “Parameters passed from Guest VMs to virtual device interfaces are thoroughly
-                                validated and all illegal values (as specified in the TSS) are rejected.
-                                Additionally, parameters passed from Guest VMs to virtual device interfaces are not 
-                                able to degrade or disrupt the functioning of other VMs, the VMM,
-                                or the Platform. Thorough testing and architectural design reviews have been conducted to ensure the
-                                accuracy of these claims, and there are no design or implementation flaws that bypass or defeat the
-                                security of the virtual device interfaces.”   -->
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -5261,9 +5164,6 @@
 							firmware image as part of a common hardware abstraction, then the update of a single machine’s BIOS 
 							must not be allowed to change the common abstraction. The virtual hardware abstraction is part of the
 							VMM.<h:br></h:br>
-<!--                            This is an attestation requirement. The vendor must attest that software running in a VM is not able to 
-							degrade or disrupt the functioning of other VMs, the VMM, or the Platform. The vendor must attest 
-							that there are no design or implementation flaws that permit the above.  -->
                         </note>
                         <aactivity>
 							<TSS>
