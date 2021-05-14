@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="../transforms/pp2html.xsl"?>
 
-<!-- to do
-
-    It is intended to be built against the latest version of the schema (currently the dev branch).
+<!-- 
 
     - DONE: Incorporated TLS Package
 	- Incorporate SSH as an FP rather than EP. Waiting for SSH to be published as an FP.
@@ -34,6 +32,8 @@
     - DONE: 0433: Assurance activity for FIA_X509_EXT.1.2
 
     - DONE: Add Equivalency (Appendix E)
+	- DONE: Added consistency rationale
+	- DONE: Added rules (probably not complete)
 
     - Added SHA-3 to hashes (and tests)
     - Added SHA-3 to keyed hashes (test needn't change)
@@ -42,8 +42,9 @@
     - Added FIA_AFL_EXT to the audit table. It was inexplicably missing. 
 
     - See Issues for resolution of comments from Jan 2021.
-    - Incluldes updating IPsec requirement to match vpnclient 2.2
+    - Includes updating IPsec requirement to match vpnclient 2.2
 	- Removed attestation requirements
+	- Addressed comments from April 2021.
 
     -->
 
@@ -107,7 +108,7 @@
     <modules required="yes">
     <module id="client-virt">
 		<raw-url>https://raw.githubusercontent.com/commoncriteria/clientvirtualization/master/input/clientvirtualization.xml</raw-url>
-        <url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=409&amp;id=409</url>
+        <url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=409&amp;id=409</url> 
     </module>
     <module id="server-virt">
 		<raw-url>https://raw.githubusercontent.com/commoncriteria/servervirtualization/master/input/servervirtualization.xml</raw-url>
@@ -236,7 +237,8 @@
 			  also may contain important system functionality that is not necessary for Hypervisor operation. As with any VM,
 			  Service VMs necessarily execute without full Hypervisor privileges—only the privileges required to perform its 
 			  designed functionality. Examples of Service VMs include device driver VMs that manage access to a physical devices,
-			  and name-service VMs that help establish communication paths between VMs.</term>
+			  VMs that provide life-cycle management and provisioning of Hypervisor and Guest VMs, and name-service VMs that 
+			  help establish communication paths between VMs.</term>
 			  <term abbr="SP" full="Special Publication"/>
 			  <term abbr="SPD" full="Security Policy Database"/>
 		  <term full="System Security Policy" abbr="SSP">The overall policy enforced by the VS defining constraints on the behavior
@@ -280,7 +282,8 @@
 			support Guest VMs. Service VMs may implement some portion of Hypervisor functionality, but also may contain important
 			system functionality that is not necessary for Hypervisor operation. As with any VM, Service VMs necessarily execute
 			without full Hypervisor privileges—only the privileges required to perform its designed functionality. Examples of 
-			Service VMs include device driver VMs that manage access to physical devices, and name-service VMs that help establish 
+			Service VMs include device driver VMs that manage access to physical devices, VMs that provide life-cycle management and 
+			provisioning of Hypervisor and Guest VMs, and name-service VMs that help establish 
 			communication paths between VMs.<h:br></h:br><h:br></h:br>
 				A Guest VM is a VM that contains a virtual environment for the execution of an independent computing system. Virtual 
 			environments execute mission workloads and implement customer-specific client or server functionality in Guest VMs, 
@@ -392,10 +395,8 @@
 
     <!-- 3. Security Problem Description -->
 	<sec:spd title="Security Problem Description">
-<!--    <chapter id="ch-desc" title="Security Problem Description">  -->
 	    
 		<!-- 3.1 Threats -->
-<!--    <section id="s-threats" title="Threats">  -->
 		<sec:Threats>
             <threats>
                 <threat name="T.DATA_LEAKAGE">
@@ -604,21 +605,16 @@
 				vetted before being given administrative responsibilities will ensure that they are trusted.</rationale>
                     </objective-refer>
                 </assumption>
-                <assumption name="A.COVERT_CHANNELS">
-                    <description>There is sufficient assurance relative to the value of the VM’s IT assets to address the 
-			    risk of covert storage and timing channels to the VMs executing on the TOE.</description>
-                    <objective-refer ref="OE.COVERT_CHANNELS">
-                        <rationale>It is expected that the value of any data contained within VMs is commensurate with the security provided by 
-				the TOE, which includes any vulnerabilities due to the potential presence of covert storage or 
-				timing channels.</rationale>
-                    </objective-refer>
-                </assumption>
                 <assumption name="A.NON_MALICIOUS_USER">
                     <description>The user of the VS is not willfully negligent or hostile, and uses the VS in compliance with the
 			    applied enterprise security policy and guidance. At the same time, malicious applications could act as
 			    the user, so requirements which confine malicious applications are still in scope.</description>
                     <objective-refer ref="OE.NON_MALICIOUS_USER">
                         <rationale>If the organization properly vets and trains users, it is expected that they will be non-malicious.</rationale>
+                    </objective-refer>
+                    <objective-refer ref="OE.CONFIG">
+                        <rationale>If the TOE is administered by a non-malicious and non-negligent user, the expected result is that the TOE
+				will be configured in a correct and secure manner.</rationale>
                     </objective-refer>
                 </assumption>
             </assumptions>
@@ -631,7 +627,6 @@
     
     <!-- 4. Security Objectives -->
 	<sec:Security_Objectives>
-<!--    <chapter id="ch-secobj" title="Security Objectives">  -->
 	    
 	<!-- 4.1 Security Objectives for the TOE -->
         <section id="s-secobjtoe" title="Security Objectives for the TOE">
@@ -670,13 +665,12 @@
 					<addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to protect domain data in shared storage.</rationale>
 					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
 					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated.</rationale>
-					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from storage before the storage is re-allocated.</rationale>
+					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from physical storage upon re-allocation of the storage.</rationale>
 					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.</rationale>
 					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
 					<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>Ensures that VMs can access only those virtual devices that they are configured to access.</rationale>
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
 					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Administrators can disable unnecessary hypercall interfaces to reduce attack surface.</rationale>
 					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                 </SO>
@@ -702,6 +696,7 @@
 					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
 					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Hypercall parameters be validated.</rationale>
 					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                 </SO>
@@ -718,7 +713,7 @@
 					<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>Ensures that VMs cannot access virtual devices that they are not configured to access.</rationale>
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
 					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Administrators can disable unnecessary hypercall interfaces to reduce attack surface.</rationale>
+					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Hypercall parameters be validated.</rationale>
 					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
 				</SO>
@@ -731,7 +726,7 @@
 					<addressed-by>FCS_ENT_EXT.1</addressed-by><rationale>Requires that domains have access to high-quality entropy for cryptographic purposes.</rationale>
 					<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
 					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated to another domain.</rationale>
-					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from storage before the storage is re-allocated to another domain.</rationale>
+					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from physical storage upon re-allocation of the storage to another domain.</rationale>
 					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between domains are done securely.</rationale>
 					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
@@ -840,7 +835,7 @@
                     </description>
 					<addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to ensure residual data in shared storage is unrecoverable.</rationale>
 					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated.</rationale>
-					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from storage before the storage is re-allocated.</rationale>
+					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from storage upon re-allocation of the storage.</rationale>
                 </SO>
             </SOs>
         </section>
@@ -862,12 +857,6 @@
                     <description>TOE Administrators are trusted to follow and apply all administrator guidance in a trusted manner.
                     </description>
                 </SOE>
-                <SOE name="OE.COVERT_CHANNELS">
-                    <description>If the TOE has covert storage or timing channels, then for all VMs executing on that TOE, it is
-						assumed that those VMs will have sufficient assurance relative to the IT assets to which they have access,
-						to outweigh the risk that they will violate the security policy of the TOE by using those covert channels.
-                    </description>
-                </SOE>
                 <SOE name="OE.NON_MALICIOUS_USER">
                     <description>Users are trusted to be not willfully negligent or hostile and use the VS in compliance with the
 						applied enterprise security policy and guidance.
@@ -880,11 +869,9 @@
 	<section title="Security Objectives Rationale" id="secobjrat"/>    
 	    <!-- Auto-generated table -->
 	</sec:Security_Objectives>
-     <!-- </chapter>  -->
     
     <!-- 5. Security Requirements -->  
 	<sec:Security_Requirements>
-<!--    <chapter id="ch-secreq" title="Security Requirements">   -->
 
 		<!-- 5.1 Security Functional Requirements -->
         <section id="s-sfr" title="Security Functional Requirements">
@@ -901,9 +888,6 @@
 					<fam-behavior>This family defines requirements for the TSF to be able to securely 
 						transmit audit data between the TOE and an external IT entity.</fam-behavior>
 				</ext-comp-def>
-<!--			<ext-comp-def title="Fake Audit Data" fam-id="FAU_FAK_EXT">
-					<fam-behavior>This family defines requirements that are totally fake.</fam-behavior>
-				</ext-comp-def>  -->
 
 			<!-- FAU_GEN.1 -->
 			<f-component cc-id="fau_gen.1" name="Audit Data Generation">
@@ -932,15 +916,6 @@
                                 <h:li>Type of event</h:li>
                                 <h:li>Subject and object identity (if applicable)</h:li>
                                 <h:li>The outcome (success or failure) of the event</h:li>
-	
-								<!-- I would like this selection to go away. Additional informaiton should come along with the 
-									 audit events in the tables. If the additional information is not needed it can be
-									 made a selection within the table.
-
-									 If this selection cannot go away, then I want the selections tied to the corresponding selections
-									 in FAU_GEN.1.1.
-								-->
-				    
 								<h:li>[<refinement>Additional information defined in <xref g="t-audit-mandatory"/></refinement>]</h:li>
                                 <h:li><refinement><selectables linebreak="yes">
                                     <selectable>Additional information defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable>
@@ -1083,31 +1058,6 @@
 					<audit-event />
                 </f-component>
 
-               <!-- FAU_FAK_EXT.1 -->
-<!--                <f-component cc-id="fau_fak_ext.1" name="Fake Audit Review" status="invisible">
-			<consistency-rationale/>
-			<comp-lev>requires the TSF to transmit fake audit data using a cup-and-string trusted channel to an outside entity and to specify 
-				the action to be taken when local audit storage is overflown.</comp-lev>
-			<management>The following actions could be considered for the management functions in FAU:
-				<h:ol type="a">
-					<h:li>Ability to configure and manage the fake audit system and audit data.</h:li>
-				</h:ol>
-			</management>
-			<audit>The following actions should be auditable if FAU_GEN Security audit data generation 
-				is included in the PP/ST:
-				<h:ol type="a">
-					<h:li>Failure of fake audit data capture due to lack of disk space or pre-defined limit.</h:li>
-					<h:li>On failure of logging function, capture record of failure and record upon restart of logging function.</h:li>
-				</h:ol>
-			</audit>
-			<dependencies>FAU_GEN.1 Audit Data Generation<h:p/>
-			FTP_ITC_EXT.1 Trusted Channel Communications</dependencies>
-                    <f-element id="fau-fak-faux"><title>This is an invisible requirement. It should not be displayed.</title></f-element>
-		    <audit-event>
-			<audit-event-descr>Fake audit event</audit-event-descr>
-		    </audit-event>			
-                </f-component>
-   -->             
                 <!-- FAU_STG.1 -->
                 <f-component cc-id="fau_stg.1" name="Protected Audit Trail Storage">
                     <f-element id="fau-stg-1e1">
@@ -1152,7 +1102,9 @@
 						the action to be taken when local audit storage is full.</comp-lev>
 					<management>The following actions could be considered for the management functions in FMT:
 						<h:ol type="a">
-							<h:li>Ability to configure and manage the audit system and audit data.</h:li>
+							<h:li>Ability to configure and manage the audit system and audit data,
+							including the ability to configure name/address of audit/logging server
+							to which to send audit/logging records.</h:li>
 						</h:ol>
 					</management>
 					<audit>The following actions should be auditable if FAU_GEN Security audit data generation 
@@ -1168,7 +1120,7 @@
                         <title>The TSF shall be able to transmit the generated audit data to an external IT entity using a trusted 
 							channel as specified in FTP_ITC_EXT.1.
                         </title>
-                        <aactivity>
+                        <aactivity level="element">
                             Protocols used for implementing the trusted channel must be selected in FTP_ITC_EXT.1.
                             <TSS>
                                 The evaluator shall examine the TSS to ensure it describes the means by which 
@@ -1213,7 +1165,7 @@
 							in case the local storage space is full. An ‘other action’ could be defined in this case as ‘send the
 							new audit data to an external IT entity’.
 						</note>
-                        <aactivity>
+                        <aactivity level="element">
                             <TSS>
                                 The evaluator shall examine the TSS to ensure it describes what happens when the 
                                 local audit data store is full. 
@@ -2397,8 +2349,6 @@
                 <f-component cc-id="fcs_https_ext.1" name="HTTPS Protocol"  status="sel-based">
                     <depends on-sel="sel-itc-https"/>
 					<depends on-sel="sel-x509-2-https"/>
-<!--                    <selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-https"/>
-					<selection-depends req="fia-x509-ext-2e1" ids="sel-x509-2-https"/>  -->
 					<consistency-rationale/>
 					<comp-lev>defines requirements for the implementation of the HTTPS protocol.</comp-lev>
 					<management>No specific management functions are identified.</management>
@@ -2450,10 +2400,8 @@
 
                 <!-- FCS_IPSEC_EXT.1 -->
                 <!-- Depends on IPSEC being selected for trusted channels -->
-		<!-- This should be roughly the same as the IPsec requirement in VPNClient -->
+				<!-- This should be roughly the same as the IPsec requirement in VPNClient -->
                 <f-component cc-id="fcs_ipsec_ext.1" name="IPsec Protocol" status="sel-based">
-<!--                    <selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-ipsec"/>
-					<selection-depends req="fia-x509-ext-2e1" ids="sel-x509-2-ipsec"/>  -->
                     <depends on-sel="sel-itc-ipsec"/>
 					<depends on-sel="sel-x509-2-ipsec"/>
 					<consistency-rationale/>
@@ -3309,7 +3257,6 @@
             </section>
 
 			<!-- 5.1.4 User Data Protection -->
-<!--            <section id="ss-fdp" title="User Data Protection (FDP)">   -->
             <sec:User_Data_Protection title="User Data Protection (FDP)">
 			
 			    <ext-comp-def title="Hardware-Based Isolation Mechanisms" fam-id="FDP_HBI_EXT">
@@ -3531,24 +3478,24 @@
                 <!-- FDP_RIP_EXT.2 -->
                 <f-component cc-id="fdp_rip_ext.2" name="Residual Information on Disk">
 					<consistency-rationale/>
-					<comp-lev>requires the TSF to ensure that physical disk storage is cleared prior to its
+					<comp-lev>requires the TSF to ensure that physical disk storage is cleared upon 
 						allocation to a Guest VM.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
 					<dependencies>No dependencies.</dependencies>
                     <f-element id="fdp-rip-ext-2e1">
-                        <title>The TSF shall ensure that any previous information content of physical disk storage is cleared to zeros prior
-							to allocation to a Guest VM.
+                        <title>The TSF shall ensure that any previous information content of physical disk storage is cleared to zeros upon
+							allocation to a Guest VM.
                         </title>
-                        <note role="application">Disk storage must be zeroed before it is made accessible to a VM for use by a Guest
-							OS.<h:br></h:br><h:br></h:br>
+                        <note role="application">
                             The purpose of this requirement is to ensure that a VM does not receive disk storage containing data
-							previously used by another VM or the host.<h:br></h:br><h:br></h:br>
+							previously used by another VM or by the host.<h:p/>
+			    Clearing of disk storage only upon deallocation does not meet this requirement. <h:p/>
                             This does not apply to disk-resident files shared by design or policy between VMs or between the VMMs and
-							VMs, such as read-only data files or files used for inter-VM data transfers permitted by policy. </note>
+				VMs, such as read-only data files or files used for inter-VM data transfers permitted by policy. </note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall ensure that the TSS documents how the TSF ensures that disk storage is zeroed prior to allocation to 
+                                The evaluator shall ensure that the TSS documents how the TSF ensures that disk storage is zeroed upon allocation to 
 				    Guest VMs. Also, the TSS must document any conditions under which disk storage is not cleared prior to allocation to a Guest VM. 
 				    Any file system format and metadata information needed by the evaluator to perform the below test shall be made available
 				    to the evaluator, but need not be published in the TSS.
@@ -3557,15 +3504,15 @@
                                 The evaluator shall perform the following test:<h:br></h:br><h:br></h:br>
                                 <testlist>
                                     <test>
-						On the host, the evaluator creates a file that is more than half the size of a connected 
-						physical storage device or device partition (or multiple files whose individual sizes add up to more than half the
-						size of the storage media).  This file (or files) shall be filled entirely with a non-zero
-						value.  Then, the file (or files) shall be released (freed for use but not cleared by the 
-					        Guest OS.).  Next, the evaluator (as a VS Administrator) creates a virtual disk at least that large on the same
-						physical storage device and connects it to a powered-off VM.  Then, from outside the
-                                        	Guest VM, scan through and check that all the non-metadata (as documented in the TSS) in the
-						file corresponding to that virtual disk is set to zero.
-									</test>
+					On the host, the evaluator creates a file that is more than half the size of a connected physical 
+					    storage device (or multiple files whose individual sizes add up to more than half the size of 
+					    the storage media).  This file (or files) shall be filled entirely with a non-zero value. 
+					    Then, the file (or files) shall be released (freed for use but not cleared).  Next, the 
+					    evaluator (as a VS Administrator) creates a virtual disk at least that large on the same
+					    physical storage device and connects it to a powered-off VM.  Then, from outside the Guest VM,
+					    scan through and check that all the non-metadata (as documented in the TSS) in the file
+					    corresponding to that virtual disk is set to zero.
+					</test>
                                 </testlist>
                             </Tests>
                         </aactivity>
@@ -3582,6 +3529,7 @@
 						functions in FMT:
 						<h:ol type="a">
 							<h:li>Ability to configure inter-VM data sharing.</h:li>
+							<h:li>Ability to configure virtual networking.</h:li>
 						</h:ol>
 					</management>
 					<audit>There are no auditable events foreseen.</audit>
@@ -3611,23 +3559,22 @@
                             The fundamental requirement of a Virtualization System is the ability to enforce separation between
 							information domains implemented as Virtual Machines and Virtual Networks. The intent of this
 							requirement is to ensure that VMs, VMMs, and the VS as a whole is implemented with 
-							this fundamental requirement in mind.<h:br></h:br><h:br></h:br>
+							this fundamental requirement in mind.<h:p/>
                             The ST author should select “no mechanism” in the unlikely event that the VS implements no mechanisms for
 							transferring data between Guest VMs. Otherwise, the ST author should select “virtual networking” 
-							and identify all other mechanisms through which data can be transferred between Guest VMs. <h:br></h:br><h:br></h:br>
-							Examples of non-network inter-VM sharing mechanisms are:<h:br></h:br><h:br></h:br>
+							and identify all other mechanisms through which data can be transferred between Guest VMs. <h:p/>
+							Examples of non-network inter-VM sharing mechanisms are:<h:p/>
                             <h:ul>
                                 <h:li>User interface-based mechanisms, such as copy-paste and drag-and-drop</h:li>
                                 <h:li>Shared virtual or physical devices</h:li>
                                 <h:li>API-based mechanisms such as Hypercalls</h:li>
                             </h:ul>
                             For data transfer mechanisms implemented in terms of Hypercall functions, FDP_VMS_EXT.1.3 is met if 
-							FPT_HCL_EXT.1.2 is met for those Hypercall functions (VM access to Hypercall functions is 
-							configurable).<h:br></h:br><h:br></h:br>
+							FPT_HCL_EXT.1.1 is met for those Hypercall functions (Hypercall function parameters are checked).<h:p/>
                             For data transfer mechanisms that use shared physical devices, FDP_VMS_EXT.1.3 is met if the device is 
-							listed in and meets FDP_PPR_EXT.1.1 (VM access to the physical device is configurable).<h:br></h:br><h:br></h:br>
+							listed in and meets FDP_PPR_EXT.1.1 (VM access to the physical device is configurable).<h:p/>
                             For data transfer mechanisms that use virtual networking, FDP_VMS_EXT.1.3 is met if FDP_VNC_EXT.1.1 
-							is met (VM access to virtual networks is configurable).<h:br></h:br><h:br></h:br>
+							is met (VM access to virtual networks is configurable).<h:p/>
                         </note>
                         <aactivity>
                             <TSS>
@@ -3707,11 +3654,6 @@
 							physically separate networks. It must not be possible for data to cross between properly configured
 							virtual networks regardless of whether the traffic originated from a local Guest VM or a remote host.<h:br></h:br><h:br></h:br>
                             Unprivileged users must not be able to connect VMs to each other or to external networks.<h:br></h:br><h:br></h:br>
-<!--                            FDP_VNC_EXT.1.2 is an attestation requirement. The vendor must attest that traffic traversing a virtual 
-							network is visible only to Guest VMs that are configured by an Administrator to be members of that
-							virtual network, and that there are no design or implementation flaws that permit the virtual 
-							networking configuration to be bypassed or defeated, or for data to be transferred through
-							undocumented mechanisms.   -->
                         </note>
                         <aactivity>
                             <TSS>
@@ -3735,13 +3677,6 @@
 									If the attempt fails, or there is no way for an unprivileged user to configure VM network 
 									connections, the requirement is met.</test>
                             </testlist>
-<!--                            The evaluator must ensure that the ST includes the following statement attesting that virtual network
-							traffic is visible only to VMs configured to be on that virtual network:<h:br></h:br><h:br></h:br>
-                            “Traffic traversing a virtual network is visible only to Guest VMs that are configured by an Administrator 
-							to be members of that virtual network. There are no design or implementation flaws that permit
-							the virtual networking configuration to be bypassed or defeated, or for data to be transferred
-							through undocumented mechanisms. This claim does not apply to covert channels or architectural
-							side-channels.”  -->
                             </Tests>
                          </aactivity>
                     </f-element>
@@ -3789,8 +3724,7 @@
 					<management>The following actions could be considered for the management functions
 						in FMT:
 						<h:ol type="a">
-							<h:li>Ability to configure lockout policy through unsuccessful 
-								authentication attempts.</h:li>
+							<h:li>Ability to configure lockout policy through unsuccessful authentication attempts.</h:li>
 							<h:li>Ability to unlock a locked administrator account.</h:li>
 						</h:ol>
 					</management>
@@ -3840,10 +3774,9 @@
                         </note>
                         <aactivity>
                             <Tests>
-                                The evaluator shall perform the following tests for each credential selected in FIA_AFL_EXT.1.1:
-                                <testlist>
-                                <test>The evaluator will set an Administrator-configurable threshold n for failed attempts, or note
-									the ST-specified assignment.</test>
+                                The evaluator shall perform the following tests for each credential selected in FIA_AFL_EXT.1.1:<h:p/>
+                                The evaluator will set an Administrator-configurable threshold n for failed attempts, or note
+									the ST-specified assignment.
                                 <testlist>
                                     <test>The evaluator will attempt to authenticate remotely with the credential n-1 times. The 
 										evaluator will then attempt to authenticate
@@ -3852,11 +3785,12 @@
                                         will then attempt to authenticate using a good credential and verify that the attempt is
                                         unsuccessful. Note that the authentication attempts and lockouts must also be logged as
                                         specified in FAU_GEN.1.</test>
-                                    <test>After reaching the limit for unsuccessful authentication attempts the evaluator will proceed
-                                        as follows:</test>
-                                    <testlist>
-                                        <test>If the Administrator action selection in FIA_AFL_EXT.1.2 is selected, then the evaluator
-                                            will confirm by testing that following the operational guidance and performing each action
+				    </testlist><h:p/>
+                                    After reaching the limit for unsuccessful authentication attempts the evaluator will proceed
+                                        as follows:
+                                 <testlist>
+                                      <test>If the Administrator action selection in FIA_AFL_EXT.1.2 is selected, then the evaluator
+                                           will confirm by testing that following the operational guidance and performing each action
                                             specified in the ST to re-enable the remote Administrator’s access results in successful
                                             access (when using valid credentials for that Administrator).</test>
                                         <test>If the time period selection in FIA_AFL_EXT.1.2 is selected, the evaluator will wait for
@@ -3864,9 +3798,7 @@
                                             valid credentials does not result in successful access. The evaluator will then wait until
                                             just after the time period configured and show that an authentication attempt using valid
                                             credentials results in successful access.</test>
-                                        </testlist>
-                                </testlist>
-                            </testlist>
+                                 </testlist>
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -3879,7 +3811,6 @@
 				<!-- FIA_PMG_EXT.1 -->
                 <!-- Depends on password-based authentication being used for administrator authentication -->
                 <f-component cc-id="fia_pmg_ext.1" name="Password Management"  status="sel-based">
-<!--                    <selection-depends req="fia-uau-5e1" ids="sel-uau-pwd"/>  -->
                     <depends on-sel="sel-uau-pwd"/>
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to ensure that administrator passwords meet a
@@ -3887,7 +3818,8 @@
 					<management>The following actions could be considered for the management functions 
 						in FMT:
 						<h:ol type="a">
-							<h:li>Ability to configure Administrator password policy.</h:li>
+							<h:li>Ability to configure Administrator password policy, including
+								the ability to change default authorization factors.</h:li>
 						</h:ol>
 					</management>
 					<audit>There are no auditable events foreseen.</audit>
@@ -4108,17 +4040,9 @@
                 <!-- FIA_X509_EXT.1 -->
                 <!-- Depends on x509 certificates being used for administrator authentication -->
                 <f-component cc-id="fia_x509_ext.1" name="X.509 Certificate Validation"  status="sel-based">
-<!--                    <selection-depends req="fpt-tud-ext-1e3" ids="sel-tud-digsign"/>
-                    <selection-depends req="fia-uau-5e1" ids="sel-uau-x509" /> 
-					<selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-ipsec" />
-					<selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-tls" />
-					<selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-https" />	 -->
                     <depends on-sel="sel-tud-digsign"/>
                     <depends on-sel="sel-uau-x509"/> 
-			<depends on-sel="sel-itc-certauth"/>
-<!--					<depends on-sel="sel-itc-ipsec" />
-					<depends on-sel="sel-itc-tls" />
-					<depends on-sel="sel-itc-https" />  -->	
+					<depends on-sel="sel-itc-certauth"/>
 					<consistency-rationale/>
 					<comp-lev>defines how the TSF must validate X.509 certificates that are presented to it.</comp-lev>
 					<management>The following actions could be considered for the management functions in FMT:
@@ -4257,17 +4181,9 @@
                 <!-- FIA_X509_EXT.2 -->
                 <!-- Depends on digital signatures being used for trusted updates or administrator authentication -->
                 <f-component cc-id="fia_x509_ext.2" name="X.509 Certificate Authentication"  status="sel-based">
-<!--                    <selection-depends req="fpt-tud-ext-1e3" ids="sel-tud-digsign-cert"/>
-                    <selection-depends req="fia-uau-5e1" ids="sel-uau-x509" /> 
-					<selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-ipsec" />
-					<selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-tls" />
-					<selection-depends req="ftp-itc-ext-1e1" ids="sel-itc-https" />	-->
                     <depends on-sel="sel-tud-digsign-cert"/>
                     <depends on-sel="sel-uau-x509" /> 
-			<depends on-sel="sel-itc-certauth"/>
-<!--					<depends on-sel="sel-itc-ipsec" />
-					<depends on-sel="sel-itc-tls" />
-					<depends on-sel="sel-itc-https" />  -->	
+					<depends on-sel="sel-itc-certauth"/>
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to identify the functions for which it uses X.509 
 						certificates for authentication</comp-lev>
@@ -4287,12 +4203,8 @@
                                 <selectable id="sel-x509-2-tls">TLS</selectable>
                                 <selectable id="sel-x509-2-https">HTTPS</selectable>
                                 <selectable id="sel-x509-2-ssh">SSH</selectable>
-                            </selectables>, and
-                            <selectables>
                                 <selectable id="sel-x5092-signed-updates">code signing for system software updates</selectable>
-                                <selectable>code signing for integrity verification</selectable>
                                 <selectable><assignable>other uses</assignable></selectable>
-                                <selectable>no additional uses</selectable>
                             </selectables>
                         </title>
 			<ext-comp-def-title>
@@ -4302,7 +4214,9 @@
                         <note role="application">This SFR must be included in the ST if the selection for FPT_TUD_EXT.1.3 is “digital
 							signature mechanism,” if "certificate-based authentication of the remote peer" is
 							selected in FTP_ITC_EXT.1, or if "authentication based on X.509 certificates"
-							is selected in FIA_UAU.5.1.</note>
+							is selected in FIA_UAU.5.1.<h:p/>
+							This SFR must also be included in the ST if X.509 certificate-based authentication is used for "other uses"
+							as listed in the assignment in FIA_X509_EXT.2.1.</note>
 					</f-element>
                     <f-element id="fia-x509-ext-2e2">
                         <title>When the TSF cannot establish a connection to determine the validity of a certificate, the TSF shall
@@ -4390,38 +4304,50 @@
 					<audit>There are no auditable events foreseen.</audit>
 					<dependencies>No dependencies.</dependencies>
                     <f-element id="fmt-smo-ext-1e1">
-                        <title>The TSF shall support the configuration of separate management and operational networks through
+                        <title>The TSF shall support the separation of management and operational network traffic through
                             <selectables>
-                                <selectable>physical means</selectable>
-                                <selectable>logical means</selectable>
-                                <selectable>trusted channel</selectable>
+                                <selectable>separate physical networks</selectable>
+                                <selectable>separate logical networks</selectable>
+                                <selectable>trusted channels as defined in FTP_ITC_EXT.1</selectable>
+								<selectable>data encryption using an algorithm specified in FCS_COP.1/UDE</selectable>
                             </selectables>.
                         </title>
-                        <note role="application">Management communications must be separate from user workloads. Administrative 
-							communications—including communications between physical hosts concerning load balancing, audit data,
-							VM startup and shutdown—must be separate from guest operational networks.<h:br></h:br><h:br></h:br>
-                            “Physical means” refers to using separate physical networks for management and operational networks. For
-							example, the machines in the management network are connected by separate cables plugged into separate
-							and dedicated physical ports on each physical host.<h:br></h:br><h:br></h:br>
-                            “Logical means” refers to using separate network cables to connect physical hosts together using
-							general-purpose networking ports. The management and operational networks are kept separate within the
-							hosts using separate virtualized networking components.<h:br></h:br><h:br></h:br>
-							If the ST author selects “trusted channel”, then the protocols used for network separation must be 
-							selected in FTP_ITC_EXT.1.
+                        <note role="application">Management communications must be separate from user workload communications. Administrative 
+							network traffic—including communications between physical hosts concerning load balancing, audit data,
+							VM startup and shutdown—must be isolated from guest operational networks. For purposes of this requirement, 
+							management traffic also includes VMs transmitted over management networks whether for backup, live migration,
+							or deployment.<h:p/>
+                            “Separate physical networks” refers to using separate physical interfaces and cables to isolate management and operational networks from
+							each other.<h:p/>
+                            “Separate logical networks” refers to using logical networking constructs, such as separate IP spaces or virtual networks to isolate traffic
+							across general-purpose networking ports. 
+							Management and operational networks are kept separate within the
+							hosts using separate virtualized networking components.<h:p/>
+                            If the ST author selects “trusted channels...” then the protocols used for network separation must be 
+							selected in FTP_ITC_EXT.1.<h:p/>
+							The ST author selects "data encryption..." if, for example, the TOE encrypts VMs as data blobs for backup, storage,
+							deployment, or live migration, and does not send the data through a tunnel. 
+							If the ST author selects "data encryption..." then the algorithms and key sizes must be selected in FCS_COP.1/UDE.<h:p/>
+							The ST author should select as many mechanisms as apply.
                         </note>
                         <aactivity>
                             <TSS>
                                 The evaluator shall examine the TSS to verify that it describes how management and
-                                operational networks may be separated.
+                                operational traffic is separated.
                             </TSS>
                             <Guidance>
                                 The evaluator shall examine the operational guidance to verify that it details how to configure the 
-                                VS with separate Management and Operational Networks.
+                                VS to keep Management and Operational traffic separate.
                             </Guidance>
                             <Tests>
-                                The evaluator shall configure the management network as documented. If separation is cryptographic or 
-                                logical, then the evaluator shall capture packets on the management network. If Guest network traffic 
-                                is detected, the requirement is not met.
+                                The evaluator shall configure the TOE as documented in the guidance. 
+				    If separation is logical, then the evaluator shall capture packets on the management network. If plaintext Guest network traffic is 
+				    detected, the requirement is not met.<h:p/>
+				If separation uses trusted channels, then the evaluator shall capture packets on the network over which traffic is tunneled. 
+				If plaintext Guest network traffic is detected, the requirement is not met.<h:p/>
+				If data encryption is used, then the evaluator shall capture packets on the network over which the data is sent
+					while a VM or other large data structure is being transmitted. If plaintext VM contents are detected, the
+					requirement is not met.<h:p/>
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -4437,7 +4363,7 @@
 				</ext-comp-def>
 			    <ext-comp-def title="Non-Existence of Disconnected Virtual Devices" fam-id="FPT_DVD_EXT">
 					<fam-behavior>This family defines requirements for ensuring that Guest VMs cannot access
-						the device drivers for disabled or disconnected virtual devices.</fam-behavior>
+						the virtual hardware interfaces disabled or disconnected virtual devices.</fam-behavior>
 				</ext-comp-def>
 			    <ext-comp-def title="Execution Environment Mitigations" fam-id="FPT_EEM_EXT">
 					<fam-behavior>This family defines requirements for the TOE’s compatibility with platform mechanisms that prevent
@@ -4527,22 +4453,24 @@
 					<audit>There are no auditable events foreseen.</audit>
 					<dependencies>FPT_VDP_EXT.1 Virtual Device Parameters</dependencies>
                     <f-element id="fpt-dvd-ext-1e1">
-                        <title>The TSF shall limit a Guest VM’s access to virtual devices to those that are present in the VM’s current
+                        <title>The TSF shall prevent Guest VMs from accessing virtual device interfaces that are not present in the VM’s current
 				virtual hardware configuration.
                         </title>
                         <note role="application">The virtualized hardware abstraction implemented by a particular VS might include the
 				virtualized interfaces for many different devices. Sometimes these devices are not present in a
 				particular instantiation of a VM. The interface for devices not present must not accessible by the
-				VM.<h:br></h:br><h:br></h:br>
-                            Such interfaces include memory buffers and processor I/O ports.<h:br></h:br><h:br></h:br>
-                            The purpose of this requirement is to reduce the attack surface of the VMM by closing unused interfaces.
+				VM.<h:p/>
+                            Such interfaces include memory buffers, PCI Bus interfaces, and processor I/O ports.<h:p/>
+                            The purpose of this requirement is to reduce the attack surface of the VMM by blocking access to unused interfaces.
 			    </note>
                         <aactivity>
                             <Tests>
-                                The evaluator shall connect a device to a VM, then using a device driver running in the guest, scan
-                                the VM's processor I/O ports to ensure that the device's ports are present. (The device's interface 
-                                should be documented in the TSS under FPT_VDP_EXT.1.) The evaluator shall remove the device from the
-                                VM and run the scan again. This requirement is met if the device's I/O ports are no longer present.
+                                The evaluator shall connect a device to a VM, then from within the guest scan the VM's devices
+                                to ensure that the connected device is present--using a device driver or other available means
+				    to scan the VM's I/O ports or PCI Bus interfaces. 
+				    (The device's interface should be documented in the TSS under FPT_VDP_EXT.1.) The evaluator shall
+				    remove the device from the VM and run the scan again. This requirement is met if the device's 
+				    interfaces are no longer present.
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -4680,102 +4608,59 @@
                 </f-component>
 
                 <!-- FPT_HCL_EXT.1 -->
-                <f-component cc-id="fpt_hcl_ext.1" name="Hypercall Controls">
+                <f-component cc-id="fpt_hcl_ext.1" name="Hypercall Functions">
 					<consistency-rationale/>
-					<comp-lev>requires the TSF to implement a Hypercall interface with appropriate access controls
-						to protect Guest VMs from unauthorized access via this interface.</comp-lev>
-						<management>The following actions could be considered for the management functions
-							in FMT:
-							<h:ol type="a">
-								<h:li>Ability to enable/disable VM access to Hypercall functions.</h:li>
-							</h:ol>
-						</management>
+					<comp-lev>requires the TSF to implement appropriate parameter validation
+						to protect the VMM from unauthorized access through a hypercall interface.</comp-lev>
+						<management>No specific management functions are identified.</management>
 					<audit>The following actions should be auditable if FAU_GEN Security
 						audit data generation is included in the PP/ST:
 						<h:ol type="a">
-							<h:li>Attempts to access disabled Hypercall interfaces.</h:li>
-							<h:li>Security policy violations.</h:li>
+							<h:li>Attempts to invoke Hypercall interfaces using illegal input values.</h:li>
+							<h:li>Attempts to invoke Hypercall interfaces when documented preconditions are not met.</h:li>
 						</h:ol>
 					</audit>
 					<dependencies>FMT_SMR.1 Security Roles</dependencies>
-                    <f-element id="fpt-hcl-ext-1e1">
-                        <title>The TSF shall provide a Hypercall interface for Guest VMs to use to invoke functionality provided by 
-				the VMM.
-                        </title>
-                    </f-element>
                     <f-element id="fpt-hcl-ext-1e2">
-                        <title>The TSF shall allow administrators to configure any VM’s Hypercall interface to 
-				disable access to individual functions, all functions, or groups of functions.
-                        </title>
-                    </f-element>
-                    <f-element id="fpt-hcl-ext-1e3">
-                        <title>The TSF shall permit exceptions to the configuration of the following Hypercall interface functions:
-				<assignable>list of functions that are not subject to the configuration controls in FPT_HCL_EXT.1.2</assignable>.
-                        </title>
-                    </f-element>
-                    <f-element id="fpt-hcl-ext-1e4">
-                        <title>The TSF shall validate the parameters passed to the hypercall interface prior to execution of the VMM 
-				functionality exposed by that interface.
+                        <title>The TSF shall validate the parameters passed to Hypercall interfaces prior to execution of the VMM 
+				functionality exposed by each interface.
                         </title>
                         <note role="application">The purpose of this requirement is to help ensure the integrity of the
-                            VMM by defining the attack surface exposed to Guest VMs through Hypercalls,
-                            testing the mechanisms for reducing that attack surface by disabling Hypercalls, and ensuring that
-                            Hypercall parameters are properly validated prior to use by the VMM.<h:br></h:br><h:br></h:br>
-                            A Hypercall interface allows a set of VMM functions to be invoked by software running within a VM. 
-				Hypercall interfaces are used by virtualization-aware VMs to communicate and
-				exchange data with the VMM. For example, a VM could use a hypercall interface to get information about
+                            VMM by protecting the attack surface exposed to untrusted Guest VMs through Hypercalls. <h:p/>
+                            A Hypercall interface allows VMM functionality to be invoked by VM-aware guest software. 
+				For example, a VM could use a hypercall interface to get information about
 				the real world, such as the time of day or the underlying hardware of the host system. A hypercall 
 				could also be used to transfer data between VMs through a copy-paste mechanism. Because hypercall 
-				interfaces expose the VMM to Guest VMs, these interfaces constitute attack surface. In order to
-				minimize attack surface, these interfaces must be limited to the minimum needed to support VM 
-				functionality.<h:br></h:br><h:br></h:br>
-                            For the selection in FPT_HCL_EXT.1.2, the ST author selects the applicable actions that administrators can 
-				perform to configure functions supported by the interface.<h:br></h:br><h:br></h:br>
-                            For the assignment in FPT_HCL_EXT.1.3, the ST author lists the interface functions that cannot be 
-				configured per FPT_HCL_EXT.1.2.<h:br></h:br><h:br></h:br>
-                            A vendor-provided test harness may reduce evaluation time.<h:br></h:br><h:br></h:br>
-                            There is no expectation that the evaluator will need to review source code in order to accomplish the
-                            evaluation activity.  The evaluator documentation review should ensure that there are documented
-                            Hypercall functions in the TSS, that each documented Hypercall function contains the specified
-                            information, and that there are not obvious or publicly known Hypercall functions missing.
+				interfaces expose the VMM to Guest software, these interfaces constitute attack surface.<h:p/>
+                There is no expectation that the evaluator will need to review source code in order to accomplish the
+                evaluation activity.  
                         </note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall examine the TSS or operational guidance to ensure it
-                                documents all Hypercall functions at the level necessary for the evaluator to disable the
-				    functions
-                                and run tests 1 and 2, below. Documentation must include, for each function, how to call the function, 
-				    function
-                                parameters and legal values, configuration settings for enabling/disabling the function, and conditions under
-                                which the function can be disabled. The TSS must also specify those functions that cannot be
-                                disabled.  While there is no expectation that the evaluator will need to examine source code in order to
-                                accomplish this evaluation activity, the evaluator must ensure that there are no obvious or publicly known
-                                Hypercall functions missing from the TSS.
+                                The evaluator shall examine the TSS (or proprietary TSS Annex) to ensure that all hypercall functions are 
+                                documented at the level necessary for the evaluator to run the below test. Documentation for each hypercall
+								interface must include: how to invoke the interface, parameters and legal values, 
+								and any conditions under which the interface can be invoked (e.g., from guest user mode, guest privileged mode,
+								during guest boot only). 
                             </TSS>
                             <Guidance>
-                                The evaluator shall examine the operational guidance to ensure it contains instructions for how to 
-                                configure interface functions per FPT_HCL_EXT.1.2.
+								There is no operational guidance for this component.
                             </Guidance>
                             <Tests>
-                                The evaluator shall perform the following tests:<h:br></h:br><h:br></h:br>
-                                <testlist>
-                                    <test>For each configurable function that meets FPT_HCL_EXT.1.2, the evaluator shall follow the 
-					    operational guidance to enable the function. The evaluator shall then attempt to call
-					    each function from within the VM. If the call is allowed, then the test succeeds.</test>
-                                    <test>For each configurable function that meets FPT_HCL_EXT.1.2, the evaluator shall configure 
-					    the TSF to disable the function. The evaluator shall then attempt to call the function 
-					    from within the VM. If the call is blocked, then the test succeeds.</test>
-                                </testlist>
+                                The evaluator shall perform the following test:<h:p/>
+                                For each hypercall interface documented in the TSS or proprietary TSS Annex, the evaluator shall attempt to  
+					    invoke the function from within the VM using an invalid parameter (if any). If the VMM or VS crashes
+					    or generates an exception, or if no error is returned to the guest, then the test fails. If an error is 
+					    returned to the guest, then the test succeeds.
                             </Tests>
                         </aactivity>
                     </f-element>
 		    <audit-event>
-			<audit-event-descr>Attempts to access disabled hypercall interfaces</audit-event-descr>
-			<audit-event-info>Interface for which access was attempted.</audit-event-info>
+			<audit-event-descr>Invalid parameter to hypercall detected</audit-event-descr>
+			<audit-event-info>Hypercall interface for which access was attempted.</audit-event-info>
 		    </audit-event>
 		    <audit-event>
-			<audit-event-descr>Security policy violations.</audit-event-descr>
-			<audit-event-info>Identifier for the security policy that was violated.</audit-event-info>
+			<audit-event-descr>Hypercall interface invoked when documented preconditions are not met.</audit-event-descr>
 		    </audit-event>
                 </f-component>
 
@@ -4939,6 +4824,7 @@
 						management functions in FMT:
 						<h:ol type="a">
 							<h:li>Ability to configure removable media policy.</h:li>
+							<h:li>Ability to connect/disconnect removable devices to/from a VM.</h:li>
 						</h:ol>
 					</management>
 					<audit>The following actions should be auditable if FAU_GEN Security 
@@ -5001,9 +4887,12 @@
                             <TSS>
                                 The evaluator shall examine the TSS to ensure it describes the association between
                                 the media or devices supported by the TOE and the actions that can occur when
-                                switching information domains. The evaluator shall examine the operational guidance to ensure it
-                                documents how an administrator or user configures the behavior of each media or device.
+                                switching information domains. 
                             </TSS>
+			    <Guidance>
+				The evaluator shall examine the operational guidance to ensure it
+                                documents how an administrator or user configures the behavior of each media or device.
+			    </Guidance>
                             <Tests>
                                 The evaluator shall perform the following test for each listed media or device:
                                 <testlist>
@@ -5156,8 +5045,6 @@
                 <!-- FPT_TUD_EXT.2 -->
                 <!-- Depends on X509 certificates being used for code signing. -->
                 <f-component cc-id="fpt_tud_ext.2" name="Trusted Update Based on Certificates"  status="sel-based">
-<!--                    <selection-depends req="fpt-tud-ext-1e3" ids="sel-tud-digsign-cert" />
-					<selection-depends req="fia-x509-ext-2e1" ids="sel-x5092-signed-updates"/>  -->
                     <depends on-sel="sel-tud-digsign-cert" />
 					<depends on-sel="sel-x5092-signed-updates"/>
 					<consistency-rationale/>
@@ -5209,17 +5096,14 @@
 				Guest OS. The VMM cannot assume that any data coming from a VM is well-formed—even if the virtual
 				device interface is unique to the VS and the data comes from a virtual device
 				driver supplied by the Virtualization Vendor.<h:br></h:br>
-<!--                            FPT_VDP_EXT.1.2 is an attestation requirement. The vendor must attest that parameters passed from a VM
-				to a virtual device interface are not able to degrade or disrupt the functioning of other VMs, the 
-				VMM, or the Platform. The vendor must attest that there are no design or implementation flaws that 
-				permit the above.  -->
                         </note>
                         <aactivity>
                             <TSS>
                                 The evaluator shall examine the TSS to ensure it lists all virtual devices
 								accessible by the guest OS. The TSS, or a separate proprietary document, must
-								also document all virtual device interfaces at the level of I/O ports - including
-								port number(s) (absolute or relative to a base), port name, and a description of
+								also document all virtual device interfaces at the level of I/O ports or PCI Bus 
+				    				interfaces - including
+								port number(s) (absolute or relative to a base), port name, address range, and a description of
 								legal input values.<h:p/>
 								The TSS must also describe the expected behavior of the interface when presented with illegal input 
 								values. This behavior must be deterministic and indicative of parameter checking by the TSF.<h:p/>
@@ -5234,19 +5118,6 @@
 								interface behaves in the manner documented in the TSS. Interfaces that do not
 								have input parameters need not be tested. This test can be performed in conjunction with 
 								the tests for FPT_DVD_EXT.1.
-<!--                                The evaluator ensures that the ST includes the following statement attesting that
-                                parameters passed from a Guest VM to virtual device interfaces are thoroughly
-                                validated, that all values outside the legal values specified in the TSS are
-                                rejected, and that any data passed to the virtual device interfaces is unable to degrade or disrupt
-                                the functioning of other VMs, the VMM, or the Platform:
-                                <h:br></h:br><h:br></h:br>
-                                “Parameters passed from Guest VMs to virtual device interfaces are thoroughly
-                                validated and all illegal values (as specified in the TSS) are rejected.
-                                Additionally, parameters passed from Guest VMs to virtual device interfaces are not 
-                                able to degrade or disrupt the functioning of other VMs, the VMM,
-                                or the Platform. Thorough testing and architectural design reviews have been conducted to ensure the
-                                accuracy of these claims, and there are no design or implementation flaws that bypass or defeat the
-                                security of the virtual device interfaces.”   -->
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -5293,9 +5164,6 @@
 							firmware image as part of a common hardware abstraction, then the update of a single machine’s BIOS 
 							must not be allowed to change the common abstraction. The virtual hardware abstraction is part of the
 							VMM.<h:br></h:br>
-<!--                            This is an attestation requirement. The vendor must attest that software running in a VM is not able to 
-							degrade or disrupt the functioning of other VMs, the VMM, or the Platform. The vendor must attest 
-							that there are no design or implementation flaws that permit the above.  -->
                         </note>
                         <aactivity>
 							<TSS>
@@ -5303,18 +5171,6 @@
 								that guest software cannot degrade or disrupt the functioning of other VMs, the VMM or the platform. And 
 								how the TSF prevents guests from invoking higher-privilege platform code, such as the examples in the note.
 							</TSS>
-							<Guidance>
-								There is no operational guidance for this requirement.
-								</Guidance>
-                            <Tests>
-								There are no tests for this requirement.
-<!--                                The evaluator ensures that the ST includes the following statement attesting that software running
-								in a VM is not able to degrade or disrupt the functioning of other VMs, the VMM, or the
-								Platform:<h:br></h:br><h:br></h:br>
-                                “Software running in a VM is not able to degrade or disrupt the functioning of other VMs, the 
-								VMM, or the Platform. There are no design or implementation flaws that bypass or defeat VM
-								isolation.”   -->
-                            </Tests>
                         </aactivity>
                     </f-element>
 		    <audit-event />
@@ -5340,7 +5196,7 @@
                         <Tests>
                             The evaluator shall configure the TOE to display the advisory warning message 
                             “TEST TEST Warning Message TEST TEST”. The evaluator shall then log out and confirm that the advisory 
-                            message is displayed before logging can occur.
+                            message is displayed before login can occur.
                         </Tests>
                         </aactivity>
                     </f-element>
@@ -5554,11 +5410,9 @@
 
                 <!-- FTP_TRP.1 -->
                 <!-- Included in th ST if "remote" is selected in FMT_MOF_EXT.1.1 in the server or client PP-Module. -->
-		<!-- QQQQ: Need to have a way to reference this selection that is in a module.  Otherwise this does not display properly. -->
                 <f-component cc-id="ftp_trp.1" name="Trusted Path" status="sel-based">
-<!--                    <selection-depends req="fmt-mof-ext-1e1" ids="sel-mof-1e1-remote"/>  -->
-                    <depends on-sel="sel-mof-1e1-remote-client"/> 
-                    <depends on-sel="sel-mof-1e1-remote-server"/> 
+			<depends on-sel="sel-mof-1e1-remote-client"><external-doc ref="client-virt"/></depends> 
+			<depends on-sel="sel-mof-1e1-remote-server"><external-doc ref="server-virt"/></depends>
                     <f-element id="ftp-trp-1e1">
 			    <title>The TSF shall use a <refinement>trusted</refinement> channel as specified in FTP_ITC_EXT.1 to provide 
 				    a <refinement>trusted</refinement> communication
