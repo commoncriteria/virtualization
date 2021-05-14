@@ -4103,8 +4103,12 @@
 							types are validated, either OCSP or CRL must be claimed. If OCSP is not supported the EKU provision 
 							for checking the OCSP Signing purpose is met by default.<h:br/><h:br/>
 							Regardless of the selection of TSF or TOE platform, the validation must result in a trusted root
-							CA certificate in a root store managed by the platform.
-						</note>
+							CA certificate in a root store managed by the platform.<h:p/>
+				OCSP responses are signed using either the certificate’s issuer’s CA certificate or an OCSP certificate
+				issued to an OCSP responder delegated by that issuer to sign OCSP responses. A compliant TOE is able to
+				validate OCSP responses in either case, but the OCSP signing extended key usage purpose is only required
+				to be checked in OCSP certificates.
+			</note>
                     </f-element>
                     <f-element id="fia-x509-ext-1e2">
                         <title>The TSF shall only treat a certificate as a CA certificate if the basicConstraints extension is present 
@@ -4150,8 +4154,8 @@
 										and that the validation function succeeds. The evaluator shall then attempt the test with
 										a certificate that will be revoked (for each method chosen in the selection) and verify
 										that the validation function fails.</test>
-									<test> If any OCSP option is selected, the evaluator shall configure the OCSP server or use a
-										man-in-the-middle tool to present a certificate that does not have the OCSP signing purpose
+									<test> If any OCSP option is selected, the evaluator shall present a delegated OCSP certificate 
+										that does not have the OCSP signing purpose
 										and verify that validation of the OCSP response fails. If CRL is selected, the evaluator
 										shall configure the CA to sign a CRL with a certificate that does not have the cRLsign key 
 										usage bit set and verify that validation of the CRL fails.</test>
@@ -4216,7 +4220,8 @@
 							selected in FTP_ITC_EXT.1, or if "authentication based on X.509 certificates"
 							is selected in FIA_UAU.5.1.<h:p/>
 							This SFR must also be included in the ST if X.509 certificate-based authentication is used for "other uses"
-							as listed in the assignment in FIA_X509_EXT.2.1.</note>
+							as listed in the assignment in FIA_X509_EXT.2.1.
+			    </note>
 					</f-element>
                     <f-element id="fia-x509-ext-2e2">
                         <title>When the TSF cannot establish a connection to determine the validity of a certificate, the TSF shall
