@@ -1039,7 +1039,7 @@
 		    
                 
                 <!-- FAU_SAA.1 -->
-                <f-component cc-id="fau_saa.1" name="Security Audit Analysis"  status="optional">
+                <f-component cc-id="fau_saa.1" name="Potential Violation Analysis"  status="optional">
                     <f-element id="fau-saa-1e1">
                         <title>The TSF shall be able to apply a set of rules in monitoring the audited events and based upon these
 							rules indicate a potential violation of the enforcement of the SFRs.
@@ -1048,8 +1048,9 @@
                     <f-element id="fau-saa-1e2">
                         <title>The TSF shall enforce the following rules for monitoring audited events:
                             <h:ol type="a">
-                                <h:li>accumulation or combination of <assignable>subset of defined auditable events</assignable> known to indicate a potential security violation</h:li>
-                                <h:li><assignable>any other rules</assignable></h:li>
+                                <h:li>Accumulation or combination of <assignable>subset of defined auditable events</assignable> known to indicate a
+					potential security violation;</h:li>
+                                <h:li><assignable>any other rules</assignable>.</h:li>
                             </h:ol>
                         </title>
                         <note role="application">The potential security violation described in FAU_SAA.1 can be used as a trigger 
@@ -1279,8 +1280,8 @@
                                 <selectable>
                                     ECC schemes using [“NIST curves” P-256, P-384, and
                                     <selectables>
-                                        <selectable> P-521 </selectable>
-                                        <selectable> no other curves </selectable>
+                                        <selectable>P-521</selectable>
+                                        <selectable>no other curves</selectable>
                                     </selectables>
                                     that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Appendix B.4]
                                     </selectable>
@@ -1345,24 +1346,24 @@
 								good implementation.<h:br></h:br><h:br></h:br>
                                 <h:b>Key Generation for Elliptic Curve Cryptography (ECC)</h:b><h:br></h:br><h:br></h:br>
                                 <h:p> FIPS 186-4 ECC Key Generation Test</h:p><h:br></h:br><h:br></h:br>
-                                For each supported NIST curve, i.e., P-256, P-384 and P-521, the evaluator shall require the
+                                For each supported NIST curve (i.e., P-256, P-384 and P-521) the evaluator shall require the
 								implementation under test (IUT) to generate 10 private/public key pairs. The private key shall
 								be generated using an approved random bit generator (RBG). To determine correctness, the evaluator
 								shall submit the generated key pairs to the public key verification (PKV) function of a known
 								good implementation.
                                 <h:br/>
                                 <h:p>FIPS 186-4 Public Key Verification (PKV) Test</h:p>
-                                For each supported NIST curve, i.e., P-256, P-384 and P-521, the evaluator shall generate 10
+                                For each supported NIST curve (i.e., P-256, P-384 and P-521) the evaluator shall generate 10
 								private/public key pairs using the key generation function of a known good implementation and
 								modify five of the public key values so that they are incorrect, leaving five values unchanged
 								(i.e., correct). The evaluator shall obtain in response a set of 10 PASS/FAIL values.<h:br></h:br><h:br></h:br>
-                                <h:b>Key Generation for Finite-Field Cryptography (FFC)</h:b><h:br></h:br><h:br></h:br>
+                                <h:b>Key Generation for Finite-Field Cryptography (FFC)</h:b><h:p/>
                                 The evaluator shall verify the implementation of the Parameters Generation and the Key Generation for
 								FFC by the TOE using the Parameter Generation and Key Generation test. This test verifies the 
 								ability of the TSF to correctly produce values for the field prime p, the cryptographic prime q 
 								(dividing p-1), the cryptographic group generator g, and the calculation of the private key x and 
 								public key y.<h:br></h:br><h:br></h:br>
-											The Parameter generation specifies 2 ways (or methods) to generate the cryptographic prime q and the
+											The Parameter generation specifies two ways (or methods) to generate the cryptographic prime q and the
 								field prime p:<h:br></h:br><h:br></h:br>
                                 <h:ul>
                                     <h:li>Primes q and p shall both be provable primes</h:li>
@@ -1373,7 +1374,7 @@
                                     <h:li>Generator g constructed through a verifiable process</h:li>
                                     <h:li>Generator g constructed through an unverifiable process.</h:li>
                                 </h:ul>
-                                The Key generation specifies 2 ways to generate the private key x:
+                                The Key generation specifies two ways to generate the private key x:
                                 <h:ul>
                                     <h:li>len(q) bit output of RBG where  1 &#2264; x &#2264; q-1 <!-- the special characters 1 <=x <= q-1 --></h:li>
                                     <h:li>len(q) + 64 bit output of RBG, followed by a mod q-1 operation where 1 &#2264; x &#2264; q-1 <!-- 1<= x<=q-1. --></h:li>
@@ -1409,7 +1410,7 @@
 				accordance with a specified cryptographic key <refinement>establishment</refinement> method:
                             <selectables linebreak="yes">
                                 <selectable>RSA-based key establishment schemes that meets the following: RSAES-PKCS1-v1_5 as specified in
-					Section 7.2 of RFC 8017, “Public-Key Cryptography Standards (PKCS) #1: RSA Cryptography Specifications Version 2.2</selectable>
+					Section 7.2 of RFC 8017, “Public-Key Cryptography Standards (PKCS) #1: RSA Cryptography Specifications Version 2.2"</selectable>
 				<selectable>Elliptic curve-based key establishment schemes that meets the following: NIST Special Publication 800-56A Revision 3,
 					“Recommendation for Pair-Wise Key Establishment Schemes Using Discrete Logarithm Cryptography”</selectable>
 				<selectable>Finite field-based key establishment schemes that meets the following: NIST Special Publication 800-56A Revision 3,
@@ -1446,15 +1447,15 @@
 					confirmation have been implemented correctly, using the test procedures described below. This includes
 					the parsing of the DKM, the generation of MACdata and the calculation of MACtag.<h:br></h:br><h:br></h:br>
                                 <h:i>Function Test</h:i><h:br></h:br><h:br></h:br>
-                                The Function test verifies the ability of the to implement the key agreement schemes correctly. To conduct 
+                                The Function test verifies the ability of the TOE to implement the key agreement schemes correctly. To conduct 
 					this test, the evaluator shall generate or obtain test vectors from a known good implementation of 
 					the TOE supported schemes. For each supported key agreement scheme-key agreement role combination, KDF
 					type, and, if supported, key confirmation role- key confirmation type combination, the tester shall 
 					generate 10 sets of test vectors. The data set consists of one set of domain parameter values (FFC) or 
-					the NIST approved curve (ECC) per 10 sets of public keys. These keys are static, ephemeral or both
+					the NIST approved curve (ECC) per 10 sets of public keys. These keys are static, ephemeral, or both
 					depending on the scheme being tested.<h:br></h:br><h:br></h:br>
                                 The evaluator shall obtain the DKM, the corresponding TOE’s public keys (static and ephemeral), the
-					MAC tags, and any inputs used in the KDF, such as the Other Information field OI and TOE id fields.<h:br></h:br><h:br></h:br>
+					MAC tags, and any inputs used in the KDF, such as the Other Information field OI and TOE ID fields.<h:br></h:br><h:br></h:br>
                                 If the TOE does not use a KDF defined in SP 800-56A, the evaluator shall obtain only the public keys 
 					and the hashed value of the shared secret.<h:br></h:br><h:br></h:br>
                                 The evaluator shall verify the correctness of the TSF’s implementation of a given scheme by using a 
@@ -1469,7 +1470,7 @@
 					implementation to determine which errors the TOE should be able to recognize. The evaluator
 					generates a set of 24 (FFC) or 30 (ECC) test vectors consisting of data sets including domain
 					parameter values or NIST approved curves, the evaluator’s public keys, the TOE’s public/private
-					key pairs, MACTag, and any inputs used in the KDF, such as the other info and TOE id fields.<h:br></h:br><h:br></h:br>
+					key pairs, MACTag, and any inputs used in the KDF, such as the other info and TOE ID fields.<h:br></h:br><h:br></h:br>
                                 The evaluator shall inject an error in some of the test vectors to test that the TOE recognizes
 					invalid key agreement results caused by the following fields being incorrect: the shared secret
 					value Z, the DKM, the other information field OI, the data to be MACed, or the generated MACTag.
@@ -1651,12 +1652,12 @@
                             </Guidance>
                             <Tests>
 								<h:b><h:u>SHA-1 and SHA-2 Tests</h:u></h:b>
-                                The TSF hashing functions can be implemented in one of two modes. The first mode is the byteoriented
+                                The TSF hashing functions can be implemented in one of two modes. The first mode is the byte-oriented
 								mode. In this mode the TSF only hashes messages that are an integral number of bytes in length;
 								i.e., the length (in bits) of the message to be hashed is divisible by 8. The second mode is the
-								bitoriented mode. In this mode the TSF hashes messages of arbitrary length. As there are different
-								tests for each mode, an indication is given in the following sections for the bitoriented vs. the
-								byteoriented testmacs.
+								bit-oriented mode. In this mode the TSF hashes messages of arbitrary length. As there are different
+								tests for each mode, an indication is given in the following sections for the bit-oriented vs. the
+								byte-oriented testmacs.
                                 <h:br></h:br><h:br></h:br>
                                 The evaluator shall perform all of the following tests for each hash algorithm implemented by the TSF
 								and used to satisfy the requirements of this PP.
@@ -1744,7 +1745,7 @@
 								the hash function to be tested. This seed is used by a pseudorandom function to generate 100,000 
 								message digests. One hundred of the digests (every 1000th digest) are recorded as checkpoints. The
 								TOE then uses the same procedure to generate the same 100,000 message digests and 100 checkpoint
-								values. The evaluators then compare the results generated ensure that the correct result is
+								values. The evaluators then compare the results generated to ensure that the correct result is
 								produced when the messages are generated by the TSF.<h:br/><h:br/>
                             </Tests>
                         </aactivity>
@@ -1752,10 +1753,10 @@
 					<audit-event />
                 </f-component>
 		    
-                <!-- FCS_COP.1/KeyHash (formerly FCS_COP.1(4)) -->
+                <!-- FCS_COP.1/KeyedHash (formerly FCS_COP.1(4)) -->
 				<!-- Added SHA-3 hashes 20190919 -->
-                <f-component cc-id="fcs_cop.1" iteration="KeyHash" name="Cryptographic Operation (Keyed Hash Algorithms)">
-                    <f-element id="fcs-cop-1e1-keyhash">
+                <f-component cc-id="fcs_cop.1" iteration="KeyedHash" name="Cryptographic Operation (Keyed Hash Algorithms)">
+                    <f-element id="fcs-cop-1e1-keyedhash">
                         <title>The TSF shall perform [<h:i>keyed-hash message authentication</h:i>] in accordance with a specified
 							cryptographic algorithm
                             <selectables>
@@ -1778,7 +1779,7 @@
                                 <selectable>512 bits</selectable>
                             </selectables>
                             that meet the following:
-                            [<h:b><h:i>FIPS Pub 198-1, "The Keyed-Hash Message Authentication Code, and FIPS Pub 180-4, “Secure Hash
+                            [<h:b><h:i>FIPS Pub 198-1, "The Keyed-Hash Message Authentication Code," and FIPS Pub 180-4, “Secure Hash
 							Standard"</h:i></h:b>].
                         </title>
                         <note role="application">The selection in this requirement must be consistent with the key size specified for
@@ -1798,36 +1799,36 @@
 								tags with the same key and IV using a known good implementation.
                             </Tests>
                         </aactivity>
-			<rule id="keyhash-alg-match-sha-1">
-                <description>If "<h:i><xref to="sel-hmac-sha-1"/></h:i>" is selected in FCS_COP.1/KeyHash 
-						  then "<h:i><xref to="sel-hash-sha-1"/></h:i>" must be selected in FCS_COP.1/Hash.</description>
+			<rule id="keyedhash-alg-match-sha-1">
+                <description>If "<h:i><xref to="sel-hmac-sha-1"/></h:i>" is selected in FCS_COP.1/KeyedHash 
+						  then "<h:i><xref to="sel-hash-sha-1"/></h:i>" must be selected in FCS_COP.1.1/Hash.</description>
                         <if><ref-id>sel-hmac-sha-1</ref-id></if><then><ref-id>sel-hash-sha-1</ref-id></then></rule>
-			<rule id="keyhash-alg-match-sha-256">
-			  <description>If "<h:i><xref to="sel-hmac-sha-256"/></h:i>" is selected in FCS_COP.1/KeyHash then "<h:i><xref to="sel-hash-sha-256"/></h:i>" 
+			<rule id="keyedhash-alg-match-sha-256">
+			  <description>If "<h:i><xref to="sel-hmac-sha-256"/></h:i>" is selected in FCS_COP.1/KeyedHash then "<h:i><xref to="sel-hash-sha-256"/></h:i>" 
 						must be selected in FCS_COP.1/Hash.</description>
 				<if><ref-id>sel-hmac-sha-256</ref-id></if><then><ref-id>sel-hash-sha-256</ref-id></then></rule>
-			<rule id="keyhash-alg-match-sha-384">
-			  <description>If "<h:i><xref to="sel-hmac-sha-384"/></h:i>" is selected in FCS_COP.1/KeyHash then "<h:i><xref to="sel-hash-sha-384"/></h:i>"
+			<rule id="keyedhash-alg-match-sha-384">
+			  <description>If "<h:i><xref to="sel-hmac-sha-384"/></h:i>" is selected in FCS_COP.1/KeyedHash then "<h:i><xref to="sel-hash-sha-384"/></h:i>"
                           must be selected in FCS_COP.1/Hash.</description>
 				<if><ref-id>sel-hmac-sha-384</ref-id></if><then><ref-id>sel-hash-sha-384</ref-id></then></rule>
-			<rule id="keyhash-alg-match-sha-512">
-			  <description>If "<h:i><xref to="sel-hmac-sha-512"/></h:i>" is selected in FCS_COP.1/KeyHash then "<h:i><xref to="sel-hash-sha-512"/></h:i>"
+			<rule id="keyedhash-alg-match-sha-512">
+			  <description>If "<h:i><xref to="sel-hmac-sha-512"/></h:i>" is selected in FCS_COP.1/KeyedHash then "<h:i><xref to="sel-hash-sha-512"/></h:i>"
                           must be selected in FCS_COP.1/Hash.</description>
 				<if><ref-id>sel-hmac-sha-512</ref-id></if><then><ref-id>sel-hash-sha-512</ref-id></then></rule>
-			<rule id="keyhash-alg-match-sha-3-224">
-			  <description>If "<h:i><xref to="sel-hmac-sha-3-224"/></h:i>" is selected in FCS_COP.1/KeyHash then "<h:i><xref to="sel-hash-sha-3-224"/></h:i>"
+			<rule id="keyedhash-alg-match-sha-3-224">
+			  <description>If "<h:i><xref to="sel-hmac-sha-3-224"/></h:i>" is selected in FCS_COP.1/KeyedHash then "<h:i><xref to="sel-hash-sha-3-224"/></h:i>"
                           must be selected in FCS_COP.1/Hash.</description>
 			<if><ref-id>sel-hmac-sha-3-224</ref-id></if><then><ref-id>sel-hash-sha-3-224</ref-id></then></rule>
-			<rule id="keyhash-alg-match-sha-3-256">
-			  <description>If "<h:i><xref to="sel-hmac-sha-3-256"/></h:i>" is selected in FCS_COP.1/KeyHash then "<h:i><xref to="sel-hash-sha-3-256"/></h:i>"
+			<rule id="keyedhash-alg-match-sha-3-256">
+			  <description>If "<h:i><xref to="sel-hmac-sha-3-256"/></h:i>" is selected in FCS_COP.1/KeyedHash then "<h:i><xref to="sel-hash-sha-3-256"/></h:i>"
                           must be selected in FCS_COP.1/Hash.</description>
 			<if><ref-id>sel-hmac-sha-3-256</ref-id></if><then><ref-id>sel-hash-sha-3-256</ref-id></then></rule>
-			<rule id="keyhash-alg-match-sha-3-384">
-			  <description>If "<h:i><xref to="sel-hmac-sha-3-384"/></h:i>" is selected in FCS_COP.1/KeyHash then "<h:i><xref to="sel-hash-sha-3-384"/></h:i>"
+			<rule id="keyedhash-alg-match-sha-3-384">
+			  <description>If "<h:i><xref to="sel-hmac-sha-3-384"/></h:i>" is selected in FCS_COP.1/KeyedHash then "<h:i><xref to="sel-hash-sha-3-384"/></h:i>"
                           must be selected in FCS_COP.1/Hash.</description>
 				<if><ref-id>sel-hmac-sha-3-384</ref-id></if><then><ref-id>sel-hash-sha-3-384</ref-id></then></rule>
-			<rule id="keyhash-alg-match-sha-3-512">
-			  <description>If "<h:i><xref to="sel-hmac-sha-3-512"/></h:i>" is selected in FCS_COP.1/KeyHash then "<h:i><xref to="sel-hash-sha-3-512"/></h:i>"
+			<rule id="keyedhash-alg-match-sha-3-512">
+			  <description>If "<h:i><xref to="sel-hmac-sha-3-512"/></h:i>" is selected in FCS_COP.1/KeyedHash then "<h:i><xref to="sel-hash-sha-3-512"/></h:i>"
                           must be selected in FCS_COP.1/Hash.</description>
 				<if><ref-id>sel-hmac-sha-3-512</ref-id></if><then><ref-id>sel-hash-sha-3-512</ref-id></then></rule>
                     </f-element>
@@ -2088,15 +2089,15 @@
 								a known good implementation.<h:br></h:br><h:br></h:br>
 								<h:b><h:u>XTS-AES Test</h:u></h:b><h:br></h:br><h:br></h:br>
                                 The evaluator shall test the encrypt functionality of XTS-AES for each combination of the following
-								input parameter lengths:<h:br></h:br><h:br></h:br>
+								input parameter lengths:<h:p/>
                                 <h:ul>
                                     <h:li>256 bit (for AES-128) and 512 bit (for AES-256) keys</h:li>
-                                    <h:li></h:li><h:b>Three data unit (i.e., plaintext) lengths.</h:b> One of the data unit lengths 
+                                    <h:li><h:b>Three data unit (i.e., plaintext) lengths.</h:b> One of the data unit lengths 
 								shall be a non-zero integer multiple of 128 bits, if supported. One of the data unit lengths
 								shall be an integer multiple of 128 bits, if supported. The third data unit length shall be 
 								either the longest supported data unit length or 2<h:sup>16</h:sup> bits, whichever is
-								smaller.
-                                </h:ul><h:br></h:br><h:br></h:br>
+								smaller.</h:li>
+                                </h:ul><h:p/>
                                 using a set of 100 (key, plaintext and 128-bit random tweak value) 3-tuples and obtain the ciphertext
 								that results from XTS-AES encrypt.<h:br></h:br><h:br></h:br>
                                 The evaluator may supply a data unit sequence number instead of the tweak value if the implementation
@@ -2260,7 +2261,7 @@
                
                
                 <!-- FCS_ENT_EXT.1 -->
-                <f-component cc-id="fcs_ent_ext.1" name="Extended: Entropy for Virtual Machines">
+                <f-component cc-id="fcs_ent_ext.1" name="Entropy for Virtual Machines">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to provide entropy data to VMs in a specified manner.</comp-lev>
 					<management>No specific management functions are identified.</management>
@@ -2306,7 +2307,7 @@
                         </note>
                          <aactivity>
                             <TSS>
-                                The evaluator shall verify that the TSS describes how the TOE provides entropy to Guest VM"s, and
+                                The evaluator shall verify that the TSS describes how the TOE provides entropy to Guest VMs, and
 								how to access the interface to acquire entropy or random numbers. The evaluator shall verify that
 								the TSS describes the mechanisms for ensuring that one VM does not affect the entropy acquired by 
 								another. 
@@ -2540,7 +2541,7 @@
 			 </note>
                         <aactivity level="element">
                             <TSS>
-                                The evaluator checks the TSS to ensure it states that am IPsec VPN can be 
+                                The evaluator checks the TSS to ensure it states that an IPsec VPN can be 
                                 established to operate in tunnel mode or transport mode (as selected).<h:p/>
                             </TSS>
                             <Guidance>
@@ -2615,7 +2616,7 @@
 			        AES-GCM-256 are implemented. If the "ST" author has selected either 
                                 AES-CBC-128 or AES-CBC-256 in the requirement, then the evaluator verifies the
                                 TSS describes these as well. In addition, the evaluator ensures that the 
-                                SHA-based HMAC algorithm conforms to the algorithms specified in FCS_COP.1/KeyHash Cryptographic 
+                                SHA-based HMAC algorithm conforms to the algorithms specified in FCS_COP.1/KeyedHash Cryptographic 
                                 Operations (Keyed Hash Algorithms).<h:p/>
                             </TSS>
                             <Guidance>
@@ -3110,7 +3111,7 @@
 				the symmetric key) of the algorithms that are allowed for the IKE and ESP exchanges. The TSS shall also
 				describe the checks that are done when negotiating IKEv1 Phase 2 and IKEv2 CHILD_SA suites to ensure
 				that the strength (in terms of the number of bits of key in the symmetric algorithm) of the negotiated
-				algorithm is less than or equal to that of the IKE SA this is protecting the negotiation.
+				algorithm is less than or equal to that of the IKE SA that is protecting the negotiation.
                           </TSS>
 			    <Guidance>
 				    There are no AGD EAs for this requirement.
@@ -3195,14 +3196,13 @@
                         </note>
                         <aactivity>
                             Documentation shall be produced—and the evaluator shall perform the activities—in accordance with 
-                            Appendix D, Entropy Documentation and Assessment.<h:br></h:br><h:br></h:br>
                             <Tests>
                                 The evaluator shall also perform the following tests, depending on the standard to which the RBG
 								conforms.<h:br></h:br><h:br></h:br>
                                 The evaluator shall perform 15 trials for the RBG implementation. If the RBG is configurable, the 
 								evaluator shall perform 15 trials for each configuration. The evaluator shall also confirm that
 								the operational guidance contains appropriate instructions for configuring the RBG functionality.<h:br></h:br><h:br></h:br>
-                                If the RBG has prediction resistance enabled, each trial consists of (1) instantiate drbg, (2)
+                                If the RBG has prediction resistance enabled, each trial consists of (1) instantiate DRBG, (2)
 								generate the first block of random bits (3) generate a second block of random bits (4) 
 								uninstantiate. The evaluator verifies that the second block of random bits is the expected value. 
 								The evaluator shall generate eight input values for each trial. The first is a count (0 – 14). The
@@ -3211,13 +3211,13 @@
 								additional input and entropy input for the second call to generate. These values are randomly
 								generated. “generate one block of random bits” means to generate random bits with number of 
 								returned bits equal to the Output Block Length (as defined in NIST SP 800-90A).<h:br></h:br><h:br></h:br>
-                                If the RBG does not have prediction resistance, each trial consists of (1) instantiate drbg, (2) 
+                                If the RBG does not have prediction resistance, each trial consists of (1) instantiate DRBG, (2) 
 								generate the first block of random bits (3) reseed, (4) generate a second block of random bits (5)
 								uninstantiate. The evaluator verifies that the second block of random bits is the expected value.
 								The evaluator shall generate eight input values for each trial. The first is a count (0 – 14). The
 								next three are entropy input, nonce, and personalization string for the instantiate operation. The
 								fifth value is additional input to the first call to generate. The sixth and seventh are additional
-								input and entropy input to the call to re-seed. The final value is additional input to the second
+								input and entropy input to the call to reseed. The final value is additional input to the second
 								generate call.<h:br></h:br><h:br></h:br>
                                 The following paragraphs contain more information on some of the input values to be generated/selected 
 								by the evaluator.<h:br></h:br><h:br></h:br>
@@ -3227,7 +3227,7 @@
 										length is one-half the seed length.
 										Personalization string: The length of the personalization string must be &lt;= seed length.
 										If the implementation only supports one personalization string length, then the same 
-										length can be used for both values. If more than one string length is support, the
+										length can be used for both values. If more than one string length is supported, the
 										evaluator shall use personalization strings of two different lengths. If the implementation
 										does not use a personalization string, no value needs to be supplied.</h:li>
                                     <h:li>Additional input: the additional input bit lengths have the same defaults and 
@@ -3237,7 +3237,7 @@
                         </aactivity>
                     </f-element>
                     <audit-event>
-						<audit-event-descr>Failure of the randomization process</audit-event-descr>
+						<audit-event-descr>Failure of the randomization process.</audit-event-descr>
 					</audit-event>
                 </f-component>		
             </section>
@@ -4647,7 +4647,7 @@
                         </aactivity>
                     </f-element>
 		    <audit-event>
-			<audit-event-descr>Invalid parameter to hypercall detected</audit-event-descr>
+			<audit-event-descr>Invalid parameter to hypercall detected.</audit-event-descr>
 			<audit-event-info>Hypercall interface for which access was attempted.</audit-event-info>
 		    </audit-event>
 		    <audit-event>
@@ -4898,12 +4898,12 @@
 		    <audit-event>
 			<audit-event-descr>Connection/disconnection of removable media or device to/from a VM.</audit-event-descr>
                         <audit-event-info>VM Identifier, Removable media/device identifier, event description or identifier
-				(connect/disconnect, ejection/insertion, etc.)</audit-event-info>
+				(connect/disconnect, ejection/insertion, etc.).</audit-event-info>
 		    </audit-event>
 		    <audit-event>
 			<audit-event-descr>Ejection/insertion of removable media or device from/to an already connected VM.</audit-event-descr>
                         <audit-event-info>VM Identifier, Removable media/device identifier, event description or identifier 
-				(connect/disconnect, ejection/insertion, etc.)</audit-event-info>
+				(connect/disconnect, ejection/insertion, etc.).</audit-event-info>
 		    </audit-event>
                 </f-component>
 
