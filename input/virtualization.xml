@@ -3349,11 +3349,11 @@
                         <note role="application">
 				For purposes of this requirement, physical platform resources are divided into three categories: 
 				<h:ol a="1">
-					<h:li>those to which Guest OS access is configurable and moderated by the VMM,</h:li>
+					<h:li>those to which Guest OS access is configurable and moderated by the VMM</h:li>
 					<h:li>those to which the Guest OS is never allowed to have direct access, and</h:li>
 					<h:li>those to which the Guest OS is always allowed to have direct access.</h:li>
 				</h:ol>
-                            	For element 1, The ST author lists the physical platform resources that can be configured for Guest VM access by 
+                            	For element 1, the ST author lists the physical platform resources that can be configured for Guest VM access by 
 				an administrator. For element 2, the ST author lists the physical platform resources to which 
 				Guest VMs may never be allowed direct access. If there are no such resources, the ST author selects "no physical platform 
 				resources." Likewise, any resources to which all Guest VMs automatically have access to are to be listed in 
@@ -3367,11 +3367,11 @@
                                 how each physical platform resource that is controllable (that is, listed in the assignment
                                 statement in the first element) is identified to an Administrator.<h:p/> 
 				The evaluator shall ensure that the TSS describes how the Guest VM is associated with each 
-                                physical resources, and how other Guest VMs cannot access a physical resource
+                                physical resource, and how other Guest VMs cannot access a physical resource
                                 without being granted explicit access. For TOEs that implement a robust 
                                 interface (other than just "allow access" or "deny access"), the evaluator shall ensure that the
                                 TSS describes the possible operations or modes of access between a Guest 
-                                VMs and physical platform resources.<h:br></h:br><h:br></h:br>
+                                VM's and physical platform resources.<h:br></h:br><h:br></h:br>
                                 If physical resources are listed in the second element, the evaluator shall examine the 
                                 TSS and operational guidance to determine that there appears to be no way to
                                 configure those resources for access by a Guest VM. The evaluator shall
@@ -3627,7 +3627,7 @@
 						FMT_SMR.1 Security Roles</dependencies>
                     <f-element id="fdp-vnc-ext-1e1">
                         <title>The TSF shall allow Administrators to configure virtual networking components to connect VMs to each
-							other, and to physical networks.
+							other and to physical networks.
                         </title>
                     </f-element>
                     <f-element id="fdp-vnc-ext-1e2">
@@ -3743,19 +3743,19 @@
                         <title>When the defined number of unsuccessful authentication attempts has been met, the TSF
                             shall:
                             <selectables>
-                                <selectable>prevent the offending Administrator from successfully establishing remote session using
+                                <selectable>prevent the offending Administrator from successfully establishing a remote session using
                                     any authentication method that involves a password or PIN until
                                     <assignable>action to unlock</assignable> is taken by an Administrator</selectable>
-                                <selectable>prevent the offending Administrator from successfully establishing remote session using
-                                    any authentication method that involves a password or PIN until an Administrator defined time
+                                <selectable>prevent the offending Administrator from successfully establishing a remote session using
+                                    any authentication method that involves a password or PIN until an Administrator-defined time
                                     period has elapsed</selectable>
                             </selectables>
                         </title>
                         <note role="application">The action to be taken shall be populated in the selection of the ST
-                            and defined in the Administrator guidance.<h:br></h:br><h:br></h:br>
+                            and defined in the Administrator guidance.<h:p/>
                             This requirement applies to a defined number of successive unsuccessful remote password or PIN-based
                             authentication attempts and does not apply to local Administrative access. Compliant TOEs may optionally
-                            include cryptographic authentication failures and local authentication failures in the number of
+                            include cryptographic and local authentication failures in the number of
                             unsuccessful authentication attempts.
                         </note>
                         <aactivity>
@@ -3840,13 +3840,12 @@
 							passwords” refers to passwords used by administrators to gain access to the Management Subsystem.</note>
                         <aactivity>
                             <Guidance>
-                                The evaluator shall examine the operational guideance to determine that it provides guidance to
+                                The evaluator shall examine the operational guidance to determine that it provides guidance to
                                 security administrators in the composition of strong passwords, and that it provides instructions
                                 on setting the minimum password length. 
                             </Guidance>
                             <Tests>
-                                The evaluator shall also perform the following tests. 
-                                Note that one or more of these tests may be performed with a single test case.
+                                The evaluator shall also perform the following test. 
                             <testlist>
                                 <test>The evaluator shall compose passwords that either meet the requirements, or fail to meet the 
 									requirements, in some way. For each password, the evaluator shall verify that the TOE supports
@@ -4134,7 +4133,7 @@
 										function failing.</test>
                                     <test>The evaluator shall test that the TOE can properly handle revoked certificates – conditional
 										on whether CRL, OCSP, OCSP stapling, or OCSP multi-stapling is selected; if multiple
-										methods are selected, and then a test is performed for each method. The evaluator has to 
+										methods are selected, then a test is performed for each method. The evaluator has to 
 										only test one up in the trust chain (future revisions may require to ensure the validation
 										is done up the entire chain). The evaluator shall ensure that a valid certificate is used,
 										and that the validation function succeeds. The evaluator shall then attempt the test with
@@ -4238,8 +4237,8 @@
                                 can use the certificates.<h:br></h:br><h:br></h:br>
                                 The evaluator shall examine the TSS to confirm that it describes the behavior of the
                                 TOE when a connection cannot be established during the validity check of a
-                                certificate used in establishing a trusted channel. If the requirement that the administrator is able
-                                to specify the default action, then the evaluator shall ensure that the operational guidance contains
+                                certificate used in establishing a trusted channel. If the requirement states that the administrator  
+                                specifies the default action, then the evaluator shall ensure that the operational guidance contains
                                 instructions on how this configuration action is performed.
                             </TSS>
                             <Tests>
@@ -4251,8 +4250,8 @@
 										then load a certificate or certificates needed to validate the certificate to be used in
 										the function, and demonstrate that the function succeeds. The evaluator then shall delete
 										one of the certificates, and show that the function fails.</test>
-                                    <test>The evaluator shall demonstrate that using a valid certificate that requires certificate 
-										validation checking to be performed in at least some part by communicating with a non-TOE
+                                    <test>The evaluator shall demonstrate that using a valid certificate requires that certificate 
+										validation checking be performed in at least some part by communicating with a non-TOE
 										IT entity. The evaluator shall then manipulate the environment so that the TOE is unable
 										to verify the validity of the certificate, and observe that the action selected in
 										FIA_X509_EXT.2.2 is performed. If the selected action is administrator-configurable, then
@@ -4449,7 +4448,7 @@
                         </title>
                         <note role="application">The virtualized hardware abstraction implemented by a particular VS might include the
 				virtualized interfaces for many different devices. Sometimes these devices are not present in a
-				particular instantiation of a VM. The interface for devices not present must not accessible by the
+				particular instantiation of a VM. The interface for devices not present must not be accessible by the
 				VM.<h:p/>
                             Such interfaces include memory buffers, PCI Bus interfaces, and processor I/O ports.<h:p/>
                             The purpose of this requirement is to reduce the attack surface of the VMM by blocking access to unused interfaces.
@@ -4781,7 +4780,7 @@
 				and reporting measurements.<h:br></h:br><h:br></h:br>
                             Platforms with a root of trust for measurement (RTM) should initiate the measured launch process. This may 
 				include core BIOS or the chipset. The chipset is the preferred RTM, but core BIOS or other firmware is
-				acceptable. In system without a traditional RTM, the first component that boots would be considered
+				acceptable. In a system without a traditional RTM, the first component that boots would be considered
 				the RTM, this is not preferred.
                         </note>
                         <aactivity>
@@ -4792,7 +4791,7 @@
                                 the Management Subsystem.
                             </TSS>
                             <Tests>
-                                The evaluator shall perform the following tests:<h:br></h:br><h:br></h:br>
+                                The evaluator shall perform the following test:<h:p/>
                                 <testlist>
                                     <test>The evaluator shall start the VS, login as an Administrator, and verify that the measurements for the specified components are viewable in the Management Subsystem.</test>
                               </testlist>
@@ -4813,10 +4812,10 @@
 						domains.</comp-lev>
 					<management>The following actions could be considered for the 
 						management functions in FMT:
-						<h:ol type="a">
+						<h:ul>
 							<h:li>Ability to configure removable media policy.</h:li>
 							<h:li>Ability to connect/disconnect removable devices to/from a VM.</h:li>
-						</h:ol>
+						</h:ul>
 					</management>
 					<audit>The following actions should be auditable if FAU_GEN Security 
 						audit data generation is included in the PP/ST:
@@ -4872,7 +4871,7 @@
                             For clarity, the ST author may iterate this requirement so that like actions are grouped with the 
 				removable media or devices to which they apply (e.g., the first iteration could contain all devices
 				for which media is ejected on a switch; the second iteration could contain all devices for which 
-				access is prevented on switch, etc.).
+				access is prevented on a switch, etc.).
                         </note>
                         <aactivity>
                             <TSS>
@@ -5143,18 +5142,18 @@
                             FPT_VIV_EXT.1.2 addresses several specific mechanisms that must not be permitted to bypass the VMM and
 							invoke privileged code on the Platform.<h:br></h:br><h:br></h:br>
                             At a minimum, the TSF should enforce the following:<h:br></h:br><h:br></h:br>
-                            <h:ol type="a">
+                            <h:ul>
                                 <h:li>On the x86 platform, a virtual System Management Interrupt (SMI) cannot invoke platform System 
-									Management Mode (SMM)</h:li>
+									Management Mode (SMM).</h:li>
                                 <h:li>An attempt to update virtual firmware or virtual BIOS cannot cause physical platform firmware
-									or physical platform BIOS to be modified</h:li>
-                                <h:li>An attempt to update virtual firmware or virtual BIOS cannot cause the VMM to be modified</h:li>
-                            </h:ol>
-                            Of the above, (a) does not apply to platforms that do not support SMM. The rationale behind activity (c) 
+									or physical platform BIOS to be modified.</h:li>
+                                <h:li>An attempt to update virtual firmware or virtual BIOS cannot cause the VMM to be modified.</h:li>
+                            </h:ul>
+                            Of the above, the first bullet does not apply to platforms that do not support SMM. The rationale behind the third bullet  
 							is that a firmware update of a single VM must not affect other VMs. So if multiple VMs share the same
 							firmware image as part of a common hardware abstraction, then the update of a single machine’s BIOS 
 							must not be allowed to change the common abstraction. The virtual hardware abstraction is part of the
-							VMM.<h:br></h:br>
+							VMM.<h:br/>
                         </note>
                         <aactivity>
 							<TSS>
