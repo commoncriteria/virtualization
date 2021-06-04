@@ -641,17 +641,17 @@
                         The VMM must support the necessary mechanisms to isolate the resources of all 
                         VMs. The VMM partitions a platform's physical resources for use by the 
                         supported virtual environments. Depending on customer requirements, a VM may need a completely 
-                        isolated environment with exclusive access to system resources, or share some of its resources with other 
+                        isolated environment with exclusive access to system resources or share some of its resources with other 
                         VMs. It must be possible to enforce a security policy that prohibits the transfer of data 
                         between VMs through shared devices. When the platform security policy allows the sharing of 
                         resources across VM boundaries, the VMM must ensure that all access to 
                         those resources is consistent with the policy. The VMM may delegate the responsibility for 
-                        the mediation of sharing of particular resources to select Service VMs; however in doing so, 
+                        the mediation of resource sharing to select Service VMs; however in doing so, 
                         it remains responsible for mediating access to the Service VMs, and each Service 
                         VM must mediate all access to any shared resource that has been delegated to it in 
                         accordance with the SSP.<h:br></h:br><h:br></h:br>
-                        Devices, whether virtual or physical, are resources requiring access control. The VMM must 
-                        enforce access control in accordance to system security policy. Physical devices are platform devices with 
+                        Both virtual and physical devices are resources requiring access control. The VMM must 
+                        enforce access control in accordance with system security policy. Physical devices are platform devices with 
                         access mediated via the VMM per the O.VMM_Integrity objective. Virtual devices may include 
                         virtual storage devices and virtual network devices. Some of the access control restrictions must be enforced
                         internal to Service VMs, as may be the case for isolating virtual networks. 
@@ -705,8 +705,8 @@
                 <SO name="O.PLATFORM_INTEGRITY">
                     <description>The integrity of the VMM depends on the integrity of the hardware and software on 
                         which the VMM relies. Although the VS does not have complete control over the integrity of 
-                        the platform, the VS should as much as possible try to ensure that no users or software hosted by the VS is 
-                        capable of undermining the integrity of the platform.
+                        the platform, the VS should as much as possible try to ensure that no users or software hosted by the VS can 
+                        undermine the integrity of the platform.
                     </description>
 					<addressed-by>FDP_HBI_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported mechanisms for access to physical devices.</rationale>
 					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
@@ -741,21 +741,21 @@
                 <SO name="O.MANAGEMENT_ACCESS">
                   
                     <description>VMM management functions include VM configuration, virtualized 
-                        network configuration, allocation of physical resources, and reporting. Only certain authorized system users 
-                        (administrators) are allowed to exercise management functions.<h:br></h:br><h:br></h:br>
+                        network configuration, allocation of physical resources, and reporting. Only authorized users 
+                        (administrators) may exercise management functions.<h:p/>
                         Because of the privileges exercised by the VMM management functions, it must not be possible 
                         for the VMM’s management components to be compromised without administrator notification. 
                         This means that unauthorized users cannot be permitted access to the management functions, and the management 
                         components must not be interfered with by Guest VMs or unprivileged users on other 
-                        networks—including operational networks connected to the TOE.<h:br></h:br><h:br>
-                        </h:br> VMMs include a set of management functions that collectively allow administrators 
+                        networks—including operational networks connected to the TOE.<h:p/> 
+			VMMs include a set of management functions that collectively allow administrators 
                         to configure and manage the VMM, as well as configure Guest VMs. These 
-                        management functions are specific to the VS, distinct from any other management functions 
+                        management functions are specific to the VS and are distinct from any other management functions 
                         that might exist for the internal management of any given Guest VM. These 
                         VMM management functions are privileged, with the security of the entire system relying on 
                         their proper use. The VMM management functions can be classified into different categories 
-                        and the policy for their use and the impact to security may vary accordingly.<h:br></h:br><h:br></h:br>
-                        The management functions might be distributed throughout the VMM (within the 
+                        and the policy for their use and the impact to security may vary accordingly.<h:p/>
+                        The management functions are distributed throughout the VMM (within the 
                         VMM and Service VMs). The VMM must support the necessary 
                         mechanisms to enable the control of all management functions according to the system security policy. When a 
                         management function is distributed among multiple Service VMs, the VMs 
@@ -824,7 +824,7 @@
                 <SO name="O.CORRECTLY_APPLIED_CONFIGURATION">
                     <description>The TOE must not apply configurations that violate the current security policy.
                         <h:br></h:br><h:br></h:br> The TOE must correctly apply configurations and policies 
-                        to newly created Guest VM, as well as to existing Guest VMs when 
+                        to a newly created Guest VM, as well as to existing Guest VMs when 
                         applicable configuration or policy changes are made. All changes to configuration and to policy must conform 
                         to the existing security policy. Similarly, changes made to the configuration of the TOE 
                         itself must not violate the existing security policy.
@@ -860,7 +860,7 @@
                     </description>
                 </SOE>
                 <SOE name="OE.NON_MALICIOUS_USER">
-                    <description>Users are trusted to be not willfully negligent or hostile and use the VS in compliance with the
+                    <description>Users are trusted to not be willfully negligent or hostile and use the VS in compliance with the
 						applied enterprise security policy and guidance.
                     </description>
                 </SOE>
