@@ -518,12 +518,12 @@
                     <description>
                         Functions performed by the management layer include VM configuration, virtualized network configuration, 
 			    allocation of physical resources, and reporting. Only certain authorized system users (administrators) 
-			    are allowed to exercise management functions.<h:br></h:br><h:br></h:br>
+			    are allowed to exercise management functions or obtain sensitive information from the TOE.<h:br></h:br><h:br></h:br>
                         Virtualization Systems are often managed remotely over communication networks. Members of these networks can
 			    be both geographically and logically separated from each other, and pass through a variety of other 
 			    systems which may be under the control of an adversary, and offer the opportunity for communications to be
 			    compromised. An adversary with access to an open management network could inject commands into the
-			    management infrastructure. This would provide an adversary with administrator privilege on the platform,
+			    management infrastructure or extract sensitive information. This would provide an adversary with administrator privilege on the platform,
 			    and administrative control over the VMs and virtual network connections. The adversary could also gain
 			    access to the management network by hijacking the management network channel.
                     </description>
@@ -1074,7 +1074,7 @@
                 <!-- FAU_SAR.1 -->
                 <f-component cc-id="fau_sar.1" name="Audit Review">
                     <f-element id="fau-sar-1e1">
-                        <title>The TSF shall provide [administrators] with the capability to read [all information] from the audit records.
+			    <title>The TSF shall provide [<h:i>administrators</h:i>] with the capability to read [<h:i>all information</h:i>] from the audit records.
                         </title>
                     </f-element>
                     <f-element id="fau-sar-1e2">
@@ -1103,7 +1103,7 @@
                         </title>
                     </f-element> 
                     <f-element id="fau-stg-1e2">
-                        <title>The TSF shall be able to [prevent] unauthorized modifications to the stored audit records in the audit trail.
+			    <title>The TSF shall be able to [<h:i>prevent</h:i>] unauthorized modifications to the stored audit records in the audit trail.
                         </title>
                         <note role="application">The evaluation activity for this SFR is not intended to imply that the TOE must
 							support an administrator’s ability to designate individual audit records for deletion. That level 
@@ -1406,8 +1406,8 @@
                 <!-- FCS_CKM.2 -->
                 <f-component cc-id="fcs_ckm.2" name="Cryptographic Key Establishment">
                     <f-element id="fcs-ckm-2e1">
-                        <title>The TSF shall <refinement>implement functionality to perform cryptographic key establishment</refinement> in
-				accordance with a specified cryptographic key <refinement>establishment</refinement> method:
+			    <title>The TSF shall <h:s>distribute cryptographic keys</h:s> <refinement>implement functionality to perform cryptographic
+				    key establishment</refinement> in accordance with a specified cryptographic key establishment method:
                             <selectables linebreak="yes">
                                 <selectable>RSA-based key establishment schemes that meets the following: RSAES-PKCS1-v1_5 as specified in
 					Section 7.2 of RFC 8017, “Public-Key Cryptography Standards (PKCS) #1: RSA Cryptography Specifications Version 2.2"</selectable>
@@ -1604,7 +1604,7 @@
 				<!-- FCS_COP.1/Hash (formerly FCS_COP.1(2)) -->
                 <f-component cc-id="fcs_cop.1" iteration="Hash" name="Cryptographic Operation (Hashing)">
                     <f-element id="fcs-cop-1e1-hash">
-                        <title>The TSF shall perform [cryptographic hashing] in accordance with a specified cryptographic algorithm
+			    <title>The TSF shall perform [<h:i>cryptographic hashing</h:i>] in accordance with a specified cryptographic algorithm
                             <selectables>
                                 <selectable id="sel-hash-sha-1">SHA-1</selectable>
                                 <selectable id="sel-hash-sha-256">SHA-256</selectable>
@@ -3893,7 +3893,7 @@
                         </note>
                     </f-element>
                     <f-element id="fia-uau-5e2">
-                        <title>The TSF shall authenticate any Administrator’s claimed identity according to the <assignable>rules
+                        <title>The TSF shall authenticate any <refinement>Administrator’s</refinement> claimed identity according to the <assignable>rules
 							describing how the multiple authentication mechanisms provide authentication</assignable>.
                         </title>
                         <aactivity>
@@ -5318,19 +5318,19 @@
 			<depends on-sel="sel-mof-1e1-remote-client"><external-doc ref="client-virt"/></depends> 
 			<depends on-sel="sel-mof-1e1-remote-server"><external-doc ref="server-virt"/></depends>
                     <f-element id="ftp-trp-1e1">
-			    <title>The TSF shall use a <refinement>trusted</refinement> channel as specified in FTP_ITC_EXT.1 to provide 
-				    a <refinement>trusted</refinement> communication
-				    path between itself and [<h:i>remote</h:i>] administrators that is logically distinct from other communication
-				paths and provides assured identification of its end points and protection of the communicated data 
-				    from [<h:i>modification, disclosure</h:i>].
+			    <title>The TSF shall <refinement>use a trusted channel as specified in FTP_ITC_EXT.1 to</refinement> 
+				    provide a <refinement>trusted</refinement> communication path between itself and 
+				    [<h:i>remote</h:i>] <refinement>administrators</refinement> that is logically distinct from
+				    other communication paths and provides assured identification of its end points and 
+				    protection of the communicated data from [<h:i>modification, disclosure</h:i>].
                         </title>
                     </f-element>
                     <f-element id="ftp-trp-1e2">
-                        <title>The TSF shall permit remote administrators to initiate communication via the trusted path.
+			    <title>The TSF shall permit [<h:i>remote administrators</h:i>] to initiate communication via the trusted path.
                         </title>
                     </f-element>
 			<f-element id="ftp-trp-1e3">
-                        <title>The TSF shall require the use of the trusted path for [[all remote administration actions]].
+                        <title>The TSF shall require the use of the trusted path for [<h:i>[all remote administration actions]</h:i>].
                         </title>
                         <note role="application">
 				This SFR is included in the ST if "remote" is selected in FMT_MOF_EXT.1.1 of the client or server PP-Module.<h:p/>
@@ -5947,14 +5947,7 @@
 	
 	<!-- Appendix D: Implicity Satisfied Requirements -->
 	<appendix title="Implicitly Satisfied Requirements" id="satisfiedreqs">
-	This appendix lists requirements that should be considered satisfied by products
-	successfully evaluated against this PP. These requirements are not featured
-	explicitly as SFRs and should not be included in the ST. They are not included as 
-	standalone SFRs because it would increase the time, cost, and complexity of evaluation.
-	This approach is permitted by [CC] Part 1, 8.2 Dependencies between components.<h:p/>
-	This information benefits systems engineering activities which call for inclusion of particular
-	security controls. Evaluation against the PP provides evidence that these controls are present 
-	and have been evaluated.<h:p/><h:p/>
+	<!-- Boilerplate goes here -->
 	<h:b><ctr ctr-type="Table" pre="Table " id="imp-sat-reqs-table">: Implicitly Satisfied Requirements</ctr></h:b>
     <h:table>	
 		<h:tr class="header"><h:td>Requirement</h:td><h:td>Rationale for Satisfaction</h:td></h:tr>
