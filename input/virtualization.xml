@@ -1502,10 +1502,7 @@
 					<comp-lev>requires the TSF to destroy or make unrecoverable empty keys in volatile and 
 						non-volatile memory. Note that component level 4 is used here because of this
 						component’s similarity to the CC Part 2 component FCS_CKM.4.</comp-lev>
-					<management>The following actions could be considered for the management functions in0 FMT:
-						<h:ol type="a">
-							<h:li>Managing the cryptographic functionality.</h:li>
-						</h:ol>
+					<management>No specific management functions are identified.
 					</management>
 					<audit>There are no auditable events foreseen.</audit>
 					<dependencies>[FCS_CKM.1 Cryptographic Key Generation, or<h:p/>
@@ -2393,11 +2390,7 @@
 					<depends on-sel="sel-x509-2-ipsec"/>
 					<consistency-rationale/>
 					<comp-lev>requires that IPsec be implemented as specified.</comp-lev>
-					<management>The following actions could be considered for the management 
-						functions in FMT: 
-						<h:ol type="a">
-							<h:li>Managing the cryptographic functionality.</h:li>
-						</h:ol>
+					<management>No specific management functions are identified.
 					</management>
 					<audit>The following actions should be auditable if FAU_GEN Security audit data 
 						generation is included in the PP/ST:
@@ -3515,7 +3508,6 @@
 						functions in FMT:
 						<h:ol type="a">
 							<h:li>Ability to configure inter-VM data sharing.</h:li>
-							<h:li>Ability to configure virtual networking.</h:li>
 						</h:ol>
 					</management>
 					<audit>There are no auditable events foreseen.</audit>
@@ -3711,13 +3703,12 @@
 						in FMT:
 						<h:ol type="a">
 							<h:li>Ability to configure lockout policy through unsuccessful authentication attempts.</h:li>
-							<h:li>Ability to unlock a locked administrator account.</h:li>
 						</h:ol>
 					</management>
 					<audit>The following actions should be auditable if FAU_GEN Security audit data generation is 
 						included in the PP/ST: 
 						<h:ol type="a">
-							<h:li>Threshold reached for successive failed authentication attempts.</h:li>
+							<h:li>Unsuccessful login attempts limit is met or exceeded.</h:li>
 						</h:ol>
 					</audit>
 					<dependencies>FIA_UIA_EXT.1 Administrator Identification and Authentication<h:p/>
@@ -4032,7 +4023,7 @@
 					<comp-lev>defines how the TSF must validate X.509 certificates that are presented to it.</comp-lev>
 					<management>The following actions could be considered for the management functions in FMT:
 						<h:ol type="a">
-							<h:li>Configuration of certificate revocation checking method.</h:li>
+							<h:li>Configuration of action to take if unable to determine the validity of a certificate.</h:li>
 						</h:ol>
 					</management>
 					<audit>The following actions should be auditable if FAU_GEN Security audit data
@@ -4598,7 +4589,7 @@
                 </f-component>
 
                 <!-- FPT_HCL_EXT.1 -->
-                <f-component cc-id="fpt_hcl_ext.1" name="Hypercall Functions">
+                <f-component cc-id="fpt_hcl_ext.1" name="Hypercall Controls">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to implement appropriate parameter validation
 						to protect the VMM from unauthorized access through a hypercall interface.</comp-lev>
@@ -4606,8 +4597,8 @@
 					<audit>The following actions should be auditable if FAU_GEN Security
 						audit data generation is included in the PP/ST:
 						<h:ol type="a">
-							<h:li>Attempts to invoke Hypercall interfaces using illegal input values.</h:li>
-							<h:li>Attempts to invoke Hypercall interfaces when documented preconditions are not met.</h:li>
+							<h:li>Invalid parameter to hypercall detected.</h:li>
+							<h:li>Hypercall interface invoked when documented preconditions are not met.</h:li>
 						</h:ol>
 					</audit>
 					<dependencies>FMT_SMR.1 Security Roles</dependencies>
@@ -5066,7 +5057,7 @@
                 <!-- FPT_VDP_EXT.1 -->
                 <f-component cc-id="fpt_vdp_ext.1" name="Virtual Device Parameters">
 					<consistency-rationale/>
-					<comp-lev>, requires the TSF to interface with Guest VMs through virtual hardware abstractions
+					<comp-lev>requires the TSF to interface with Guest VMs through virtual hardware abstractions
 						so that any data transmitted to the TOE from a Guest VM can be validated 
 						as well-formed.</comp-lev>
 					<management>No specific management functions are identified.</management>
@@ -5211,11 +5202,7 @@
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to implement one or more cryptographic protocols
 						to secure connectivity between the TSF and various external entities.</comp-lev>
-					<management>The following actions could be considered for the
-						management functions in FMT:
-						<h:ol type="a">
-							<h:li>Ability to configure the cryptographic functionality.</h:li>
-						</h:ol>
+					<management>No specific management functions are identified.
 					</management>
 					<audit>The following actions should be auditable if FAU_GEN Security audit data
 						generation is included in the PP/ST:
@@ -6292,7 +6279,7 @@
         <h:br />
         The guidance for Product Model (Section 3) specifies that Products intended for use on substantially different operating
           systems (e.g., Windows vs. Linux vs. SunOS) are different Models. Therefore, platforms running substantially different
-          operating systems are de facto not equivalent. Likewise, operating systems with different major version numbers are not
+          operating systems are not equivalent. Likewise, operating systems with different major version numbers are not
           equivalent for purposes of this PP.
         <h:br />
         <h:br />
@@ -6336,7 +6323,7 @@
     </section>
   </section>
 	    
-    <section id="s-specificity" title="Level of Specificity for Tested Configurations and Claimed Equivalent Configurations">
+    <section id="s-specificity" title="Level of Specificity for Tested and Claimed Equivalent Configurations">
       In order to make equivalency determinations, the vendor and evaluator must agree on the equivalency claims. They must
       then provide the scheme with sufficient information about the TOE instances and platforms that were evaluated, and the
       TOE instances and platforms that are claimed to be equivalent.
