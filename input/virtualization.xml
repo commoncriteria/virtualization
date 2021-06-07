@@ -700,6 +700,7 @@
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
 					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
 					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Hypercall parameters be validated.</rationale>
+					<addressed-by>FPT_ML_EXT.1</addressed-by><rationale>Requires measured launch of the platform and VMM (objective).</rationale>
 					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                 </SO>
@@ -717,6 +718,7 @@
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
 					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
 					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Hypercall parameters be validated.</rationale>
+					<addressed-by>FPT_ML_EXT.1</addressed-by><rationale>Requires measured launch of the platform and VMM (objective).</rationale>
 					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
 				</SO>
@@ -786,12 +788,18 @@
 					<addressed-by>FCS_CKM.1</addressed-by><rationale>Requires generation of asymmetric keys for trusted communications channels.</rationale>
 					<addressed-by>FCS_CKM.2</addressed-by><rationale>Requires establishment of cryptographic keys for trusted communications channels.</rationale>
 					<addressed-by>FCS_COP.1</addressed-by><rationale>Ensures proper functioning of cryptographic algorithms used to implement access controls.</rationale>
+					<addressed-by>FCS_HTTPS_EXT.1</addressed-by><rationale>Ensures that HTTPS trusted communications channels are implemented properly.</rationale>
+					<addressed-by>FCS_IPSEC_EXT.1</addressed-by><rationale>Ensures that IPsec trusted communications channels are implemented properly.</rationale>
 					<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
 					<addressed-by>FIA_AFL_EXT.1</addressed-by><rationale>Requires that the TOE detect failed authentication attempts for Administrator access.</rationale>
+					<addressed-by>FIA_PMG_EXT.1</addressed-by><rationale>Ensures that password-based administrator login is properly implemented.</rationale>
 					<addressed-by>FIA_UAU.5</addressed-by><rationale>Ensures that strong mechanisms are used for Administrator authentication.</rationale>
 					<addressed-by>FIA_UIA_EXT.1</addressed-by><rationale>Requires that Administrators be successfully authenticated before performing management functions.</rationale>
+					<addressed-by>FIA_X509_EXT.1</addressed-by><rationale>Ensures that certificate validation is implemented properly.</rationale>
+					<addressed-by>FIA_X509_EXT.2</addressed-by><rationale>Ensures that certificate-based authentication is implemented properly.t functions.</rationale>
 					<addressed-by>FMT_SMO_EXT.1</addressed-by><rationale>Requires that the TOE support having separate management and operational networks.</rationale>
 					<addressed-by>FTP_ITC_EXT.1</addressed-by><rationale>Ensures that trusted communications channels are implemented using good cryptography.</rationale>
+					<addressed-by>FTP_TRP.1</addressed-by><rationale>Ensures that certain communications use a trusted path.</rationale>
 				</SO>
                 <SO name="O.PATCHED_SOFTWARE">
                     <description>The VS must be updated and patched when needed in order to prevent the potential 
