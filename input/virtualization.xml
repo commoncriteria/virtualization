@@ -1778,10 +1778,10 @@
                             and cryptographic key sizes
                             <assignable>key size (in bits) used in HMAC</assignable> and message digest sizes
                             <selectables>
-                                <selectable>160</selectable>
+                                <selectable>160 bits</selectable>
 <!--                                <selectable>224</selectable>   -->
-				 <selectable>256</selectable>
-                                <selectable>384</selectable>
+				 <selectable>256 bits</selectable>
+                                <selectable>384 bits</selectable>
                                 <selectable>512 bits</selectable>
                             </selectables>
                             that meet the following:
@@ -2563,7 +2563,7 @@
 					connection from the TOE/Platform to the VPN peer. The evaluator observes (for example,
 					in the audit trail and the captured packets) that a successful connection was established
 					using the tunnel mode.</test>
-                                    <test>(conditional): If transport mode is selectted, the evaluator uses the operational guidance to
+                                    <test>(conditional): If transport mode is selected, the evaluator uses the operational guidance to
 					configure the TOE/platform to operate in 
 					transport mode and also configures a VPN peer to operate in transport mode. The evaluator 
 					configures the TOE/platform and the VPN peer to use any of the allowed cryptographic
@@ -2591,7 +2591,7 @@
                             <Tests>
                                 The evaluator shall perform the following test:
                                 <testlist>
-                                    <test>: The evaluator shall configure the SPD such that it has entries that contain operations that DISCARD,
+                                    <test>The evaluator shall configure the SPD such that it has entries that contain operations that DISCARD,
 					PROTECT, and (if applicable) BYPASS network packets. The evaluator may use the SPD that was created
 					for verification of FCS_IPSEC_EXT.1.1. The evaluator shall construct a network packet that matches a
 					BYPASS entry and send that packet. The evaluator should observe that the network packet is passed to
@@ -2683,14 +2683,14 @@
                                 Tests are performed in conjunction with the other IPsec evaluation activities with the exception
                                 of the activities below:<h:p/>
                                 <testlist>
-                                    <test>: The evaluator shall configure the TOE so that it will perform NAT traversal processing as described
+                                    <test>The evaluator shall configure the TOE so that it will perform NAT traversal processing as described
 					in the TSS and RFC 7296, section 2.23. The evaluator shall initiate an IPsec connection and determine that
 					the NAT is successfully traversed. If the TOE supports IKEv1 with or without XAUTH, the evaluator shall
 					verify that this test can be successfully repeated with XAUTH enabled and disabled in the manner specified
 					by the operational guidance. If the TOE only supports IKEv1 with XAUTH, the evaluator shall verify that
 					connections not using XAUTH are unsuccessful. If the TOE only supports IKEv1 without XAUTH, the
 					evaluator shall verify that connections using XAUTH are unsuccessful.</test>
-                                    <test>(conditional): : If the TOE supports IKEv1, the evaluator shall perform any applicable operational
+                                    <test>(conditional) If the TOE supports IKEv1, the evaluator shall perform any applicable operational
 					guidance steps to disable the use of aggressive mode and then attempt to establish a connection using an
 					IKEv1 Phase 1 connection in aggressive mode. This attempt should fail. The evaluator shall show that the
 					TOE will reject a VPN gateway from initiating an IKEv1 Phase 1 connection in aggressive mode. The
@@ -2818,17 +2818,17 @@
                                 Each of the following tests shall be performed for each version of IKE selected in the
 				FCS_IPSEC_EXT.1.5 protocol selection:
                                 <testlist>
-                                    <test>(Conditional): : The evaluator shall configure a maximum lifetime in terms of the # of packets (or
+                                    <test>(conditional) The evaluator shall configure a maximum lifetime in terms of the # of packets (or
 					bytes) allowed following the operational guidance. The evaluator shall establish an SA and determine that
 					once the allowed # of packets (or bytes) through this SA is exceeded, the connection is closed.</test>
-                                    <test>(Conditional): The evaluator shall construct a test where a Phase 1 SA is established and attempted
+                                    <test>(conditional) The evaluator shall construct a test where a Phase 1 SA is established and attempted
 					to be maintained for more than 24 hours before it is renegotiated. The evaluator shall observe that this
 					SA is closed or renegotiated in 24 hours or less. If such an action requires that the TOE be configured in a
 					specific way, the evaluator shall implement tests demonstrating that the configuration capability of the
 					TOE works as documented in the operational guidance.</test>
-				    <test> [conditional]: The evaluator shall perform a test similar to Test 2 
+				    <test>(conditional) The evaluator shall perform a test similar to Test 2 
 					for Phase 2 SAs, except that the lifetime will be 8 hours or less instead of 24 hours or less.</test>
-				    <test> [conditional]: If a fixed limit for IKEv1 SAs is supported, the evaluator
+				    <test>(conditional) If a fixed limit for IKEv1 SAs is supported, the evaluator
 					    shall establish an SA and observe that the connection is closed after
 					    the fixed traffic or time value is reached.</test>
 				</testlist>				    
@@ -2893,7 +2893,7 @@
                             <TSS>
                                 The evaluator shall check to ensure that, for each DH group supported, the TSS describes the process for
 				generating "x" (as defined in FCS_IPSEC_EXT.1.9) and each nonce. The evaluator shall verify that the TSS
-				indicates that the random number generated that meets the requirements in this EP is used, and that the
+				indicates that the random number generated that meets the requirements in this PP is used, and that the
 				length of "x" and the nonces meet the stipulations in the requirement.<h:p/>
                             </TSS>
 			    <Guidance>
@@ -2970,7 +2970,7 @@
 				FCS_IPSEC_EXT.1.12, and FCS_IPSEC_EXT.1.13. The following tests shall be repeated for each peer
 				authentication protocol selected in the FCS_IPSEC_EXT.1.11 selection above:<h:p/>
 				    <testlist>
-					    <test>: The evaluator shall have the TOE generate a public-private key pair, and submit a CSR (Certificate
+					    <test>The evaluator shall have the TOE generate a public-private key pair, and submit a CSR (Certificate
 						Signing Request) to a CA (trusted by both the TOE and the peer VPN used to establish a connection) for
 						its signature. The values for the DN (Common Name, Organization, Organizational Unit, and Country) will
 						also be passed in the request. Alternatively, the evaluator may import to the TOE a previously generated
@@ -2984,7 +2984,7 @@
 						valid certificate is used, and that the SA is established. The evaluator then attempts the test with a
 						certificate that will be revoked (for each method chosen in the selection) to ensure when the certificate
 						    is no longer valid that the TOE will not establish an SA.</test>
-					    <test>[conditional]: The evaluator shall generate a pre-shared key and use it, as indicated in the
+					    <test>(conditional) The evaluator shall generate a pre-shared key and use it, as indicated in the
 						operational guidance, to establish an IPsec connection with the VPN GW peer. If the generation of the
 						pre-shared key is supported, the evaluator shall ensure that establishment of the key is carried out for an
 						instance of the TOE generating the key as well as an instance of the TOE merely taking in and using the
@@ -2997,24 +2997,24 @@
 						reference identifier on the TOE (per the administrative guidance) to not match the field in the peer’s
 						presented certificate and shall verify that the IKE authentication fails.<h:p/>
 						   The following tests are conditional:</test>
-					    <test>[conditional]: If, according to the TSS, the TOE supports both Common Name and SAN certificate
+					    <test>(conditional) If, according to the TSS, the TOE supports both Common Name and SAN certificate
 						fields and uses the preferred logic outlined in the Application Note, the tests above with the Common
 						Name field shall be performed using peer certificates with no SAN extension. Additionally, the evaluator
 						shall configure the peer’s reference identifier on the TOE to not match the SAN in the peer’s presented
 						certificate but to match the Common Name in the peer’s presented certificate, and verify that the IKE
 						    authentication fails.</test>
-					    <test>[conditional]: If the TOE supports DN identifier types, the evaluator shall configure the peer's
+					    <test>(conditional) If the TOE supports DN identifier types, the evaluator shall configure the peer's
 						reference identifier on the TOE (per the administrative guidance) to match the subject DN in the peer's
 						presented certificate and shall verify that the IKE authentication succeeds. To demonstrate a bit-wise
 						comparison of the DN, the evaluator shall change a single bit in the DN (preferably, in an Object Identifier
 						(OID) in the DN) and verify that the IKE authentication fails. To demonstrate a comparison of DN values,
 						the evaluator shall change any one of the four DN values and verify that the IKE authentication fails.</test>
-					    <test>[conditional]: If the TOE supports both IPv4 and IPv6 and supports IP address identifier types, the
+					    <test>(conditional) If the TOE supports both IPv4 and IPv6 and supports IP address identifier types, the
 						evaluator must repeat test 1 and 2 with both IPv4 address identifiers and IPv6 identifiers. Additionally,
 						the evaluator shall verify that the TOE verifies that the IP header matches the identifiers by setting the
 						presented identifiers and the reference identifier with the same IP address that differs from the actual IP
 						    address of the peer in the IP headers and verifying that the IKE authentication fails.</test>
-					<test>[conditional]: If, according to the TSS, the TOE performs comparisons between the peer’s ID
+					<test>(conditional) If, according to the TSS, the TOE performs comparisons between the peer’s ID
 						payload and the peer’s certificate, the evaluator shall repeat the following test for each combination of
 						supported identifier types and supported certificate fields (as above). The evaluator shall configure the
 						peer to present a different ID payload than the field in the peer’s presented certificate and verify that the
@@ -3124,14 +3124,14 @@
                                     <test>This test shall be performed for each version of IKE supported. The evaluator shall successfully
 					negotiate an IPsec connection using each of the supported algorithms and hash functions identified in the
 					    requirements.</test>         
-				  <test>[conditional]: This test shall be performed for each version of IKE supported. The evaluator shall
+				  <test>(conditional) This test shall be performed for each version of IKE supported. The evaluator shall
 					attempt to establish an SA for ESP that selects an encryption algorithm with more strength than that being
 					used for the IKE SA (i.e., symmetric algorithm with a key size larger than that being used for the IKE SA).
 					Such attempts should fail.</test>
-                                    <test> This test shall be performed for each version of IKE supported. The evaluator shall attempt to
+                                    <test>This test shall be performed for each version of IKE supported. The evaluator shall attempt to
 					establish an IKE SA using an algorithm that is not one of the supported algorithms and hash functions
 					identified in the requirements. Such an attempt should fail.</test>
-                                    <test>: This test shall be performed for each version of IKE supported. The evaluator shall attempt to
+                                    <test>This test shall be performed for each version of IKE supported. The evaluator shall attempt to
 					establish an SA for ESP (assumes the proper parameters where used to establish the IKE SA) that selects
 					an encryption algorithm that is not identified in FCS_IPSEC_EXT.1.4. Such an attempt should fail.</test>
                                 </testlist>
@@ -3189,7 +3189,7 @@
 							of these, in turn, depends on underlying cryptographic primitives (hash functions/ciphers). The ST 
 							author will select the function used, and include the specific underlying cryptographic primitives 
 							used in the requirement. While any of the identified hash functions (SHA-1, SHA-224, SHA-256, SHA-384,
-							SHA-44 512) <!-- here check this 512 -->are allowed for Hash_DRBG or HMAC_DRBG, only AES-based 
+							SHA-512) <!-- here check this 512 -->are allowed for Hash_DRBG or HMAC_DRBG, only AES-based 
 							implementations for CTR_DRBG are allowed.<h:p/>
                             If the key length for the AES implementation used here is different than that used to encrypt the user 
 							data, then FCS_COP.1/UDE may have to be adjusted or iterated to reflect the different key length. For the
@@ -3226,8 +3226,8 @@
                                 <h:ul>
                                     <h:li>Entropy input: the length of the entropy input value must equal the seed length</h:li>
                                     <h:li>Nonce: If a nonce is supported (CTR_DRBG with no df does not use a nonce), the nonce bit
-										length is one-half the seed length.
-										Personalization string: The length of the personalization string must be &lt;= seed length.
+					    length is one-half the seed length.</h:li>
+				    <h:li>Personalization string: The length of the personalization string must be &lt;= seed length.
 										If the implementation only supports one personalization string length, then the same 
 										length can be used for both values. If more than one string length is supported, the
 										evaluator shall use personalization strings of two different lengths. If the implementation
@@ -3997,13 +3997,16 @@
                                 The evaluator shall examine the TSS to determine that it describes the logon
                                 process for each logon method (local, remote (HTTPS, SSH, etc.)) supported for the product. 
                                 This description shall contain information pertaining to the credentials allowed/used, any 
-                                protocol transactions that take place, and what constitutes a “successful logon.” The evaluator
-                                shall examine the operational guidance to determine that any necessary preparatory steps (e.g., 
+                                protocol transactions that take place, and what constitutes a “successful logon.” 
+				</TSS>
+				<Guidance>
+					The evaluator shall examine the operational guidance to determine that any necessary preparatory steps (e.g., 
                                 establishing credential material such as pre-shared keys, tunnels, certificates) to logging
                                 in are described. For each supported login method, the evaluator shall ensure the operational
                                 guidance provides clear instructions for successfully logging on. If configuration is necessary
                                 to ensure the services provided before login are limited, the evaluator shall determine that the
                                 operational guidance provides sufficient instruction on limiting the allowed services.
+				</Guidance>
                             </TSS>
                         </aactivity>
                     </f-element>
@@ -4148,7 +4151,7 @@
 										shall establish a valid, trusted certificate chain consisting of an EC leaf certificate, 
 										an EC Intermediate CA certificate not designated as a trust anchor, and an EC certificate
 										designated as a trusted anchor, where the elliptic curve parameters are specified as a
-										named curve. The evaluator shall confirm that the TOE validates the certificate chain..</test>
+										named curve. The evaluator shall confirm that the TOE validates the certificate chain.</test>
 									<test>(Conditional on support for EC certificates as indicated in FCS_COP.1/SIG). The evaluator shall
 										replace the intermediate certificate in the certificate chain for Test 5 with a modified 
 										certificate, where the modified intermediate CA has a public key information field where
