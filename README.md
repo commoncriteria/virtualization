@@ -1,9 +1,11 @@
 Protection Profile for Virtualization 
 ============
-[![Build](https://github.com/commoncriteria/virtualization/workflows/Build/badge.svg)](https://github.com/commoncriteria/virtualization/actions)
+![Build](https://github.com/commoncriteria/virtualization/workflows/Build/badge.svg)
 ![Validate](https://github.com/commoncriteria/virtualization/workflows/Validate/badge.svg)
+[![SanityChecks](https://raw.githubusercontent.com/commoncriteria/virtualization/gh-pages/master/warnings-badge.svg)](https://github.com/commoncriteria/virtualization/blob/gh-pages/SanityChecksOutput.md)
+[![SpellCheck](https://raw.githubusercontent.com/commoncriteria/virtualization/gh-pages/master/spell-badge.svg)](https://github.com/commoncriteria/virtualization/blob/gh-pages/SpellCheckReport.txt)
+[![QuickBuild](https://github.com/commoncriteria/virtualization/actions/workflows/quick_build.yml/badge.svg)](https://commoncriteria.github.io/virtualization/virtualization-release.html)
 [![GitHub issues Open](https://img.shields.io/github/issues/commoncriteria/virtualization.svg?maxAge=2592000)](https://github.com/commoncriteria/virtualization/issues) 
-![license](https://img.shields.io/badge/license-Unlicensed-blue.svg)
 
 This repository hosts the draft version of the Protection Profile for Virtualization based on the 
 [Essential Security Requirements (ESR)](https://commoncriteria.github.io/pp/virtualization/virtualization-esr.html) for this technology class of 
