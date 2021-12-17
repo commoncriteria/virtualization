@@ -737,7 +737,7 @@
 					<addressed-by>FPT_GVI_EXT.1</addressed-by><rationale>Requires that the TOE support Guest VM measurements and integrity checks (optional).</rationale>
 					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
 					<addressed-by>FPT_INT_EXT.1</addressed-by><rationale>Requires that the TOE support introspection into Guest VMs (optional).</rationale>
-					<addressed-by>FPT_RDM_EXT.1</addressed-by><rationale>Requires support for rules for switching removeable media between domains to reduce the chance of data spillage.</rationale>
+					<addressed-by>FPT_RDM_EXT.1</addressed-by><rationale>Requires support for rules for switching removable media between domains to reduce the chance of data spillage.</rationale>
 					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FTP_UIF_EXT.1</addressed-by><rationale>Ensures that users are able to determine the domain with the current input focus.</rationale>
 					<addressed-by>FTP_UIF_EXT.2</addressed-by><rationale>Ensures that users can know the identity of any VM that they can access.</rationale>
@@ -2283,7 +2283,7 @@
                             <selectables>
                                 <selectable>Hypercall interface</selectable>
                                 <selectable>virtual device interface</selectable>
-                                <selectable>passthrough access to hardware entropy source</selectable>
+                                <selectable>pass-through access to hardware entropy source</selectable>
                             </selectables>.
                         </title>
                     </f-element>
@@ -2310,7 +2310,7 @@
 							“virtual device interface” if the TSF presents a virtual device interface to the Guest OS through
 							which it can obtain entropy or random numbers. Such an interface could present a virtualized real
 							device, such as a TPM, that can be accessed by VM-unaware guests, or a virtualized fictional device
-							that would require the Guest OS to be VM-aware. The ST author should select “passthrough access to 
+							that would require the Guest OS to be VM-aware. The ST author should select “pass-through access to 
 							hardware entropy source” if the TSF permits Guest VMs to have direct access to hardware entropy or
 							random number source on the platform. The ST author should select all items that are appropriate.<h:p/>
                             For FCS_ENT_EXT.1.2, the VMM must ensure that the provision of entropy to one VM cannot affect the quality
@@ -2428,7 +2428,7 @@
 							to be handled: PROTECT the packet (e.g., encrypt the packet), BYPASS the IPsec
 							services (e.g., no encryption), or DISCARD the packet (e.g., drop the packet). The
 							SPD can be implemented in various ways, including router access control lists,
-							firewall rulesets, a "traditional" SPD, etc. Regardless of the implementation
+							firewall rule-sets, a "traditional" SPD, etc. Regardless of the implementation
 							details, there is a notion of a "rule" that a packet is "matched" against and a
 							resulting action that takes place. <h:br/><h:br/>
 								While there must be a means to order the rules, a general approach to ordering
@@ -2792,7 +2792,7 @@
 				can be accomplished either by providing Authorized Administrator-configurable
 				lifetimes (with appropriate instructions in documents mandated by AGD_OPE),
 				or by “hard coding” the limits in the implementation. For IKEv2, there are no
-				hardcoded limits, but in this case it is required that an administrator be able to
+				hard-coded limits, but in this case it is required that an administrator be able to
 				configure the values. In general, instructions for setting the parameters of the
 				implementation, including lifetime of the SAs, should be included in the 
 				operational guidance generated for AGD_OPE. It is appropriate to refine the
