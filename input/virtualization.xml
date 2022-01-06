@@ -6,7 +6,7 @@
 	- Release notes for Errata release 1.1.1, 19 Aug 2021.
 	
 	- 6 Jan 2022. Incorporate TD0615.
-
+	- 6 Jan 2022. Simple automation review. Added "onlyone" and "exclusive" attributes to selections where obvious. 
 
 	- Release Notes for Release 1.1
     - DONE: Incorporated TLS Package
@@ -952,7 +952,7 @@
                                     <selectable id="sel-at4">Auditable events defined in <xref g="t-audit-sel-based"/> for Selection-Based SFRs</selectable>
 									<selectable id="sel-attls">Auditable events for the <xref to="tls"/> listed in <xref to="atref-pkgs"/></selectable>
 									<selectable id="sel-atssh">Auditable events defined in the audit table for the <xref to="ssh"/></selectable>
-                                    <selectable>no other auditable events</selectable>
+                                    <selectable exclusive="yes">no other auditable events</selectable>
 								</selectables></refinement></h:li>
                             </h:ol>
                         </title>
@@ -971,7 +971,7 @@
                                     <selectable>Additional information defined in <xref g="t-audit-sel-based"/> for Selection-Based SFRs</selectable>
 									<selectable>Additional information for the <xref to="tls"/> listed in <xref to="atref-pkgs"/></selectable>
 									<selectable>Additional information defined in the audit table for the <xref to="ssh"/></selectable>
-                                    <selectable>no other information</selectable>
+                                    <selectable exclusive="yes">no other information</selectable>
 								</selectables></refinement></h:li>
                             </h:ol>
                         </title>
@@ -1212,7 +1212,7 @@
                     <f-element id="fau-stg-ext-1e2">
                         <title>The TSF shall
                             <selectables>
-                                <selectable>drop new audit data</selectable>
+                                <selectable excluslive="yes">drop new audit data</selectable>
                                 <selectable>overwrite previous audit records according to the following rule:
                                     <assignable>rule for overwriting previous audit records</assignable></selectable>
                                 <selectable><assignable>other action</assignable></selectable>
@@ -1301,7 +1301,7 @@
                                     ECC schemes using [“NIST curves” P-256, P-384, and
                                     <selectables>
                                         <selectable>P-521</selectable>
-                                        <selectable>no other curves</selectable>
+                                        <selectable exclusive="yes">no other curves</selectable>
                                     </selectables>
                                     that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Appendix B.4]
                                     </selectable>
@@ -1309,7 +1309,7 @@
                                     FFC schemes using cryptographic key sizes [2048-bit or greater] that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Appendix B.1]].
                                 </selectable>
 				<selectable>FFC Schemes using Diffie-Hellman group 14 that meet the following: [RFC 3526]</selectable>
-				<selectable> FFC Schemes using safe primes that meet the following: [‘NIST Special Publication 800-56A Revision 3,
+				<selectable>FFC Schemes using safe primes that meet the following: [‘NIST Special Publication 800-56A Revision 3,
 					“Recommendation for Pair-Wise Key Establishment Schemes"]</selectable>
                             </selectables>
 			    <h:s>and specified cryptographic key sizes [assignment: cryptographic key sizes] that meet the
@@ -1866,7 +1866,7 @@
                                 <selectable id="sel-sig-ecdsa">ECDSA schemes using [“NIST curves” P-256, P-384 and
                                     <selectables>
                                         <selectable>P-521</selectable>
-                                        <selectable>no other curves</selectable>
+                                        <selectable exclusive="yes">no other curves</selectable>
                                     </selectables>] that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Section 5]
                                 </selectable>
                             </selectables>.
@@ -2620,7 +2620,7 @@
                             <selectables>
                                 <selectable>AES-CBC-128 (specified in RFC 3602)</selectable>
                                 <selectable>AES-CBC-256 (specified in RFC 3602)</selectable>
-                                <selectable>no other algorithms</selectable>
+                                <selectable exclusive="yes">no other algorithms</selectable>
                             </selectables>] together with a Secure Hash Algorithm (SHA)-based HMAC.
                         </title>
                         <aactivity level="element">
@@ -2653,14 +2653,14 @@
                             <selectables linebreak="yes">
                                 <selectable>IKEv1, using Main Mode for Phase 1 exchanges, as defined in RFC 2407, RFC 2408, RFC 2409, RFC 4109, 
 					<selectables>
-                                    		<selectable>no other RFCs for extended sequence numbers</selectable>
+                                    		<selectable exclusive="yes">no other RFCs for extended sequence numbers</selectable>
                                     		<selectable>RFC 4304 for extended sequence numbers</selectable>
                                 	</selectables>,
                                     <selectables>
-                                        <selectable>no other RFCs for hash functions</selectable>
+                                        <selectable exclusive="yes">no other RFCs for hash functions</selectable>
                                         <selectable>RFC 4868 for hash functions</selectable>
 				    </selectables>, and 
-				    <selectables>
+				    <selectables onlyone="yes">
 					    <selectable>support for XAUTH</selectable>
 					    <selectable>no support for XAUTH</selectable>
 				    </selectables>
@@ -2668,7 +2668,7 @@
                             <selectable>IKEv2 as defined in RFC 7296 (with mandatory support for NAT traversal 
 				    as specified in section 2.23), RFC 8784, RFC 8247, and 
                                     <selectables>
-                                        <selectable>no other RFCs for hash functions</selectable>
+                                        <selectable exclusive="yes">no other RFCs for hash functions</selectable>
                                         <selectable>RFC 4868 for hash functions</selectable>
                                     </selectables>.</selectable>
                             </selectables>
@@ -2720,7 +2720,7 @@
                             <selectables>
                                 <selectable>AES-GCM-128 as specified in RFC 5282</selectable>
                                 <selectable>AES-GCM-256 as specified in RFC 5282</selectable>
-                                <selectable>no other algorithm</selectable>
+                                <selectable exclusive="yes">no other algorithm</selectable>
                             </selectables>.
                         </title>
                         <aactivity level="element">
@@ -2853,7 +2853,7 @@
 					<selectable>24 (2048-bit MODP with 256-bit POS)</selectable>
 					<selectable>15 (3072-bit MODP)</selectable>
 					<selectable>14 (2048-bit MODP)</selectable>
-					<selectable>no other DH groups</selectable>
+					<selectable exclusive="yes">no other DH groups</selectable>
 				</selectables>].
 			</title>
                         <note role="application">
@@ -2934,7 +2934,7 @@
 				</selectables> that use X.509v3 certificates that conform to RFC 4945 and 
 				<selectables>
 					<selectable>Pre-shared Keys</selectable>
-					<selectable>no other method</selectable>
+					<selectable exclusive="yes">no other method</selectable>
 				</selectables>.
 			</title>
                         <note role="application">
@@ -3043,7 +3043,7 @@
 					<selectable>Distinguished Name (DN)</selectable>
 				</selectables> and 
 				<selectables>
-					<selectable>no other reference identifier type</selectable>
+					<selectable exclusive="yes">no other reference identifier type</selectable>
 					<selectable><assignable>other supported reference identifier types</assignable></selectable>
 				</selectables>] contained in a certificate does not match the expected values for the
 				entity attempting to establish a connection.
@@ -3290,11 +3290,11 @@
                     <f-element id="fdp-hbi-ext-1e1">
                         <title>The TSF shall use
                             <selectables>
-                                <selectable>no mechanism</selectable>
+                                <selectable exclusive="yes">no mechanism</selectable>
                                 <selectable><assignable>list of platform-provided, hardware-based mechanisms</assignable></selectable>
                             </selectables> to constrain a Guest VM's direct access to the following physical devices:
                             <selectables>
-                                <selectable>no devices</selectable>
+                                <selectable exclusive="yes">no devices</selectable>
                                 <selectable><assignable> physical devices to which the VMM allows Guest VMs physical access</assignable></selectable>
                             </selectables>.                        
                         </title>
@@ -3347,7 +3347,7 @@
                     <f-element id="fdp-ppr-ext-1e2">
                         <title>The TSF shall explicitly deny all Guest VMs access to the following physical platform resources:
                             <selectables>
-                                <selectable>no physical platform resources</selectable>
+                                <selectable exclusive="yes">no physical platform resources</selectable>
                                 <selectable><assignable>list of physical platform resources to which access is explicitly denied</assignable></selectable>
                             </selectables>.
                         </title>
@@ -3355,7 +3355,7 @@
                     <f-element id="fdp-ppr-ext-1e3">
                         <title>The TSF shall explicitly allow all Guest VMs access to the following physical platform resources:
                             <selectables>
-                                <selectable>no physical platform resources</selectable>
+                                <selectable exclusive="yes">no physical platform resources</selectable>
                                 <selectable><assignable>list of physical platform resources to which access is always allowed</assignable></selectable>
                             </selectables>.
                         </title>
@@ -3535,7 +3535,7 @@
                     <f-element id="fdp-vms-ext-1e1">
                         <title>The VS shall provide the following mechanisms for transferring data between Guest VMs:
                             <selectables linebreak="yes">
-                                <selectable>no mechanism</selectable>
+                                <selectable exclusive="yes">no mechanism</selectable>
                                 <selectable>virtual networking</selectable>
                                 <selectable><assignable>other inter-VM data sharing mechanisms</assignable></selectable>
                             </selectables>.
@@ -4223,7 +4223,7 @@
 					</f-element>
                     <f-element id="fia-x509-ext-2e2">
                         <title>When the TSF cannot establish a connection to determine the validity of a certificate, the TSF shall
-                            <selectables>
+                            <selectables onlyone="yes">
                                 <selectable id="sel-x509-adminset">allow the administrator to choose whether to accept the certificate in these cases</selectable>
                                 <selectable>accept the certificate</selectable>
                                 <selectable>not accept the certificate</selectable>
@@ -4497,7 +4497,7 @@
                                 <selectable>Stack buffer overflow protection</selectable>
                                 <selectable>Heap corruption detection</selectable>
                                 <selectable><assignable>other mechanisms</assignable></selectable>
-                                <selectable>No mechanisms</selectable>
+                                <selectable exclusive="yes">No mechanisms</selectable>
                             </selectables>
                         </title>
                         <note role="application">Processor manufacturers, compiler developers, and operating system vendors have 
@@ -4767,7 +4767,7 @@
                                 <selectable>Static executable images of the Management Subsystem</selectable>
                                 <selectable><assignable>list of (static images of) Service VMs</assignable></selectable>
                                 <selectable><assignable>list of configuration files</assignable></selectable>
-                                <selectable>no other components</selectable>
+                                <selectable exclusive="yes">no other components</selectable>
                             </selectables>
                         </title>
                     </f-element>
@@ -4952,7 +4952,7 @@
                         <title>The TSF shall provide administrators the ability to manually initiate updates to	TOE firmware/software and
                             <selectables>
                                 <selectable>automatic updates</selectable>
-                                <selectable>no other update mechanism</selectable>
+                                <selectable exclusive="yes">no other update mechanism</selectable>
                             </selectables>.
                         </title>
                     </f-element>
@@ -5258,7 +5258,7 @@
                                 <selectable>remote administrators (as required by FTP_TRP.1.1 if selected in FMT_MOF_EXT.1.1 in the Client or Server PP-Module)</selectable>
                                 <selectable>separation of management and operational networks (if selected in FMT_SMO_EXT.1)</selectable>
 				<selectable><assignable>other capabilities</assignable></selectable>
-                                <selectable>no other capabilities</selectable>
+                                <selectable exclusive="yes">no other capabilities</selectable>
                             </selectables>
                             that is logically distinct from other communication paths and provides assured identification of its
                             endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.
