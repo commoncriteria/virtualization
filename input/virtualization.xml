@@ -92,32 +92,37 @@
         </entry>
     </RevisionHistory>
 
-    <include-pkg id="tls">
-        <raw-url>https://github.com/commoncriteria/tls/raw/
-                        562626874aacfbb9beb397fca5be128c86ec4ebf
-                        /input/tls.xml</raw-url>
-		<url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439</url>
-            <depends on-sel="sel-itc-tls"/>
-	    <depends on-sel="sel-itc-https"/>
-	    <depends on-sel="sel-x509-2-tls"/>
-    </include-pkg>
-	    
-    <include-pkg id="ssh">
-                <raw-url>https://github.com/commoncriteria/ssh/raw/
-                         de9b38dc426a4ac14d4016510d1ef477d419f7ae
-                         /input/ssh.xml</raw-url>
-		<url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=389&amp;id=389</url>
-	    <depends on-sel="sel-itc-ssh"/>
-	    <depends on-sel="sel-x509-2-ssh"/>
+  <include-pkg id="pkg-ssh">
+    <git>
+      <url>https://github.com/commoncriteria/ssh</url>
+      <branch>release-1.0</branch>
+    </git>
+    <url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=459&amp;id=459</url>
+    <depends on="s-ftp_ssh" also="s-uau-ssh"/>
+  </include-pkg>
+  <include-pkg id="pkg-tls">
+    <git>
+      <url>https://github.com/commoncriteria/tls</url>
+      <branch>release-1.1</branch>
+    </git>
+    <url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439</url>
+    <depends on-sel="sel-itc-ssh"/>
+    <depends on-sel="sel-x509-2-ssh"/>
     </include-pkg>
     <modules required="yes">
-    <module id="client-virt">
-		<raw-url>https://raw.githubusercontent.com/commoncriteria/clientvirtualization/master/input/clientvirtualization.xml</raw-url>
+      <module id="client-virt">
+	<git>
+	  <url>https://github.com/clientvirtualization</url>
+	  <branch>master</branch>
+	</git>
         <url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=409&amp;id=409</url> 
     </module>
     <module id="server-virt">
-		<raw-url>https://raw.githubusercontent.com/commoncriteria/servervirtualization/master/input/servervirtualization.xml</raw-url>
-		<url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=410&amp;id=410</url>
+	<git>
+	  <url>https://github.com/servervirtualization</url>
+	  <branch>master</branch>
+	</git>
+	<url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=410&amp;id=410</url>
 	</module>
     </modules>
 	<!-- Rules - These are rules where selections in the base require selections in the PP-Modules.
@@ -900,7 +905,7 @@
 		
 			<!-- 5.1.1 Auditable Events for Mandatory SFRs -->
 			<section id="ss-audit-table" title="Auditable Events for Mandatory SFRs">
-				<audit-table table="mandatory"/>
+				<audit-table id="at-mandatory" table="mandatory"/>
 			</section>
 
 			<!-- 5.1.2 Security Audit (FAU) -->
