@@ -58,20 +58,10 @@
 
 <!-- TITLE PAGE -->
 
-<PP xmlns="https://niap-ccevs.org/cc/v1" target-product="Virtualization Systems"
-    target-products="Virtualization Systems"
-    xmlns:sec="https://niap-ccevs.org/cc/v1/section" short="Virtualization"
-    xmlns:h="http://www.w3.org/1999/xhtml" boilerplate="yes">
-    <PPReference>
-        <ReferenceTable>
-            <PPTitle>Protection Profile for Virtualization</PPTitle>
-            <PPVersion>1.1.1</PPVersion>
-            <PPAuthor>National Information Assurance Partnership</PPAuthor>
-            <PPPubDate>2021-08-19</PPPubDate> 
-            <Keywords>Virtualization</Keywords>
-        </ReferenceTable>
-    </PPReference>
-	
+<PP xmlns="https://niap-ccevs.org/cc/v1"
+    xmlns:sec="https://niap-ccevs.org/cc/v1/section"
+    xmlns:h="http://www.w3.org/1999/xhtml">
+  <product_class>Virtualization Systems</product_class>
 
     <!-- REVISION HISTORY -->
     
@@ -918,7 +908,8 @@
 				</ext-comp-def>
 		    
                 <!-- FAU_ARP.1 -->
-                <f-component cc-id="fau_arp.1" name="Security Audit Automatic Response"  status="optional">
+                <f-component cc-id="fau_arp.1" name="Security Audit Automatic Response">
+		  <optional/>
                     <f-element id="fau-arp-1e1">
                         <title>The TSF shall take <assignable>list of actions</assignable> upon detection of a potential security 
 							violation.
@@ -952,7 +943,7 @@
                                 <h:li>[<refinement>All administrative actions relevant to claimed SFRs as defined in the 
 									Auditable Events Table from the Client and Server PP-Modules</refinement>]</h:li>		    
 								<h:li>[<refinement>Auditable events defined in <xref g="t-audit-mandatory"/></refinement>]</h:li>
-                                <h:li><refinement><selectables linebreak="yes">
+                                <h:li><refinement><selectables><bulletize/>
                                     <selectable id="sel-at2">Auditable events defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable>
 									<selectable id="sel-at3">Auditable events defined in <xref g="t-audit-objective"/> for Objective SFRs</selectable>
                                     <selectable id="sel-at4">Auditable events defined in <xref g="t-audit-sel-based"/> for Selection-Based SFRs</selectable>
@@ -971,7 +962,7 @@
                                 <h:li>Subject and object identity (if applicable)</h:li>
                                 <h:li>The outcome (success or failure) of the event</h:li>
 								<h:li>[<refinement>Additional information defined in <xref g="t-audit-mandatory"/></refinement>]</h:li>
-                                <h:li><refinement><selectables linebreak="yes">
+                                <h:li><refinement><selectables><bulletize/>
                                     <selectable>Additional information defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable>
                                     <selectable>Additional information defined in <xref g="t-audit-objective"/> for Objective SFRs</selectable>
                                     <selectable>Additional information defined in <xref g="t-audit-sel-based"/> for Selection-Based SFRs</selectable>
@@ -1065,7 +1056,8 @@
 		    
                 
                 <!-- FAU_SAA.1 -->
-                <f-component cc-id="fau_saa.1" name="Potential Violation Analysis"  status="optional">
+                <f-component cc-id="fau_saa.1" name="Potential Violation Analysis">
+		  <optional/>
                     <f-element id="fau-saa-1e1">
                         <title>The TSF shall be able to apply a set of rules in monitoring the audited events and based upon these
 							rules indicate a potential violation of the enforcement of the SFRs.
@@ -1299,7 +1291,7 @@
                     <f-element id="fcs-ckm-1e1">
 			    <title> The TSF shall generate <refinement>asymmetric</refinement> cryptographic keys in accordance with a
 				    specified cryptographic key generation algorithm
-                            <selectables linebreak="yes">
+                            <selectables><bulletize/>
                                 <selectable>
                                     RSA schemes using cryptographic key sizes [2048-bit or greater] that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Appendix B.3]
                                 </selectable>
@@ -1434,7 +1426,7 @@
                     <f-element id="fcs-ckm-2e1">
 			    <title>The TSF shall <h:s>distribute cryptographic keys</h:s> <refinement>implement functionality to perform cryptographic
 				    key establishment</refinement> in accordance with a specified cryptographic key establishment method:
-                            <selectables linebreak="yes">
+                            <selectables><bulletize/>
                                 <selectable>RSA-based key establishment schemes that meets the following: RSAES-PKCS1-v1_5 as specified in
 					Section 7.2 of RFC 8017, “Public-Key Cryptography Standards (PKCS) #1: RSA Cryptography Specifications Version 2.2"</selectable>
 				<selectable>Elliptic curve-based key establishment schemes that meets the following: NIST Special Publication 800-56A Revision 3,
@@ -1866,7 +1858,7 @@
                     <f-element id="fcs-cop-1e1-sig">
                         <title>The TSF shall perform [<h:i>cryptographic signature services (generation and verification)</h:i>] in 
 							accordance with a specified cryptographic algorithm
-                            <selectables linebreak="yes">
+                            <selectables><bulletize/>
                                 <selectable id="sel-sig-rsa">RSA schemes using cryptographic key sizes [2048-bit or greater] that meet
 									the following: [<h:i>FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Section 4</h:i>]</selectable>
                                 <selectable id="sel-sig-ecdsa">ECDSA schemes using [“NIST curves” P-256, P-384 and
@@ -1932,7 +1924,7 @@
                     <f-element id="fcs-cop-1e1-ude">
                         <title>
 				The TSF shall perform [<h:i>encryption and decryption</h:i>] in accordance with a specified cryptographic algorithm<h:br/>
-                            <selectables linebreak="yes">
+                            <selectables><bulletize/>
                                 <selectable id="sel-ude-aes-kw">AES Key Wrap (KW) (as defined in NIST SP 800-38F)</selectable>
                                 <selectable id="sel-ude-aes-kwp">AES Key Wrap with Padding (KWP) (as defined in NIST SP 800-38F)</selectable>
                                 <selectable id="sel-ude-aes-gcm">AES-GCM (as defined in NIST SP 800-38D)</selectable>
@@ -2356,7 +2348,7 @@
                 
                 <!-- FCS_HTTPS_EXT.1 -->
                 <!-- Depends on HTTPS being selected for trusted channel -->
-                <f-component cc-id="fcs_https_ext.1" name="HTTPS Protocol"  status="sel-based">
+                <f-component cc-id="fcs_https_ext.1" name="HTTPS Protocol" >
                     <depends on-sel="sel-itc-https"/>
 					<depends on-sel="sel-x509-2-https"/>
 					<consistency-rationale/>
@@ -2411,7 +2403,7 @@
                 <!-- FCS_IPSEC_EXT.1 -->
                 <!-- Depends on IPSEC being selected for trusted channels -->
 				<!-- This should be roughly the same as the IPsec requirement in VPNClient -->
-                <f-component cc-id="fcs_ipsec_ext.1" name="IPsec Protocol" status="sel-based">
+                <f-component cc-id="fcs_ipsec_ext.1" name="IPsec Protocol">
                     <depends on-sel="sel-itc-ipsec"/>
 					<depends on-sel="sel-x509-2-ipsec"/>
 					<consistency-rationale/>
@@ -2656,7 +2648,7 @@
                     </f-element>
                     <f-element id="fcs-ipsec-ext-1e5">
                         <title>The TSF shall implement the protocol: <h:p/>
-                            <selectables linebreak="yes">
+                            <selectables><bulletize/>
                                 <selectable>IKEv1, using Main Mode for Phase 1 exchanges, as defined in RFC 2407, RFC 2408, RFC 2409, RFC 4109, 
 					<selectables>
                                     		<selectable exclusive="yes">no other RFCs for extended sequence numbers</selectable>
@@ -3540,7 +3532,7 @@
 					<dependencies>No dependencies.</dependencies>
                     <f-element id="fdp-vms-ext-1e1">
                         <title>The VS shall provide the following mechanisms for transferring data between Guest VMs:
-                            <selectables linebreak="yes">
+                            <selectables><bulletize/>
                                 <selectable exclusive="yes">no mechanism</selectable>
                                 <selectable>virtual networking</selectable>
                                 <selectable><assignable>other inter-VM data sharing mechanisms</assignable></selectable>
@@ -3741,7 +3733,7 @@
 						FMT_SMR.1 Security Roles</dependencies>
                     <f-element id="fia-afl-ext-1e1">
                         <title>The TSF shall detect when
-                            <selectables linebreak="yes">
+                            <selectables><bulletize/>
                                 <selectable><assignable>a positive integer number</assignable></selectable>
                                 <selectable>an administrator configurable positive integer within a
                                     <assignable>range of acceptable values</assignable></selectable>
@@ -3813,7 +3805,7 @@
 		    
 				<!-- FIA_PMG_EXT.1 -->
                 <!-- Depends on password-based authentication being used for administrator authentication -->
-                <f-component cc-id="fia_pmg_ext.1" name="Password Management"  status="sel-based">
+                <f-component cc-id="fia_pmg_ext.1" name="Password Management" >
                     <depends on-sel="sel-uau-pwd"/>
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to ensure that administrator passwords meet a
@@ -3882,7 +3874,7 @@
                 <f-component cc-id="fia_uau.5" name="Multiple Authentication Mechanisms">
                     <f-element id="fia-uau-5e1">
                         <title>The TSF shall provide the following authentication mechanisms:
-                            <selectables linebreak="yes">
+                            <selectables><bulletize/>
                                 <selectable id="sel-uau-pwd">
                                     <selectables>
                                         <selectable>local</selectable>
@@ -4043,7 +4035,7 @@
 		    
                 <!-- FIA_X509_EXT.1 -->
                 <!-- Depends on x509 certificates being used for administrator authentication -->
-                <f-component cc-id="fia_x509_ext.1" name="X.509 Certificate Validation"  status="sel-based">
+                <f-component cc-id="fia_x509_ext.1" name="X.509 Certificate Validation" >
                     <depends on-sel="sel-tud-digsign"/>
                     <depends on-sel="sel-uau-x509"/> 
 					<depends on-sel="sel-itc-certauth"/>
@@ -4188,7 +4180,7 @@
 
                 <!-- FIA_X509_EXT.2 -->
                 <!-- Depends on digital signatures being used for trusted updates or administrator authentication -->
-                <f-component cc-id="fia_x509_ext.2" name="X.509 Certificate Authentication"  status="sel-based">
+                <f-component cc-id="fia_x509_ext.2" name="X.509 Certificate Authentication" >
                     <depends on-sel="sel-tud-digsign-cert"/>
                     <depends on-sel="sel-uau-x509" /> 
 					<depends on-sel="sel-itc-certauth"/>
@@ -4417,7 +4409,8 @@
 				</ext-comp-def>
 				
                 <!-- FPT_DDI_EXT.1 -->
-                <f-component cc-id="fpt_ddi_ext.1" name="Device Driver Isolation"  status="objective">
+                <f-component cc-id="fpt_ddi_ext.1" name="Device Driver Isolation">
+		  <objective/>
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to isolate device drivers for physical devices from all virtual domains.</comp-lev>
 					<management>No specific management functions are identified.</management>
@@ -4497,7 +4490,7 @@
                     <f-element id="fpt-eem-ext-1e1">
                         <title>The TSF shall take advantage of execution environment-based vulnerability mitigation mechanisms 
 							supported by the Platform such as:
-                            <selectables linebreak="yes">
+                            <selectables><bulletize/>
                                 <selectable>Address space randomization</selectable>
                                 <selectable>Memory execution protection (e.g., DEP)</selectable>
                                 <selectable>Stack buffer overflow protection</selectable>
@@ -4529,7 +4522,8 @@
                 </f-component>
                 
                 <!-- FPT_GVI_EXT.1 -->
-                <f-component cc-id="fpt_gvi_ext.1" name="Guest VM Integrity"  status="optional">
+                <f-component cc-id="fpt_gvi_ext.1" name="Guest VM Integrity">
+		  <optional/>
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to specify the mechanisms it uses to verify the
 						integrity of Guest VMs.</comp-lev>
@@ -4674,7 +4668,8 @@
                 </f-component>
 
                 <!-- FPT_IDV_EXT.1 -->
-                <f-component cc-id="fpt_idv_ext.1" name="Software Identification and Versions"  status="objective">
+                <f-component cc-id="fpt_idv_ext.1" name="Software Identification and Versions">
+		  <objective/>
  					<consistency-rationale/>
 					<comp-lev>requires the TSF to identify itself using SWID tags.</comp-lev>
 					<management>No specific management functions are identified.</management>
@@ -4712,7 +4707,8 @@
                 </f-component>
 
                 <!-- FPT_INT_EXT.1 -->
-                <f-component cc-id="fpt_int_ext.1" name="Support for Introspection"  status="objective">
+                <f-component cc-id="fpt_int_ext.1" name="Support for Introspection">
+		  <objective/>
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to support introspection.</comp-lev>
 					<management>No specific management functions are identified.</management>
@@ -4754,7 +4750,8 @@
                 </f-component>
 
                 <!-- FPT_ML_EXT.1 -->
-                <f-component cc-id="fpt_ml_ext.1" name="Measured Launch of Platform and VMM"  status="objective">
+                <f-component cc-id="fpt_ml_ext.1" name="Measured Launch of Platform and VMM">
+		  <objective/>
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to support a measured launch of itself.</comp-lev>
 					<management>No specific management functions are identified.</management>
@@ -4769,7 +4766,7 @@
                         <title>The TSF shall support a measured launch of the Virtualization System. Measured 
 				components of the VS shall include the static executable image of the Hypervisor
 				and:
-                            <selectables linebreak="yes">
+                            <selectables><bulletize/>
                                 <selectable>Static executable images of the Management Subsystem</selectable>
                                 <selectable><assignable>list of (static images of) Service VMs</assignable></selectable>
                                 <selectable><assignable>list of configuration files</assignable></selectable>
@@ -4856,7 +4853,7 @@
 				removable media and virtual or physical removable media devices</assignable> are switched between 
 				information domains, then
                             
-                            <selectables linebreak="yes">
+                            <selectables><bulletize/>
                                 <selectable>the Administrator has granted explicit access for the media or device to be connected to
 					the receiving domain</selectable>
                                 <selectable>the media in a device that is being transferred is ejected prior to the receiving domain
@@ -5053,7 +5050,7 @@
                 
                 <!-- FPT_TUD_EXT.2 -->
                 <!-- Depends on X509 certificates being used for code signing. -->
-                <f-component cc-id="fpt_tud_ext.2" name="Trusted Update Based on Certificates"  status="sel-based">
+                <f-component cc-id="fpt_tud_ext.2" name="Trusted Update Based on Certificates" >
                     <depends on-sel="sel-tud-digsign-cert" />
 					<depends on-sel="sel-x5092-signed-updates"/>
 					<consistency-rationale/>
@@ -5243,7 +5240,7 @@
 					<dependencies>FAU_STG_EXT.1 Off-Loading of Audit Data</dependencies>
                     <f-element id="ftp-itc-ext-1e1">
                         <title>The TSF shall use
-                            <selectables linebreak="yes">
+                            <selectables><bulletize/>
                                 <selectable id="sel-itc-tls">TLS as conforming to the <h:a href="https://www.niap-ccevs.org/MMO/PP/-439-/">
 					<h:i>Functional Package for Transport Layer Security</h:i></h:a></selectable>
                                 <selectable id="sel-itc-https">TLS/HTTPS as conforming to FCS_HTTPS_EXT.1</selectable>
@@ -5253,14 +5250,14 @@
 					for Secure Shell</h:i></h:a></selectable>
                             </selectables>
 			    and
-			    <selectables linebreak="yes">
+			    <selectables><bulletize/>
 				    <selectable id="sel-itc-certauth">certificate-based authentication of the remote peer</selectable>
 				    <selectable>non-certificate-based authentication of the remote peer</selectable>
 				    <selectable>no authentication of the remote peer</selectable>
 				</selectables>
                             to provide a trusted communication channel between itself, and<h:p/>
                             <h:li>audit servers (as required by FAU_STG_EXT.1), and</h:li>
-                            <selectables linebreak="yes">
+                            <selectables><bulletize/>
                                 <selectable>remote administrators (as required by FTP_TRP.1.1 if selected in FMT_MOF_EXT.1.1 in the Client or Server PP-Module)</selectable>
                                 <selectable>separation of management and operational networks (if selected in FMT_SMO_EXT.1)</selectable>
 				<selectable><assignable>other capabilities</assignable></selectable>
@@ -5342,7 +5339,7 @@
 		    
                 <!-- FTP_TRP.1 -->
                 <!-- Included in th ST if "remote" is selected in FMT_MOF_EXT.1.1 in the server or client PP-Module. -->
-                <f-component cc-id="ftp_trp.1" name="Trusted Path" status="sel-based">
+                <f-component cc-id="ftp_trp.1" name="Trusted Path">
 			<depends on-sel="sel-mof-1e1-remote-client"><external-doc ref="client-virt"/></depends> 
 			<depends on-sel="sel-mof-1e1-remote-server"><external-doc ref="server-virt"/></depends>
                     <f-element id="ftp-trp-1e1">
