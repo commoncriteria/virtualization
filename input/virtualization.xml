@@ -2597,9 +2597,6 @@
         </f-component>
         <!--FIA_X509_EXT.2 X.509 Certificate Authentication-->
         <f-component cc-id="fia_x509_ext.2" id="fia-x509-ext-2" name="X.509 Certificate Authentication" status="sel-based">
-          <description>If "" is selected then
-            "Ability to configure action taken if unable to determine the validity of a certificate" in the Client or Server module
-            management function table must also be selected.</description>
           <depends on="sel-tud-digsign-cert"/>
           <depends on="sel-itc-certauth"/>
           <consistency-rationale/>
@@ -2611,6 +2608,9 @@
           <audit>There are no auditable events foreseen.</audit>
           <dependencies>FIA_X509_EXT.1 X.509 Certificate Validation
             FTP_ITC_EXT.1 Trusted Channel Communications</dependencies>
+          <description>If "" is selected then
+            "Ability to configure action taken if unable to determine the validity of a certificate" in the Client or Server module
+            management function table must also be selected.</description>
           <f-element id="fia-x509-ext-2e1">
             <title>The TSF shall use X.509v3 certificates as defined by RFC 5280 to support authentication for<selectables ><selectable id="sel-x509-2-ipsec" >IPsec</selectable><selectable id="sel-x509-2-tls" >TLS</selectable><selectable id="sel-x509-2-https" >HTTPS</selectable><selectable id="sel-x509-2-ssh" >SSH</selectable><selectable id="sel-x5092-signed-updates" >code signing for system software updates</selectable><selectable id="fia_x509_ext.2.1_2" >other uses </selectable></selectables></title>
             <note role="application">This SFR must be included in the ST if the selection for FPT_TUD_EXT.1.3 is “digital
