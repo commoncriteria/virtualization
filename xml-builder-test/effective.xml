@@ -3124,8 +3124,6 @@
         </f-component>
         <!--FPT_TUD_EXT.1 Trusted Updates to the Virtualization System-->
         <f-component cc-id="fpt_tud_ext.1" id="fpt-tud-ext-1" name="Trusted Updates to the Virtualization System">
-          <description>If  is selected in FPT_TUD_EXT.1.3
-            then  must be selected in FIA_X509_EXT.2.1.</description>
           <consistency-rationale/>
           <comp-lev>requires the TSF to define the mechanism for applying and verifying TOE updates.</comp-lev>
           <management>The following actions could be considered for the
@@ -3135,6 +3133,8 @@
             audit data generation is included in the PP/ST:
             Initiation of update.Failure of signature verification.</audit>
           <dependencies>FCS_COP.1 Cryptographic Operation</dependencies>
+          <description>If  is selected in FPT_TUD_EXT.1.3
+            then  must be selected in FIA_X509_EXT.2.1.</description>
           <f-element id="fpt-tud-ext-1e1">
             <title>The TSF shall provide administrators the ability to query the currently executed version of the TOE firmware/software as well as the most recently installed version of the TOE firmware/software.</title>
             <note role="application">
@@ -3349,8 +3349,6 @@
       <section id="ftp" title="Class: Trusted Path/Channel (FTP)">
         <!--FTP_ITC_EXT.1 Trusted Channel Communications-->
         <f-component cc-id="ftp_itc_ext.1" id="ftp-itc-ext-1" name="Trusted Channel Communications">
-          <description>If "" and "" are selected in FTP_ITC_EXT.1.1
-            then "" must be selected in FIA_X509_EXT.2.1.</description>
           <consistency-rationale/>
           <comp-lev>requires the TSF to implement one or more cryptographic protocols
             to secure connectivity between the TSF and various external entities.</comp-lev>
@@ -3360,6 +3358,8 @@
             generation is included in the PP/ST:
             Initiation of the trusted channel.Termination of the trusted channel.Failures of the trusted path functions.</audit>
           <dependencies>FAU_STG_EXT.1 Off-Loading of Audit Data</dependencies>
+          <description>If "" and "" are selected in FTP_ITC_EXT.1.1
+            then "" must be selected in FIA_X509_EXT.2.1.</description>
           <f-element id="ftp-itc-ext-1e1">
             <title>The TSF shall use<selectables><selectable id="sel-itc-tls">TLS as conforming to the  <h:a href="https://www.niap-ccevs.org/MMO/PP/-439-/">Functional Package for Transport Layer Security</h:a></selectable><selectable id="sel-itc-https">TLS/HTTPS as conforming to FCS_HTTPS_EXT.1</selectable><selectable id="sel-itc-ipsec">IPsec as conforming to FCS_IPSEC_EXT.1</selectable><selectable id="sel-itc-ssh">SSH as conforming to the
               <h:a href="https://www.niap-ccevs.org/MMO/PP/-459-/">Functional Package
