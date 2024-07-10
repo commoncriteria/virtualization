@@ -491,6 +491,7 @@
       <section id="fau" title="Class: Security Audit (FAU)">
         <!--FAU_ARP.1 Security Audit Automatic Response-->
         <f-component cc-id="fau_arp.1" id="fau-arp-1" name="Security Audit Automatic Response" status="optional">
+          <consistency-rationale/>
           <f-element id="fau-arp-1e1">
             <title>The TSF shall take<assignable>list of actions</assignable>upon detection of a potential security violation.</title>
             <note role="application">In certain cases, it may be useful for Virtualization Systems to perform automated
@@ -513,6 +514,7 @@
         </f-component>
         <!--FAU_GEN.1 Audit Data Generation-->
         <f-component cc-id="fau_gen.1" id="fau-gen-1" name="Audit Data Generation">
+          <consistency-rationale/>
           <f-element id="fau-gen-1e1">
             <title>The TSF shall be able to generate an audit record of the following auditable events:  <h:ol><h:li>Start-up and shutdown of audit functions</h:li><h:li>[<h:b>All administrative actions relevant to claimed SFRs as defined in the
               Auditable Events Table from the Client and Server PP-Modules</h:b>]</h:li><h:li>[<h:b>Auditable events defined in  <xref g="t-audit-mandatory"></xref></h:b>]</h:li><h:li><h:b><selectables ><selectable id="sel-at2" >Auditable events defined in  <xref g="t-audit-optional"></xref> for Strictly Optional SFRs</selectable><selectable id="sel-at3" >Auditable events defined in  <xref g="t-audit-objective"></xref> for Objective SFRs</selectable><selectable id="sel-at4" >Auditable events defined in  <xref g="t-audit-sel-based"></xref> for Selection-Based SFRs</selectable><selectable id="sel-attls" >Auditable events for the  <xref to="tls"></xref> listed in  <xref to="atref-pkgs"></xref></selectable><selectable id="sel-atssh" >Auditable events defined in the audit table for the  <xref to="ssh"></xref></selectable><selectable id="fau_gen.1.1_1" >no other auditable events</selectable></selectables></h:b></h:li></h:ol></title>
@@ -569,6 +571,7 @@
         </f-component>
         <!--FAU_SAA.1 Potential Violation Analysis-->
         <f-component cc-id="fau_saa.1" id="fau-saa-1" name="Potential Violation Analysis" status="optional">
+          <consistency-rationale/>
           <f-element id="fau-saa-1e1">
             <title>The TSF shall be able to apply a set of rules in monitoring the audited events and based upon these rules indicate a potential violation of the enforcement of the SFRs.</title>
           </f-element>
@@ -593,6 +596,7 @@
         </f-component>
         <!--FAU_SAR.1 Audit Review-->
         <f-component cc-id="fau_sar.1" id="fau-sar-1" name="Audit Review">
+          <consistency-rationale/>
           <f-element id="fau-sar-1e1">
             <title>The TSF shall provide [ <h:i>administrators</h:i>  ] with the capability to read [ <h:i>all information</h:i>  ] from the audit records.</title>
           </f-element>
@@ -615,6 +619,7 @@
         </f-component>
         <!--FAU_STG.1 Protected Audit Trail Storage-->
         <f-component cc-id="fau_stg.1" id="fau-stg-1" name="Protected Audit Trail Storage">
+          <consistency-rationale/>
           <f-element id="fau-stg-1e1">
             <title>The TSF shall protect the stored audit records in the audit trail from unauthorized deletion.</title>
           </f-element>
@@ -649,6 +654,7 @@
         </f-component>
         <!--FAU_STG_EXT.1 Off-Loading of Audit Data-->
         <f-component cc-id="fau_stg_ext.1" id="fau-stg-ext-1" name="Off-Loading of Audit Data">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to transmit audit data using a trusted channel to an outside entity and to specify
             the action to be taken when local audit storage is full.</comp-lev>
           <management>The following actions could be considered for the management functions in FMT:
@@ -726,6 +732,7 @@
       <section id="fcs" title="Class: Cryptographic Support (FCS)">
         <!--FCS_CKM.1 Cryptographic Key Generation-->
         <f-component cc-id="fcs_ckm.1" id="fcs-ckm-1" name="Cryptographic Key Generation">
+          <consistency-rationale/>
           <f-element id="fcs-ckm-1e1">
             <title>The TSF shall generate <h:b>asymmetric</h:b>  cryptographic keys in accordance with a specified cryptographic key generation algorithm<selectables ><selectable id="fcs_ckm.1.1_1" >
               RSA schemes using cryptographic key sizes [2048-bit or greater] that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Appendix B.3]
@@ -805,6 +812,7 @@
         </f-component>
         <!--FCS_CKM.2 Cryptographic Key Distribution-->
         <f-component cc-id="fcs_ckm.2" id="fcs-ckm-2" name="Cryptographic Key Distribution">
+          <consistency-rationale/>
           <f-element id="fcs-ckm-2e1">
             <title>The TSF shall <h:s>distribute cryptographic keys</h:s> <h:b>implement functionality to perform cryptographic
               key establishment</h:b>  in accordance with a specified cryptographic key establishment method:<selectables ><selectable id="fcs_ckm.2.1_1" >RSA-based key establishment schemes that meets the following: RSAES-PKCS1-v1_5 as specified in
@@ -878,6 +886,7 @@
         </f-component>
         <!--FCS_CKM_EXT.4 Cryptographic Key Destruction-->
         <f-component cc-id="fcs_ckm_ext.4" id="fcs-ckm-ext-4" name="Cryptographic Key Destruction">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to destroy or make unrecoverable empty keys in volatile and
             non-volatile memory. Note that component level 4 is used here because of this
             component’s similarity to the CC Part 2 component FCS_CKM.4.</comp-lev>
@@ -964,6 +973,7 @@
         </f-component>
         <!--FCS_COP.1/Hash Cryptographic Operation (Hashing)-->
         <f-component cc-id="fcs_cop.1" id="fcs-cop-1-hash" name="Cryptographic Operation (Hashing)" iteration="Hash">
+          <consistency-rationale/>
           <f-element id="fcs-cop-1e1-hash">
             <title>The TSF shall perform [ <h:i>cryptographic hashing</h:i>  ] in accordance with a specified cryptographic algorithm<selectables ><selectable id="sel-hash-sha-1" >SHA-1</selectable><selectable id="sel-hash-sha-256" >SHA-256</selectable><selectable id="sel-hash-sha-384" >SHA-384</selectable><selectable id="sel-hash-sha-512" >SHA-512</selectable><selectable id="sel-hash-sha-3-224" >SHA-3-224</selectable><selectable id="sel-hash-sha-3-256" >SHA-3-256</selectable><selectable id="sel-hash-sha-3-384" >SHA-3-384</selectable><selectable id="sel-hash-sha-3-512" >SHA-3-512</selectable></selectables>and message digest sizes<selectables ><selectable id="fcs_cop.1.1_Hash_1" >160</selectable><selectable id="fcs_cop.1.1_Hash_2" >256</selectable><selectable id="fcs_cop.1.1_Hash_3" >384</selectable><selectable id="fcs_cop.1.1_Hash_4" >512 bits</selectable></selectables>that meet the following:<selectables ><selectable id="fcs_cop.1.1_Hash_5" >FIPS PUB 180-4 "Secure Hash Standard"</selectable><selectable id="fcs_cop.1.1_Hash_6" >ISO/IEC 10118-3:2018</selectable></selectables></title>
             <note role="application">
@@ -1075,6 +1085,7 @@
         <!--FCS_COP.1/KeyedHash Cryptographic Operation (Keyed Hash Algorithms)-->
         <f-component cc-id="fcs_cop.1" id="fcs-cop-1-keyedhash" name="Cryptographic Operation (Keyed Hash Algorithms)" iteration="KeyedHash">
           <description>If "" is selected in FCS_COP.1/KeyedHash 						  then "" must be selected in FCS_COP.1.1/Hash.</description>
+          <consistency-rationale/>
           <f-element id="fcs-cop-1e1-keyedhash">
             <title>The TSF shall perform [ <h:i>keyed-hash message authentication</h:i>  ] in accordance with a specified cryptographic algorithm<selectables ><selectable id="sel-hmac-sha-1" >HMAC-SHA-1</selectable><selectable id="sel-hmac-sha-256" >HMAC-SHA-256</selectable><selectable id="sel-hmac-sha-384" >HMAC-SHA-384</selectable><selectable id="sel-hmac-sha-512" >HMAC-SHA-512</selectable><selectable id="sel-hmac-sha-3-224" >SHA-3-224</selectable><selectable id="sel-hmac-sha-3-256" >SHA-3-256</selectable><selectable id="sel-hmac-sha-3-384" >SHA-3-384</selectable><selectable id="sel-hmac-sha-3-512" >SHA-3-512</selectable></selectables>and cryptographic key sizes<assignable>key size (in bits) used in HMAC</assignable>and message digest sizes<selectables ><selectable id="fcs_cop.1.1_KeyedHash_2" >160</selectable><selectable id="fcs_cop.1.1_KeyedHash_3" >256</selectable><selectable id="fcs_cop.1.1_KeyedHash_4" >384</selectable><selectable id="fcs_cop.1.1_KeyedHash_5" >512 bits</selectable></selectables><h:p>that meet the following: [ <h:b/><em>FIPS Pub 198-1, "The Keyed-Hash Message Authentication Code," and FIPS Pub 180-4, “Secure Hash Standard"</em><h:b/> ].</h:p></title>
             <note role="application"><h:p>The selection in this requirement must be consistent with the key size specified for the size of the keys used in conjunction with the keyed-hash message authentication.</h:p></note>
@@ -1096,6 +1107,7 @@
         </f-component>
         <!--FCS_COP.1/Sig Cryptographic Operation (Signature Algorithms)-->
         <f-component cc-id="fcs_cop.1" id="fcs-cop-1-sig" name="Cryptographic Operation (Signature Algorithms)" iteration="Sig">
+          <consistency-rationale/>
           <f-element id="fcs-cop-1e1-sig">
             <title>The TSF shall perform [ <h:i>cryptographic signature services (generation and verification)</h:i>  ] in accordance with a specified cryptographic algorithm<selectables ><selectable id="sel-sig-rsa" >RSA schemes using cryptographic key sizes [2048-bit or greater] that meet
               the following: [<h:i>FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Section 4</h:i>]</selectable><selectable>ECDSA schemes using [“NIST curves” P-256, P-384 and <selectables ><selectable id="fcs_cop.1.1_Sig_1" >P-521</selectable><selectable id="fcs_cop.1.1_Sig_2" >no other curves</selectable></selectables>] that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Section 5] </selectable></selectables>.</title>
@@ -1146,6 +1158,7 @@
           <description>If the SSH Package is included in the ST then ","
             "," and "" must be selected in FCS_COP.1/UDE.
           </description>
+          <consistency-rationale/>
           <f-element id="fcs-cop-1e1-ude">
             <title>The TSF shall perform [ <h:i>encryption and decryption</h:i>  ] in accordance with a specified cryptographic algorithm<selectables ><selectable id="sel-ude-aes-kw" >AES Key Wrap (KW) (as defined in NIST SP 800-38F)</selectable><selectable id="sel-ude-aes-kwp" >AES Key Wrap with Padding (KWP) (as defined in NIST SP 800-38F)</selectable><selectable id="sel-ude-aes-gcm" >AES-GCM (as defined in NIST SP 800-38D)</selectable><selectable id="sel-ude-aes-ccm" >AES-CCM (as defined in NIST SP 800-38C)</selectable><selectable id="sel-ude-aes-xts" >AES-XTS (as defined in NIST SP 800-38E) mode</selectable><selectable id="sel-ude-aes-ccmp-256" >AES-CCMP-256 (as defined in NIST SP800-38C and IEEE 802.11ac-2013)</selectable><selectable id="sel-ude-aes-gcmp-256" >AES-GCMP-256 (as defined in NIST SP800-38D and IEEE 802.11ac-2013)</selectable><selectable id="sel-ude-aes-ccmp" >AES-CCMP (as defined in FIPS PUB 197, NIST SP 800-38C and IEEE 802.11-2012)</selectable><selectable id="sel-ude-aes-cbc" >AES-CBC (as defined in FIPS PUB 197, and NIST SP 800-38A) mode</selectable><selectable id="sel-ude-aes-ctr" >AES-CTR (as defined in NIST SP 800-38A) mode</selectable></selectables>and cryptographic key sizes<selectables ><selectable id="sel-ude-keysize-128" >128-bit key sizes</selectable><selectable id="sel-ude-keysize-256" >256-bit key sizes</selectable></selectables>.</title>
             <note role="application">For the first selection of FCS_COP.1.1/UDE, the ST author should choose the mode or
@@ -1274,6 +1287,7 @@
         </f-component>
         <!--FCS_ENT_EXT.1 Entropy for Virtual Machines-->
         <f-component cc-id="fcs_ent_ext.1" id="fcs-ent-ext-1" name="Entropy for Virtual Machines">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to provide entropy data to VMs in a specified manner.</comp-lev>
           <management>No specific management functions are identified.</management>
           <audit>There are no auditable events foreseen.</audit>
@@ -1337,6 +1351,7 @@
         <f-component cc-id="fcs_https_ext.1" id="fcs-https-ext-1" name="HTTPS Protocol" status="sel-based">
           <depends on="sel-itc-https"/>
           <depends on="sel-x509-2-https"/>
+          <consistency-rationale/>
           <comp-lev>defines requirements for the implementation of the HTTPS protocol.</comp-lev>
           <management>No specific management functions are identified.</management>
           <audit>The following actions should be auditable if FAU_GEN Security audit data
@@ -1380,6 +1395,7 @@
         <f-component cc-id="fcs_ipsec_ext.1" id="fcs-ipsec-ext-1" name="IPsec Protocol" status="sel-based">
           <depends on="sel-itc-ipsec"/>
           <depends on="sel-x509-2-ipsec"/>
+          <consistency-rationale/>
           <comp-lev>requires that IPsec be implemented as specified.</comp-lev>
           <management>No specific management functions are identified.
           </management>
@@ -1875,6 +1891,7 @@
         </f-component>
         <!--FCS_RBG_EXT.1 Cryptographic Operation (Random Bit Generation)-->
         <f-component cc-id="fcs_rbg_ext.1" id="fcs-rbg-ext-1" name="Cryptographic Operation (Random Bit Generation)">
+          <consistency-rationale/>
           <comp-lev>requires random bit generation to be performed in accordance with
             selected standards and seeded by an entropy source.</comp-lev>
           <management>No specific management functions are identified.</management>
@@ -1945,6 +1962,7 @@
       <section id="fdp" title="Class: User Data Protection (FDP)">
         <!--FDP_HBI_EXT.1 Hardware-Based Isolation Mechanisms-->
         <f-component cc-id="fdp_hbi_ext.1" id="fdp-hbi-ext-1" name="Hardware-Based Isolation Mechanisms">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to identify the mechanisms used to isolate Guest VMs from platform
             hardware resources.</comp-lev>
           <management>No specific management functions are identified.</management>
@@ -1971,6 +1989,7 @@
         </f-component>
         <!--FDP_PPR_EXT.1 Physical Platform Resource Controls-->
         <f-component cc-id="fdp_ppr_ext.1" id="fdp-ppr-ext-1" name="Physical Platform Resource Controls">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to define the hardware resources that Guest VMs may always access, may never access,
             and may conditionally access based on administrative configuration.</comp-lev>
           <management>The following actions could be considered for the management functions in FMT:
@@ -2061,6 +2080,7 @@
         </f-component>
         <!--FDP_RIP_EXT.1 Residual Information in Memory-->
         <f-component cc-id="fdp_rip_ext.1" id="fdp-rip-ext-1" name="Residual Information in Memory">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to ensure that physical memory is cleared to zeros prior to its allocation to a
             Guest VM.</comp-lev>
           <management>No specific management functions are identified.</management>
@@ -2089,6 +2109,7 @@
         </f-component>
         <!--FDP_RIP_EXT.2 Residual Information on Disk-->
         <f-component cc-id="fdp_rip_ext.2" id="fdp-rip-ext-2" name="Residual Information on Disk">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to ensure that physical disk storage is cleared upon
             allocation to a Guest VM.</comp-lev>
           <management>No specific management functions are identified.</management>
@@ -2127,6 +2148,7 @@
         </f-component>
         <!--FDP_VMS_EXT.1 VM Separation-->
         <f-component cc-id="fdp_vms_ext.1" id="fdp-vms-ext-1" name="VM Separation">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to maintain logical separation between Guest VMs
             except through the use of specific configurable methods.</comp-lev>
           <management>The following actions could be considered for the management
@@ -2189,6 +2211,7 @@
         </f-component>
         <!--FDP_VNC_EXT.1 Virtual Networking Components-->
         <f-component cc-id="fdp_vnc_ext.1" id="fdp-vnc-ext-1" name="Virtual Networking Components">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to support the configuration of virtual networking between Guest VMs.</comp-lev>
           <management>The following actions could be considered for the management
             functions in FMT:
@@ -2252,6 +2275,7 @@
       <section id="fia" title="Class: Identification and Authentication (FIA)">
         <!--FIA_AFL_EXT.1 Authentication Failure Handling-->
         <f-component cc-id="fia_afl_ext.1" id="fia-afl-ext-1" name="Authentication Failure Handling">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to lock an administrator account when an excessive number of failed authentication attempts
             have been observed until some restorative event occurs to enable the account.</comp-lev>
           <management>The following actions could be considered for the management functions
@@ -2316,6 +2340,7 @@
         </f-component>
         <!--FIA_PMG_EXT.1 Password Management-->
         <f-component cc-id="fia_pmg_ext.1" id="fia-pmg-ext-1" name="Password Management">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to ensure that administrator passwords meet a
             defined password policy.</comp-lev>
           <management>The following actions could be considered for the management functions
@@ -2362,6 +2387,7 @@
           <description>If "directory-based" is selected anywhere in FIA_UAU.5.1 then
             "Ability to configure name/address of directory server to bind with" must be selected in the Client or Server module
             management function table.</description>
+          <consistency-rationale/>
           <f-element id="fia-uau-5e1">
             <title>The TSF shall provide the following authentication mechanisms:<selectables ><selectable><selectables ><selectable id="fia_uau.5.1_1" >local</selectable><selectable id="sel-uau-pwd-dirbased" >directory-based</selectable></selectables> authentication based on username and password </selectable><selectable id="fia_uau.5.1_2" >authentication based on username and a PIN that releases an asymmetric key stored in
               OE-protected storage</selectable><selectable><selectables ><selectable id="fia_uau.5.1_3" >local</selectable><selectable id="sel-uau-x509-dirbased" >directory-based</selectable></selectables> authentication based on X.509 certificates </selectable><selectable><selectables ><selectable id="fia_uau.5.1_4" >local</selectable><selectable id="sel-uau-ssh-dirbased" >directory-based</selectable></selectables> authentication based on an SSH public key credential </selectable></selectables>to support Administrator authentication.</title>
@@ -2436,6 +2462,7 @@
         </f-component>
         <!--FIA_UIA_EXT.1 Administrator Identification and Authentication-->
         <f-component cc-id="fia_uia_ext.1" id="fia-uia-ext-1" name="Administrator Identification and Authentication">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to ensure that all subjects attempting to perform TSF-mediated actions
             are identified and authenticated prior to authorizing these actions to be performed.</comp-lev>
           <management>No specific management functions are identified.</management>
@@ -2481,6 +2508,7 @@
         <f-component cc-id="fia_x509_ext.1" id="fia-x509-ext-1" name="X.509 Certificate Validation" status="sel-based">
           <depends on="sel-tud-digsign"/>
           <depends on="sel-itc-certauth"/>
+          <consistency-rationale/>
           <comp-lev>defines how the TSF must validate X.509 certificates that are presented to it.</comp-lev>
           <management>The following actions could be considered for the management functions in FMT:
             Configuration of action to take if unable to determine the validity of a certificate.</management>
@@ -2586,6 +2614,7 @@
             management function table must also be selected.</description>
           <depends on="sel-tud-digsign-cert"/>
           <depends on="sel-itc-certauth"/>
+          <consistency-rationale/>
           <comp-lev>requires the TSF to identify the functions for which it uses X.509
             certificates for authentication</comp-lev>
           <management>The following actions could be considered for the management functions in FMT:
@@ -2650,6 +2679,7 @@
       <section id="fmt" title="Class: Security Management (FMT)">
         <!--FMT_SMO_EXT.1 Separation of Management and Operational Networks-->
         <f-component cc-id="fmt_smo_ext.1" id="fmt-smo-ext-1" name="Separation of Management and Operational Networks">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to separate its management and operational networks through a defined
             mechanism.</comp-lev>
           <management>No specific management functions are identified.</management>
@@ -2700,6 +2730,7 @@
       <section id="fpt" title="Class: Protection of the TSF (FPT)">
         <!--FPT_DDI_EXT.1 Device Driver Isolation-->
         <f-component cc-id="fpt_ddi_ext.1" id="fpt-ddi-ext-1" name="Device Driver Isolation" status="objective">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to isolate device drivers for physical devices from all virtual domains.</comp-lev>
           <management>No specific management functions are identified.</management>
           <audit>There are no auditable events foreseen.</audit>
@@ -2731,6 +2762,7 @@
         </f-component>
         <!--FPT_DVD_EXT.1 Non-Existence of Disconnected Virtual Devices-->
         <f-component cc-id="fpt_dvd_ext.1" id="fpt-dvd-ext-1" name="Non-Existence of Disconnected Virtual Devices">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to prevent Guest VMs from accessing virtual devices
             that it is not configured to have access to.</comp-lev>
           <management>No specific management functions are identified.</management>
@@ -2760,6 +2792,7 @@
         </f-component>
         <!--FPT_EEM_EXT.1 Execution Environment Mitigations-->
         <f-component cc-id="fpt_eem_ext.1" id="fpt-eem-ext-1" name="Execution Environment Mitigations">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to identify the execution environment-based
             protection mechanisms that it can use for self-protection.</comp-lev>
           <management>No specific management functions are identified.</management>
@@ -2788,6 +2821,7 @@
         </f-component>
         <!--FPT_GVI_EXT.1 Guest VM Integrity-->
         <f-component cc-id="fpt_gvi_ext.1" id="fpt-gvi-ext-1" name="Guest VM Integrity" status="optional">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to specify the mechanisms it uses to verify the
             integrity of Guest VMs.</comp-lev>
           <management>No specific management functions are identified.</management>
@@ -2823,6 +2857,7 @@
         </f-component>
         <!--FPT_HAS_EXT.1 Hardware Assists-->
         <f-component cc-id="fpt_has_ext.1" id="fpt-has-ext-1" name="Hardware Assists">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to identify the hardware assists it uses to reduce
             TOE complexity.</comp-lev>
           <management>No specific management functions are identified.</management>
@@ -2859,6 +2894,7 @@
         </f-component>
         <!--FPT_HCL_EXT.1 Hypercall Controls-->
         <f-component cc-id="fpt_hcl_ext.1" id="fpt-hcl-ext-1" name="Hypercall Controls">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to implement appropriate parameter validation
             to protect the VMM from unauthorized access through a hypercall interface.</comp-lev>
           <management>No specific management functions are identified.</management>
@@ -2906,6 +2942,7 @@
         </f-component>
         <!--FPT_IDV_EXT.1 Software Identification and Versions-->
         <f-component cc-id="fpt_idv_ext.1" id="fpt-idv-ext-1" name="Software Identification and Versions" status="objective">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to identify itself using SWID tags.</comp-lev>
           <management>No specific management functions are identified.</management>
           <audit>There are no auditable events foreseen.</audit>
@@ -2939,6 +2976,7 @@
         </f-component>
         <!--FPT_INT_EXT.1 Support for Introspection-->
         <f-component cc-id="fpt_int_ext.1" id="fpt-int-ext-1" name="Support for Introspection" status="objective">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to support introspection.</comp-lev>
           <management>No specific management functions are identified.</management>
           <audit>The following actions should be auditable if FAU_GEN Security
@@ -2972,6 +3010,7 @@
         </f-component>
         <!--FPT_ML_EXT.1 Measured Launch of Platform and VMM-->
         <f-component cc-id="fpt_ml_ext.1" id="fpt-ml-ext-1" name="Measured Launch of Platform and VMM" status="objective">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to support a measured launch of itself.</comp-lev>
           <management>No specific management functions are identified.</management>
           <audit>The following actions should be auditable if FAU_GEN Security
@@ -3024,6 +3063,7 @@
         </f-component>
         <!--FPT_RDM_EXT.1 Removable Devices and Media-->
         <f-component cc-id="fpt_rdm_ext.1" id="fpt-rdm-ext-1" name="Removable Devices and Media">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to ensure that VMs are not inadvertently given access to information
             in different domains because removable media is simultaneously accessible from separate
             domains.</comp-lev>
@@ -3101,6 +3141,7 @@
         <f-component cc-id="fpt_tud_ext.1" id="fpt-tud-ext-1" name="Trusted Updates to the Virtualization System">
           <description>If  is selected in FPT_TUD_EXT.1.3
             then  must be selected in FIA_X509_EXT.2.1.</description>
+          <consistency-rationale/>
           <comp-lev>requires the TSF to define the mechanism for applying and verifying TOE updates.</comp-lev>
           <management>The following actions could be considered for the
             management functions in FMT:
@@ -3191,6 +3232,7 @@
         <f-component cc-id="fpt_tud_ext.2" id="fpt-tud-ext-2" name="Trusted Update Based on Certificates" status="sel-based">
           <depends on="sel-tud-digsign-cert"/>
           <depends on="sel-x5092-signed-updates"/>
+          <consistency-rationale/>
           <comp-lev>requires the TSF to validate updates using a code signing certificate.</comp-lev>
           <management>No specific management functions are identified.</management>
           <audit>There are no auditable events foreseen.</audit>
@@ -3216,6 +3258,7 @@
         </f-component>
         <!--FPT_VDP_EXT.1 Virtual Device Parameters-->
         <f-component cc-id="fpt_vdp_ext.1" id="fpt-vdp-ext-1" name="Virtual Device Parameters">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to interface with Guest VMs through virtual hardware abstractions
             so that any data transmitted to the TOE from a Guest VM can be validated
             as well-formed.</comp-lev>
@@ -3258,6 +3301,7 @@
         </f-component>
         <!--FPT_VIV_EXT.1 VMM Isolation from VMs-->
         <f-component cc-id="fpt_viv_ext.1" id="fpt-viv-ext-1" name="VMM Isolation from VMs">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to ensure that there is no mechanism by which a Guest VM can interface
             with the TOE, other VMs, or the hardware platform without authorization.</comp-lev>
           <management>No specific management functions are identified.</management>
@@ -3299,6 +3343,7 @@
       <section id="fta" title="Class: TOE Access Banner (FTA)">
         <!--FTA_TAB.1 TOE Access Banner-->
         <f-component cc-id="fta_tab.1" id="fta-tab-1" name="TOE Access Banner">
+          <consistency-rationale/>
           <f-element id="fta-tab-ext-1e1">
             <title>Before establishing an administrative user session, the TSF shall display a security Administrator-specified advisory notice and consent warning message regarding use of the TOE.</title>
             <note role="application">
@@ -3322,6 +3367,7 @@
         <f-component cc-id="ftp_itc_ext.1" id="ftp-itc-ext-1" name="Trusted Channel Communications">
           <description>If "" and "" are selected in FTP_ITC_EXT.1.1
             then "" must be selected in FIA_X509_EXT.2.1.</description>
+          <consistency-rationale/>
           <comp-lev>requires the TSF to implement one or more cryptographic protocols
             to secure connectivity between the TSF and various external entities.</comp-lev>
           <management>No specific management functions are identified.
@@ -3373,6 +3419,7 @@
         </f-component>
         <!--FTP_TRP.1 Trusted Path-->
         <f-component cc-id="ftp_trp.1" id="ftp-trp-1" name="Trusted Path">
+          <consistency-rationale/>
           <f-element id="ftp-trp-1e1">
             <title>The TSF shall <h:b>use a trusted channel as specified in FTP_ITC_EXT.1 to</h:b>  provide a <h:b>trusted</h:b>  communication path between itself and [ <h:i>remote</h:i>  ] <h:b>administrators</h:b>  that is logically distinct from other communication paths and provides assured identification of its end points and protection of the communicated data from [ <h:i>modification, disclosure</h:i>  ].</title>
           </f-element>
@@ -3438,6 +3485,7 @@
         </f-component>
         <!--FTP_UIF_EXT.1 User Interface: I/O Focus-->
         <f-component cc-id="ftp_uif_ext.1" id="ftp-uif-ext-1" name="User Interface: I/O Focus">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to unambiguously identify the Guest VM that has
             the current input focus for input peripherals.</comp-lev>
           <management>No specific management functions are identified.</management>
@@ -3469,6 +3517,7 @@
         </f-component>
         <!--FTP_UIF_EXT.2 User Interface: Identification of VM-->
         <f-component cc-id="ftp_uif_ext.2" id="ftp-uif-ext-2" name="User Interface: Identification of VM">
+          <consistency-rationale/>
           <comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
             the integrity of its stored executable code.</comp-lev>
           <management>No specific management functions are identified.</management>
