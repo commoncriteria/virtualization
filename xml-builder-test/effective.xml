@@ -730,15 +730,8 @@
             </selectable><selectable> ECC schemes using [“NIST curves” P-256, P-384, and <selectables><selectable id="fcs_ckm.1.1_3">P-521</selectable><selectable id="fcs_ckm.1.1_4">no other curves</selectable></selectables> that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Appendix B.4] </selectable><selectable id="fcs_ckm.1.1_5">
               FFC schemes using cryptographic key sizes [2048-bit or greater] that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Appendix B.1]].
             </selectable><selectable id="fcs_ckm.1.1_6">FFC Schemes using Diffie-Hellman group 14 that meet the following: [RFC 3526]</selectable><selectable id="fcs_ckm.1.1_7"> FFC Schemes using safe primes that meet the following: [‘NIST Special Publication 800-56A Revision 3,
-              “Recommendation for Pair-Wise Key Establishment Schemes"]</selectable></selectables><h:s>and specified cryptographic key sizes [assignment: cryptographic key sizes] that meet the
-              following: [assignment: list of standards]</h:s>  .</title>
-            <note role="application">The ST author selects all key generation schemes used for key establishment and
-              device authentication. When key generation is used for key establishment, the schemes in FCS_CKM.2.1
-              and selected cryptographic protocols shall match the selection. When key generation is used for device
-              authentication, the public key is expected to be associated with an X.509v3 certificate.<h:p/>
-              If the TOE acts as a receiver in the RSA key establishment scheme, the TOE does not need to implement RSA
-              key generation.
-            </note>
+              “Recommendation for Pair-Wise Key Establishment Schemes"]</selectable></selectables><h:p><h:s>and specified cryptographic key sizes [assignment: cryptographic key sizes] that meet the following: [assignment: list of standards]</h:s> .</h:p></title>
+            <note role="application"><h:p>The ST author selects all key generation schemes used for key establishment and device authentication. When key generation is used for key establishment, the schemes in FCS_CKM.2.1 and selected cryptographic protocols shall match the selection. When key generation is used for device authentication, the public key is expected to be associated with an X.509v3 certificate. If the TOE acts as a receiver in the RSA key establishment scheme, the TOE does not need to implement RSA key generation.</h:p></note>
             <aactivity level="element">
               <TSS>The evaluator shall ensure that the TSS identifies the key sizes supported by
                 the TOE. If the ST specifies more than one scheme, the evaluator shall examine the TSS to verify
@@ -1072,10 +1065,10 @@
           <audit-event/>
         </f-component>
         <!--FCS_COP.1/KeyedHash Cryptographic Operation (Keyed Hash Algorithms)-->
-        <f-component cc-id="fcs_cop.1" id="fcs-cop-1-keyedhash" name="Cryptographic Operation (Keyed Hash Algorithms)" iteration="KeyedHash">
+        <f-component cc-id="fcs_cop.1" id="fcs-cop-1-keyedhash" name="Cryptographic Operation (Keyed Hash Algorithms)" iteration="KeyedHash" status="optional">
           <description>If "" is selected in FCS_COP.1/KeyedHash 						  then "" must be selected in FCS_COP.1.1/Hash.</description>
           <f-element id="fcs-cop-1e1-keyedhash">
-            <title>The TSF shall perform [ <h:i>keyed-hash message authentication</h:i>  ] in accordance with a specified cryptographic algorithm<selectables><selectable id="sel-hmac-sha-1">HMAC-SHA-1</selectable><selectable id="sel-hmac-sha-256">HMAC-SHA-256</selectable><selectable id="sel-hmac-sha-384">HMAC-SHA-384</selectable><selectable id="sel-hmac-sha-512">HMAC-SHA-512</selectable><selectable id="sel-hmac-sha-3-224">SHA-3-224</selectable><selectable id="sel-hmac-sha-3-256">SHA-3-256</selectable><selectable id="sel-hmac-sha-3-384">SHA-3-384</selectable><selectable id="sel-hmac-sha-3-512">SHA-3-512</selectable></selectables>and cryptographic key sizes<assignable>key size (in bits) used in HMAC</assignable>and message digest sizes<selectables><selectable id="fcs_cop.1.1_KeyedHash_2">160</selectable><selectable id="fcs_cop.1.1_KeyedHash_3">256</selectable><selectable id="fcs_cop.1.1_KeyedHash_4">384</selectable><selectable id="fcs_cop.1.1_KeyedHash_5">512 bits</selectable></selectables><h:p>that meet the following: [ <h:b/><h:i/>FIPS Pub 198-1, "The Keyed-Hash Message Authentication Code," and FIPS Pub 180-4, “Secure Hash Standard"<h:i/><h:b/> ].</h:p></title>
+            <title><h:p>The TSF shall perform [ <h:i/>keyed-hash message authentication<h:i/> ] in accordance with a specified cryptographic algorithm</h:p><selectables><selectable id="sel-hmac-sha-1">HMAC-SHA-1</selectable><selectable id="sel-hmac-sha-256">HMAC-SHA-256</selectable><selectable id="sel-hmac-sha-384">HMAC-SHA-384</selectable><selectable id="sel-hmac-sha-512">HMAC-SHA-512</selectable><selectable id="sel-hmac-sha-3-224">SHA-3-224</selectable><selectable id="sel-hmac-sha-3-256">SHA-3-256</selectable><selectable id="sel-hmac-sha-3-384">SHA-3-384</selectable><selectable id="sel-hmac-sha-3-512">SHA-3-512</selectable></selectables>and cryptographic key sizes<assignable>key size (in bits) used in HMAC</assignable>and message digest sizes<selectables><selectable id="fcs_cop.1.1_KeyedHash_2">160</selectable><selectable id="fcs_cop.1.1_KeyedHash_3">256</selectable><selectable id="fcs_cop.1.1_KeyedHash_4">384</selectable><selectable id="fcs_cop.1.1_KeyedHash_5">512 bits</selectable></selectables><h:p>that meet the following: [ <h:b/><h:i/>FIPS Pub 198-1, "The Keyed-Hash Message Authentication Code," and FIPS Pub 180-4, “Secure Hash Standard"<h:i/><h:b/> ].</h:p></title>
             <note role="application"><h:p>The selection in this requirement must be consistent with the key size specified for the size of the keys used in conjunction with the keyed-hash message authentication.</h:p></note>
             <aactivity level="element">
               <TSS>The evaluator shall examine the TSS to ensure that it specifies the following
