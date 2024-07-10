@@ -488,7 +488,6 @@
       <section id="fau" title="Class: Security Audit (FAU)">
         <!--FAU_ARP.1 Security Audit Automatic Response-->
         <f-component cc-id="fau_arp.1" id="fau-arp-1" name="Security Audit Automatic Response" status="optional">
-          <consistency-rationale/>
           <f-element id="fau-arp-1e1">
             <title>The TSF shall take<assignable>list of actions</assignable>upon detection of a potential security violation.</title>
             <note role="application">In certain cases, it may be useful for Virtualization Systems to perform automated
@@ -511,7 +510,6 @@
         </f-component>
         <!--FAU_GEN.1 Audit Data Generation-->
         <f-component cc-id="fau_gen.1" id="fau-gen-1" name="Audit Data Generation">
-          <consistency-rationale/>
           <f-element id="fau-gen-1e1">
             <title>The TSF shall be able to generate an audit record of the following auditable events:  <h:ol><h:li>Start-up and shutdown of audit functions</h:li><h:li>[<h:b>All administrative actions relevant to claimed SFRs as defined in the
               Auditable Events Table from the Client and Server PP-Modules</h:b>]</h:li><h:li>[<h:b>Auditable events defined in  <xref g="t-audit-mandatory"/></h:b>]</h:li><h:li><h:b><selectables><selectable id="sel-at2">Auditable events defined in  <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable><selectable id="sel-at3">Auditable events defined in  <xref g="t-audit-objective"/> for Objective SFRs</selectable><selectable id="sel-at4">Auditable events defined in  <xref g="t-audit-sel-based"/> for Selection-Based SFRs</selectable><selectable id="sel-attls">Auditable events for the  <xref to="tls"/> listed in  <xref to="atref-pkgs"/></selectable><selectable id="sel-atssh">Auditable events defined in the audit table for the  <xref to="ssh"/></selectable><selectable id="fau_gen.1.1_1">no other auditable events</selectable></selectables></h:b></h:li></h:ol></title>
@@ -568,7 +566,6 @@
         </f-component>
         <!--FAU_SAA.1 Potential Violation Analysis-->
         <f-component cc-id="fau_saa.1" id="fau-saa-1" name="Potential Violation Analysis" status="optional">
-          <consistency-rationale/>
           <f-element id="fau-saa-1e1">
             <title>The TSF shall be able to apply a set of rules in monitoring the audited events and based upon these rules indicate a potential violation of the enforcement of the SFRs.</title>
           </f-element>
@@ -593,7 +590,6 @@
         </f-component>
         <!--FAU_SAR.1 Audit Review-->
         <f-component cc-id="fau_sar.1" id="fau-sar-1" name="Audit Review">
-          <consistency-rationale/>
           <f-element id="fau-sar-1e1">
             <title>The TSF shall provide [ <h:i>administrators</h:i>  ] with the capability to read [ <h:i>all information</h:i>  ] from the audit records.</title>
           </f-element>
@@ -616,7 +612,6 @@
         </f-component>
         <!--FAU_STG.1 Protected Audit Trail Storage-->
         <f-component cc-id="fau_stg.1" id="fau-stg-1" name="Protected Audit Trail Storage">
-          <consistency-rationale/>
           <f-element id="fau-stg-1e1">
             <title>The TSF shall protect the stored audit records in the audit trail from unauthorized deletion.</title>
           </f-element>
@@ -729,7 +724,6 @@
       <section id="fcs" title="Class: Cryptographic Support (FCS)">
         <!--FCS_CKM.1 Cryptographic Key Generation-->
         <f-component cc-id="fcs_ckm.1" id="fcs-ckm-1" name="Cryptographic Key Generation">
-          <consistency-rationale/>
           <f-element id="fcs-ckm-1e1">
             <title>The TSF shall generate <h:b>asymmetric</h:b>  cryptographic keys in accordance with a specified cryptographic key generation algorithm<selectables><selectable id="fcs_ckm.1.1_1">
               RSA schemes using cryptographic key sizes [2048-bit or greater] that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Appendix B.3]
@@ -809,7 +803,6 @@
         </f-component>
         <!--FCS_CKM.2 Cryptographic Key Distribution-->
         <f-component cc-id="fcs_ckm.2" id="fcs-ckm-2" name="Cryptographic Key Distribution">
-          <consistency-rationale/>
           <f-element id="fcs-ckm-2e1">
             <title>The TSF shall <h:s>distribute cryptographic keys</h:s> <h:b>implement functionality to perform cryptographic
               key establishment</h:b>  in accordance with a specified cryptographic key establishment method:<selectables><selectable id="fcs_ckm.2.1_1">RSA-based key establishment schemes that meets the following: RSAES-PKCS1-v1_5 as specified in
@@ -970,7 +963,6 @@
         </f-component>
         <!--FCS_COP.1/Hash Cryptographic Operation (Hashing)-->
         <f-component cc-id="fcs_cop.1" id="fcs-cop-1-hash" name="Cryptographic Operation (Hashing)" iteration="Hash">
-          <consistency-rationale/>
           <f-element id="fcs-cop-1e1-hash">
             <title>The TSF shall perform [ <h:i>cryptographic hashing</h:i>  ] in accordance with a specified cryptographic algorithm<selectables><selectable id="sel-hash-sha-1">SHA-1</selectable><selectable id="sel-hash-sha-256">SHA-256</selectable><selectable id="sel-hash-sha-384">SHA-384</selectable><selectable id="sel-hash-sha-512">SHA-512</selectable><selectable id="sel-hash-sha-3-224">SHA-3-224</selectable><selectable id="sel-hash-sha-3-256">SHA-3-256</selectable><selectable id="sel-hash-sha-3-384">SHA-3-384</selectable><selectable id="sel-hash-sha-3-512">SHA-3-512</selectable></selectables>and message digest sizes<selectables><selectable id="fcs_cop.1.1_Hash_1">160</selectable><selectable id="fcs_cop.1.1_Hash_2">256</selectable><selectable id="fcs_cop.1.1_Hash_3">384</selectable><selectable id="fcs_cop.1.1_Hash_4">512 bits</selectable></selectables>that meet the following:<selectables><selectable id="fcs_cop.1.1_Hash_5">FIPS PUB 180-4 "Secure Hash Standard"</selectable><selectable id="fcs_cop.1.1_Hash_6">ISO/IEC 10118-3:2018</selectable></selectables></title>
             <note role="application">
@@ -1082,7 +1074,6 @@
         <!--FCS_COP.1/KeyedHash Cryptographic Operation (Keyed Hash Algorithms)-->
         <f-component cc-id="fcs_cop.1" id="fcs-cop-1-keyedhash" name="Cryptographic Operation (Keyed Hash Algorithms)" iteration="KeyedHash">
           <description>If "" is selected in FCS_COP.1/KeyedHash 						  then "" must be selected in FCS_COP.1.1/Hash.</description>
-          <consistency-rationale/>
           <f-element id="fcs-cop-1e1-keyedhash">
             <title>The TSF shall perform [ <h:i>keyed-hash message authentication</h:i>  ] in accordance with a specified cryptographic algorithm<selectables><selectable id="sel-hmac-sha-1">HMAC-SHA-1</selectable><selectable id="sel-hmac-sha-256">HMAC-SHA-256</selectable><selectable id="sel-hmac-sha-384">HMAC-SHA-384</selectable><selectable id="sel-hmac-sha-512">HMAC-SHA-512</selectable><selectable id="sel-hmac-sha-3-224">SHA-3-224</selectable><selectable id="sel-hmac-sha-3-256">SHA-3-256</selectable><selectable id="sel-hmac-sha-3-384">SHA-3-384</selectable><selectable id="sel-hmac-sha-3-512">SHA-3-512</selectable></selectables>and cryptographic key sizes<assignable>key size (in bits) used in HMAC</assignable>and message digest sizes<selectables><selectable id="fcs_cop.1.1_KeyedHash_2">160</selectable><selectable id="fcs_cop.1.1_KeyedHash_3">256</selectable><selectable id="fcs_cop.1.1_KeyedHash_4">384</selectable><selectable id="fcs_cop.1.1_KeyedHash_5">512 bits</selectable></selectables><h:p>that meet the following: [ <h:b/><em>FIPS Pub 198-1, "The Keyed-Hash Message Authentication Code," and FIPS Pub 180-4, “Secure Hash Standard"</em><h:b/> ].</h:p></title>
             <note role="application"><h:p>The selection in this requirement must be consistent with the key size specified for the size of the keys used in conjunction with the keyed-hash message authentication.</h:p></note>
@@ -1104,7 +1095,6 @@
         </f-component>
         <!--FCS_COP.1/Sig Cryptographic Operation (Signature Algorithms)-->
         <f-component cc-id="fcs_cop.1" id="fcs-cop-1-sig" name="Cryptographic Operation (Signature Algorithms)" iteration="Sig">
-          <consistency-rationale/>
           <f-element id="fcs-cop-1e1-sig">
             <title>The TSF shall perform [ <h:i>cryptographic signature services (generation and verification)</h:i>  ] in accordance with a specified cryptographic algorithm<selectables><selectable id="sel-sig-rsa">RSA schemes using cryptographic key sizes [2048-bit or greater] that meet
               the following: [<h:i>FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Section 4</h:i>]</selectable><selectable>ECDSA schemes using [“NIST curves” P-256, P-384 and <selectables><selectable id="fcs_cop.1.1_Sig_1">P-521</selectable><selectable id="fcs_cop.1.1_Sig_2">no other curves</selectable></selectables>] that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Section 5] </selectable></selectables>.</title>
@@ -1155,7 +1145,6 @@
           <description>If the SSH Package is included in the ST then ","
             "," and "" must be selected in FCS_COP.1/UDE.
           </description>
-          <consistency-rationale/>
           <f-element id="fcs-cop-1e1-ude">
             <title>The TSF shall perform [ <h:i>encryption and decryption</h:i>  ] in accordance with a specified cryptographic algorithm<selectables><selectable id="sel-ude-aes-kw">AES Key Wrap (KW) (as defined in NIST SP 800-38F)</selectable><selectable id="sel-ude-aes-kwp">AES Key Wrap with Padding (KWP) (as defined in NIST SP 800-38F)</selectable><selectable id="sel-ude-aes-gcm">AES-GCM (as defined in NIST SP 800-38D)</selectable><selectable id="sel-ude-aes-ccm">AES-CCM (as defined in NIST SP 800-38C)</selectable><selectable id="sel-ude-aes-xts">AES-XTS (as defined in NIST SP 800-38E) mode</selectable><selectable id="sel-ude-aes-ccmp-256">AES-CCMP-256 (as defined in NIST SP800-38C and IEEE 802.11ac-2013)</selectable><selectable id="sel-ude-aes-gcmp-256">AES-GCMP-256 (as defined in NIST SP800-38D and IEEE 802.11ac-2013)</selectable><selectable id="sel-ude-aes-ccmp">AES-CCMP (as defined in FIPS PUB 197, NIST SP 800-38C and IEEE 802.11-2012)</selectable><selectable id="sel-ude-aes-cbc">AES-CBC (as defined in FIPS PUB 197, and NIST SP 800-38A) mode</selectable><selectable id="sel-ude-aes-ctr">AES-CTR (as defined in NIST SP 800-38A) mode</selectable></selectables>and cryptographic key sizes<selectables><selectable id="sel-ude-keysize-128">128-bit key sizes</selectable><selectable id="sel-ude-keysize-256">256-bit key sizes</selectable></selectables>.</title>
             <note role="application">For the first selection of FCS_COP.1.1/UDE, the ST author should choose the mode or
@@ -2384,7 +2373,6 @@
           <description>If "directory-based" is selected anywhere in FIA_UAU.5.1 then
             "Ability to configure name/address of directory server to bind with" must be selected in the Client or Server module
             management function table.</description>
-          <consistency-rationale/>
           <f-element id="fia-uau-5e1">
             <title>The TSF shall provide the following authentication mechanisms:<selectables><selectable><selectables><selectable id="fia_uau.5.1_1">local</selectable><selectable id="sel-uau-pwd-dirbased">directory-based</selectable></selectables> authentication based on username and password </selectable><selectable id="fia_uau.5.1_2">authentication based on username and a PIN that releases an asymmetric key stored in
               OE-protected storage</selectable><selectable><selectables><selectable id="fia_uau.5.1_3">local</selectable><selectable id="sel-uau-x509-dirbased">directory-based</selectable></selectables> authentication based on X.509 certificates </selectable><selectable><selectables><selectable id="fia_uau.5.1_4">local</selectable><selectable id="sel-uau-ssh-dirbased">directory-based</selectable></selectables> authentication based on an SSH public key credential </selectable></selectables>to support Administrator authentication.</title>
@@ -3340,7 +3328,6 @@
       <section id="fta" title="Class: TOE Access Banner (FTA)">
         <!--FTA_TAB.1 TOE Access Banner-->
         <f-component cc-id="fta_tab.1" id="fta-tab-1" name="TOE Access Banner">
-          <consistency-rationale/>
           <f-element id="fta-tab-ext-1e1">
             <title>Before establishing an administrative user session, the TSF shall display a security Administrator-specified advisory notice and consent warning message regarding use of the TOE.</title>
             <note role="application">
@@ -3416,7 +3403,6 @@
         </f-component>
         <!--FTP_TRP.1 Trusted Path-->
         <f-component cc-id="ftp_trp.1" id="ftp-trp-1" name="Trusted Path">
-          <consistency-rationale/>
           <f-element id="ftp-trp-1e1">
             <title>The TSF shall <h:b>use a trusted channel as specified in FTP_ITC_EXT.1 to</h:b>  provide a <h:b>trusted</h:b>  communication path between itself and [ <h:i>remote</h:i>  ] <h:b>administrators</h:b>  that is logically distinct from other communication paths and provides assured identification of its end points and protection of the communicated data from [ <h:i>modification, disclosure</h:i>  ].</title>
           </f-element>
