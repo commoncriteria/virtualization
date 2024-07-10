@@ -1073,7 +1073,7 @@
         <f-component cc-id="fcs_cop.1" id="fcs-cop-1-keyedhash" name="Cryptographic Operation (Keyed Hash Algorithms)" iteration="KeyedHash">
           <description>If "" is selected in FCS_COP.1/KeyedHash 						  then "" must be selected in FCS_COP.1.1/Hash.</description>
           <f-element id="fcs-cop-1e1-keyedhash">
-            <title>The TSF shall perform [ <h:i>keyed-hash message authentication</h:i>  ] in accordance with a specified cryptographic algorithm<selectables><selectable id="sel-hmac-sha-1">HMAC-SHA-1</selectable><selectable id="sel-hmac-sha-256">HMAC-SHA-256</selectable><selectable id="sel-hmac-sha-384">HMAC-SHA-384</selectable><selectable id="sel-hmac-sha-512">HMAC-SHA-512</selectable><selectable id="sel-hmac-sha-3-224">SHA-3-224</selectable><selectable id="sel-hmac-sha-3-256">SHA-3-256</selectable><selectable id="sel-hmac-sha-3-384">SHA-3-384</selectable><selectable id="sel-hmac-sha-3-512">SHA-3-512</selectable></selectables>and cryptographic key sizes<assignable>key size (in bits) used in HMAC</assignable>and message digest sizes<selectables><selectable id="fcs_cop.1.1_KeyedHash_2">160</selectable><selectable id="fcs_cop.1.1_KeyedHash_3">256</selectable><selectable id="fcs_cop.1.1_KeyedHash_4">384</selectable><selectable id="fcs_cop.1.1_KeyedHash_5">512 bits</selectable></selectables><h:p>that meet the following: [ <strong><em>FIPS Pub 198-1, "The Keyed-Hash Message Authentication Code," and FIPS Pub 180-4, “Secure Hash Standard"</em></strong> ].</h:p></title>
+            <title>The TSF shall perform [ <h:i>keyed-hash message authentication</h:i>  ] in accordance with a specified cryptographic algorithm<selectables><selectable id="sel-hmac-sha-1">HMAC-SHA-1</selectable><selectable id="sel-hmac-sha-256">HMAC-SHA-256</selectable><selectable id="sel-hmac-sha-384">HMAC-SHA-384</selectable><selectable id="sel-hmac-sha-512">HMAC-SHA-512</selectable><selectable id="sel-hmac-sha-3-224">SHA-3-224</selectable><selectable id="sel-hmac-sha-3-256">SHA-3-256</selectable><selectable id="sel-hmac-sha-3-384">SHA-3-384</selectable><selectable id="sel-hmac-sha-3-512">SHA-3-512</selectable></selectables>and cryptographic key sizes<assignable>key size (in bits) used in HMAC</assignable>and message digest sizes<selectables><selectable id="fcs_cop.1.1_KeyedHash_2">160</selectable><selectable id="fcs_cop.1.1_KeyedHash_3">256</selectable><selectable id="fcs_cop.1.1_KeyedHash_4">384</selectable><selectable id="fcs_cop.1.1_KeyedHash_5">512 bits</selectable></selectables><h:p>that meet the following: [ <h:b/><em>FIPS Pub 198-1, "The Keyed-Hash Message Authentication Code," and FIPS Pub 180-4, “Secure Hash Standard"</em><h:b/> ].</h:p></title>
             <note role="application"><h:p>The selection in this requirement must be consistent with the key size specified for the size of the keys used in conjunction with the keyed-hash message authentication.</h:p></note>
             <aactivity level="element">
               <TSS>The evaluator shall examine the TSS to ensure that it specifies the following
@@ -2578,11 +2578,11 @@
         </f-component>
         <!--FIA_X509_EXT.2 X.509 Certificate Authentication-->
         <f-component cc-id="fia_x509_ext.2" id="fia-x509-ext-2" name="X.509 Certificate Authentication" status="sel-based">
-          <depends on="sel-tud-digsign-cert"/>
-          <depends on="sel-itc-certauth"/>
           <description>If "" is selected then
             "Ability to configure action taken if unable to determine the validity of a certificate" in the Client or Server module
             management function table must also be selected.</description>
+          <depends on="sel-tud-digsign-cert"/>
+          <depends on="sel-itc-certauth"/>
           <comp-lev>requires the TSF to identify the functions for which it uses X.509
             certificates for authentication</comp-lev>
           <management>The following actions could be considered for the management functions in FMT:
