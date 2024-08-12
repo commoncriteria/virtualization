@@ -59,7 +59,7 @@
 			  or coalitions. In the context of a VS, information domains are generally implemented as collections of VMs connected
 			  by virtual networks. The VS itself can be considered an Information Domain, as can its Management Subsystem.</term>
       <term full="Guest Network">See Operational Network.</term>
-      <term full="Guest Operating System" abbr="OS">An operating system that runs within a Guest VM.</term>
+      <term full="Guest Operating System">An operating system that runs within a Guest VM.</term>
       <term full="Guest VM">A Guest VM is a VM that contains a virtual environment for the execution of an independent computing
 			  system. Virtual environments execute mission workloads and implement customer-specific client or server functionality
 			  in Guest VMs, such as a web server or desktop productivity applications.</term>
@@ -68,7 +68,7 @@
 			  to the workloads of Guest VMs. For example, a VM that provides a virus scanning service for a Guest VM would be
 			  considered a Helper VM. For the purposes of this document, Helper VMs are considered a type of Guest VM, and are 
 			  therefore subject to all the same requirements, unless specifically stated otherwise.</term>
-      <term full="Host Operating System" abbr="OS">An operating system onto which a VS is installed. Relative to the VS, the Host OS is 
+      <term full="Host Operating System">An operating system onto which a VS is installed. Relative to the VS, the Host OS is 
 			  part of the Platform. There need not be a Host OS, but often VSes employ a Host OS or Control Domain to support
 			  guest access to host resources. Sometimes these domains are themselves encapsulated within VMs.</term>
       <term full="Hypervisor">The Hypervisor is part of the VMM. It is the software executive of the physical platform of a VS.
@@ -101,18 +101,18 @@
 			  designed functionality. Examples of Service VMs include device driver VMs that manage access to physical devices,
 			  VMs that provide life-cycle management and provisioning of Hypervisor and Guest VMs, and name-service VMs that 
 			  help establish communication paths between VMs.</term>
-      <term full="System Security Policy" abbr="SSP">The overall policy enforced by the VS defining constraints on the behavior
+      <term full="System Security Policy">The overall policy enforced by the VS defining constraints on the behavior
 			  of VMs and users.</term>
       <term full="User">Users operate Guest VMs and are subject to configuration policies applied to the VS by Administrators.
 			  Users need not be human as in the case of embedded or headless VMs, users are often nothing more than software
 			  entities that operate within the VM.</term>
-      <term full="Virtual Machine" abbr="VM">A Virtual Machine is a virtualized hardware environment in which an operating system
+      <term full="Virtual Machine">A Virtual Machine is a virtualized hardware environment in which an operating system
 			  may execute.</term>
-      <term full="Virtual Machine Manager" abbr="VMM">A VMM is a collection of software components responsible for enabling VMs to
+      <term full="Virtual Machine Manager">A VMM is a collection of software components responsible for enabling VMs to
 			  function as expected by the software executing within them. Generally, the VMM consists of a Hypervisor, Service 
 			  VMs, and other components of the VS, such as virtual devices, binary translation systems, and physical device
 			  drivers. It manages concurrent execution of all VMs and virtualizes platform resources as needed.</term>
-      <term full="Virtualization System" abbr="VS">A software product that enables multiple independent computing systems to 
+      <term full="Virtualization System">A software product that enables multiple independent computing systems to 
 			  execute on the same physical hardware platform without interference from one another. For the purposes of this 
 			  document, the VS consists of a Virtual Machine Manager (VMM), Virtual Machine abstractions, a management subsystem,
 			  and other components.</term>
@@ -127,17 +127,16 @@
       <cclaim name="CC Conformance Claims">
         <description>This PP is conformant to Parts 2 (extended) and 3 (extended) of Common Criteria Version 3.1, Release 5 [CC].</description>
       </cclaim>
-      <cclaim name="PP Claim">
+      <cclaim name="PP Claims">
         <description><h:br/></description>
       </cclaim>
-      <cclaim name="Package Claim">
+      <cclaim name="Package Claims">
         <description><h:br/></description>
       </cclaim>
     </cclaims>
   </sec:Conformance_Claims>
   <!-- 3.0 Security Problem Definition-->
   <sec:Security_Problem_Definition >
-    <h:br/>
     <!-- 3.1 Threats -->
     <sec:Threats>
       <threats>
@@ -515,10 +514,10 @@
         <f-component cc-id="fau_gen.1" id="fau-gen-1" name="Audit Data Generation">
           <f-element id="fau-gen-1e1">
             <title>The TSF shall be able to generate an audit record of the following auditable events:  <h:ol><h:li>Start-up and shutdown of audit functions</h:li><h:li>[<h:b>All administrative actions relevant to claimed SFRs as defined in the 
-									Auditable Events Table from the Client and Server PP-Modules</h:b>]</h:li><h:li>[<h:b>Auditable events defined in  <xref g="t-audit-mandatory"></xref></h:b>]</h:li><h:li><h:b><selectables ><selectable id="sel-at2" >Auditable events defined in  <xref g="t-audit-optional"></xref> for Strictly Optional SFRs</selectable><selectable id="sel-at3" >Auditable events defined in  <xref g="t-audit-objective"></xref> for Objective SFRs</selectable><selectable id="sel-at4" >Auditable events defined in  <xref g="t-audit-sel-based"></xref> for Selection-Based SFRs</selectable><selectable id="sel-attls" >Auditable events for the  <xref to="tls"></xref> listed in  <xref to="atref-pkgs"></xref></selectable><selectable id="sel-atssh" >Auditable events defined in the audit table for the  <xref to="ssh"></xref></selectable><selectable id="fau_gen.1.1_1" >no other auditable events</selectable></selectables></h:b></h:li></h:ol></title>
+									Auditable Events Table from the Client and Server PP-Modules</h:b>]</h:li><h:li>[<h:b>Auditable events defined in  <xref g="t-audit-mandatory"></xref></h:b>]</h:li><h:li><h:b><selectables><selectable id="sel-at2"  >Auditable events defined in  <xref g="t-audit-optional"></xref> for Strictly Optional SFRs</selectable><selectable id="sel-at3"  >Auditable events defined in  <xref g="t-audit-objective"></xref> for Objective SFRs</selectable><selectable id="sel-at4"  >Auditable events defined in  <xref g="t-audit-sel-based"></xref> for Selection-Based SFRs</selectable><selectable id="sel-attls"  >Auditable events for the  <xref to="tls"></xref> listed in  <xref to="atref-pkgs"></xref></selectable><selectable id="sel-atssh"  >Auditable events defined in the audit table for the  <xref to="ssh"></xref></selectable><selectable id="fau_gen.1.1_1"  >no other auditable events</selectable></selectables></h:b></h:li></h:ol></title>
           </f-element>
           <f-element id="fau-gen-1e2">
-            <title>The TSF shall record within each audit record at least the following information:  <h:ol><h:li>Date and time of the event</h:li><h:li>Type of event</h:li><h:li>Subject and object identity (if applicable)</h:li><h:li>The outcome (success or failure) of the event</h:li><h:li>[<h:b>Additional information defined in  <xref g="t-audit-mandatory"></xref></h:b>]</h:li><h:li><h:b><selectables ><selectable id="fau_gen.1.2_1" >Additional information defined in  <xref g="t-audit-optional"></xref> for Strictly Optional SFRs</selectable><selectable id="fau_gen.1.2_2" >Additional information defined in  <xref g="t-audit-objective"></xref> for Objective SFRs</selectable><selectable id="fau_gen.1.2_3" >Additional information defined in  <xref g="t-audit-sel-based"></xref> for Selection-Based SFRs</selectable><selectable id="fau_gen.1.2_4" >Additional information for the  <xref to="tls"></xref> listed in  <xref to="atref-pkgs"></xref></selectable><selectable id="fau_gen.1.2_5" >Additional information defined in the audit table for the  <xref to="ssh"></xref></selectable><selectable id="fau_gen.1.2_6" >no other information</selectable></selectables></h:b></h:li></h:ol></title>
+            <title>The TSF shall record within each audit record at least the following information:  <h:ol><h:li>Date and time of the event</h:li><h:li>Type of event</h:li><h:li>Subject and object identity (if applicable)</h:li><h:li>The outcome (success or failure) of the event</h:li><h:li>[<h:b>Additional information defined in  <xref g="t-audit-mandatory"></xref></h:b>]</h:li><h:li><h:b><selectables><selectable id="fau_gen.1.2_1"  >Additional information defined in  <xref g="t-audit-optional"></xref> for Strictly Optional SFRs</selectable><selectable id="fau_gen.1.2_2"  >Additional information defined in  <xref g="t-audit-objective"></xref> for Objective SFRs</selectable><selectable id="fau_gen.1.2_3"  >Additional information defined in  <xref g="t-audit-sel-based"></xref> for Selection-Based SFRs</selectable><selectable id="fau_gen.1.2_4"  >Additional information for the  <xref to="tls"></xref> listed in  <xref to="atref-pkgs"></xref></selectable><selectable id="fau_gen.1.2_5"  >Additional information defined in the audit table for the  <xref to="ssh"></xref></selectable><selectable id="fau_gen.1.2_6"  >no other information</selectable></selectables></h:b></h:li></h:ol></title>
             <note role="application">
                             The ST author can include other auditable events directly in  <xref g="t-audit-mandatory"></xref>; they are not
 							limited to the list presented. The ST author should update the table in 
@@ -692,7 +691,7 @@
             </aactivity>
           </f-element>
           <f-element id="fau-stg-ext-1e2">
-            <title>The TSF shall<selectables ><selectable id="fau_stg_ext.1.2_1" >drop new audit data</selectable><selectable>overwrite previous audit records according to the following rule: <assignable id="fau_stg_ext.1.2_3" >rule for overwriting previous audit records </assignable></selectable><selectable id="fau_stg_ext.1.2_5" >other action </selectable></selectables>when the local storage space for audit data is full.</title>
+            <title>The TSF shall<selectables><selectable id="fau_stg_ext.1.2_1"  >drop new audit data</selectable><selectable id="fau_stg_ext.1.2_2">overwrite previous audit records according to the following rule: <assignable>rule for overwriting previous audit records </assignable></selectable><selectable id="fau_stg_ext.1.2_5"  ><assignable>other action </assignable></selectable></selectables>when the local storage space for audit data is full.</title>
             <note role="application">An external log server, if available, might be used as alternative storage space
 							in case the local storage space is full. An ‘other action’ could be defined in this case as ‘send the
 							new audit data to an external IT entity’.
@@ -728,11 +727,11 @@
         <!--FCS_CKM.1 Cryptographic Key Generation-->
         <f-component cc-id="fcs_ckm.1" id="fcs-ckm-1" name="Cryptographic Key Generation">
           <f-element id="fcs-ckm-1e1">
-            <title>The TSF shall generate <h:b>asymmetric</h:b>  cryptographic keys in accordance with a specified cryptographic key generation algorithm<selectables ><selectable id="fcs_ckm.1.1_1" >
+            <title>The TSF shall generate <h:b>asymmetric</h:b>  cryptographic keys in accordance with a specified cryptographic key generation algorithm<selectables><selectable id="fcs_ckm.1.1_1"  >
                                     RSA schemes using cryptographic key sizes [2048-bit or greater] that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Appendix B.3]
-                                </selectable><selectable> ECC schemes using [“NIST curves” P-256, P-384, and <selectables ><selectable id="fcs_ckm.1.1_3" >P-521</selectable><selectable id="fcs_ckm.1.1_4" >no other curves</selectable></selectables> that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Appendix B.4] </selectable><selectable id="fcs_ckm.1.1_5" >
+                                </selectable><selectable id="fcs_ckm.1.1_2"> ECC schemes using [“NIST curves” P-256, P-384, and <selectables><selectable id="fcs_ckm.1.1_3"  >P-521</selectable><selectable id="fcs_ckm.1.1_4"  >no other curves</selectable></selectables> that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Appendix B.4] </selectable><selectable id="fcs_ckm.1.1_5"  >
                                     FFC schemes using cryptographic key sizes [2048-bit or greater] that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Appendix B.1]].
-                                </selectable><selectable id="fcs_ckm.1.1_6" >FFC Schemes using Diffie-Hellman group 14 that meet the following: [RFC 3526]</selectable><selectable id="fcs_ckm.1.1_7" > FFC Schemes using safe primes that meet the following: [‘NIST Special Publication 800-56A Revision 3,
+                                </selectable><selectable id="fcs_ckm.1.1_6"  >FFC Schemes using Diffie-Hellman group 14 that meet the following: [RFC 3526]</selectable><selectable id="fcs_ckm.1.1_7"  > FFC Schemes using safe primes that meet the following: [‘NIST Special Publication 800-56A Revision 3,
 					“Recommendation for Pair-Wise Key Establishment Schemes"]</selectable></selectables><h:s>and specified cryptographic key sizes [assignment: cryptographic key sizes] that meet the
 				    following: [assignment: list of standards]</h:s>  .</title>
             <note role="application">The ST author selects all key generation schemes used for key establishment and
@@ -808,10 +807,10 @@
         <f-component cc-id="fcs_ckm.2" id="fcs-ckm-2" name="Cryptographic Key Distribution">
           <f-element id="fcs-ckm-2e1">
             <title>The TSF shall <h:s>distribute cryptographic keys</h:s> <h:b>implement functionality to perform cryptographic
-				    key establishment</h:b>  in accordance with a specified cryptographic key establishment method:<selectables ><selectable id="fcs_ckm.2.1_1" >RSA-based key establishment schemes that meets the following: RSAES-PKCS1-v1_5 as specified in
-					Section 7.2 of RFC 8017, “Public-Key Cryptography Standards (PKCS) #1: RSA Cryptography Specifications Version 2.2"</selectable><selectable id="fcs_ckm.2.1_2" >Elliptic curve-based key establishment schemes that meets the following: NIST Special Publication 800-56A Revision 3,
-					“Recommendation for Pair-Wise Key Establishment Schemes Using Discrete Logarithm Cryptography”</selectable><selectable id="fcs_ckm.2.1_3" >Finite field-based key establishment schemes that meets the following: NIST Special Publication 800-56A Revision 3,
-					“Recommendation for Pair-Wise Key Establishment Schemes Using Discrete Logarithm Cryptography”</selectable><selectable id="fcs_ckm.2.1_4" >Key establishment scheme using Diffie-Hellman group 14 that meets the following: RFC 3526</selectable></selectables><h:s>that meets the following [assignment: list of standards]</h:s>  .</title>
+				    key establishment</h:b>  in accordance with a specified cryptographic key establishment method:<selectables><selectable id="fcs_ckm.2.1_1"  >RSA-based key establishment schemes that meets the following: RSAES-PKCS1-v1_5 as specified in
+					Section 7.2 of RFC 8017, “Public-Key Cryptography Standards (PKCS) #1: RSA Cryptography Specifications Version 2.2"</selectable><selectable id="fcs_ckm.2.1_2"  >Elliptic curve-based key establishment schemes that meets the following: NIST Special Publication 800-56A Revision 3,
+					“Recommendation for Pair-Wise Key Establishment Schemes Using Discrete Logarithm Cryptography”</selectable><selectable id="fcs_ckm.2.1_3"  >Finite field-based key establishment schemes that meets the following: NIST Special Publication 800-56A Revision 3,
+					“Recommendation for Pair-Wise Key Establishment Schemes Using Discrete Logarithm Cryptography”</selectable><selectable id="fcs_ckm.2.1_4"  >Key establishment scheme using Diffie-Hellman group 14 that meets the following: RFC 3526</selectable></selectables><h:s>that meets the following [assignment: list of standards]</h:s>  .</title>
             <aactivity level="element">
               <TSS>The evaluator shall ensure that the supported key establishment schemes correspond to the key 
                                 generation schemes identified in FCS_CKM.1.1. If the ST specifies more than one 
@@ -967,7 +966,7 @@
         <!--FCS_COP.1/Hash Cryptographic Operation (Hashing)-->
         <f-component cc-id="fcs_cop.1" id="fcs-cop-1-hash" name="Cryptographic Operation (Hashing)" iteration="Hash">
           <f-element id="fcs-cop-1e1-hash">
-            <title>The TSF shall perform [ <h:i>cryptographic hashing</h:i>  ] in accordance with a specified cryptographic algorithm<selectables ><selectable id="sel-hash-sha-1" >SHA-1</selectable><selectable id="sel-hash-sha-256" >SHA-256</selectable><selectable id="sel-hash-sha-384" >SHA-384</selectable><selectable id="sel-hash-sha-512" >SHA-512</selectable><selectable id="sel-hash-sha-3-224" >SHA-3-224</selectable><selectable id="sel-hash-sha-3-256" >SHA-3-256</selectable><selectable id="sel-hash-sha-3-384" >SHA-3-384</selectable><selectable id="sel-hash-sha-3-512" >SHA-3-512</selectable></selectables>and message digest sizes<selectables ><selectable id="fcs_cop.1.1_Hash_1" >160</selectable><selectable id="fcs_cop.1.1_Hash_2" >256</selectable><selectable id="fcs_cop.1.1_Hash_3" >384</selectable><selectable id="fcs_cop.1.1_Hash_4" >512 bits</selectable></selectables>that meet the following:<selectables ><selectable id="fcs_cop.1.1_Hash_5" >FIPS PUB 180-4 "Secure Hash Standard"</selectable><selectable id="fcs_cop.1.1_Hash_6" >ISO/IEC 10118-3:2018</selectable></selectables></title>
+            <title>The TSF shall perform [ <h:i>cryptographic hashing</h:i>  ] in accordance with a specified cryptographic algorithm<selectables><selectable id="sel-hash-sha-1"  >SHA-1</selectable><selectable id="sel-hash-sha-256"  >SHA-256</selectable><selectable id="sel-hash-sha-384"  >SHA-384</selectable><selectable id="sel-hash-sha-512"  >SHA-512</selectable><selectable id="sel-hash-sha-3-224"  >SHA-3-224</selectable><selectable id="sel-hash-sha-3-256"  >SHA-3-256</selectable><selectable id="sel-hash-sha-3-384"  >SHA-3-384</selectable><selectable id="sel-hash-sha-3-512"  >SHA-3-512</selectable></selectables>and message digest sizes<selectables><selectable id="fcs_cop.1.1_Hash_1"  >160</selectable><selectable id="fcs_cop.1.1_Hash_2"  >256</selectable><selectable id="fcs_cop.1.1_Hash_3"  >384</selectable><selectable id="fcs_cop.1.1_Hash_4"  >512 bits</selectable></selectables>that meet the following:<selectables><selectable id="fcs_cop.1.1_Hash_5"  >FIPS PUB 180-4 "Secure Hash Standard"</selectable><selectable id="fcs_cop.1.1_Hash_6"  >ISO/IEC 10118-3:2018</selectable></selectables></title>
             <note role="application">
                             Per NIST SP 800-131A, SHA-1 for generating digital signatures is no longer allowed, and SHA-1 for 
 							verification of digital signatures is strongly discouraged as there may be risk in accepting these
@@ -1079,7 +1078,7 @@
           <description>If "" is selected in FCS_COP.1/KeyedHash 
 						  then "" must be selected in FCS_COP.1.1/Hash.</description>
           <f-element id="fcs-cop-1e1-keyedhash">
-            <title>The TSF shall perform [ <h:i>keyed-hash message authentication</h:i>  ] in accordance with a specified cryptographic algorithm<selectables ><selectable id="sel-hmac-sha-1" >HMAC-SHA-1</selectable><selectable id="sel-hmac-sha-256" >HMAC-SHA-256</selectable><selectable id="sel-hmac-sha-384" >HMAC-SHA-384</selectable><selectable id="sel-hmac-sha-512" >HMAC-SHA-512</selectable><selectable id="sel-hmac-sha-3-224" >SHA-3-224</selectable><selectable id="sel-hmac-sha-3-256" >SHA-3-256</selectable><selectable id="sel-hmac-sha-3-384" >SHA-3-384</selectable><selectable id="sel-hmac-sha-3-512" >SHA-3-512</selectable></selectables>and cryptographic key sizes<assignable>key size (in bits) used in HMAC</assignable>and message digest sizes<selectables ><selectable id="fcs_cop.1.1_KeyedHash_2" >160</selectable><selectable id="fcs_cop.1.1_KeyedHash_3" >256</selectable><selectable id="fcs_cop.1.1_KeyedHash_4" >384</selectable><selectable id="fcs_cop.1.1_KeyedHash_5" >512 bits</selectable></selectables>that meet the following: [ <h:b><h:i>FIPS Pub 198-1, "The Keyed-Hash Message Authentication Code," and FIPS Pub 180-4, “Secure Hash
+            <title>The TSF shall perform [ <h:i>keyed-hash message authentication</h:i>  ] in accordance with a specified cryptographic algorithm<selectables><selectable id="sel-hmac-sha-1"  >HMAC-SHA-1</selectable><selectable id="sel-hmac-sha-256"  >HMAC-SHA-256</selectable><selectable id="sel-hmac-sha-384"  >HMAC-SHA-384</selectable><selectable id="sel-hmac-sha-512"  >HMAC-SHA-512</selectable><selectable id="sel-hmac-sha-3-224"  >SHA-3-224</selectable><selectable id="sel-hmac-sha-3-256"  >SHA-3-256</selectable><selectable id="sel-hmac-sha-3-384"  >SHA-3-384</selectable><selectable id="sel-hmac-sha-3-512"  >SHA-3-512</selectable></selectables>and cryptographic key sizes<assignable>key size (in bits) used in HMAC</assignable>and message digest sizes<selectables><selectable id="fcs_cop.1.1_KeyedHash_2"  >160</selectable><selectable id="fcs_cop.1.1_KeyedHash_3"  >256</selectable><selectable id="fcs_cop.1.1_KeyedHash_4"  >384</selectable><selectable id="fcs_cop.1.1_KeyedHash_5"  >512 bits</selectable></selectables>that meet the following: [ <h:b><h:i>FIPS Pub 198-1, "The Keyed-Hash Message Authentication Code," and FIPS Pub 180-4, “Secure Hash
 							Standard"</h:i></h:b>  ].</title>
             <note role="application">The selection in this requirement must be consistent with the key size specified for
 							the size of the keys used in conjunction with the keyed-hash message authentication.<h:p/></note>
@@ -1102,8 +1101,8 @@
         <!--FCS_COP.1/Sig Cryptographic Operation (Signature Algorithms)-->
         <f-component cc-id="fcs_cop.1" id="fcs-cop-1-sig" name="Cryptographic Operation (Signature Algorithms)" iteration="Sig">
           <f-element id="fcs-cop-1e1-sig">
-            <title>The TSF shall perform [ <h:i>cryptographic signature services (generation and verification)</h:i>  ] in accordance with a specified cryptographic algorithm<selectables ><selectable id="sel-sig-rsa" >RSA schemes using cryptographic key sizes [2048-bit or greater] that meet
-									the following: [<h:i>FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Section 4</h:i>]</selectable><selectable>ECDSA schemes using [“NIST curves” P-256, P-384 and <selectables ><selectable id="fcs_cop.1.1_Sig_1" >P-521</selectable><selectable id="fcs_cop.1.1_Sig_2" >no other curves</selectable></selectables>] that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Section 5] </selectable></selectables>.</title>
+            <title>The TSF shall perform [ <h:i>cryptographic signature services (generation and verification)</h:i>  ] in accordance with a specified cryptographic algorithm<selectables><selectable id="sel-sig-rsa"  >RSA schemes using cryptographic key sizes [2048-bit or greater] that meet
+									the following: [<h:i>FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Section 4</h:i>]</selectable><selectable id="sel-sig-ecdsa">ECDSA schemes using [“NIST curves” P-256, P-384 and <selectables><selectable id="fcs_cop.1.1_Sig_1"  >P-521</selectable><selectable id="fcs_cop.1.1_Sig_2"  >no other curves</selectable></selectables>] that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Section 5] </selectable></selectables>.</title>
             <note role="application">The ST Author should choose the algorithm implemented to perform digital signatures;
 							if more than one algorithm is available, this requirement should be iterated to specify the
 							functionality. For the algorithm chosen, the ST author should make the appropriate 
@@ -1152,7 +1151,7 @@
 								"," and "" must be selected in FCS_COP.1/UDE.
 						</description>
           <f-element id="fcs-cop-1e1-ude">
-            <title>The TSF shall perform [ <h:i>encryption and decryption</h:i>  ] in accordance with a specified cryptographic algorithm<selectables ><selectable id="sel-ude-aes-kw" >AES Key Wrap (KW) (as defined in NIST SP 800-38F)</selectable><selectable id="sel-ude-aes-kwp" >AES Key Wrap with Padding (KWP) (as defined in NIST SP 800-38F)</selectable><selectable id="sel-ude-aes-gcm" >AES-GCM (as defined in NIST SP 800-38D)</selectable><selectable id="sel-ude-aes-ccm" >AES-CCM (as defined in NIST SP 800-38C)</selectable><selectable id="sel-ude-aes-xts" >AES-XTS (as defined in NIST SP 800-38E) mode</selectable><selectable id="sel-ude-aes-ccmp-256" >AES-CCMP-256 (as defined in NIST SP800-38C and IEEE 802.11ac-2013)</selectable><selectable id="sel-ude-aes-gcmp-256" >AES-GCMP-256 (as defined in NIST SP800-38D and IEEE 802.11ac-2013)</selectable><selectable id="sel-ude-aes-ccmp" >AES-CCMP (as defined in FIPS PUB 197, NIST SP 800-38C and IEEE 802.11-2012)</selectable><selectable id="sel-ude-aes-cbc" >AES-CBC (as defined in FIPS PUB 197, and NIST SP 800-38A) mode</selectable><selectable id="sel-ude-aes-ctr" >AES-CTR (as defined in NIST SP 800-38A) mode</selectable></selectables>and cryptographic key sizes<selectables ><selectable id="sel-ude-keysize-128" >128-bit key sizes</selectable><selectable id="sel-ude-keysize-256" >256-bit key sizes</selectable></selectables>.</title>
+            <title>The TSF shall perform [ <h:i>encryption and decryption</h:i>  ] in accordance with a specified cryptographic algorithm<selectables><selectable id="sel-ude-aes-kw"  >AES Key Wrap (KW) (as defined in NIST SP 800-38F)</selectable><selectable id="sel-ude-aes-kwp"  >AES Key Wrap with Padding (KWP) (as defined in NIST SP 800-38F)</selectable><selectable id="sel-ude-aes-gcm"  >AES-GCM (as defined in NIST SP 800-38D)</selectable><selectable id="sel-ude-aes-ccm"  >AES-CCM (as defined in NIST SP 800-38C)</selectable><selectable id="sel-ude-aes-xts"  >AES-XTS (as defined in NIST SP 800-38E) mode</selectable><selectable id="sel-ude-aes-ccmp-256"  >AES-CCMP-256 (as defined in NIST SP800-38C and IEEE 802.11ac-2013)</selectable><selectable id="sel-ude-aes-gcmp-256"  >AES-GCMP-256 (as defined in NIST SP800-38D and IEEE 802.11ac-2013)</selectable><selectable id="sel-ude-aes-ccmp"  >AES-CCMP (as defined in FIPS PUB 197, NIST SP 800-38C and IEEE 802.11-2012)</selectable><selectable id="sel-ude-aes-cbc"  >AES-CBC (as defined in FIPS PUB 197, and NIST SP 800-38A) mode</selectable><selectable id="sel-ude-aes-ctr"  >AES-CTR (as defined in NIST SP 800-38A) mode</selectable></selectables>and cryptographic key sizes<selectables><selectable id="sel-ude-keysize-128"  >128-bit key sizes</selectable><selectable id="sel-ude-keysize-256"  >256-bit key sizes</selectable></selectables>.</title>
             <note role="application">For the first selection of FCS_COP.1.1/UDE, the ST author should choose the mode or
 							modes in which AES operates. For the second selection, the ST author should choose the key sizes that
 							are supported by this functionality.<h:p/></note>
@@ -1285,7 +1284,7 @@
           <audit>There are no auditable events foreseen.</audit>
           <dependencies>FCS_RBG_EXT.1 Cryptographic Operation (Random Bit Generation)</dependencies>
           <f-element id="fcs-ent-ext-1e1">
-            <title>The TSF shall provide a mechanism to make available to VMs entropy that meets FCS_RBG_EXT.1 through<selectables ><selectable id="fcs_ent_ext.1.1_1" >Hypercall interface</selectable><selectable id="fcs_ent_ext.1.1_2" >virtual device interface</selectable><selectable id="fcs_ent_ext.1.1_3" >passthrough access to hardware entropy source</selectable></selectables>.</title>
+            <title>The TSF shall provide a mechanism to make available to VMs entropy that meets FCS_RBG_EXT.1 through<selectables><selectable id="fcs_ent_ext.1.1_1"  >Hypercall interface</selectable><selectable id="fcs_ent_ext.1.1_2"  >virtual device interface</selectable><selectable id="fcs_ent_ext.1.1_3"  >passthrough access to hardware entropy source</selectable></selectables>.</title>
           </f-element>
           <f-element id="fcs-ent-ext-1e2">
             <title>The TSF shall provide independent entropy across multiple VMs.</title>
@@ -1447,7 +1446,7 @@
             </aactivity>
           </f-element>
           <f-element id="fcs-ipsec-ext-1e2">
-            <title>The TSF shall implement<selectables ><selectable id="fcs_ipsec_ext.1.2_1" >transport mode</selectable><selectable id="fcs_ipsec_ext.1.2_2" >tunnel mode</selectable></selectables>.</title>
+            <title>The TSF shall implement<selectables><selectable id="fcs_ipsec_ext.1.2_1"  >transport mode</selectable><selectable id="fcs_ipsec_ext.1.2_2"  >tunnel mode</selectable></selectables>.</title>
             <note role="application">
 				If the TOE is used to connect to a VPN gateway for the purposes of establishing a
 				secure connection to a private network, the ST author shall select
@@ -1515,7 +1514,7 @@
             </aactivity>
           </f-element>
           <f-element id="fcs-ipsec-ext-1e4">
-            <title>The TSF shall implement the IPsec protocol ESP as defined by RFC 4303 using the cryptographic algorithms [AES-GCM-128, AES-GCM-256 (as specified in RFC 4106),<selectables ><selectable id="fcs_ipsec_ext.1.4_1" >AES-CBC-128 (specified in RFC 3602)</selectable><selectable id="fcs_ipsec_ext.1.4_2" >AES-CBC-256 (specified in RFC 3602)</selectable><selectable id="fcs_ipsec_ext.1.4_3" >no other algorithms</selectable></selectables>] together with a Secure Hash Algorithm (SHA)-based HMAC.</title>
+            <title>The TSF shall implement the IPsec protocol ESP as defined by RFC 4303 using the cryptographic algorithms [AES-GCM-128, AES-GCM-256 (as specified in RFC 4106),<selectables><selectable id="fcs_ipsec_ext.1.4_1"  >AES-CBC-128 (specified in RFC 3602)</selectable><selectable id="fcs_ipsec_ext.1.4_2"  >AES-CBC-256 (specified in RFC 3602)</selectable><selectable id="fcs_ipsec_ext.1.4_3"  >no other algorithms</selectable></selectables>] together with a Secure Hash Algorithm (SHA)-based HMAC.</title>
             <aactivity level="element">
               <TSS>The evaluator shall examine the TSS to verify that the algorithms AES-GCM-128 and 
 			        AES-GCM-256 are implemented. If the "ST" author has selected either 
@@ -1539,7 +1538,7 @@
             </aactivity>
           </f-element>
           <f-element id="fcs-ipsec-ext-1e5">
-            <title>The TSF shall implement the protocol: <h:p/><selectables ><selectable>IKEv1, using Main Mode for Phase 1 exchanges, as defined in RFC 2407, RFC 2408, RFC 2409, RFC 4109, <selectables ><selectable id="fcs_ipsec_ext.1.5_2" >no other RFCs for extended sequence numbers</selectable><selectable id="fcs_ipsec_ext.1.5_3" >RFC 4304 for extended sequence numbers</selectable></selectables>, <selectables ><selectable id="fcs_ipsec_ext.1.5_4" >no other RFCs for hash functions</selectable><selectable id="fcs_ipsec_ext.1.5_5" >RFC 4868 for hash functions</selectable></selectables>, and <selectables ><selectable id="fcs_ipsec_ext.1.5_6" >support for XAUTH</selectable><selectable id="fcs_ipsec_ext.1.5_7" >no support for XAUTH</selectable></selectables></selectable><selectable>IKEv2 as defined in RFC 7296 (with mandatory support for NAT traversal as specified in section 2.23), RFC 8784, RFC 8247, and <selectables ><selectable id="fcs_ipsec_ext.1.5_9" >no other RFCs for hash functions</selectable><selectable id="fcs_ipsec_ext.1.5_10" >RFC 4868 for hash functions</selectable></selectables>.</selectable></selectables></title>
+            <title>The TSF shall implement the protocol: <h:p/><selectables><selectable id="fcs_ipsec_ext.1.5_1">IKEv1, using Main Mode for Phase 1 exchanges, as defined in RFC 2407, RFC 2408, RFC 2409, RFC 4109, <selectables><selectable id="fcs_ipsec_ext.1.5_2"  >no other RFCs for extended sequence numbers</selectable><selectable id="fcs_ipsec_ext.1.5_3"  >RFC 4304 for extended sequence numbers</selectable></selectables>, <selectables><selectable id="fcs_ipsec_ext.1.5_4"  >no other RFCs for hash functions</selectable><selectable id="fcs_ipsec_ext.1.5_5"  >RFC 4868 for hash functions</selectable></selectables>, and <selectables><selectable id="fcs_ipsec_ext.1.5_6"  >support for XAUTH</selectable><selectable id="fcs_ipsec_ext.1.5_7"  >no support for XAUTH</selectable></selectables></selectable><selectable id="fcs_ipsec_ext.1.5_8">IKEv2 as defined in RFC 7296 (with mandatory support for NAT traversal as specified in section 2.23), RFC 8784, RFC 8247, and <selectables><selectable id="fcs_ipsec_ext.1.5_9"  >no other RFCs for hash functions</selectable><selectable id="fcs_ipsec_ext.1.5_10"  >RFC 4868 for hash functions</selectable></selectables>.</selectable></selectables></title>
             <note role="application">If the TOE implements SHA-2 hash algorithms for IKEv1 or IKEv2, the ST author shall
 					select RFC 4868. </note>
             <aactivity level="element">
@@ -1573,7 +1572,7 @@
             </aactivity>
           </f-element>
           <f-element id="fcs-ipsec-ext-1e6">
-            <title>The TSF shall ensure the encrypted payload in the<selectables ><selectable id="fcs_ipsec_ext.1.6_1" >IKEv1</selectable><selectable id="fcs_ipsec_ext.1.6_2" >IKEv2</selectable></selectables>protocol uses the cryptographic algorithms AES-CBC-128, AES-CBC-256 as specified in RFC 6379 and<selectables ><selectable id="fcs_ipsec_ext.1.6_3" >AES-GCM-128 as specified in RFC 5282</selectable><selectable id="fcs_ipsec_ext.1.6_4" >AES-GCM-256 as specified in RFC 5282</selectable><selectable id="fcs_ipsec_ext.1.6_5" >no other algorithm</selectable></selectables>.</title>
+            <title>The TSF shall ensure the encrypted payload in the<selectables><selectable id="fcs_ipsec_ext.1.6_1"  >IKEv1</selectable><selectable id="fcs_ipsec_ext.1.6_2"  >IKEv2</selectable></selectables>protocol uses the cryptographic algorithms AES-CBC-128, AES-CBC-256 as specified in RFC 6379 and<selectables><selectable id="fcs_ipsec_ext.1.6_3"  >AES-GCM-128 as specified in RFC 5282</selectable><selectable id="fcs_ipsec_ext.1.6_4"  >AES-GCM-256 as specified in RFC 5282</selectable><selectable id="fcs_ipsec_ext.1.6_5"  >no other algorithm</selectable></selectables>.</title>
             <aactivity level="element">
               <TSS>The evaluator shall ensure the TSS identifies the algorithms used for encrypting the IKEv1 or IKEv2
 				payload, and that the algorithms AES-CBC-128, AES-CBC-256 are specified, and if others are chosen in the
@@ -1596,7 +1595,7 @@
             </aactivity>
           </f-element>
           <f-element id="fcs-ipsec-ext-1e7">
-            <title>The TSF shall ensure that<selectables ><selectable>IKEv2 SA lifetimes can be configured by <selectables ><selectable id="fcs_ipsec_ext.1.7_2" >an Administrator</selectable><selectable id="fcs_ipsec_ext.1.7_3" >a VPN Gateway</selectable></selectables> based on <selectables ><selectable id="fcs_ipsec_ext.1.7_4" >number of packets/number of bytes</selectable><selectable id="fcs_ipsec_ext.1.7_5" >length of time</selectable></selectables></selectable><selectable>IKEv1 SA lifetimes can be configured by <selectables ><selectable id="fcs_ipsec_ext.1.7_7" >an Administrator</selectable><selectable id="fcs_ipsec_ext.1.7_8" >a VPN Gateway</selectable></selectables> based on <selectables ><selectable id="fcs_ipsec_ext.1.7_9" >number of packets/number of bytes</selectable><selectable id="fcs_ipsec_ext.1.7_10" >length of time</selectable></selectables></selectable><selectable>IKEv1 SA lifetimes are fixed based on <selectables ><selectable id="fcs_ipsec_ext.1.7_12" >number of packets/number of bytes</selectable><selectable id="fcs_ipsec_ext.1.7_13" >length of time</selectable></selectables>. If length of time is used, it must include at least one option that is 24 hours or less for Phase 1 SAs and 8 hours or less for Phase 2 SAs. </selectable></selectables></title>
+            <title>The TSF shall ensure that<selectables><selectable id="fcs_ipsec_ext.1.7_1">IKEv2 SA lifetimes can be configured by <selectables><selectable id="fcs_ipsec_ext.1.7_2"  >an Administrator</selectable><selectable id="fcs_ipsec_ext.1.7_3"  >a VPN Gateway</selectable></selectables> based on <selectables><selectable id="fcs_ipsec_ext.1.7_4"  >number of packets/number of bytes</selectable><selectable id="fcs_ipsec_ext.1.7_5"  >length of time</selectable></selectables></selectable><selectable id="fcs_ipsec_ext.1.7_6">IKEv1 SA lifetimes can be configured by <selectables><selectable id="fcs_ipsec_ext.1.7_7"  >an Administrator</selectable><selectable id="fcs_ipsec_ext.1.7_8"  >a VPN Gateway</selectable></selectables> based on <selectables><selectable id="fcs_ipsec_ext.1.7_9"  >number of packets/number of bytes</selectable><selectable id="fcs_ipsec_ext.1.7_10"  >length of time</selectable></selectables></selectable><selectable id="fcs_ipsec_ext.1.7_11">IKEv1 SA lifetimes are fixed based on <selectables><selectable id="fcs_ipsec_ext.1.7_12"  >number of packets/number of bytes</selectable><selectable id="fcs_ipsec_ext.1.7_13"  >length of time</selectable></selectables>. If length of time is used, it must include at least one option that is 24 hours or less for Phase 1 SAs and 8 hours or less for Phase 2 SAs. </selectable></selectables></title>
             <note role="application">
 				The ST author is afforded a selection based on the version of IKE in their
 				implementation. There is a further selection within this selection that allows the
@@ -1654,7 +1653,7 @@
             </aactivity>
           </f-element>
           <f-element id="fcs-ipsec-ext-1e8">
-            <title>The TSF shall ensure that all IKE protocols implement DH groups [19 (256-bit Random ECP), 20 (384-bit Random ECP), and<selectables ><selectable id="fcs_ipsec_ext.1.8_1" >24 (2048-bit MODP with 256-bit POS)</selectable><selectable id="fcs_ipsec_ext.1.8_2" >15 (3072-bit MODP)</selectable><selectable id="fcs_ipsec_ext.1.8_3" >14 (2048-bit MODP)</selectable><selectable id="fcs_ipsec_ext.1.8_4" >no other DH groups</selectable></selectables>].</title>
+            <title>The TSF shall ensure that all IKE protocols implement DH groups [19 (256-bit Random ECP), 20 (384-bit Random ECP), and<selectables><selectable id="fcs_ipsec_ext.1.8_1"  >24 (2048-bit MODP with 256-bit POS)</selectable><selectable id="fcs_ipsec_ext.1.8_2"  >15 (3072-bit MODP)</selectable><selectable id="fcs_ipsec_ext.1.8_3"  >14 (2048-bit MODP)</selectable><selectable id="fcs_ipsec_ext.1.8_4"  >no other DH groups</selectable></selectables>].</title>
             <note role="application">
 				The selection is used to specify additional DH groups supported. This applies to
 				IKEv1 and IKEv2 exchanges. It should be noted that if any additional DH groups
@@ -1704,7 +1703,7 @@
             <title>The TSF shall generate nonces used in IKE exchanges in a manner such that the probability that a specific nonce value will be repeated during the life a specific IPsec SA is less than 1 in 2^<assignable>(one or more) “bits of security” valueassociated with the negotiated Diffie-Hellman group as listed in Table 2 of NISTSP 800-57, Recommendation for Key Management – Part 1: General</assignable>.</title>
                       </f-element>
           <f-element id="fcs-ipsec-ext-1e11">
-            <title>The TSF shall ensure that all IKE protocols perform peer authentication using a<selectables ><selectable id="fcs_ipsec_ext.1.11_1" >RSA</selectable><selectable id="fcs_ipsec_ext.1.11_2" >ECDSA</selectable></selectables>that use X.509v3 certificates that conform to RFC 4945 and<selectables ><selectable id="fcs_ipsec_ext.1.11_3" >Pre-shared Keys</selectable><selectable id="fcs_ipsec_ext.1.11_4" >no other method</selectable></selectables>.</title>
+            <title>The TSF shall ensure that all IKE protocols perform peer authentication using a<selectables><selectable id="fcs_ipsec_ext.1.11_1"  >RSA</selectable><selectable id="fcs_ipsec_ext.1.11_2"  >ECDSA</selectable></selectables>that use X.509v3 certificates that conform to RFC 4945 and<selectables><selectable id="fcs_ipsec_ext.1.11_3"  >Pre-shared Keys</selectable><selectable id="fcs_ipsec_ext.1.11_4"  >no other method</selectable></selectables>.</title>
             <note role="application">
 				At least one public-key-based Peer Authentication method is required in order to
 				conform to this PP-Module; one or more of the public key schemes is chosen by
@@ -1796,7 +1795,7 @@
             </aactivity>
           </f-element>
           <f-element id="fcs-ipsec-ext-1e12">
-            <title>The TSF shall not establish an SA if the [<selectables ><selectable id="fcs_ipsec_ext.1.12_1" >IP address</selectable><selectable id="fcs_ipsec_ext.1.12_2" >Fully Qualified Domain Name (FQDN)</selectable><selectable id="fcs_ipsec_ext.1.12_3" >user FQDN</selectable><selectable id="fcs_ipsec_ext.1.12_4" >Distinguished Name (DN)</selectable></selectables>and<selectables ><selectable id="fcs_ipsec_ext.1.12_5" >no other reference identifier type</selectable><selectable id="fcs_ipsec_ext.1.12_7" >other supported reference identifier types </selectable></selectables>] contained in a certificate does not match the expected values for the entity attempting to establish a connection.</title>
+            <title>The TSF shall not establish an SA if the [<selectables><selectable id="fcs_ipsec_ext.1.12_1"  >IP address</selectable><selectable id="fcs_ipsec_ext.1.12_2"  >Fully Qualified Domain Name (FQDN)</selectable><selectable id="fcs_ipsec_ext.1.12_3"  >user FQDN</selectable><selectable id="fcs_ipsec_ext.1.12_4"  >Distinguished Name (DN)</selectable></selectables>and<selectables><selectable id="fcs_ipsec_ext.1.12_5"  >no other reference identifier type</selectable><selectable id="fcs_ipsec_ext.1.12_7"  ><assignable>other supported reference identifier types </assignable></selectable></selectables>] contained in a certificate does not match the expected values for the entity attempting to establish a connection.</title>
             <note role="application">
 				The TOE must support at least one of the following identifier types: IP address,
 				Fully Qualified Domain Name (FQDN), user FQDN, or Distinguished Name (DN).
@@ -1831,7 +1830,7 @@
 				FMT_SMF.1.1/VPN. <h:p/></note>
                       </f-element>
           <f-element id="fcs-ipsec-ext-1e14">
-            <title>The<selectables ><selectable id="fcs_ipsec_ext.1.14_1" >TSF</selectable><selectable id="fcs_ipsec_ext.1.14_2" >VPN Gateway</selectable></selectables>shall be able to ensure by default that the strength of the symmetric algorithm (in terms of the number of bits in the key) negotiated to protect the<selectables ><selectable id="fcs_ipsec_ext.1.14_3" >IKEv1 Phase 1</selectable><selectable id="fcs_ipsec_ext.1.14_4" >IKEv2 IKE_SA</selectable></selectables>connection is greater than or equal to the strength of the symmetric algorithm (in terms of the number of bits in the key) negotiated to protect the [selection: IKEv1 Phase 2, IKEv2 CHILD_SA] connection.</title>
+            <title>The<selectables><selectable id="fcs_ipsec_ext.1.14_1"  >TSF</selectable><selectable id="fcs_ipsec_ext.1.14_2"  >VPN Gateway</selectable></selectables>shall be able to ensure by default that the strength of the symmetric algorithm (in terms of the number of bits in the key) negotiated to protect the<selectables><selectable id="fcs_ipsec_ext.1.14_3"  >IKEv1 Phase 1</selectable><selectable id="fcs_ipsec_ext.1.14_4"  >IKEv2 IKE_SA</selectable></selectables>connection is greater than or equal to the strength of the symmetric algorithm (in terms of the number of bits in the key) negotiated to protect the [selection: IKEv1 Phase 2, IKEv2 CHILD_SA] connection.</title>
             <note role="application">
 				If this functionality is configurable, the TSF may be configured by a VPN Gateway
 				or by an Administrator of the TOE itself.<h:p/>
@@ -1892,10 +1891,10 @@
 						Failure of the randomization process.</audit>
           <dependencies>FCS_COP.1 Cryptographic Operation</dependencies>
           <f-element id="fcs-rbg-ext-1e1">
-            <title>The TSF shall perform all deterministic random bit generation services in accordance with NIST Special Publication 800-90A using<selectables ><selectable id="fcs_rbg_ext.1.1_1" >Hash_DRBG (any)</selectable><selectable id="fcs_rbg_ext.1.1_2" >HMAC_DRBG (any)</selectable><selectable id="fcs_rbg_ext.1.1_3" >CTR_DRBG (AES)</selectable></selectables></title>
+            <title>The TSF shall perform all deterministic random bit generation services in accordance with NIST Special Publication 800-90A using<selectables><selectable id="fcs_rbg_ext.1.1_1"  >Hash_DRBG (any)</selectable><selectable id="fcs_rbg_ext.1.1_2"  >HMAC_DRBG (any)</selectable><selectable id="fcs_rbg_ext.1.1_3"  >CTR_DRBG (AES)</selectable></selectables></title>
           </f-element>
           <f-element id="fcs-rbg-ext-1e2">
-            <title>The deterministic RBG shall be seeded by an entropy source that accumulates entropy from<selectables ><selectable id="fcs_rbg_ext.1.2_1" >a software-based noise source</selectable><selectable id="fcs_rbg_ext.1.2_2" >a hardware-based noise source</selectable></selectables>with a minimum of<selectables ><selectable id="fcs_rbg_ext.1.2_3" >128 bits</selectable><selectable id="fcs_rbg_ext.1.2_4" >192 bits</selectable><selectable id="fcs_rbg_ext.1.2_5" >256 bits</selectable></selectables>of entropy at least equal to the greatest security strength according to NIST SP 800-57, of the keys and hashes that it will generate.</title>
+            <title>The deterministic RBG shall be seeded by an entropy source that accumulates entropy from<selectables><selectable id="fcs_rbg_ext.1.2_1"  >a software-based noise source</selectable><selectable id="fcs_rbg_ext.1.2_2"  >a hardware-based noise source</selectable></selectables>with a minimum of<selectables><selectable id="fcs_rbg_ext.1.2_3"  >128 bits</selectable><selectable id="fcs_rbg_ext.1.2_4"  >192 bits</selectable><selectable id="fcs_rbg_ext.1.2_5"  >256 bits</selectable></selectables>of entropy at least equal to the greatest security strength according to NIST SP 800-57, of the keys and hashes that it will generate.</title>
             <note role="application">NIST SP 800-90A contains three different methods of generating random numbers; each 
 							of these, in turn, depends on underlying cryptographic primitives (hash functions/ciphers). The ST 
 							author will select the function used, and include the specific underlying cryptographic primitives 
@@ -1961,7 +1960,7 @@
           <audit>There are no auditable events foreseen.</audit>
           <dependencies>FDP_VMS_EXT.1 VM Separation</dependencies>
           <f-element id="fdp-hbi-ext-1e1">
-            <title>The TSF shall use<selectables ><selectable id="fdp_hbi_ext.1.1_1" >no mechanism</selectable><selectable id="fdp_hbi_ext.1.1_3" >list of platform-provided, hardware-based mechanisms </selectable></selectables>to constrain a Guest VM's direct access to the following physical devices:<selectables ><selectable id="fdp_hbi_ext.1.1_4" >no devices</selectable><selectable id="fdp_hbi_ext.1.1_6" > physical devices to which the VMM allows Guest VMs physical access </selectable></selectables>.</title>
+            <title>The TSF shall use<selectables><selectable id="fdp_hbi_ext.1.1_1"  >no mechanism</selectable><selectable id="fdp_hbi_ext.1.1_3"  ><assignable>list of platform-provided, hardware-based mechanisms </assignable></selectable></selectables>to constrain a Guest VM's direct access to the following physical devices:<selectables><selectable id="fdp_hbi_ext.1.1_4"  >no devices</selectable><selectable id="fdp_hbi_ext.1.1_6"  ><assignable> physical devices to which the VMM allows Guest VMs physical access </assignable></selectable></selectables>.</title>
             <note role="application">The TSF must use available hardware-based isolation mechanisms to constrain VMs
 							when VMs have direct access to physical devices. “Direct access” in this context means that the 
 							VM can read or write device memory or access device I/O ports without the VMM being able to intercept 
@@ -1996,10 +1995,10 @@
             <title>The TSF shall allow an authorized administrator to control Guest VM access to the following physical platform resources:<assignable>list of physical platform resources the VMM isable to control access to</assignable>.</title>
           </f-element>
           <f-element id="fdp-ppr-ext-1e2">
-            <title>The TSF shall explicitly deny all Guest VMs access to the following physical platform resources:<selectables ><selectable id="fdp_ppr_ext.1.2_1" >no physical platform resources</selectable><selectable id="fdp_ppr_ext.1.2_3" >list of physical platform resources to which access is explicitly denied </selectable></selectables>.</title>
+            <title>The TSF shall explicitly deny all Guest VMs access to the following physical platform resources:<selectables><selectable id="fdp_ppr_ext.1.2_1"  >no physical platform resources</selectable><selectable id="fdp_ppr_ext.1.2_3"  ><assignable>list of physical platform resources to which access is explicitly denied </assignable></selectable></selectables>.</title>
           </f-element>
           <f-element id="fdp-ppr-ext-1e3">
-            <title>The TSF shall explicitly allow all Guest VMs access to the following physical platform resources:<selectables ><selectable id="fdp_ppr_ext.1.3_1" >no physical platform resources</selectable><selectable id="fdp_ppr_ext.1.3_3" >list of physical platform resources to which access is always allowed </selectable></selectables>.</title>
+            <title>The TSF shall explicitly allow all Guest VMs access to the following physical platform resources:<selectables><selectable id="fdp_ppr_ext.1.3_1"  >no physical platform resources</selectable><selectable id="fdp_ppr_ext.1.3_3"  ><assignable>list of physical platform resources to which access is always allowed </assignable></selectable></selectables>.</title>
             <note role="application">
 				For purposes of this requirement, physical platform resources are divided into three categories: 
 				<h:ol><h:li>those to which Guest OS access is configurable and moderated by the VMM</h:li><h:li>those to which the Guest OS is never allowed to have direct access, and</h:li><h:li>those to which the Guest OS is always allowed to have direct access.</h:li></h:ol>
@@ -2149,7 +2148,7 @@
           <audit>There are no auditable events foreseen.</audit>
           <dependencies>No dependencies.</dependencies>
           <f-element id="fdp-vms-ext-1e1">
-            <title>The VS shall provide the following mechanisms for transferring data between Guest VMs:<selectables ><selectable id="fdp_vms_ext.1.1_1" >no mechanism</selectable><selectable id="fdp_vms_ext.1.1_2" >virtual networking</selectable><selectable id="fdp_vms_ext.1.1_4" >other inter-VM data sharing mechanisms </selectable></selectables>.</title>
+            <title>The VS shall provide the following mechanisms for transferring data between Guest VMs:<selectables><selectable id="fdp_vms_ext.1.1_1"  >no mechanism</selectable><selectable id="fdp_vms_ext.1.1_2"  >virtual networking</selectable><selectable id="fdp_vms_ext.1.1_4"  ><assignable>other inter-VM data sharing mechanisms </assignable></selectable></selectables>.</title>
           </f-element>
           <f-element id="fdp-vms-ext-1e2">
             <title>The TSF shall by default enforce a policy prohibiting sharing of data between Guest VMs.</title>
@@ -2279,10 +2278,10 @@
           <dependencies>FIA_UIA_EXT.1 Administrator Identification and Authentication
 						FMT_SMR.1 Security Roles</dependencies>
           <f-element id="fia-afl-ext-1e1">
-            <title>The TSF shall detect when<selectables ><selectable id="fia_afl_ext.1.1_2" >a positive integer number </selectable><selectable>an administrator configurable positive integer within a <assignable id="fia_afl_ext.1.1_4" >range of acceptable values </assignable></selectable></selectables>unsuccessful authentication attempts occur related to Administrators attempting to authenticate remotely using<selectables ><selectable id="fia_afl_ext.1.1_5" >username and password</selectable><selectable id="fia_afl_ext.1.1_6" >username and PIN</selectable></selectables>.</title>
+            <title>The TSF shall detect when<selectables><selectable id="fia_afl_ext.1.1_2"  ><assignable>a positive integer number </assignable></selectable><selectable id="fia_afl_ext.1.1_3">an administrator configurable positive integer within a <assignable>range of acceptable values </assignable></selectable></selectables>unsuccessful authentication attempts occur related to Administrators attempting to authenticate remotely using<selectables><selectable id="fia_afl_ext.1.1_5"  >username and password</selectable><selectable id="fia_afl_ext.1.1_6"  >username and PIN</selectable></selectables>.</title>
           </f-element>
           <f-element id="fia-afl-ext-1e2">
-            <title>When the defined number of unsuccessful authentication attempts has been met, the TSF shall:<selectables ><selectable>prevent the offending Administrator from successfully establishing a remote session using any authentication method that involves a password or PIN until <assignable id="fia_afl_ext.1.2_2" >action to unlock </assignable> is taken by an Administrator</selectable><selectable id="fia_afl_ext.1.2_3" >prevent the offending Administrator from successfully establishing a remote session using
+            <title>When the defined number of unsuccessful authentication attempts has been met, the TSF shall:<selectables><selectable id="fia_afl_ext.1.2_1">prevent the offending Administrator from successfully establishing a remote session using any authentication method that involves a password or PIN until <assignable>action to unlock </assignable> is taken by an Administrator</selectable><selectable id="fia_afl_ext.1.2_3"  >prevent the offending Administrator from successfully establishing a remote session using
                                     any authentication method that involves a password or PIN until an Administrator-defined time
                                     period has elapsed</selectable></selectables></title>
             <note role="application">The action to be taken shall be populated in the selection of the ST
@@ -2344,7 +2343,7 @@
           <f-element id="fia-pmg-ext-1e1">
             <title>The TSF shall provide the following password management capabilities for administrative passwords:  <h:ol><h:li>Passwords shall be able to be composed of any combination of upper and lower case characters, 
 									digits, and the following special characters:
-                                    <selectables ><selectable id="fia_pmg_ext.1.1_1" >“!”</selectable><selectable id="fia_pmg_ext.1.1_2" >“@”</selectable><selectable id="fia_pmg_ext.1.1_3" >“#”</selectable><selectable id="fia_pmg_ext.1.1_4" >“$”</selectable><selectable id="fia_pmg_ext.1.1_5" >“%”</selectable><selectable id="fia_pmg_ext.1.1_6" >“^”</selectable><selectable id="fia_pmg_ext.1.1_7" >“&amp; ”</selectable><selectable id="fia_pmg_ext.1.1_8" >“*”</selectable><selectable id="fia_pmg_ext.1.1_9" >“(“</selectable><selectable id="fia_pmg_ext.1.1_10" >“)”</selectable><selectable id="fia_pmg_ext.1.1_12" >other characters </selectable></selectables></h:li><h:li>Minimum password length shall be configurable</h:li><h:li>Passwords of at least 15 characters in length shall be supported</h:li></h:ol></title>
+                                    <selectables><selectable id="fia_pmg_ext.1.1_1"  >“!”</selectable><selectable id="fia_pmg_ext.1.1_2"  >“@”</selectable><selectable id="fia_pmg_ext.1.1_3"  >“#”</selectable><selectable id="fia_pmg_ext.1.1_4"  >“$”</selectable><selectable id="fia_pmg_ext.1.1_5"  >“%”</selectable><selectable id="fia_pmg_ext.1.1_6"  >“^”</selectable><selectable id="fia_pmg_ext.1.1_7"  >“&amp; ”</selectable><selectable id="fia_pmg_ext.1.1_8"  >“*”</selectable><selectable id="fia_pmg_ext.1.1_9"  >“(“</selectable><selectable id="fia_pmg_ext.1.1_10"  >“)”</selectable><selectable id="fia_pmg_ext.1.1_12"  ><assignable>other characters </assignable></selectable></selectables></h:li><h:li>Minimum password length shall be configurable</h:li><h:li>Passwords of at least 15 characters in length shall be supported</h:li></h:ol></title>
             <note role="application">
 							This SFR is included in the ST if the ST Author selects ‘authentication based on username and password’ 
 							in FIA_UAU.5.1.<h:br/><h:br/>
@@ -2380,8 +2379,8 @@
 					"Ability to configure name/address of directory server to bind with" must be selected in the Client or Server module 
 					management function table.</description>
           <f-element id="fia-uau-5e1">
-            <title>The TSF shall provide the following authentication mechanisms:<selectables ><selectable><selectables ><selectable id="fia_uau.5.1_1" >local</selectable><selectable id="sel-uau-pwd-dirbased" >directory-based</selectable></selectables> authentication based on username and password </selectable><selectable id="fia_uau.5.1_2" >authentication based on username and a PIN that releases an asymmetric key stored in
-									OE-protected storage</selectable><selectable><selectables ><selectable id="fia_uau.5.1_3" >local</selectable><selectable id="sel-uau-x509-dirbased" >directory-based</selectable></selectables> authentication based on X.509 certificates </selectable><selectable><selectables ><selectable id="fia_uau.5.1_4" >local</selectable><selectable id="sel-uau-ssh-dirbased" >directory-based</selectable></selectables> authentication based on an SSH public key credential </selectable></selectables>to support Administrator authentication.</title>
+            <title>The TSF shall provide the following authentication mechanisms:<selectables><selectable id="sel-uau-pwd"><selectables><selectable id="fia_uau.5.1_1"  >local</selectable><selectable id="sel-uau-pwd-dirbased"  >directory-based</selectable></selectables> authentication based on username and password </selectable><selectable id="fia_uau.5.1_2"  >authentication based on username and a PIN that releases an asymmetric key stored in
+									OE-protected storage</selectable><selectable id="sel-uau-x509"><selectables><selectable id="fia_uau.5.1_3"  >local</selectable><selectable id="sel-uau-x509-dirbased"  >directory-based</selectable></selectables> authentication based on X.509 certificates </selectable><selectable id="sel-uau-ssh"><selectables><selectable id="fia_uau.5.1_4"  >local</selectable><selectable id="sel-uau-ssh-dirbased"  >directory-based</selectable></selectables> authentication based on an SSH public key credential </selectable></selectables>to support Administrator authentication.</title>
             <note role="application">Selection of ‘authentication based on username and password’ requires that 
 							FIA_PMG_EXT.1 be included in the ST. This also requires that the ST include a management function for
 							password management. If the ST author selects ‘authentication based on an SSH public-key credential’,
@@ -2511,8 +2510,8 @@
             <title>The TSF shall validate certificates in accordance with the following rules:  <h:ul><h:li>RFC 5280 certificate validation and certificate path validation</h:li><h:li>The certificate path must terminate with a trusted certificate</h:li><h:li>The TOE shall validate a certificate path by ensuring the presence of the basicConstraints
 									extension, that the CA flag is set to TRUE for all CA certificates, and that any path
 									constraints are met.</h:li><h:li>The TSF shall validate that any CA certificate includes caSigning purpose in the key usage field</h:li><h:li>The TSF shall validate revocation status of the certificate using 
-									<selectables ><selectable id="fia_x509_ext.1.1_1" >OCSP as specified in RFC 6960</selectable><selectable id="fia_x509_ext.1.1_2" >a CRL as specified in RFC 5759</selectable><selectable id="fia_x509_ext.1.1_3" >an OCSP TLS Status Request Extension (OCSP stapling) as specified in 
-											RFC 6066</selectable><selectable id="fia_x509_ext.1.1_4" >OCSP TLS Multi-Certificate Status Request Extension (i.e., OCSP 
+									<selectables><selectable id="fia_x509_ext.1.1_1"  >OCSP as specified in RFC 6960</selectable><selectable id="fia_x509_ext.1.1_2"  >a CRL as specified in RFC 5759</selectable><selectable id="fia_x509_ext.1.1_3"  >an OCSP TLS Status Request Extension (OCSP stapling) as specified in 
+											RFC 6066</selectable><selectable id="fia_x509_ext.1.1_4"  >OCSP TLS Multi-Certificate Status Request Extension (i.e., OCSP 
 											Multi-Stapling) as specified in RFC 6961</selectable></selectables>. </h:li><h:li>The TSF shall validate the extendedKeyUsage field according to the following rules:
                                     <h:ul><h:li>Certificates used for trusted updates and executable code integrity verification shall 
 											have the Code Signing Purpose (id-kp 3 with OID 1.3.6.1.5.5.7.3.3) in the 
@@ -2615,7 +2614,7 @@
 					"Ability to configure action taken if unable to determine the validity of a certificate" in the Client or Server module 
 					management function table must also be selected.</description>
           <f-element id="fia-x509-ext-2e1">
-            <title>The TSF shall use X.509v3 certificates as defined by RFC 5280 to support authentication for<selectables ><selectable id="sel-x509-2-ipsec" >IPsec</selectable><selectable id="sel-x509-2-tls" >TLS</selectable><selectable id="sel-x509-2-https" >HTTPS</selectable><selectable id="sel-x509-2-ssh" >SSH</selectable><selectable id="sel-x5092-signed-updates" >code signing for system software updates</selectable><selectable id="fia_x509_ext.2.1_2" >other uses </selectable></selectables></title>
+            <title>The TSF shall use X.509v3 certificates as defined by RFC 5280 to support authentication for<selectables><selectable id="sel-x509-2-ipsec"  >IPsec</selectable><selectable id="sel-x509-2-tls"  >TLS</selectable><selectable id="sel-x509-2-https"  >HTTPS</selectable><selectable id="sel-x509-2-ssh"  >SSH</selectable><selectable id="sel-x5092-signed-updates"  >code signing for system software updates</selectable><selectable id="fia_x509_ext.2.1_2"  ><assignable>other uses </assignable></selectable></selectables></title>
             <note role="application">This SFR must be included in the ST if the selection for FPT_TUD_EXT.1.3 is “digital
 							signature mechanism,” if "certificate-based authentication of the remote peer" is
 							selected in FTP_ITC_EXT.1, or if "authentication based on X.509 certificates"
@@ -2624,7 +2623,7 @@
 							as listed in the assignment in FIA_X509_EXT.2.1.<h:p/></note>
           </f-element>
           <f-element id="fia-x509-ext-2e2">
-            <title>When the TSF cannot establish a connection to determine the validity of a certificate, the TSF shall<selectables ><selectable id="sel-x509-adminset" >allow the administrator to choose whether to accept the certificate in these cases</selectable><selectable id="fia_x509_ext.2.2_1" >accept the certificate</selectable><selectable id="fia_x509_ext.2.2_2" >not accept the certificate</selectable></selectables>.</title>
+            <title>When the TSF cannot establish a connection to determine the validity of a certificate, the TSF shall<selectables><selectable id="sel-x509-adminset"  >allow the administrator to choose whether to accept the certificate in these cases</selectable><selectable id="fia_x509_ext.2.2_1"  >accept the certificate</selectable><selectable id="fia_x509_ext.2.2_2"  >not accept the certificate</selectable></selectables>.</title>
             <note role="application">
 				
 				Often a connection must be established to check the revocation status of a 
@@ -2677,7 +2676,7 @@
           <audit>There are no auditable events foreseen.</audit>
           <dependencies>No dependencies.</dependencies>
           <f-element id="fmt-smo-ext-1e1">
-            <title>The TSF shall support the separation of management and operational network traffic through<selectables ><selectable id="fmt_smo_ext.1.1_1" >separate physical networks</selectable><selectable id="fmt_smo_ext.1.1_2" >separate logical networks</selectable><selectable id="fmt_smo_ext.1.1_3" >trusted channels as defined in FTP_ITC_EXT.1</selectable><selectable id="fmt_smo_ext.1.1_4" >data encryption using an algorithm specified in FCS_COP.1/UDE</selectable></selectables>.</title>
+            <title>The TSF shall support the separation of management and operational network traffic through<selectables><selectable id="fmt_smo_ext.1.1_1"  >separate physical networks</selectable><selectable id="fmt_smo_ext.1.1_2"  >separate logical networks</selectable><selectable id="fmt_smo_ext.1.1_3"  >trusted channels as defined in FTP_ITC_EXT.1</selectable><selectable id="fmt_smo_ext.1.1_4"  >data encryption using an algorithm specified in FCS_COP.1/UDE</selectable></selectables>.</title>
             <note role="application">Management communications must be separate from user workload communications. Administrative 
 							network traffic—including communications between physical hosts concerning load balancing, audit data,
 							VM startup and shutdown—must be isolated from guest operational networks. For purposes of this requirement, 
@@ -2790,7 +2789,7 @@
           <audit>There are no auditable events foreseen.</audit>
           <dependencies>No dependencies.</dependencies>
           <f-element id="fpt-eem-ext-1e1">
-            <title>The TSF shall take advantage of execution environment-based vulnerability mitigation mechanisms supported by the Platform such as:<selectables ><selectable id="fpt_eem_ext.1.1_1" >Address space randomization</selectable><selectable id="fpt_eem_ext.1.1_2" >Memory execution protection (e.g., DEP)</selectable><selectable id="fpt_eem_ext.1.1_3" >Stack buffer overflow protection</selectable><selectable id="fpt_eem_ext.1.1_4" >Heap corruption detection</selectable><selectable id="fpt_eem_ext.1.1_6" >other mechanisms </selectable><selectable id="fpt_eem_ext.1.1_7" >No mechanisms</selectable></selectables></title>
+            <title>The TSF shall take advantage of execution environment-based vulnerability mitigation mechanisms supported by the Platform such as:<selectables><selectable id="fpt_eem_ext.1.1_1"  >Address space randomization</selectable><selectable id="fpt_eem_ext.1.1_2"  >Memory execution protection (e.g., DEP)</selectable><selectable id="fpt_eem_ext.1.1_3"  >Stack buffer overflow protection</selectable><selectable id="fpt_eem_ext.1.1_4"  >Heap corruption detection</selectable><selectable id="fpt_eem_ext.1.1_6"  ><assignable>other mechanisms </assignable></selectable><selectable id="fpt_eem_ext.1.1_7"  >No mechanisms</selectable></selectables></title>
             <note role="application">Processor manufacturers, compiler developers, and operating system vendors have 
 				developed execution environment-based mitigations that increase the cost to attackers by adding
 				complexity to the task of compromising systems. Software can often take advantage of these mechanisms
@@ -3009,7 +3008,7 @@
 						Integrity measurements collected.</audit>
           <dependencies>No dependencies.</dependencies>
           <f-element id="fpt-ml-ext-1e1">
-            <title>The TSF shall support a measured launch of the Virtualization System. Measured components of the VS shall include the static executable image of the Hypervisor and:<selectables ><selectable id="fpt_ml_ext.1.1_1" >Static executable images of the Management Subsystem</selectable><selectable id="fpt_ml_ext.1.1_3" >list of (static images of) Service VMs </selectable><selectable id="fpt_ml_ext.1.1_5" >list of configuration files </selectable><selectable id="fpt_ml_ext.1.1_6" >no other components</selectable></selectables></title>
+            <title>The TSF shall support a measured launch of the Virtualization System. Measured components of the VS shall include the static executable image of the Hypervisor and:<selectables><selectable id="fpt_ml_ext.1.1_1"  >Static executable images of the Management Subsystem</selectable><selectable id="fpt_ml_ext.1.1_3"  ><assignable>list of (static images of) Service VMs </assignable></selectable><selectable id="fpt_ml_ext.1.1_5"  ><assignable>list of configuration files </assignable></selectable><selectable id="fpt_ml_ext.1.1_6"  >no other components</selectable></selectables></title>
           </f-element>
           <f-element id="fpt-ml-ext-1e2">
             <title>The TSF shall make the measurements selected in FPT_ML_EXT.1.1 available to the Management Subsystem.</title>
@@ -3071,9 +3070,9 @@
             <title>The TSF shall implement controls for handling the transfer of virtual and physical removable media and virtual and physical removable media devices between information domains.</title>
           </f-element>
           <f-element id="fpt-rdm-ext-1e2">
-            <title>The TSF shall enforce the following rules when<assignable>virtual or physical removable media and virtual or physical removable media devices</assignable>are switched between information domains, then<selectables ><selectable id="fpt_rdm_ext.1.2_2" >the Administrator has granted explicit access for the media or device to be connected to
-					the receiving domain</selectable><selectable id="fpt_rdm_ext.1.2_3" >the media in a device that is being transferred is ejected prior to the receiving domain
-					being allowed access to the device</selectable><selectable id="fpt_rdm_ext.1.2_4" >the user of the receiving domain expressly authorizes the connection</selectable><selectable id="fpt_rdm_ext.1.2_5" >the device or media that is being transferred is prevented from being accessed by the 
+            <title>The TSF shall enforce the following rules when<assignable>virtual or physical removable media and virtual or physical removable media devices</assignable>are switched between information domains, then<selectables><selectable id="fpt_rdm_ext.1.2_2"  >the Administrator has granted explicit access for the media or device to be connected to
+					the receiving domain</selectable><selectable id="fpt_rdm_ext.1.2_3"  >the media in a device that is being transferred is ejected prior to the receiving domain
+					being allowed access to the device</selectable><selectable id="fpt_rdm_ext.1.2_4"  >the user of the receiving domain expressly authorizes the connection</selectable><selectable id="fpt_rdm_ext.1.2_5"  >the device or media that is being transferred is prevented from being accessed by the 
 					receiving domain</selectable></selectables></title>
             <note role="application">
                             The purpose of these requirements is to ensure that VMs are not given inadvertent access to information 
@@ -3151,10 +3150,10 @@
                         </note>
           </f-element>
           <f-element id="fpt-tud-ext-1e2">
-            <title>The TSF shall provide administrators the ability to manually initiate updates to TOE firmware/software and<selectables ><selectable id="fpt_tud_ext.1.2_1" >automatic updates</selectable><selectable id="fpt_tud_ext.1.2_2" >no other update mechanism</selectable></selectables>.</title>
+            <title>The TSF shall provide administrators the ability to manually initiate updates to TOE firmware/software and<selectables><selectable id="fpt_tud_ext.1.2_1"  >automatic updates</selectable><selectable id="fpt_tud_ext.1.2_2"  >no other update mechanism</selectable></selectables>.</title>
           </f-element>
           <f-element id="fpt-tud-ext-1e3">
-            <title>The TSF shall provide means to authenticate firmware/software updates to the TOE using a<selectables ><selectable id="sel-tud-digsign-cert" >digital signature mechanism using certificates</selectable><selectable id="sel-tud-digsign" >digital signature mechanism not using certificates</selectable><selectable id="fpt_tud_ext.1.3_1" >published hash</selectable></selectables>prior to installing those updates.</title>
+            <title>The TSF shall provide means to authenticate firmware/software updates to the TOE using a<selectables><selectable id="sel-tud-digsign-cert"  >digital signature mechanism using certificates</selectable><selectable id="sel-tud-digsign"  >digital signature mechanism not using certificates</selectable><selectable id="fpt_tud_ext.1.3_1"  >published hash</selectable></selectables>prior to installing those updates.</title>
             <note role="application">The digital signature mechanism referenced in FPT_TUD_EXT.1.3 is one of the 
 				algorithms specified in FCS_COP.1/SIG.<h:p/>
                             If certificates are used by the update verification mechanism, then FIA_X509_EXT.1 and FIA_X509_EXT.2
@@ -3367,9 +3366,9 @@
           <description>If "" and "" are selected in FTP_ITC_EXT.1.1
 								then "" must be selected in FIA_X509_EXT.2.1.</description>
           <f-element id="ftp-itc-ext-1e1">
-            <title>The TSF shall use<selectables ><selectable id="sel-itc-tls" >TLS as conforming to the  <h:a href="https://www.niap-ccevs.org/MMO/PP/-439-/">Functional Package for Transport Layer Security</h:a></selectable><selectable id="sel-itc-https" >TLS/HTTPS as conforming to FCS_HTTPS_EXT.1</selectable><selectable id="sel-itc-ipsec" >IPsec as conforming to FCS_IPSEC_EXT.1</selectable><selectable id="sel-itc-ssh" >SSH as conforming to the
+            <title>The TSF shall use<selectables><selectable id="sel-itc-tls"  >TLS as conforming to the  <h:a href="https://www.niap-ccevs.org/MMO/PP/-439-/">Functional Package for Transport Layer Security</h:a></selectable><selectable id="sel-itc-https"  >TLS/HTTPS as conforming to FCS_HTTPS_EXT.1</selectable><selectable id="sel-itc-ipsec"  >IPsec as conforming to FCS_IPSEC_EXT.1</selectable><selectable id="sel-itc-ssh"  >SSH as conforming to the
 					 <h:a href="https://www.niap-ccevs.org/MMO/PP/-459-/">Functional Package
-					for Secure Shell</h:a></selectable></selectables>and<selectables ><selectable id="sel-itc-certauth" >certificate-based authentication of the remote peer</selectable><selectable id="ftp_itc_ext.1.1_1" >non-certificate-based authentication of the remote peer</selectable><selectable id="ftp_itc_ext.1.1_2" >no authentication of the remote peer</selectable></selectables>to provide a trusted communication channel between itself, and <h:p/> <h:li>audit servers (as required by FAU_STG_EXT.1), and</h:li><selectables ><selectable id="ftp_itc_ext.1.1_3" >remote administrators (as required by FTP_TRP.1.1 if selected in FMT_MOF_EXT.1.1 in the Client or Server PP-Module)</selectable><selectable id="ftp_itc_ext.1.1_4" >separation of management and operational networks (if selected in FMT_SMO_EXT.1)</selectable><selectable id="ftp_itc_ext.1.1_6" >other capabilities </selectable><selectable id="ftp_itc_ext.1.1_7" >no other capabilities</selectable></selectables>that is logically distinct from other communication paths and provides assured identification of its endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.</title>
+					for Secure Shell</h:a></selectable></selectables>and<selectables><selectable id="sel-itc-certauth"  >certificate-based authentication of the remote peer</selectable><selectable id="ftp_itc_ext.1.1_1"  >non-certificate-based authentication of the remote peer</selectable><selectable id="ftp_itc_ext.1.1_2"  >no authentication of the remote peer</selectable></selectables>to provide a trusted communication channel between itself, and <h:p/> <h:li>audit servers (as required by FAU_STG_EXT.1), and</h:li><selectables><selectable id="ftp_itc_ext.1.1_3"  >remote administrators (as required by FTP_TRP.1.1 if selected in FMT_MOF_EXT.1.1 in the Client or Server PP-Module)</selectable><selectable id="ftp_itc_ext.1.1_4"  >separation of management and operational networks (if selected in FMT_SMO_EXT.1)</selectable><selectable id="ftp_itc_ext.1.1_6"  ><assignable>other capabilities </assignable></selectable><selectable id="ftp_itc_ext.1.1_7"  >no other capabilities</selectable></selectables>that is logically distinct from other communication paths and provides assured identification of its endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.</title>
             <note role="application">If the ST author selects either TLS or HTTPS, the TSF shall be validated against the 
                             Functional Package for TLS. This PP does not mandate that a product implement TLS with mutual authentication,
 				but if the product includes the capability to perform TLS with mutual authentication, then
@@ -3540,47 +3539,75 @@
       </section>
     </sec:SFRs>
     <!--5.2 Security Assurance Requirements-->
-    <section title="Security Assurance Requirements" id="SARs">
-            The Security Objectives for the TOE in Section 4 were constructed to address threats identified in Section 3.1. The 
-		Security Functional Requirements (SFRs) in Section 5.1 are a formal instantiation of the Security Objectives. The PP
-		identifies the Security Assurance Requirements (SARs) to frame the extent to which the evaluator assesses the
-		documentation applicable for the evaluation and performs independent testing.<h:p/>
-            This section lists the set of Security Assurance Requirements (SARs) from Part 3 of the Common Criteria for Information 
-		Technology Security Evaluation, Version 3.1, Revision 5 that are required in evaluations against this PP. Individual
-		evaluation activities to be performed are specified in both Section 5.1 as well as in this section.<h:p/>
-            After the ST has been approved for evaluation, the Information Technology Security Evaluation Facility (ITSEF) will obtain
-		the TOE, supporting environmental IT, and the administrative/user guides for the TOE. The ITSEF is expected to perform
-		actions mandated by the CEM for the ASE and ALC SARs. The ITSEF also performs the evaluation activities contained 
-		within Section 5, which are intended to be an interpretation of the other CEM assurance requirements as they apply 
-		to the specific technology instantiated in the TOE. The evaluation activities that are captured in Section 5 also 
-		provide clarification as to what the developer needs to provide to demonstrate the TOE is compliant with the PP.
-
-	    <section id="ss-ase" title="Class ASE: Security Target Evaluation">
+    <section title="Security Assurance Requirements" id="s-sar">
+      <h:p>The Security Objectives for the TOE in Section 4 were constructed to address threats identified in Section 3.1. The Security Functional Requirements (SFRs) in Section 5.1 are a formal instantiation of the Security Objectives. The PP identifies the Security Assurance Requirements (SARs) to frame the extent to which the evaluator assesses the documentation applicable for the evaluation and performs independent testing. This section lists the set of Security Assurance Requirements (SARs) from Part 3 of the Common Criteria for Information Technology Security Evaluation, Version 3.1, Revision 5 that are required in evaluations against this PP. Individual evaluation activities to be performed are specified in both Section 5.1 as well as in this section. After the ST has been approved for evaluation, the Information Technology Security Evaluation Facility (ITSEF) will obtain the TOE, supporting environmental IT, and the administrative/user guides for the TOE. The ITSEF is expected to perform actions mandated by the CEM for the ASE and ALC SARs. The ITSEF also performs the evaluation activities contained within Section 5, which are intended to be an interpretation of the other CEM assurance requirements as they apply to the specific technology instantiated in the TOE. The evaluation activities that are captured in Section 5 also provide clarification as to what the developer needs to provide to demonstrate the TOE is compliant with the PP.</h:p>
+      <section title="Class ASE: Security Target Evaluation" id="ss-ase">
                 As per ASE activities defined in [CEM] plus the TSS evaluation activities defined for any SFRs claimed by the TOE.
-            </section><section id="ss-adv" title="Class ADV: Development">
+            </section>
+      <section title="Class ADV: Development" id="ss-adv">
+        
                 The information about the TOE is contained in the guidance documentation available to the end user as well as the TOE
 		    Summary Specification (TSS) portion of the ST. The TOE developer must concur with the description of the product that is
 		    contained in the TSS as it relates to the functional requirements. The evaluation activities contained in Section 5.2 
 		    should provide the ST authors with sufficient information to determine the appropriate content for the TSS section.
 
-                <a-component cc-id="adv_fsp.1" name="Basic functional specification"><a-element type="D"><title>The developer shall provide a functional specification.</title></a-element><a-element type="D"><title>The developer shall provide a tracing from the functional specification to the SFRs.</title><note role="developer">
+                
+        <a-component cc-id="adv_fsp.1" name="Basic functional specification">
+          <a-element type="D">
+            <title>The developer shall provide a functional specification.</title>
+            <aactivity/>
+          </a-element>
+          <a-element type="D">
+            <title>The developer shall provide a tracing from the functional specification to the SFRs.</title>
+            <note>
                             As indicated in the introduction to this section, the functional specification is composed of the information
 				contained in the AGD_OPR and AGD_PRE documentation, coupled with the information provided in the TSS of the
 				ST. The evaluation activities in the functional requirements point to evidence that should exist in the
 				documentation and TSS section; since these are directly associated with the SFRs, the tracing in element 
-				ADV_FSP.1.2D is implicitly already done and no additional documentation is necessary.</note></a-element><a-element type="C"><title>The functional specification shall describe the purpose and method of use for each SFR-enforcing and
-				SFR-supporting TSFI.</title></a-element><a-element type="C"><title>The functional specification shall identify all parameters associated with each SFR-enforcing and
-				SFR-supporting TSFI.</title></a-element><a-element type="C"><title>The functional specification shall provide rationale for the implicit categorization of interfaces as
-				SFR-non-interfering.</title></a-element><a-element type="C"><title>The tracing shall demonstrate that the SFRs trace to TSFIs in the functional specification.</title></a-element><a-element type="E"><title>The evaluator shall confirm that the information provided meets all requirements for content and presentation
-				of evidence.</title></a-element><a-element type="E"><title>The evaluator shall determine that the functional specification is an accurate and complete instantiation of 
-				the SFRs.</title><note role="application">
+				ADV_FSP.1.2D is implicitly already done and no additional documentation is necessary.</note>
+            <aactivity/>
+          </a-element>
+          <a-element type="C">
+            <title>The functional specification shall describe the purpose and method of use for each SFR-enforcing and
+				SFR-supporting TSFI.</title>
+            <aactivity/>
+          </a-element>
+          <a-element type="C">
+            <title>The functional specification shall identify all parameters associated with each SFR-enforcing and
+				SFR-supporting TSFI.</title>
+            <aactivity/>
+          </a-element>
+          <a-element type="C">
+            <title>The functional specification shall provide rationale for the implicit categorization of interfaces as
+				SFR-non-interfering.</title>
+            <aactivity/>
+          </a-element>
+          <a-element type="C">
+            <title>The tracing shall demonstrate that the SFRs trace to TSFIs in the functional specification.</title>
+            <aactivity/>
+          </a-element>
+          <a-element type="E">
+            <title>The evaluator shall confirm that the information provided meets all requirements for content and presentation
+				of evidence.</title>
+            <aactivity/>
+          </a-element>
+          <a-element type="E">
+            <title>The evaluator shall determine that the functional specification is an accurate and complete instantiation of 
+				the SFRs.</title>
+            <note>
                             There are no specific evaluation activities associated with these SARs. The functional specification documentation
 				is provided to support the evaluation activities described in Section 5.2, and other activities described for
 				AGD, ATE, and AVA SARs. The requirements on the content of the functional specification information is 
 				implicitly assessed by virtue of the other evaluation activities being performed; if the evaluator is unable 
 				to perform an activity because there is insufficient interface information, then an adequate functional
 				specification has not been provided.
-                        </note></a-element></a-component></section><section id="ss-agd" title="Class AGD: Guidance Documents">
+                        </note>
+            <aactivity/>
+          </a-element>
+        </a-component>
+      </section>
+      <section title="Class AGD: Guidance Documents" id="ss-agd">
+        
                 The guidance documents will be provided with the developer’s security target. Guidance must include a description of
 		    how the authorized user verifies that the Operational Environment can fulfill its role for the security
 		    functionality. The documentation should be in an informal style and readable by an authorized user.<h:p/>
@@ -3591,23 +3618,60 @@
                 Guidance pertaining to particular security functionality is also provided; specific requirements on such guidance are
 		    contained in the evaluation activities specified with individual SFRs where applicable.
                 
-		<a-component cc-id="agd_ope.1" name="Operational User Guidance"><a-element type="D"><title>The developer shall provide operational user guidance.
-                        </title><note role="developer">
+		
+        <a-component cc-id="agd_ope.1" name="Operational User Guidance">
+          <a-element type="D">
+            <title>The developer shall provide operational user guidance.
+                        </title>
+            <note>
                             Rather than repeat information here, the developer should review the evaluation activities for this 
 				component to ascertain the specifics of the guidance that the evaluators will be checking for. This
-				will provide the necessary information for the preparation of acceptable guidance.</note></a-element><a-element type="C"><title>The operational user guidance shall describe what <h:s>for each user role </h:s><refinement>the authorized user-</refinement>accessible functions and
+				will provide the necessary information for the preparation of acceptable guidance.</note>
+            <aactivity/>
+          </a-element>
+          <a-element type="C">
+            <title>The operational user guidance shall describe what <h:s>for each user role </h:s><h:b>the authorized user-</h:b>accessible functions and
 				privileges that should be controlled in a secure processing environment, including appropriate
-				warnings.</title></a-element><a-element type="C"><title>The operational user guidance shall describe, for <h:s>each user role </h:s><refinement>the authorized user</refinement>, how to use the available
-				interfaces provided by the TOE in a secure manner.</title></a-element><a-element type="C"><title>The operational user guidance shall describe, for <h:s>each user role </h:s><refinement>the authorized user</refinement>, the available functions and 
+				warnings.</title>
+            <aactivity/>
+          </a-element>
+          <a-element type="C">
+            <title>The operational user guidance shall describe, for <h:s>each user role </h:s><h:b>the authorized user</h:b>, how to use the available
+				interfaces provided by the TOE in a secure manner.</title>
+            <aactivity/>
+          </a-element>
+          <a-element type="C">
+            <title>The operational user guidance shall describe, for <h:s>each user role </h:s><h:b>the authorized user</h:b>, the available functions and 
 				interfaces, in particular all security parameters under the control of the user, indicating secure
-				values as appropriate.</title></a-element><a-element type="C"><title>The operational user guidance shall, for <h:s>each user role </h:s><refinement>the authorized user</refinement>, clearly present each type of 
+				values as appropriate.</title>
+            <aactivity/>
+          </a-element>
+          <a-element type="C">
+            <title>The operational user guidance shall, for <h:s>each user role </h:s><h:b>the authorized user</h:b>, clearly present each type of 
 				security-relevant event relative to the user-accessible functions that need to be performed,
-				including changing the security characteristics of entities under the control of the TSF.</title></a-element><a-element type="C"><title>The operational user guidance shall identify all possible modes of operation of the TOE
+				including changing the security characteristics of entities under the control of the TSF.</title>
+            <aactivity/>
+          </a-element>
+          <a-element type="C">
+            <title>The operational user guidance shall identify all possible modes of operation of the TOE
 				(including operation following failure or operational error), their consequences and implications for
-				maintaining secure operation.</title></a-element><a-element type="C"><title>The operational user guidance shall, for <h:s>each user role </h:s><refinement>the authorized user</refinement>, describe the security measures to be 
+				maintaining secure operation.</title>
+            <aactivity/>
+          </a-element>
+          <a-element type="C">
+            <title>The operational user guidance shall, for <h:s>each user role </h:s><h:b>the authorized user</h:b>, describe the security measures to be 
 				followed in order to fulfill the security objectives for the operational environment as described in 
-				the ST.</title></a-element><a-element type="C"><title>The operational user guidance shall be clear and reasonable.</title></a-element><a-element type="E"><title>The evaluator shall confirm that the information provided meets all requirements for content and 
-				presentation of evidence.</title><aactivity>
+				the ST.</title>
+            <aactivity/>
+          </a-element>
+          <a-element type="C">
+            <title>The operational user guidance shall be clear and reasonable.</title>
+            <aactivity/>
+          </a-element>
+          <a-element type="E">
+            <title>The evaluator shall confirm that the information provided meets all requirements for content and 
+				presentation of evidence.</title>
+            <aactivity>
                                 Some of the contents of the operational guidance will be verified by the evaluation activities in 
                                 Section 5.2 and evaluation of the TOE according to the CEM. The 
                                 following additional information is also required.<h:p/>
@@ -3626,15 +3690,38 @@
 					    certificate owner. This may be supplied with the product initially, or may be obtained by
 					    some other means.</h:li><h:li>Instructions for obtaining the update itself. This should include instructions for making 
 					    the update accessible to the TOE (e.g., placement in a specific directory).</h:li><h:li>Instructions for initiating the update process, as well as discerning whether the process
-					    was successful or unsuccessful. This includes generation of the hash/digital signature.</h:li></h:ul></aactivity></a-element></a-component><a-component cc-id="agd_pre.1" name="Preparative procedures"><a-element type="D"><title>The developer shall provide the TOE including its preparative procedures.
-                        </title><note role="developer">As with the operational guidance, the developer should look to the evaluation activities 
+					    was successful or unsuccessful. This includes generation of the hash/digital signature.</h:li></h:ul></aactivity>
+          </a-element>
+        </a-component>
+        <a-component cc-id="agd_pre.1" name="Preparative procedures">
+          <a-element type="D">
+            <title>The developer shall provide the TOE including its preparative procedures.
+                        </title>
+            <note>As with the operational guidance, the developer should look to the evaluation activities 
 				to determine the required content with respect to preparative procedures.
-                        </note></a-element><a-element type="C"><title>The preparative procedures shall describe all the steps necessary for secure acceptance of the 
-				delivered TOE in accordance with the developer’s delivery procedures.</title></a-element><a-element type="C"><title>The preparative procedures shall describe all the steps necessary for secure installation of the TOE
+                        </note>
+            <aactivity/>
+          </a-element>
+          <a-element type="C">
+            <title>The preparative procedures shall describe all the steps necessary for secure acceptance of the 
+				delivered TOE in accordance with the developer’s delivery procedures.</title>
+            <aactivity/>
+          </a-element>
+          <a-element type="C">
+            <title>The preparative procedures shall describe all the steps necessary for secure installation of the TOE
 				and for the secure preparation of the operational environment in accordance with the security 
-				objectives for the operational environment as described in the ST.</title></a-element><a-element type="E"><title>The evaluator shall confirm that the information provided meets all requirements for content and
-				presentation of evidence.</title></a-element><a-element type="E"><title>The evaluator shall apply the preparative procedures to confirm that the TOE can be prepared securely 
-				for operation.</title><aactivity>
+				objectives for the operational environment as described in the ST.</title>
+            <aactivity/>
+          </a-element>
+          <a-element type="E">
+            <title>The evaluator shall confirm that the information provided meets all requirements for content and
+				presentation of evidence.</title>
+            <aactivity/>
+          </a-element>
+          <a-element type="E">
+            <title>The evaluator shall apply the preparative procedures to confirm that the TOE can be prepared securely 
+				for operation.</title>
+            <aactivity>
                                 As indicated in the introduction above, there are significant expectations with respect to the
                                 documentation—especially when configuring the operational environment to support TOE
                                 functional requirements. The evaluator shall check to ensure that the guidance provided for the 
@@ -3643,29 +3730,64 @@
                                 The operational guidance shall contain step-by-step instructions suitable for use by an end-user of
                                 the VS to configure a new, out-of-the-box system into the configuration evaluated 
                                 under this Protection Profile.
-                        </aactivity></a-element></a-component></section><section id="ss-alc" title="Class ALC: Life-Cycle Support">
+                        </aactivity>
+          </a-element>
+        </a-component>
+      </section>
+      <section title="Class ALC: Life-Cycle Support" id="ss-alc">
+        
                 At the assurance level specified for TOEs conformant to this PP, life-cycle support is limited to an examination of 
 		    the TOE vendor’s development and configuration management process in order to provide a baseline level of 
 		    assurance that the TOE itself is developed in a secure manner and that the developer has a well-defined process 
 		    in place to deliver updates to mitigate known security flaws. This is a result of the critical role that a
 		    developer’s practices play in contributing to the overall trustworthiness of a product.
 
-		<a-component cc-id="alc_cmc.1" name="Labeling of the TOE"><a-element type="D"><title>The developer shall provide the TOE and a reference for the TOE.
-                        </title></a-element><a-element type="C"><title>The TOE shall be labeled with its unique reference.
-                        </title></a-element><a-element type="E"><title>The evaluator shall confirm that the information provided meets all requirements for content and 
+		
+        <a-component cc-id="alc_cmc.1" name="Labeling of the TOE">
+          <a-element type="D">
+            <title>The developer shall provide the TOE and a reference for the TOE.
+                        </title>
+            <aactivity/>
+          </a-element>
+          <a-element type="C">
+            <title>The TOE shall be labeled with its unique reference.
+                        </title>
+            <aactivity/>
+          </a-element>
+          <a-element type="E">
+            <title>The evaluator shall confirm that the information provided meets all requirements for content and 
 				presentation of evidence.
-                        </title><aactivity>
+                        </title>
+            <aactivity>
                                 The evaluator shall check the ST to ensure that it contains an identifier (such as a product
                                 name/version number) that specifically identifies the version that meets the requirements of the ST.<h:p/>
                                 The evaluator shall check the AGD guidance and TOE samples received for testing to ensure
                                 that the version number is consistent with that in the ST. <h:p/>
                                 If the vendor maintains a website advertising the TOE, the evaluator shall examine the information on the website to ensure that
-                                the information in the ST is sufficient to distinguish the product.<h:p/></aactivity></a-element></a-component><a-component cc-id="alc_cms.1" name="TOE CM coverage"><a-element type="D"><title>The developer shall provide a configuration list for the TOE.
-                        </title></a-element><a-element type="C"><title>The configuration list shall include the following: the TOE itself; and the
+                                the information in the ST is sufficient to distinguish the product.<h:p/></aactivity>
+          </a-element>
+        </a-component>
+        <a-component cc-id="alc_cms.1" name="TOE CM coverage">
+          <a-element type="D">
+            <title>The developer shall provide a configuration list for the TOE.
+                        </title>
+            <aactivity/>
+          </a-element>
+          <a-element type="C">
+            <title>The configuration list shall include the following: the TOE itself; and the
                             evaluation evidence required by the SARs.
-                        </title></a-element><a-element type="C"><title>The configuration list shall uniquely identify the configuration items.
-                        </title></a-element><a-element type="E"><title>The evaluator shall confirm that the information provided meets all requirements for content and
-				presentation of evidence.</title><aactivity>
+                        </title>
+            <aactivity/>
+          </a-element>
+          <a-element type="C">
+            <title>The configuration list shall uniquely identify the configuration items.
+                        </title>
+            <aactivity/>
+          </a-element>
+          <a-element type="E">
+            <title>The evaluator shall confirm that the information provided meets all requirements for content and
+				presentation of evidence.</title>
+            <aactivity>
                                 The evaluator shall ensure that the developer has identified (in public-facing development
                                 guidance for their platform) one or more development environments appropriate for use in developing
                                 applications for the developer’s platform. For each of these development environments, the developer
@@ -3676,7 +3798,11 @@
                                 The evaluator shall ensure that the TSF is uniquely identified (with respect to other products from
                                 the TSF vendor), and that documentation provided by the developer in association with the requirements
                                 in the ST is associated with the TSF  using this unique identification.
-                        </aactivity></a-element></a-component><a-component cc-id="alc_tsu_ext.1" name="Timely Security Updates">
+                        </aactivity>
+          </a-element>
+        </a-component>
+        <a-component cc-id="alc_tsu_ext.1" name="Timely Security Updates">
+          
                     This component requires the TOE developer, in conjunction with any other necessary parties, to provide information 
 			as to how the VS is updated to address security issues in a timely manner. The
 			documentation describes the process of providing updates to the public from the time a security flaw is
@@ -3684,25 +3810,53 @@
 			(e.g., the developer, hardware vendors) and the steps that are performed (e.g., developer testing), including 
 			worst case time periods, before an update is made available to the public.
                     
-                    <a-element type="D"><title>The developer shall provide a description in the TSS of how timely security updates are made to the
-				TOE.</title></a-element><a-element type="C"><title>The description shall include the process for creating and deploying security updates for the TOE
-				software/firmware.</title></a-element><a-element type="C"><title>The description shall express the time window as the length of time, in days, between public disclosure
-				of a vulnerability and the public availability of security updates to the TOE.</title><note role="application">
+                    
+          <a-element type="D">
+            <title>The developer shall provide a description in the TSS of how timely security updates are made to the
+				TOE.</title>
+            <aactivity/>
+          </a-element>
+          <a-element type="C">
+            <title>The description shall include the process for creating and deploying security updates for the TOE
+				software/firmware.</title>
+            <aactivity/>
+          </a-element>
+          <a-element type="C">
+            <title>The description shall express the time window as the length of time, in days, between public disclosure
+				of a vulnerability and the public availability of security updates to the TOE.</title>
+            <note>
                             The total length of time may be presented as a summation of the periods of time that each party (e.g.,
 				TOE developer, hardware vendor) on the critical path consumes. The time period until public
-				availability per deployment mechanism may differ; each is described.</note></a-element><a-element type="C"><title>The description shall include the mechanisms publicly available for reporting security issues
-				pertaining to the TOE.</title><note role="application">
+				availability per deployment mechanism may differ; each is described.</note>
+            <aactivity/>
+          </a-element>
+          <a-element type="C">
+            <title>The description shall include the mechanisms publicly available for reporting security issues
+				pertaining to the TOE.</title>
+            <note>
                             The reporting mechanism could include websites, email addresses, and a means to protect the sensitive
 				nature of the report (e.g., public keys that could be used to encrypt the details of a 
-				proof-of-concept exploit).</note></a-element><a-element type="E"><title>The evaluator shall confirm that the information provided meets all requirements for content and
-				presentation of evidence.</title></a-element></a-component></section><section id="ss-ate" title="Class ATE: Tests">
+				proof-of-concept exploit).</note>
+            <aactivity/>
+          </a-element>
+          <a-element type="E">
+            <title>The evaluator shall confirm that the information provided meets all requirements for content and
+				presentation of evidence.</title>
+            <aactivity/>
+          </a-element>
+        </a-component>
+      </section>
+      <section title="Class ATE: Tests" id="ss-ate">
+        
                 Testing is specified for functional aspects of the system as well as aspects that take advantage of design or
 		    implementation weaknesses. The former is done through the ATE_IND family, while the latter is through the AVA_VAN
 		    family. At the assurance level specified in this PP, testing is based on advertised functionality and interfaces
 		    with dependency on the availability of design information. One of the primary outputs of the evaluation process is
 		    the test report as specified in the following requirements.
 
-		<a-component cc-id="ate_ind.1" name="Independent Testing - Conformance">
+		
+        <a-component cc-id="ate_ind.1" name="Independent Testing - Conformance">
+          
                     Testing is performed to confirm the functionality described in the TSS as well as the administrative (including
 			configuration and operation) documentation provided. The focus of the testing is to confirm that the
 			requirements specified in Section 5.1 are being met, although some additional testing is specified for SARs 
@@ -3710,11 +3864,26 @@
 			components. The evaluator produces a test report documenting the plan for and results of testing, as well 
 			as coverage arguments focused on the platform/TOE combinations that are claiming conformance to this PP.
             	    
-                    <a-element type="D"><title>The developer shall provide the TOE for testing.
-                        </title></a-element><a-element type="C"><title>The TOE shall be suitable for testing.
-                        </title></a-element><a-element type="E"><title>The evaluator shall confirm that the information provided meets all requirements for content and
-				presentation of evidence.</title></a-element><a-element type="E"><title>The evaluator shall test a subset of the TSF to confirm that the TSF operates as specified.
-                        </title><aactivity>
+                    
+          <a-element type="D">
+            <title>The developer shall provide the TOE for testing.
+                        </title>
+            <aactivity/>
+          </a-element>
+          <a-element type="C">
+            <title>The TOE shall be suitable for testing.
+                        </title>
+            <aactivity/>
+          </a-element>
+          <a-element type="E">
+            <title>The evaluator shall confirm that the information provided meets all requirements for content and
+				presentation of evidence.</title>
+            <aactivity/>
+          </a-element>
+          <a-element type="E">
+            <title>The evaluator shall test a subset of the TSF to confirm that the TSF operates as specified.
+                        </title>
+            <aactivity>
                                 The evaluator shall prepare a test plan and report documenting the testing aspects of the system.
 				    While it is not necessary to have one test case per test listed in an evaluation activity, the
 				    evaluators must document in the test plan that each applicable testing requirement in the 
@@ -3742,7 +3911,12 @@
 				    cumulative account, so if there was a test run that resulted in a failure; a fix installed; and
 				    then a successful re-run of the test, the report would show a “fail” and “pass” result (and the
 				    supporting details), and not just the “pass” result.
-                         </aactivity></a-element></a-component></section><section id="ss-ava" title="Class AVA: Vulnerability Assessment">
+                         </aactivity>
+          </a-element>
+        </a-component>
+      </section>
+      <section title="Class AVA: Vulnerability Assessment" id="ss-ava">
+        
                 For the first generation of this Protection Profile, the evaluation lab is expected to survey open sources to learn
 		    what vulnerabilities have been discovered in these types of products. In most cases, these vulnerabilities will
 		    require sophistication beyond that of a basic attacker. Until penetration tools are created and uniformly
@@ -3751,13 +3925,33 @@
 		    provided by the vendor. This information will be used in the development of penetration testing tools and for the 
 		    development of future PPs.
 
-		<a-component cc-id="ava_van.1" name="Vulnerability survey"><a-element type="D"><title>The developer shall provide the TOE for testing.
-                        </title></a-element><a-element type="C"><title>The TOE shall be suitable for testing.
-                        </title></a-element><a-element type="E"><title>The evaluator shall confirm that the information provided meets all requirements for content and
-				presentation of evidence.</title></a-element><a-element type="E"><title>The evaluator shall perform a search of public domain sources to identify potential vulnerabilities
-				in the TOE.</title></a-element><a-element type="E"><title>The evaluator shall conduct penetration testing, based on the identified potential vulnerabilities,
+		
+        <a-component cc-id="ava_van.1" name="Vulnerability survey">
+          <a-element type="D">
+            <title>The developer shall provide the TOE for testing.
+                        </title>
+            <aactivity/>
+          </a-element>
+          <a-element type="C">
+            <title>The TOE shall be suitable for testing.
+                        </title>
+            <aactivity/>
+          </a-element>
+          <a-element type="E">
+            <title>The evaluator shall confirm that the information provided meets all requirements for content and
+				presentation of evidence.</title>
+            <aactivity/>
+          </a-element>
+          <a-element type="E">
+            <title>The evaluator shall perform a search of public domain sources to identify potential vulnerabilities
+				in the TOE.</title>
+            <aactivity/>
+          </a-element>
+          <a-element type="E">
+            <title>The evaluator shall conduct penetration testing, based on the identified potential vulnerabilities,
 				to determine that the TOE is resistant to attacks performed by an attacker possessing Basic attack
-				potential.</title><aactivity>As with ATE_IND the evaluator shall generate a report to document their findings with respect
+				potential.</title>
+            <aactivity>As with ATE_IND the evaluator shall generate a report to document their findings with respect
 				to this requirement. This report could physically be part of the overall test report mentioned in
 				ATE_IND, or a separate document. The evaluator performs a search of public information to determine
 				the vulnerabilities that have been found in virtualization in general, as well as those that pertain 
@@ -3770,7 +3964,11 @@
 				the assurance level of this PP. If exploiting the vulnerability requires expert skills and an electron 
 				microscope, for instance, then a test would not be suitable and an appropriate justification would be
 				formulated. 
-			  </aactivity></a-element></a-component></section></section>
+			  </aactivity>
+          </a-element>
+        </a-component>
+      </section>
+    </section>
   </sec:req>
   <appendix title="Implicitly Satisfied Requirements" id="satisfiedreqs"><h:b><ctr ctr-type="Table" pre="Table " id="imp-sat-reqs-table">: Implicitly Satisfied Requirements</ctr></h:b><h:table><h:tr class="header"><h:td>Requirement</h:td><h:td>Rationale for Satisfaction</h:td></h:tr><h:tr><h:td>FCS_CKM.4 – Cryptographic Key Destruction</h:td><h:td>
 	  FCS_CKM.1 has a dependency on FCS_CKM.4. The extended SFR FCS_CKM_EXT.4 addresses this dependency 
