@@ -483,11 +483,7 @@
   <sec:req title="Security Requirements">
     <!-- 5.1 Security Functional Requirements-->
     <sec:SFRs title="Security Functional Requirements">
-
-    <section id="ss-audit-table" title="Auditable Events for Mandatory SFRs">
-      <audit-table table="mandatory" id="at-man"/>
-    </section>
-
+      <section id="ss-audit-table" title="Auditable Events for Mandatory SFRs"><audit-table table="mandatory" id="at-man"/></section>
       <!--5.1.1 Class: Security Audit (FAU)-->
       <section id="fau" title="Class: Security Audit (FAU)">
         <!--FAU_ARP.1 Security Audit Automatic Response-->
@@ -516,10 +512,10 @@
         <f-component cc-id="fau_gen.1" id="fau-gen-1" name="Audit Data Generation">
           <f-element id="fau-gen-1e1">
             <title>The TSF shall be able to generate an audit record of the following auditable events:  <h:ol><h:li>Start-up and shutdown of audit functions</h:li><h:li>[<h:b>All administrative actions relevant to claimed SFRs as defined in the 
-									Auditable Events Table from the Client and Server PP-Modules</h:b>]</h:li><h:li>[<h:b>Auditable events defined in  <xref g="t-audit-mandatory"/></h:b>]</h:li><h:li><h:b><selectables><selectable id="sel-at2">Auditable events defined in  <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable><selectable id="sel-at3">Auditable events defined in  <xref g="t-audit-objective"/> for Objective SFRs</selectable><selectable id="sel-at4">Auditable events defined in  <xref g="t-audit-sel-based"/> for Selection-Based SFRs</selectable><selectable id="sel-attls">Auditable events for the  <xref to="tls"/> listed in  <xref to="atref-pkgs"/></selectable><selectable id="sel-atssh">Auditable events defined in the audit table for the  <xref to="ssh"/></selectable><selectable id="fau_gen.1.1_1">no other auditable events</selectable></selectables></h:b></h:li></h:ol></title>
+									Auditable Events Table from the Client and Server PP-Modules</h:b>]</h:li><h:li>[<h:b>Auditable events defined in  <xref g="t-audit-mandatory"/></h:b>]</h:li><h:li><h:b><selectables linebreak="yes"><selectable id="sel-at2">Auditable events defined in  <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable><selectable id="sel-at3">Auditable events defined in  <xref g="t-audit-objective"/> for Objective SFRs</selectable><selectable id="sel-at4">Auditable events defined in  <xref g="t-audit-sel-based"/> for Selection-Based SFRs</selectable><selectable id="sel-attls">Auditable events for the  <xref to="tls"/> listed in  <xref to="atref-pkgs"/></selectable><selectable id="sel-atssh">Auditable events defined in the audit table for the  <xref to="ssh"/></selectable><selectable id="fau_gen.1.1_1">no other auditable events</selectable></selectables></h:b></h:li></h:ol></title>
           </f-element>
           <f-element id="fau-gen-1e2">
-            <title>The TSF shall record within each audit record at least the following information:  <h:ol><h:li>Date and time of the event</h:li><h:li>Type of event</h:li><h:li>Subject and object identity (if applicable)</h:li><h:li>The outcome (success or failure) of the event</h:li><h:li>[<h:b>Additional information defined in  <xref g="t-audit-mandatory"/></h:b>]</h:li><h:li><h:b><selectables><selectable id="fau_gen.1.2_1">Additional information defined in  <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable><selectable id="fau_gen.1.2_2">Additional information defined in  <xref g="t-audit-objective"/> for Objective SFRs</selectable><selectable id="fau_gen.1.2_3">Additional information defined in  <xref g="t-audit-sel-based"/> for Selection-Based SFRs</selectable><selectable id="fau_gen.1.2_4">Additional information for the  <xref to="tls"/> listed in  <xref to="atref-pkgs"/></selectable><selectable id="fau_gen.1.2_5">Additional information defined in the audit table for the  <xref to="ssh"/></selectable><selectable id="fau_gen.1.2_6">no other information</selectable></selectables></h:b></h:li></h:ol></title>
+            <title>The TSF shall record within each audit record at least the following information:  <h:ol><h:li>Date and time of the event</h:li><h:li>Type of event</h:li><h:li>Subject and object identity (if applicable)</h:li><h:li>The outcome (success or failure) of the event</h:li><h:li>[<h:b>Additional information defined in  <xref g="t-audit-mandatory"/></h:b>]</h:li><h:li><h:b><selectables linebreak="yes"><selectable id="fau_gen.1.2_1">Additional information defined in  <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable><selectable id="fau_gen.1.2_2">Additional information defined in  <xref g="t-audit-objective"/> for Objective SFRs</selectable><selectable id="fau_gen.1.2_3">Additional information defined in  <xref g="t-audit-sel-based"/> for Selection-Based SFRs</selectable><selectable id="fau_gen.1.2_4">Additional information for the  <xref to="tls"/> listed in  <xref to="atref-pkgs"/></selectable><selectable id="fau_gen.1.2_5">Additional information defined in the audit table for the  <xref to="ssh"/></selectable><selectable id="fau_gen.1.2_6">no other information</selectable></selectables></h:b></h:li></h:ol></title>
             <note role="application">
                             The ST author can include other auditable events directly in  <xref g="t-audit-mandatory"/>; they are not
 							limited to the list presented. The ST author should update the table in 
@@ -693,7 +689,7 @@
             </aactivity>
           </f-element>
           <f-element id="fau-stg-ext-1e2">
-            <title>The TSF shall<selectables><selectable id="fau_stg_ext.1.2_1">drop new audit data</selectable><selectable id="fau_stg_ext.1.2_2">overwrite previous audit records according to the following rule: <assignable>rule for overwriting previous audit records </assignable></selectable><selectable id="fau_stg_ext.1.2_5"><assignable>other action </assignable></selectable></selectables>when the local storage space for audit data is full.</title>
+            <title>The TSF shall<selectables><selectable id="fau_stg_ext.1.2_1">drop new audit data</selectable><selectable id="fau_stg_ext.1.2_2">overwrite previous audit records according to the following rule:<assignable>rule for overwriting previous audit records</assignable></selectable><selectable id="fau_stg_ext.1.2_5"><assignable>other action</assignable></selectable></selectables>when the local storage space for audit data is full.</title>
             <note role="application">An external log server, if available, might be used as alternative storage space
 							in case the local storage space is full. An ‘other action’ could be defined in this case as ‘send the
 							new audit data to an external IT entity’.
@@ -717,10 +713,10 @@
             </aactivity>
           </f-element>
           <audit-event>
-            <audit-event-descr>Failure of audit data capture due to lack of disk space or pre-defined limit. </audit-event-descr>
+            <audit-event-descr>Failure of audit data capture due to lack of disk space or pre-defined limit.</audit-event-descr>
           </audit-event>
           <audit-event>
-            <audit-event-descr>On failure of logging function, capture record of failure and record upon restart of logging function. </audit-event-descr>
+            <audit-event-descr>On failure of logging function, capture record of failure and record upon restart of logging function.</audit-event-descr>
           </audit-event>
         </f-component>
       </section>
@@ -729,9 +725,9 @@
         <!--FCS_CKM.1 Cryptographic Key Generation-->
         <f-component cc-id="fcs_ckm.1" id="fcs-ckm-1" name="Cryptographic Key Generation">
           <f-element id="fcs-ckm-1e1">
-            <title>The TSF shall generate <h:b>asymmetric</h:b>  cryptographic keys in accordance with a specified cryptographic key generation algorithm<selectables><selectable id="fcs_ckm.1.1_1">
+            <title>The TSF shall generate <h:b>asymmetric</h:b>  cryptographic keys in accordance with a specified cryptographic key generation algorithm<selectables linebreak="yes"><selectable id="fcs_ckm.1.1_1">
                                     RSA schemes using cryptographic key sizes [2048-bit or greater] that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Appendix B.3]
-                                </selectable><selectable id="fcs_ckm.1.1_2"> ECC schemes using [“NIST curves” P-256, P-384, and <selectables><selectable id="fcs_ckm.1.1_3">P-521</selectable><selectable id="fcs_ckm.1.1_4">no other curves</selectable></selectables> that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Appendix B.4] </selectable><selectable id="fcs_ckm.1.1_5">
+                                </selectable><selectable id="fcs_ckm.1.1_2">ECC schemes using [“NIST curves” P-256, P-384, and<selectables><selectable id="fcs_ckm.1.1_3">P-521</selectable><selectable id="fcs_ckm.1.1_4">no other curves</selectable></selectables>that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Appendix B.4]</selectable><selectable id="fcs_ckm.1.1_5">
                                     FFC schemes using cryptographic key sizes [2048-bit or greater] that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Appendix B.1]].
                                 </selectable><selectable id="fcs_ckm.1.1_6">FFC Schemes using Diffie-Hellman group 14 that meet the following: [RFC 3526]</selectable><selectable id="fcs_ckm.1.1_7"> FFC Schemes using safe primes that meet the following: [‘NIST Special Publication 800-56A Revision 3,
 					“Recommendation for Pair-Wise Key Establishment Schemes"]</selectable></selectables><h:s>and specified cryptographic key sizes [assignment: cryptographic key sizes] that meet the
@@ -809,7 +805,7 @@
         <f-component cc-id="fcs_ckm.2" id="fcs-ckm-2" name="Cryptographic Key Distribution">
           <f-element id="fcs-ckm-2e1">
             <title>The TSF shall <h:s>distribute cryptographic keys</h:s> <h:b>implement functionality to perform cryptographic
-				    key establishment</h:b>  in accordance with a specified cryptographic key establishment method:<selectables><selectable id="fcs_ckm.2.1_1">RSA-based key establishment schemes that meets the following: RSAES-PKCS1-v1_5 as specified in
+				    key establishment</h:b>  in accordance with a specified cryptographic key establishment method:<selectables linebreak="yes"><selectable id="fcs_ckm.2.1_1">RSA-based key establishment schemes that meets the following: RSAES-PKCS1-v1_5 as specified in
 					Section 7.2 of RFC 8017, “Public-Key Cryptography Standards (PKCS) #1: RSA Cryptography Specifications Version 2.2"</selectable><selectable id="fcs_ckm.2.1_2">Elliptic curve-based key establishment schemes that meets the following: NIST Special Publication 800-56A Revision 3,
 					“Recommendation for Pair-Wise Key Establishment Schemes Using Discrete Logarithm Cryptography”</selectable><selectable id="fcs_ckm.2.1_3">Finite field-based key establishment schemes that meets the following: NIST Special Publication 800-56A Revision 3,
 					“Recommendation for Pair-Wise Key Establishment Schemes Using Discrete Logarithm Cryptography”</selectable><selectable id="fcs_ckm.2.1_4">Key establishment scheme using Diffie-Hellman group 14 that meets the following: RFC 3526</selectable></selectables><h:s>that meets the following [assignment: list of standards]</h:s>  .</title>
@@ -1103,8 +1099,8 @@
         <!--FCS_COP.1/Sig Cryptographic Operation (Signature Algorithms)-->
         <f-component cc-id="fcs_cop.1" id="fcs-cop-1-sig" name="Cryptographic Operation (Signature Algorithms)" iteration="Sig">
           <f-element id="fcs-cop-1e1-sig">
-            <title>The TSF shall perform [ <h:i>cryptographic signature services (generation and verification)</h:i>  ] in accordance with a specified cryptographic algorithm<selectables><selectable id="sel-sig-rsa">RSA schemes using cryptographic key sizes [2048-bit or greater] that meet
-									the following: [<h:i>FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Section 4</h:i>]</selectable><selectable id="sel-sig-ecdsa">ECDSA schemes using [“NIST curves” P-256, P-384 and <selectables><selectable id="fcs_cop.1.1_Sig_1">P-521</selectable><selectable id="fcs_cop.1.1_Sig_2">no other curves</selectable></selectables>] that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Section 5] </selectable></selectables>.</title>
+            <title>The TSF shall perform [ <h:i>cryptographic signature services (generation and verification)</h:i>  ] in accordance with a specified cryptographic algorithm<selectables linebreak="yes"><selectable id="sel-sig-rsa">RSA schemes using cryptographic key sizes [2048-bit or greater] that meet
+									the following: [<h:i>FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Section 4</h:i>]</selectable><selectable id="sel-sig-ecdsa">ECDSA schemes using [“NIST curves” P-256, P-384 and<selectables><selectable id="fcs_cop.1.1_Sig_1">P-521</selectable><selectable id="fcs_cop.1.1_Sig_2">no other curves</selectable></selectables>] that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Section 5]</selectable></selectables>.</title>
             <note role="application">The ST Author should choose the algorithm implemented to perform digital signatures;
 							if more than one algorithm is available, this requirement should be iterated to specify the
 							functionality. For the algorithm chosen, the ST author should make the appropriate 
@@ -1153,7 +1149,7 @@
 								"," and "" must be selected in FCS_COP.1/UDE.
 						</description>
           <f-element id="fcs-cop-1e1-ude">
-            <title>The TSF shall perform [ <h:i>encryption and decryption</h:i>  ] in accordance with a specified cryptographic algorithm<selectables><selectable id="sel-ude-aes-kw">AES Key Wrap (KW) (as defined in NIST SP 800-38F)</selectable><selectable id="sel-ude-aes-kwp">AES Key Wrap with Padding (KWP) (as defined in NIST SP 800-38F)</selectable><selectable id="sel-ude-aes-gcm">AES-GCM (as defined in NIST SP 800-38D)</selectable><selectable id="sel-ude-aes-ccm">AES-CCM (as defined in NIST SP 800-38C)</selectable><selectable id="sel-ude-aes-xts">AES-XTS (as defined in NIST SP 800-38E) mode</selectable><selectable id="sel-ude-aes-ccmp-256">AES-CCMP-256 (as defined in NIST SP800-38C and IEEE 802.11ac-2013)</selectable><selectable id="sel-ude-aes-gcmp-256">AES-GCMP-256 (as defined in NIST SP800-38D and IEEE 802.11ac-2013)</selectable><selectable id="sel-ude-aes-ccmp">AES-CCMP (as defined in FIPS PUB 197, NIST SP 800-38C and IEEE 802.11-2012)</selectable><selectable id="sel-ude-aes-cbc">AES-CBC (as defined in FIPS PUB 197, and NIST SP 800-38A) mode</selectable><selectable id="sel-ude-aes-ctr">AES-CTR (as defined in NIST SP 800-38A) mode</selectable></selectables>and cryptographic key sizes<selectables><selectable id="sel-ude-keysize-128">128-bit key sizes</selectable><selectable id="sel-ude-keysize-256">256-bit key sizes</selectable></selectables>.</title>
+            <title>The TSF shall perform [ <h:i>encryption and decryption</h:i>  ] in accordance with a specified cryptographic algorithm<selectables linebreak="yes"><selectable id="sel-ude-aes-kw">AES Key Wrap (KW) (as defined in NIST SP 800-38F)</selectable><selectable id="sel-ude-aes-kwp">AES Key Wrap with Padding (KWP) (as defined in NIST SP 800-38F)</selectable><selectable id="sel-ude-aes-gcm">AES-GCM (as defined in NIST SP 800-38D)</selectable><selectable id="sel-ude-aes-ccm">AES-CCM (as defined in NIST SP 800-38C)</selectable><selectable id="sel-ude-aes-xts">AES-XTS (as defined in NIST SP 800-38E) mode</selectable><selectable id="sel-ude-aes-ccmp-256">AES-CCMP-256 (as defined in NIST SP800-38C and IEEE 802.11ac-2013)</selectable><selectable id="sel-ude-aes-gcmp-256">AES-GCMP-256 (as defined in NIST SP800-38D and IEEE 802.11ac-2013)</selectable><selectable id="sel-ude-aes-ccmp">AES-CCMP (as defined in FIPS PUB 197, NIST SP 800-38C and IEEE 802.11-2012)</selectable><selectable id="sel-ude-aes-cbc">AES-CBC (as defined in FIPS PUB 197, and NIST SP 800-38A) mode</selectable><selectable id="sel-ude-aes-ctr">AES-CTR (as defined in NIST SP 800-38A) mode</selectable></selectables>and cryptographic key sizes<selectables><selectable id="sel-ude-keysize-128">128-bit key sizes</selectable><selectable id="sel-ude-keysize-256">256-bit key sizes</selectable></selectables>.</title>
             <note role="application">For the first selection of FCS_COP.1.1/UDE, the ST author should choose the mode or
 							modes in which AES operates. For the second selection, the ST author should choose the key sizes that
 							are supported by this functionality.<h:p/></note>
@@ -1540,7 +1536,7 @@
             </aactivity>
           </f-element>
           <f-element id="fcs-ipsec-ext-1e5">
-            <title>The TSF shall implement the protocol: <h:p/><selectables><selectable id="fcs_ipsec_ext.1.5_1">IKEv1, using Main Mode for Phase 1 exchanges, as defined in RFC 2407, RFC 2408, RFC 2409, RFC 4109, <selectables><selectable id="fcs_ipsec_ext.1.5_2">no other RFCs for extended sequence numbers</selectable><selectable id="fcs_ipsec_ext.1.5_3">RFC 4304 for extended sequence numbers</selectable></selectables>, <selectables><selectable id="fcs_ipsec_ext.1.5_4">no other RFCs for hash functions</selectable><selectable id="fcs_ipsec_ext.1.5_5">RFC 4868 for hash functions</selectable></selectables>, and <selectables><selectable id="fcs_ipsec_ext.1.5_6">support for XAUTH</selectable><selectable id="fcs_ipsec_ext.1.5_7">no support for XAUTH</selectable></selectables></selectable><selectable id="fcs_ipsec_ext.1.5_8">IKEv2 as defined in RFC 7296 (with mandatory support for NAT traversal as specified in section 2.23), RFC 8784, RFC 8247, and <selectables><selectable id="fcs_ipsec_ext.1.5_9">no other RFCs for hash functions</selectable><selectable id="fcs_ipsec_ext.1.5_10">RFC 4868 for hash functions</selectable></selectables>.</selectable></selectables></title>
+            <title>The TSF shall implement the protocol: <h:p/><selectables linebreak="yes"><selectable id="fcs_ipsec_ext.1.5_1">IKEv1, using Main Mode for Phase 1 exchanges, as defined in RFC 2407, RFC 2408, RFC 2409, RFC 4109,<selectables><selectable id="fcs_ipsec_ext.1.5_2">no other RFCs for extended sequence numbers</selectable><selectable id="fcs_ipsec_ext.1.5_3">RFC 4304 for extended sequence numbers</selectable></selectables>,<selectables><selectable id="fcs_ipsec_ext.1.5_4">no other RFCs for hash functions</selectable><selectable id="fcs_ipsec_ext.1.5_5">RFC 4868 for hash functions</selectable></selectables>, and<selectables><selectable id="fcs_ipsec_ext.1.5_6">support for XAUTH</selectable><selectable id="fcs_ipsec_ext.1.5_7">no support for XAUTH</selectable></selectables></selectable><selectable id="fcs_ipsec_ext.1.5_8">IKEv2 as defined in RFC 7296 (with mandatory support for NAT traversal as specified in section 2.23), RFC 8784, RFC 8247, and<selectables><selectable id="fcs_ipsec_ext.1.5_9">no other RFCs for hash functions</selectable><selectable id="fcs_ipsec_ext.1.5_10">RFC 4868 for hash functions</selectable></selectables>.</selectable></selectables></title>
             <note role="application">If the TOE implements SHA-2 hash algorithms for IKEv1 or IKEv2, the ST author shall
 					select RFC 4868. </note>
             <aactivity level="element">
@@ -1597,7 +1593,7 @@
             </aactivity>
           </f-element>
           <f-element id="fcs-ipsec-ext-1e7">
-            <title>The TSF shall ensure that<selectables><selectable id="fcs_ipsec_ext.1.7_1">IKEv2 SA lifetimes can be configured by <selectables><selectable id="fcs_ipsec_ext.1.7_2">an Administrator</selectable><selectable id="fcs_ipsec_ext.1.7_3">a VPN Gateway</selectable></selectables> based on <selectables><selectable id="fcs_ipsec_ext.1.7_4">number of packets/number of bytes</selectable><selectable id="fcs_ipsec_ext.1.7_5">length of time</selectable></selectables></selectable><selectable id="fcs_ipsec_ext.1.7_6">IKEv1 SA lifetimes can be configured by <selectables><selectable id="fcs_ipsec_ext.1.7_7">an Administrator</selectable><selectable id="fcs_ipsec_ext.1.7_8">a VPN Gateway</selectable></selectables> based on <selectables><selectable id="fcs_ipsec_ext.1.7_9">number of packets/number of bytes</selectable><selectable id="fcs_ipsec_ext.1.7_10">length of time</selectable></selectables></selectable><selectable id="fcs_ipsec_ext.1.7_11">IKEv1 SA lifetimes are fixed based on <selectables><selectable id="fcs_ipsec_ext.1.7_12">number of packets/number of bytes</selectable><selectable id="fcs_ipsec_ext.1.7_13">length of time</selectable></selectables>. If length of time is used, it must include at least one option that is 24 hours or less for Phase 1 SAs and 8 hours or less for Phase 2 SAs. </selectable></selectables></title>
+            <title>The TSF shall ensure that<selectables><selectable id="fcs_ipsec_ext.1.7_1">IKEv2 SA lifetimes can be configured by<selectables><selectable id="fcs_ipsec_ext.1.7_2">an Administrator</selectable><selectable id="fcs_ipsec_ext.1.7_3">a VPN Gateway</selectable></selectables>based on<selectables><selectable id="fcs_ipsec_ext.1.7_4">number of packets/number of bytes</selectable><selectable id="fcs_ipsec_ext.1.7_5">length of time</selectable></selectables></selectable><selectable id="fcs_ipsec_ext.1.7_6">IKEv1 SA lifetimes can be configured by<selectables><selectable id="fcs_ipsec_ext.1.7_7">an Administrator</selectable><selectable id="fcs_ipsec_ext.1.7_8">a VPN Gateway</selectable></selectables>based on<selectables><selectable id="fcs_ipsec_ext.1.7_9">number of packets/number of bytes</selectable><selectable id="fcs_ipsec_ext.1.7_10">length of time</selectable></selectables></selectable><selectable id="fcs_ipsec_ext.1.7_11">IKEv1 SA lifetimes are fixed based on<selectables><selectable id="fcs_ipsec_ext.1.7_12">number of packets/number of bytes</selectable><selectable id="fcs_ipsec_ext.1.7_13">length of time</selectable></selectables>. If length of time is used, it must include at least one option that is 24 hours or less for Phase 1 SAs and 8 hours or less for Phase 2 SAs.</selectable></selectables></title>
             <note role="application">
 				The ST author is afforded a selection based on the version of IKE in their
 				implementation. There is a further selection within this selection that allows the
@@ -1689,7 +1685,7 @@
             </aactivity>
           </f-element>
           <f-element id="fcs-ipsec-ext-1e9">
-            <title>The TSF shall generate the secret value x used in the IKE Diffie-Hellman key exchange (“x” in gx mod p) using the random bit generator specified in FCS_RBG_EXT.1, and having a length of at least<assignable>(one or more) number of bits that is at least twice the “bits ofsecurity” value associated with the negotiated Diffie-Hellman group as listed in Table 2 of NIST SP 800-57, Recommendation for Key Management – Part1: General</assignable>bits.</title>
+            <title>The TSF shall generate the secret value x used in the IKE Diffie-Hellman key exchange (“x” in gx mod p) using the random bit generator specified in FCS_RBG_EXT.1, and having a length of at least<assignable>(one or more) number of bits that is at least twice the “bits of security” value associated with the negotiated Diffie-Hellman group as listed in Table 2 of NIST SP 800-57, Recommendation for Key Management – Part 1: General</assignable>bits.</title>
             <aactivity level="element">
               <TSS>The evaluator shall check to ensure that, for each DH group supported, the TSS describes the process for
 				generating "x" (as defined in FCS_IPSEC_EXT.1.9) and each nonce. The evaluator shall verify that the TSS
@@ -1702,7 +1698,7 @@
             </aactivity>
           </f-element>
           <f-element id="fcs-ipsec-ext-1e10">
-            <title>The TSF shall generate nonces used in IKE exchanges in a manner such that the probability that a specific nonce value will be repeated during the life a specific IPsec SA is less than 1 in 2^<assignable>(one or more) “bits of security” valueassociated with the negotiated Diffie-Hellman group as listed in Table 2 of NISTSP 800-57, Recommendation for Key Management – Part 1: General</assignable>.</title>
+            <title>The TSF shall generate nonces used in IKE exchanges in a manner such that the probability that a specific nonce value will be repeated during the life a specific IPsec SA is less than 1 in 2^<assignable>(one or more) “bits of security” value associated with the negotiated Diffie-Hellman group as listed in Table 2 of NIST SP 800-57, Recommendation for Key Management – Part 1: General</assignable>.</title>
                       </f-element>
           <f-element id="fcs-ipsec-ext-1e11">
             <title>The TSF shall ensure that all IKE protocols perform peer authentication using a<selectables><selectable id="fcs_ipsec_ext.1.11_1">RSA</selectable><selectable id="fcs_ipsec_ext.1.11_2">ECDSA</selectable></selectables>that use X.509v3 certificates that conform to RFC 4945 and<selectables><selectable id="fcs_ipsec_ext.1.11_3">Pre-shared Keys</selectable><selectable id="fcs_ipsec_ext.1.11_4">no other method</selectable></selectables>.</title>
@@ -1797,7 +1793,7 @@
             </aactivity>
           </f-element>
           <f-element id="fcs-ipsec-ext-1e12">
-            <title>The TSF shall not establish an SA if the [<selectables><selectable id="fcs_ipsec_ext.1.12_1">IP address</selectable><selectable id="fcs_ipsec_ext.1.12_2">Fully Qualified Domain Name (FQDN)</selectable><selectable id="fcs_ipsec_ext.1.12_3">user FQDN</selectable><selectable id="fcs_ipsec_ext.1.12_4">Distinguished Name (DN)</selectable></selectables>and<selectables><selectable id="fcs_ipsec_ext.1.12_5">no other reference identifier type</selectable><selectable id="fcs_ipsec_ext.1.12_7"><assignable>other supported reference identifier types </assignable></selectable></selectables>] contained in a certificate does not match the expected values for the entity attempting to establish a connection.</title>
+            <title>The TSF shall not establish an SA if the [<selectables><selectable id="fcs_ipsec_ext.1.12_1">IP address</selectable><selectable id="fcs_ipsec_ext.1.12_2">Fully Qualified Domain Name (FQDN)</selectable><selectable id="fcs_ipsec_ext.1.12_3">user FQDN</selectable><selectable id="fcs_ipsec_ext.1.12_4">Distinguished Name (DN)</selectable></selectables>and<selectables><selectable id="fcs_ipsec_ext.1.12_5">no other reference identifier type</selectable><selectable id="fcs_ipsec_ext.1.12_7"><assignable>other supported reference identifier types</assignable></selectable></selectables>] contained in a certificate does not match the expected values for the entity attempting to establish a connection.</title>
             <note role="application">
 				The TOE must support at least one of the following identifier types: IP address,
 				Fully Qualified Domain Name (FQDN), user FQDN, or Distinguished Name (DN).
@@ -1962,7 +1958,7 @@
           <audit>There are no auditable events foreseen.</audit>
           <dependencies>FDP_VMS_EXT.1 VM Separation</dependencies>
           <f-element id="fdp-hbi-ext-1e1">
-            <title>The TSF shall use<selectables><selectable id="fdp_hbi_ext.1.1_1">no mechanism</selectable><selectable id="fdp_hbi_ext.1.1_3"><assignable>list of platform-provided, hardware-based mechanisms </assignable></selectable></selectables>to constrain a Guest VM's direct access to the following physical devices:<selectables><selectable id="fdp_hbi_ext.1.1_4">no devices</selectable><selectable id="fdp_hbi_ext.1.1_6"><assignable> physical devices to which the VMM allows Guest VMs physical access </assignable></selectable></selectables>.</title>
+            <title>The TSF shall use<selectables><selectable id="fdp_hbi_ext.1.1_1">no mechanism</selectable><selectable id="fdp_hbi_ext.1.1_3"><assignable>list of platform-provided, hardware-based mechanisms</assignable></selectable></selectables>to constrain a Guest VM's direct access to the following physical devices:<selectables><selectable id="fdp_hbi_ext.1.1_4">no devices</selectable><selectable id="fdp_hbi_ext.1.1_6"><assignable>physical devices to which the VMM allows Guest VMs physical access</assignable></selectable></selectables>.</title>
             <note role="application">The TSF must use available hardware-based isolation mechanisms to constrain VMs
 							when VMs have direct access to physical devices. “Direct access” in this context means that the 
 							VM can read or write device memory or access device I/O ports without the VMM being able to intercept 
@@ -1994,13 +1990,13 @@
           <dependencies>FDP_HBI_EXT.1 Hardware-Based Isolation Mechanisms
 							FMT_SMR.1 Security Roles</dependencies>
           <f-element id="fdp-ppr-ext-1e1">
-            <title>The TSF shall allow an authorized administrator to control Guest VM access to the following physical platform resources:<assignable>list of physical platform resources the VMM isable to control access to</assignable>.</title>
+            <title>The TSF shall allow an authorized administrator to control Guest VM access to the following physical platform resources:<assignable>list of physical platform resources the VMM is able to control access to</assignable>.</title>
           </f-element>
           <f-element id="fdp-ppr-ext-1e2">
-            <title>The TSF shall explicitly deny all Guest VMs access to the following physical platform resources:<selectables><selectable id="fdp_ppr_ext.1.2_1">no physical platform resources</selectable><selectable id="fdp_ppr_ext.1.2_3"><assignable>list of physical platform resources to which access is explicitly denied </assignable></selectable></selectables>.</title>
+            <title>The TSF shall explicitly deny all Guest VMs access to the following physical platform resources:<selectables><selectable id="fdp_ppr_ext.1.2_1">no physical platform resources</selectable><selectable id="fdp_ppr_ext.1.2_3"><assignable>list of physical platform resources to which access is explicitly denied</assignable></selectable></selectables>.</title>
           </f-element>
           <f-element id="fdp-ppr-ext-1e3">
-            <title>The TSF shall explicitly allow all Guest VMs access to the following physical platform resources:<selectables><selectable id="fdp_ppr_ext.1.3_1">no physical platform resources</selectable><selectable id="fdp_ppr_ext.1.3_3"><assignable>list of physical platform resources to which access is always allowed </assignable></selectable></selectables>.</title>
+            <title>The TSF shall explicitly allow all Guest VMs access to the following physical platform resources:<selectables><selectable id="fdp_ppr_ext.1.3_1">no physical platform resources</selectable><selectable id="fdp_ppr_ext.1.3_3"><assignable>list of physical platform resources to which access is always allowed</assignable></selectable></selectables>.</title>
             <note role="application">
 				For purposes of this requirement, physical platform resources are divided into three categories: 
 				<h:ol><h:li>those to which Guest OS access is configurable and moderated by the VMM</h:li><h:li>those to which the Guest OS is never allowed to have direct access, and</h:li><h:li>those to which the Guest OS is always allowed to have direct access.</h:li></h:ol>
@@ -2063,7 +2059,7 @@
             </aactivity>
           </f-element>
           <audit-event>
-            <audit-event-descr>Successful and failed VM connections to physical devices where connection is governed by configurablepolicy.</audit-event-descr>
+            <audit-event-descr>Successful and failed VM connections to physical devices where connection is governed by configurable policy.</audit-event-descr>
             <audit-event-info>VM and physical device identifiers.</audit-event-info>
           </audit-event>
           <audit-event>
@@ -2150,7 +2146,7 @@
           <audit>There are no auditable events foreseen.</audit>
           <dependencies>No dependencies.</dependencies>
           <f-element id="fdp-vms-ext-1e1">
-            <title>The VS shall provide the following mechanisms for transferring data between Guest VMs:<selectables><selectable id="fdp_vms_ext.1.1_1">no mechanism</selectable><selectable id="fdp_vms_ext.1.1_2">virtual networking</selectable><selectable id="fdp_vms_ext.1.1_4"><assignable>other inter-VM data sharing mechanisms </assignable></selectable></selectables>.</title>
+            <title>The VS shall provide the following mechanisms for transferring data between Guest VMs:<selectables linebreak="yes"><selectable id="fdp_vms_ext.1.1_1">no mechanism</selectable><selectable id="fdp_vms_ext.1.1_2">virtual networking</selectable><selectable id="fdp_vms_ext.1.1_4"><assignable>other inter-VM data sharing mechanisms</assignable></selectable></selectables>.</title>
           </f-element>
           <f-element id="fdp-vms-ext-1e2">
             <title>The TSF shall by default enforce a policy prohibiting sharing of data between Guest VMs.</title>
@@ -2250,7 +2246,7 @@
             </aactivity>
           </f-element>
           <audit-event>
-            <audit-event-descr>Successful and failed attempts to connect VMs to virtual and physical networkingcomponents.</audit-event-descr>
+            <audit-event-descr>Successful and failed attempts to connect VMs to virtual and physical networking components.</audit-event-descr>
             <audit-event-info>VM and virtual or physical networking component identifiers.</audit-event-info>
           </audit-event>
           <audit-event>
@@ -2280,10 +2276,10 @@
           <dependencies>FIA_UIA_EXT.1 Administrator Identification and Authentication
 						FMT_SMR.1 Security Roles</dependencies>
           <f-element id="fia-afl-ext-1e1">
-            <title>The TSF shall detect when<selectables><selectable id="fia_afl_ext.1.1_2"><assignable>a positive integer number </assignable></selectable><selectable id="fia_afl_ext.1.1_3">an administrator configurable positive integer within a <assignable>range of acceptable values </assignable></selectable></selectables>unsuccessful authentication attempts occur related to Administrators attempting to authenticate remotely using<selectables><selectable id="fia_afl_ext.1.1_5">username and password</selectable><selectable id="fia_afl_ext.1.1_6">username and PIN</selectable></selectables>.</title>
+            <title>The TSF shall detect when<selectables linebreak="yes"><selectable id="fia_afl_ext.1.1_2"><assignable>a positive integer number</assignable></selectable><selectable id="fia_afl_ext.1.1_3">an administrator configurable positive integer within a<assignable>range of acceptable values</assignable></selectable></selectables>unsuccessful authentication attempts occur related to Administrators attempting to authenticate remotely using<selectables><selectable id="fia_afl_ext.1.1_5">username and password</selectable><selectable id="fia_afl_ext.1.1_6">username and PIN</selectable></selectables>.</title>
           </f-element>
           <f-element id="fia-afl-ext-1e2">
-            <title>When the defined number of unsuccessful authentication attempts has been met, the TSF shall:<selectables><selectable id="fia_afl_ext.1.2_1">prevent the offending Administrator from successfully establishing a remote session using any authentication method that involves a password or PIN until <assignable>action to unlock </assignable> is taken by an Administrator</selectable><selectable id="fia_afl_ext.1.2_3">prevent the offending Administrator from successfully establishing a remote session using
+            <title>When the defined number of unsuccessful authentication attempts has been met, the TSF shall:<selectables><selectable id="fia_afl_ext.1.2_1">prevent the offending Administrator from successfully establishing a remote session using any authentication method that involves a password or PIN until<assignable>action to unlock</assignable>is taken by an Administrator</selectable><selectable id="fia_afl_ext.1.2_3">prevent the offending Administrator from successfully establishing a remote session using
                                     any authentication method that involves a password or PIN until an Administrator-defined time
                                     period has elapsed</selectable></selectables></title>
             <note role="application">The action to be taken shall be populated in the selection of the ST
@@ -2345,7 +2341,7 @@
           <f-element id="fia-pmg-ext-1e1">
             <title>The TSF shall provide the following password management capabilities for administrative passwords:  <h:ol><h:li>Passwords shall be able to be composed of any combination of upper and lower case characters, 
 									digits, and the following special characters:
-                                    <selectables><selectable id="fia_pmg_ext.1.1_1">“!”</selectable><selectable id="fia_pmg_ext.1.1_2">“@”</selectable><selectable id="fia_pmg_ext.1.1_3">“#”</selectable><selectable id="fia_pmg_ext.1.1_4">“$”</selectable><selectable id="fia_pmg_ext.1.1_5">“%”</selectable><selectable id="fia_pmg_ext.1.1_6">“^”</selectable><selectable id="fia_pmg_ext.1.1_7">“&amp; ”</selectable><selectable id="fia_pmg_ext.1.1_8">“*”</selectable><selectable id="fia_pmg_ext.1.1_9">“(“</selectable><selectable id="fia_pmg_ext.1.1_10">“)”</selectable><selectable id="fia_pmg_ext.1.1_12"><assignable>other characters </assignable></selectable></selectables></h:li><h:li>Minimum password length shall be configurable</h:li><h:li>Passwords of at least 15 characters in length shall be supported</h:li></h:ol></title>
+                                    <selectables><selectable id="fia_pmg_ext.1.1_1">“!”</selectable><selectable id="fia_pmg_ext.1.1_2">“@”</selectable><selectable id="fia_pmg_ext.1.1_3">“#”</selectable><selectable id="fia_pmg_ext.1.1_4">“$”</selectable><selectable id="fia_pmg_ext.1.1_5">“%”</selectable><selectable id="fia_pmg_ext.1.1_6">“^”</selectable><selectable id="fia_pmg_ext.1.1_7">“&amp; ”</selectable><selectable id="fia_pmg_ext.1.1_8">“*”</selectable><selectable id="fia_pmg_ext.1.1_9">“(“</selectable><selectable id="fia_pmg_ext.1.1_10">“)”</selectable><selectable id="fia_pmg_ext.1.1_12"><assignable>other characters</assignable></selectable></selectables></h:li><h:li>Minimum password length shall be configurable</h:li><h:li>Passwords of at least 15 characters in length shall be supported</h:li></h:ol></title>
             <note role="application">
 							This SFR is included in the ST if the ST Author selects ‘authentication based on username and password’ 
 							in FIA_UAU.5.1.<h:br/><h:br/>
@@ -2381,8 +2377,8 @@
 					"Ability to configure name/address of directory server to bind with" must be selected in the Client or Server module 
 					management function table.</description>
           <f-element id="fia-uau-5e1">
-            <title>The TSF shall provide the following authentication mechanisms:<selectables><selectable id="sel-uau-pwd"><selectables><selectable id="fia_uau.5.1_1">local</selectable><selectable id="sel-uau-pwd-dirbased">directory-based</selectable></selectables> authentication based on username and password </selectable><selectable id="fia_uau.5.1_2">authentication based on username and a PIN that releases an asymmetric key stored in
-									OE-protected storage</selectable><selectable id="sel-uau-x509"><selectables><selectable id="fia_uau.5.1_3">local</selectable><selectable id="sel-uau-x509-dirbased">directory-based</selectable></selectables> authentication based on X.509 certificates </selectable><selectable id="sel-uau-ssh"><selectables><selectable id="fia_uau.5.1_4">local</selectable><selectable id="sel-uau-ssh-dirbased">directory-based</selectable></selectables> authentication based on an SSH public key credential </selectable></selectables>to support Administrator authentication.</title>
+            <title>The TSF shall provide the following authentication mechanisms:<selectables linebreak="yes"><selectable id="sel-uau-pwd"><selectables><selectable id="fia_uau.5.1_1">local</selectable><selectable id="sel-uau-pwd-dirbased">directory-based</selectable></selectables>authentication based on username and password</selectable><selectable id="fia_uau.5.1_2">authentication based on username and a PIN that releases an asymmetric key stored in
+									OE-protected storage</selectable><selectable id="sel-uau-x509"><selectables><selectable id="fia_uau.5.1_3">local</selectable><selectable id="sel-uau-x509-dirbased">directory-based</selectable></selectables>authentication based on X.509 certificates</selectable><selectable id="sel-uau-ssh"><selectables><selectable id="fia_uau.5.1_4">local</selectable><selectable id="sel-uau-ssh-dirbased">directory-based</selectable></selectables>authentication based on an SSH public key credential</selectable></selectables>to support Administrator authentication.</title>
             <note role="application">Selection of ‘authentication based on username and password’ requires that 
 							FIA_PMG_EXT.1 be included in the ST. This also requires that the ST include a management function for
 							password management. If the ST author selects ‘authentication based on an SSH public-key credential’,
@@ -2392,7 +2388,7 @@
 							requirements on PIN management are outside the scope of the TOE.<h:p/></note>
           </f-element>
           <f-element id="fia-uau-5e2">
-            <title>The TSF shall authenticate any <h:b>Administrator’s</h:b>  claimed identity according to the<assignable>rulesdescribing how the multiple authentication mechanisms provide authentication</assignable>.</title>
+            <title>The TSF shall authenticate any <h:b>Administrator’s</h:b>  claimed identity according to the<assignable>rules describing how the multiple authentication mechanisms provide authentication</assignable>.</title>
             <aactivity level="element">
               <Tests>
                 <testlist>
@@ -2616,7 +2612,7 @@
 					"Ability to configure action taken if unable to determine the validity of a certificate" in the Client or Server module 
 					management function table must also be selected.</description>
           <f-element id="fia-x509-ext-2e1">
-            <title>The TSF shall use X.509v3 certificates as defined by RFC 5280 to support authentication for<selectables><selectable id="sel-x509-2-ipsec">IPsec</selectable><selectable id="sel-x509-2-tls">TLS</selectable><selectable id="sel-x509-2-https">HTTPS</selectable><selectable id="sel-x509-2-ssh">SSH</selectable><selectable id="sel-x5092-signed-updates">code signing for system software updates</selectable><selectable id="fia_x509_ext.2.1_2"><assignable>other uses </assignable></selectable></selectables></title>
+            <title>The TSF shall use X.509v3 certificates as defined by RFC 5280 to support authentication for<selectables><selectable id="sel-x509-2-ipsec">IPsec</selectable><selectable id="sel-x509-2-tls">TLS</selectable><selectable id="sel-x509-2-https">HTTPS</selectable><selectable id="sel-x509-2-ssh">SSH</selectable><selectable id="sel-x5092-signed-updates">code signing for system software updates</selectable><selectable id="fia_x509_ext.2.1_2"><assignable>other uses</assignable></selectable></selectables></title>
             <note role="application">This SFR must be included in the ST if the selection for FPT_TUD_EXT.1.3 is “digital
 							signature mechanism,” if "certificate-based authentication of the remote peer" is
 							selected in FTP_ITC_EXT.1, or if "authentication based on X.509 certificates"
@@ -2791,7 +2787,7 @@
           <audit>There are no auditable events foreseen.</audit>
           <dependencies>No dependencies.</dependencies>
           <f-element id="fpt-eem-ext-1e1">
-            <title>The TSF shall take advantage of execution environment-based vulnerability mitigation mechanisms supported by the Platform such as:<selectables><selectable id="fpt_eem_ext.1.1_1">Address space randomization</selectable><selectable id="fpt_eem_ext.1.1_2">Memory execution protection (e.g., DEP)</selectable><selectable id="fpt_eem_ext.1.1_3">Stack buffer overflow protection</selectable><selectable id="fpt_eem_ext.1.1_4">Heap corruption detection</selectable><selectable id="fpt_eem_ext.1.1_6"><assignable>other mechanisms </assignable></selectable><selectable id="fpt_eem_ext.1.1_7">No mechanisms</selectable></selectables></title>
+            <title>The TSF shall take advantage of execution environment-based vulnerability mitigation mechanisms supported by the Platform such as:<selectables linebreak="yes"><selectable id="fpt_eem_ext.1.1_1">Address space randomization</selectable><selectable id="fpt_eem_ext.1.1_2">Memory execution protection (e.g., DEP)</selectable><selectable id="fpt_eem_ext.1.1_3">Stack buffer overflow protection</selectable><selectable id="fpt_eem_ext.1.1_4">Heap corruption detection</selectable><selectable id="fpt_eem_ext.1.1_6"><assignable>other mechanisms</assignable></selectable><selectable id="fpt_eem_ext.1.1_7">No mechanisms</selectable></selectables></title>
             <note role="application">Processor manufacturers, compiler developers, and operating system vendors have 
 				developed execution environment-based mitigations that increase the cost to attackers by adding
 				complexity to the task of compromising systems. Software can often take advantage of these mechanisms
@@ -3010,7 +3006,7 @@
 						Integrity measurements collected.</audit>
           <dependencies>No dependencies.</dependencies>
           <f-element id="fpt-ml-ext-1e1">
-            <title>The TSF shall support a measured launch of the Virtualization System. Measured components of the VS shall include the static executable image of the Hypervisor and:<selectables><selectable id="fpt_ml_ext.1.1_1">Static executable images of the Management Subsystem</selectable><selectable id="fpt_ml_ext.1.1_3"><assignable>list of (static images of) Service VMs </assignable></selectable><selectable id="fpt_ml_ext.1.1_5"><assignable>list of configuration files </assignable></selectable><selectable id="fpt_ml_ext.1.1_6">no other components</selectable></selectables></title>
+            <title>The TSF shall support a measured launch of the Virtualization System. Measured components of the VS shall include the static executable image of the Hypervisor and:<selectables linebreak="yes"><selectable id="fpt_ml_ext.1.1_1">Static executable images of the Management Subsystem</selectable><selectable id="fpt_ml_ext.1.1_3"><assignable>list of (static images of) Service VMs</assignable></selectable><selectable id="fpt_ml_ext.1.1_5"><assignable>list of configuration files</assignable></selectable><selectable id="fpt_ml_ext.1.1_6">no other components</selectable></selectables></title>
           </f-element>
           <f-element id="fpt-ml-ext-1e2">
             <title>The TSF shall make the measurements selected in FPT_ML_EXT.1.1 available to the Management Subsystem.</title>
@@ -3072,7 +3068,7 @@
             <title>The TSF shall implement controls for handling the transfer of virtual and physical removable media and virtual and physical removable media devices between information domains.</title>
           </f-element>
           <f-element id="fpt-rdm-ext-1e2">
-            <title>The TSF shall enforce the following rules when<assignable>virtual or physical removable media and virtual or physical removable media devices</assignable>are switched between information domains, then<selectables><selectable id="fpt_rdm_ext.1.2_2">the Administrator has granted explicit access for the media or device to be connected to
+            <title>The TSF shall enforce the following rules when<assignable>virtual or physical removable media and virtual or physical removable media devices</assignable>are switched between information domains, then<selectables linebreak="yes"><selectable id="fpt_rdm_ext.1.2_2">the Administrator has granted explicit access for the media or device to be connected to
 					the receiving domain</selectable><selectable id="fpt_rdm_ext.1.2_3">the media in a device that is being transferred is ejected prior to the receiving domain
 					being allowed access to the device</selectable><selectable id="fpt_rdm_ext.1.2_4">the user of the receiving domain expressly authorizes the connection</selectable><selectable id="fpt_rdm_ext.1.2_5">the device or media that is being transferred is prevented from being accessed by the 
 					receiving domain</selectable></selectables></title>
@@ -3368,9 +3364,9 @@
           <description>If "" and "" are selected in FTP_ITC_EXT.1.1
 								then "" must be selected in FIA_X509_EXT.2.1.</description>
           <f-element id="ftp-itc-ext-1e1">
-            <title>The TSF shall use<selectables><selectable id="sel-itc-tls">TLS as conforming to the  <h:a href="https://www.niap-ccevs.org/MMO/PP/-439-/">Functional Package for Transport Layer Security</h:a></selectable><selectable id="sel-itc-https">TLS/HTTPS as conforming to FCS_HTTPS_EXT.1</selectable><selectable id="sel-itc-ipsec">IPsec as conforming to FCS_IPSEC_EXT.1</selectable><selectable id="sel-itc-ssh">SSH as conforming to the
+            <title>The TSF shall use<selectables linebreak="yes"><selectable id="sel-itc-tls">TLS as conforming to the  <h:a href="https://www.niap-ccevs.org/MMO/PP/-439-/">Functional Package for Transport Layer Security</h:a></selectable><selectable id="sel-itc-https">TLS/HTTPS as conforming to FCS_HTTPS_EXT.1</selectable><selectable id="sel-itc-ipsec">IPsec as conforming to FCS_IPSEC_EXT.1</selectable><selectable id="sel-itc-ssh">SSH as conforming to the
 					 <h:a href="https://www.niap-ccevs.org/MMO/PP/-459-/">Functional Package
-					for Secure Shell</h:a></selectable></selectables>and<selectables><selectable id="sel-itc-certauth">certificate-based authentication of the remote peer</selectable><selectable id="ftp_itc_ext.1.1_1">non-certificate-based authentication of the remote peer</selectable><selectable id="ftp_itc_ext.1.1_2">no authentication of the remote peer</selectable></selectables>to provide a trusted communication channel between itself, and <h:p/> <h:li>audit servers (as required by FAU_STG_EXT.1), and</h:li><selectables><selectable id="ftp_itc_ext.1.1_3">remote administrators (as required by FTP_TRP.1.1 if selected in FMT_MOF_EXT.1.1 in the Client or Server PP-Module)</selectable><selectable id="ftp_itc_ext.1.1_4">separation of management and operational networks (if selected in FMT_SMO_EXT.1)</selectable><selectable id="ftp_itc_ext.1.1_6"><assignable>other capabilities </assignable></selectable><selectable id="ftp_itc_ext.1.1_7">no other capabilities</selectable></selectables>that is logically distinct from other communication paths and provides assured identification of its endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.</title>
+					for Secure Shell</h:a></selectable></selectables>and<selectables linebreak="yes"><selectable id="sel-itc-certauth">certificate-based authentication of the remote peer</selectable><selectable id="ftp_itc_ext.1.1_1">non-certificate-based authentication of the remote peer</selectable><selectable id="ftp_itc_ext.1.1_2">no authentication of the remote peer</selectable></selectables>to provide a trusted communication channel between itself, and <h:p/> <h:li>audit servers (as required by FAU_STG_EXT.1), and</h:li><selectables linebreak="yes"><selectable id="ftp_itc_ext.1.1_3">remote administrators (as required by FTP_TRP.1.1 if selected in FMT_MOF_EXT.1.1 in the Client or Server PP-Module)</selectable><selectable id="ftp_itc_ext.1.1_4">separation of management and operational networks (if selected in FMT_SMO_EXT.1)</selectable><selectable id="ftp_itc_ext.1.1_6"><assignable>other capabilities</assignable></selectable><selectable id="ftp_itc_ext.1.1_7">no other capabilities</selectable></selectables>that is logically distinct from other communication paths and provides assured identification of its endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.</title>
             <note role="application">If the ST author selects either TLS or HTTPS, the TSF shall be validated against the 
                             Functional Package for TLS. This PP does not mandate that a product implement TLS with mutual authentication,
 				but if the product includes the capability to perform TLS with mutual authentication, then
