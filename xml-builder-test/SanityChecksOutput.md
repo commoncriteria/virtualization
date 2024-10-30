@@ -1,7 +1,11 @@
+* Error: f-element FAU_ARP.1.1  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[2]""/f-component[1]""/f-element[1]""
 * Error: f-element FAU_GEN.1.1  appears not to have an associated evaluation activity.:
         /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[2]""/f-component[2]""/f-element[1]""
 * Error: f-element FAU_SAA.1.1  appears not to have an associated evaluation activity.:
         /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[2]""/f-component[3]""/f-element[1]""
+* Error: f-element FAU_SAA.1.2  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[2]""/f-component[3]""/f-element[2]""
 * Error: f-element FAU_SAR.1.1  appears not to have an associated evaluation activity.:
         /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[2]""/f-component[4]""/f-element[1]""
 * Error: f-element FAU_STG.1.1  appears not to have an associated evaluation activity.:
@@ -40,6 +44,8 @@
         /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[5]""/f-component[5]""/f-element[1]""
 * Error: f-element FIA_X509_EXT.2.1  appears not to have an associated evaluation activity.:
         /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[5]""/f-component[6]""/f-element[1]""
+* Error: f-element FPT_DVD_EXT.1.1  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[2]""/f-element[1]""
 * Error: f-element FPT_HAS_EXT.1.1  appears not to have an associated evaluation activity.:
         /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[5]""/f-element[1]""
 * Error: f-element FPT_IDV_EXT.1.1  appears not to have an associated evaluation activity.:
@@ -52,14 +58,26 @@
         /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[11]""/f-element[1]""
 * Error: f-element FPT_TUD_EXT.1.2  appears not to have an associated evaluation activity.:
         /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[11]""/f-element[2]""
+* Error: f-element FPT_TUD_EXT.2.1  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[12]""/f-element[1]""
 * Error: f-element FPT_VDP_EXT.1.1  appears not to have an associated evaluation activity.:
         /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[13]""/f-element[1]""
 * Error: f-element FPT_VIV_EXT.1.1  appears not to have an associated evaluation activity.:
         /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[14]""/f-element[1]""
+* Error: f-element FTA_TAB.1.1  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[8]""/f-component[1]""/f-element[1]""
 * Error: f-element FTP_TRP.1.1  appears not to have an associated evaluation activity.:
         /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[9]""/f-component[2]""/f-element[1]""
 * Error: f-element FTP_TRP.1.2  appears not to have an associated evaluation activity.:
         /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[9]""/f-component[2]""/f-element[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"A Virtual"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"A Virtual"/h:p[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"A Virtual"/h:p[3]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"A Virtual"/h:p[4]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"A Virtual"/h:p[5]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"A Virtual"/h:p[6]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"A Virtual"/h:p[7]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"A Virtual"/h:p[8]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Conformance_Claims[1]""/cclaims[1]""/cclaim[1]""/description[1]""/h:p[1]"A Securit"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Conformance_Claims[1]""/cclaims[1]""/cclaim[1]""/description[1]""/h:p[1]"A Securit"/h:p[2]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[2]""/f-component[1]""/f-element[1]""/note[1]"In certai"/h:p[1]""
