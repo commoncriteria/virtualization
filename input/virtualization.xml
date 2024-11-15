@@ -511,6 +511,29 @@
         <f-component cc-id="fau_gen.1" id="fau-gen-1" name="Audit Data Generation">
           <f-element id="fau-gen-1e1">
             <title>The TSF shall be able to generate an audit record of the following auditable events:  <h:ol><h:li>Start-up and shutdown of audit functions</h:li><h:li>[<h:b>All administrative actions relevant to claimed SFRs as defined in the Auditable Events Table from the Client and Server PP-Modules</h:b>]</h:li><h:li>[<h:b>Auditable events defined in <xref g="t-audit-mandatory"></xref></h:b>]</h:li><h:li><h:b><selectables  linebreak="yes"><selectable id="sel-at2" >Auditable events defined in <xref g="t-audit-optional"></xref> for Strictly Optional SFRs</selectable><selectable id="sel-at3" >Auditable events defined in <xref g="t-audit-objective"></xref> for Objective SFRs</selectable><selectable id="sel-at4" >Auditable events defined in <xref g="t-audit-sel-based"></xref> for Selection-Based SFRs</selectable><selectable id="sel-attls" >Auditable events for the <xref to="tls"></xref> listed in <xref to="atref-pkgs"></xref></selectable><selectable id="sel-atssh" >Auditable events defined in the audit table for the <xref to="ssh"></xref></selectable><selectable id="fau_gen.1.1_1" >no other auditable events</selectable> </selectables></h:b></h:li></h:ol></title>
+            <aactivity level="component">
+              <TSS>The evaluator shall check the TSS and ensure that it lists all of the auditable events 
+                                and provides a format for audit records. Each audit record format type shall be covered, along with a 
+                                brief description of each field. The evaluator shall check to make sure that every audit event type 
+                                mandated by the PP-Configuration is described in the TSS.<h:p/></TSS>
+              <Guidance>
+                                The evaluator shall also make a determination of the administrative actions that are relevant in the 
+                                context of this PP-Configuration. The evaluator shall examine the administrative guide and make a determination of which 
+                                administrative commands, including subcommands, scripts, and configuration files, are related to the 
+                                configuration (including enabling or disabling) of the mechanisms implemented in the TOE 
+                                that are necessary to enforce the requirements specified in the PP and PP-Modules. The evaluator shall document the 
+                                methodology or approach taken while determining which actions in the administrative guide are 
+                                security-relevant with respect to this PP-Configuration.<h:p/></Guidance>
+              <Tests>
+                                The evaluator shall test the TOE’s ability to correctly generate audit records by 
+                                having the TOE generate audit records for the events listed and administrative actions. 
+                                For administrative actions, the evaluator shall test that each action determined by the evaluator above to 
+                                be security relevant in the context of this PP is auditable. When verifying the test results, the 
+                                evaluator shall ensure the audit records generated during testing match the format specified in the 
+                                administrative guide, and that the fields in each audit record have the proper entries.<h:br/><h:br/>
+                                Note that the testing here can be accomplished in conjunction with the testing of the security mechanisms 
+                                directly.<h:p/></Tests>
+            </aactivity>
           </f-element>
           <f-element id="fau-gen-1e2">
             <title>The TSF shall record within each audit record at least the following information:  <h:ol><h:li>Date and time of the event</h:li><h:li>Type of event</h:li><h:li>Subject and object identity (if applicable)</h:li><h:li>The outcome (success or failure) of the event</h:li><h:li>[<h:b>Additional information defined in <xref g="t-audit-mandatory"></xref></h:b>]</h:li><h:li><h:b><selectables  linebreak="yes"><selectable id="fau_gen.1.2_1" >Additional information defined in <xref g="t-audit-optional"></xref> for Strictly Optional SFRs</selectable><selectable id="fau_gen.1.2_2" >Additional information defined in <xref g="t-audit-objective"></xref> for Objective SFRs</selectable><selectable id="fau_gen.1.2_3" >Additional information defined in <xref g="t-audit-sel-based"></xref> for Selection-Based SFRs</selectable><selectable id="fau_gen.1.2_4" >Additional information for the <xref to="tls"></xref> listed in <xref to="atref-pkgs"></xref></selectable><selectable id="fau_gen.1.2_5" >Additional information defined in the audit table for the <xref to="ssh"></xref></selectable><selectable id="fau_gen.1.2_6" >no other information</selectable> </selectables></h:b></h:li></h:ol></title>
@@ -536,29 +559,6 @@
 							the TLS Functional Package. Inclusion of these events in the ST is subject to selection above,
 							inclusion of the corresponding SFRs in the ST, and support in the FP as represented by a selection in the 
 							table below.<h:p/><h:b> <ctr ctr-type="Table" id="atref-pkgs">: Auditable Events for the TLS Functional Package</ctr></h:b><h:br/><h:table><h:tr ><h:td >FCS_TLSC_EXT.1</h:td><h:td >Failure to establish a session.</h:td><h:td >Reason for failure.</h:td></h:tr><h:tr ><h:td >FCS_TLSC_EXT.1</h:td><h:td >Failure to verify presented identifier.</h:td><h:td >Presented identifier and reference identifier.</h:td></h:tr><h:tr ><h:td >FCS_TLSC_EXT.1</h:td><h:td >Establishment/termination of a TLS session.</h:td><h:td >Non-TOE endpoint of connection.</h:td></h:tr><h:tr ><h:td >FCS_TLSS_EXT.1</h:td><h:td >Failure to establish a session.</h:td><h:td >Reason for failure.</h:td></h:tr><h:tr ><h:td >FCS_DTLSC_EXT.1</h:td><h:td >Failure of the certificate validity check.</h:td><h:td >Issuer Name and Subject Name of certificate.</h:td></h:tr><h:tr ><h:td >FCS_DTLSS_EXT.1</h:td><h:td >Failure of the certificate validity check.</h:td><h:td >Issuer Name and Subject Name of certificate.</h:td></h:tr></h:table></note>
-            <aactivity level="element">
-              <TSS>The evaluator shall check the TSS and ensure that it lists all of the auditable events 
-                                and provides a format for audit records. Each audit record format type shall be covered, along with a 
-                                brief description of each field. The evaluator shall check to make sure that every audit event type 
-                                mandated by the PP-Configuration is described in the TSS.<h:p/></TSS>
-              <Guidance>
-                                The evaluator shall also make a determination of the administrative actions that are relevant in the 
-                                context of this PP-Configuration. The evaluator shall examine the administrative guide and make a determination of which 
-                                administrative commands, including subcommands, scripts, and configuration files, are related to the 
-                                configuration (including enabling or disabling) of the mechanisms implemented in the TOE 
-                                that are necessary to enforce the requirements specified in the PP and PP-Modules. The evaluator shall document the 
-                                methodology or approach taken while determining which actions in the administrative guide are 
-                                security-relevant with respect to this PP-Configuration.<h:p/></Guidance>
-              <Tests>
-                                The evaluator shall test the TOE’s ability to correctly generate audit records by 
-                                having the TOE generate audit records for the events listed and administrative actions. 
-                                For administrative actions, the evaluator shall test that each action determined by the evaluator above to 
-                                be security relevant in the context of this PP is auditable. When verifying the test results, the 
-                                evaluator shall ensure the audit records generated during testing match the format specified in the 
-                                administrative guide, and that the fields in each audit record have the proper entries.<h:br/><h:br/>
-                                Note that the testing here can be accomplished in conjunction with the testing of the security mechanisms 
-                                directly.<h:p/></Tests>
-            </aactivity>
           </f-element>
           <audit-event/>
         </f-component>
@@ -566,12 +566,12 @@
         <f-component cc-id="fau_saa.1" id="fau-saa-1" name="Potential Violation Analysis" status="optional">
           <f-element id="fau-saa-1e1">
             <title>The TSF shall be able to apply a set of rules in monitoring the audited events and based upon these rules indicate a potential violation of the enforcement of the SFRs.</title>
-          </f-element>
+                      </f-element>
           <f-element id="fau-saa-1e2">
             <title>The TSF shall enforce the following rules for monitoring audited events:  <h:ol><h:li>Accumulation or combination of<assignable>subset of defined auditable events</assignable>known to indicate a potential security violation;</h:li><h:li><assignable>any other rules</assignable>.</h:li></h:ol></title>
             <note role="application">The potential security violation described in FAU_SAA.1 can be used as a trigger 
 							for automated responses as defined in FAU_ARP.1.</note>
-                      </f-element>
+          </f-element>
           <audit-event>
             <audit-event-descr>Enabling and disabling of any of the analysis mechanisms.</audit-event-descr>
           </audit-event>
@@ -583,15 +583,15 @@
         <f-component cc-id="fau_sar.1" id="fau-sar-1" name="Audit Review">
           <f-element id="fau-sar-1e1">
             <title>The TSF shall provide [ <h:i>administrators</h:i>  ] with the capability to read [ <h:i>all information</h:i>  ] from the audit records.</title>
-          </f-element>
-          <f-element id="fau-sar-1e2">
-            <title>The TSF shall provide the audit records in a manner suitable for the user to interpret the information.</title>
-            <aactivity level="element">
+            <aactivity level="component">
               <Guidance>
                                 The evaluator shall review the operational guidance for the procedure on how to review the audit 
                                 records.
                             </Guidance>
             </aactivity>
+          </f-element>
+          <f-element id="fau-sar-1e2">
+            <title>The TSF shall provide the audit records in a manner suitable for the user to interpret the information.</title>
           </f-element>
           <audit-event/>
         </f-component>
@@ -599,14 +599,7 @@
         <f-component cc-id="fau_stg.1" id="fau-stg-1" name="Protected Audit Trail Storage">
           <f-element id="fau-stg-1e1">
             <title>The TSF shall protect the stored audit records in the audit trail from unauthorized deletion.</title>
-          </f-element>
-          <f-element id="fau-stg-1e2">
-            <title>The TSF shall be able to [ <h:i>prevent</h:i>  ] unauthorized modifications to the stored audit records in the audit trail.</title>
-            <note role="application">The evaluation activity for this SFR is not intended to imply that the TOE must
-							support an administrator’s ability to designate individual audit records for deletion. That level 
-							of granularity is not required.
-						</note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall ensure that the TSS describes how the audit records are protected from 
 								unauthorized modification or deletion. The evaluator shall ensure that the TSS describes the
 								conditions that must be met for authorized deletion of audit records.</TSS>
@@ -627,6 +620,13 @@
               </Tests>
             </aactivity>
           </f-element>
+          <f-element id="fau-stg-1e2">
+            <title>The TSF shall be able to [ <h:i>prevent</h:i>  ] unauthorized modifications to the stored audit records in the audit trail.</title>
+            <note role="application">The evaluation activity for this SFR is not intended to imply that the TOE must
+							support an administrator’s ability to designate individual audit records for deletion. That level 
+							of granularity is not required.
+						</note>
+          </f-element>
           <audit-event/>
         </f-component>
         <!--FAU_STG_EXT.1 Off-Loading of Audit Data-->
@@ -646,9 +646,6 @@
           <f-element id="fau-stg-ext-1e1">
             <title>The TSF shall be able to transmit the generated audit data to an external IT entity using a trusted channel as specified in FTP_ITC_EXT.1.</title>
             <aactivity level="element">
-              
-                            Protocols used for implementing the trusted channel must be selected in FTP_ITC_EXT.1.
-                            
               <TSS>The evaluator shall examine the TSS to ensure it describes the means by which 
                                 the audit data are transferred to the external audit server, and how the trusted channel is 
                                 provided.</TSS>
@@ -659,6 +656,9 @@
                                 as configuration of the TOE needed to communicate with the audit server.
                             </Guidance>
               <Tests>
+                
+                            Protocols used for implementing the trusted channel must be selected in FTP_ITC_EXT.1.
+                            
                 <testlist>
                   <test>The evaluator shall establish a session between the TOE and the audit server according
 										to the configuration guidance provided. The evaluator shall then examine the traffic
@@ -727,7 +727,7 @@
 							If the TOE acts as a receiver in the RSA key establishment scheme, the TOE does not need to implement RSA
 							key generation.
                         </note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall ensure that the TSS identifies the key sizes supported by 
                                 the TOE. If the ST specifies more than one scheme, the evaluator shall examine the TSS to verify
 								that it identifies the usage for each scheme.</TSS>
@@ -793,7 +793,7 @@
         <f-component cc-id="fcs_ckm.2" id="fcs-ckm-2" name="Cryptographic Key Distribution">
           <f-element id="fcs-ckm-2e1">
             <title>The TSF shall <h:s>distribute cryptographic keys</h:s> <h:b>implement functionality to perform cryptographic key establishment</h:b>  in accordance with a specified cryptographic key establishment method:<selectables  linebreak="yes"><selectable id="fcs_ckm.2.1_1" >RSA-based key establishment schemes that meets the following: RSAES-PKCS1-v1_5 as specified in Section 7.2 of RFC 8017, “Public-Key Cryptography Standards (PKCS) #1: RSA Cryptography Specifications Version 2.2"</selectable><selectable id="fcs_ckm.2.1_2" >Elliptic curve-based key establishment schemes that meets the following: NIST Special Publication 800-56A Revision 3, “Recommendation for Pair-Wise Key Establishment Schemes Using Discrete Logarithm Cryptography”</selectable><selectable id="fcs_ckm.2.1_3" >Finite field-based key establishment schemes that meets the following: NIST Special Publication 800-56A Revision 3, “Recommendation for Pair-Wise Key Establishment Schemes Using Discrete Logarithm Cryptography”</selectable><selectable id="fcs_ckm.2.1_4" >Key establishment scheme using Diffie-Hellman group 14 that meets the following: RFC 3526</selectable> </selectables><h:s>that meets the following [assignment: list of standards]</h:s>  .</title>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall ensure that the supported key establishment schemes correspond to the key 
                                 generation schemes identified in FCS_CKM.1.1. If the ST specifies more than one 
                                 scheme, the evaluator shall examine the TSS to verify that it identifies the usage 
@@ -896,6 +896,21 @@
                             Cryptographic keys in non-TOE volatile memory are not covered by this requirement. This expressly includes 
 							keys created and used by Guest VMs. The Guest is responsible for disposing of such keys.
 						</note>
+            <aactivity level="component">
+              <TSS>The evaluator shall check to ensure the TSS lists each type of key and its origin 
+                                and location in memory or storage. The evaluator shall verify that the TSS 
+                                describes when each type of key is cleared.</TSS>
+              <Tests>
+                                For each key clearing situation the evaluator shall perform one of the following activities:<h:p/><h:ul><h:li>The evaluator shall use appropriate combinations of specialized operational or development 
+									environments, development tools (debuggers, emulators, simulators, etc.), or instrumented
+									builds (developmental, debug, or release) to demonstrate that keys are cleared correctly,
+									including all intermediate copies of the key that may have been created internally by the
+									TOE during normal cryptographic processing.</h:li><h:li>In cases where testing reveals that third-party software modules or programming language
+									run-time environments do not properly overwrite keys, this fact must be documented. 
+									Likewise, it must be documented if there is no practical way to determine whether such
+									modules or environments destroy keys properly.</h:li><h:li>In cases where it is impossible or impracticable to perform the above tests, the evaluator shall describe how keys are destroyed in such cases, to include:
+                                        <h:ul><h:li>Which keys are affected</h:li><h:li>The reasons why testing is impossible or impracticable</h:li><h:li>Evidence that keys are destroyed appropriately (e.g., citations to component documentation, component developer/vendor attestation, component vendor test results)</h:li><h:li>Aggravating and mitigating factors that may affect the timeliness or execution of key destruction (e.g., caching, garbage collection, operating system memory management)</h:li></h:ul></h:li></h:ul></Tests>
+            </aactivity>
           </f-element>
           <f-element id="fcs-ckm-4e2">
             <title>The TSF shall cause disused cryptographic keys in non-volatile storage to be destroyed or rendered unrecoverable.</title>
@@ -922,21 +937,6 @@
                             For keys stored on encrypted media, it is sufficient for the media encryption keys to be destroyed for 
 							all keys stored on the media to be considered destroyed.
                         </note>
-            <aactivity level="element">
-              <TSS>The evaluator shall check to ensure the TSS lists each type of key and its origin 
-                                and location in memory or storage. The evaluator shall verify that the TSS 
-                                describes when each type of key is cleared.</TSS>
-              <Tests>
-                                For each key clearing situation the evaluator shall perform one of the following activities:<h:p/><h:ul><h:li>The evaluator shall use appropriate combinations of specialized operational or development 
-									environments, development tools (debuggers, emulators, simulators, etc.), or instrumented
-									builds (developmental, debug, or release) to demonstrate that keys are cleared correctly,
-									including all intermediate copies of the key that may have been created internally by the
-									TOE during normal cryptographic processing.</h:li><h:li>In cases where testing reveals that third-party software modules or programming language
-									run-time environments do not properly overwrite keys, this fact must be documented. 
-									Likewise, it must be documented if there is no practical way to determine whether such
-									modules or environments destroy keys properly.</h:li><h:li>In cases where it is impossible or impracticable to perform the above tests, the evaluator shall describe how keys are destroyed in such cases, to include:
-                                        <h:ul><h:li>Which keys are affected</h:li><h:li>The reasons why testing is impossible or impracticable</h:li><h:li>Evidence that keys are destroyed appropriately (e.g., citations to component documentation, component developer/vendor attestation, component vendor test results)</h:li><h:li>Aggravating and mitigating factors that may affect the timeliness or execution of key destruction (e.g., caching, garbage collection, operating system memory management)</h:li></h:ul></h:li></h:ul></Tests>
-            </aactivity>
           </f-element>
           <audit-event/>
         </f-component>
@@ -953,7 +953,7 @@
 							message digest size selection. The hash selection should be consistent with the overall strength of
 							the algorithm used (for example, SHA 256 for 128-bit keys).
                             <h:p/></note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall check that the association of the hash function with other TSF 
                                 cryptographic functions (for example, the digital signature verification function) is documented 
                                 in the TSS.</TSS>
@@ -1058,7 +1058,7 @@
             <title>The TSF shall perform [ <h:i>keyed-hash message authentication</h:i>  ] in accordance with a specified cryptographic algorithm<selectables  ><selectable id="sel-hmac-sha-1" >HMAC-SHA-1</selectable><selectable id="sel-hmac-sha-256" >HMAC-SHA-256</selectable><selectable id="sel-hmac-sha-384" >HMAC-SHA-384</selectable><selectable id="sel-hmac-sha-512" >HMAC-SHA-512</selectable><selectable id="sel-hmac-sha-3-224" >SHA-3-224</selectable><selectable id="sel-hmac-sha-3-256" >SHA-3-256</selectable><selectable id="sel-hmac-sha-3-384" >SHA-3-384</selectable><selectable id="sel-hmac-sha-3-512" >SHA-3-512</selectable> </selectables>and cryptographic key sizes<assignable>key size (in bits) used in HMAC</assignable>and message digest sizes<selectables  ><selectable id="fcs_cop.1.1_KeyedHash_2" >160</selectable><selectable id="fcs_cop.1.1_KeyedHash_3" >256</selectable><selectable id="fcs_cop.1.1_KeyedHash_4" >384</selectable><selectable id="fcs_cop.1.1_KeyedHash_5" >512 bits</selectable> </selectables>that meet the following: [ <h:b><h:i>FIPS Pub 198-1, "The Keyed-Hash Message Authentication Code," and FIPS Pub 180-4, “Secure Hash Standard"</h:i></h:b>  ].</title>
             <note role="application">The selection in this requirement must be consistent with the key size specified for
 							the size of the keys used in conjunction with the keyed-hash message authentication.<h:p/></note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall examine the TSS to ensure that it specifies the following
                                 values used by the HMAC function: key length, hash function used, block size, and output MAC 
                                 length used.</TSS>
@@ -1078,7 +1078,7 @@
 							functionality. For the algorithm chosen, the ST author should make the appropriate 
 							assignments/selections to specify the parameters that are implemented for that algorithm.
                         </note>
-            <aactivity level="element">
+            <aactivity level="component">
               <Tests>
                                 The following tests require the developer to provide access to a test platform that provides the 
 								evaluator with tools that are typically not found on factory products.
@@ -1122,11 +1122,11 @@
             <note role="application">For the first selection of FCS_COP.1.1/UDE, the ST author should choose the mode or
 							modes in which AES operates. For the second selection, the ST author should choose the key sizes that
 							are supported by this functionality.<h:p/></note>
-            <aactivity level="element">
-              
+            <aactivity level="component">
+              <Tests>
+                
                             The following tests require the developer to provide access to a test platform that provides the evaluator
 							with tools that are typically not found on factory products.<h:p/>
-              <Tests>
                 <testlist>
                   <test>For EACH supported key and associated data length and ANY supported payload, nonce and tag 
 										length, the evaluator shall supply one key value, one nonce value and 10 pairs of
@@ -1252,6 +1252,27 @@
           <dependencies>FCS_RBG_EXT.1 Cryptographic Operation (Random Bit Generation)</dependencies>
           <f-element id="fcs-ent-ext-1e1">
             <title>The TSF shall provide a mechanism to make available to VMs entropy that meets FCS_RBG_EXT.1 through<selectables  ><selectable id="fcs_ent_ext.1.1_1" >Hypercall interface</selectable><selectable id="fcs_ent_ext.1.1_2" >virtual device interface</selectable><selectable id="fcs_ent_ext.1.1_3" >passthrough access to hardware entropy source</selectable> </selectables>.</title>
+            <aactivity level="component">
+              <TSS>The evaluator shall verify that the TSS describes how the TOE provides entropy to Guest VMs, and
+								how to access the interface to acquire entropy or random numbers. The evaluator shall verify that
+								the TSS describes the mechanisms for ensuring that one VM does not affect the entropy acquired by 
+								another.</TSS>
+              <Tests>
+                <testlist>
+                  
+                               The evaluator shall perform the following tests:
+                               
+                  <test>
+                                     The evaluator shall invoke entropy from each Guest VM. The evaluator shall 
+                                     verify that each VM acquires values from the interface.
+                                 </test>
+                  <test>The evaluator shall invoke entropy from multiple VMs as nearly 
+                                     simultaneously as practicable. The evaluator shall verify that the entropy used in one 
+                                     VM is not identical to that invoked from the other VMs.
+                                 </test>
+                </testlist>
+              </Tests>
+            </aactivity>
           </f-element>
           <f-element id="fcs-ent-ext-1e2">
             <title>The TSF shall provide independent entropy across multiple VMs.</title>
@@ -1281,27 +1302,6 @@
                             For FCS_ENT_EXT.1.2, the VMM must ensure that the provision of entropy to one VM cannot affect the quality
 							of entropy provided to another VM on the same platform.
                         </note>
-            <aactivity level="element">
-              <TSS>The evaluator shall verify that the TSS describes how the TOE provides entropy to Guest VMs, and
-								how to access the interface to acquire entropy or random numbers. The evaluator shall verify that
-								the TSS describes the mechanisms for ensuring that one VM does not affect the entropy acquired by 
-								another.</TSS>
-              <Tests>
-                <testlist>
-                  
-                               The evaluator shall perform the following tests:
-                               
-                  <test>
-                                     The evaluator shall invoke entropy from each Guest VM. The evaluator shall 
-                                     verify that each VM acquires values from the interface.
-                                 </test>
-                  <test>The evaluator shall invoke entropy from multiple VMs as nearly 
-                                     simultaneously as practicable. The evaluator shall verify that the entropy used in one 
-                                     VM is not identical to that invoked from the other VMs.
-                                 </test>
-                </testlist>
-              </Tests>
-            </aactivity>
           </f-element>
           <audit-event/>
         </f-component>
@@ -1325,15 +1325,15 @@
 						The ST author must provide enough detail to determine how the implementation is 
 						complying with the standards identified; this can be done either by adding elements to this 
 						component, or by additional detail in the TSS.</note>
-          </f-element>
-          <f-element id="fcs-https-ext-1e2">
-            <title>The TSF shall implement HTTPS using TLS.</title>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall check the TSS to ensure that it is clear on how HTTPS uses 
                                 TLS to establish an administrative session, focusing on any client authentication required by 
                                 the TLS protocol vs. security administrator authentication which may be done at a different 
                                 level of the processing stack.</TSS>
             </aactivity>
+          </f-element>
+          <f-element id="fcs-https-ext-1e2">
+            <title>The TSF shall implement HTTPS using TLS.</title>
           </f-element>
           <audit-event>
             <audit-event-descr>Failure to establish a HTTPS Session.</audit-event-descr>
@@ -1377,7 +1377,7 @@
 							is not mandated, as long as the TOE can distinguish the IP packets and apply the
 							rules accordingly. There may be multiple SPDs (one for each network interface),
 							but this is not required. <h:br/><h:br/></note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>In addition to the TSS EAs for the individual FCS_IPSEC_EXT.1 elements below, the
 								evaluator shall perform the following:<h:p/>
 								If the TOE boundary includes a general-purpose operating system or mobile device, the evaluator shall
@@ -1406,6 +1406,59 @@
 								evaluator shall provide justification for any differences in the test environment.<h:p/> <figure entity="images/network.png" title="IPsec Test Environment" id="fig-ipsectest"></figure><h:p/>
 								Note that the evaluator shall perform all tests using the Virtualization System and a representative sample of
 								platforms listed in the ST (for TOEs that claim to support multiple platforms).<h:p/></Tests>
+            </aactivity>
+            <aactivity level="element">
+              <TSS>The evaluator shall examine the TSS and determine that it describes how the IPsec capabilities
+				    are implemented.<h:p/>
+				The evaluator shall ensure that the TSS describes at a high level the architectural relationship between
+				    the IPsec implementation and the rest of the TOE (e.g., is the IPsec implementation an integrated part 
+				    of the VS or is it a standalone executable that is bundled into the VS).<h:p/> 		    
+				The evaluator shall ensure that the TSS describes how the SPD is implemented and the rules for processing
+				both inbound and outbound packets in terms of the IPsec policy. The TSS describes the rules that are
+				available and the resulting actions available after matching a rule. The TSS describes how the available
+				rules and actions form the SPD using terms defined in RFC 4301 such as BYPASS (e.g., no encryption),
+				DISCARD (e.g., drop the packet), and PROTECT (e.g., encrypt the packet) actions defined in RFC 4301.
+				<h:p/>
+                                As noted in section 4.4.1 of RFC 4301, the processing of entries in the SPD is non-trivial and the evaluator
+				shall determine that the description in the TSS is sufficient to determine which rules will be applied given
+				the rule structure implemented by the TOE. For example, if the TOE allows specification of ranges,
+				conditional rules, etc., the evaluator shall determine that the description of rule processing (for both
+				inbound and outbound packets) is sufficient to determine the action that will be applied, especially in the
+				case where two different rules may apply. This description shall cover both the initial packets (that is, no
+				SA is established on the interface or for that particular packet) as well as packets that are part of an
+				established SA. <h:p/></TSS>
+              <Guidance>
+                                The evaluator shall examine the operational guidance to verify it instructs the Administrator how 
+                                to construct entries into the SPD that specify a rule for processing a packet. The description 
+                                includes all three cases – a rule that ensures packets are encrypted/decrypted, dropped, and 
+                                flow through the TOE without being encrypted. The evaluator shall determine 
+                                that the description in the operational guidance is consistent with the description in the 
+                                TSS, and that the level of detail in the operational guidance is sufficient to
+                                allow the administrator to set up the SPD in an unambiguous fashion. This includes a discussion 
+                                of how ordering of rules impacts the processing of an IP packet.<h:p/></Guidance>
+              <Tests>
+                <testlist>
+                  <test>The evaluator shall configure the SPD such that there is a rule for dropping a packet,
+					encrypting a packet, and allowing a packet to flow in plaintext. The selectors used in
+					the construction of the rule shall be different such that the evaluator can generate a
+					packet and send packets to the gateway with the appropriate fields (fields that are used
+					by the rule - e.g., the IP addresses, TCP/UDP ports) in the packet header. The evaluator
+					performs both positive and negative test cases for each type of rule (e.g., a packet that
+					matches the rule and another that does not match the rule). The evaluator observes via the
+					audit trail, and packet captures that the TOE exhibited the expected
+					behavior: appropriate packets were dropped, allowed to flow without modification, 
+					encrypted by the IPsec implementation.</test>
+                  <test>The evaluator shall devise several tests that cover a variety of scenarios for packet
+					processing. As with Test 1, the evaluator ensures both positive and negative test cases
+					are constructed. These scenarios shall exercise the range of possibilities for SPD entries 
+					and processing modes as outlined in the TSS and operational guidance. Potential areas to
+					cover include rules with overlapping ranges and conflicting entries, inbound and outbound
+					packets, and packets that establish SAs as well as packets that belong to established SAs.
+					The evaluator shall verify, via the audit trail and packet captures, for each scenario 
+					that the expected behavior is exhibited, and is consistent with both the TSS and the
+					operational guidance.</test>
+                </testlist>
+              </Tests>
             </aactivity>
           </f-element>
           <f-element id="fcs-ipsec-ext-1e2">
@@ -1855,24 +1908,7 @@
           <dependencies>FCS_COP.1 Cryptographic Operation</dependencies>
           <f-element id="fcs-rbg-ext-1e1">
             <title>The TSF shall perform all deterministic random bit generation services in accordance with NIST Special Publication 800-90A using<selectables  ><selectable id="fcs_rbg_ext.1.1_1" >Hash_DRBG (any)</selectable><selectable id="fcs_rbg_ext.1.1_2" >HMAC_DRBG (any)</selectable><selectable id="fcs_rbg_ext.1.1_3" >CTR_DRBG (AES)</selectable> </selectables></title>
-          </f-element>
-          <f-element id="fcs-rbg-ext-1e2">
-            <title>The deterministic RBG shall be seeded by an entropy source that accumulates entropy from<selectables  ><selectable id="fcs_rbg_ext.1.2_1" >a software-based noise source</selectable><selectable id="fcs_rbg_ext.1.2_2" >a hardware-based noise source</selectable> </selectables>with a minimum of<selectables  ><selectable id="fcs_rbg_ext.1.2_3" >128 bits</selectable><selectable id="fcs_rbg_ext.1.2_4" >192 bits</selectable><selectable id="fcs_rbg_ext.1.2_5" >256 bits</selectable> </selectables>of entropy at least equal to the greatest security strength according to NIST SP 800-57, of the keys and hashes that it will generate.</title>
-            <note role="application">NIST SP 800-90A contains three different methods of generating random numbers; each 
-							of these, in turn, depends on underlying cryptographic primitives (hash functions/ciphers). The ST 
-							author will select the function used, and include the specific underlying cryptographic primitives 
-							used in the requirement. While any of the identified hash functions (SHA-1, SHA-224, SHA-256, SHA-384,
-							SHA-44 512) are allowed for Hash_DRBG or HMAC_DRBG, only AES-based 
-							implementations for CTR_DRBG are allowed.<h:p/>
-                            If the key length for the AES implementation used here is different than that used to encrypt the user 
-							data, then FCS_COP.1/UDE may have to be adjusted or iterated to reflect the different key length. For the
-							selection in FCS_RBG_EXT.1.2, the ST author selects the minimum number of bits of
-							entropy that is used to seed the RBG.
-                        </note>
-            <aactivity level="element">
-              
-                            Documentation shall be produced—and the evaluator shall perform the activities—in accordance with 
-                            
+            <aactivity level="component">
               <Tests>
                                 The evaluator shall also perform the following tests, depending on the standard to which the RBG
 								conforms.<h:p/>
@@ -1906,6 +1942,20 @@
 										does not use a personalization string, no value needs to be supplied.</h:li><h:li>Additional input: the additional input bit lengths have the same defaults and 
 										restrictions as the personalization string lengths.</h:li></h:ul></Tests>
             </aactivity>
+          </f-element>
+          <f-element id="fcs-rbg-ext-1e2">
+            <title>The deterministic RBG shall be seeded by an entropy source that accumulates entropy from<selectables  ><selectable id="fcs_rbg_ext.1.2_1" >a software-based noise source</selectable><selectable id="fcs_rbg_ext.1.2_2" >a hardware-based noise source</selectable> </selectables>with a minimum of<selectables  ><selectable id="fcs_rbg_ext.1.2_3" >128 bits</selectable><selectable id="fcs_rbg_ext.1.2_4" >192 bits</selectable><selectable id="fcs_rbg_ext.1.2_5" >256 bits</selectable> </selectables>of entropy at least equal to the greatest security strength according to NIST SP 800-57, of the keys and hashes that it will generate.</title>
+            <note role="application">NIST SP 800-90A contains three different methods of generating random numbers; each 
+							of these, in turn, depends on underlying cryptographic primitives (hash functions/ciphers). The ST 
+							author will select the function used, and include the specific underlying cryptographic primitives 
+							used in the requirement. While any of the identified hash functions (SHA-1, SHA-224, SHA-256, SHA-384,
+							SHA-44 512) are allowed for Hash_DRBG or HMAC_DRBG, only AES-based 
+							implementations for CTR_DRBG are allowed.<h:p/>
+                            If the key length for the AES implementation used here is different than that used to encrypt the user 
+							data, then FCS_COP.1/UDE may have to be adjusted or iterated to reflect the different key length. For the
+							selection in FCS_RBG_EXT.1.2, the ST author selects the minimum number of bits of
+							entropy that is used to seed the RBG.
+                        </note>
           </f-element>
           <audit-event>
             <audit-event-descr>Failure of the randomization process.</audit-event-descr>
@@ -1943,7 +1993,7 @@
 							when VMs have direct access to physical devices. “Direct access” in this context means that the 
 							VM can read or write device memory or access device I/O ports without the VMM being able to intercept 
 							and validate every transaction.</note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall ensure that the TSS provides evidence that hardware-based
                                 isolation mechanisms are used to constrain VMs when VMs have
                                 direct access to physical devices, including an explanation of the conditions under which the 
@@ -1971,22 +2021,7 @@
 							FMT_SMR.1 Security Roles</dependencies>
           <f-element id="fdp-ppr-ext-1e1">
             <title>The TSF shall allow an authorized administrator to control Guest VM access to the following physical platform resources:<assignable>list of physical platform resources the VMM is able to control access to</assignable>.</title>
-          </f-element>
-          <f-element id="fdp-ppr-ext-1e2">
-            <title>The TSF shall explicitly deny all Guest VMs access to the following physical platform resources:<selectables  ><selectable id="fdp_ppr_ext.1.2_1" >no physical platform resources</selectable><selectable id="fdp_ppr_ext.1.2_3" ><assignable>list of physical platform resources to which access is explicitly denied</assignable></selectable> </selectables>.</title>
-          </f-element>
-          <f-element id="fdp-ppr-ext-1e3">
-            <title>The TSF shall explicitly allow all Guest VMs access to the following physical platform resources:<selectables  ><selectable id="fdp_ppr_ext.1.3_1" >no physical platform resources</selectable><selectable id="fdp_ppr_ext.1.3_3" ><assignable>list of physical platform resources to which access is always allowed</assignable></selectable> </selectables>.</title>
-            <note role="application">
-				For purposes of this requirement, physical platform resources are divided into three categories: 
-				<h:ol a="1"><h:li>those to which Guest OS access is configurable and moderated by the VMM</h:li><h:li>those to which the Guest OS is never allowed to have direct access, and</h:li><h:li>those to which the Guest OS is always allowed to have direct access.</h:li></h:ol>
-                            	For element 1, the ST author lists the physical platform resources that can be configured for Guest VM access by 
-				an administrator. For element 2, the ST author lists the physical platform resources to which 
-				Guest VMs may never be allowed direct access. If there are no such resources, the ST author selects "no physical platform 
-				resources." Likewise, any resources to which all Guest VMs automatically have access to are to be listed in 
-				the third element. If there are no such resources, then "no physical platform resources" is selected.
-                        </note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall examine the TSS to determine that it describes the mechanism by which the VMM controls a Guest VM's access to
                                 physical platform resources. This description shall cover all of the physical
                                 platforms allowed in the evaluated configuration by the ST. It should explain how the VMM distinguishes among Guest VMs, and 
@@ -2038,6 +2073,21 @@
               </Tests>
             </aactivity>
           </f-element>
+          <f-element id="fdp-ppr-ext-1e2">
+            <title>The TSF shall explicitly deny all Guest VMs access to the following physical platform resources:<selectables  ><selectable id="fdp_ppr_ext.1.2_1" >no physical platform resources</selectable><selectable id="fdp_ppr_ext.1.2_3" ><assignable>list of physical platform resources to which access is explicitly denied</assignable></selectable> </selectables>.</title>
+          </f-element>
+          <f-element id="fdp-ppr-ext-1e3">
+            <title>The TSF shall explicitly allow all Guest VMs access to the following physical platform resources:<selectables  ><selectable id="fdp_ppr_ext.1.3_1" >no physical platform resources</selectable><selectable id="fdp_ppr_ext.1.3_3" ><assignable>list of physical platform resources to which access is always allowed</assignable></selectable> </selectables>.</title>
+            <note role="application">
+				For purposes of this requirement, physical platform resources are divided into three categories: 
+				<h:ol a="1"><h:li>those to which Guest OS access is configurable and moderated by the VMM</h:li><h:li>those to which the Guest OS is never allowed to have direct access, and</h:li><h:li>those to which the Guest OS is always allowed to have direct access.</h:li></h:ol>
+                            	For element 1, the ST author lists the physical platform resources that can be configured for Guest VM access by 
+				an administrator. For element 2, the ST author lists the physical platform resources to which 
+				Guest VMs may never be allowed direct access. If there are no such resources, the ST author selects "no physical platform 
+				resources." Likewise, any resources to which all Guest VMs automatically have access to are to be listed in 
+				the third element. If there are no such resources, then "no physical platform resources" is selected.
+                        </note>
+          </f-element>
           <audit-event>
             <audit-event-descr>Successful and failed VM connections to physical devices where connection is governed by configurable policy.</audit-event-descr>
             <audit-event-info>VM and physical device identifiers.</audit-event-info>
@@ -2066,7 +2116,7 @@
                             This does not apply to pages shared by design or policy between VMs or between the VMMs and VMs, such
 							as read-only OS pages or pages used for virtual device buffers.
                         </note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall ensure that the TSS documents the process used for clearing
                                 physical memory prior to allocation to a Guest VM, providing details on when 
                                 and how this is performed. Additionally, the evaluator shall ensure that the TSS
@@ -2092,7 +2142,7 @@
 			    Clearing of disk storage only upon deallocation does not meet this requirement. <h:p/>
                             This does not apply to disk-resident files shared by design or policy between VMs or between the VMMs and
 				VMs, such as read-only data files or files used for inter-VM data transfers permitted by policy. </note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall ensure that the TSS documents how the TSF ensures that disk storage is zeroed upon allocation to 
 				    Guest VMs. Also, the TSS must document any conditions under which disk storage is not cleared prior to allocation to a Guest VM. 
 				    Any file system format and metadata information needed by the evaluator to perform the below test shall be made available
@@ -2127,31 +2177,7 @@
           <dependencies>No dependencies.</dependencies>
           <f-element id="fdp-vms-ext-1e1">
             <title>The VS shall provide the following mechanisms for transferring data between Guest VMs:<selectables  linebreak="yes"><selectable id="fdp_vms_ext.1.1_1" >no mechanism</selectable><selectable id="fdp_vms_ext.1.1_2" >virtual networking</selectable><selectable id="fdp_vms_ext.1.1_4" ><assignable>other inter-VM data sharing mechanisms</assignable></selectable> </selectables>.</title>
-          </f-element>
-          <f-element id="fdp-vms-ext-1e2">
-            <title>The TSF shall by default enforce a policy prohibiting sharing of data between Guest VMs.</title>
-          </f-element>
-          <f-element id="fdp-vms-ext-1e3">
-            <title>The TSF shall allow Administrators to configure the mechanisms selected in FDP_VMS_EXT.1.1 to enable and disable the transfer of data between Guest VMs.</title>
-          </f-element>
-          <f-element id="fdp-vms-ext-1e4">
-            <title>The VS shall ensure that no Guest VM is able to read or transfer data to or from another Guest VM except through the mechanisms listed in FDP_VMS_EXT.1.1.</title>
-            <note role="application">
-                            The fundamental requirement of a Virtualization System is the ability to enforce separation between
-							information domains implemented as Virtual Machines and Virtual Networks. The intent of this
-							requirement is to ensure that VMs, VMMs, and the VS as a whole is implemented with 
-							this fundamental requirement in mind.<h:p/>
-                            The ST author should select “no mechanism” in the unlikely event that the VS implements no mechanisms for
-							transferring data between Guest VMs. Otherwise, the ST author should select “virtual networking” 
-							and identify all other mechanisms through which data can be transferred between Guest VMs. <h:p/>
-							Examples of non-network inter-VM sharing mechanisms are:<h:p/><h:ul><h:li>User interface-based mechanisms, such as copy-paste and drag-and-drop</h:li><h:li>Shared virtual or physical devices</h:li><h:li>API-based mechanisms such as Hypercalls</h:li></h:ul>
-                            For data transfer mechanisms implemented in terms of Hypercall functions, FDP_VMS_EXT.1.3 is met if 
-							FPT_HCL_EXT.1.1 is met for those Hypercall functions (Hypercall function parameters are checked).<h:p/>
-                            For data transfer mechanisms that use shared physical devices, FDP_VMS_EXT.1.3 is met if the device is 
-							listed in and meets FDP_PPR_EXT.1.1 (VM access to the physical device is configurable).<h:p/>
-                            For data transfer mechanisms that use virtual networking, FDP_VMS_EXT.1.3 is met if FDP_VNC_EXT.1.1 
-							is met (VM access to virtual networks is configurable).<h:p/></note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall examine the TSS to verify that it documents all inter-VM 
                                 communications mechanisms (as defined above), and explains how the TSF prevents the transfer of data
 								between VMs outside of the mechanisms listed in FDP_VMS_EXT.1.1.</TSS>
@@ -2176,6 +2202,30 @@
               </Tests>
             </aactivity>
           </f-element>
+          <f-element id="fdp-vms-ext-1e2">
+            <title>The TSF shall by default enforce a policy prohibiting sharing of data between Guest VMs.</title>
+          </f-element>
+          <f-element id="fdp-vms-ext-1e3">
+            <title>The TSF shall allow Administrators to configure the mechanisms selected in FDP_VMS_EXT.1.1 to enable and disable the transfer of data between Guest VMs.</title>
+          </f-element>
+          <f-element id="fdp-vms-ext-1e4">
+            <title>The VS shall ensure that no Guest VM is able to read or transfer data to or from another Guest VM except through the mechanisms listed in FDP_VMS_EXT.1.1.</title>
+            <note role="application">
+                            The fundamental requirement of a Virtualization System is the ability to enforce separation between
+							information domains implemented as Virtual Machines and Virtual Networks. The intent of this
+							requirement is to ensure that VMs, VMMs, and the VS as a whole is implemented with 
+							this fundamental requirement in mind.<h:p/>
+                            The ST author should select “no mechanism” in the unlikely event that the VS implements no mechanisms for
+							transferring data between Guest VMs. Otherwise, the ST author should select “virtual networking” 
+							and identify all other mechanisms through which data can be transferred between Guest VMs. <h:p/>
+							Examples of non-network inter-VM sharing mechanisms are:<h:p/><h:ul><h:li>User interface-based mechanisms, such as copy-paste and drag-and-drop</h:li><h:li>Shared virtual or physical devices</h:li><h:li>API-based mechanisms such as Hypercalls</h:li></h:ul>
+                            For data transfer mechanisms implemented in terms of Hypercall functions, FDP_VMS_EXT.1.3 is met if 
+							FPT_HCL_EXT.1.1 is met for those Hypercall functions (Hypercall function parameters are checked).<h:p/>
+                            For data transfer mechanisms that use shared physical devices, FDP_VMS_EXT.1.3 is met if the device is 
+							listed in and meets FDP_PPR_EXT.1.1 (VM access to the physical device is configurable).<h:p/>
+                            For data transfer mechanisms that use virtual networking, FDP_VMS_EXT.1.3 is met if FDP_VNC_EXT.1.1 
+							is met (VM access to virtual networks is configurable).<h:p/></note>
+          </f-element>
           <audit-event/>
         </f-component>
         <!--FDP_VNC_EXT.1 Virtual Networking Components-->
@@ -2194,15 +2244,7 @@
 						FMT_SMR.1 Security Roles</dependencies>
           <f-element id="fdp-vnc-ext-1e1">
             <title>The TSF shall allow Administrators to configure virtual networking components to connect VMs to each other and to physical networks.</title>
-          </f-element>
-          <f-element id="fdp-vnc-ext-1e2">
-            <title>The TSF shall ensure that network traffic visible to a Guest VM on a virtual network--or virtual segment of a physical network--is visible only to Guest VMs configured to be on that virtual network or segment.</title>
-            <note role="application">
-                            Virtual networks must be separated from one another to provide isolation commensurate with that provided by 
-							physically separate networks. It must not be possible for data to cross between properly configured
-							virtual networks regardless of whether the traffic originated from a local Guest VM or a remote host.<h:p/>
-                            Unprivileged users must not be able to connect VMs to each other or to external networks.<h:p/></note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall examine the TSS (or a proprietary annex) to verify that it describes the mechanism 
 							   by which virtual network traffic is ensured to be visible only to Guest VMs configured to be on that virtual network.</TSS>
               <Guidance>
@@ -2224,6 +2266,14 @@
                 </testlist>
               </Tests>
             </aactivity>
+          </f-element>
+          <f-element id="fdp-vnc-ext-1e2">
+            <title>The TSF shall ensure that network traffic visible to a Guest VM on a virtual network--or virtual segment of a physical network--is visible only to Guest VMs configured to be on that virtual network or segment.</title>
+            <note role="application">
+                            Virtual networks must be separated from one another to provide isolation commensurate with that provided by 
+							physically separate networks. It must not be possible for data to cross between properly configured
+							virtual networks regardless of whether the traffic originated from a local Guest VM or a remote host.<h:p/>
+                            Unprivileged users must not be able to connect VMs to each other or to external networks.<h:p/></note>
           </f-element>
           <audit-event>
             <audit-event-descr>Successful and failed attempts to connect VMs to virtual and physical networking components.</audit-event-descr>
@@ -2269,17 +2319,7 @@
 						FMT_SMR.1 Security Roles</dependencies>
           <f-element id="fia-afl-ext-1e1">
             <title>The TSF shall detect when<selectables  linebreak="yes"><selectable id="fia_afl_ext.1.1_2" ><assignable>a positive integer number</assignable></selectable><selectable id="fia_afl_ext.1.1_3">an administrator configurable positive integer within a<assignable>range of acceptable values</assignable></selectable> </selectables>unsuccessful authentication attempts occur related to Administrators attempting to authenticate remotely using<selectables  ><selectable id="fia_afl_ext.1.1_5" >username and password</selectable><selectable id="fia_afl_ext.1.1_6" >username and PIN</selectable> </selectables>.</title>
-          </f-element>
-          <f-element id="fia-afl-ext-1e2">
-            <title>When the defined number of unsuccessful authentication attempts has been met, the TSF shall:<selectables  ><selectable id="fia_afl_ext.1.2_1">prevent the offending Administrator from successfully establishing a remote session using any authentication method that involves a password or PIN until<assignable>action to unlock</assignable>is taken by an Administrator</selectable><selectable id="fia_afl_ext.1.2_3" >prevent the offending Administrator from successfully establishing a remote session using any authentication method that involves a password or PIN until an Administrator-defined time period has elapsed</selectable> </selectables></title>
-            <note role="application">The action to be taken shall be populated in the selection of the ST
-                            and defined in the Administrator guidance.<h:p/>
-                            This requirement applies to a defined number of successive unsuccessful remote password or PIN-based
-                            authentication attempts and does not apply to local Administrative access. Compliant TOEs may optionally
-                            include cryptographic and local authentication failures in the number of
-                            unsuccessful authentication attempts.
-                        </note>
-            <aactivity level="element">
+            <aactivity level="component">
               <Tests>
                 <testlist>
                   
@@ -2312,6 +2352,16 @@
               </Tests>
             </aactivity>
           </f-element>
+          <f-element id="fia-afl-ext-1e2">
+            <title>When the defined number of unsuccessful authentication attempts has been met, the TSF shall:<selectables  ><selectable id="fia_afl_ext.1.2_1">prevent the offending Administrator from successfully establishing a remote session using any authentication method that involves a password or PIN until<assignable>action to unlock</assignable>is taken by an Administrator</selectable><selectable id="fia_afl_ext.1.2_3" >prevent the offending Administrator from successfully establishing a remote session using any authentication method that involves a password or PIN until an Administrator-defined time period has elapsed</selectable> </selectables></title>
+            <note role="application">The action to be taken shall be populated in the selection of the ST
+                            and defined in the Administrator guidance.<h:p/>
+                            This requirement applies to a defined number of successive unsuccessful remote password or PIN-based
+                            authentication attempts and does not apply to local Administrative access. Compliant TOEs may optionally
+                            include cryptographic and local authentication failures in the number of
+                            unsuccessful authentication attempts.
+                        </note>
+          </f-element>
           <audit-event>
             <audit-event-descr>Unsuccessful login attempts limit is met or exceeded.</audit-event-descr>
             <audit-event-info>Origin of attempt (e.g., IP address).</audit-event-info>
@@ -2336,7 +2386,7 @@
 							The ST author selects the special characters that are supported by the TOE; they may
 							optionally list additional special characters supported using the assignment. “Administrative
 							passwords” refers to passwords used by administrators to gain access to the Management Subsystem.</note>
-            <aactivity level="element">
+            <aactivity level="component">
               <Guidance>
                                 The evaluator shall examine the operational guidance to determine that it provides guidance to
                                 security administrators in the composition of strong passwords, and that it provides instructions
@@ -2373,10 +2423,7 @@
 							FIA_X509_EXT.1 and FIA_X509_EXT.2 if 'authentication based on X.509 certificates' is selected. <h:br/><h:br/>
 							PINs used to access OE-protected storage are set and managed by the OE-protected storage mechanism. Thus
 							requirements on PIN management are outside the scope of the TOE.<h:p/></note>
-          </f-element>
-          <f-element id="fia-uau-5e2">
-            <title>The TSF shall authenticate any <h:b>Administrator’s</h:b>  claimed identity according to the<assignable>rules describing how the multiple authentication mechanisms provide authentication</assignable>.</title>
-            <aactivity level="element">
+            <aactivity level="component">
               <Tests>
                 <testlist>
                   
@@ -2433,6 +2480,9 @@
               </Tests>
             </aactivity>
           </f-element>
+          <f-element id="fia-uau-5e2">
+            <title>The TSF shall authenticate any <h:b>Administrator’s</h:b>  claimed identity according to the<assignable>rules describing how the multiple authentication mechanisms provide authentication</assignable>.</title>
+          </f-element>
           <audit-event/>
         </f-component>
         <!--FIA_UIA_EXT.1 Administrator Identification and Authentication-->
@@ -2448,7 +2498,7 @@
           <f-element id="fia-uia-ext-1e1">
             <title>The TSF shall require Administrators to be successfully identified and authenticated using one of the methods in FIA_UAU.5 before allowing any TSF-mediated management function to be performed by that Administrator.</title>
             <note role="application">Users do not have to authenticate, only Administrators need to authenticate.</note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall examine the TSS to determine that it describes the logon
                                 process for each logon method (local, remote (HTTPS, SSH, etc.)) supported for the product. 
                                 This description shall contain information pertaining to the credentials allowed/used, any 
@@ -2512,12 +2562,7 @@
 				validate OCSP responses in either case, but the OCSP signing extended key usage purpose is only required
 				to be checked in OCSP certificates.
 			</note>
-          </f-element>
-          <f-element id="fia-x509-ext-1e2">
-            <title>The TSF shall only treat a certificate as a CA certificate if the basicConstraints extension is present and the CA flag is set to TRUE.</title>
-            <note role="application">This requirement applies to certificates that are used and processed by the TSF and
-							restricts the certificates that may be added as trusted CA certificates.</note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall ensure the TSS describes where the check of validity of the certificates takes place.
 								The evaluator ensures the TSS also provides a description of the certificate path validation algorithm.
 								<h:br/><h:br/>
@@ -2566,6 +2611,11 @@
               </Tests>
             </aactivity>
           </f-element>
+          <f-element id="fia-x509-ext-1e2">
+            <title>The TSF shall only treat a certificate as a CA certificate if the basicConstraints extension is present and the CA flag is set to TRUE.</title>
+            <note role="application">This requirement applies to certificates that are used and processed by the TSF and
+							restricts the certificates that may be added as trusted CA certificates.</note>
+          </f-element>
           <audit-event>
             <audit-event-descr>Failure to validate a certificate.</audit-event-descr>
             <audit-event-info>Reason for failure.</audit-event-info>
@@ -2595,20 +2645,7 @@
 							is selected in FIA_UAU.5.1.<h:p/>
 							This SFR must also be included in the ST if X.509 certificate-based authentication is used for "other uses"
 							as listed in the assignment in FIA_X509_EXT.2.1.<h:p/></note>
-          </f-element>
-          <f-element id="fia-x509-ext-2e2">
-            <title>When the TSF cannot establish a connection to determine the validity of a certificate, the TSF shall<selectables  ><selectable id="sel-x509-adminset" >allow the administrator to choose whether to accept the certificate in these cases</selectable><selectable id="fia_x509_ext.2.2_1" >accept the certificate</selectable><selectable id="fia_x509_ext.2.2_2" >not accept the certificate</selectable> </selectables>.</title>
-            <note role="application">
-				
-				Often a connection must be established to check the revocation status of a 
-							certificate - either to download a CRL or to perform a lookup using OCSP. The selection is used to 
-							describe the behavior in the event that such a connection cannot be established (for example, due to 
-							a network error). If the TOE has determined the certificate valid according to all other rules in 
-							FIA_X509_EXT.1, the behavior indicated in the selection shall determine the validity. The TOE must
-							not accept the certificate if it fails any of the other validation rules in FIA_X509_EXT.1. If the 
-							administrator-configured option is selected by the ST Author, the ST Author must ensure that this is
-							also defined as a management function that is provided by the TOE.<h:p/></note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall check the TSS to ensure that it describes how the 
                                 TOE chooses which certificates to use, and any necessary instructions in the
                                 administrative guidance for configuring the operating environment so that the TOE 
@@ -2635,6 +2672,19 @@
                 </testlist>
               </Tests>
             </aactivity>
+          </f-element>
+          <f-element id="fia-x509-ext-2e2">
+            <title>When the TSF cannot establish a connection to determine the validity of a certificate, the TSF shall<selectables  ><selectable id="sel-x509-adminset" >allow the administrator to choose whether to accept the certificate in these cases</selectable><selectable id="fia_x509_ext.2.2_1" >accept the certificate</selectable><selectable id="fia_x509_ext.2.2_2" >not accept the certificate</selectable> </selectables>.</title>
+            <note role="application">
+				
+				Often a connection must be established to check the revocation status of a 
+							certificate - either to download a CRL or to perform a lookup using OCSP. The selection is used to 
+							describe the behavior in the event that such a connection cannot be established (for example, due to 
+							a network error). If the TOE has determined the certificate valid according to all other rules in 
+							FIA_X509_EXT.1, the behavior indicated in the selection shall determine the validity. The TOE must
+							not accept the certificate if it fails any of the other validation rules in FIA_X509_EXT.1. If the 
+							administrator-configured option is selected by the ST Author, the ST Author must ensure that this is
+							also defined as a management function that is provided by the TOE.<h:p/></note>
           </f-element>
           <audit-event/>
         </f-component>
@@ -2672,7 +2722,7 @@
 							If the ST author selects "data encryption..." then the algorithms and key sizes must be selected in FCS_COP.1/UDE.<h:p/>
 							The ST author should select as many mechanisms as apply.
                         </note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall examine the TSS to verify that it describes how management and
                                 operational traffic is separated.</TSS>
               <Guidance>
@@ -2752,7 +2802,7 @@
 						have exclusive access to a physical device, hardware isolation mechanisms, such as Intel's VT-d, AMD's
 						Input/Output Memory Management Unit (IOMMU), or ARM's System Memory Management Unit (MMU) should be used
 						to ensure that operations performed by Direct Memory Access (DMA) hardware are properly constrained.</note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall examine the TSS documentation to verify that it describes the
                             mechanism used for device driver isolation. If the TSS document indicates that a 
                             hardware isolation mechanism is used, the evaluator shall verify that the TSS 
@@ -2806,7 +2856,7 @@
 				processes user input should take advantage of these mechanisms.<h:p/>
                             For the selection, the ST author selects the supported mechanisms and uses the assignment to include 
 				mechanisms not listed in the selection, if any.</note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall examine the TSS to ensure that it states, for each platform
                                 listed in the ST, the execution environment-based vulnerability mitigation
                                 mechanisms used by the TOE on that platform. The evaluator shall ensure that the
@@ -2838,7 +2888,7 @@
 				exactly matches a previously known VM (by hash for example), or by simply checking certain 
 				configuration settings to ensure that the VM's configuration will not violate the security model 
 				of the VS.</note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>For each mechanism listed in the assignment, the evaluator shall ensure that the TSS 
                                 documents the mechanism, including how it verifies VM integrity, which set of Guest
                                 VMs it will check (all Guest VMs, only migrated VM
@@ -2861,6 +2911,12 @@
           <dependencies>No dependencies.</dependencies>
           <f-element id="fpt-has-ext-1e1">
             <title>The VMM shall use<assignable>list of hardware-based virtualization assists</assignable>to reduce or eliminate the need for binary translation.</title>
+            <aactivity level="component">
+              <TSS>The evaluator shall examine the TSS to ensure that it states, for each platform
+                                listed in the ST, the hardware assists and memory-handling extensions used by the
+                                TOE on that platform. The evaluator shall ensure that these lists correspond to what 
+                                is specified in the applicable FPT_HAS_EXT component.</TSS>
+            </aactivity>
           </f-element>
           <f-element id="fpt-has-ext-1e2">
             <title>The VMM shall use<assignable>list of hardware-based virtualization memory-handling assists</assignable>to reduce or eliminate the need for shadow page tables.</title>
@@ -2879,12 +2935,6 @@
 				“None” is an acceptable assignment for platforms that do not require memory-handling assists in order 
 				to eliminate the need for shadow page tables. This must be documented in the TSS.
                         </note>
-            <aactivity level="element">
-              <TSS>The evaluator shall examine the TSS to ensure that it states, for each platform
-                                listed in the ST, the hardware assists and memory-handling extensions used by the
-                                TOE on that platform. The evaluator shall ensure that these lists correspond to what 
-                                is specified in the applicable FPT_HAS_EXT component.</TSS>
-            </aactivity>
           </f-element>
           <audit-event/>
         </f-component>
@@ -2910,7 +2960,7 @@
                 There is no expectation that the evaluator will need to review source code in order to accomplish the
                 evaluation activity.  
                         </note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall examine the TSS (or proprietary TSS Annex) to ensure that all hypercall functions are 
                                 documented at the level necessary for the evaluator to run the below test. Documentation for each hypercall
 								interface must include: how to invoke the interface, parameters and legal values, 
@@ -2940,14 +2990,7 @@
           <dependencies>No dependencies.</dependencies>
           <f-element id="fpt-idv-ext-1e1">
             <title>The TSF shall include software identification (SWID) tags that contain a SoftwareIdentity element and an Entity element as defined in ISO/IEC 19770-2:2009.</title>
-          </f-element>
-          <f-element id="fpt-idv-ext-1e2">
-            <title>The TSF shall store SWIDs in a .swidtag file as defined in ISO/IEC 19770-2:2009.</title>
-            <note role="application">SWID tags are XML files embedded within software that provide a standard method for
-				IT departments to track and manage the software. The presence of SWIDs can greatly simplify the
-				software management process and improve security by enhancing the ability of IT departments to manage 
-				updates.</note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall examine the TSS to ensure it describes how SWID tags are
                                 implemented and the format of the tags. The evaluator shall verify that the format complies with
                                 FPT_IDV_EXT.1.1 and that SWIDs are stored in accordance with FPT_IDV_EXT.1.2.</TSS>
@@ -2962,6 +3005,13 @@
                 </testlist>
               </Tests>
             </aactivity>
+          </f-element>
+          <f-element id="fpt-idv-ext-1e2">
+            <title>The TSF shall store SWIDs in a .swidtag file as defined in ISO/IEC 19770-2:2009.</title>
+            <note role="application">SWID tags are XML files embedded within software that provide a standard method for
+				IT departments to track and manage the software. The presence of SWIDs can greatly simplify the
+				software management process and improve security by enhancing the ability of IT departments to manage 
+				updates.</note>
           </f-element>
           <audit-event/>
         </f-component>
@@ -2984,7 +3034,7 @@
 				the integrity of the malware detection/antivirus software. This capability can be implemented in 
 				the VMM itself, but ideally it should be hosted by a Service VM so that it can be better contained 
 				and does not introduce bugs into the VMM.</note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall examine the TSS documentation to verify that it describes the
                                 interface for VM introspection and whether the introspection is performed by the 
                                 VMM or another VM.</TSS>
@@ -3010,6 +3060,17 @@
           <dependencies>No dependencies.</dependencies>
           <f-element id="fpt-ml-ext-1e1">
             <title>The TSF shall support a measured launch of the Virtualization System. Measured components of the VS shall include the static executable image of the Hypervisor and:<selectables  linebreak="yes"><selectable id="fpt_ml_ext.1.1_1" >Static executable images of the Management Subsystem</selectable><selectable id="fpt_ml_ext.1.1_3" ><assignable>list of (static images of) Service VMs</assignable></selectable><selectable id="fpt_ml_ext.1.1_5" ><assignable>list of configuration files</assignable></selectable><selectable id="fpt_ml_ext.1.1_6" >no other components</selectable> </selectables></title>
+            <aactivity level="component">
+              <TSS>The evaluator shall verify that the TSS or Operational Guidance describes how 
+                                integrity measurements are performed and made available to the Management Subsystem. The evaluator 
+                                shall examine the operational guidance to verify that it documents how to access the measurements in 
+                                the Management Subsystem.</TSS>
+              <Tests>
+                <testlist>
+                  <test>The evaluator shall start the VS, login as an Administrator, and verify that the measurements for the specified components are viewable in the Management Subsystem.</test>
+                </testlist>
+              </Tests>
+            </aactivity>
           </f-element>
           <f-element id="fpt-ml-ext-1e2">
             <title>The TSF shall make the measurements selected in FPT_ML_EXT.1.1 available to the Management Subsystem.</title>
@@ -3035,17 +3096,6 @@
 				acceptable. In a system without a traditional RTM, the first component that boots would be considered
 				the RTM, this is not preferred.
                         </note>
-            <aactivity level="element">
-              <TSS>The evaluator shall verify that the TSS or Operational Guidance describes how 
-                                integrity measurements are performed and made available to the Management Subsystem. The evaluator 
-                                shall examine the operational guidance to verify that it documents how to access the measurements in 
-                                the Management Subsystem.</TSS>
-              <Tests>
-                <testlist>
-                  <test>The evaluator shall start the VS, login as an Administrator, and verify that the measurements for the specified components are viewable in the Management Subsystem.</test>
-                </testlist>
-              </Tests>
-            </aactivity>
           </f-element>
           <audit-event>
             <audit-event-descr>Integrity initiated/enabled.</audit-event-descr>
@@ -3069,6 +3119,26 @@
           <dependencies>FDP_VMS_EXT.1 VM Separation</dependencies>
           <f-element id="fpt-rdm-ext-1e1">
             <title>The TSF shall implement controls for handling the transfer of virtual and physical removable media and virtual and physical removable media devices between information domains.</title>
+            <aactivity level="component">
+              <TSS>The evaluator shall examine the TSS to ensure it describes the association between
+                                the media or devices supported by the TOE and the actions that can occur when
+                                switching information domains.</TSS>
+              <Guidance>
+				The evaluator shall examine the operational guidance to ensure it
+                                documents how an administrator or user configures the behavior of each media or device.
+			    </Guidance>
+              <Tests>
+                <testlist>
+                  
+                                The evaluator shall perform the following test for each listed media or device:
+                                
+                  <test>The evaluator shall configure two VMs that are members of different information domains,
+					    with the media or device connected to one of the VMs. The evaluator shall disconnect the
+					    media or device from the VM and connect it to the other VM. The evaluator shall verify 
+					    that the action performed is consistent with the action assigned in the TSS.</test>
+                </testlist>
+              </Tests>
+            </aactivity>
           </f-element>
           <f-element id="fpt-rdm-ext-1e2">
             <title>The TSF shall enforce the following rules when<assignable>virtual or physical removable media and virtual or physical removable media devices</assignable>are switched between information domains, then<selectables  linebreak="yes"><selectable id="fpt_rdm_ext.1.2_2" >the Administrator has granted explicit access for the media or device to be connected to the receiving domain</selectable><selectable id="fpt_rdm_ext.1.2_3" >the media in a device that is being transferred is ejected prior to the receiving domain being allowed access to the device</selectable><selectable id="fpt_rdm_ext.1.2_4" >the user of the receiving domain expressly authorizes the connection</selectable><selectable id="fpt_rdm_ext.1.2_5" >the device or media that is being transferred is prevented from being accessed by the receiving domain</selectable> </selectables></title>
@@ -3093,26 +3163,6 @@
 				for which media is ejected on a switch; the second iteration could contain all devices for which 
 				access is prevented on a switch, etc.).
                         </note>
-            <aactivity level="element">
-              <TSS>The evaluator shall examine the TSS to ensure it describes the association between
-                                the media or devices supported by the TOE and the actions that can occur when
-                                switching information domains.</TSS>
-              <Guidance>
-				The evaluator shall examine the operational guidance to ensure it
-                                documents how an administrator or user configures the behavior of each media or device.
-			    </Guidance>
-              <Tests>
-                <testlist>
-                  
-                                The evaluator shall perform the following test for each listed media or device:
-                                
-                  <test>The evaluator shall configure two VMs that are members of different information domains,
-					    with the media or device connected to one of the VMs. The evaluator shall disconnect the
-					    media or device from the VM and connect it to the other VM. The evaluator shall verify 
-					    that the action performed is consistent with the action assigned in the TSS.</test>
-                </testlist>
-              </Tests>
-            </aactivity>
           </f-element>
           <audit-event>
             <audit-event-descr>Connection/disconnection of removable media or device to/from a VM.</audit-event-descr>
@@ -3146,34 +3196,7 @@
 				Therefore, it needs to be clear that the query should indicate both the most recently executed version
 				as well as the most recently installed update.
                         </note>
-          </f-element>
-          <f-element id="fpt-tud-ext-1e2">
-            <title>The TSF shall provide administrators the ability to manually initiate updates to TOE firmware/software and<selectables  ><selectable id="fpt_tud_ext.1.2_1" >automatic updates</selectable><selectable id="fpt_tud_ext.1.2_2" >no other update mechanism</selectable> </selectables>.</title>
-          </f-element>
-          <f-element id="fpt-tud-ext-1e3">
-            <title>The TSF shall provide means to authenticate firmware/software updates to the TOE using a<selectables  ><selectable id="sel-tud-digsign-cert" >digital signature mechanism using certificates</selectable><selectable id="sel-tud-digsign" >digital signature mechanism not using certificates</selectable><selectable id="fpt_tud_ext.1.3_1" >published hash</selectable> </selectables>prior to installing those updates.</title>
-            <note role="application">The digital signature mechanism referenced in FPT_TUD_EXT.1.3 is one of the 
-				algorithms specified in FCS_COP.1/SIG.<h:p/>
-                            If certificates are used by the update verification mechanism, then FIA_X509_EXT.1 and FIA_X509_EXT.2
-				must be included in the ST. Certificates are validated in accordance with FIA_X509_EXT.1 and 
-				the appropriate selections should be made in FIA_X509_EXT.2.1. Additionally, FPT_TUD_EXT.2 must be
-				included in the ST.<h:p/>
-                            “Update” in the context of this SFR refers to the process of replacing a non-volatile, system resident
-				software component with another. The former is referred to as the NV image, and the latter is the
-				update image. While the update image is typically newer than the NV image, this is not a requirement.
-				There are legitimate cases where the system owner may want to rollback a component to an older version
-				(e.g., when the component manufacturer releases a faulty update, or when the system relies on an 
-				undocumented feature no longer present in the update). Likewise, the owner may want to update with the
-				same version as the NV image to recover from faulty storage.<h:p/>
-                            All discrete software components (e.g., applications, drivers, kernel, firmware) of the TSF, should be 
-				digitally signed by the corresponding manufacturer and subsequently verified by the mechanism
-				performing the update. Since it is recognized that components may be signed by different manufacturers,
-				it is essential that the update process verify that both the update and NV images were produced by the 
-				same manufacturer (e.g., by comparing public keys) or signed by legitimate signing keys (e.g.,
-				successful verification of certificates when using X.509 certificates).<h:p/>
-                            The Digital Signature option is the preferred mechanism for authenticating updates. The Published Hash
-				option will be removed from a future version of this PP.<h:p/></note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall verify that the TSS describes all TSF software
                                 update mechanisms for updating the system software. Updates to the TOE either have a 
                                 hash associated with them, or are signed by an authorized source. The evaluator shall verify that the
@@ -3208,6 +3231,33 @@
                 </testlist>
               </Tests>
             </aactivity>
+          </f-element>
+          <f-element id="fpt-tud-ext-1e2">
+            <title>The TSF shall provide administrators the ability to manually initiate updates to TOE firmware/software and<selectables  ><selectable id="fpt_tud_ext.1.2_1" >automatic updates</selectable><selectable id="fpt_tud_ext.1.2_2" >no other update mechanism</selectable> </selectables>.</title>
+          </f-element>
+          <f-element id="fpt-tud-ext-1e3">
+            <title>The TSF shall provide means to authenticate firmware/software updates to the TOE using a<selectables  ><selectable id="sel-tud-digsign-cert" >digital signature mechanism using certificates</selectable><selectable id="sel-tud-digsign" >digital signature mechanism not using certificates</selectable><selectable id="fpt_tud_ext.1.3_1" >published hash</selectable> </selectables>prior to installing those updates.</title>
+            <note role="application">The digital signature mechanism referenced in FPT_TUD_EXT.1.3 is one of the 
+				algorithms specified in FCS_COP.1/SIG.<h:p/>
+                            If certificates are used by the update verification mechanism, then FIA_X509_EXT.1 and FIA_X509_EXT.2
+				must be included in the ST. Certificates are validated in accordance with FIA_X509_EXT.1 and 
+				the appropriate selections should be made in FIA_X509_EXT.2.1. Additionally, FPT_TUD_EXT.2 must be
+				included in the ST.<h:p/>
+                            “Update” in the context of this SFR refers to the process of replacing a non-volatile, system resident
+				software component with another. The former is referred to as the NV image, and the latter is the
+				update image. While the update image is typically newer than the NV image, this is not a requirement.
+				There are legitimate cases where the system owner may want to rollback a component to an older version
+				(e.g., when the component manufacturer releases a faulty update, or when the system relies on an 
+				undocumented feature no longer present in the update). Likewise, the owner may want to update with the
+				same version as the NV image to recover from faulty storage.<h:p/>
+                            All discrete software components (e.g., applications, drivers, kernel, firmware) of the TSF, should be 
+				digitally signed by the corresponding manufacturer and subsequently verified by the mechanism
+				performing the update. Since it is recognized that components may be signed by different manufacturers,
+				it is essential that the update process verify that both the update and NV images were produced by the 
+				same manufacturer (e.g., by comparing public keys) or signed by legitimate signing keys (e.g.,
+				successful verification of certificates when using X.509 certificates).<h:p/>
+                            The Digital Signature option is the preferred mechanism for authenticating updates. The Published Hash
+				option will be removed from a future version of this PP.<h:p/></note>
           </f-element>
           <audit-event>
             <audit-event-descr>Initiation of update.</audit-event-descr>
@@ -3249,15 +3299,7 @@
           <dependencies>FPT_VIV_EXT.1 VMM Isolation from VMs</dependencies>
           <f-element id="fpt-vdp-ext-1e1">
             <title>The TSF shall provide interfaces for virtual devices implemented by the VMM as part of the virtual hardware abstraction.</title>
-          </f-element>
-          <f-element id="fpt-vdp-ext-1e2">
-            <title>The TSF shall validate the parameters passed to the virtual device interface prior to execution of the VMM functionality exposed by those interfaces.</title>
-            <note role="application">The purpose of this requirement is to ensure that the VMM is not vulnerable to
-				compromise through the processing of malformed data passed to the virtual device interface from a 
-				Guest OS. The VMM cannot assume that any data coming from a VM is well-formed—even if the virtual
-				device interface is unique to the VS and the data comes from a virtual device
-				driver supplied by the Virtualization Vendor.<h:br/></note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall examine the TSS to ensure it lists all virtual devices
 								accessible by the guest OS. The TSS, or a separate proprietary document, must
 								also document all virtual device interfaces at the level of I/O ports or PCI Bus 
@@ -3272,6 +3314,14 @@
                                	evaluation activity.</TSS>
             </aactivity>
           </f-element>
+          <f-element id="fpt-vdp-ext-1e2">
+            <title>The TSF shall validate the parameters passed to the virtual device interface prior to execution of the VMM functionality exposed by those interfaces.</title>
+            <note role="application">The purpose of this requirement is to ensure that the VMM is not vulnerable to
+				compromise through the processing of malformed data passed to the virtual device interface from a 
+				Guest OS. The VMM cannot assume that any data coming from a VM is well-formed—even if the virtual
+				device interface is unique to the VS and the data comes from a virtual device
+				driver supplied by the Virtualization Vendor.<h:br/></note>
+          </f-element>
           <audit-event/>
         </f-component>
         <!--FPT_VIV_EXT.1 VMM Isolation from VMs-->
@@ -3285,6 +3335,11 @@
 						FDP_VMS_EXT.1 VM Separation</dependencies>
           <f-element id="fpt-viv-ext-1e1">
             <title>The TSF must ensure that software running in a VM is not able to degrade or disrupt the functioning of other VMs, the VMM, or the Platform.</title>
+            <aactivity level="component">
+              <TSS>The evaluator shall verify that the TSS (or a proprietary annex to the TSS) describes how the TSF ensures 
+								that guest software cannot degrade or disrupt the functioning of other VMs, the VMM or the platform. And 
+								how the TSF prevents guests from invoking higher-privilege platform code, such as the examples in the note.</TSS>
+            </aactivity>
           </f-element>
           <f-element id="fpt-viv-ext-1e2">
             <title>The TSF must ensure that a Guest VM is unable to invoke platform code that runs at a privilege level equal to or exceeding that of the VMM without involvement of the VMM.</title>
@@ -3305,11 +3360,6 @@
 							firmware image as part of a common hardware abstraction, then the update of a single machine’s BIOS 
 							must not be allowed to change the common abstraction. The virtual hardware abstraction is part of the
 							VMM.<h:br/></note>
-            <aactivity level="element">
-              <TSS>The evaluator shall verify that the TSS (or a proprietary annex to the TSS) describes how the TSF ensures 
-								that guest software cannot degrade or disrupt the functioning of other VMs, the VMM or the platform. And 
-								how the TSF prevents guests from invoking higher-privilege platform code, such as the examples in the note.</TSS>
-            </aactivity>
           </f-element>
           <audit-event/>
         </f-component>
@@ -3362,7 +3412,7 @@
 				as a server in a non-mutual authentication configuration.<h:p/>			    
 			    The ST author must include the security functional requirements for the
                             trusted channel protocol selected in FTP_ITC_EXT.1 in the main body of the ST.<h:p/></note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator will review the TSS to determine that it lists all trusted channels 
                                 the TOE uses for remote communications, including both the external entities and 
                                 remote users used for the channel as well as the protocol that is used for each.</TSS>
@@ -3385,23 +3435,7 @@
         <f-component cc-id="ftp_trp.1" id="ftp-trp-1" name="Trusted Path" status="sel-based">
           <f-element id="ftp-trp-1e1">
             <title>The TSF shall <h:b>use a trusted channel as specified in FTP_ITC_EXT.1 to</h:b>  provide a <h:b>trusted</h:b>  communication path between itself and [ <h:i>remote</h:i>  ] <h:b>administrators</h:b>  that is logically distinct from other communication paths and provides assured identification of its end points and protection of the communicated data from [ <h:i>modification, disclosure</h:i>  ].</title>
-          </f-element>
-          <f-element id="ftp-trp-1e2">
-            <title>The TSF shall permit [ <h:i>remote administrators</h:i>  ] to initiate communication via the trusted path.</title>
-          </f-element>
-          <f-element id="ftp-trp-1e3">
-            <title>The TSF shall require the use of the trusted path for [ <h:i>[all remote administration actions]</h:i>  ].</title>
-            <note role="application">
-				This SFR is included in the ST if "remote" is selected in FMT_MOF_EXT.1.1 of the client or server PP-Module.<h:p/>
-				Protocols used to implement the remote administration trusted channel must be
-				selected in FTP_ITC_EXT.1.<h:br/><h:br/>
-                            This requirement ensures that authorized remote administrators initiate all communication with the
-				TOE via a trusted path, and that all communications with the TOE by remote administrators is performed
-				over this path. The data passed in this trusted communication channel are encrypted as defined the 
-				protocol chosen in the first selection in FTP_ITC_EXT.1. The ST author chooses the mechanism or mechanisms supported by
-				the TOE, and then ensures that the detailed requirements in Appendix B corresponding to their selection
-				are copied to the ST if not already present.</note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall examine the TSS to determine that the methods of remote 
                                 TOE administration are indicated, along with how those communications are protected.
                                 The evaluator shall also confirm that all protocols listed in the TSS in support of 
@@ -3433,6 +3467,22 @@
               </Tests>
             </aactivity>
           </f-element>
+          <f-element id="ftp-trp-1e2">
+            <title>The TSF shall permit [ <h:i>remote administrators</h:i>  ] to initiate communication via the trusted path.</title>
+          </f-element>
+          <f-element id="ftp-trp-1e3">
+            <title>The TSF shall require the use of the trusted path for [ <h:i>[all remote administration actions]</h:i>  ].</title>
+            <note role="application">
+				This SFR is included in the ST if "remote" is selected in FMT_MOF_EXT.1.1 of the client or server PP-Module.<h:p/>
+				Protocols used to implement the remote administration trusted channel must be
+				selected in FTP_ITC_EXT.1.<h:br/><h:br/>
+                            This requirement ensures that authorized remote administrators initiate all communication with the
+				TOE via a trusted path, and that all communications with the TOE by remote administrators is performed
+				over this path. The data passed in this trusted communication channel are encrypted as defined the 
+				protocol chosen in the first selection in FTP_ITC_EXT.1. The ST author chooses the mechanism or mechanisms supported by
+				the TOE, and then ensures that the detailed requirements in Appendix B corresponding to their selection
+				are copied to the ST if not already present.</note>
+          </f-element>
           <audit-event>
             <audit-event-descr>Initiation of the trusted channel.</audit-event-descr>
             <audit-event-info>User ID and remote source (IP Address) if feasible.</audit-event-info>
@@ -3463,7 +3513,7 @@
                             In the case of a human user, this is usually a visual indicator. In the case of headless VMs, the user is 
 				considered to be a program, but this program still needs to know which VM it is sending input to;
 				this would typically be accomplished through programmatic means.</note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall ensure that the TSS lists the supported user input devices.</TSS>
               <Guidance>
                                 The evaluator shall ensure that the operational guidance specifies how the current input focus is
@@ -3490,7 +3540,7 @@
 				displaying the VM can identify the VM to users. This is generally indicated visually for human users
 				(e.g., VM identity in the window title bar) and programmatically for headless VMs (e.g., an API
 				function). The identification must be unique to the VS, but does not need to be universally unique.</note>
-            <aactivity level="element">
+            <aactivity level="component">
               <TSS>The evaluator shall ensure that the TSS describes the mechanism for identifying 
                                 VMs to the user, how identities are assigned to VMs, and how 
                                 conflicts are prevented.</TSS>
