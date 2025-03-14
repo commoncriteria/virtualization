@@ -3,9 +3,9 @@
     <ReferenceTable>
       <PPTitle>Protection Profile for Virtualization</PPTitle>
       <PPVersion>1.1</PPVersion>
-      <PPAuthor>NIAP</PPAuthor>
+      <PPAuthor>National Information Assurance Partnership</PPAuthor>
       <PPPubDate>2021-06-14</PPPubDate>
-      <Keywords>application; software</Keywords>
+      <Keywords>Virtualization</Keywords>
     </ReferenceTable>
   </PPReference>
   <RevisionHistory>
@@ -43,6 +43,7 @@
   <pp-preferences><!--          <pp-pref name="display-audit-with-sfrs">0</pp-pref>   --><!--      	<pp-pref name="audit-events-in-sfrs">1</pp-pref>   --><audit-events-in-sfrs/></pp-preferences>
   <sec:Introduction>
     <section title="Compliant Targets of Evaluation" id="TOEdescription">
+      
 				A Virtualization System (VS) is a software product that enables multiple independent computing systems to execute on the 
 			same physical hardware platform without interference from one another. A VS creates a virtualized hardware environment
 			(virtual machines or VMs) for each instance of an operating system permitting these environments to execute 
@@ -78,7 +79,27 @@
 			be proper to classify the encryption VM as a Helper. But if the encryption VM is necessary for the VMM to isolate
 			Guest VMs, it would be proper to classify the encryption VM as a Service 
 			VM. For the purposes of this document, Helper VMs are subject to all requirements
-			that apply to Guest VMs, unless specifically stated otherwise.<h:p/></section>
+			that apply to Guest VMs, unless specifically stated otherwise.<h:p/>
+      <sec:TOE_Boundary>
+				Figure 1 shows a greatly simplified view of a generic Virtualization System and Platform. TOE components are displayed
+				in Red. Non-TOE components are in Blue. The Platform is the hardware, firmware, and software onto which the VS is 
+				installed. The VMM includes the Hypervisor, Service VMs, and VM containers, but not the software that runs inside
+				Guest VMs or Helper VMs. The Management Subsystem is part of the TOE, but may or may not be part of the VMM. 
+				<h:p/> <figure entity="images/figure1.png" title="Virtualization System and Platform " id="vsplatform"/><h:br/><h:br/>
+    
+				For purposes of this Protection Profile, the Virtualization System is the TOE, subject to some caveats. The Platform
+				onto which the VS is installed (which includes hardware, platform firmware, and Host Operating System) is not
+				part of the TOE. Software installed with the VS on the Host OS specifically to support the VS
+				or implement VS functionality is part of the TOE. General purpose software—such as device drivers for physical 
+				devices and the Host OS itself—is not part of the TOE, regardless of whether it supports VS functionality or 
+				runs inside a Service VM or control domain. Software that runs within Guest and Helper VMs is not part of the 
+				TOE.<h:p/>
+					In general, for virtualization products that are installed onto “bare metal,” the entire set of installed components
+				constitute the TOE, and the hardware constitutes the Platform. Also in general, for products that are hosted by or
+				integrated into a commodity operating system, the components installed expressly for implementing and supporting
+				virtualization are in the TOE, and the Platform comprises the hardware and Host OS.
+			</sec:TOE_Boundary>
+    </section>
     <tech-terms>
       <term full="Administrator">Administrators perform management activities on the VS. These management functions do not 
 			  include administration of software running within Guest VMs, such as the Guest OS. Administrators need not be human 
@@ -157,27 +178,14 @@
         </sec:Use_Cases>
   </sec:Introduction>
   <sec:Conformance_Claims boilerplate="no">
-    <cclaims>
-      <cclaim name="Conformance Statement">
-        <description>A Security Target must claim exact conformance to this Protection Profile, 
-					as defined in the CC and CEM addenda for Exact Conformance, Selection-Based SFRs, and 
-					Optional SFRs (dated May 2017).<h:p/>
-					The following PPs and PP-Modules are allowed to be specified in a PP-Configuration with this PP-Module
-					with this PP.<h:ul><h:li>PP-Module for Client Virtualization Systems, Version 1.1</h:li><h:li>PP-Module for Server Virtualization Systems, Version 1.1</h:li></h:ul></description>
-      </cclaim>
-      <cclaim name="CC Conformance Claims">
-        <description>
-					This PP is conformant to Parts 2 (extended) and 3 (extended) of Common Criteria Version 3.1, 
-					Release 5 [CC].
-				</description>
-      </cclaim>
-      <cclaim name="PP Claims">
-        <description/>
-      </cclaim>
-      <cclaim name="Package Claims">
-        <description/>
-      </cclaim>
-    </cclaims>
+    <CClaimsInfo cc-version="cc-2022r1" cc-approach="direct-rationale">
+      <cc-st-conf>exact</cc-st-conf>
+      <cc-pt2-conf>conformant</cc-pt2-conf>
+      <cc-pt3-conf>conformant</cc-pt3-conf>
+      <cc-pp-conf/>
+      <cc-pp-config-with/>
+      <cc-pkg-claim/>
+    </CClaimsInfo>
   </sec:Conformance_Claims>
   <!-- 3.0 Security Problem Definition-->
   <sec:Security_Problem_Definition>
@@ -192,10 +200,10 @@
         </threat>
         <threat name="T.DATA_LEAKAGE">
           <description>                    It is a fundamental property of VMs that the domains encapsulated by different VMs remain separate unless data sharing is permitted by policy. For this reason, all Virtualization Systems shall support a policythat prohibits information transfer between VMs.                        It shall be possible to configure VMs such that data cannot be moved between domains from VM to VM, orthrough virtual or physical network components under the control of the VS. When VMs are configured assuch, it shall not be possible for data to leak between domains, neither by the express efforts ofsoftware or users of a VM, nor because of vulnerabilities or errors in the implementation of the VMM orother VS components.                        If it is possible for data to leak between domains when prohibited by policy, then an adversary on one domain or network can obtain data from another domain. Such cross-domain data leakage can, for example, causeclassified information, corporate proprietary information, or personally identifiable information to bemade accessible to unauthorized entities.                    </description>
-          <objective-refer ref="O.DOMAIN_INTEGRITY">
+          <objective-refer ref="O.VM_ISOLATION">
             <rationale>Logical separation of VMs and enforcement of domain integrity prevent unauthorized transmission of data from one VM to another.</rationale>
           </objective-refer>
-          <objective-refer ref="O.VM_ISOLATION">
+          <objective-refer ref="O.DOMAIN_INTEGRITY">
             <rationale>Logical separation of VMs and enforcement of domain integrity prevent unauthorized transmission of data from one VM to another.</rationale>
           </objective-refer>
         </threat>
@@ -225,10 +233,10 @@
         </threat>
         <threat name="T.UNAUTHORIZED_MODIFICATION">
           <description>                        System integrity is a core security objective for Virtualization Systems. To achieve system integrity, the    integrity of each VMM component must be established and maintained. Malware running on the platform must    not be able to undetectably modify VS components while the system is running or at     rest. Likewise, malicious code running within a virtual machine must not be able to modify Virtualization    System components.                    </description>
-          <objective-refer ref="O.AUDIT">
+          <objective-refer ref="O.VMM_INTEGRITY">
             <rationale>Enforcement of VMM integrity prevents the bypass of enforcement mechanisms and auditing ensuresthat abuse of legitimate authority can be detected.</rationale>
           </objective-refer>
-          <objective-refer ref="O.VMM_INTEGRITY">
+          <objective-refer ref="O.AUDIT">
             <rationale>Enforcement of VMM integrity prevents the bypass of enforcement mechanisms and auditing ensuresthat abuse of legitimate authority can be detected.</rationale>
           </objective-refer>
         </threat>
@@ -274,12 +282,12 @@
           <description>The user of the VS is not willfully negligent or hostile, and uses the VS in compliance with the
 			    applied enterprise security policy and guidance. At the same time, malicious applications could act as
 			    the user, so requirements which confine malicious applications are still in scope.</description>
+          <objective-refer ref="OE.NON_MALICIOUS_USER">
+            <rationale>If the organization properly vets and trains users, it is expected that they will be non-malicious.</rationale>
+          </objective-refer>
           <objective-refer ref="OE.CONFIG">
             <rationale>If the TOE is administered by a non-malicious and non-negligent user, the expected result is that the TOE
 				will be configured in a correct and secure manner.</rationale>
-          </objective-refer>
-          <objective-refer ref="OE.NON_MALICIOUS_USER">
-            <rationale>If the organization properly vets and trains users, it is expected that they will be non-malicious.</rationale>
           </objective-refer>
         </assumption>
         <assumption name="A.PHYSICAL">
@@ -309,13 +317,6 @@
     <!-- 3.3 Organizational Security Policies -->
     <sec:Organizational_Security_Policies>
       <OSPs/>
-      <!--     <OSP id="P.QQQQ"> 
-        <description>QQQQ</description>
-        <objective-refer ref="O.QQQQ">
-            <rationale>QQQQ</rationale>
-        </objective-refer>
-    </OSP>
-    </OSPs> -->
     </sec:Organizational_Security_Policies>
   </sec:Security_Problem_Definition>
   <!-- 4.0 Security Objectives -->
@@ -661,7 +662,17 @@
 							to violate a key system security policy. This may be especially useful with headless endpoints when
 							there is no human user in the loop.<h:p/>
                             The potential security violation mentioned in FAU_ARP.1.1 refers to FAU_SAA.1. </note>
-                      </f-element>
+            <aactivity level="component">
+              <TSS/>
+              <Guidance/>
+              <Tests>
+                                The evaluator shall generate a potential security violation as defined in FAU_SAA.1 and verify 
+                                that each action in the assignment in FAU_ARP.1.1 is performed by the TSF as a 
+                                result. The evaluator shall perform this action for each security violation that is defined in 
+                                FAU_SAA.1.
+                            </Tests>
+            </aactivity>
+          </f-element>
           <audit-event>
             <audit-event-descr>Actions taken due to potential security violations.</audit-event-descr>
           </audit-event>
@@ -725,7 +736,15 @@
         <f-component cc-id="fau_saa.1" id="fau-saa-1" name="Potential Violation Analysis" status="optional">
           <f-element id="fau-saa-1e1">
             <title>The TSF shall be able to apply a set of rules in monitoring the audited events and based upon these rules indicate a potential violation of the enforcement of the SFRs.</title>
-                      </f-element>
+            <aactivity level="component">
+              <TSS/>
+              <Guidance/>
+              <Tests>
+                                The evaluator shall cause each combination of auditable events defined in FAU_SAA.1.2 to occur,
+                                and verify that a potential security violation is indicated by the TSF.
+                            </Tests>
+            </aactivity>
+          </f-element>
           <f-element id="fau-saa-1e2">
             <title>The TSF shall enforce the following rules for monitoring audited events:  <h:ol><h:li>Accumulation or combination of<assignable>subset of defined auditable events</assignable>known to indicate a potential security violation;</h:li><h:li><assignable>any other rules</assignable>.</h:li></h:ol></title>
             <note role="application">The potential security violation described in FAU_SAA.1 can be used as a trigger 
@@ -743,10 +762,17 @@
           <f-element id="fau-sar-1e1">
             <title>The TSF shall provide [ <h:i>administrators</h:i>  ] with the capability to read [ <h:i>all information</h:i>  ] from the audit records.</title>
             <aactivity level="component">
+              <TSS/>
               <Guidance>
                                 The evaluator shall review the operational guidance for the procedure on how to review the audit 
                                 records.
                             </Guidance>
+              <Tests>
+                                The evaluator shall verify that the audit records provide all of the information specified in 
+                                FAU_GEN.1 and that this information is suitable for human interpretation. The evaluation 
+                                activity for this requirement is performed in conjunction with the evaluation activity for 
+                                FAU_GEN.1.
+                            </Tests>
             </aactivity>
           </f-element>
           <f-element id="fau-sar-1e2">
@@ -762,6 +788,7 @@
               <TSS>The evaluator shall ensure that the TSS describes how the audit records are protected from 
 								unauthorized modification or deletion. The evaluator shall ensure that the TSS describes the
 								conditions that must be met for authorized deletion of audit records.</TSS>
+              <Guidance/>
               <Tests>
                 <testlist>
                   
@@ -848,6 +875,12 @@
                                 sent to the external server and the local store, or is the local store used as a buffer and “cleared”
                                 periodically by sending the data to the audit server.
                             </Guidance>
+              <Tests>
+                                The evaluator shall perform operations that generate audit data and verify that this data is 
+                                stored locally. The evaluator shall perform operations that generate audit data until the local 
+                                storage space is exceeded and verifies that the TOE complies with the behavior 
+                                defined in the ST for FAU_STG_EXT.1.2.
+                            </Tests>
             </aactivity>
           </f-element>
           <audit-event>
@@ -1059,6 +1092,7 @@
               <TSS>The evaluator shall check to ensure the TSS lists each type of key and its origin 
                                 and location in memory or storage. The evaluator shall verify that the TSS 
                                 describes when each type of key is cleared.</TSS>
+              <Guidance/>
               <Tests>
                                 For each key clearing situation the evaluator shall perform one of the following activities:<h:p/><h:ul><h:li>The evaluator shall use appropriate combinations of specialized operational or development 
 									environments, development tools (debuggers, emulators, simulators, etc.), or instrumented
@@ -1068,7 +1102,12 @@
 									run-time environments do not properly overwrite keys, this fact must be documented. 
 									Likewise, it must be documented if there is no practical way to determine whether such
 									modules or environments destroy keys properly.</h:li><h:li>In cases where it is impossible or impracticable to perform the above tests, the evaluator shall describe how keys are destroyed in such cases, to include:
-                                        <h:ul><h:li>Which keys are affected</h:li><h:li>The reasons why testing is impossible or impracticable</h:li><h:li>Evidence that keys are destroyed appropriately (e.g., citations to component documentation, component developer/vendor attestation, component vendor test results)</h:li><h:li>Aggravating and mitigating factors that may affect the timeliness or execution of key destruction (e.g., caching, garbage collection, operating system memory management)</h:li></h:ul></h:li></h:ul></Tests>
+                                        <h:ul><h:li>Which keys are affected</h:li><h:li>The reasons why testing is impossible or impracticable</h:li><h:li>Evidence that keys are destroyed appropriately (e.g., citations to component documentation, component developer/vendor attestation, component vendor test results)</h:li><h:li>Aggravating and mitigating factors that may affect the timeliness or execution of key destruction (e.g., caching, garbage collection, operating system memory management)</h:li></h:ul></h:li></h:ul>
+                                Use of debug or instrumented builds of the TOE and TOE components is permitted in order to 
+								demonstrate that the TOE takes appropriate action to destroy keys. These builds should be 
+								based on the same source code as are release builds (of course, with instrumentation
+								and debug-specific code added).
+                            </Tests>
             </aactivity>
           </f-element>
           <f-element id="fcs-ckm-4e2">
@@ -1216,14 +1255,20 @@
           <f-element id="fcs-cop-1e1-keyedhash">
             <title>The TSF shall perform [ <h:i>keyed-hash message authentication</h:i>  ] in accordance with a specified cryptographic algorithm<selectables><selectable id="sel-hmac-sha-1">HMAC-SHA-1</selectable><selectable id="sel-hmac-sha-256">HMAC-SHA-256</selectable><selectable id="sel-hmac-sha-384">HMAC-SHA-384</selectable><selectable id="sel-hmac-sha-512">HMAC-SHA-512</selectable><selectable id="sel-hmac-sha-3-224">SHA-3-224</selectable><selectable id="sel-hmac-sha-3-256">SHA-3-256</selectable><selectable id="sel-hmac-sha-3-384">SHA-3-384</selectable><selectable id="sel-hmac-sha-3-512">SHA-3-512</selectable> </selectables>and cryptographic key sizes<assignable>key size (in bits) used in HMAC</assignable>and message digest sizes<selectables><selectable id="fcs_cop.1.1_KeyedHash_2">160</selectable><selectable id="fcs_cop.1.1_KeyedHash_3">256</selectable><selectable id="fcs_cop.1.1_KeyedHash_4">384</selectable><selectable id="fcs_cop.1.1_KeyedHash_5">512 bits</selectable> </selectables>that meet the following: [ <h:b><h:i>FIPS Pub 198-1, "The Keyed-Hash Message Authentication Code," and FIPS Pub 180-4, “Secure Hash Standard"</h:i></h:b>  ].</title>
             <note role="application">The selection in this requirement must be consistent with the key size specified for
-							the size of the keys used in conjunction with the keyed-hash message authentication.<h:p/> <rule id="keyedhash-alg-match-sha-1"><description>If "<h:i><xref to="sel-hmac-sha-1"/></h:i>" is selected in FCS_COP.1/KeyedHash then "<h:i><xref to="sel-hash-sha-1"/></h:i>" must be selected in FCS_COP.1.1/Hash.</description><if><ref-id>sel-hmac-sha-1</ref-id></if><then><ref-id>sel-hash-sha-1</ref-id></then></rule> <rule id="keyedhash-alg-match-sha-256"><description>If "<h:i><xref to="sel-hmac-sha-256"/></h:i>" is selected in FCS_COP.1/KeyedHash then "<h:i><xref to="sel-hash-sha-256"/></h:i>" must be selected in FCS_COP.1/Hash.</description><if><ref-id>sel-hmac-sha-256</ref-id></if><then><ref-id>sel-hash-sha-256</ref-id></then></rule> <rule id="keyedhash-alg-match-sha-384"><description>If "<h:i><xref to="sel-hmac-sha-384"/></h:i>" is selected in FCS_COP.1/KeyedHash then "<h:i><xref to="sel-hash-sha-384"/></h:i>" must be selected in FCS_COP.1/Hash.</description><if><ref-id>sel-hmac-sha-384</ref-id></if><then><ref-id>sel-hash-sha-384</ref-id></then></rule> <rule id="keyedhash-alg-match-sha-512"><description>If "<h:i><xref to="sel-hmac-sha-512"/></h:i>" is selected in FCS_COP.1/KeyedHash then "<h:i><xref to="sel-hash-sha-512"/></h:i>" must be selected in FCS_COP.1/Hash.</description><if><ref-id>sel-hmac-sha-512</ref-id></if><then><ref-id>sel-hash-sha-512</ref-id></then></rule> <rule id="keyedhash-alg-match-sha-3-224"><description>If "<h:i><xref to="sel-hmac-sha-3-224"/></h:i>" is selected in FCS_COP.1/KeyedHash then "<h:i><xref to="sel-hash-sha-3-224"/></h:i>" must be selected in FCS_COP.1/Hash.</description><if><ref-id>sel-hmac-sha-3-224</ref-id></if><then><ref-id>sel-hash-sha-3-224</ref-id></then></rule> <rule id="keyedhash-alg-match-sha-3-256"><description>If "<h:i><xref to="sel-hmac-sha-3-256"/></h:i>" is selected in FCS_COP.1/KeyedHash then "<h:i><xref to="sel-hash-sha-3-256"/></h:i>" must be selected in FCS_COP.1/Hash.</description><if><ref-id>sel-hmac-sha-3-256</ref-id></if><then><ref-id>sel-hash-sha-3-256</ref-id></then></rule> <rule id="keyedhash-alg-match-sha-3-384"><description>If "<h:i><xref to="sel-hmac-sha-3-384"/></h:i>" is selected in FCS_COP.1/KeyedHash then "<h:i><xref to="sel-hash-sha-3-384"/></h:i>" must be selected in FCS_COP.1/Hash.</description><if><ref-id>sel-hmac-sha-3-384</ref-id></if><then><ref-id>sel-hash-sha-3-384</ref-id></then></rule> <rule id="keyedhash-alg-match-sha-3-512"><description>If "<h:i><xref to="sel-hmac-sha-3-512"/></h:i>" is selected in FCS_COP.1/KeyedHash then "<h:i><xref to="sel-hash-sha-3-512"/></h:i>" must be selected in FCS_COP.1/Hash.</description><if><ref-id>sel-hmac-sha-3-512</ref-id></if><then><ref-id>sel-hash-sha-3-512</ref-id></then></rule></note>
+							the size of the keys used in conjunction with the keyed-hash message authentication.<h:p/></note>
             <aactivity level="component">
               <TSS>The evaluator shall examine the TSS to ensure that it specifies the following
                                 values used by the HMAC function: key length, hash function used, block size, and output MAC 
                                 length used.</TSS>
+              <Guidance/>
               <Tests> 
                                 The following tests require the developer to provide access to a test platform that provides the 
-								evaluator with tools that are typically not found on factory products.<h:p/></Tests>
+								evaluator with tools that are typically not found on factory products.<h:p/>
+                                For each of the supported parameter sets, the evaluator shall compose 15 sets of test data. Each set
+								shall consist of a key and message data. The evaluator shall have the TSF generate HMAC tags for 
+								these sets of test data. The resulting MAC tags shall be compared to the result of generating HMAC
+								tags with the same key and IV using a known good implementation.
+                            </Tests>
             </aactivity>
           </f-element>
           <audit-event/>
@@ -1238,6 +1283,8 @@
 							assignments/selections to specify the parameters that are implemented for that algorithm.
                         </note>
             <aactivity level="component">
+              <TSS/>
+              <Guidance/>
               <Tests>
                                 The following tests require the developer to provide access to a test platform that provides the 
 								evaluator with tools that are typically not found on factory products.
@@ -1266,7 +1313,10 @@
 								the test vectors produced during the Signature Verification Test by introducing errors in some 
 								of the public keys e, messages, IR format, or signatures. The TOE attempts to verify the
 								signatures and returns success or failure.
-                                <h:p/></Tests>
+                                <h:p/>
+                                The evaluator shall use these test vectors to emulate the signature verification test using the 
+								corresponding parameters and verify that the TOE detects these errors.
+							</Tests>
             </aactivity>
           </f-element>
           <audit-event/>
@@ -1280,8 +1330,10 @@
             <title>The TSF shall perform [ <h:i>encryption and decryption</h:i>  ] in accordance with a specified cryptographic algorithm<selectables linebreak="yes"><selectable id="sel-ude-aes-kw">AES Key Wrap (KW) (as defined in NIST SP 800-38F)</selectable><selectable id="sel-ude-aes-kwp">AES Key Wrap with Padding (KWP) (as defined in NIST SP 800-38F)</selectable><selectable id="sel-ude-aes-gcm">AES-GCM (as defined in NIST SP 800-38D)</selectable><selectable id="sel-ude-aes-ccm">AES-CCM (as defined in NIST SP 800-38C)</selectable><selectable id="sel-ude-aes-xts">AES-XTS (as defined in NIST SP 800-38E) mode</selectable><selectable id="sel-ude-aes-ccmp-256">AES-CCMP-256 (as defined in NIST SP800-38C and IEEE 802.11ac-2013)</selectable><selectable id="sel-ude-aes-gcmp-256">AES-GCMP-256 (as defined in NIST SP800-38D and IEEE 802.11ac-2013)</selectable><selectable id="sel-ude-aes-ccmp">AES-CCMP (as defined in FIPS PUB 197, NIST SP 800-38C and IEEE 802.11-2012)</selectable><selectable id="sel-ude-aes-cbc">AES-CBC (as defined in FIPS PUB 197, and NIST SP 800-38A) mode</selectable><selectable id="sel-ude-aes-ctr">AES-CTR (as defined in NIST SP 800-38A) mode</selectable> </selectables>and cryptographic key sizes<selectables><selectable id="sel-ude-keysize-128">128-bit key sizes</selectable><selectable id="sel-ude-keysize-256">256-bit key sizes</selectable> </selectables>.</title>
             <note role="application">For the first selection of FCS_COP.1.1/UDE, the ST author should choose the mode or
 							modes in which AES operates. For the second selection, the ST author should choose the key sizes that
-							are supported by this functionality.<h:p/> <rule id="rule-ssh-included-ude"><description>If the SSH Package is included in the ST then "<h:i><xref to="sel-ude-aes-ctr"/></h:i>," "<h:i><xref to="sel-ude-keysize-128"/></h:i>," and "<h:i><xref to="sel-ude-keysize-256"/></h:i>" must be selected in FCS_COP.1/UDE.</description><if><or><ref-id>sel-itc-ssh</ref-id><ref-id>sel-x509-2-ssh</ref-id></or></if><then><and><ref-id>sel-ude-aes-ctr</ref-id><ref-id>sel-ude-keysize-128</ref-id><ref-id>sel-ude-keysize-256</ref-id></and></then></rule> <rule id="rule-ipsec-included-ude"><description>If the TOE implements IPSec then "<h:i><xref to="sel-ude-aes-cbc"/></h:i>," "<h:i><xref to="sel-ude-aes-gcm"/></h:i>," "<h:i><xref to="sel-ude-keysize-128"/></h:i>," and "<h:i><xref to="sel-ude-keysize-256"/></h:i>" must be selected in FCS_COP.1/UDE.</description><if><ref-id>sel-itc-ipsec</ref-id></if><then><and><ref-id>sel-ude-aes-cbc</ref-id><ref-id>sel-ude-aes-gcm</ref-id><ref-id>sel-ude-keysize-128</ref-id><ref-id>sel-ude-keysize-256</ref-id></and></then></rule></note>
+							are supported by this functionality.<h:p/></note>
             <aactivity level="component">
+              <TSS/>
+              <Guidance/>
               <Tests>
                 
                             The following tests require the developer to provide access to a test platform that provides the evaluator
@@ -1416,6 +1468,7 @@
 								how to access the interface to acquire entropy or random numbers. The evaluator shall verify that
 								the TSS describes the mechanisms for ensuring that one VM does not affect the entropy acquired by 
 								another.</TSS>
+              <Guidance/>
               <Tests>
                 <testlist>
                   
@@ -1489,6 +1542,11 @@
                                 TLS to establish an administrative session, focusing on any client authentication required by 
                                 the TLS protocol vs. security administrator authentication which may be done at a different 
                                 level of the processing stack.</TSS>
+              <Guidance/>
+              <Tests>
+                                Testing for this activity is done as part of the TLS testing; this may result in additional 
+                                testing if the TLS tests are done at the TLS protocol level.
+                            </Tests>
             </aactivity>
           </f-element>
           <f-element id="fcs-https-ext-1e2">
@@ -1876,7 +1934,10 @@
           </f-element>
           <f-element id="fcs-ipsec-ext-1e10">
             <title>The TSF shall generate nonces used in IKE exchanges in a manner such that the probability that a specific nonce value will be repeated during the life a specific IPsec SA is less than 1 in 2^<assignable>(one or more) “bits of security” value associated with the negotiated Diffie-Hellman group as listed in Table 2 of NIST SP 800-57, Recommendation for Key Management – Part 1: General</assignable>.</title>
-                      </f-element>
+            <aactivity level="element">
+              <no-tests>EAs for this element are tested through EAs for FCS_IPSEC_EXT.1.9.</no-tests>
+            </aactivity>
+          </f-element>
           <f-element id="fcs-ipsec-ext-1e11">
             <title>The TSF shall ensure that all IKE protocols perform peer authentication using a<selectables><selectable id="fcs_ipsec_ext.1.11_1">RSA</selectable><selectable id="fcs_ipsec_ext.1.11_2">ECDSA</selectable> </selectables>that use X.509v3 certificates that conform to RFC 4945 and<selectables><selectable id="fcs_ipsec_ext.1.11_3">Pre-shared Keys</selectable><selectable id="fcs_ipsec_ext.1.11_4">no other method</selectable> </selectables>.</title>
             <note role="application">
@@ -1979,7 +2040,10 @@
 				versions supported by the TOE in general. The ST author may assign additional
 				supported identifier types in the second selection.
 			</note>
-                      </f-element>
+            <aactivity level="element">
+              <no-tests>EAs for this element are tested through EAs for FCS_IPSEC_EXT.1.11.</no-tests>
+            </aactivity>
+          </f-element>
           <f-element id="fcs-ipsec-ext-1e13">
             <title>The TSF shall not establish an SA if the presented identifier does not match the configured reference identifier of the peer.</title>
             <note role="application">
@@ -2003,7 +2067,12 @@
 				Common Name.<h:p/>
 				The configuration of the peer reference identifier is addressed by
 				FMT_SMF.1.1/VPN. <h:p/></note>
-                      </f-element>
+            <aactivity level="element">
+              <no-tests>
+					EAs for this element are tested through EAs for FCS_IPSEC_EXT.1.11.
+				</no-tests>
+            </aactivity>
+          </f-element>
           <f-element id="fcs-ipsec-ext-1e14">
             <title>The<selectables><selectable id="fcs_ipsec_ext.1.14_1">TSF</selectable><selectable id="fcs_ipsec_ext.1.14_2">VPN Gateway</selectable> </selectables>shall be able to ensure by default that the strength of the symmetric algorithm (in terms of the number of bits in the key) negotiated to protect the<selectables><selectable id="fcs_ipsec_ext.1.14_3">IKEv1 Phase 1</selectable><selectable id="fcs_ipsec_ext.1.14_4">IKEv2 IKE_SA</selectable> </selectables>connection is greater than or equal to the strength of the symmetric algorithm (in terms of the number of bits in the key) negotiated to protect the [selection: IKEv1 Phase 2, IKEv2 CHILD_SA] connection.</title>
             <note role="application">
@@ -2068,6 +2137,8 @@
           <f-element id="fcs-rbg-ext-1e1">
             <title>The TSF shall perform all deterministic random bit generation services in accordance with NIST Special Publication 800-90A using<selectables><selectable id="fcs_rbg_ext.1.1_1">Hash_DRBG (any)</selectable><selectable id="fcs_rbg_ext.1.1_2">HMAC_DRBG (any)</selectable><selectable id="fcs_rbg_ext.1.1_3">CTR_DRBG (AES)</selectable> </selectables></title>
             <aactivity level="component">
+              <TSS/>
+              <Guidance/>
               <Tests>
                                 The evaluator shall also perform the following tests, depending on the standard to which the RBG
 								conforms.<h:p/>
@@ -2161,6 +2232,7 @@
                                 The evaluator shall verify that the operational guidance contains instructions on how to ensure
                                 that the platform-provided, hardware-based mechanisms are enabled.
                             </Guidance>
+              <Tests/>
             </aactivity>
           </f-element>
           <audit-event/>
@@ -2281,6 +2353,8 @@
                                 and how this is performed. Additionally, the evaluator shall ensure that the TSS
                                 documents the conditions under which physical memory is not cleared prior to allocation to a
                                 Guest VM, and describes when and how the memory is cleared.</TSS>
+              <Guidance/>
+              <Tests/>
             </aactivity>
           </f-element>
           <audit-event/>
@@ -2306,6 +2380,7 @@
 				    Guest VMs. Also, the TSS must document any conditions under which disk storage is not cleared prior to allocation to a Guest VM. 
 				    Any file system format and metadata information needed by the evaluator to perform the below test shall be made available
 				    to the evaluator, but need not be published in the TSS.</TSS>
+              <Guidance/>
               <Tests>
                 <testlist>
                   <test>
@@ -2479,6 +2554,8 @@
           <f-element id="fia-afl-ext-1e1">
             <title>The TSF shall detect when<selectables linebreak="yes"><selectable id="fia_afl_ext.1.1_2"><assignable>a positive integer number</assignable></selectable><selectable id="fia_afl_ext.1.1_3">an administrator configurable positive integer within a<assignable>range of acceptable values</assignable></selectable> </selectables>unsuccessful authentication attempts occur related to Administrators attempting to authenticate remotely using<selectables><selectable id="fia_afl_ext.1.1_5">username and password</selectable><selectable id="fia_afl_ext.1.1_6">username and PIN</selectable> </selectables>.</title>
             <aactivity level="component">
+              <TSS/>
+              <Guidance/>
               <Tests>
                 <testlist>
                   
@@ -2546,6 +2623,7 @@
 							optionally list additional special characters supported using the assignment. “Administrative
 							passwords” refers to passwords used by administrators to gain access to the Management Subsystem.</note>
             <aactivity level="component">
+              <TSS/>
               <Guidance>
                                 The evaluator shall examine the operational guidance to determine that it provides guidance to
                                 security administrators in the composition of strong passwords, and that it provides instructions
@@ -2583,6 +2661,8 @@
 							PINs used to access OE-protected storage are set and managed by the OE-protected storage mechanism. Thus
 							requirements on PIN management are outside the scope of the TOE.<h:p/></note>
             <aactivity level="component">
+              <TSS/>
+              <Guidance/>
               <Tests>
                 <testlist>
                   
@@ -2641,7 +2721,6 @@
           </f-element>
           <f-element id="fia-uau-5e2">
             <title>The TSF shall authenticate any <h:b>Administrator’s</h:b>  claimed identity according to the<assignable>rules describing how the multiple authentication mechanisms provide authentication</assignable>.</title>
-            <note role="application"> <rule id="rule-mf-dir-based"><!-- <xref to="sel-mf-dir-server"/> --><description>If<h:i>"directory-based"</h:i>is selected anywhere in FIA_UAU.5.1 then "<h:i>Ability to configure name/address of directory server to bind with</h:i>" must be selected in the Client or Server module management function table.</description><if><or><ref-id>sel-uau-x509-dirbased</ref-id><ref-id>sel-uau-ssh-dirbased</ref-id><ref-id>sel-uau-pwd-dirbased</ref-id></or></if><then><doc ref="server-virt"><ref-id>sel-mf-dir-server</ref-id></doc></then></rule> <rule id="rule-mf-pwd-policy"><!-- <xref to="sel-mf-pwd-policy"/> --><description>If<h:i>"authentication based on username and password"</h:i>is selected in FIA_UAU.5.1 then<h:i>"Ability to configure Administrator password policy as defined in FIA_PMG_EXT.1"</h:i>must be selected in the Client or Server module management function table.</description><if><ref-id>sel-uau-pwd</ref-id></if><then><or><doc ref="server-virt"><ref-id>sel-mf-pwd-policy</ref-id></doc><doc ref="client-virt"><ref-id>sel-mf-pwd-policy</ref-id></doc></or></then></rule></note>
           </f-element>
           <audit-event/>
         </f-component>
@@ -2669,6 +2748,8 @@
                                 guidance provides clear instructions for successfully logging on. If configuration is necessary
                                 to ensure the services provided before login are limited, the evaluator shall determine that the
                                 operational guidance provides sufficient instruction on limiting the allowed services.</TSS>
+              <Guidance/>
+              <Tests/>
             </aactivity>
           </f-element>
           <audit-event>
@@ -2731,6 +2812,7 @@
 								a trusted channel. If the requirement that the administrator is able to specify the default
 								action, then the evaluator shall ensure that the operational guidance contains instructions on how 
 								this configuration action is performed.</TSS>
+              <Guidance/>
               <Tests>
                 <testlist>
                   <test>The evaluator shall demonstrate that validating a certificate without a valid certification
@@ -2815,6 +2897,7 @@
                                 certificate used in establishing a trusted channel. If the requirement states that the administrator  
                                 specifies the default action, then the evaluator shall ensure that the operational guidance contains
                                 instructions on how this configuration action is performed.</TSS>
+              <Guidance/>
               <Tests>
                 <testlist>
                   <test>The evaluator shall demonstrate that using a certificate without a valid certification path
@@ -2844,7 +2927,7 @@
 							FIA_X509_EXT.1, the behavior indicated in the selection shall determine the validity. The TOE must
 							not accept the certificate if it fails any of the other validation rules in FIA_X509_EXT.1. If the 
 							administrator-configured option is selected by the ST Author, the ST Author must ensure that this is
-							also defined as a management function that is provided by the TOE.<h:p/> <rule id="rule-admin-action-cert-validity"><!-- <xref to="sel-mf-cert-no-validity-action"/> --><description>If "<h:i><xref to="sel-x509-adminset"/></h:i>" is selected then "<h:i>Ability to configure action taken if unable to determine the validity of a certificate</h:i>" in the Client or Server module management function table must also be selected.</description><if><ref-id>sel-x509-adminset</ref-id></if><then><or><doc ref="client-virt"><ref-id>sel-mf-cert-no-validity-action</ref-id></doc><doc ref="server-virt"><ref-id>sel-mf-cert-no-validity-action</ref-id></doc></or></then></rule></note>
+							also defined as a management function that is provided by the TOE.<h:p/></note>
           </f-element>
           <audit-event/>
         </f-component>
@@ -2972,6 +3055,8 @@
                             a listing of all pages belonging to the driver domain, the identification of a subset of the driver 
                             domain's pages that the driver domain has permitted the device access to, or the identification of a 
                             dedicated area of memory reserved for the device or driver domain).</TSS>
+              <Guidance/>
+              <Tests/>
             </aactivity>
           </f-element>
           <audit-event/>
@@ -2993,7 +3078,19 @@
                             Such interfaces include memory buffers, PCI Bus interfaces, and processor I/O ports.<h:p/>
                             The purpose of this requirement is to reduce the attack surface of the VMM by blocking access to unused interfaces.
 			    </note>
-                      </f-element>
+            <aactivity level="component">
+              <TSS/>
+              <Guidance/>
+              <Tests>
+                                The evaluator shall connect a device to a VM, then from within the guest scan the VM's devices
+                                to ensure that the connected device is present--using a device driver or other available means
+				    to scan the VM's I/O ports or PCI Bus interfaces. 
+				    (The device's interface should be documented in the TSS under FPT_VDP_EXT.1.) The evaluator shall
+				    remove the device from the VM and run the scan again. This requirement is met if the device's 
+				    interfaces are no longer present.
+                            </Tests>
+            </aactivity>
+          </f-element>
           <audit-event/>
         </f-component>
         <!--FPT_EEM_EXT.1 Execution Environment Mitigations-->
@@ -3021,6 +3118,8 @@
                                 listed in the ST, the execution environment-based vulnerability mitigation
                                 mechanisms used by the TOE on that platform. The evaluator shall ensure that the
                                 lists correspond to what is specified in FPT_EEM_EXT.1.1.</TSS>
+              <Guidance/>
+              <Tests/>
             </aactivity>
           </f-element>
           <audit-event/>
@@ -3055,6 +3154,8 @@
                                 s, etc.), when such checks occur (before VM startup, immediately following 
                                 importation/migration, on demand, etc.), and which actions are taken if a VM fails
                                 the integrity check (or which range of actions are possible if the action is configurable).</TSS>
+              <Guidance/>
+              <Tests/>
             </aactivity>
           </f-element>
           <audit-event>
@@ -3076,6 +3177,8 @@
                                 listed in the ST, the hardware assists and memory-handling extensions used by the
                                 TOE on that platform. The evaluator shall ensure that these lists correspond to what 
                                 is specified in the applicable FPT_HAS_EXT component.</TSS>
+              <Guidance/>
+              <Tests/>
             </aactivity>
           </f-element>
           <f-element id="fpt-has-ext-1e2">
@@ -3130,7 +3233,12 @@
 								There is no operational guidance for this component.
                             </Guidance>
               <Tests>
-                                The evaluator shall perform the following test:<h:p/></Tests>
+                                The evaluator shall perform the following test:<h:p/>
+                                For each hypercall interface documented in the TSS or proprietary TSS Annex, the evaluator shall attempt to  
+					    invoke the function from within the VM using an invalid parameter (if any). If the VMM or VS crashes
+					    or generates an exception, or if no error is returned to the guest, then the test fails. If an error is 
+					    returned to the guest, then the test succeeds.
+                            </Tests>
             </aactivity>
           </f-element>
           <audit-event>
@@ -3154,6 +3262,7 @@
               <TSS>The evaluator shall examine the TSS to ensure it describes how SWID tags are
                                 implemented and the format of the tags. The evaluator shall verify that the format complies with
                                 FPT_IDV_EXT.1.1 and that SWIDs are stored in accordance with FPT_IDV_EXT.1.2.</TSS>
+              <Guidance/>
               <Tests>
                 <testlist>
                   
@@ -3202,6 +3311,7 @@
                                 The evaluator shall examine the operational guidance to ensure that it contains instructions for
                                 configuration of the introspection mechanism.
                             </Guidance>
+              <Tests/>
             </aactivity>
           </f-element>
           <audit-event>
@@ -3225,6 +3335,7 @@
                                 integrity measurements are performed and made available to the Management Subsystem. The evaluator 
                                 shall examine the operational guidance to verify that it documents how to access the measurements in 
                                 the Management Subsystem.</TSS>
+              <Guidance/>
               <Tests>
                 <testlist>
                   <test>The evaluator shall start the VS, login as an Administrator, and verify that the measurements for the specified components are viewable in the Management Subsystem.</test>
@@ -3372,6 +3483,7 @@
                                 contains a description of how the certificates are contained on the device. The evaluator also ensures
                                 that the TSS (or administrator guidance) describes how the certificates are
                                 installed/updated/selected, if necessary.</TSS>
+              <Guidance/>
               <Tests>
                 <testlist>
                   <test>The evaluator performs the version verification activity to determine the current version 
@@ -3417,7 +3529,7 @@
 				same manufacturer (e.g., by comparing public keys) or signed by legitimate signing keys (e.g.,
 				successful verification of certificates when using X.509 certificates).<h:p/>
                             The Digital Signature option is the preferred mechanism for authenticating updates. The Published Hash
-				option will be removed from a future version of this PP.<h:p/> <rule id="rule-certs-for-update"><description>If<xref to="sel-tud-digsign-cert"/>is selected in FPT_TUD_EXT.1.3 then<xref to="sel-x5092-signed-updates"/>must be selected in FIA_X509_EXT.2.1.</description><if><ref-id>sel-tud-digsign-cert</ref-id></if><then><ref-id>sel-x5092-signed-updates</ref-id></then></rule></note>
+				option will be removed from a future version of this PP.<h:p/></note>
           </f-element>
           <audit-event>
             <audit-event-descr>Initiation of update.</audit-event-descr>
@@ -3445,7 +3557,15 @@
 				must be included in the ST.<h:p/>
                             Validity is determined by the certificate path, the expiration date, and the revocation status in 
 				accordance with FIA_X509_EXT.1.</note>
-                      </f-element>
+            <aactivity level="component">
+              <TSS/>
+              <Guidance/>
+              <Tests>
+                                The evaluation activity for this requirement is performed in conjunction with the evaluation activity
+				    for FIA_X509_EXT.1 and FIA_X509_EXT.2.
+                            </Tests>
+            </aactivity>
+          </f-element>
           <audit-event/>
         </f-component>
         <!--FPT_VDP_EXT.1 Virtual Device Parameters-->
@@ -3472,6 +3592,14 @@
 								ports missing from the TSS.<h:p/>
                                	There is no expectation that evaluators will examine source code to verify the “all” part of the 
                                	evaluation activity.</TSS>
+              <Guidance/>
+              <Tests>
+								For each virtual device interface, the evaluator shall attempt to access the interface 
+								using at least one parameter value that is out of range or illegal. The test is passed if the
+								interface behaves in the manner documented in the TSS. Interfaces that do not
+								have input parameters need not be tested. This test can be performed in conjunction with 
+								the tests for FPT_DVD_EXT.1.
+                            </Tests>
             </aactivity>
           </f-element>
           <f-element id="fpt-vdp-ext-1e2">
@@ -3499,6 +3627,8 @@
               <TSS>The evaluator shall verify that the TSS (or a proprietary annex to the TSS) describes how the TSF ensures 
 								that guest software cannot degrade or disrupt the functioning of other VMs, the VMM or the platform. And 
 								how the TSF prevents guests from invoking higher-privilege platform code, such as the examples in the note.</TSS>
+              <Guidance/>
+              <Tests/>
             </aactivity>
           </f-element>
           <f-element id="fpt-viv-ext-1e2">
@@ -3534,7 +3664,16 @@
                             This requirement is intended to apply to interactive sessions between a human user and a TOE. IT
                             entities establishing connections or programmatic connections (e.g., remote procedure calls over
                             a network) are not required to be covered by this requirement.<h:p/></note>
-                      </f-element>
+            <aactivity level="component">
+              <TSS/>
+              <Guidance/>
+              <Tests>
+                            The evaluator shall configure the TOE to display the advisory warning message 
+                            “TEST TEST Warning Message TEST TEST”. The evaluator shall then log out and confirm that the advisory 
+                            message is displayed before login can occur.
+                        </Tests>
+            </aactivity>
+          </f-element>
           <audit-event/>
         </f-component>
       </section>
@@ -3571,11 +3710,19 @@
 				must be included in the ST. "No authentication of the remote peer" should be selected only if the TOE is acting 
 				as a server in a non-mutual authentication configuration.<h:p/>			    
 			    The ST author must include the security functional requirements for the
-                            trusted channel protocol selected in FTP_ITC_EXT.1 in the main body of the ST.<h:p/> <rule id="rule-cert-based-tls"><description>If "<h:i><xref to="sel-itc-certauth"/></h:i>" and "<h:i><xref to="sel-itc-tls"/></h:i>" are selected in FTP_ITC_EXT.1.1 then "<h:i><xref to="sel-x509-2-tls"/></h:i>" must be selected in FIA_X509_EXT.2.1.</description><if><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-tls</ref-id></and></if><then><ref-id>sel-x509-2-tls</ref-id></then></rule> <rule id="rule-cert-based-https"><description>If "<h:i><xref to="sel-itc-certauth"/></h:i>" and "<h:i><xref to="sel-itc-https"/></h:i>" are selected in FTP_ITC_EXT.1.1 then "<h:i><xref to="sel-x509-2-https"/></h:i>" must be selected in FIA_X509_EXT.2.1.</description><if><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-https</ref-id></and></if><then><ref-id>sel-x509-2-https</ref-id></then></rule> <rule id="rule-cert-based-ipsec"><description>If "<h:i><xref to="sel-itc-certauth"/></h:i>" and "<h:i><xref to="sel-itc-ipsec"/></h:i>" are selected in FTP_ITC_EXT.1.1 then "<h:i><xref to="sel-x509-2-ipsec"/></h:i>" must be selected in FIA_X509_EXT.2.1.</description><if><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-ipsec</ref-id></and></if><then><ref-id>sel-x509-2-ipsec</ref-id></then></rule> <rule id="rule-cert-based-ssh"><description>If "<h:i><xref to="sel-itc-certauth"/></h:i>" and "<h:i><xref to="sel-itc-ssh"/></h:i>" are selected in FTP_ITC_EXT.1.1 then "<h:i><xref to="sel-x509-2-ssh"/></h:i>" must be selected in FIA_X509_EXT.2.1.</description><if><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-ssh</ref-id></and></if><then><ref-id>sel-x509-2-ssh</ref-id></then></rule></note>
+                            trusted channel protocol selected in FTP_ITC_EXT.1 in the main body of the ST.<h:p/></note>
             <aactivity level="component">
               <TSS>The evaluator will review the TSS to determine that it lists all trusted channels 
                                 the TOE uses for remote communications, including both the external entities and 
                                 remote users used for the channel as well as the protocol that is used for each.</TSS>
+              <Guidance/>
+              <Tests>
+                                The evaluator will configure the TOE to communicate with each external IT entity 
+                                and type of remote user identified in the TSS. The evaluator will monitor network
+                                traffic while the VS performs communication with each of these destinations. The evaluator will ensure
+                                that for each session a trusted channel was established in conformance with the protocols identified 
+                                in the selection.
+                            </Tests>
             </aactivity>
           </f-element>
           <audit-event>
@@ -3679,6 +3826,11 @@
                                 The evaluator shall ensure that the operational guidance specifies how the current input focus is
                                 indicated to the user.
                             </Guidance>
+              <Tests>
+                                For each supported input device, the evaluator shall demonstrate that the input from each device
+                                listed in the TSS is directed to the VM that is indicated to have
+                                the input focus.
+                            </Tests>
             </aactivity>
           </f-element>
           <audit-event/>
@@ -3704,8 +3856,15 @@
               <TSS>The evaluator shall ensure that the TSS describes the mechanism for identifying 
                                 VMs to the user, how identities are assigned to VMs, and how 
                                 conflicts are prevented.</TSS>
+              <Guidance/>
               <Tests>
-                                The evaluator shall perform the following test:<h:p/></Tests>
+                                The evaluator shall perform the following test:<h:p/>
+                                The evaluator shall attempt to create and start at least three Guest VMs on a single 
+                                display device where the evaluator attempts to assign two of the VMs the same
+                                identifier. If the user interface displays different identifiers for each VM, then 
+                                the requirement is met. Likewise, the requirement is met if the system refuses to create or start a
+                                VM when there is already a VM with the same identifier.
+                            </Tests>
             </aactivity>
           </f-element>
           <audit-event/>
@@ -4161,7 +4320,7 @@
   </sec:req>
   <appendix title="Implicitly Satisfied Requirements" id="satisfiedreqs"><!--   Boilerplate goes here   --><h:b><ctr ctr-type="Table" pre="Table " id="imp-sat-reqs-table">: Implicitly Satisfied Requirements</ctr></h:b><h:table><h:tr class="header"><h:td>Requirement</h:td><h:td>Rationale for Satisfaction</h:td></h:tr><h:tr><h:td>FCS_CKM.4 – Cryptographic Key Destruction</h:td><h:td>FCS_CKM.1 has a dependency on FCS_CKM.4. The extended SFR FCS_CKM_EXT.4 addresses this dependency by defining an alternate requirement for key destruction.</h:td></h:tr><h:tr><h:td>FCS_CKM.4 – Cryptographic Key Destruction</h:td><h:td>FCS_CKM.2 has a dependency on FCS_CKM.4. The extended SFR FCS_CKM_EXT.4 addresses this dependency by defining an alternate requirement for key destruction.</h:td></h:tr><h:tr><h:td>FCS_CKM.4 – Cryptographic Key Destruction</h:td><h:td>Each iteration of FCS_COP.1 has a dependency on FCS_CKM.4. The extended SFR FCS_CKM_EXT.4 addresses this dependency by defining an alternate requirement for key destruction.</h:td></h:tr><h:tr><h:td>FIA_UID.1 – Timing of Identification</h:td><h:td>FMT_SMR.2 has a dependency on FIA_UID.1. The extended SFR FIA_UID_EXT.1 expresses this dependency by also requiring user identification for use of the TOE.</h:td></h:tr><h:tr><h:td>FPT_STM.1 – Reliable Time Stamps</h:td><h:td>FAU_GEN.1 has a dependency on FPT_STM.1. While not explicitly stated in the PP, it is assumed that this will be provided by the underlying hardware platform on which the TOE is installed. This is because the TOE is installed as a software or firmware product that runs on general-purpose computing hardware so a hardware clock is assumed to be available.</h:td></h:tr><h:tr><h:td>FPT_STM.1 – Reliable Time Stamps</h:td><h:td>FIA_X509_EXT.1 has a dependency on FPT_STM.1. While not explicitly stated in the PP, it is assumed that this will be provided by the underlying hardware platform on which the TOE is installed. This is because the TOE is installed as a software or firmware product that runs on general-purpose computing hardware so a hardware clock is assumed to be available.</h:td></h:tr></h:table></appendix>
   <appendix title="Entropy Documentation and Assessment" id="appendix-entropy"><section id="s-design" title="Design Description">Documentation shall include the design of the entropy source as a whole, including the interaction of all entropy source components. It will describe the operation of the entropy source to include how it works, how entropy is produced, and how unprocessed (raw) data can be obtained from within the entropy source for testing purposes. The documentation should walk through the entropy source design indicating where the random comes from, where it is passed next, any post-processing of the raw outputs (hash, XOR, etc.), if/where it is stored, and finally, how it is output from the entropy source. Any conditions placed on the process (e.g., blocking) should also be described in the entropy source design. Diagrams and examples are encouraged.<h:p/>This design must also include a description of the content of the security boundary of the entropy source and a description of how the security boundary ensures that an adversary outside the boundary cannot affect the entropy rate.</section><section id="s-justification" title="Entropy Justification">There should be a technical argument for where the unpredictability in the source comes from and why there is confidence in the entropy source exhibiting probabilistic behavior (an explanation of the probability distribution and justification for that distribution given the particular source is one way to describe this). This argument will include a description of the expected entropy rate and explain how you ensure that sufficient entropy is going into the TOE randomizer seeding process. This discussion will be part of a justification for why the entropy source can be relied upon to produce bits with entropy.</section><section id="s-oc" title="Operating Conditions">Documentation will also include the range of operating conditions under which the entropy source is expected to generate random data. It will clearly describe the measures that have been taken in the system design to ensure the entropy source continues to operate under those conditions. Similarly, documentation shall describe the conditions under which the entropy source is known to malfunction or become inconsistent. Methods used to detect failure or degradation of the source shall be included.</section><section id="s-health" title="Health Testing">More specifically, all entropy source health tests and their rationale will be documented. This will include a description of the health tests, the rate and conditions under which each health test is performed (e.g., at startup, continuously, or on-demand), the expected results for each health test, and rationale indicating why each test is believed to be appropriate for detecting one or more failures in the entropy source.</section></appendix>
-  <appendix title="Equivalency Guidelines" id="appendix-equiv"><section id="s-vm-intro" title="Introduction">The purpose of equivalence in PP-based evaluations is to find a balance between evaluation rigor and commercial practicability--to ensure that evaluations meet customer expectations while recognizing that there is little to be gained from requiring that every variation in a product or platform be fully tested. If a product is found to be compliant with a PP on one platform, then all equivalent products on equivalent platforms are also considered to be compliant with the PP.<h:br/><h:br/>A Vendor can make a claim of equivalence if the Vendor believes that a particular instance of their Product implements PP-specified security functionality in a way equivalent to the implementation of the same functionality on another instance of their Product on which the functionality was tested. The Product instances can differ in version number or feature level (model), or the instances may run on different platforms. Equivalency can be used to reduce the testing required across claimed evaluated configurations. It can also be used during Assurance Maintenance to reduce testing needed to add more evaluated configurations to a certification.<h:br/><h:br/>These equivalency guidelines do not replace Assurance Maintenance requirements or NIAP Policy #5 requirements for CAVP certificates. Nor may equivalency be used to leverage evaluations with expired certifications.<h:br/><h:br/>This document provides guidance for determining whether Products and Platforms are equivalent for purposes of evaluation against the Protection Profile for Virtualization (VPP) when instantiated with either the Client or Server PP-Module.<h:br/><h:br/>Equivalence has two aspects:<h:br/><h:ol><h:li><h:b><h:i>Product Equivalence:</h:i></h:b>Products may be considered equivalent if there are no differences between Product Models and Product Versions with respect to PP-specified security functionality.</h:li><h:li><h:b><h:i>Platform Equivalence:</h:i></h:b>Platforms may be considered equivalent if there are no significant differences in the services they provide to the Product--or in the way the platforms provide those services--with respect to PP-specified security functionality.</h:li></h:ol>The equivalency determination is made in accordance with these guidelines by the Validator and Scheme using information provided by the Evaluator/Vendor.</section><section id="s-approach" title="Approach to Equivalency Analysis">There are two scenarios for performing equivalency analysis. One is when a product has been certified and the vendor wants to show that a later product should be considered certified due to equivalence with the earlier product. The other is when multiple product variants are going though evaluation together and the vendor would like to reduce the amount of testing that must be done. The basic rules for determining equivalence are the same in both cases. But there is one additional consideration that applies to equivalence with previously certified products. That is, the product with which equivalence is being claimed must have a valid certification in accordance with scheme rules and the Assurance Maintenance process must be followed. If a product’s certification has expired, then equivalence cannot be claimed with that product.<h:br/><h:br/>When performing equivalency analysis, the Evaluator/Vendor should first use the factors and guidelines for Product Model equivalence to determine the set of Product Models to be evaluated. In general, Product Models that do not differ in PP-specified security functionality are considered equivalent for purposes of evaluation against the VPP.<h:br/><h:br/>If multiple revision levels of Product Models are to be evaluated--or to determine whether a revision of an evaluated product needs re-evaluation--the Evaluator/Vendor and Validator should use the factors and guidelines for Product Version equivalence to determine whether Product Versions are equivalent.<h:br/><h:br/>Having determined the set of Product Models and Versions to be evaluated, the next step is to determine the set of Platforms that the Products must be tested on.<h:br/><h:br/>Each non-equivalent Product for which compliance is claimed must be fully tested on each non-equivalent platform for which compliance is claimed. For non-equivalent Products on equivalent platforms, only the differences that affect PP-specified security functionality must be tested for each product.<h:br/><h:br/>If the set of equivalent Products includes only bare-metal installations, then the equivalency analysis is complete. But if any members of the set include hosted installations or installations that integrate with an existing host operating system or control domain, then software platform equivalence must be taken into consideration. The Evaluator/Vendor and Validator should use the factors and guidance for software platform equivalence to determine whether different models or versions of host or control domain operating systems require separate testing.<h:br/><h:br/><h:b><h:i>“Differences in PP-Specified Security Functionality” Defined</h:i></h:b><h:br/>If PP-specified security functionality is implemented by the TOE, then differences in the actual implementation between versions or product models break equivalence for that feature. Likewise, if the TOE implements the functionality in one version or model and the functionality is implemented by the platform in another version or model, then equivalence is broken. If the functionality is implemented by the platform in multiple models or versions on equivalent platforms, then the functionality is considered different if the product invokes the platform differently to perform the function.</section><section id="s-modelequiv" title="Specific Guidance for Determining Product Model Equivalence">Product Model equivalence attempts to determine whether different feature levels of the same product across a product line are equivalent for purposes of PP testing. For example, if a product has a “basic” edition and an “enterprise” edition, is it necessary to test both models? Or does testing one model provide sufficient confidence that both models are compliant?<h:br/><h:br/><xref to="equiv-prod-model"/>, below, lists the factors for determining Product Model equivalence.<h:br/><h:br/><h:b><ctr ctr-type="Table" pre="Table " id="equiv-prod-model">: Factors for Determining Product Model Equivalence</ctr></h:b><h:br/><h:table border="1"><h:tr class="header" bgcolor="#cccccc"><h:td valign="top">Factor</h:td><h:td valign="top">Same/Different</h:td><h:td valign="top">Guidance</h:td></h:tr><h:tr><h:td valign="top">Target Platform</h:td><h:td valign="top">Different</h:td><h:td valign="top">Product Models that virtualize different instruction sets (e.g., x86, ARM, POWER, SPARC, MIPS) are not equivalent.</h:td></h:tr><h:tr><h:td valign="top">Installation Types</h:td><h:td valign="top">Different</h:td><h:td valign="top">If a Product can be installed either on bare metal or onto an operating system and the vendor wants to claim that both installation types constitute a single Model, then see the guidance for “PP-Specified Functionality,” below.</h:td></h:tr><h:tr><h:td valign="top">Software Platform</h:td><h:td valign="top">Different</h:td><h:td valign="top">Product Models that run on substantially different software environments, such as different host operating systems, are not equivalent. Models that install on different versions of the same software environment may be equivalent depending on the below factors.</h:td></h:tr><h:tr><h:td rowspan="2" valign="top">PP-Specified Functionality</h:td><h:td valign="top">Same</h:td><h:td valign="top">If the differences between Models affect only non-PP-specified functionality, then the Models are equivalent.</h:td></h:tr><h:tr><h:td valign="top">Different</h:td><h:td valign="top">If PP-specified security functionality is affected by the differences between Models, then the Models are not equivalent and must be tested separately. It is necessary to test only the functionality affected by the software differences. If only differences are tested, then the differences must be enumerated, and for each difference the Vendor must provide an explanation of why each difference does or does not affect PP-specified functionality. If the Product Models are fully tested separately, then there is no need to document the differences.</h:td></h:tr></h:table><h:br/><h:br/></section><section id="s-versionequiv" title="Specific Guidance for Determining Product Version Equivalence">In cases of version equivalence, differences are expressed in terms of changes implemented in revisions of an evaluated Product. In general, versions are equivalent if the changes have no effect on any security-relevant claims about the TOE or evaluation evidence. Non-security-relevant changes to TOE functionality or the addition of non-security-relevant functionality does not affect equivalence.<h:br/><h:br/><h:b><ctr ctr-type="Table" pre="Table " id="equiv-version">: Factors for Determining Product Version Equivalence</ctr></h:b><h:br/><h:table border="1"><h:tr class="header" bgcolor="#cccccc"><h:td valign="top">Factor</h:td><h:td valign="top">Same/Different</h:td><h:td valign="top">Guidance</h:td></h:tr><h:tr valign="top"><h:td valign="top">Product Models</h:td><h:td valign="top">Different</h:td><h:td valign="top">Versions of different Product Models are not equivalent unless the Models are equivalent as defined in Section 3.</h:td></h:tr><h:tr><h:td rowspan="2" valign="top">PP-Specified Functionality</h:td><h:td valign="top">Same</h:td><h:td valign="top">If the differences affect only non-PP-specified functionality, then the Versions are equivalent.</h:td></h:tr><h:tr><h:td valign="top">Different</h:td><h:td valign="top">If PP-specified security functionality is affected by the differences, then the Versions are considered to be not equivalent and must be tested separately. It is necessary only to test the functionality affected by the changes. If only the differences are tested, then for each difference the Vendor must provide an explanation of why the difference does or does not affect PP-specified functionality. If the Product Versions are fully tested separately, then there is no need to document the differences.</h:td></h:tr></h:table><h:br/><h:br/></section><section id="s-platformequiv" title="Specific Guidance for Determining Platform Equivalence">Platform equivalence is used to determine the platforms that a product must be tested on. These guidelines are divided into sections for determining hardware equivalence and software (host OS/control domain) equivalence. If the Product is installed onto bare metal, then only hardware equivalence is relevant. If the Product is installed onto an OS—or is integrated into an OS—then both hardware and software equivalence are required. Likewise, if the Product can be installed either on bare metal or on an operating system, both hardware and software equivalence are relevant.<h:br/><h:br/><section id="ss-hardware-equiv" title="Hardware Platform Equivalence">If a Virtualization Solution runs directly on hardware without an operating system, then platform equivalence is based primarily on processor architecture and instruction sets.<h:br/><h:br/>Platforms with different processor architectures and instruction sets are not equivalent. This is probably not an issue because there is likely to be a different product model for different hardware environments.<h:br/><h:br/>Equivalency analysis becomes important when comparing platforms with the same processor architecture. Processors with the same architecture that have instruction sets that are subsets or supersets of each other are not disqualified from being equivalent for purposes of a VPP evaluation. If the VS takes the same code paths when executing PP-specified security functionality on different processors of the same family, then the processors can be considered equivalent with respect to that application.<h:br/><h:br/>For example, if a VS follows one code path on platforms that support the AES-NI instruction and another on platforms that do not, then those two platforms are not equivalent with respect to that VS functionality. But if the VS follows the same code path whether or not the platform supports AES-NI, then the platforms are equivalent with respect to that functionality.<h:br/><h:br/>The platforms are equivalent with respect to the VS if the platforms are equivalent with respect to all PP-specified security functionality.<h:br/><h:br/><h:b><ctr ctr-type="Table" pre="Table " id="equiv-hw-platform">: Factors for Determining Hardware Platform Equivalence</ctr></h:b><h:br/><h:table border="1"><h:tr class="header" bgcolor="#cccccc"><h:td valign="top">Factor</h:td><h:td valign="top">Same/Different/None</h:td><h:td valign="top">Guidance</h:td></h:tr><h:tr valign="top"><h:td valign="top">Platform Architectures</h:td><h:td valign="top">Different</h:td><h:td valign="top">Hardware platforms that implement different processor architectures and instruction sets are not equivalent.</h:td></h:tr><h:tr><h:td valign="top">PP-Specified Functionality</h:td><h:td valign="top">Same</h:td><h:td valign="top">For platforms with the same processor architecture, the platforms are equivalent with respect to the application if execution of all PP-specified security functionality follows the same code path on both platforms.</h:td></h:tr></h:table><h:br/><h:br/></section><section id="ss-os-equiv" title="Software Platform Equivalence">If the Product installs onto or integrates with an operating system that is not installed with the product--and thus is not part of the TOE--then the Product must be tested on all non-equivalent Software Platforms.<h:br/><h:br/>The guidance for Product Model (Section 3) specifies that Products intended for use on substantially different operating systems (e.g., Windows vs. Linux vs. SunOS) are different Models. Therefore, platforms running substantially different operating systems are not equivalent. Likewise, operating systems with different major version numbers are not equivalent for purposes of this PP.<h:br/><h:br/>As a result, Software Platform equivalence is largely concerned with revisions and variations of operating systems that are substantially the same (e.g., different versions and revision levels of Windows or Linux).<h:br/><h:br/><h:b><ctr ctr-type="Table" pre="Table " id="equiv-sw-platform">: Factors for Determining Software Platform Equivalence</ctr></h:b><h:br/><h:table border="1"><h:tr class="header" bgcolor="#cccccc"><h:td valign="top">Factor</h:td><h:td valign="top">Same/Different/None</h:td><h:td valign="top">Guidance</h:td></h:tr><h:tr valign="top"><h:td valign="top">Platform Type/Vendor</h:td><h:td valign="top">Different</h:td><h:td valign="top">Operating systems that are substantially different or come from different vendors are not equivalent.</h:td></h:tr><h:tr valign="top"><h:td valign="top">Platform Versions</h:td><h:td valign="top">Different</h:td><h:td valign="top">Operating systems are not equivalent if they have different major version numbers.</h:td></h:tr><h:tr><h:td rowspan="2" valign="top">PP-Specified Functionality</h:td><h:td valign="top">Same</h:td><h:td valign="top">If the differences between software platform models or versions affect only non-PP-specified functionality, then the software platforms are equivalent.</h:td></h:tr><h:tr><h:td valign="top">Different</h:td><h:td valign="top">If PP-specified security functionality is affected by the differences between software platform versions or models, then the software platforms are not considered equivalent and must be tested separately. It is necessary only to test the functionality affected by the changes. If only the differences are tested, then for each difference the Vendor must provide an explanation of why the difference does or does not affect PP-specified functionality. If the Products are fully tested on each platform, then there is no need to document the differences.</h:td></h:tr></h:table><h:br/><h:br/></section></section><section id="s-specificity" title="Level of Specificity for Tested and Claimed Equivalent Configurations">In order to make equivalency determinations, the vendor and evaluator must agree on the equivalency claims. They must then provide the scheme with sufficient information about the TOE instances and platforms that were evaluated, and the TOE instances and platforms that are claimed to be equivalent.<h:br/><h:br/>The ST must describe all configurations evaluated down to processor manufacturer, model number, and microarchitecture version.<h:br/><h:br/>The information regarding claimed equivalent configurations depends on the platform that the VS was developed for and runs on.<h:br/><h:br/><h:b>Bare-Metal VS</h:b><h:br/><h:br/>For VSes that run without an operating system on bare-metal or virtual bare-metal, the claimed configuration must describe the platform down to the specific processor manufacturer, model number, and microarchitecture version. The Vendor must describe the differences in the TOE with respect to PP-specified security functionality and how the TOE operates differently to leverage platform differences (e.g., instruction set extensions) in the tested configuration versus the claimed equivalent configuration.<h:br/><h:br/><h:b>VS with OS Support</h:b><h:br/><h:br/>For VSes that run on an OS host or with the assistance of an OS, then the claimed configuration must describe the OS down to its specific model and version number. The Vendor must describe the differences in the TOE with respect to PP-specified security functionality and how the TOE functions differently to leverage platform differences in the tested configuration versus the claimed equivalent configuration.</section></appendix>
+  <appendix title="Equivalency Guidelines" id="appendix-equiv"><section id="s-vm-intro" title="Introduction">The purpose of equivalence in PP-based evaluations is to find a balance between evaluation rigor and commercial practicability--to ensure that evaluations meet customer expectations while recognizing that there is little to be gained from requiring that every variation in a product or platform be fully tested. If a product is found to be compliant with a PP on one platform, then all equivalent products on equivalent platforms are also considered to be compliant with the PP.<h:br/><h:br/><h:br/><h:br/>A Vendor can make a claim of equivalence if the Vendor believes that a particular instance of their Product implements PP-specified security functionality in a way equivalent to the implementation of the same functionality on another instance of their Product on which the functionality was tested. The Product instances can differ in version number or feature level (model), or the instances may run on different platforms. Equivalency can be used to reduce the testing required across claimed evaluated configurations. It can also be used during Assurance Maintenance to reduce testing needed to add more evaluated configurations to a certification.<h:br/><h:br/><h:br/><h:br/>These equivalency guidelines do not replace Assurance Maintenance requirements or NIAP Policy #5 requirements for CAVP certificates. Nor may equivalency be used to leverage evaluations with expired certifications.<h:br/><h:br/><h:br/><h:br/>This document provides guidance for determining whether Products and Platforms are equivalent for purposes of evaluation against the Protection Profile for Virtualization (VPP) when instantiated with either the Client or Server PP-Module.<h:br/><h:br/><h:br/><h:br/>Equivalence has two aspects:<h:br/><h:br/><h:ol><h:li><h:b><h:i>Product Equivalence:</h:i></h:b>Products may be considered equivalent if there are no differences between Product Models and Product Versions with respect to PP-specified security functionality.</h:li><h:li><h:b><h:i>Platform Equivalence:</h:i></h:b>Platforms may be considered equivalent if there are no significant differences in the services they provide to the Product--or in the way the platforms provide those services--with respect to PP-specified security functionality.</h:li></h:ol>The equivalency determination is made in accordance with these guidelines by the Validator and Scheme using information provided by the Evaluator/Vendor.</section><section id="s-approach" title="Approach to Equivalency Analysis">There are two scenarios for performing equivalency analysis. One is when a product has been certified and the vendor wants to show that a later product should be considered certified due to equivalence with the earlier product. The other is when multiple product variants are going though evaluation together and the vendor would like to reduce the amount of testing that must be done. The basic rules for determining equivalence are the same in both cases. But there is one additional consideration that applies to equivalence with previously certified products. That is, the product with which equivalence is being claimed must have a valid certification in accordance with scheme rules and the Assurance Maintenance process must be followed. If a product’s certification has expired, then equivalence cannot be claimed with that product.<h:br/><h:br/><h:br/><h:br/>When performing equivalency analysis, the Evaluator/Vendor should first use the factors and guidelines for Product Model equivalence to determine the set of Product Models to be evaluated. In general, Product Models that do not differ in PP-specified security functionality are considered equivalent for purposes of evaluation against the VPP.<h:br/><h:br/><h:br/><h:br/>If multiple revision levels of Product Models are to be evaluated--or to determine whether a revision of an evaluated product needs re-evaluation--the Evaluator/Vendor and Validator should use the factors and guidelines for Product Version equivalence to determine whether Product Versions are equivalent.<h:br/><h:br/><h:br/><h:br/>Having determined the set of Product Models and Versions to be evaluated, the next step is to determine the set of Platforms that the Products must be tested on.<h:br/><h:br/><h:br/><h:br/>Each non-equivalent Product for which compliance is claimed must be fully tested on each non-equivalent platform for which compliance is claimed. For non-equivalent Products on equivalent platforms, only the differences that affect PP-specified security functionality must be tested for each product.<h:br/><h:br/><h:br/><h:br/>If the set of equivalent Products includes only bare-metal installations, then the equivalency analysis is complete. But if any members of the set include hosted installations or installations that integrate with an existing host operating system or control domain, then software platform equivalence must be taken into consideration. The Evaluator/Vendor and Validator should use the factors and guidance for software platform equivalence to determine whether different models or versions of host or control domain operating systems require separate testing.<h:br/><h:br/><h:br/><h:br/><h:b><h:i>“Differences in PP-Specified Security Functionality” Defined</h:i></h:b><h:br/><h:br/>If PP-specified security functionality is implemented by the TOE, then differences in the actual implementation between versions or product models break equivalence for that feature. Likewise, if the TOE implements the functionality in one version or model and the functionality is implemented by the platform in another version or model, then equivalence is broken. If the functionality is implemented by the platform in multiple models or versions on equivalent platforms, then the functionality is considered different if the product invokes the platform differently to perform the function.</section><section id="s-modelequiv" title="Specific Guidance for Determining Product Model Equivalence">Product Model equivalence attempts to determine whether different feature levels of the same product across a product line are equivalent for purposes of PP testing. For example, if a product has a “basic” edition and an “enterprise” edition, is it necessary to test both models? Or does testing one model provide sufficient confidence that both models are compliant?<h:br/><h:br/><h:br/><h:br/><xref to="equiv-prod-model"/>, below, lists the factors for determining Product Model equivalence.<h:br/><h:br/><h:br/><h:br/><h:b><ctr ctr-type="Table" pre="Table " id="equiv-prod-model">: Factors for Determining Product Model Equivalence</ctr></h:b><h:br/><h:br/><h:table border="1"><h:tr class="header" bgcolor="#cccccc"><h:td valign="top">Factor</h:td><h:td valign="top">Same/Different</h:td><h:td valign="top">Guidance</h:td></h:tr><h:tr><h:td valign="top">Target Platform</h:td><h:td valign="top">Different</h:td><h:td valign="top">Product Models that virtualize different instruction sets (e.g., x86, ARM, POWER, SPARC, MIPS) are not equivalent.</h:td></h:tr><h:tr><h:td valign="top">Installation Types</h:td><h:td valign="top">Different</h:td><h:td valign="top">If a Product can be installed either on bare metal or onto an operating system and the vendor wants to claim that both installation types constitute a single Model, then see the guidance for “PP-Specified Functionality,” below.</h:td></h:tr><h:tr><h:td valign="top">Software Platform</h:td><h:td valign="top">Different</h:td><h:td valign="top">Product Models that run on substantially different software environments, such as different host operating systems, are not equivalent. Models that install on different versions of the same software environment may be equivalent depending on the below factors.</h:td></h:tr><h:tr><h:td rowspan="2" valign="top">PP-Specified Functionality</h:td><h:td valign="top">Same</h:td><h:td valign="top">If the differences between Models affect only non-PP-specified functionality, then the Models are equivalent.</h:td></h:tr><h:tr><h:td valign="top">Different</h:td><h:td valign="top">If PP-specified security functionality is affected by the differences between Models, then the Models are not equivalent and must be tested separately. It is necessary to test only the functionality affected by the software differences. If only differences are tested, then the differences must be enumerated, and for each difference the Vendor must provide an explanation of why each difference does or does not affect PP-specified functionality. If the Product Models are fully tested separately, then there is no need to document the differences.</h:td></h:tr></h:table><h:br/><h:br/><h:br/><h:br/></section><section id="s-versionequiv" title="Specific Guidance for Determining Product Version Equivalence">In cases of version equivalence, differences are expressed in terms of changes implemented in revisions of an evaluated Product. In general, versions are equivalent if the changes have no effect on any security-relevant claims about the TOE or evaluation evidence. Non-security-relevant changes to TOE functionality or the addition of non-security-relevant functionality does not affect equivalence.<h:br/><h:br/><h:br/><h:br/><h:b><ctr ctr-type="Table" pre="Table " id="equiv-version">: Factors for Determining Product Version Equivalence</ctr></h:b><h:br/><h:br/><h:table border="1"><h:tr class="header" bgcolor="#cccccc"><h:td valign="top">Factor</h:td><h:td valign="top">Same/Different</h:td><h:td valign="top">Guidance</h:td></h:tr><h:tr valign="top"><h:td valign="top">Product Models</h:td><h:td valign="top">Different</h:td><h:td valign="top">Versions of different Product Models are not equivalent unless the Models are equivalent as defined in Section 3.</h:td></h:tr><h:tr><h:td rowspan="2" valign="top">PP-Specified Functionality</h:td><h:td valign="top">Same</h:td><h:td valign="top">If the differences affect only non-PP-specified functionality, then the Versions are equivalent.</h:td></h:tr><h:tr><h:td valign="top">Different</h:td><h:td valign="top">If PP-specified security functionality is affected by the differences, then the Versions are considered to be not equivalent and must be tested separately. It is necessary only to test the functionality affected by the changes. If only the differences are tested, then for each difference the Vendor must provide an explanation of why the difference does or does not affect PP-specified functionality. If the Product Versions are fully tested separately, then there is no need to document the differences.</h:td></h:tr></h:table><h:br/><h:br/><h:br/><h:br/></section><section id="s-platformequiv" title="Specific Guidance for Determining Platform Equivalence">Platform equivalence is used to determine the platforms that a product must be tested on. These guidelines are divided into sections for determining hardware equivalence and software (host OS/control domain) equivalence. If the Product is installed onto bare metal, then only hardware equivalence is relevant. If the Product is installed onto an OS—or is integrated into an OS—then both hardware and software equivalence are required. Likewise, if the Product can be installed either on bare metal or on an operating system, both hardware and software equivalence are relevant.<h:br/><h:br/><h:br/><h:br/><section id="ss-hardware-equiv" title="Hardware Platform Equivalence">If a Virtualization Solution runs directly on hardware without an operating system, then platform equivalence is based primarily on processor architecture and instruction sets.<h:br/><h:br/><h:br/><h:br/>Platforms with different processor architectures and instruction sets are not equivalent. This is probably not an issue because there is likely to be a different product model for different hardware environments.<h:br/><h:br/><h:br/><h:br/>Equivalency analysis becomes important when comparing platforms with the same processor architecture. Processors with the same architecture that have instruction sets that are subsets or supersets of each other are not disqualified from being equivalent for purposes of a VPP evaluation. If the VS takes the same code paths when executing PP-specified security functionality on different processors of the same family, then the processors can be considered equivalent with respect to that application.<h:br/><h:br/><h:br/><h:br/>For example, if a VS follows one code path on platforms that support the AES-NI instruction and another on platforms that do not, then those two platforms are not equivalent with respect to that VS functionality. But if the VS follows the same code path whether or not the platform supports AES-NI, then the platforms are equivalent with respect to that functionality.<h:br/><h:br/><h:br/><h:br/>The platforms are equivalent with respect to the VS if the platforms are equivalent with respect to all PP-specified security functionality.<h:br/><h:br/><h:br/><h:br/><h:b><ctr ctr-type="Table" pre="Table " id="equiv-hw-platform">: Factors for Determining Hardware Platform Equivalence</ctr></h:b><h:br/><h:br/><h:table border="1"><h:tr class="header" bgcolor="#cccccc"><h:td valign="top">Factor</h:td><h:td valign="top">Same/Different/None</h:td><h:td valign="top">Guidance</h:td></h:tr><h:tr valign="top"><h:td valign="top">Platform Architectures</h:td><h:td valign="top">Different</h:td><h:td valign="top">Hardware platforms that implement different processor architectures and instruction sets are not equivalent.</h:td></h:tr><h:tr><h:td valign="top">PP-Specified Functionality</h:td><h:td valign="top">Same</h:td><h:td valign="top">For platforms with the same processor architecture, the platforms are equivalent with respect to the application if execution of all PP-specified security functionality follows the same code path on both platforms.</h:td></h:tr></h:table><h:br/><h:br/><h:br/><h:br/></section><section id="ss-os-equiv" title="Software Platform Equivalence">If the Product installs onto or integrates with an operating system that is not installed with the product--and thus is not part of the TOE--then the Product must be tested on all non-equivalent Software Platforms.<h:br/><h:br/><h:br/><h:br/>The guidance for Product Model (Section 3) specifies that Products intended for use on substantially different operating systems (e.g., Windows vs. Linux vs. SunOS) are different Models. Therefore, platforms running substantially different operating systems are not equivalent. Likewise, operating systems with different major version numbers are not equivalent for purposes of this PP.<h:br/><h:br/><h:br/><h:br/>As a result, Software Platform equivalence is largely concerned with revisions and variations of operating systems that are substantially the same (e.g., different versions and revision levels of Windows or Linux).<h:br/><h:br/><h:br/><h:br/><h:b><ctr ctr-type="Table" pre="Table " id="equiv-sw-platform">: Factors for Determining Software Platform Equivalence</ctr></h:b><h:br/><h:br/><h:table border="1"><h:tr class="header" bgcolor="#cccccc"><h:td valign="top">Factor</h:td><h:td valign="top">Same/Different/None</h:td><h:td valign="top">Guidance</h:td></h:tr><h:tr valign="top"><h:td valign="top">Platform Type/Vendor</h:td><h:td valign="top">Different</h:td><h:td valign="top">Operating systems that are substantially different or come from different vendors are not equivalent.</h:td></h:tr><h:tr valign="top"><h:td valign="top">Platform Versions</h:td><h:td valign="top">Different</h:td><h:td valign="top">Operating systems are not equivalent if they have different major version numbers.</h:td></h:tr><h:tr><h:td rowspan="2" valign="top">PP-Specified Functionality</h:td><h:td valign="top">Same</h:td><h:td valign="top">If the differences between software platform models or versions affect only non-PP-specified functionality, then the software platforms are equivalent.</h:td></h:tr><h:tr><h:td valign="top">Different</h:td><h:td valign="top">If PP-specified security functionality is affected by the differences between software platform versions or models, then the software platforms are not considered equivalent and must be tested separately. It is necessary only to test the functionality affected by the changes. If only the differences are tested, then for each difference the Vendor must provide an explanation of why the difference does or does not affect PP-specified functionality. If the Products are fully tested on each platform, then there is no need to document the differences.</h:td></h:tr></h:table><h:br/><h:br/><h:br/><h:br/></section></section><section id="s-specificity" title="Level of Specificity for Tested and Claimed Equivalent Configurations">In order to make equivalency determinations, the vendor and evaluator must agree on the equivalency claims. They must then provide the scheme with sufficient information about the TOE instances and platforms that were evaluated, and the TOE instances and platforms that are claimed to be equivalent.<h:br/><h:br/><h:br/><h:br/>The ST must describe all configurations evaluated down to processor manufacturer, model number, and microarchitecture version.<h:br/><h:br/><h:br/><h:br/>The information regarding claimed equivalent configurations depends on the platform that the VS was developed for and runs on.<h:br/><h:br/><h:br/><h:br/><h:b>Bare-Metal VS</h:b><h:br/><h:br/><h:br/><h:br/>For VSes that run without an operating system on bare-metal or virtual bare-metal, the claimed configuration must describe the platform down to the specific processor manufacturer, model number, and microarchitecture version. The Vendor must describe the differences in the TOE with respect to PP-specified security functionality and how the TOE operates differently to leverage platform differences (e.g., instruction set extensions) in the tested configuration versus the claimed equivalent configuration.<h:br/><h:br/><h:br/><h:br/><h:b>VS with OS Support</h:b><h:br/><h:br/><h:br/><h:br/>For VSes that run on an OS host or with the assistance of an OS, then the claimed configuration must describe the OS down to its specific model and version number. The Vendor must describe the differences in the TOE with respect to PP-specified security functionality and how the TOE functions differently to leverage platform differences in the tested configuration versus the claimed equivalent configuration.</section></appendix>
   <bibliography>
     <cc-entry/>
     <entry id="bibCEM">

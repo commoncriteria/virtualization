@@ -1,21 +1,10 @@
-* Error: f-element FAU_ARP.1.1  appears not to have an associated evaluation activity.:
-        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[2]""/f-component[1]""/f-element[1]""
-* Error: f-element FAU_SAA.1.1  appears not to have an associated evaluation activity.:
-        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[2]""/f-component[3]""/f-element[1]""
-* Error: f-element FAU_SAA.1.2  appears not to have an associated evaluation activity.:
-        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[2]""/f-component[3]""/f-element[2]""
-* Error: f-element FPT_DVD_EXT.1.1  appears not to have an associated evaluation activity.:
-        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[2]""/f-element[1]""
-* Error: f-element FPT_TUD_EXT.2.1  appears not to have an associated evaluation activity.:
-        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[12]""/f-element[1]""
-* Error: f-element FTA_TAB.1.1  appears not to have an associated evaluation activity.:
-        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[8]""/f-component[1]""/f-element[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"A Virtual"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"A Virtual"/h:p[2]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"A Virtual"/h:p[3]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"A Virtual"/h:p[4]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"A Virtual"/h:p[5]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Conformance_Claims[1]""/cclaims[1]""/cclaim[1]""/description[1]"A Securit"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"A Virtual"/sec:TOE_Boundary[1]"Figure 1 "/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"A Virtual"/sec:TOE_Boundary[1]"Figure 1 "/h:p[2]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[2]""/f-component[1]""/f-element[1]""/note[1]"In certai"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[2]""/f-component[2]""/f-element[1]""/aactivity[1]""/TSS[1]"The evalu"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[2]""/f-component[2]""/f-element[1]""/aactivity[1]""/Guidance[1]"The evalu"/h:p[1]""
@@ -264,7 +253,6 @@
 * Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/section[1]"The Secur"/section[5]"Testing i"/a-component[1]"Testing i"/a-element[4]""/aactivity[1]"The evalu"/h:p[2]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/section[1]"The Secur"/section[5]"Testing i"/a-component[1]"Testing i"/a-element[4]""/aactivity[1]"The evalu"/h:p[3]""
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[2]""/section[1]"Documenta"/h:p[1]""
-* Rules without a 'Validation Guidelines' appendix has been detected.
 * Warning: Since FAU_STG_EXT.1.2 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
 * Warning: Since FCS_ENT_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
