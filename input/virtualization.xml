@@ -180,16 +180,7 @@
 			products have different use cases and so these are defined in their respective PP-Modules.
         </sec:Use_Cases>
   </sec:Introduction>
-  <sec:Conformance_Claims  boilerplate="no">
-    <CClaimsInfo cc-version="cc-2022r1" cc-approach="direct-rationale">
-      <cc-st-conf>exact</cc-st-conf>
-      <cc-pt2-conf>conformant</cc-pt2-conf>
-      <cc-pt3-conf>conformant</cc-pt3-conf>
-      <cc-pp-conf/>
-      <cc-pp-config-with/>
-      <cc-pkg-claim/>
-    </CClaimsInfo>
-  </sec:Conformance_Claims>
+  <sec:Conformance_Claims  boilerplate="no"/>
   <!-- 3.0 Security Problem Definition-->
   <sec:Security_Problem_Definition >
     <!-- 3.1 Threats -->
@@ -3894,6 +3885,12 @@
           <a-element type="D">
             <title>The developer shall provide a tracing from the functional specification to the
 					SFRs.</title>
+            <note>
+                            As indicated in the introduction to this section, the functional specification is composed of the information
+				contained in the AGD_OPR and AGD_PRE documentation, coupled with the information provided in the TSS of the
+				ST. The evaluation activities in the functional requirements point to evidence that should exist in the
+				documentation and TSS section; since these are directly associated with the SFRs, the tracing in element 
+				ADV_FSP.1.2D is implicitly already done and no additional documentation is necessary.</note>
             <aactivity/>
           </a-element>
           <a-element type="C">
@@ -3923,11 +3920,19 @@
           <a-element type="E">
             <title>The evaluator shall determine that the functional specification is an accurate
 					and complete instantiation of the SFRs.</title>
+            <note>
+                            There are no specific evaluation activities associated with these SARs. The functional specification documentation
+				is provided to support the evaluation activities described in Section 5.2, and other activities described for
+				AGD, ATE, and AVA SARs. The requirements on the content of the functional specification information is 
+				implicitly assessed by virtue of the other evaluation activities being performed; if the evaluator is unable 
+				to perform an activity because there is insufficient interface information, then an adequate functional
+				specification has not been provided.
+                        </note>
             <aactivity/>
           </a-element>
         </a-component>
       </section>
-      <section title="Class AGD: Guidance Documentats" id="agd">
+      <section title="Class AGD: Guidance Documents" id="agd">
         
 		The guidance documents will be
         provided with the ST. Guidance must include a description of how the IT personnel verifies
@@ -3944,6 +3949,10 @@
         <a-component cc-id="agd_ope.1" name="Operational User Guidance (AGD_OPE.1)">
           <a-element type="D">
             <title>The developer shall provide operational user guidance.</title>
+            <note>
+                            Rather than repeat information here, the developer should review the evaluation activities for this 
+				component to ascertain the specifics of the guidance that the evaluators will be checking for. This
+				will provide the necessary information for the preparation of acceptable guidance.</note>
             <aactivity/>
           </a-element>
           <a-element type="C">
@@ -3989,7 +3998,26 @@
           <a-element type="E">
             <title>The evaluator shall confirm that the information provided meets all requirements
 					for content and presentation of evidence.</title>
-            <aactivity/>
+            <aactivity>
+                                Some of the contents of the operational guidance will be verified by the evaluation activities in 
+                                Section 5.2 and evaluation of the TOE according to the CEM. The 
+                                following additional information is also required.<h:p/>
+                                The operational guidance shall contain instructions for configuring the password characteristics,
+                                number of allowed authentication attempt failures, the lockout period times for inactivity, and the
+                                notice and consent warning that is to be provided when authenticating.<h:p/>
+                                The operational guidance shall contain step-by-step instructions suitable for use by an end-user
+                                of the VS to configure a new, out-of-the-box system into the configuration
+                                evaluated under this Protection Profile.<h:p/>
+                                The documentation shall describe the process for verifying updates to the TOE, 
+                                either by checking the hash or by verifying a digital signature. The evaluator shall verify that 
+                                this process includes the following steps:
+                                <h:ul><h:li>Instructions for querying the current version of the TOE software.</h:li><h:li>For hashes, a description of where the hash for a given update can be obtained. For digital 
+					    signatures, instructions for obtaining the certificate that will be used by the
+					    FCS_COP.1/SIG mechanism to ensure that a signed update has been received from the
+					    certificate owner. This may be supplied with the product initially, or may be obtained by
+					    some other means.</h:li><h:li>Instructions for obtaining the update itself. This should include instructions for making 
+					    the update accessible to the TOE (e.g., placement in a specific directory).</h:li><h:li>Instructions for initiating the update process, as well as discerning whether the process
+					    was successful or unsuccessful. This includes generation of the hash/digital signature.</h:li></h:ul></aactivity>
           </a-element>
         </a-component>
         <a-component cc-id="agd_pre.1" name="Preparative Procedures (AGD_PRE.1)">
@@ -4018,7 +4046,16 @@
           <a-element type="E">
             <title>The evaluator shall apply the preparative procedures to confirm that the TOE
 					can be prepared securely for operation.</title>
-            <aactivity/>
+            <aactivity>
+                                As indicated in the introduction above, there are significant expectations with respect to the
+                                documentation—especially when configuring the operational environment to support TOE
+                                functional requirements. The evaluator shall check to ensure that the guidance provided for the 
+                                TOE adequately addresses all platforms (that is, combination of hardware and 
+                                operating system) claimed for the TOE in the ST.<h:p/>
+                                The operational guidance shall contain step-by-step instructions suitable for use by an end-user of
+                                the VS to configure a new, out-of-the-box system into the configuration evaluated 
+                                under this Protection Profile.
+                        </aactivity>
           </a-element>
         </a-component>
       </section>
@@ -4048,7 +4085,13 @@
           <a-element type="E">
             <title>The evaluator shall confirm that the information provided meets all
 					requirements for content and presentation of evidence.</title>
-            <aactivity/>
+            <aactivity>
+                                The evaluator shall check the ST to ensure that it contains an identifier (such as a product
+                                name/version number) that specifically identifies the version that meets the requirements of the ST.<h:p/>
+                                The evaluator shall check the AGD guidance and TOE samples received for testing to ensure
+                                that the version number is consistent with that in the ST. <h:p/>
+                                If the vendor maintains a website advertising the TOE, the evaluator shall examine the information on the website to ensure that
+                                the information in the ST is sufficient to distinguish the product.<h:p/></aactivity>
           </a-element>
         </a-component>
         <a-component cc-id="alc_cms.1" name="TOE CM Coverage (ALC_CMS.1)">
@@ -4068,10 +4111,21 @@
           <a-element type="E">
             <title>The evaluator shall confirm that the information provided meets all requirements
 					for content and presentation of evidence.</title>
-            <aactivity/>
+            <aactivity>
+                                The evaluator shall ensure that the developer has identified (in public-facing development
+                                guidance for their platform) one or more development environments appropriate for use in developing
+                                applications for the developer’s platform. For each of these development environments, the developer
+                                shall provide information on how to configure the environment to ensure that buffer overflow protection
+                                mechanisms in the environment are invoked (e.g., compiler and linker flags). The evaluator shall
+                                ensure that this documentation also includes an indication of whether such protections are on by
+                                default, or have to be specifically enabled.
+                                The evaluator shall ensure that the TSF is uniquely identified (with respect to other products from
+                                the TSF vendor), and that documentation provided by the developer in association with the requirements
+                                in the ST is associated with the TSF  using this unique identification.
+                        </aactivity>
           </a-element>
         </a-component>
-        <a-component cc-id="alc_flr.1" name="Basic Flaw Remediation (ALC_FLR.1)">
+        <a-component cc-id="alc_flr.1" name="Basic Flaw Remediation (ALC_FLR.1)" status="optional">
           <a-element type="C">
             <title>The flaw remediation procedures documentation shall describe the procedures used to track all reported security flaws in each release of the TOE.</title>
             <aactivity/>
@@ -4097,7 +4151,7 @@
             <aactivity/>
           </a-element>
         </a-component>
-        <a-component cc-id="alc_flr.2" name="Flaw Reporting Procedures (ALC_FLR.2)">
+        <a-component cc-id="alc_flr.2" name="Flaw Reporting Procedures (ALC_FLR.2)" status="optional">
           <a-element type="C">
             <title>The flaw remediation procedures documentation shall describe the procedures used to track all reported security flaws in each release of the TOE.</title>
             <aactivity/>
@@ -4147,7 +4201,7 @@
             <aactivity/>
           </a-element>
         </a-component>
-        <a-component cc-id="alc_flr.3" name="Systematic Flaw Remediation (ALC_FLR.3)">
+        <a-component cc-id="alc_flr.3" name="Systematic Flaw Remediation (ALC_FLR.3)" status="optional">
           <a-element type="C">
             <title>The flaw remediation procedures documentation shall describe the procedures used to track all reported security flaws in each release of the TOE.</title>
             <aactivity/>
@@ -4209,7 +4263,7 @@
             <aactivity/>
           </a-element>
         </a-component>
-        <a-component cc-id="alc_tsu_ext.1" name="Timely Security Updates">
+        <a-component cc-id="alc_tsu_ext.1" name="Timely Security Updates" status="optional">
           
 			This component requires the TOE developer, in conjunction with any other necessary parties,
 			to provide information as to how the end-user devices are updated to address security issues
@@ -4240,15 +4294,23 @@
             <title>The description shall express the time window as the length of time, 
 					in days, between public disclosure of a vulnerability and the public availability
 					of security updates to the TOE.</title>
+            <note>
+                            The total length of time may be presented as a summation of the periods of time that each party (e.g.,
+				TOE developer, hardware vendor) on the critical path consumes. The time period until public
+				availability per deployment mechanism may differ; each is described.</note>
             <aactivity/>
           </a-element>
           <a-element type="C">
             <title>The description shall include the mechanisms publicly available for
 					reporting security issues pertaining to the TOE.</title>
+            <note>
+                            The reporting mechanism could include websites, email addresses, and a means to protect the sensitive
+				nature of the report (e.g., public keys that could be used to encrypt the details of a 
+				proof-of-concept exploit).</note>
             <aactivity/>
           </a-element>
           <a-element type="E">
-            <title>The evaluator <h:i>shall confirm</h:i> that the information provided meets all
+            <title>The evaluator shall confirm that the information provided meets all
 					requirements for content and presentation of evidence.</title>
             <aactivity/>
           </a-element>
@@ -4577,14 +4639,42 @@
             <aactivity/>
           </a-element>
           <a-element type="E">
-            <title>The evaluator <h:i>shall confirm</h:i> that the information provided meets all
+            <title>The evaluator shall confirm that the information provided meets all
 					requirements for content and presentation of evidence.</title>
             <aactivity/>
           </a-element>
           <a-element type="E">
             <title>The evaluator shall test a subset of the TSF to confirm
 					that the TSF operates as specified.</title>
-            <aactivity/>
+            <aactivity>
+                                The evaluator shall prepare a test plan and report documenting the testing aspects of the system.
+				    While it is not necessary to have one test case per test listed in an evaluation activity, the
+				    evaluators must document in the test plan that each applicable testing requirement in the 
+				    ST is covered.<h:p/>
+                                The Test Plan identifies the platforms to be tested, and for those platforms not included in the test
+				    plan but included in the ST, the test plan provides a justification for not
+				    testing the platforms. This justification must address the differences between the tested platforms
+				    and the untested platforms, and make an argument that the differences do not affect the testing to
+				    be performed. It is not sufficient to merely assert that the differences have no affect; rationale
+				    must be provided. If all platforms claimed in the ST are tested, then no 
+				    rationale is necessary.<h:p/>
+                                The test plan describes the composition of each platform to be tested, and any setup that is necessary
+				    beyond what is contained in the AGD documentation. It should be noted that the evaluators are
+				    expected to follow the AGD documentation for installation and setup of each platform either as
+				    part of a test or as a standard pre-test condition. This may include special test drivers or
+				    tools. For each driver or tool, an argument (not just an assertion) is provided that the driver or 
+				    tool will not adversely affect the performance of the functionality by the TOE and its platform.
+				    This also includes the configuration of cryptographic engines to be used. The cryptographic 
+				    algorithms implemented by these engines are those specified by this PP and used by the 
+				    cryptographic protocols being evaluated (IPsec, TLS/HTTPS, SSH).<h:p/>
+                                The test plan identifies high-level test objectives as well as the test procedures to be followed to 
+				    achieve those objectives. These procedures include expected results. The test report (which could
+				    just be an annotated version of the test plan) details the activities that took place when the
+				    test procedures were executed, and includes the actual results of the tests. This shall be a 
+				    cumulative account, so if there was a test run that resulted in a failure; a fix installed; and
+				    then a successful re-run of the test, the report would show a “fail” and “pass” result (and the
+				    supporting details), and not just the “pass” result.
+                         </aactivity>
           </a-element>
         </a-component>
       </section>
@@ -4623,7 +4713,20 @@
             <title>The evaluator shall conduct penetration testing, based on the identified
 					potential vulnerabilities, to determine that the TOE is resistant to
 					attacks performed by an attacker possessing Basic attack potential.</title>
-            <aactivity/>
+            <aactivity>As with ATE_IND the evaluator shall generate a report to document their findings with respect
+				to this requirement. This report could physically be part of the overall test report mentioned in
+				ATE_IND, or a separate document. The evaluator performs a search of public information to determine
+				the vulnerabilities that have been found in virtualization in general, as well as those that pertain 
+				to the particular TOE. The evaluator documents the sources consulted and the 
+				vulnerabilities found in the report. For each vulnerability found, the evaluator either provides a
+				rationale with respect to its non-applicability or the evaluator formulates a test (using the
+				guidelines provided in ATE_IND) to confirm the vulnerability, if suitable. Suitability is determined
+				by assessing the attack vector needed to take advantage of the vulnerability. For example, if the
+				vulnerability can be detected by pressing a key combination on boot-up, a test would be suitable at 
+				the assurance level of this PP. If exploiting the vulnerability requires expert skills and an electron 
+				microscope, for instance, then a test would not be suitable and an appropriate justification would be
+				formulated. 
+			  </aactivity>
           </a-element>
         </a-component>
       </section>
