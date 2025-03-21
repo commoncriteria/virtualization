@@ -239,6 +239,16 @@
 * Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[9]""/f-component[3]""/f-element[1]""/note[1]"This requ"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[9]""/f-component[4]""/f-element[1]""/note[1]"In enviro"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[9]""/f-component[4]""/f-element[1]""/aactivity[1]""/Tests[1]"The evalu"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/section[1]""/section[2]"The guida"/a-component[1]""/a-element[9]""/aactivity[1]"Some of t"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/section[1]""/section[2]"The guida"/a-component[1]""/a-element[9]""/aactivity[1]"Some of t"/h:p[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/section[1]""/section[2]"The guida"/a-component[1]""/a-element[9]""/aactivity[1]"Some of t"/h:p[3]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/section[1]""/section[2]"The guida"/a-component[2]""/a-element[5]""/aactivity[1]"As indica"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/section[1]""/section[3]"At the as"/a-component[1]"This comp"/a-element[3]""/aactivity[1]"The evalu"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/section[1]""/section[3]"At the as"/a-component[1]"This comp"/a-element[3]""/aactivity[1]"The evalu"/h:p[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/section[1]""/section[3]"At the as"/a-component[1]"This comp"/a-element[3]""/aactivity[1]"The evalu"/h:p[3]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/section[1]""/section[5]"Testing i"/a-component[1]"Testing i"/a-element[4]""/aactivity[1]"The evalu"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/section[1]""/section[5]"Testing i"/a-component[1]"Testing i"/a-element[4]""/aactivity[1]"The evalu"/h:p[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/section[1]""/section[5]"Testing i"/a-component[1]"Testing i"/a-element[4]""/aactivity[1]"The evalu"/h:p[3]""
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[2]""/section[1]"Documenta"/h:p[1]""
 * Warning: Since FAU_STG_EXT.1.2 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
