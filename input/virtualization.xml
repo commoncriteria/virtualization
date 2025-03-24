@@ -181,7 +181,7 @@
         </sec:Use_Cases>
   </sec:Introduction>
   <sec:Conformance_Claims  boilerplate="no">
-    <CClaimsInfo cc-version="cc-2022r1" cc-approach="direct-rationale">
+    <CClaimsInfo cc-version="cc-2022r1" cc-approach="standard">
       <cc-st-conf>exact</cc-st-conf>
       <cc-pt2-conf>conformant</cc-pt2-conf>
       <cc-pt3-conf>conformant</cc-pt3-conf>
@@ -195,41 +195,91 @@
   <!-- 3.0 Security Problem Definition-->
   <sec:Security_Problem_Definition >
     <!-- 3.1 Threats -->
-    <sec:Threats><threats><threat name="T.3P_SOFTWARE"><description>                        In some VS implementations, functions critical to the security of the TOE are by necessity performed by     software not produced by the virtualization vendor. Such software may include physical device drivers,     and even non-TOE entities such as Host Operating Systems. Since this software has the same or similar    privilege level as the VS, vulnerabilities can be exploited by an adversary to compromise the VS and VMs.    Where possible, the VS should mitigate the results of potential vulnerabilities or malicious content in    third-party code on which it relies. For example, physical device drivers (potentially the Host OS) could     be encapsulated within VMs in order to limit the effects of compromise.                     </description><!-- New mapping to build updated threat mapping table. --><addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events can report potential integrity breaches and attempts.</rationale><addressed-by>FCS_CKM.1</addressed-by><rationale>Requires generation of asymmetric keys for protection of integrity measures.</rationale><addressed-by>FCS_COP.1</addressed-by><rationale>Ensures proper functioning of cryptographic algorithms used to protect data integrity.</rationale><addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale><addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale><addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.</rationale><addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale><addressed-by>FPT_DDI_EXT.1</addressed-by><rationale>Requires that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale><addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale><addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale><addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Hypercall parameters be validated.</rationale><addressed-by>FPT_ML_EXT.1</addressed-by><rationale>Requires measured launch of the platform and VMM (objective).</rationale><addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale><addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale></threat><threat name="T.DATA_LEAKAGE"><description>                    It is a fundamental property of VMs that the domains encapsulated by different VMs remain separate unless data sharing is permitted by policy. For this reason, all Virtualization Systems shall support a policythat prohibits information transfer between VMs.                        It shall be possible to configure VMs such that data cannot be moved between domains from VM to VM, orthrough virtual or physical network components under the control of the VS. When VMs are configured assuch, it shall not be possible for data to leak between domains, neither by the express efforts ofsoftware or users of a VM, nor because of vulnerabilities or errors in the implementation of the VMM orother VS components.                        If it is possible for data to leak between domains when prohibited by policy, then an adversary on one domain or network can obtain data from another domain. Such cross-domain data leakage can, for example, causeclassified information, corporate proprietary information, or personally identifiable information to bemade accessible to unauthorized entities.                    </description><!-- New mapping to build updated threat mapping table. --><addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events can report attempts to breach isolation.</rationale><addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to protect domain data in shared storage.
-
-Requires cryptographic key destruction to protect domain data in shared storage.</rationale><addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale><addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated.
-
-Ensures that domain data is cleared from memory before memory is re-allocated to another domain.</rationale><addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from physical storage upon re-allocation of the storage.
-
-Ensures that domain data is cleared from physical storage upon re-allocation of the storage to another domain.</rationale><addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.
-
-Ensures that authorized data transfers between domains are done securely.</rationale><addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.
-
-Ensures that network traffic is visible only to VMs configured to be that network.</rationale><addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>Ensures that VMs can access only those virtual devices that they are configured to access.</rationale><addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.
-
-Requires that the TOE use security mechanisms supported by the physical platform.</rationale><addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.
-
-Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale><addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.
-
-Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale><addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale><addressed-by>FCS_ENT_EXT.1</addressed-by><rationale>Requires that domains have access to high-quality entropy for cryptographic purposes.</rationale><addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale><addressed-by>FPT_GVI_EXT.1</addressed-by><rationale>Requires that the TOE support Guest VM measurements and integrity checks (optional).</rationale><addressed-by>FPT_INT_EXT.1</addressed-by><rationale>Requires that the TOE support introspection into Guest VMs (optional).</rationale><addressed-by>FPT_RDM_EXT.1</addressed-by><rationale>Requires support for rules for switching removeable media between domains to reduce the chance of data spillage.</rationale><addressed-by>FTP_UIF_EXT.1</addressed-by><rationale>Ensures that users are able to determine the domain with the current input focus.</rationale><addressed-by>FTP_UIF_EXT.2</addressed-by><rationale>Ensures that users can know the identity of any VM that they can access.</rationale></threat><threat name="T.DENIAL_OF_SERVICE"><description>                        A VM may block others from system resources (e.g., system memory, persistent storage, and processing time)    via a resource exhaustion attack.                    </description><!-- New mapping to build updated threat mapping table. --><addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to ensure residual data in shared storage is unrecoverable.</rationale><addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated.</rationale><addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from storage upon re-allocation of the storage.</rationale></threat><threat name="T.MISCONFIGURATION"><description>                        The VS may be misconfigured, which could impact its functioning and security. This     misconfiguration could be due to an administrative error or the use of faulty configuration data.                    </description><!-- New mapping to build updated threat mapping table. --><addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that data sharing between VMs is turned off by default.</rationale></threat><threat name="T.PLATFORM_COMPROMISE"><description>                        The VS must be capable of protecting the platform from threats that originate within VMs and operational    networks connected to the VS. The hosting of untrusted—even malicious—domains by the VS cannot be     permitted to compromise the security and integrity of the platform on which the VS executes. If an     attacker can access the underlying platform in a manner not controlled by the VMM, the attacker might     be able to modify system firmware or software—compromising both the VS and the     underlying platform.                    </description><!-- New mapping to build updated threat mapping table. --><addressed-by>FDP_HBI_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported mechanisms for access to physical devices.</rationale><addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale><addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.</rationale><addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale><addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>Ensures that VMs cannot access virtual devices that they are not configured to access.</rationale><addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale><addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale><addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Hypercall parameters be validated.</rationale><addressed-by>FPT_ML_EXT.1</addressed-by><rationale>Requires measured launch of the platform and VMM (objective).</rationale><addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale><addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale></threat><threat name="T.UNAUTHORIZED_ACCESS"><description>                        Functions performed by the management layer include VM configuration, virtualized network configuration,     allocation of physical resources, and reporting. Only certain authorized system users (administrators)     are allowed to exercise management functions or obtain sensitive information from the TOE.                        Virtualization Systems are often managed remotely over communication networks. Members of these networks can    be both geographically and logically separated from each other, and pass through a variety of other     systems which may be under the control of an adversary, and offer the opportunity for communications to be    compromised. An adversary with access to an open management network could inject commands into the    management infrastructure or extract sensitive information. This would provide an adversary with administrator privilege on the platform,    and administrative control over the VMs and virtual network connections. The adversary could also gain    access to the management network by hijacking the management network channel.                    </description><!-- New mapping to build updated threat mapping table. --><addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events report attempts to access the management subsystem.</rationale><addressed-by>FCS_CKM.1</addressed-by><rationale>Requires generation of asymmetric keys for trusted communications channels.</rationale><addressed-by>FCS_CKM.2</addressed-by><rationale>Requires establishment of cryptographic keys for trusted communications channels.</rationale><addressed-by>FCS_COP.1</addressed-by><rationale>Ensures proper functioning of cryptographic algorithms used to implement access controls.</rationale><addressed-by>FCS_HTTPS_EXT.1</addressed-by><rationale>Ensures that HTTPS trusted communications channels are implemented properly.</rationale><addressed-by>FCS_IPSEC_EXT.1</addressed-by><rationale>Ensures that IPsec trusted communications channels are implemented properly.</rationale><addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale><addressed-by>FIA_AFL_EXT.1</addressed-by><rationale>Requires that the TOE detect failed authentication attempts for Administrator access.</rationale><addressed-by>FIA_PMG_EXT.1</addressed-by><rationale>Ensures that password-based administrator login is properly implemented.</rationale><addressed-by>FIA_UAU.5</addressed-by><rationale>Ensures that strong mechanisms are used for Administrator authentication.</rationale><addressed-by>FIA_UIA_EXT.1</addressed-by><rationale>Requires that Administrators be successfully authenticated before performing management functions.</rationale><addressed-by>FIA_X509_EXT.1</addressed-by><rationale>Ensures that certificate validation is implemented properly.</rationale><addressed-by>FIA_X509_EXT.2</addressed-by><rationale>Ensures that certificate-based authentication is implemented properly.t functions.</rationale><addressed-by>FMT_SMO_EXT.1</addressed-by><rationale>Requires that the TOE support having separate management and operational networks.</rationale><addressed-by>FTP_ITC_EXT.1</addressed-by><rationale>Ensures that trusted communications channels are implemented using good cryptography.</rationale><addressed-by>FTP_TRP.1</addressed-by><rationale>Ensures that certain communications use a trusted path.</rationale></threat><threat name="T.UNAUTHORIZED_MODIFICATION"><description>                        System integrity is a core security objective for Virtualization Systems. To achieve system integrity, the    integrity of each VMM component must be established and maintained. Malware running on the platform must    not be able to undetectably modify VS components while the system is running or at     rest. Likewise, malicious code running within a virtual machine must not be able to modify Virtualization    System components.                    </description><!-- New mapping to build updated threat mapping table. --><addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events can report potential integrity breaches and attempts.
-
-Requires reporting of audit events.</rationale><addressed-by>FCS_CKM.1</addressed-by><rationale>Requires generation of asymmetric keys for protection of integrity measures.</rationale><addressed-by>FCS_COP.1</addressed-by><rationale>Ensures proper functioning of cryptographic algorithms used to protect data integrity.</rationale><addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale><addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale><addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.</rationale><addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale><addressed-by>FPT_DDI_EXT.1</addressed-by><rationale>Requires that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale><addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale><addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale><addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Hypercall parameters be validated.</rationale><addressed-by>FPT_ML_EXT.1</addressed-by><rationale>Requires measured launch of the platform and VMM (objective).</rationale><addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale><addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale><addressed-by>FAU_ARP.1</addressed-by><rationale>Requires support for automatic responses to audit events (optional).</rationale><addressed-by>FAU_SAA.1</addressed-by><rationale>Requires support for rules for indicating security violations based on audit events (optional).</rationale><addressed-by>FAU_SAR.1</addressed-by><rationale>Requires support for Administrator review of audit records.</rationale><addressed-by>FAU_STG.1</addressed-by><rationale>Requires protection of stored audit records.</rationale><addressed-by>FAU_STG_EXT.1</addressed-by><rationale>Requires support for protected transmission of audit records off the TOE.</rationale></threat><threat name="T.UNAUTHORIZED_UPDATE"><description>                        It is common for attackers to target outdated versions of software containing known flaws. This means it is    extremely important to update VS software as soon as possible when updates are    available. But the source of the updates and the updates themselves must be trusted. If an attacker can    write their own update containing malicious code they can take control of the VS.                    </description><!-- New mapping to build updated threat mapping table. --><addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events can report potential integrity breaches and attempts.</rationale><addressed-by>FCS_CKM.1</addressed-by><rationale>Requires generation of asymmetric keys for protection of integrity measures.</rationale><addressed-by>FCS_COP.1</addressed-by><rationale>Ensures proper functioning of cryptographic algorithms used to protect data integrity.</rationale><addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale><addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale><addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.</rationale><addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale><addressed-by>FPT_DDI_EXT.1</addressed-by><rationale>Requires that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale><addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale><addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale><addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Hypercall parameters be validated.</rationale><addressed-by>FPT_ML_EXT.1</addressed-by><rationale>Requires measured launch of the platform and VMM (objective).</rationale><addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale><addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale></threat><threat name="T.UNPATCHED_SOFTWARE"><description>                        Vulnerabilities in outdated or unpatched software can be exploited by adversaries to compromise the    VS or platform.                    </description><!-- New mapping to build updated threat mapping table. --><addressed-by>FPT_IDV_EXT.1</addressed-by><rationale>Requires support for software identification labels (optional).</rationale><addressed-by>FPT_TUD_EXT.1</addressed-by><rationale>Requires support for product updates.</rationale><addressed-by>FPT_TUD_EXT.2</addressed-by><rationale>Specifies requirements for certificate-based code signing for update.</rationale></threat><threat name="T.USER_ERROR"><description>                        If a Virtualization System is capable of simultaneously displaying VMs of different domains to the same user    at the same time, there is always the chance that the user will become confused and unintentionally leak    information between domains. This is especially likely if VMs belonging to different domains are     indistinguishable. Malicious code may also attempt to interfere with the user’s ability to distinguish    between domains. The VS must take measures to minimize the likelihood of such confusion.                    </description><!-- New mapping to build updated threat mapping table. --><addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events can report attempts to breach isolation.</rationale><addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to protect domain data in shared storage.</rationale><addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale><addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated.</rationale><addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from physical storage upon re-allocation of the storage.</rationale><addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.</rationale><addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale><addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>Ensures that VMs can access only those virtual devices that they are configured to access.</rationale><addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale><addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale><addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale><addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale></threat><threat name="T.VMM_COMPROMISE"><description>                        The VS is designed to provide the appearance of exclusivity to the VMs and is designed    to separate or isolate their functions except where specifically shared. Failure of security mechanisms    could lead to unauthorized intrusion into or modification of the VMM, or bypass of the VMM altogether,    by non-TOE software, such as that running in Guest or Helper VMs or on the host platform.     This must be prevented to avoid compromising the VS.                    </description><!-- New mapping to build updated threat mapping table. --><addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events can report potential integrity breaches and attempts.
-
-Audit events can report attempts to breach isolation.</rationale><addressed-by>FCS_CKM.1</addressed-by><rationale>Requires generation of asymmetric keys for protection of integrity measures.</rationale><addressed-by>FCS_COP.1</addressed-by><rationale>Ensures proper functioning of cryptographic algorithms used to protect data integrity.</rationale><addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale><addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.
-
-Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale><addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.
-
-Ensures that authorized data transfers between VMs are done securely.</rationale><addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.
-
-Ensures that network traffic is visible only to VMs configured to be that network.</rationale><addressed-by>FPT_DDI_EXT.1</addressed-by><rationale>Requires that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale><addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>Requires that the TOE use security mechanisms supported by the physical platform.
-
-Requires that the TOE use security mechanisms supported by the physical platform.</rationale><addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.
-
-Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale><addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>Requires that Hypercall parameters be validated.</rationale><addressed-by>FPT_ML_EXT.1</addressed-by><rationale>Requires measured launch of the platform and VMM (objective).</rationale><addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.
-
-Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale><addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.
-
-Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale><addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to protect domain data in shared storage.</rationale><addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated.</rationale><addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from physical storage upon re-allocation of the storage.</rationale><addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>Ensures that VMs can access only those virtual devices that they are configured to access.</rationale></threat><threat name="T.WEAK_CRYPTO"><description>                        To the extent that VMs appear isolated within the VS, a threat of weak cryptography may     arise if the VMM does not provide good entropy to support security-related features that depend on    entropy to implement cryptographic algorithms. For example, a random number generator keeps an estimate    of the number of bits of noise in the entropy pool. From this entropy pool random numbers are created.    Good random numbers are essential to implementing strong cryptography. Cryptography implemented using    poor random numbers can be defeated by a sophisticated adversary. Such defeat can result in the compromise    of Guest VM data and credentials, and of VS data and credentials, and can enable unauthorized access     to the VS or VMs.                    </description><!-- New mapping to build updated threat mapping table. --><addressed-by>FCS_ENT_EXT.1</addressed-by><rationale>Requires that domains have access to high-quality entropy for cryptographic purposes.</rationale><addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale></threat></threats></sec:Threats>
+    <sec:Threats>
+      <threats>
+        <threat name="T.3P_SOFTWARE">
+          <description>                        In some VS implementations, functions critical to the security of the TOE are by necessity performed by     software not produced by the virtualization vendor. Such software may include physical device drivers,     and even non-TOE entities such as Host Operating Systems. Since this software has the same or similar    privilege level as the VS, vulnerabilities can be exploited by an adversary to compromise the VS and VMs.    Where possible, the VS should mitigate the results of potential vulnerabilities or malicious content in    third-party code on which it relies. For example, physical device drivers (potentially the Host OS) could     be encapsulated within VMs in order to limit the effects of compromise.                     </description>
+          <objective-refer ref="O.VMM_INTEGRITY">
+            <rationale>The VMM integrity mechanisms include environment-based vulnerability mitigation and potentiallysupport for introspection and device driver isolation, all of which reduce the likelihood that any vulnerabilities in third-party software can be used to exploit the TOE.</rationale>
+          </objective-refer>
+        </threat>
+        <threat name="T.DATA_LEAKAGE">
+          <description>                    It is a fundamental property of VMs that the domains encapsulated by different VMs remain separate unless data sharing is permitted by policy. For this reason, all Virtualization Systems shall support a policythat prohibits information transfer between VMs.                        It shall be possible to configure VMs such that data cannot be moved between domains from VM to VM, orthrough virtual or physical network components under the control of the VS. When VMs are configured assuch, it shall not be possible for data to leak between domains, neither by the express efforts ofsoftware or users of a VM, nor because of vulnerabilities or errors in the implementation of the VMM orother VS components.                        If it is possible for data to leak between domains when prohibited by policy, then an adversary on one domain or network can obtain data from another domain. Such cross-domain data leakage can, for example, causeclassified information, corporate proprietary information, or personally identifiable information to bemade accessible to unauthorized entities.                    </description>
+          <objective-refer ref="O.VM_ISOLATION">
+            <rationale>Logical separation of VMs and enforcement of domain integrity prevent unauthorized transmission of data from one VM to another.</rationale>
+          </objective-refer>
+          <objective-refer ref="O.DOMAIN_INTEGRITY">
+            <rationale>Logical separation of VMs and enforcement of domain integrity prevent unauthorized transmission of data from one VM to another.</rationale>
+          </objective-refer>
+        </threat>
+        <threat name="T.DENIAL_OF_SERVICE">
+          <description>                        A VM may block others from system resources (e.g., system memory, persistent storage, and processing time)    via a resource exhaustion attack.                    </description>
+          <objective-refer ref="O.RESOURCE_ALLOCATION">
+            <rationale>The ability of the TSF to ensure the proper allocation of resources makes denial of serviceattacks more difficult.</rationale>
+          </objective-refer>
+        </threat>
+        <threat name="T.MISCONFIGURATION">
+          <description>                        The VS may be misconfigured, which could impact its functioning and security. This     misconfiguration could be due to an administrative error or the use of faulty configuration data.                    </description>
+          <objective-refer ref="O.CORRECTLY_APPLIED_CONFIGURATION">
+            <rationale>Mechanisms to prevent the application of configurations that violate the current security policy help prevent misconfigurations.</rationale>
+          </objective-refer>
+        </threat>
+        <threat name="T.PLATFORM_COMPROMISE">
+          <description>                        The VS must be capable of protecting the platform from threats that originate within VMs and operational    networks connected to the VS. The hosting of untrusted—even malicious—domains by the VS cannot be     permitted to compromise the security and integrity of the platform on which the VS executes. If an     attacker can access the underlying platform in a manner not controlled by the VMM, the attacker might     be able to modify system firmware or software—compromising both the VS and the     underlying platform.                    </description>
+          <objective-refer ref="O.PLATFORM_INTEGRITY">
+            <rationale>Platform integrity mechanisms used by the TOE reduce the risk that an attacker can ‘break out’ of a VM and affect the platform on which the VS is running.</rationale>
+          </objective-refer>
+        </threat>
+        <threat name="T.UNAUTHORIZED_ACCESS">
+          <description>                        Functions performed by the management layer include VM configuration, virtualized network configuration,     allocation of physical resources, and reporting. Only certain authorized system users (administrators)     are allowed to exercise management functions or obtain sensitive information from the TOE.                        Virtualization Systems are often managed remotely over communication networks. Members of these networks can    be both geographically and logically separated from each other, and pass through a variety of other     systems which may be under the control of an adversary, and offer the opportunity for communications to be    compromised. An adversary with access to an open management network could inject commands into the    management infrastructure or extract sensitive information. This would provide an adversary with administrator privilege on the platform,    and administrative control over the VMs and virtual network connections. The adversary could also gain    access to the management network by hijacking the management network channel.                    </description>
+          <objective-refer ref="O.MANAGEMENT_ACCESS">
+            <rationale>Ensuring that TSF management functions cannot be executed without authorization prevents untrustedsubjects from modifying the behavior of the TOE in an unanticipated manner.</rationale>
+          </objective-refer>
+        </threat>
+        <threat name="T.UNAUTHORIZED_MODIFICATION">
+          <description>                        System integrity is a core security objective for Virtualization Systems. To achieve system integrity, the    integrity of each VMM component must be established and maintained. Malware running on the platform must    not be able to undetectably modify VS components while the system is running or at     rest. Likewise, malicious code running within a virtual machine must not be able to modify Virtualization    System components.                    </description>
+          <objective-refer ref="O.VMM_INTEGRITY">
+            <rationale>Enforcement of VMM integrity prevents the bypass of enforcement mechanisms and auditing ensuresthat abuse of legitimate authority can be detected.</rationale>
+          </objective-refer>
+          <objective-refer ref="O.AUDIT">
+            <rationale>Enforcement of VMM integrity prevents the bypass of enforcement mechanisms and auditing ensuresthat abuse of legitimate authority can be detected.</rationale>
+          </objective-refer>
+        </threat>
+        <threat name="T.UNAUTHORIZED_UPDATE">
+          <description>                        It is common for attackers to target outdated versions of software containing known flaws. This means it is    extremely important to update VS software as soon as possible when updates are    available. But the source of the updates and the updates themselves must be trusted. If an attacker can    write their own update containing malicious code they can take control of the VS.                    </description>
+          <objective-refer ref="O.VMM_INTEGRITY">
+            <rationale>System integrity prevents the TOE from installing a software patch containing unknown andpotentially malicious code.</rationale>
+          </objective-refer>
+        </threat>
+        <threat name="T.UNPATCHED_SOFTWARE">
+          <description>                        Vulnerabilities in outdated or unpatched software can be exploited by adversaries to compromise the    VS or platform.                    </description>
+          <objective-refer ref="O.PATCHED_SOFTWARE">
+            <rationale>The ability to patch the TOE software ensures that protections against vulnerabilities can be applied as they become available.</rationale>
+          </objective-refer>
+        </threat>
+        <threat name="T.USER_ERROR">
+          <description>                        If a Virtualization System is capable of simultaneously displaying VMs of different domains to the same user    at the same time, there is always the chance that the user will become confused and unintentionally leak    information between domains. This is especially likely if VMs belonging to different domains are     indistinguishable. Malicious code may also attempt to interfere with the user’s ability to distinguish    between domains. The VS must take measures to minimize the likelihood of such confusion.                    </description>
+          <objective-refer ref="O.VM_ISOLATION">
+            <rationale>Isolation of VMs includes clear attribution of those VMs to their respective domains which reducesthe likelihood that a user inadvertently inputs or transfers data meant for one VM into another.</rationale>
+          </objective-refer>
+        </threat>
+        <threat name="T.VMM_COMPROMISE">
+          <description>                        The VS is designed to provide the appearance of exclusivity to the VMs and is designed    to separate or isolate their functions except where specifically shared. Failure of security mechanisms    could lead to unauthorized intrusion into or modification of the VMM, or bypass of the VMM altogether,    by non-TOE software, such as that running in Guest or Helper VMs or on the host platform.     This must be prevented to avoid compromising the VS.                    </description>
+          <objective-refer ref="O.VMM_INTEGRITY">
+            <rationale>Maintaining the integrity of the VMM and ensuring that VMs execute in isolated domains mitigatethe risk that the VMM can be compromised or bypassed.</rationale>
+          </objective-refer>
+          <objective-refer ref="O.VM_ISOLATION">
+            <rationale>Maintaining the integrity of the VMM and ensuring that VMs execute in isolated domains mitigatethe risk that the VMM can be compromised or bypassed.</rationale>
+          </objective-refer>
+        </threat>
+        <threat name="T.WEAK_CRYPTO">
+          <description>                        To the extent that VMs appear isolated within the VS, a threat of weak cryptography may     arise if the VMM does not provide good entropy to support security-related features that depend on    entropy to implement cryptographic algorithms. For example, a random number generator keeps an estimate    of the number of bits of noise in the entropy pool. From this entropy pool random numbers are created.    Good random numbers are essential to implementing strong cryptography. Cryptography implemented using    poor random numbers can be defeated by a sophisticated adversary. Such defeat can result in the compromise    of Guest VM data and credentials, and of VS data and credentials, and can enable unauthorized access     to the VS or VMs.                    </description>
+          <objective-refer ref="O.VM_ENTROPY">
+            <rationale>Acquisition of good entropy is necessary to support the TOE's security-related cryptographicalgorithms.</rationale>
+          </objective-refer>
+        </threat>
+      </threats>
+    </sec:Threats>
     <!-- 3.2 Assumptions -->
     <sec:Assumptions>
       <assumptions>
@@ -277,7 +327,300 @@ Ensures that untrusted VMs cannot invoke privileged code without proper hypervis
   <!-- 4.0 Security Objectives -->
   <sec:Security_Objectives >
     <!-- 4.1 Security Objectives for the TOE -->
-    
+    <sec:Security_Objectives_for_the_TOE>
+      <SOs>
+        <SO name="O.AUDIT">
+          <description>An audit log must be created that captures accesses to the objects the TOE protects. The log 
+			    of these accesses, or audit events, must be protected from modification, unauthorized access,
+			    and destruction. The audit log must be sufficiently detailed to indicate the date and time of
+			    the event, the identify of the user, the type of event, and the success or failure of the event.
+                    </description>
+          <addressed-by>FAU_ARP.1</addressed-by>
+          <rationale>Requires support for automatic responses to audit events (optional).</rationale>
+          <addressed-by>FAU_GEN.1</addressed-by>
+          <rationale>Requires reporting of audit events.</rationale>
+          <addressed-by>FAU_SAA.1</addressed-by>
+          <rationale>Requires support for rules for indicating security violations based on audit events (optional).</rationale>
+          <addressed-by>FAU_SAR.1</addressed-by>
+          <rationale>Requires support for Administrator review of audit records.</rationale>
+          <addressed-by>FAU_STG.1</addressed-by>
+          <rationale>Requires protection of stored audit records.</rationale>
+          <addressed-by>FAU_STG_EXT.1</addressed-by>
+          <rationale>Requires support for protected transmission of audit records off the TOE.</rationale>
+        </SO>
+        <SO name="O.CORRECTLY_APPLIED_CONFIGURATION">
+          <description>The TOE must not apply configurations that violate the current security policy.
+                         The TOE must correctly apply configurations and policies 
+                        to a newly created Guest VM, as well as to existing Guest VMs when 
+                        applicable configuration or policy changes are made. All changes to configuration and to policy must conform 
+                        to the existing security policy. Similarly, changes made to the configuration of the TOE 
+                        itself must not violate the existing security policy.
+                    </description>
+          <addressed-by>FDP_VMS_EXT.1</addressed-by>
+          <rationale>Ensures that data sharing between VMs is turned off by default.</rationale>
+        </SO>
+        <SO name="O.DOMAIN_INTEGRITY">
+          <description>While the VS is not responsible for the contents or correct functioning of software that runs within 
+                        Guest VMs, it is responsible for ensuring that the correct functioning of the software 
+                        within a Guest VM is not interfered with by other VMs.
+                    </description>
+          <addressed-by>FCS_CKM_EXT.4</addressed-by>
+          <rationale>Requires cryptographic key destruction to protect domain data in shared storage.</rationale>
+          <addressed-by>FCS_ENT_EXT.1</addressed-by>
+          <rationale>Requires that domains have access to high-quality entropy for cryptographic purposes.</rationale>
+          <addressed-by>FCS_RBG_EXT.1</addressed-by>
+          <rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+          <addressed-by>FDP_RIP_EXT.1</addressed-by>
+          <rationale>Ensures that domain data is cleared from memory before memory is re-allocated to another domain.</rationale>
+          <addressed-by>FDP_RIP_EXT.2</addressed-by>
+          <rationale>Ensures that domain data is cleared from physical storage upon re-allocation of the storage to another domain.</rationale>
+          <addressed-by>FDP_VMS_EXT.1</addressed-by>
+          <rationale>Ensures that authorized data transfers between domains are done securely.</rationale>
+          <addressed-by>FDP_VNC_EXT.1</addressed-by>
+          <rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
+          <addressed-by>FPT_EEM_EXT.1</addressed-by>
+          <rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
+          <addressed-by>FPT_GVI_EXT.1</addressed-by>
+          <rationale>Requires that the TOE support Guest VM measurements and integrity checks (optional).</rationale>
+          <addressed-by>FPT_HAS_EXT.1</addressed-by>
+          <rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+          <addressed-by>FPT_INT_EXT.1</addressed-by>
+          <rationale>Requires that the TOE support introspection into Guest VMs (optional).</rationale>
+          <addressed-by>FPT_RDM_EXT.1</addressed-by>
+          <rationale>Requires support for rules for switching removeable media between domains to reduce the chance of data spillage.</rationale>
+          <addressed-by>FPT_VDP_EXT.1</addressed-by>
+          <rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
+        </SO>
+        <SO name="O.MANAGEMENT_ACCESS">
+          <description>VMM management functions include VM configuration, virtualized 
+                        network configuration, allocation of physical resources, and reporting. Only authorized users 
+                        (administrators) may exercise management functions.
+                        Because of the privileges exercised by the VMM management functions, it must not be possible 
+                        for the VMM’s management components to be compromised without administrator notification. 
+                        This means that unauthorized users cannot be permitted access to the management functions, and the management 
+                        components must not be interfered with by Guest VMs or unprivileged users on other 
+                        networks—including operational networks connected to the TOE. 
+			VMMs include a set of management functions that collectively allow administrators 
+                        to configure and manage the VMM, as well as configure Guest VMs. These 
+                        management functions are specific to the VS and are distinct from any other management functions 
+                        that might exist for the internal management of any given Guest VM. These 
+                        VMM management functions are privileged, with the security of the entire system relying on 
+                        their proper use. The VMM management functions can be classified into different categories 
+                        and the policy for their use and the impact to security may vary accordingly.
+                        The management functions are distributed throughout the VMM (within the 
+                        VMM and Service VMs). The VMM must support the necessary 
+                        mechanisms to enable the control of all management functions according to the system security policy. When a 
+                        management function is distributed among multiple Service VMs, the VMs 
+                        must be protected using the security mechanisms of the Hypervisor and any Service VMs 
+                        involved to ensure that the intent of the system security policy is not compromised. Additionally, since 
+                        hypercalls permit Guest VMs to invoke the Hypervisor, and often allow the passing of data 
+                        to the Hypervisor, it is important that the hypercall interface is well-guarded and that all parameters be 
+                        validated. The VMM maintains configuration data for every 
+                        VM on the system. This configuration data, whether of Service or Guest VMs,
+                        must be protected. The mechanisms used to establish, modify and verify configuration data are part of the VS 
+                        management functions and must be protected as such. The proper internal configuration of Service 
+                        VMs that provide critical security functions can also greatly impact VS security. These 
+                        configurations must also be protected. Internal configuration of Guest VMs should not 
+                        impact overall VS security. The overall goal is to ensure that the VMM, including the 
+                        environments internal to Service VMs, is properly configured and that all Guest 
+                        VM configurations are maintained consistent with the system security policy throughout 
+                        their lifecycle. Virtualization Systems are often managed remotely. For 
+                        example, an administrator can remotely update virtualization software, start and shut down 
+                        VMs, and manage virtualized network connections. If a console is required, it could be 
+                        run on a separate machine or it could itself run in a VM. When performing remote management, 
+                        an administrator must communicate with a privileged management agent over a network. Communications with the 
+                        management infrastructure must be protected from Guest VMs and operational networks.
+                    </description>
+          <addressed-by>FAU_GEN.1</addressed-by>
+          <rationale>Audit events report attempts to access the management subsystem.</rationale>
+          <addressed-by>FCS_CKM.1</addressed-by>
+          <rationale>Requires generation of asymmetric keys for trusted communications channels.</rationale>
+          <addressed-by>FCS_CKM.2</addressed-by>
+          <rationale>Requires establishment of cryptographic keys for trusted communications channels.</rationale>
+          <addressed-by>FCS_HTTPS_EXT.1</addressed-by>
+          <rationale>Ensures that HTTPS trusted communications channels are implemented properly.</rationale>
+          <addressed-by>FCS_IPSEC_EXT.1</addressed-by>
+          <rationale>Ensures that IPsec trusted communications channels are implemented properly.</rationale>
+          <addressed-by>FCS_RBG_EXT.1</addressed-by>
+          <rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+          <addressed-by>FIA_AFL_EXT.1</addressed-by>
+          <rationale>Requires that the TOE detect failed authentication attempts for Administrator access.</rationale>
+          <addressed-by>FIA_PMG_EXT.1</addressed-by>
+          <rationale>Ensures that password-based administrator login is properly implemented.</rationale>
+          <addressed-by>FIA_UAU.5</addressed-by>
+          <rationale>Ensures that strong mechanisms are used for Administrator authentication.</rationale>
+          <addressed-by>FIA_UIA_EXT.1</addressed-by>
+          <rationale>Requires that Administrators be successfully authenticated before performing management functions.</rationale>
+          <addressed-by>FIA_X509_EXT.1</addressed-by>
+          <rationale>Ensures that certificate validation is implemented properly.</rationale>
+          <addressed-by>FIA_X509_EXT.2</addressed-by>
+          <rationale>Ensures that certificate-based authentication is implemented properly.t functions.</rationale>
+          <addressed-by>FMT_SMO_EXT.1</addressed-by>
+          <rationale>Requires that the TOE support having separate management and operational networks.</rationale>
+        </SO>
+        <SO name="O.PATCHED_SOFTWARE">
+          <description>The VS must be updated and patched when needed in order to prevent the potential 
+                        compromise of the VMM, as well as the networks and VMs that it hosts. 
+                        Identifying and applying needed updates must be a normal part of the operating procedure to ensure that 
+                        patches are applied in a timely and thorough manner. In order to facilitate this, the VS must support 
+                        standards and protocols that help enhance the manageability of the VS as an IT product, enabling it to be 
+                        integrated as part of a manageable network (e.g., reporting current patch level and patchability).
+                    </description>
+          <addressed-by>FPT_IDV_EXT.1</addressed-by>
+          <rationale>Requires support for software identification labels (optional).</rationale>
+          <addressed-by>FPT_TUD_EXT.1</addressed-by>
+          <rationale>Requires support for product updates.</rationale>
+          <addressed-by>FPT_TUD_EXT.2</addressed-by>
+          <rationale>Specifies requirements for certificate-based code signing for update.</rationale>
+        </SO>
+        <SO name="O.PLATFORM_INTEGRITY">
+          <description>The integrity of the VMM depends on the integrity of the hardware and software on 
+                        which the VMM relies. Although the VS does not have complete control over the integrity of 
+                        the platform, the VS should as much as possible try to ensure that no users or software hosted by the VS can 
+                        undermine the integrity of the platform.
+                    </description>
+          <addressed-by>FDP_HBI_EXT.1</addressed-by>
+          <rationale>Requires that the TOE use platform-supported mechanisms for access to physical devices.</rationale>
+          <addressed-by>FDP_PPR_EXT.1</addressed-by>
+          <rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
+          <addressed-by>FDP_VMS_EXT.1</addressed-by>
+          <rationale>Ensures that authorized data transfers between VMs are done securely.</rationale>
+          <addressed-by>FDP_VNC_EXT.1</addressed-by>
+          <rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
+          <addressed-by>FPT_DVD_EXT.1</addressed-by>
+          <rationale>Ensures that VMs cannot access virtual devices that they are not configured to access.</rationale>
+          <addressed-by>FPT_EEM_EXT.1</addressed-by>
+          <rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
+          <addressed-by>FPT_HAS_EXT.1</addressed-by>
+          <rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+          <addressed-by>FPT_HCL_EXT.1</addressed-by>
+          <rationale>Requires that Hypercall parameters be validated.</rationale>
+          <addressed-by>FPT_ML_EXT.1</addressed-by>
+          <rationale>Requires measured launch of the platform and VMM (objective).</rationale>
+          <addressed-by>FPT_VDP_EXT.1</addressed-by>
+          <rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
+          <addressed-by>FPT_VIV_EXT.1</addressed-by>
+          <rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
+        </SO>
+        <SO name="O.RESOURCE_ALLOCATION">
+          <description>The TOE will provide mechanisms that enforce constraints on the allocation of 
+                        system resources in accordance with existing security policy.
+                    </description>
+          <addressed-by>FCS_CKM_EXT.4</addressed-by>
+          <rationale>Requires cryptographic key destruction to ensure residual data in shared storage is unrecoverable.</rationale>
+          <addressed-by>FDP_RIP_EXT.1</addressed-by>
+          <rationale>Ensures that domain data is cleared from memory before memory is re-allocated.</rationale>
+          <addressed-by>FDP_RIP_EXT.2</addressed-by>
+          <rationale>Ensures that domain data is cleared from storage upon re-allocation of the storage.</rationale>
+        </SO>
+        <SO name="O.VMM_INTEGRITY">
+          <description>Integrity is a core security objective for Virtualization Systems. To achieve system integrity, the 
+                        integrity of each VMM component must be established and maintained. This objective concerns 
+                        only the integrity of the VS—not the integrity of software running inside of Guest 
+                        VMs or of the physical platform. The overall objective is to ensure the integrity of 
+                        critical components of a VS.
+                        Initial integrity of a VS can be established through mechanisms such as a digitally signed installation or 
+                        update package, or through integrity measurements made at launch. Integrity is maintained in a running system 
+                        by careful protection of the VMM from untrusted users and software. For example, it must not
+                        be possible for software running within a Guest VM to exploit a vulnerability in a device or
+                        hypercall interface and gain control of the VMM. The vendor must release patches for 
+                        vulnerabilities as soon as practicable after discovery.
+                    </description>
+          <addressed-by>FAU_GEN.1</addressed-by>
+          <rationale>Audit events can report potential integrity breaches and attempts.</rationale>
+          <addressed-by>FCS_CKM.1</addressed-by>
+          <rationale>Requires generation of asymmetric keys for protection of integrity measures.</rationale>
+          <addressed-by>FCS_RBG_EXT.1</addressed-by>
+          <rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+          <addressed-by>FDP_PPR_EXT.1</addressed-by>
+          <rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
+          <addressed-by>FDP_VMS_EXT.1</addressed-by>
+          <rationale>Ensures that authorized data transfers between VMs are done securely.</rationale>
+          <addressed-by>FDP_VNC_EXT.1</addressed-by>
+          <rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
+          <addressed-by>FPT_DDI_EXT.1</addressed-by>
+          <rationale>Requires that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
+          <addressed-by>FPT_EEM_EXT.1</addressed-by>
+          <rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
+          <addressed-by>FPT_HAS_EXT.1</addressed-by>
+          <rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+          <addressed-by>FPT_HCL_EXT.1</addressed-by>
+          <rationale>Requires that Hypercall parameters be validated.</rationale>
+          <addressed-by>FPT_ML_EXT.1</addressed-by>
+          <rationale>Requires measured launch of the platform and VMM (objective).</rationale>
+          <addressed-by>FPT_VDP_EXT.1</addressed-by>
+          <rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
+          <addressed-by>FPT_VIV_EXT.1</addressed-by>
+          <rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
+        </SO>
+        <SO name="O.VM_ENTROPY">
+          <description>VMs must have access to good entropy sources to support security-related features 
+                        that implement cryptographic algorithms. For example, in order to function as members of operational 
+                        networks, VMs must be able to communicate securely with other network entities—whether 
+                        virtual or physical. They must therefore have access to sources of good entropy to support that secure 
+                        communication.
+                    </description>
+          <addressed-by>FCS_ENT_EXT.1</addressed-by>
+          <rationale>Requires that domains have access to high-quality entropy for cryptographic purposes.</rationale>
+          <addressed-by>FCS_RBG_EXT.1</addressed-by>
+          <rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+        </SO>
+        <SO name="O.VM_ISOLATION">
+          <description>VMs are the fundamental subject of the system. The VMM is 
+                        responsible for applying the system security policy (SSP) to the VM and 
+                        all resources. As basic functionality, the VMM must support a security policy that mandates 
+                        no information transfer between VMs.
+                        The VMM must support the necessary mechanisms to isolate the resources of all 
+                        VMs. The VMM partitions a platform's physical resources for use by the 
+                        supported virtual environments. Depending on customer requirements, a VM may need a completely 
+                        isolated environment with exclusive access to system resources or share some of its resources with other 
+                        VMs. It must be possible to enforce a security policy that prohibits the transfer of data 
+                        between VMs through shared devices. When the platform security policy allows the sharing of 
+                        resources across VM boundaries, the VMM must ensure that all access to 
+                        those resources is consistent with the policy. The VMM may delegate the responsibility for 
+                        the mediation of resource sharing to select Service VMs; however in doing so, 
+                        it remains responsible for mediating access to the Service VMs, and each Service 
+                        VM must mediate all access to any shared resource that has been delegated to it in 
+                        accordance with the SSP.
+                        Both virtual and physical devices are resources requiring access control. The VMM must 
+                        enforce access control in accordance with system security policy. Physical devices are platform devices with 
+                        access mediated via the VMM per the O.VMM_Integrity objective. Virtual devices may include 
+                        virtual storage devices and virtual network devices. Some of the access control restrictions must be enforced
+                        internal to Service VMs, as may be the case for isolating virtual networks. 
+                        VMMs may also expose purely virtual interfaces. These are VMM specific, 
+                        and while they are not analogous to a physical device, they are also subject to access control.
+                        The VMM must support the mechanisms to isolate all resources associated with virtual 
+                        networks and to limit a VM's access to only those virtual networks for which it has been 
+                        configured. The VMM must also support the mechanisms to control the configurations of 
+                        virtual networks according to the SSP.
+                    </description>
+          <addressed-by>FAU_GEN.1</addressed-by>
+          <rationale>Audit events can report attempts to breach isolation.</rationale>
+          <addressed-by>FCS_CKM_EXT.4</addressed-by>
+          <rationale>Requires cryptographic key destruction to protect domain data in shared storage.</rationale>
+          <addressed-by>FDP_PPR_EXT.1</addressed-by>
+          <rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
+          <addressed-by>FDP_RIP_EXT.1</addressed-by>
+          <rationale>Ensures that domain data is cleared from memory before memory is re-allocated.</rationale>
+          <addressed-by>FDP_RIP_EXT.2</addressed-by>
+          <rationale>Ensures that domain data is cleared from physical storage upon re-allocation of the storage.</rationale>
+          <addressed-by>FDP_VMS_EXT.1</addressed-by>
+          <rationale>Ensures that authorized data transfers between VMs are done securely.</rationale>
+          <addressed-by>FDP_VNC_EXT.1</addressed-by>
+          <rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
+          <addressed-by>FPT_DVD_EXT.1</addressed-by>
+          <rationale>Ensures that VMs can access only those virtual devices that they are configured to access.</rationale>
+          <addressed-by>FPT_EEM_EXT.1</addressed-by>
+          <rationale>Requires that the TOE use security mechanisms supported by the physical platform.</rationale>
+          <addressed-by>FPT_HAS_EXT.1</addressed-by>
+          <rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+          <addressed-by>FPT_VDP_EXT.1</addressed-by>
+          <rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
+          <addressed-by>FPT_VIV_EXT.1</addressed-by>
+          <rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
+        </SO>
+      </SOs>
+    </sec:Security_Objectives_for_the_TOE>
     <!-- 4.2 Security Objctives for the Operational Environment -->
     <sec:Security_Objectives_for_the_Operational_Environment>
       <SOEs>
