@@ -17,14 +17,20 @@
                 </tr>
             </table>
         </div>
+        <div id="commmentbox-">
+            <a href="#Comment-1-">Comment: Comment-1-</a>
+            <br>
+            <a href="#Comment-2-">Comment: Comment-2-</a>
+            <br>
+        </div>
         <h1 class="title" style="page-break-before:auto;">Protection Profile for Virtualization</h1>
         <h1 style="text-align:center; border-style: dashed; border-width: medium; border-color: red;">This page is best viewed with JavaScript enabled!</h1>
         <div class="center">
             <img src="images/niaplogo.png" alt="NIAP Logo">
             <br>
-             Version: 1.1.1
+             Version: 1.2
             <br>
-            2021-08-19
+            2025-05-07
             <br>
             <b>National Information Assurance Partnership</b>
             <br>
@@ -43,13 +49,16 @@
             <tr>
                 <td>1.1.1</td><td>2021-08-19</td><td>Errata release. Fixes a few typos.</td>
             </tr>
+            <tr>
+                <td>1.2</td><td>2025-05-07</td><td><abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022 conversion.</td>
+            </tr>
         </table>
         <h3>
             <span class="diff-html-added" id="added-diff-0" previous="first-diff" changeId="added-diff-0" next="last-diff" onclick="return tipA(constructToolTipA(this));">TDs Applied</span>
         </h3>
         <h2>Contents</h2>
         <div class="toc" id="toc">
-            <a href="#Introduction" style="text-indent:0px">1<span>Introduction</span></a><a href="#s-overview" style="text-indent:10px">1.1<span>Overview</span></a><a href="#glossary" style="text-indent:10px">1.2<span>Terms</span></a><a href="#cc-terms" style="text-indent:20px">1.2.1<span>Common Criteria Terms</span></a><a href="#tech-terms" style="text-indent:20px">1.2.2<span>Technical Terms</span></a><a href="#s-complianttargets" style="text-indent:10px">1.3<span>Compliant Targets of Evaluation</span></a><a href="#ss-toeboundary" style="text-indent:20px">1.3.1<span>TOE Boundary</span></a><a href="#ss-platformreqs" style="text-indent:20px">1.3.2<span>Requirements Met by the Platform</span></a><a href="#ss-scopecert" style="text-indent:20px">1.3.3<span>Scope of Certification</span></a><a href="#ss-equiv" style="text-indent:20px">1.3.4<span>Product and Platform Equivalence</span></a><a href="#s-usecases" style="text-indent:10px">1.4<span>Use Cases</span></a><a href="#ccl" style="text-indent:0px">2<span>Conformance Claims</span></a><a href="#spd" style="text-indent:0px">3<span>Security Problem Definition</span></a><a href="#Threats" style="text-indent:10px">3.1<span>Threats</span></a><a href="#s-assumptions" style="text-indent:10px">3.2<span>Assumptions</span></a><a href="#Organizational_Security_Policies" style="text-indent:10px">3.3<span>Organizational Security Policies</span></a><a href="#Security_Objectives" style="text-indent:0px">4<span>Security Objectives</span></a><a href="#s-secobjtoe" style="text-indent:10px">4.1<span>Security Objectives for the TOE</span></a><a href="#s-secobjoe" style="text-indent:10px">4.2<span>Security Objectives for the Operational Environment</span></a><a href="#secobjrat" style="text-indent:10px">4.3<span>Security Objectives Rationale</span></a><a href="#Security_Requirements" style="text-indent:0px">5<span>Security Requirements</span></a><a href="#s-sfr" style="text-indent:10px">5.1<span>Security Functional Requirements</span></a><a href="#ss-audit-table" style="text-indent:20px">5.1.1<span>Auditable Events for Mandatory SFRs</span></a><a href="#ss-fau" style="text-indent:20px">5.1.2<span>Security Audit (FAU)</span></a><a href="#ss-fcs" style="text-indent:20px">5.1.3<span>Cryptographic Support (FCS)</span></a><a href="#User_Data_Protection" style="text-indent:20px">5.1.4<span>User Data Protection (FDP)</span></a><a href="#ss-fia" style="text-indent:20px">5.1.5<span>Identification and Authentication (FIA)</span></a><a href="#ss-fmt" style="text-indent:20px">5.1.6<span>Security Management (FMT)</span></a><a href="#ss-fpt" style="text-indent:20px">5.1.7<span>Protection of the TSF (FPT)</span></a><a href="#ss-fta" style="text-indent:20px">5.1.8<span>TOE Access Banner (FTA)</span></a><a href="#ss-ftp" style="text-indent:20px">5.1.9<span>Trusted Path/Channel (FTP)</span></a><a href="#obj-req-map" style="text-indent:20px">5.1.10<span>TOE Security Functional Requirements Rationale</span></a><a href="#s-sar" style="text-indent:10px">5.2<span>Security Assurance Requirements</span></a><a href="#ss-ase" style="text-indent:20px">5.2.1<span>Class ASE: Security Target Evaluation</span></a><a href="#ss-adv" style="text-indent:20px">5.2.2<span>Class ADV: Development</span></a><a href="#ss-agd" style="text-indent:20px">5.2.3<span>Class AGD: Guidance Documents</span></a><a href="#ss-alc" style="text-indent:20px">5.2.4<span>Class ALC: Life-Cycle Support</span></a><a href="#ss-ate" style="text-indent:20px">5.2.5<span>Class ATE: Tests</span></a><a href="#ss-ava" style="text-indent:20px">5.2.6<span>Class AVA: Vulnerability Assessment</span></a><a href="#opt-app" style="text-indent:0px">Appendix A - <span>Optional Requirements</span></a><a href="#optional-reqs" style="text-indent:10px">A.1<span>Strictly Optional Requirements </span></a><a href="#optional-reqs-audit" style="text-indent:20px">A.1.1<span> Auditable Events for Strictly Optional Requirements </span></a><a href="#ss-fau-optional" style="text-indent:20px">A.1.2<span>Security Audit (FAU)</span></a><a href="#ss-fpt-optional" style="text-indent:20px">A.1.3<span>Protection of the TSF (FPT)</span></a><a href="#objective-reqs" style="text-indent:10px">A.2<span>Objective Requirements </span></a><a href="#objective-reqs-audit" style="text-indent:20px">A.2.1<span> Auditable Events for Objective Requirements </span></a><a href="#ss-fpt-objective" style="text-indent:20px">A.2.2<span>Protection of the TSF (FPT)</span></a><a href="#feat-based-reqs" style="text-indent:10px">A.3<span>Implementation-dependent Requirements </span></a><a href="#sel-based-reqs" style="text-indent:0px">Appendix B - <span>Selection-based Requirements </span></a><a href="#sel-based-reqs-audit" style="text-indent:10px">B.1<span> Auditable Events for Selection-based Requirements </span></a><a href="#ss-fcs-sel-based" style="text-indent:10px">B.2<span>Cryptographic Support (FCS)</span></a><a href="#ss-fia-sel-based" style="text-indent:10px">B.3<span>Identification and Authentication (FIA)</span></a><a href="#ss-fpt-sel-based" style="text-indent:10px">B.4<span>Protection of the TSF (FPT)</span></a><a href="#ss-ftp-sel-based" style="text-indent:10px">B.5<span>Trusted Path/Channel (FTP)</span></a><a href="#ext-comp-defs" style="text-indent:0px">Appendix C - <span>Extended Component Definitions</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">C.1<span>Extended Components Table</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">C.2<span>Extended Component Definitions</span></a><a href="#ext-comp-FCS" style="text-indent:20px">C.2.1<span>Cryptographic Support (FCS)</span></a><a href="#ext-comp-FCS_CKM_EXT" style="text-indent:30px">C.2.1.1<span>FCS_CKM_EXT Cryptographic Key Management</span></a><a href="#ext-comp-FCS_ENT_EXT" style="text-indent:30px">C.2.1.2<span>FCS_ENT_EXT Entropy for Virtual Machines</span></a><a href="#ext-comp-FCS_HTTPS_EXT" style="text-indent:30px">C.2.1.3<span>FCS_HTTPS_EXT HTTPS Protocol</span></a><a href="#ext-comp-FCS_IPSEC_EXT" style="text-indent:30px">C.2.1.4<span>FCS_IPSEC_EXT IPsec Protocol</span></a><a href="#ext-comp-FCS_RBG_EXT" style="text-indent:30px">C.2.1.5<span>FCS_RBG_EXT Cryptographic Operation (Random Bit Generation)</span></a><a href="#ext-comp-FIA" style="text-indent:20px">C.2.2<span>Identification and Authentication (FIA)</span></a><a href="#ext-comp-FIA_AFL_EXT" style="text-indent:30px">C.2.2.1<span>FIA_AFL_EXT Authentication Failure Handling</span></a><a href="#ext-comp-FIA_PMG_EXT" style="text-indent:30px">C.2.2.2<span>FIA_PMG_EXT Password Management</span></a><a href="#ext-comp-FIA_UIA_EXT" style="text-indent:30px">C.2.2.3<span>FIA_UIA_EXT Administrator Identification and Authentication</span></a><a href="#ext-comp-FIA_X509_EXT" style="text-indent:30px">C.2.2.4<span>FIA_X509_EXT X.509 Certificate</span></a><a href="#ext-comp-FPT" style="text-indent:20px">C.2.3<span>Protection of the TSF (FPT)</span></a><a href="#ext-comp-FPT_DDI_EXT" style="text-indent:30px">C.2.3.1<span>FPT_DDI_EXT Device Driver Isolation</span></a><a href="#ext-comp-FPT_DVD_EXT" style="text-indent:30px">C.2.3.2<span>FPT_DVD_EXT Non-Existence of Disconnected Virtual Devices</span></a><a href="#ext-comp-FPT_EEM_EXT" style="text-indent:30px">C.2.3.3<span>FPT_EEM_EXT Execution Environment Mitigations</span></a><a href="#ext-comp-FPT_GVI_EXT" style="text-indent:30px">C.2.3.4<span>FPT_GVI_EXT Guest VM Integrity</span></a><a href="#ext-comp-FPT_HAS_EXT" style="text-indent:30px">C.2.3.5<span>FPT_HAS_EXT Hardware Assists</span></a><a href="#ext-comp-FPT_HCL_EXT" style="text-indent:30px">C.2.3.6<span>FPT_HCL_EXT Hypercall Controls</span></a><a href="#ext-comp-FPT_IDV_EXT" style="text-indent:30px">C.2.3.7<span>FPT_IDV_EXT Software Identification and Versions</span></a><a href="#ext-comp-FPT_INT_EXT" style="text-indent:30px">C.2.3.8<span>FPT_INT_EXT Support for Introspection</span></a><a href="#ext-comp-FPT_ML_EXT" style="text-indent:30px">C.2.3.9<span>FPT_ML_EXT Measured Launch of Platform and VMM</span></a><a href="#ext-comp-FPT_RDM_EXT" style="text-indent:30px">C.2.3.10<span>FPT_RDM_EXT Removable Devices and Media</span></a><a href="#ext-comp-FPT_TUD_EXT" style="text-indent:30px">C.2.3.11<span>FPT_TUD_EXT Trusted Updates</span></a><a href="#ext-comp-FPT_VDP_EXT" style="text-indent:30px">C.2.3.12<span>FPT_VDP_EXT Virtual Device Parameters</span></a><a href="#ext-comp-FPT_VIV_EXT" style="text-indent:30px">C.2.3.13<span>FPT_VIV_EXT VMM Isolation from VMs</span></a><a href="#ext-comp-FAU" style="text-indent:20px">C.2.4<span>Security Audit (FAU)</span></a><a href="#ext-comp-FAU_STG_EXT" style="text-indent:30px">C.2.4.1<span>FAU_STG_EXT Off-Loading of Audit Data</span></a><a href="#ext-comp-FMT" style="text-indent:20px">C.2.5<span>Security Management (FMT)</span></a><a href="#ext-comp-FMT_SMO_EXT" style="text-indent:30px">C.2.5.1<span>FMT_SMO_EXT Separation of Management and Operational Networks</span></a><a href="#ext-comp-FTP" style="text-indent:20px">C.2.6<span>Trusted Path/Channel (FTP)</span></a><a href="#ext-comp-FTP_ITC_EXT" style="text-indent:30px">C.2.6.1<span>FTP_ITC_EXT Trusted Channel Communications</span></a><a href="#ext-comp-FTP_UIF_EXT" style="text-indent:30px">C.2.6.2<span>FTP_UIF_EXT User Interface</span></a><a href="#ext-comp-FDP" style="text-indent:20px">C.2.7<span>User Data Protection (FDP)</span></a><a href="#ext-comp-FDP_HBI_EXT" style="text-indent:30px">C.2.7.1<span>FDP_HBI_EXT Hardware-Based Isolation Mechanisms</span></a><a href="#ext-comp-FDP_PPR_EXT" style="text-indent:30px">C.2.7.2<span>FDP_PPR_EXT Physical Platform Resource Controls</span></a><a href="#ext-comp-FDP_RIP_EXT" style="text-indent:30px">C.2.7.3<span>FDP_RIP_EXT Residual Information in Memory</span></a><a href="#ext-comp-FDP_VMS_EXT" style="text-indent:30px">C.2.7.4<span>FDP_VMS_EXT VM Separation</span></a><a href="#ext-comp-FDP_VNC_EXT" style="text-indent:30px">C.2.7.5<span>FDP_VNC_EXT Virtual Networking Components</span></a><a href="#satisfiedreqs" style="text-indent:0px">Appendix D - <span>Implicitly Satisfied Requirements</span></a><a href="#appendix-entropy" style="text-indent:0px">Appendix E - <span>Entropy Documentation and Assessment</span></a><a href="#s-design" style="text-indent:10px">E.1<span>Design Description</span></a><a href="#s-justification" style="text-indent:10px">E.2<span>Entropy Justification</span></a><a href="#s-oc" style="text-indent:10px">E.3<span>Operating Conditions</span></a><a href="#s-health" style="text-indent:10px">E.4<span>Health Testing</span></a><a href="#appendix-equiv" style="text-indent:0px">Appendix F - <span>Equivalency Guidelines</span></a><a href="#s-vm-intro" style="text-indent:10px">F.1<span>Introduction</span></a><a href="#s-approach" style="text-indent:10px">F.2<span>Approach to Equivalency Analysis</span></a><a href="#s-modelequiv" style="text-indent:10px">F.3<span>Specific Guidance for Determining Product Model Equivalence</span></a><a href="#s-versionequiv" style="text-indent:10px">F.4<span>Specific Guidance for Determining Product Version Equivalence</span></a><a href="#s-platformequiv" style="text-indent:10px">F.5<span>Specific Guidance for Determining Platform Equivalence</span></a><a href="#ss-hardware-equiv" style="text-indent:20px">F.5.1<span>Hardware Platform Equivalence</span></a><a href="#ss-os-equiv" style="text-indent:20px">F.5.2<span>Software Platform Equivalence</span></a><a href="#s-specificity" style="text-indent:10px">F.6<span>Level of Specificity for Tested and Claimed Equivalent Configurations</span></a><a href="#acronyms" style="text-indent:0px">Appendix G - <span>Acronyms</span></a><a href="#appendix-bibliography" style="text-indent:0px">Appendix H - <span>Bibliography</span></a>
+            <a href="#Introduction" style="text-indent:0px">1<span>Introduction</span></a><a href="#s-overview" style="text-indent:10px">1.1<span>Overview</span></a><a href="#glossary" style="text-indent:10px">1.2<span>Terms</span></a><a href="#cc-terms" style="text-indent:20px">1.2.1<span>Common Criteria Terms</span></a><a href="#tech-terms" style="text-indent:20px">1.2.2<span>Technical Terms</span></a><a href="#s-complianttargets" style="text-indent:10px">1.3<span>Compliant Targets of Evaluation</span></a><a href="#ss-toeboundary" style="text-indent:20px">1.3.1<span>TOE Boundary</span></a><a href="#ss-platformreqs" style="text-indent:20px">1.3.2<span>Requirements Met by the Platform</span></a><a href="#ss-scopecert" style="text-indent:20px">1.3.3<span>Scope of Certification</span></a><a href="#ss-equiv" style="text-indent:20px">1.3.4<span>Product and Platform Equivalence</span></a><a href="#s-usecases" style="text-indent:10px">1.4<span>Use Cases</span></a><a href="#sec-cclaims" style="text-indent:0px">2<span>Conformance Claims</span></a><a href="#spd" style="text-indent:0px">3<span>Security Problem Definition</span></a><a href="#Threats" style="text-indent:10px">3.1<span>Threats</span></a><a href="#s-assumptions" style="text-indent:10px">3.2<span>Assumptions</span></a><a href="#Organizational_Security_Policies" style="text-indent:10px">3.3<span>Organizational Security Policies</span></a><a href="#Security_Objectives" style="text-indent:0px">4<span>Security Objectives</span></a><a href="#s-secobjoe" style="text-indent:10px">4.1<span>Security Objectives for the Operational Environment</span></a><a href="#secobjrat" style="text-indent:10px">4.2<span>Security Objectives Rationale</span></a><a href="#Security_Requirements" style="text-indent:0px">5<span>Security Requirements</span></a><a href="#s-sfr" style="text-indent:10px">5.1<span>Security Functional Requirements</span></a><a href="#ss-audit-table" style="text-indent:20px">5.1.1<span>Auditable Events for Mandatory SFRs</span></a><a href="#ss-fau" style="text-indent:20px">5.1.2<span>Security Audit (FAU)</span></a><a href="#ss-fcs" style="text-indent:20px">5.1.3<span>Cryptographic Support (FCS)</span></a><a href="#User_Data_Protection" style="text-indent:20px">5.1.4<span>User Data Protection (FDP)</span></a><a href="#ss-fia" style="text-indent:20px">5.1.5<span>Identification and Authentication (FIA)</span></a><a href="#ss-fmt" style="text-indent:20px">5.1.6<span>Security Management (FMT)</span></a><a href="#ss-fpt" style="text-indent:20px">5.1.7<span>Protection of the TSF (FPT)</span></a><a href="#ss-fta" style="text-indent:20px">5.1.8<span>TOE Access Banner (FTA)</span></a><a href="#ss-ftp" style="text-indent:20px">5.1.9<span>Trusted Path/Channel (FTP)</span></a><a href="#obj-req-map" style="text-indent:20px">5.1.10<span>TOE Security Functional Requirements Rationale</span></a><a href="#s-sar" style="text-indent:10px">5.2<span>Security Assurance Requirements</span></a><a href="#ss-ase" style="text-indent:20px">5.2.1<span>Class ASE: Security Target Evaluation</span></a><a href="#ss-adv" style="text-indent:20px">5.2.2<span>Class ADV: Development</span></a><a href="#ss-agd" style="text-indent:20px">5.2.3<span>Class AGD: Guidance Documents</span></a><a href="#ss-alc" style="text-indent:20px">5.2.4<span>Class ALC: Life-Cycle Support</span></a><a href="#ss-ate" style="text-indent:20px">5.2.5<span>Class ATE: Tests</span></a><a href="#ss-ava" style="text-indent:20px">5.2.6<span>Class AVA: Vulnerability Assessment</span></a><a href="#opt-app" style="text-indent:0px">Appendix A - <span>Optional Requirements</span></a><a href="#optional-reqs" style="text-indent:10px">A.1<span>Strictly Optional Requirements </span></a><a href="#optional-reqs-audit" style="text-indent:20px">A.1.1<span> Auditable Events for Strictly Optional Requirements </span></a><a href="#ss-fau-optional" style="text-indent:20px">A.1.2<span>Security Audit (FAU)</span></a><a href="#ss-fpt-optional" style="text-indent:20px">A.1.3<span>Protection of the TSF (FPT)</span></a><a href="#objective-reqs" style="text-indent:10px">A.2<span>Objective Requirements </span></a><a href="#objective-reqs-audit" style="text-indent:20px">A.2.1<span> Auditable Events for Objective Requirements </span></a><a href="#ss-fpt-objective" style="text-indent:20px">A.2.2<span>Protection of the TSF (FPT)</span></a><a href="#feat-based-reqs" style="text-indent:10px">A.3<span>Implementation-dependent Requirements </span></a><a href="#sel-based-reqs" style="text-indent:0px">Appendix B - <span>Selection-based Requirements </span></a><a href="#sel-based-reqs-audit" style="text-indent:10px">B.1<span> Auditable Events for Selection-based Requirements </span></a><a href="#ss-fcs-sel-based" style="text-indent:10px">B.2<span>Cryptographic Support (FCS)</span></a><a href="#ss-fia-sel-based" style="text-indent:10px">B.3<span>Identification and Authentication (FIA)</span></a><a href="#ss-fpt-sel-based" style="text-indent:10px">B.4<span>Protection of the TSF (FPT)</span></a><a href="#ss-ftp-sel-based" style="text-indent:10px">B.5<span>Trusted Path/Channel (FTP)</span></a><a href="#ext-comp-defs" style="text-indent:0px">Appendix C - <span>Extended Component Definitions</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">C.1<span>Extended Components Table</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">C.2<span>Extended Component Definitions</span></a><a href="#ext-comp-FCS" style="text-indent:20px">C.2.1<span>Cryptographic Support (FCS)</span></a><a href="#ext-comp-FCS_CKM_EXT" style="text-indent:30px">C.2.1.1<span>FCS_CKM_EXT Cryptographic Key Management</span></a><a href="#ext-comp-FCS_ENT_EXT" style="text-indent:30px">C.2.1.2<span>FCS_ENT_EXT Entropy for Virtual Machines</span></a><a href="#ext-comp-FCS_HTTPS_EXT" style="text-indent:30px">C.2.1.3<span>FCS_HTTPS_EXT HTTPS Protocol</span></a><a href="#ext-comp-FCS_IPSEC_EXT" style="text-indent:30px">C.2.1.4<span>FCS_IPSEC_EXT IPsec Protocol</span></a><a href="#ext-comp-FCS_RBG_EXT" style="text-indent:30px">C.2.1.5<span>FCS_RBG_EXT Cryptographic Operation (Random Bit Generation)</span></a><a href="#ext-comp-FIA" style="text-indent:20px">C.2.2<span>Identification and Authentication (FIA)</span></a><a href="#ext-comp-FIA_AFL_EXT" style="text-indent:30px">C.2.2.1<span>FIA_AFL_EXT Authentication Failure Handling</span></a><a href="#ext-comp-FIA_PMG_EXT" style="text-indent:30px">C.2.2.2<span>FIA_PMG_EXT Password Management</span></a><a href="#ext-comp-FIA_UIA_EXT" style="text-indent:30px">C.2.2.3<span>FIA_UIA_EXT Administrator Identification and Authentication</span></a><a href="#ext-comp-FIA_X509_EXT" style="text-indent:30px">C.2.2.4<span>FIA_X509_EXT X.509 Certificate</span></a><a href="#ext-comp-FPT" style="text-indent:20px">C.2.3<span>Protection of the TSF (FPT)</span></a><a href="#ext-comp-FPT_DDI_EXT" style="text-indent:30px">C.2.3.1<span>FPT_DDI_EXT Device Driver Isolation</span></a><a href="#ext-comp-FPT_DVD_EXT" style="text-indent:30px">C.2.3.2<span>FPT_DVD_EXT Non-Existence of Disconnected Virtual Devices</span></a><a href="#ext-comp-FPT_EEM_EXT" style="text-indent:30px">C.2.3.3<span>FPT_EEM_EXT Execution Environment Mitigations</span></a><a href="#ext-comp-FPT_GVI_EXT" style="text-indent:30px">C.2.3.4<span>FPT_GVI_EXT Guest VM Integrity</span></a><a href="#ext-comp-FPT_HAS_EXT" style="text-indent:30px">C.2.3.5<span>FPT_HAS_EXT Hardware Assists</span></a><a href="#ext-comp-FPT_HCL_EXT" style="text-indent:30px">C.2.3.6<span>FPT_HCL_EXT Hypercall Controls</span></a><a href="#ext-comp-FPT_IDV_EXT" style="text-indent:30px">C.2.3.7<span>FPT_IDV_EXT Software Identification and Versions</span></a><a href="#ext-comp-FPT_INT_EXT" style="text-indent:30px">C.2.3.8<span>FPT_INT_EXT Support for Introspection</span></a><a href="#ext-comp-FPT_ML_EXT" style="text-indent:30px">C.2.3.9<span>FPT_ML_EXT Measured Launch of Platform and VMM</span></a><a href="#ext-comp-FPT_RDM_EXT" style="text-indent:30px">C.2.3.10<span>FPT_RDM_EXT Removable Devices and Media</span></a><a href="#ext-comp-FPT_TUD_EXT" style="text-indent:30px">C.2.3.11<span>FPT_TUD_EXT Trusted Updates</span></a><a href="#ext-comp-FPT_VDP_EXT" style="text-indent:30px">C.2.3.12<span>FPT_VDP_EXT Virtual Device Parameters</span></a><a href="#ext-comp-FPT_VIV_EXT" style="text-indent:30px">C.2.3.13<span>FPT_VIV_EXT VMM Isolation from VMs</span></a><a href="#ext-comp-FAU" style="text-indent:20px">C.2.4<span>Security Audit (FAU)</span></a><a href="#ext-comp-FAU_STG_EXT" style="text-indent:30px">C.2.4.1<span>FAU_STG_EXT Off-Loading of Audit Data</span></a><a href="#ext-comp-FMT" style="text-indent:20px">C.2.5<span>Security Management (FMT)</span></a><a href="#ext-comp-FMT_SMO_EXT" style="text-indent:30px">C.2.5.1<span>FMT_SMO_EXT Separation of Management and Operational Networks</span></a><a href="#ext-comp-FTP" style="text-indent:20px">C.2.6<span>Trusted Path/Channel (FTP)</span></a><a href="#ext-comp-FTP_ITC_EXT" style="text-indent:30px">C.2.6.1<span>FTP_ITC_EXT Trusted Channel Communications</span></a><a href="#ext-comp-FTP_UIF_EXT" style="text-indent:30px">C.2.6.2<span>FTP_UIF_EXT User Interface</span></a><a href="#ext-comp-FDP" style="text-indent:20px">C.2.7<span>User Data Protection (FDP)</span></a><a href="#ext-comp-FDP_HBI_EXT" style="text-indent:30px">C.2.7.1<span>FDP_HBI_EXT Hardware-Based Isolation Mechanisms</span></a><a href="#ext-comp-FDP_PPR_EXT" style="text-indent:30px">C.2.7.2<span>FDP_PPR_EXT Physical Platform Resource Controls</span></a><a href="#ext-comp-FDP_RIP_EXT" style="text-indent:30px">C.2.7.3<span>FDP_RIP_EXT Residual Information in Memory</span></a><a href="#ext-comp-FDP_VMS_EXT" style="text-indent:30px">C.2.7.4<span>FDP_VMS_EXT VM Separation</span></a><a href="#ext-comp-FDP_VNC_EXT" style="text-indent:30px">C.2.7.5<span>FDP_VNC_EXT Virtual Networking Components</span></a><a href="#satisfiedreqs" style="text-indent:0px">Appendix D - <span>Implicitly Satisfied Requirements</span></a><a href="#appendix-entropy" style="text-indent:0px">Appendix E - <span>Entropy Documentation and Assessment</span></a><a href="#s-design" style="text-indent:10px">E.1<span>Design Description</span></a><a href="#s-justification" style="text-indent:10px">E.2<span>Entropy Justification</span></a><a href="#s-oc" style="text-indent:10px">E.3<span>Operating Conditions</span></a><a href="#s-health" style="text-indent:10px">E.4<span>Health Testing</span></a><a href="#appendix-equiv" style="text-indent:0px">Appendix F - <span>Equivalency Guidelines</span></a><a href="#s-vm-intro" style="text-indent:10px">F.1<span>Introduction</span></a><a href="#s-approach" style="text-indent:10px">F.2<span>Approach to Equivalency Analysis</span></a><a href="#s-modelequiv" style="text-indent:10px">F.3<span>Specific Guidance for Determining Product Model Equivalence</span></a><a href="#s-versionequiv" style="text-indent:10px">F.4<span>Specific Guidance for Determining Product Version Equivalence</span></a><a href="#s-platformequiv" style="text-indent:10px">F.5<span>Specific Guidance for Determining Platform Equivalence</span></a><a href="#ss-hardware-equiv" style="text-indent:20px">F.5.1<span>Hardware Platform Equivalence</span></a><a href="#ss-os-equiv" style="text-indent:20px">F.5.2<span>Software Platform Equivalence</span></a><a href="#s-specificity" style="text-indent:10px">F.6<span>Level of Specificity for Tested and Claimed Equivalent Configurations</span></a><a href="#acronyms" style="text-indent:0px">Appendix G - <span>Acronyms</span></a><a href="#appendix-bibliography" style="text-indent:0px">Appendix H - <span>Bibliography</span></a>
         </div>
         <h1 class="indexable" data-level="1" id="Introduction">1 Introduction</h1>
         <h2 class="indexable" data-level="2" id="s-overview">1.1 Overview</h2>
@@ -304,19 +313,47 @@
          The tests in this Protection Profile must be run on all product versions and Platforms with which the Vendor would like to claim compliance&mdash;subject to this Profile&rsquo;s equivalency guidelines (see <a href="#appendix-equiv" class="dynref">Appendix F - Equivalency Guidelines</a>). 
         <h2 class="indexable" data-level="2" id="s-usecases">1.4 Use Cases</h2>
          This <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> does not define any use cases for virtualization technology. Client Virtualization and Server Virtualization products have different use cases and so these are defined in their respective <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Modules. 
-        <h1 class="indexable" data-level="1" id="ccl">2 Conformance Claims</h1>
-         <span class="description">A Security Target must claim exact conformance to this Protection Profile, as defined in the <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_CEM">CEM</a></abbr> addenda for Exact Conformance, Selection-Based <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>, and Optional <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> (dated May 2017).
+        <h1 class="indexable" data-level="1" id="sec-cclaims">2 Conformance Claims</h1>
+         
+        <dl>
+            <dt>Conformance Statement</dt>
             <p></p>
-             The following <abbr class="dyn-abbr"><a href="#abbr_PP">PPs</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Modules are allowed to be specified in a <abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr> with this <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> with this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>.
-            <ul>
-                <li>
-                    <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for Client Virtualization Systems, Version 1.1
-                </li>
-                <li>
-                    <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for Server Virtualization Systems, Version 1.1
-                </li>
-            </ul>
-        </span> <span class="description"> This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is conformant to Parts 2 (extended) and 3 (extended) of Common Criteria Version 3.1, Release 5 [<abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>]. </span> <span class="description">This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> does not claim conformance to any other <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>. </span> <span class="description"> This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is Functional Package for TLS-conformant. This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is Functional Package for Secure Shell-conformant. </span> 
+            <dd>
+                An <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must claim exact conformance to this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>.
+            </dd>
+            <p></p>
+            <dd>
+                The evaluation methods used for evaluating the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> are a combination of the workunits defined in <a href="#bibCEM">[CEM]</a> as well as the Evaluation Activities for ensuring that individual <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_SAR">SARs</a></abbr> have a sufficient level of supporting evidence in the Security Target and guidance documentation and have been sufficiently tested by the laboratory as part of completing <a href="#ATE_IND.1">ATE_IND.1</a>. Any functional packages this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> claims similarly contain their own Evaluation Activities that are used in this same manner. 
+            </dd>
+            <dt>CC Conformance Claims</dt>
+            <p></p>
+            <dd>
+                This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is conformant to Part 2 (extended) and Part 3 (extended) of Common Criteria <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1. 
+            </dd>
+            <dt>PP Claim</dt>
+            <p></p>
+            <dd>
+                 This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> does not claim conformance to any Protection Profile. 
+            </dd>
+            <p></p>
+            <dd>
+                The following <abbr class="dyn-abbr"><a href="#abbr_PP">PPs</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Modules are allowed to be specified in a <abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr> with this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>: 
+                <ul>
+                    <li>
+                        <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for Client Virtualization Systems, Version 1.1version will need to be updated.
+                    </li>
+                    <li>
+                        <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for Server Virtualization Systems, Version 1.1version will need to be updated.
+                    </li>
+                </ul>
+            </dd>
+            <dt>Package Claim</dt>
+            <p></p>
+            <dd>
+                This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is not conformant to any Functional or Assurance Packages.
+            </dd>
+        </dl>
+         
         <h1 class="indexable" data-level="1" id="spd">3 Security Problem Definition</h1>
         <h2 class="indexable" data-level="2" id="Threats">3.1 Threats</h2>
          
@@ -401,73 +438,7 @@
         <h2 class="indexable" data-level="2" id="Organizational_Security_Policies">3.3 Organizational Security Policies</h2>
          This document does not define any additional OSPs. 
         <h1 class="indexable" data-level="1" id="Security_Objectives">4 Security Objectives</h1>
-        <h2 class="indexable" data-level="2" id="s-secobjtoe">4.1 Security Objectives for the TOE</h2>
-         
-        <dl>
-            <dt class="SO defined" id="O.VM_ISOLATION">O.VM_ISOLATION</dt>
-            <dd>
-                <span class="description">VMs are the fundamental subject of the system. The <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> is responsible for applying the system security policy (<abbr class="dyn-abbr"><a href="#abbr_SSP">SSP</a></abbr>) to the <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> and all resources. As basic functionality, the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> must support a security policy that mandates no information transfer between VMs.
-                    <p></p>
-                     The <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> must support the necessary mechanisms to isolate the resources of all VMs. The <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> partitions a platform's physical resources for use by the supported virtual environments. Depending on customer requirements, a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> may need a completely isolated environment with exclusive access to system resources or share some of its resources with other VMs. It must be possible to enforce a security policy that prohibits the transfer of data between VMs through shared devices. When the platform security policy allows the sharing of resources across <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> boundaries, the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> must ensure that all access to those resources is consistent with the policy. The <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> may delegate the responsibility for the mediation of resource sharing to select Service VMs; however in doing so, it remains responsible for mediating access to the Service VMs, and each Service <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> must mediate all access to any shared resource that has been delegated to it in accordance with the <abbr class="dyn-abbr"><a href="#abbr_SSP">SSP</a></abbr>.
-                    <p></p>
-                     Both virtual and physical devices are resources requiring access control. The <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> must enforce access control in accordance with system security policy. Physical devices are platform devices with access mediated via the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> per the O.VMM_Integrity objective. Virtual devices may include virtual storage devices and virtual network devices. Some of the access control restrictions must be enforced internal to Service VMs, as may be the case for isolating virtual networks. VMMs may also expose purely virtual interfaces. These are <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> specific, and while they are not analogous to a physical device, they are also subject to access control.
-                    <br>
-                    <br>
-                     The <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> must support the mechanisms to isolate all resources associated with virtual networks and to limit a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>'s access to only those virtual networks for which it has been configured. The <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> must also support the mechanisms to control the configurations of virtual networks according to the <abbr class="dyn-abbr"><a href="#abbr_SSP">SSP</a></abbr>. </span>
-            </dd>
-            <dt class="SO defined" id="O.VMM_INTEGRITY">O.VMM_INTEGRITY</dt>
-            <dd>
-                <span class="description">Integrity is a core security objective for Virtualization Systems. To achieve system integrity, the integrity of each <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> component must be established and maintained. This objective concerns only the integrity of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr>&mdash;not the integrity of software running inside of Guest VMs or of the physical platform. The overall objective is to ensure the integrity of critical components of a <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr>.
-                    <p></p>
-                     Initial integrity of a <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> can be established through mechanisms such as a digitally signed installation or update package, or through integrity measurements made at launch. Integrity is maintained in a running system by careful protection of the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> from untrusted users and software. For example, it must not be possible for software running within a Guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> to exploit a vulnerability in a device or hypercall interface and gain control of the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>. The vendor must release patches for vulnerabilities as soon as practicable after discovery. </span>
-            </dd>
-            <dt class="SO defined" id="O.PLATFORM_INTEGRITY">O.PLATFORM_INTEGRITY</dt>
-            <dd>
-                <span class="description">The integrity of the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> depends on the integrity of the hardware and software on which the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> relies. Although the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> does not have complete control over the integrity of the platform, the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> should as much as possible try to ensure that no users or software hosted by the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> can undermine the integrity of the platform. </span>
-            </dd>
-            <dt class="SO defined" id="O.DOMAIN_INTEGRITY">O.DOMAIN_INTEGRITY</dt>
-            <dd>
-                <span class="description">While the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> is not responsible for the contents or correct functioning of software that runs within Guest VMs, it is responsible for ensuring that the correct functioning of the software within a Guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> is not interfered with by other VMs. </span>
-            </dd>
-            <dt class="SO defined" id="O.MANAGEMENT_ACCESS">O.MANAGEMENT_ACCESS</dt>
-            <dd>
-                <span class="description"><abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> management functions include <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> configuration, virtualized network configuration, allocation of physical resources, and reporting. Only authorized users (administrators) may exercise management functions.
-                    <p></p>
-                     Because of the privileges exercised by the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> management functions, it must not be possible for the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>&rsquo;s management components to be compromised without administrator notification. This means that unauthorized users cannot be permitted access to the management functions, and the management components must not be interfered with by Guest VMs or unprivileged users on other networks&mdash;including operational networks connected to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.
-                    <p></p>
-                     VMMs include a set of management functions that collectively allow administrators to configure and manage the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>, as well as configure Guest VMs. These management functions are specific to the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> and are distinct from any other management functions that might exist for the internal management of any given Guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>. These <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> management functions are privileged, with the security of the entire system relying on their proper use. The <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> management functions can be classified into different categories and the policy for their use and the impact to security may vary accordingly.
-                    <p></p>
-                     The management functions are distributed throughout the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> (within the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> and Service VMs). The <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> must support the necessary mechanisms to enable the control of all management functions according to the system security policy. When a management function is distributed among multiple Service VMs, the VMs must be protected using the security mechanisms of the Hypervisor and any Service VMs involved to ensure that the intent of the system security policy is not compromised. Additionally, since hypercalls permit Guest VMs to invoke the Hypervisor, and often allow the passing of data to the Hypervisor, it is important that the hypercall interface is well-guarded and that all parameters be validated.
-                    <p></p>
-                     The <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> maintains configuration data for every <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> on the system. This configuration data, whether of Service or Guest VMs, must be protected. The mechanisms used to establish, modify and verify configuration data are part of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> management functions and must be protected as such. The proper internal configuration of Service VMs that provide critical security functions can also greatly impact <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> security. These configurations must also be protected. Internal configuration of Guest VMs should not impact overall <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> security. The overall goal is to ensure that the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>, including the environments internal to Service VMs, is properly configured and that all Guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> configurations are maintained consistent with the system security policy throughout their lifecycle.
-                    <p></p>
-                     Virtualization Systems are often managed remotely. For example, an administrator can remotely update virtualization software, start and shut down VMs, and manage virtualized network connections. If a console is required, it could be run on a separate machine or it could itself run in a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>. When performing remote management, an administrator must communicate with a privileged management agent over a network. Communications with the management infrastructure must be protected from Guest VMs and operational networks. </span>
-            </dd>
-            <dt class="SO defined" id="O.PATCHED_SOFTWARE">O.PATCHED_SOFTWARE</dt>
-            <dd>
-                <span class="description">The <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> must be updated and patched when needed in order to prevent the potential compromise of the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>, as well as the networks and VMs that it hosts. Identifying and applying needed updates must be a normal part of the operating procedure to ensure that patches are applied in a timely and thorough manner. In order to facilitate this, the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> must support standards and protocols that help enhance the manageability of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> as an <abbr class="dyn-abbr"><a href="#abbr_IT">IT</a></abbr> product, enabling it to be integrated as part of a manageable network (e.g., reporting current patch level and patchability). </span>
-            </dd>
-            <dt class="SO defined" id="O.VM_ENTROPY">O.VM_ENTROPY</dt>
-            <dd>
-                <span class="description">VMs must have access to good entropy sources to support security-related features that implement cryptographic algorithms. For example, in order to function as members of operational networks, VMs must be able to communicate securely with other network entities&mdash;whether virtual or physical. They must therefore have access to sources of good entropy to support that secure communication. </span>
-            </dd>
-            <dt class="SO defined" id="O.AUDIT">O.AUDIT</dt>
-            <dd>
-                <span class="description">An audit log must be created that captures accesses to the objects the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> protects. The log of these accesses, or audit events, must be protected from modification, unauthorized access, and destruction. The audit log must be sufficiently detailed to indicate the date and time of the event, the identify of the user, the type of event, and the success or failure of the event. </span>
-            </dd>
-            <dt class="SO defined" id="O.CORRECTLY_APPLIED_CONFIGURATION">O.CORRECTLY_APPLIED_CONFIGURATION</dt>
-            <dd>
-                <span class="description">The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must not apply configurations that violate the current security policy. 
-                    <p></p>
-                     The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must correctly apply configurations and policies to a newly created Guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>, as well as to existing Guest VMs when applicable configuration or policy changes are made. All changes to configuration and to policy must conform to the existing security policy. Similarly, changes made to the configuration of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> itself must not violate the existing security policy. </span>
-            </dd>
-            <dt class="SO defined" id="O.RESOURCE_ALLOCATION">O.RESOURCE_ALLOCATION</dt>
-            <dd>
-                <span class="description">The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> will provide mechanisms that enforce constraints on the allocation of system resources in accordance with existing security policy. </span>
-            </dd>
-        </dl>
-         
-        <h2 class="indexable" data-level="2" id="s-secobjoe">4.2 Security Objectives for the Operational Environment</h2>
+        <h2 class="indexable" data-level="2" id="s-secobjoe">4.1 Security Objectives for the Operational Environment</h2>
          
         <dl>
             <dt class="SOE defined" id="OE.CONFIG">OE.CONFIG</dt>
@@ -488,59 +459,14 @@
             </dd>
         </dl>
          
-        <h2 id="secobjrat" class="indexable,h2" data-level="2">4.3 Security Objectives Rationale</h2>
-         This section describes how the assumptions, threats, and organizational security policies map to the security objectives. 
+        <h2 id="secobjrat" class="indexable,h2" data-level="2">4.2 Security Objectives Rationale</h2>
+         This section describes how the assumptions and organizational security policies map to operational environment security objectives. 
         <table>
             <caption>
                 <span class="ctr" data-myid="t-sec-obj-rat" data-counter-type="ct-Table" id="t-sec-obj-rat">Table <span class="counter">1</span></span>: Security Objectives Rationale
             </caption>
             <tr class="header">
-                <td>Threat, Assumption, or OSP</td><td>Security Objectives</td><td>Rationale</td>
-            </tr>
-            <tr class="major-row">
-                <td rowspan="2"><a href="#T.DATA_LEAKAGE">T.DATA_​LEAKAGE</a></td><td><a href="#O.VM_ISOLATION">O.VM_​ISOLATION</a></td><td>Logical separation of VMs and enforcement of domain integrity prevent unauthorized transmission of data from one <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> to another.</td>
-            </tr>
-            <tr>
-                <td><a href="#O.DOMAIN_INTEGRITY">O.DOMAIN_​INTEGRITY</a></td><td>Logical separation of VMs and enforcement of domain integrity prevent unauthorized transmission of data from one <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> to another.</td>
-            </tr>
-            <tr class="major-row">
-                <td rowspan="1"><a href="#T.UNAUTHORIZED_UPDATE">T.UNAUTHORIZED_​UPDATE</a></td><td><a href="#O.VMM_INTEGRITY">O.VMM_​INTEGRITY</a></td><td>System integrity prevents the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> from installing a software patch containing unknown and potentially malicious code.</td>
-            </tr>
-            <tr class="major-row">
-                <td rowspan="2"><a href="#T.UNAUTHORIZED_MODIFICATION">T.UNAUTHORIZED_​MODIFICATION</a></td><td><a href="#O.VMM_INTEGRITY">O.VMM_​INTEGRITY</a></td><td>Enforcement of <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> integrity prevents the bypass of enforcement mechanisms and auditing ensures that abuse of legitimate authority can be detected.</td>
-            </tr>
-            <tr>
-                <td><a href="#O.AUDIT">O.AUDIT</a></td><td>Enforcement of <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> integrity prevents the bypass of enforcement mechanisms and auditing ensures that abuse of legitimate authority can be detected.</td>
-            </tr>
-            <tr class="major-row">
-                <td rowspan="1"><a href="#T.USER_ERROR">T.USER_​ERROR</a></td><td><a href="#O.VM_ISOLATION">O.VM_​ISOLATION</a></td><td>Isolation of VMs includes clear attribution of those VMs to their respective domains which reduces the likelihood that a user inadvertently inputs or transfers data meant for one <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> into another.</td>
-            </tr>
-            <tr class="major-row">
-                <td rowspan="1"><a href="#T.3P_SOFTWARE">T.3P_​SOFTWARE</a></td><td><a href="#O.VMM_INTEGRITY">O.VMM_​INTEGRITY</a></td><td>The <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> integrity mechanisms include environment-based vulnerability mitigation and potentially support for introspection and device driver isolation, all of which reduce the likelihood that any vulnerabilities in third-party software can be used to exploit the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.</td>
-            </tr>
-            <tr class="major-row">
-                <td rowspan="2"><a href="#T.VMM_COMPROMISE">T.VMM_​COMPROMISE</a></td><td><a href="#O.VMM_INTEGRITY">O.VMM_​INTEGRITY</a></td><td>Maintaining the integrity of the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> and ensuring that VMs execute in isolated domains mitigate the risk that the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> can be compromised or bypassed.</td>
-            </tr>
-            <tr>
-                <td><a href="#O.VM_ISOLATION">O.VM_​ISOLATION</a></td><td>Maintaining the integrity of the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> and ensuring that VMs execute in isolated domains mitigate the risk that the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> can be compromised or bypassed.</td>
-            </tr>
-            <tr class="major-row">
-                <td rowspan="1"><a href="#T.PLATFORM_COMPROMISE">T.PLATFORM_​COMPROMISE</a></td><td><a href="#O.PLATFORM_INTEGRITY">O.PLATFORM_​INTEGRITY</a></td><td>Platform integrity mechanisms used by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> reduce the risk that an attacker can &lsquo;break out&rsquo; of a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> and affect the platform on which the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> is running.</td>
-            </tr>
-            <tr class="major-row">
-                <td rowspan="1"><a href="#T.UNAUTHORIZED_ACCESS">T.UNAUTHORIZED_​ACCESS</a></td><td><a href="#O.MANAGEMENT_ACCESS">O.MANAGEMENT_​ACCESS</a></td><td>Ensuring that <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> management functions cannot be executed without authorization prevents untrusted subjects from modifying the behavior of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> in an unanticipated manner.</td>
-            </tr>
-            <tr class="major-row">
-                <td rowspan="1"><a href="#T.WEAK_CRYPTO">T.WEAK_​CRYPTO</a></td><td><a href="#O.VM_ENTROPY">O.VM_​ENTROPY</a></td><td>Acquisition of good entropy is necessary to support the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s security-related cryptographic algorithms.</td>
-            </tr>
-            <tr class="major-row">
-                <td rowspan="1"><a href="#T.UNPATCHED_SOFTWARE">T.UNPATCHED_​SOFTWARE</a></td><td><a href="#O.PATCHED_SOFTWARE">O.PATCHED_​SOFTWARE</a></td><td>The ability to patch the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> software ensures that protections against vulnerabilities can be applied as they become available.</td>
-            </tr>
-            <tr class="major-row">
-                <td rowspan="1"><a href="#T.MISCONFIGURATION">T.MISCONFIGURATION</a></td><td><a href="#O.CORRECTLY_APPLIED_CONFIGURATION">O.CORRECTLY_​APPLIED_​CONFIGURATION</a></td><td>Mechanisms to prevent the application of configurations that violate the current security policy help prevent misconfigurations.</td>
-            </tr>
-            <tr class="major-row">
-                <td rowspan="1"><a href="#T.DENIAL_OF_SERVICE">T.DENIAL_​OF_​SERVICE</a></td><td><a href="#O.RESOURCE_ALLOCATION">O.RESOURCE_​ALLOCATION</a></td><td>The ability of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to ensure the proper allocation of resources makes denial of service attacks more difficult.</td>
+                <td>Assumption or OSP</td><td>Security Objectives</td><td>Rationale</td>
             </tr>
             <tr class="major-row">
                 <td rowspan="1"><a href="#A.PLATFORM_INTEGRITY">A.PLATFORM_​INTEGRITY</a></td><td><a href="#OE.PHYSICAL">OE.PHYSICAL</a></td><td>If the underlying platform has not been compromised prior to installation of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, its integrity can be assumed to be intact.</td>
@@ -3637,19 +3563,17 @@
         </div>
         <h3 id="obj-req-map" class="indexable" data-level="3">5.1.10 TOE Security Functional Requirements Rationale</h3>
         <p>
-            The following rationale provides justification for each security objective for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, showing that the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> are suitable to meet and achieve the security objectives:
+            The following rationale provides justification for each <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, showing that the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> are suitable to address the specified threats:
             <br>
             <table>
                 <caption>
                     <span class="ctr" data-myid="t-obj_map" data-counter-type="ct-Table" id="t-obj_map">Table <span class="counter">4</span></span>: <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> Rationale
                 </caption>
                 <tr>
-                    <th>Objective</th><th>Addressed by</th><th>Rationale</th>
+                    <th>Threat</th><th>Addressed by</th><th>Rationale</th>
                 </tr>
                 <tr class="major-row">
-                    <td rowspan="12"><a href="#O.VM_ISOLATION">O.VM_​ISOLATION</a>
-                        <br>
-                    </td><td><a href="#FAU_GEN.1">FAU_GEN.1</a></td><td>Audit events can report attempts to breach isolation.</td>
+                    <td rowspan="27"><a href="#T.DATA_LEAKAGE">T.DATA_​LEAKAGE</a></td><td><a href="#FAU_GEN.1">FAU_GEN.1</a></td><td>Audit events can report attempts to breach isolation.</td>
                 </tr>
                 <tr>
                     <td><a href="#FCS_CKM_EXT.4">FCS_CKM_EXT.4</a></td><td>Requires cryptographic key destruction to protect domain data in shared storage.</td>
@@ -3684,89 +3608,8 @@
                 <tr>
                     <td><a href="#FPT_VIV_EXT.1">FPT_VIV_EXT.1</a></td><td>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</td>
                 </tr>
-                <tr class="major-row">
-                    <td rowspan="14"><a href="#O.VMM_INTEGRITY">O.VMM_​INTEGRITY</a>
-                        <br>
-                    </td><td><a href="#FAU_GEN.1">FAU_GEN.1</a></td><td>Audit events can report potential integrity breaches and attempts.</td>
-                </tr>
                 <tr>
-                    <td><a href="#FCS_CKM.1">FCS_CKM.1</a></td><td>Requires generation of asymmetric keys for protection of integrity measures.</td>
-                </tr>
-                <tr>
-                    <td>FCS_COP.1</td><td>Ensures proper functioning of cryptographic algorithms used to protect data integrity.</td>
-                </tr>
-                <tr>
-                    <td><a href="#FCS_RBG_EXT.1">FCS_RBG_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> has access to high-quality entropy for cryptographic purposes.</td>
-                </tr>
-                <tr>
-                    <td><a href="#FDP_PPR_EXT.1">FDP_PPR_EXT.1</a></td><td>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</td>
-                </tr>
-                <tr>
-                    <td><a href="#FDP_VMS_EXT.1">FDP_VMS_EXT.1</a></td><td>Ensures that authorized data transfers between VMs are done securely.</td>
-                </tr>
-                <tr>
-                    <td><a href="#FDP_VNC_EXT.1">FDP_VNC_EXT.1</a></td><td>Ensures that network traffic is visible only to VMs configured to be that network.</td>
-                </tr>
-                <tr>
-                    <td><a href="#FPT_DDI_EXT.1">FPT_DDI_EXT.1</a></td><td>Requires that physical device drivers be isolated other parts of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and from one another (optional).</td>
-                </tr>
-                <tr>
-                    <td><a href="#FPT_EEM_EXT.1">FPT_EEM_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> use security mechanisms supported by the physical platform.</td>
-                </tr>
-                <tr>
-                    <td><a href="#FPT_HAS_EXT.1">FPT_HAS_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> use platform-supported virtualization assists to reduce attack surface.</td>
-                </tr>
-                <tr>
-                    <td><a href="#FPT_HCL_EXT.1">FPT_HCL_EXT.1</a></td><td>Requires that Hypercall parameters be validated.</td>
-                </tr>
-                <tr>
-                    <td><a href="#FPT_ML_EXT.1">FPT_ML_EXT.1</a></td><td>Requires measured launch of the platform and <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> (objective).</td>
-                </tr>
-                <tr>
-                    <td><a href="#FPT_VDP_EXT.1">FPT_VDP_EXT.1</a></td><td>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</td>
-                </tr>
-                <tr>
-                    <td><a href="#FPT_VIV_EXT.1">FPT_VIV_EXT.1</a></td><td>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</td>
-                </tr>
-                <tr class="major-row">
-                    <td rowspan="11"><a href="#O.PLATFORM_INTEGRITY">O.PLATFORM_​INTEGRITY</a>
-                        <br>
-                    </td><td><a href="#FDP_HBI_EXT.1">FDP_HBI_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> use platform-supported mechanisms for access to physical devices.</td>
-                </tr>
-                <tr>
-                    <td><a href="#FDP_PPR_EXT.1">FDP_PPR_EXT.1</a></td><td>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</td>
-                </tr>
-                <tr>
-                    <td><a href="#FDP_VMS_EXT.1">FDP_VMS_EXT.1</a></td><td>Ensures that authorized data transfers between VMs are done securely.</td>
-                </tr>
-                <tr>
-                    <td><a href="#FDP_VNC_EXT.1">FDP_VNC_EXT.1</a></td><td>Ensures that network traffic is visible only to VMs configured to be that network.</td>
-                </tr>
-                <tr>
-                    <td><a href="#FPT_DVD_EXT.1">FPT_DVD_EXT.1</a></td><td>Ensures that VMs cannot access virtual devices that they are not configured to access.</td>
-                </tr>
-                <tr>
-                    <td><a href="#FPT_EEM_EXT.1">FPT_EEM_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> use security mechanisms supported by the physical platform.</td>
-                </tr>
-                <tr>
-                    <td><a href="#FPT_HAS_EXT.1">FPT_HAS_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> use platform-supported virtualization assists to reduce attack surface.</td>
-                </tr>
-                <tr>
-                    <td><a href="#FPT_HCL_EXT.1">FPT_HCL_EXT.1</a></td><td>Requires that Hypercall parameters be validated.</td>
-                </tr>
-                <tr>
-                    <td><a href="#FPT_ML_EXT.1">FPT_ML_EXT.1</a></td><td>Requires measured launch of the platform and <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> (objective).</td>
-                </tr>
-                <tr>
-                    <td><a href="#FPT_VDP_EXT.1">FPT_VDP_EXT.1</a></td><td>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</td>
-                </tr>
-                <tr>
-                    <td><a href="#FPT_VIV_EXT.1">FPT_VIV_EXT.1</a></td><td>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</td>
-                </tr>
-                <tr class="major-row">
-                    <td rowspan="15"><a href="#O.DOMAIN_INTEGRITY">O.DOMAIN_​INTEGRITY</a>
-                        <br>
-                    </td><td><a href="#FCS_CKM_EXT.4">FCS_CKM_EXT.4</a></td><td>Requires cryptographic key destruction to protect domain data in shared storage.</td>
+                    <td><a href="#FCS_CKM_EXT.4">FCS_CKM_EXT.4</a></td><td>Requires cryptographic key destruction to protect domain data in shared storage.</td>
                 </tr>
                 <tr>
                     <td><a href="#FCS_ENT_EXT.1">FCS_ENT_EXT.1</a></td><td>Requires that domains have access to high-quality entropy for cryptographic purposes.</td>
@@ -3811,9 +3654,298 @@
                     <td><a href="#FTP_UIF_EXT.2">FTP_UIF_EXT.2</a></td><td>Ensures that users can know the identity of any <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> that they can access.</td>
                 </tr>
                 <tr class="major-row">
-                    <td rowspan="16"><a href="#O.MANAGEMENT_ACCESS">O.MANAGEMENT_​ACCESS</a>
-                        <br>
-                    </td><td><a href="#FAU_GEN.1">FAU_GEN.1</a></td><td>Audit events report attempts to access the management subsystem.</td>
+                    <td rowspan="14"><a href="#T.UNAUTHORIZED_UPDATE">T.UNAUTHORIZED_​UPDATE</a></td><td><a href="#FAU_GEN.1">FAU_GEN.1</a></td><td>Audit events can report potential integrity breaches and attempts.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FCS_CKM.1">FCS_CKM.1</a></td><td>Requires generation of asymmetric keys for protection of integrity measures.</td>
+                </tr>
+                <tr>
+                    <td>FCS_COP.1</td><td>Ensures proper functioning of cryptographic algorithms used to protect data integrity.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FCS_RBG_EXT.1">FCS_RBG_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> has access to high-quality entropy for cryptographic purposes.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_PPR_EXT.1">FDP_PPR_EXT.1</a></td><td>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_VMS_EXT.1">FDP_VMS_EXT.1</a></td><td>Ensures that authorized data transfers between VMs are done securely.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_VNC_EXT.1">FDP_VNC_EXT.1</a></td><td>Ensures that network traffic is visible only to VMs configured to be that network.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_DDI_EXT.1">FPT_DDI_EXT.1</a></td><td>Requires that physical device drivers be isolated other parts of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and from one another (optional).</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_EEM_EXT.1">FPT_EEM_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> use security mechanisms supported by the physical platform.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_HAS_EXT.1">FPT_HAS_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> use platform-supported virtualization assists to reduce attack surface.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_HCL_EXT.1">FPT_HCL_EXT.1</a></td><td>Requires that Hypercall parameters be validated.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_ML_EXT.1">FPT_ML_EXT.1</a></td><td>Requires measured launch of the platform and <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> (objective).</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_VDP_EXT.1">FPT_VDP_EXT.1</a></td><td>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_VIV_EXT.1">FPT_VIV_EXT.1</a></td><td>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</td>
+                </tr>
+                <tr class="major-row">
+                    <td rowspan="20"><a href="#T.UNAUTHORIZED_MODIFICATION">T.UNAUTHORIZED_​MODIFICATION</a></td><td><a href="#FAU_GEN.1">FAU_GEN.1</a></td><td>Audit events can report potential integrity breaches and attempts.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FCS_CKM.1">FCS_CKM.1</a></td><td>Requires generation of asymmetric keys for protection of integrity measures.</td>
+                </tr>
+                <tr>
+                    <td>FCS_COP.1</td><td>Ensures proper functioning of cryptographic algorithms used to protect data integrity.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FCS_RBG_EXT.1">FCS_RBG_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> has access to high-quality entropy for cryptographic purposes.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_PPR_EXT.1">FDP_PPR_EXT.1</a></td><td>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_VMS_EXT.1">FDP_VMS_EXT.1</a></td><td>Ensures that authorized data transfers between VMs are done securely.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_VNC_EXT.1">FDP_VNC_EXT.1</a></td><td>Ensures that network traffic is visible only to VMs configured to be that network.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_DDI_EXT.1">FPT_DDI_EXT.1</a></td><td>Requires that physical device drivers be isolated other parts of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and from one another (optional).</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_EEM_EXT.1">FPT_EEM_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> use security mechanisms supported by the physical platform.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_HAS_EXT.1">FPT_HAS_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> use platform-supported virtualization assists to reduce attack surface.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_HCL_EXT.1">FPT_HCL_EXT.1</a></td><td>Requires that Hypercall parameters be validated.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_ML_EXT.1">FPT_ML_EXT.1</a></td><td>Requires measured launch of the platform and <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> (objective).</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_VDP_EXT.1">FPT_VDP_EXT.1</a></td><td>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_VIV_EXT.1">FPT_VIV_EXT.1</a></td><td>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FAU_ARP.1">FAU_ARP.1</a></td><td>Requires support for automatic responses to audit events (optional).</td>
+                </tr>
+                <tr>
+                    <td><a href="#FAU_GEN.1">FAU_GEN.1</a></td><td>Requires reporting of audit events.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FAU_SAA.1">FAU_SAA.1</a></td><td>Requires support for rules for indicating security violations based on audit events (optional).</td>
+                </tr>
+                <tr>
+                    <td><a href="#FAU_SAR.1">FAU_SAR.1</a></td><td>Requires support for Administrator review of audit records.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FAU_STG.1">FAU_STG.1</a></td><td>Requires protection of stored audit records.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FAU_STG_EXT.1">FAU_STG_EXT.1</a></td><td>Requires support for protected transmission of audit records off the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.</td>
+                </tr>
+                <tr class="major-row">
+                    <td rowspan="12"><a href="#T.USER_ERROR">T.USER_​ERROR</a></td><td><a href="#FAU_GEN.1">FAU_GEN.1</a></td><td>Audit events can report attempts to breach isolation.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FCS_CKM_EXT.4">FCS_CKM_EXT.4</a></td><td>Requires cryptographic key destruction to protect domain data in shared storage.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_PPR_EXT.1">FDP_PPR_EXT.1</a></td><td>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_RIP_EXT.1">FDP_RIP_EXT.1</a></td><td>Ensures that domain data is cleared from memory before memory is re-allocated.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_RIP_EXT.2">FDP_RIP_EXT.2</a></td><td>Ensures that domain data is cleared from physical storage upon re-allocation of the storage.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_VMS_EXT.1">FDP_VMS_EXT.1</a></td><td>Ensures that authorized data transfers between VMs are done securely.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_VNC_EXT.1">FDP_VNC_EXT.1</a></td><td>Ensures that network traffic is visible only to VMs configured to be that network.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_DVD_EXT.1">FPT_DVD_EXT.1</a></td><td>Ensures that VMs can access only those virtual devices that they are configured to access.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_EEM_EXT.1">FPT_EEM_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> use security mechanisms supported by the physical platform.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_HAS_EXT.1">FPT_HAS_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> use platform-supported virtualization assists to reduce attack surface.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_VDP_EXT.1">FPT_VDP_EXT.1</a></td><td>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_VIV_EXT.1">FPT_VIV_EXT.1</a></td><td>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</td>
+                </tr>
+                <tr class="major-row">
+                    <td rowspan="14"><a href="#T.3P_SOFTWARE">T.3P_​SOFTWARE</a></td><td><a href="#FAU_GEN.1">FAU_GEN.1</a></td><td>Audit events can report potential integrity breaches and attempts.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FCS_CKM.1">FCS_CKM.1</a></td><td>Requires generation of asymmetric keys for protection of integrity measures.</td>
+                </tr>
+                <tr>
+                    <td>FCS_COP.1</td><td>Ensures proper functioning of cryptographic algorithms used to protect data integrity.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FCS_RBG_EXT.1">FCS_RBG_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> has access to high-quality entropy for cryptographic purposes.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_PPR_EXT.1">FDP_PPR_EXT.1</a></td><td>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_VMS_EXT.1">FDP_VMS_EXT.1</a></td><td>Ensures that authorized data transfers between VMs are done securely.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_VNC_EXT.1">FDP_VNC_EXT.1</a></td><td>Ensures that network traffic is visible only to VMs configured to be that network.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_DDI_EXT.1">FPT_DDI_EXT.1</a></td><td>Requires that physical device drivers be isolated other parts of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and from one another (optional).</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_EEM_EXT.1">FPT_EEM_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> use security mechanisms supported by the physical platform.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_HAS_EXT.1">FPT_HAS_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> use platform-supported virtualization assists to reduce attack surface.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_HCL_EXT.1">FPT_HCL_EXT.1</a></td><td>Requires that Hypercall parameters be validated.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_ML_EXT.1">FPT_ML_EXT.1</a></td><td>Requires measured launch of the platform and <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> (objective).</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_VDP_EXT.1">FPT_VDP_EXT.1</a></td><td>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_VIV_EXT.1">FPT_VIV_EXT.1</a></td><td>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</td>
+                </tr>
+                <tr class="major-row">
+                    <td rowspan="26"><a href="#T.VMM_COMPROMISE">T.VMM_​COMPROMISE</a></td><td><a href="#FAU_GEN.1">FAU_GEN.1</a></td><td>Audit events can report potential integrity breaches and attempts.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FCS_CKM.1">FCS_CKM.1</a></td><td>Requires generation of asymmetric keys for protection of integrity measures.</td>
+                </tr>
+                <tr>
+                    <td>FCS_COP.1</td><td>Ensures proper functioning of cryptographic algorithms used to protect data integrity.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FCS_RBG_EXT.1">FCS_RBG_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> has access to high-quality entropy for cryptographic purposes.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_PPR_EXT.1">FDP_PPR_EXT.1</a></td><td>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_VMS_EXT.1">FDP_VMS_EXT.1</a></td><td>Ensures that authorized data transfers between VMs are done securely.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_VNC_EXT.1">FDP_VNC_EXT.1</a></td><td>Ensures that network traffic is visible only to VMs configured to be that network.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_DDI_EXT.1">FPT_DDI_EXT.1</a></td><td>Requires that physical device drivers be isolated other parts of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and from one another (optional).</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_EEM_EXT.1">FPT_EEM_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> use security mechanisms supported by the physical platform.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_HAS_EXT.1">FPT_HAS_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> use platform-supported virtualization assists to reduce attack surface.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_HCL_EXT.1">FPT_HCL_EXT.1</a></td><td>Requires that Hypercall parameters be validated.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_ML_EXT.1">FPT_ML_EXT.1</a></td><td>Requires measured launch of the platform and <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> (objective).</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_VDP_EXT.1">FPT_VDP_EXT.1</a></td><td>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_VIV_EXT.1">FPT_VIV_EXT.1</a></td><td>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FAU_GEN.1">FAU_GEN.1</a></td><td>Audit events can report attempts to breach isolation.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FCS_CKM_EXT.4">FCS_CKM_EXT.4</a></td><td>Requires cryptographic key destruction to protect domain data in shared storage.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_PPR_EXT.1">FDP_PPR_EXT.1</a></td><td>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_RIP_EXT.1">FDP_RIP_EXT.1</a></td><td>Ensures that domain data is cleared from memory before memory is re-allocated.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_RIP_EXT.2">FDP_RIP_EXT.2</a></td><td>Ensures that domain data is cleared from physical storage upon re-allocation of the storage.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_VMS_EXT.1">FDP_VMS_EXT.1</a></td><td>Ensures that authorized data transfers between VMs are done securely.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_VNC_EXT.1">FDP_VNC_EXT.1</a></td><td>Ensures that network traffic is visible only to VMs configured to be that network.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_DVD_EXT.1">FPT_DVD_EXT.1</a></td><td>Ensures that VMs can access only those virtual devices that they are configured to access.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_EEM_EXT.1">FPT_EEM_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> use security mechanisms supported by the physical platform.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_HAS_EXT.1">FPT_HAS_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> use platform-supported virtualization assists to reduce attack surface.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_VDP_EXT.1">FPT_VDP_EXT.1</a></td><td>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_VIV_EXT.1">FPT_VIV_EXT.1</a></td><td>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</td>
+                </tr>
+                <tr class="major-row">
+                    <td rowspan="11"><a href="#T.PLATFORM_COMPROMISE">T.PLATFORM_​COMPROMISE</a></td><td><a href="#FDP_HBI_EXT.1">FDP_HBI_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> use platform-supported mechanisms for access to physical devices.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_PPR_EXT.1">FDP_PPR_EXT.1</a></td><td>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_VMS_EXT.1">FDP_VMS_EXT.1</a></td><td>Ensures that authorized data transfers between VMs are done securely.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FDP_VNC_EXT.1">FDP_VNC_EXT.1</a></td><td>Ensures that network traffic is visible only to VMs configured to be that network.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_DVD_EXT.1">FPT_DVD_EXT.1</a></td><td>Ensures that VMs cannot access virtual devices that they are not configured to access.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_EEM_EXT.1">FPT_EEM_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> use security mechanisms supported by the physical platform.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_HAS_EXT.1">FPT_HAS_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> use platform-supported virtualization assists to reduce attack surface.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_HCL_EXT.1">FPT_HCL_EXT.1</a></td><td>Requires that Hypercall parameters be validated.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_ML_EXT.1">FPT_ML_EXT.1</a></td><td>Requires measured launch of the platform and <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> (objective).</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_VDP_EXT.1">FPT_VDP_EXT.1</a></td><td>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FPT_VIV_EXT.1">FPT_VIV_EXT.1</a></td><td>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</td>
+                </tr>
+                <tr class="major-row">
+                    <td rowspan="16"><a href="#T.UNAUTHORIZED_ACCESS">T.UNAUTHORIZED_​ACCESS</a></td><td><a href="#FAU_GEN.1">FAU_GEN.1</a></td><td>Audit events report attempts to access the management subsystem.</td>
                 </tr>
                 <tr>
                     <td><a href="#FCS_CKM.1">FCS_CKM.1</a></td><td>Requires generation of asymmetric keys for trusted communications channels.</td>
@@ -3861,9 +3993,13 @@
                     <td><a href="#FTP_TRP.1">FTP_TRP.1</a></td><td>Ensures that certain communications use a trusted path.</td>
                 </tr>
                 <tr class="major-row">
-                    <td rowspan="3"><a href="#O.PATCHED_SOFTWARE">O.PATCHED_​SOFTWARE</a>
-                        <br>
-                    </td><td><a href="#FPT_IDV_EXT.1">FPT_IDV_EXT.1</a></td><td>Requires support for software identification labels (optional).</td>
+                    <td rowspan="2"><a href="#T.WEAK_CRYPTO">T.WEAK_​CRYPTO</a></td><td><a href="#FCS_ENT_EXT.1">FCS_ENT_EXT.1</a></td><td>Requires that domains have access to high-quality entropy for cryptographic purposes.</td>
+                </tr>
+                <tr>
+                    <td><a href="#FCS_RBG_EXT.1">FCS_RBG_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> has access to high-quality entropy for cryptographic purposes.</td>
+                </tr>
+                <tr class="major-row">
+                    <td rowspan="3"><a href="#T.UNPATCHED_SOFTWARE">T.UNPATCHED_​SOFTWARE</a></td><td><a href="#FPT_IDV_EXT.1">FPT_IDV_EXT.1</a></td><td>Requires support for software identification labels (optional).</td>
                 </tr>
                 <tr>
                     <td><a href="#FPT_TUD_EXT.1">FPT_TUD_EXT.1</a></td><td>Requires support for product updates.</td>
@@ -3872,42 +4008,10 @@
                     <td><a href="#FPT_TUD_EXT.2">FPT_TUD_EXT.2</a></td><td>Specifies requirements for certificate-based code signing for update.</td>
                 </tr>
                 <tr class="major-row">
-                    <td rowspan="2"><a href="#O.VM_ENTROPY">O.VM_​ENTROPY</a>
-                        <br>
-                    </td><td><a href="#FCS_ENT_EXT.1">FCS_ENT_EXT.1</a></td><td>Requires that domains have access to high-quality entropy for cryptographic purposes.</td>
-                </tr>
-                <tr>
-                    <td><a href="#FCS_RBG_EXT.1">FCS_RBG_EXT.1</a></td><td>Requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> has access to high-quality entropy for cryptographic purposes.</td>
+                    <td rowspan="1"><a href="#T.MISCONFIGURATION">T.MISCONFIGURATION</a></td><td><a href="#FDP_VMS_EXT.1">FDP_VMS_EXT.1</a></td><td>Ensures that data sharing between VMs is turned off by default.</td>
                 </tr>
                 <tr class="major-row">
-                    <td rowspan="6"><a href="#O.AUDIT">O.AUDIT</a>
-                        <br>
-                    </td><td><a href="#FAU_ARP.1">FAU_ARP.1</a></td><td>Requires support for automatic responses to audit events (optional).</td>
-                </tr>
-                <tr>
-                    <td><a href="#FAU_GEN.1">FAU_GEN.1</a></td><td>Requires reporting of audit events.</td>
-                </tr>
-                <tr>
-                    <td><a href="#FAU_SAA.1">FAU_SAA.1</a></td><td>Requires support for rules for indicating security violations based on audit events (optional).</td>
-                </tr>
-                <tr>
-                    <td><a href="#FAU_SAR.1">FAU_SAR.1</a></td><td>Requires support for Administrator review of audit records.</td>
-                </tr>
-                <tr>
-                    <td><a href="#FAU_STG.1">FAU_STG.1</a></td><td>Requires protection of stored audit records.</td>
-                </tr>
-                <tr>
-                    <td><a href="#FAU_STG_EXT.1">FAU_STG_EXT.1</a></td><td>Requires support for protected transmission of audit records off the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.</td>
-                </tr>
-                <tr class="major-row">
-                    <td rowspan="1"><a href="#O.CORRECTLY_APPLIED_CONFIGURATION">O.CORRECTLY_​APPLIED_​CONFIGURATION</a>
-                        <br>
-                    </td><td><a href="#FDP_VMS_EXT.1">FDP_VMS_EXT.1</a></td><td>Ensures that data sharing between VMs is turned off by default.</td>
-                </tr>
-                <tr class="major-row">
-                    <td rowspan="3"><a href="#O.RESOURCE_ALLOCATION">O.RESOURCE_​ALLOCATION</a>
-                        <br>
-                    </td><td><a href="#FCS_CKM_EXT.4">FCS_CKM_EXT.4</a></td><td>Requires cryptographic key destruction to ensure residual data in shared storage is unrecoverable.</td>
+                    <td rowspan="3"><a href="#T.DENIAL_OF_SERVICE">T.DENIAL_​OF_​SERVICE</a></td><td><a href="#FCS_CKM_EXT.4">FCS_CKM_EXT.4</a></td><td>Requires cryptographic key destruction to ensure residual data in shared storage is unrecoverable.</td>
                 </tr>
                 <tr>
                     <td><a href="#FDP_RIP_EXT.1">FDP_RIP_EXT.1</a></td><td>Ensures that domain data is cleared from memory before memory is re-allocated.</td>
@@ -7654,7 +7758,7 @@
             </span></span>
         <h1 id="satisfiedreqs" class="indexable" data-level="A">Appendix D - Implicitly Satisfied Requirements</h1>
         <p>
-            This appendix lists requirements that should be considered satisfied by products successfully evaluated against this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>. These requirements are not featured explicitly as <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> and should not be included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. They are not included as standalone <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> because it would increase the time, cost, and complexity of evaluation. This approach is permitted by <a href="#bibCC">[CC]</a> Part 1, 8.2 Dependencies between components.
+            This appendix lists requirements that should be considered satisfied by products successfully evaluated against this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>. These requirements are not featured explicitly as <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> and should not be included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. They are not included as standalone <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> because it would increase the time, cost, and complexity of evaluation. This approach is permitted by <a href="#bibCC">[CC]</a> Part 1, 8.3 Dependencies between components.
         </p>
         <p>
             This information benefits systems engineering activities which call for inclusion of particular security controls. Evaluation against the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> provides evidence that these controls are present and have been evaluated.
@@ -8039,13 +8143,28 @@
                 <td><span id="bibCC">[<abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>]</span></td><td><span class="description">Common Criteria for Information Technology Security Evaluation - 
                         <ul>
                             <li>
-                                <a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART1V3.1R5.pdf">Part 1: Introduction and General Model</a>, CCMB-2017-04-001, Version 3.1 Revision 5, April 2017.
+                                <a href="https://www.commoncriteriaportal.org/files/ccfiles/CC2022PART1R1.pdf">Part 1: Introduction and general model</a>, CCMB-2022-11-001, <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1, November 2022.
                             </li>
                             <li>
-                                <a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART2V3.1R5.pdf">Part 2: Security Functional Components</a>, CCMB-2017-04-002, Version 3.1 Revision 5, April 2017.
+                                <a href="http://www.commoncriteriaportal.org/files/ccfiles/CC2022PART2R1.pdf">Part 2: Security functional requirements</a>, CCMB-2022-11-002, <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1, November 2022.
                             </li>
                             <li>
-                                <a href="http://www.commoncriteriaportal.org/files/ccfiles/CCPART3V3.1R5.pdf">Part 3: Security Assurance Components</a>, CCMB-2017-04-003, Version 3.1 Revision 5, April 2017.
+                                <a href="http://www.commoncriteriaportal.org/files/ccfiles/CC2022PART3R1.pdf">Part 3: Security assurance requirements</a>, CCMB-2022-11-003, <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1, November 2022.
+                            </li>
+                            <li>
+                                <a href="http://www.commoncriteriaportal.org/files/ccfiles/CC2022PART4R1.pdf">Part 4: Framework for the specification of evaluation methods and activities</a>, CCMB-2022-11-004, <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1, November 2022.
+                            </li>
+                            <li>
+                                <a href="http://www.commoncriteriaportal.org/files/ccfiles/CC2022PART5R1.pdf">Part 5: Pre-defined packages of security requirements</a>, CCMB-2022-11-005, <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1, November 2022.
+                            </li>
+                        </ul>
+                    </span></td>
+            </tr>
+            <tr>
+                <td><span id="bibCEM">[<abbr class="dyn-abbr"><a href="#abbr_CEM">CEM</a></abbr>]</span></td><td><span class="description">Common Methodology for Information Technology Security Evaluation - 
+                        <ul>
+                            <li>
+                                <a href="http://www.commoncriteriaportal.org/files/ccfiles/CEM2022R1.pdf"> Evaluation methodology</a>, CCMB-2022-11-006, <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1, November 2022.
                             </li>
                         </ul>
                     </span></td>

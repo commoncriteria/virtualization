@@ -1,3 +1,4 @@
+* Warning: This document still has at least one comment.
 * Error: Detected dangling id-reference to s-ftp_ssh from attribute
         on/PP[1]""/include-pkg[1]""/depends[1]""/on[1]""
 * Error: Detected dangling id-reference to s-uau-ssh from attribute
@@ -10,19 +11,9 @@
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[5]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/section[1]"Figure 1 "/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/section[1]"Figure 1 "/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/section[1]""/cclaims[1]""/cclaim[1]""/description[1]"A Securit"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:spd[1]""/sec:Threats[1]""/threats[1]""/threat[1]""/description[1]"It is a f"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:spd[1]""/sec:Threats[1]""/threats[1]""/threat[1]""/description[1]"It is a f"/h:p[2]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:spd[1]""/sec:Threats[1]""/threats[1]""/threat[8]""/description[1]"Functions"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Objectives[1]""/section[1]""/SOs[1]""/SO[1]""/description[1]"VMs are t"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Objectives[1]""/section[1]""/SOs[1]""/SO[1]""/description[1]"VMs are t"/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Objectives[1]""/section[1]""/SOs[1]""/SO[2]""/description[1]"Integrity"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Objectives[1]""/section[1]""/SOs[1]""/SO[5]""/description[1]"VMM manag"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Objectives[1]""/section[1]""/SOs[1]""/SO[5]""/description[1]"VMM manag"/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Objectives[1]""/section[1]""/SOs[1]""/SO[5]""/description[1]"VMM manag"/h:p[3]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Objectives[1]""/section[1]""/SOs[1]""/SO[5]""/description[1]"VMM manag"/h:p[4]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Objectives[1]""/section[1]""/SOs[1]""/SO[5]""/description[1]"VMM manag"/h:p[5]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Objectives[1]""/section[1]""/SOs[1]""/SO[9]""/description[1]"The TOE m"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[2]""/f-component[1]""/f-element[1]""/note[1]"In certai"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[2]""/f-component[2]""/f-element[2]""/note[1]"The ST au"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[2]""/f-component[2]""/f-element[2]""/note[1]"The ST au"/h:p[2]""
