@@ -409,7 +409,7 @@
 		</cc-pp-config-with>
 
 		<!-- Package claims -->
-		<cc-pkg-claim/>
+		<cc-pkg-claim>This PP is Functional Package for TLS-conformant. This PP is Functional Package for Secure Shell conformant.</cc-pkg-claim>
 
 	
 
@@ -622,6 +622,7 @@
                 </threat>
                 <threat name="T.UNAUTHORIZED_ACCESS">
                     <description>
+						<comment>need to revisit the addressed by SFRs.</comment>
                         Functions performed by the management layer include VM configuration, virtualized network configuration, 
 			    allocation of physical resources, and reporting. Only certain authorized system users (administrators) 
 			    are allowed to exercise management functions or obtain sensitive information from the TOE.<h:p/>
@@ -633,9 +634,9 @@
 			    and administrative control over the VMs and virtual network connections. The adversary could also gain
 			    access to the management network by hijacking the management network channel.
                     </description>
-                    <addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events report attempts to access the management subsystem.</rationale>
-					<addressed-by>FCS_CKM.1</addressed-by><rationale>Requires generation of asymmetric keys for trusted communications channels.</rationale>
-					<addressed-by>FCS_CKM.2</addressed-by><rationale>Requires establishment of cryptographic keys for trusted communications channels.</rationale>
+                    <addressed-by>FAU_GEN.1</addressed-by><rationale>This SFR mitigates this threat by reporting attempts to access the management subsystem.</rationale>
+					<addressed-by>FCS_CKM.1</addressed-by><rationale>This SFR mitigates this threat by generating asymmetric keys for trusted communications channels.</rationale>
+					<addressed-by>FCS_CKM.2</addressed-by><rationale>This SFR mitigates this threat by using cryptographic keys for trusted communications channels.</rationale>
 					<addressed-by>FCS_COP.1</addressed-by><rationale>Ensures proper functioning of cryptographic algorithms used to implement access controls.</rationale>
 					<addressed-by>FCS_HTTPS_EXT.1</addressed-by><rationale>Ensures that HTTPS trusted communications channels are implemented properly.</rationale>
 					<addressed-by>FCS_IPSEC_EXT.1</addressed-by><rationale>Ensures that IPsec trusted communications channels are implemented properly.</rationale>
@@ -652,6 +653,7 @@
                 </threat>
                 <threat name="T.WEAK_CRYPTO">
                     <description>
+						<comment>need to revisit the addressed by SFRs.</comment>
                         To the extent that VMs appear isolated within the VS, a threat of weak cryptography may 
 			    arise if the VMM does not provide good entropy to support security-related features that depend on
 			    entropy to implement cryptographic algorithms. For example, a random number generator keeps an estimate
@@ -667,6 +669,7 @@
                 </threat>
                 <threat name="T.UNPATCHED_SOFTWARE">
                     <description>
+						<comment>need to revisit the addressed by SFRs.</comment>
                         Vulnerabilities in outdated or unpatched software can be exploited by adversaries to compromise the
 			    VS or platform.
                     </description>
@@ -676,6 +679,7 @@
                 </threat>
                 <threat name="T.MISCONFIGURATION">
                     <description>
+						<comment>need to revisit the addressed by SFRs.</comment>
                         The VS may be misconfigured, which could impact its functioning and security. This 
 			    misconfiguration could be due to an administrative error or the use of faulty configuration data.
                     </description>
@@ -686,6 +690,7 @@
                         A VM may block others from system resources (e.g., system memory, persistent storage, and processing time)
 			    via a resource exhaustion attack.
                     </description>
+					<comment>need to revisit the addressed by SFRs.</comment>
                     <addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to ensure residual data in shared storage is unrecoverable.</rationale>
 					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated.</rationale>
 					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from storage upon re-allocation of the storage.</rationale>
@@ -827,7 +832,7 @@
                                 <h:li>Start-up and shutdown of audit functions</h:li>
                                 <h:li>[<refinement>All administrative actions relevant to claimed SFRs as defined in the 
 									Auditable Events Table from the Client and Server PP-Modules</refinement>]</h:li>		    
-								<h:li>[<refinement>Auditable events defined in <xref g="t-audit-mandatory"/></refinement>]</h:li>
+								<h:li>[<refinement>Auditable events defined in <xref g="ss-audit-table"/></refinement>]</h:li>
                                 <h:li><refinement><selectables linebreak="yes">
                                     <selectable id="sel-at2">Auditable events defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable>
 									<selectable id="sel-at3">Auditable events defined in <xref g="t-audit-objective"/> for Objective SFRs</selectable>
