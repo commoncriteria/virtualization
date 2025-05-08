@@ -629,7 +629,7 @@ function showTarget(id){
 	            img[src="images/collapsed.png"] { display:none;}
 
           }
-    </style></head><body onLoad="init()"><div id="commmentbox-"><a href="#Comment-1-">Comment: Comment-1-</a><br/><a href="#Comment-2-">Comment: Comment-2-</a><br/></div><h1 class="title" style="page-break-before:auto;">Protection Profile for Virtualization</h1><noscript><h1 style="text-align:center; border-style: dashed; border-width: medium; border-color: red;">This page is best viewed with JavaScript enabled!</h1></noscript><div class="center"><img src="images/niaplogo.png" alt="NIAP Logo"></img><br/>
+    </style></head><body onLoad="init()"><div id="commmentbox-"><a href="#Comment-1-">Comment: Comment-1-</a><br/><a href="#Comment-2-">Comment: Comment-2-</a><br/><a href="#Comment-3-">Comment: Comment-3-</a><br/><a href="#Comment-4-">Comment: Comment-4-</a><br/><a href="#Comment-5-">Comment: Comment-5-</a><br/><a href="#Comment-6-">Comment: Comment-6-</a><br/><a href="#Comment-7-">Comment: Comment-7-</a><br/></div><h1 class="title" style="page-break-before:auto;">Protection Profile for Virtualization</h1><noscript><h1 style="text-align:center; border-style: dashed; border-width: medium; border-color: red;">This page is best viewed with JavaScript enabled!</h1></noscript><div class="center"><img src="images/niaplogo.png" alt="NIAP Logo"></img><br/>
       Version: 1.2<br/>2025-05-07<br/><b>National Information Assurance Partnership</b><br/></div><h2 style="page-break-before:always;">Revision History</h2><table><tr class="header"><th>Version</th><th>Date</th><th>Comment</th></tr><tr><td>1.0</td><td>2016-11-17</td><td>Initial Publication</td></tr>
 <tr><td>1.1</td><td>2021-06-14</td><td>Incorporate TDs, Reference TLS Package, Add Equivalency Guidelines, etc.</td></tr>
 <tr><td>1.1.1</td><td>2021-08-19</td><td>Errata release. Fixes a few typos.</td></tr>
@@ -884,8 +884,15 @@ The following sections list Common Criteria and technology terms used in this do
 					any Protection Profile.
 				</dd><p></p><dd>The following <abbr class="dyn-abbr"><a href="#abbr_PP">PPs</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Modules are allowed to be specified in a 
 					<abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr> with this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>:
-					<ul><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for Client Virtualization Systems, Version 1.1version will need to be updated.</li><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for Server Virtualization Systems, Version 1.1version will need to be updated.</li></ul></dd><dt>Package Claim</dt><p></p><dd>This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is not conformant to any 
-						Functional or Assurance Packages.</dd></dl>
+					<ul><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for Client Virtualization Systems, Version 1.1version will need to be updated.</li><li><abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for Server Virtualization Systems, Version 1.1version will need to be updated.</li></ul></dd><dt>Package Claim</dt><p></p><dd><ul><li>This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> does not conform to any 
+						functional packages.</li><li>This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> does not conform to any 
+						assurance packages.</li></ul></dd><p></p><dd>
+		The functional packages to which the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> conforms may include <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> that are not mandatory 
+		to claim for the sake of conformance. An <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> that claims one or more of these functional 
+		packages may include any non-mandatory <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> that are appropriate to claim based on the 
+		capabilities of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and on any triggers for their inclusion based inherently on the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> 
+		selections made. 
+	</dd></dl>
   <h1 class="indexable" data-level="1" id="spd">3 Security Problem Definition</h1>
 	    
 		
@@ -942,6 +949,7 @@ The following sections list Common Criteria and technology terms used in this do
 			    be able to modify system firmware or software—compromising both the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> and the 
 			    underlying platform.
                     </span></dd><dt class="threat defined" id="T.UNAUTHORIZED_ACCESS">T.UNAUTHORIZED_ACCESS</dt><dd><span class="description">
+						<span style="" class="comment " id="Comment-3-">need to revisit the addressed by <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>.</span>
                         Functions performed by the management layer include <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> configuration, virtualized network configuration, 
 			    allocation of physical resources, and reporting. Only certain authorized system users (administrators) 
 			    are allowed to exercise management functions or obtain sensitive information from the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.<p></p>
@@ -953,6 +961,7 @@ The following sections list Common Criteria and technology terms used in this do
 			    and administrative control over the VMs and virtual network connections. The adversary could also gain
 			    access to the management network by hijacking the management network channel.
                     </span></dd><dt class="threat defined" id="T.WEAK_CRYPTO">T.WEAK_CRYPTO</dt><dd><span class="description">
+						<span style="" class="comment " id="Comment-4-">need to revisit the addressed by <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>.</span>
                         To the extent that VMs appear isolated within the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr>, a threat of weak cryptography may 
 			    arise if the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> does not provide good entropy to support security-related features that depend on
 			    entropy to implement cryptographic algorithms. For example, a random number generator keeps an estimate
@@ -962,9 +971,11 @@ The following sections list Common Criteria and technology terms used in this do
 			    of Guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> data and credentials, and of <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> data and credentials, and can enable unauthorized access 
 			    to the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> or VMs.
                     </span></dd><dt class="threat defined" id="T.UNPATCHED_SOFTWARE">T.UNPATCHED_SOFTWARE</dt><dd><span class="description">
+						<span style="" class="comment " id="Comment-5-">need to revisit the addressed by <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>.</span>
                         Vulnerabilities in outdated or unpatched software can be exploited by adversaries to compromise the
 			    <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> or platform.
                     </span></dd><dt class="threat defined" id="T.MISCONFIGURATION">T.MISCONFIGURATION</dt><dd><span class="description">
+						<span style="" class="comment " id="Comment-6-">need to revisit the addressed by <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>.</span>
                         The <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> may be misconfigured, which could impact its functioning and security. This 
 			    misconfiguration could be due to an administrative error or the use of faulty configuration data.
                     </span></dd><dt class="threat defined" id="T.DENIAL_OF_SERVICE">T.DENIAL_OF_SERVICE</dt><dd><span class="description">
@@ -1084,7 +1095,7 @@ The following sections list Common Criteria and technology terms used in this do
                                 <li>Start-up and shutdown of audit functions</li>
                                 <li>[<span class="refinement">All administrative actions relevant to claimed <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> as defined in the 
 									Auditable Events Table from the Client and Server <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Modules</span>]</li>		    
-								<li>[<span class="refinement">Auditable events defined in <a onclick="showTarget('t-audit-mandatory')" href="#t-audit-mandatory" class="t-audit-mandatory-ref">Table  <span class="counter">t-audit-mandatory</span></a></span>]</li>
+								<li>[<span class="refinement">Auditable events defined in <a onclick="showTarget('ss-audit-table')" href="#ss-audit-table" class="ss-audit-table-ref"> <span class="counter">ss-audit-table</span></a></span>]</li>
                                 <li><span class="refinement">[<b>selection</b>: <ul><li style=""><span class="selectable-content" id="sel-at2">Auditable events defined in <a onclick="showTarget('t-audit-optional')" href="#t-audit-optional" class="t-audit-optional-ref">Table  <span class="counter">5</span></a> for Strictly Optional <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span></li><li style=""><span class="selectable-content" id="sel-at3">Auditable events defined in <a onclick="showTarget('t-audit-objective')" href="#t-audit-objective" class="t-audit-objective-ref">Table  <span class="counter">6</span></a> for Objective <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span></li><li style=""><span class="selectable-content" id="sel-at4">Auditable events defined in <a onclick="showTarget('t-audit-sel-based')" href="#t-audit-sel-based" class="t-audit-sel-based-ref">Table  <span class="counter">7</span></a> for Selection-Based <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span></li><li style=""><span class="selectable-content" id="sel-attls">Auditable events for the <a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439">Functional Package for Transport Layer Security (TLS),
         version 
         1.1</a> listed in <a onclick="showTarget('atref-pkgs')" href="#atref-pkgs" class="atref-pkgs-ref">Table <span class="counter">3</span></a></span></li><li style=""><span class="selectable-content" id="sel-atssh">Auditable events defined in the audit table for the <a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=459&amp;id=459">Functional Package for Secure Shell (SSH),
@@ -3737,9 +3748,9 @@ The following sections list Common Criteria and technology terms used in this do
 <tr><td><a href="#FPT_ML_EXT.1">FPT_ML_EXT.1</a></td><td>Requires measured launch of the platform and <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> (objective).</td></tr>
 <tr><td><a href="#FPT_VDP_EXT.1">FPT_VDP_EXT.1</a></td><td>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</td></tr>
 <tr><td><a href="#FPT_VIV_EXT.1">FPT_VIV_EXT.1</a></td><td>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</td></tr>
-<tr class="major-row"><td rowspan="16"><a href="#T.UNAUTHORIZED_ACCESS">T.UNAUTHORIZED_​ACCESS</a></td><td><a href="#FAU_GEN.1">FAU_GEN.1</a></td><td>Audit events report attempts to access the management subsystem.</td></tr>
-<tr><td><a href="#FCS_CKM.1">FCS_CKM.1</a></td><td>Requires generation of asymmetric keys for trusted communications channels.</td></tr>
-<tr><td><a href="#FCS_CKM.2">FCS_CKM.2</a></td><td>Requires establishment of cryptographic keys for trusted communications channels.</td></tr>
+<tr class="major-row"><td rowspan="16"><a href="#T.UNAUTHORIZED_ACCESS">T.UNAUTHORIZED_​ACCESS</a></td><td><a href="#FAU_GEN.1">FAU_GEN.1</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> mitigates this threat by reporting attempts to access the management subsystem.</td></tr>
+<tr><td><a href="#FCS_CKM.1">FCS_CKM.1</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> mitigates this threat by generating asymmetric keys for trusted communications channels.</td></tr>
+<tr><td><a href="#FCS_CKM.2">FCS_CKM.2</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> mitigates this threat by using cryptographic keys for trusted communications channels.</td></tr>
 <tr><td>FCS_COP.1</td><td>Ensures proper functioning of cryptographic algorithms used to implement access controls.</td></tr>
 <tr><td><a href="#FCS_HTTPS_EXT.1">FCS_HTTPS_EXT.1</a></td><td>Ensures that HTTPS trusted communications channels are implemented properly.</td></tr>
 <tr><td><a href="#FCS_IPSEC_EXT.1">FCS_IPSEC_EXT.1</a></td><td>Ensures that IPsec trusted communications channels are implemented properly.</td></tr>
