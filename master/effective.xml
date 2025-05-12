@@ -3893,7 +3893,7 @@
 											RFC 6066</selectable>
 										<selectable>OCSP TLS Multi-Certificate Status Request Extension (i.e., OCSP 
 											Multi-Stapling) as specified in RFC 6961</selectable>
-									</selectables>. </h:li>
+									</selectables> with <selectables><selectable>no exceptions</selectable><selectable>exceptions as specified in FIA_X509_EXT.4</selectable></selectables>  </h:li>
                                 <h:li>The TSF shall validate the extendedKeyUsage field according to the following rules:
                                     <h:ul>
                                         <h:li>Certificates used for trusted updates and executable code integrity verification shall 
@@ -3910,7 +3910,7 @@
                             </h:ul>
                         </title>
                         <note role="application"> This SFR must be included in the ST if the selection for FPT_TUD_EXT.1.3 is “digital
-							signature mechanism,” if "certificate-based authentication of the remote peer" is
+							signature mechanism,” if the selection for FTP_ITC_EXT.1 includes “IPsec,” “TLS,” or “TLS/HTTPS,” if "certificate-based authentication of the remote peer" is
 							selected in FTP_ITC_EXT.1.1, or if "authentication based on X.509 certificates"
 							is selected in FIA_UAU.5.1.<h:br/><h:br/>
                             FIA_X509_EXT.1.1 lists the rules for validating certificates. The ST author shall select whether revocation
@@ -3923,10 +3923,12 @@
 							for checking the OCSP Signing purpose is met by default.<h:br/><h:br/>
 							Regardless of the selection of TSF or TOE platform, the validation must result in a trusted root
 							CA certificate in a root store managed by the platform.<h:p/>
+							<h:p>If the TOE cannot perform revocation in accordance with one of the specified methods in FIA_X509_EXT.1.1, then "exceptions as specified in FIA_X509_EXT.4" should be chosen and FIA_X509_EXT.4 included in the ST.</h:p>
+							<h:p>
 				OCSP responses are signed using either the certificate’s issuer’s CA certificate or an OCSP certificate
 				issued to an OCSP responder delegated by that issuer to sign OCSP responses. A compliant TOE is able to
 				validate OCSP responses in either case, but the OCSP signing extended key usage purpose is only required
-				to be checked in OCSP certificates.
+				to be checked in OCSP certificates.</h:p>
 			</note>
                     </f-element>
                     <f-element id="fia-x509-ext-1e2">
