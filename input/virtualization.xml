@@ -2287,6 +2287,7 @@
                                 the TLS protocol vs. security administrator authentication which may be done at a different 
                                 level of the processing stack. 
                             </TSS>
+							<Guidance/>
                             <Tests>
                                 Testing for this activity is done as part of the TLS testing; this may result in additional 
                                 testing if the TLS tests are done at the TLS protocol level.
@@ -3986,7 +3987,7 @@
 											RFC 6066</selectable>
 										<selectable>OCSP TLS Multi-Certificate Status Request Extension (i.e., OCSP 
 											Multi-Stapling) as specified in RFC 6961</selectable>
-									</selectables> with <selectables><selectable>no exceptions</selectable><selectable>exceptions as specified in FIA_X509_EXT.4</selectable></selectables>  </h:li>
+									</selectables> with <selectables><selectable>no exceptions</selectable><selectable id="sel-x509-4" >exceptions as specified in FIA_X509_EXT.4</selectable></selectables>  </h:li>
                                 <h:li>The TSF shall validate the extendedKeyUsage field according to the following rules:
                                     <h:ul>
                                         <h:li>Certificates used for trusted updates and executable code integrity verification shall 
@@ -4212,6 +4213,7 @@
 					<management/>
 					<audit/>
 					<dependencies/>
+					<depend on-sel="sel-x509-4"/>
 					<f-element id="fia_x509_ext.4-1">
 					
 						<title>The OS shall provide alternate functionality to standard X509 certificate revocation checking for the following exceptions: <selectables><selectable>firmware checking of updates: invalidate automatic updates if the firmware certificate is compromised</selectable><assignable>other exceptions and corresponding functionality</assignable></selectables>.</title>
