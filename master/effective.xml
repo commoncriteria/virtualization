@@ -337,13 +337,14 @@
 		<!-- Can be in a configuration with these PPs and Modules -->
 		<cc-pp-config-with>             
 	        
-          <Mod-cc-ref>PP-Module for Client Virtualization Systems, Version 1.1<comment>version will need to be updated.</comment></Mod-cc-ref>
-		  <Mod-cc-ref>PP-Module for Server Virtualization Systems, Version 1.1<comment>version will need to be updated.</comment></Mod-cc-ref>
+          <Mod-cc-ref>PP-Module for Client Virtualization Systems, Version 1.1 <comment>version will need to be updated.</comment></Mod-cc-ref>
+		  <Mod-cc-ref>PP-Module for Server Virtualization Systems, Version 1.1 <comment>version will need to be updated.</comment></Mod-cc-ref>
 			
 		</cc-pp-config-with>
 
 		<!-- Package claims -->
-		<cc-pkg-claim>This PP is Functional Package for TLS-conformant. This PP is Functional Package for Secure Shell conformant.</cc-pkg-claim>
+		<cc-pkg-claim>This PP is Functional Package for TLS-conformant. This PP is Functional Package for Secure Shell conformant. This PP is Assurance Package for Flaw Remediation Version 1.0 Conformant. <comment>TBD</comment></cc-pkg-claim>
+
 
 	
 
@@ -584,6 +585,7 @@
 					<addressed-by>FMT_SMO_EXT.1</addressed-by><rationale>Requires that the TOE support having separate management and operational networks.</rationale>
 					<addressed-by>FTP_ITC_EXT.1</addressed-by><rationale>Ensures that trusted communications channels are implemented using good cryptography.</rationale>
 					<addressed-by>FTP_TRP.1</addressed-by><rationale>Ensures that certain communications use a trusted path.</rationale>
+					<addressed-by>FTA_TAB.1</addressed-by><rationale>Displays advisory notice and consent warning message regarding use of the TOE to Administrators.</rationale>
                 </threat>
                 <threat name="T.WEAK_CRYPTO">
                     <description>
@@ -744,6 +746,8 @@
 							there is no human user in the loop.<h:p/>
                             The potential security violation mentioned in FAU_ARP.1.1 refers to FAU_SAA.1. </note>
                         <aactivity>
+							<TSS/>
+							<Guidance/>
                             <Tests>
                                 The evaluator shall generate a potential security violation as defined in FAU_SAA.1 and verify 
                                 that each action in the assignment in FAU_ARP.1.1 is performed by the TSF as a 
@@ -897,6 +901,8 @@
                         <note role="application">The potential security violation described in FAU_SAA.1 can be used as a trigger 
 							for automated responses as defined in FAU_ARP.1.</note>
                         <aactivity>
+							<TSS/>
+							<Guidance/>
                             <Tests>
                                 The evaluator shall cause each combination of auditable events defined in FAU_SAA.1.2 to occur,
                                 and verify that a potential security violation is indicated by the TSF.
@@ -922,7 +928,8 @@
                         <title>The TSF shall provide the audit records in a manner suitable for the user to interpret the information.
                         </title>
                         <aactivity>
-                            <Guidance>
+                            <TSS/>
+							<Guidance>
                                 The evaluator shall review the operational guidance for the procedure on how to review the audit 
                                 records.
                             </Guidance>
@@ -956,6 +963,7 @@
 								unauthorized modification or deletion. The evaluator shall ensure that the TSS describes the
 								conditions that must be met for authorized deletion of audit records. 
 							</TSS>
+							<Guidance/>
                             <Tests>
 								The evaluator shall perform the following tests:
                                 <testlist>
@@ -1116,7 +1124,7 @@
 				    specified cryptographic key generation algorithm
                             <selectables linebreak="yes">
                                 <selectable>
-                                    RSA schemes using cryptographic key sizes [2048-bit or greater] that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Appendix B.3]
+                                    RSA schemes using cryptographic key sizes [2048-bit or greater] that meet the following: [FIPS PUB 186-5, “Digital Signature Standard (DSS)”, Appendix B.3]
                                 </selectable>
                                 <selectable>
                                     ECC schemes using [“NIST curves” P-256, P-384, and
@@ -1124,10 +1132,10 @@
                                         <selectable>P-521</selectable>
                                         <selectable exclusive="yes">no other curves</selectable>
                                     </selectables>
-                                    that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Appendix B.4]
+                                    that meet the following: [FIPS PUB 186-5, “Digital Signature Standard (DSS)”, Appendix B.4]
                                     </selectable>
                                 <selectable>
-                                    FFC schemes using cryptographic key sizes [2048-bit or greater] that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Appendix B.1]].
+                                    FFC schemes using cryptographic key sizes [2048-bit or greater] that meet the following: [FIPS PUB 186-5, “Digital Signature Standard (DSS)”, Appendix B.1]].
                                 </selectable>
 				<selectable>FFC Schemes using Diffie-Hellman group 14 that meet the following: [RFC 3526]</selectable>
 				<selectable>FFC Schemes using safe primes that meet the following: [‘NIST Special Publication 800-56A Revision 3,
@@ -1156,7 +1164,7 @@
                             <Tests>
                                 Note: The following tests require the developer to provide access to a test platform that 
                                 provides the evaluator with tools that are typically not found on factory products.<h:p/>
-                                <h:b>Key Generation for FIPS PUB 186-4 RSA Schemes</h:b><h:br/>
+                                <h:b>Key Generation for FIPS PUB 186-5 RSA Schemes</h:b><h:br/>
                                 The evaluator shall verify the implementation of RSA Key Generation by the TOE using the Key
 								Generation test. This test verifies the ability of the TSF to correctly produce values for the
 								key components including the public verification exponent e, the private prime factors p and q,
@@ -1186,14 +1194,14 @@
 								TSF’s implementation by comparing values generated by the TSF with those generated from a known
 								good implementation.<h:p/>
                                 <h:b>Key Generation for Elliptic Curve Cryptography (ECC)</h:b><h:p/>
-                                <h:p> FIPS 186-4 ECC Key Generation Test</h:p><h:p/>
+                                <h:p> FIPS 186-5 ECC Key Generation Test</h:p><h:p/>
                                 For each supported NIST curve (i.e., P-256, P-384 and P-521) the evaluator shall require the
 								implementation under test (IUT) to generate 10 private/public key pairs. The private key shall
 								be generated using an approved random bit generator (RBG). To determine correctness, the evaluator
 								shall submit the generated key pairs to the public key verification (PKV) function of a known
 								good implementation.
                                 <h:br/>
-                                <h:p>FIPS 186-4 Public Key Verification (PKV) Test</h:p>
+                                <h:p>FIPS 186-5 Public Key Verification (PKV) Test</h:p>
                                 For each supported NIST curve (i.e., P-256, P-384 and P-521) the evaluator shall generate 10
 								private/public key pairs using the key generation function of a known good implementation and
 								modify five of the public key values so that they are incorrect, leaving five values unchanged
@@ -1411,6 +1419,7 @@
                                 and location in memory or storage. The evaluator shall verify that the TSS 
                                 describes when each type of key is cleared.
                             </TSS>
+							<Guidance/>
                             <Tests>
                                 For each key clearing situation the evaluator shall perform one of the following activities:<h:p/>
                                 <h:ul>
@@ -1628,6 +1637,7 @@
                                 values used by the HMAC function: key length, hash function used, block size, and output MAC 
                                 length used.
                             </TSS>
+							<Guidance/>
                             <Tests> 
                                 The following tests require the developer to provide access to a test platform that provides the 
 								evaluator with tools that are typically not found on factory products.<h:p/>
@@ -1683,12 +1693,12 @@
 							accordance with a specified cryptographic algorithm
                             <selectables linebreak="yes">
                                 <selectable id="sel-sig-rsa">RSA schemes using cryptographic key sizes [2048-bit or greater] that meet
-									the following: [<h:i>FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Section 4</h:i>]</selectable>
+									the following: [<h:i>FIPS PUB 186-5, “Digital Signature Standard (DSS)”, Section 4</h:i>]</selectable>
                                 <selectable id="sel-sig-ecdsa">ECDSA schemes using [“NIST curves” P-256, P-384 and
                                     <selectables>
                                         <selectable>P-521</selectable>
                                         <selectable exclusive="yes">no other curves</selectable>
-                                    </selectables>] that meet the following: [FIPS PUB 186-4, “Digital Signature Standard (DSS)”, Section 5]
+                                    </selectables>] that meet the following: [FIPS PUB 186-5, “Digital Signature Standard (DSS)”, Section 5]
                                 </selectable>
                             </selectables>.
                         </title>
@@ -1698,18 +1708,20 @@
 							assignments/selections to specify the parameters that are implemented for that algorithm.
                         </note>
                         <aactivity>
+							<TSS/>
+							<Guidance/>
                             <Tests>
                                 The following tests require the developer to provide access to a test platform that provides the 
 								evaluator with tools that are typically not found on factory products.
                                 <h:p/>
 								<h:b>ECDSA Algorithm Tests</h:b><h:p/>
-                                <h:b><h:i>ECDSA FIPS 186-4 Signature Generation Test</h:i></h:b><h:p/>
+                                <h:b><h:i>ECDSA FIPS 186-5 Signature Generation Test</h:i></h:b><h:p/>
                                 For each supported NIST curve (i.e., P-256, P-384 and P-521) and SHA function pair, the evaluator
 								shall generate 10 1024-bit long messages and obtain for each message a public key and the 
 								resulting signature values R and S. To determine correctness, the evaluator shall use the 
 								signature verification function of a known good implementation.
                                 <h:p/>
-                                <h:b><h:i>ECDSA FIPS 186-4 Signature Verification Test</h:i></h:b><h:p/>
+                                <h:b><h:i>ECDSA FIPS 186-5 Signature Verification Test</h:i></h:b><h:p/>
                                 For each supported NIST curve (i.e., P-256, P-384 and P-521) and SHA function pair, the evaluator 
 								shall generate a set of 10 1024-bit message, public key and signature tuples and modify one of
 								the values (message, public key or signature) in five of the 10 tuples. The evaluator shall obtain 
@@ -1769,9 +1781,11 @@
 							modes in which AES operates. For the second selection, the ST author should choose the key sizes that
 							are supported by this functionality.<h:p/></note>
 						<aactivity>
-                            The following tests require the developer to provide access to a test platform that provides the evaluator
-							with tools that are typically not found on factory products.<h:p/>
+                            <TSS/>
+							<Guidance/>
                             <Tests>
+								<h:p>The following tests require the developer to provide access to a test platform that provides the evaluator
+								with tools that are typically not found on factory products.</h:p>
                                 <h:b><h:u>AES-CBC Tests</h:u></h:b><h:p/>
                                 <h:b>AES-CBC Known Answer Tests</h:b><h:p/>
                                 There are four Known Answer Tests (KATs), described below. In all KATs, the plaintext, ciphertext,
@@ -2150,6 +2164,7 @@
 								the TSS describes the mechanisms for ensuring that one VM does not affect the entropy acquired by 
 								another. 
                             </TSS>
+							<Guidance/>
                             <Tests>
                                The evaluator shall perform the following tests:
                                <testlist>
@@ -2413,8 +2428,7 @@
                         </title>
                         <aactivity level="element">
 			     <TSS>
-				     If both transport mode and tunnel mode are implemented, the evaluator shall review the
-				     operational guidance to determine how the use of a given mode is specified.<h:p/>
+				     The evaluator shall examine the TSS  to verify that the TSS provides a description of how a packet is processed against the SPD and that if no “rules” are found to match, that a final rule exists, either implicitly or explicitly, that causes the network packet to be discarded.
 			     </TSS>
 			    <Guidance>
 				The evaluator shall check that the operational guidance provides instructions on how to construct or
@@ -3029,9 +3043,12 @@
 							entropy that is used to seed the RBG.
                         </note>
                         <aactivity>
-                            Documentation shall be produced—and the evaluator shall perform the activities—in accordance with 
+                            <TSS/>
+							<Guidence/>
                             <Tests>
-                                The evaluator shall also perform the following tests, depending on the standard to which the RBG
+                                <h:p>
+									Documentation shall be produced—and the evaluator shall perform the activities—in accordance with
+								</h:p>The evaluator shall also perform the following tests, depending on the standard to which the RBG
 								conforms.<h:p/>
                                 The evaluator shall perform 15 trials for the RBG implementation. If the RBG is configurable, the 
 								evaluator shall perform 15 trials for each configuration. The evaluator shall also confirm that
@@ -3134,6 +3151,7 @@
                                 The evaluator shall verify that the operational guidance contains instructions on how to ensure
                                 that the platform-provided, hardware-based mechanisms are enabled.
                             </Guidance>
+							<Tests/>
                         </aactivity>
                     </f-element>
 					<audit-event/>
@@ -3290,6 +3308,8 @@
                                 documents the conditions under which physical memory is not cleared prior to allocation to a
                                 Guest VM, and describes when and how the memory is cleared.
                             </TSS>
+							<Guidance/>
+							<Tests/>
                         </aactivity>
                     </f-element>
 					<audit-event/>
@@ -3320,6 +3340,7 @@
 				    Any file system format and metadata information needed by the evaluator to perform the below test shall be made available
 				    to the evaluator, but need not be published in the TSS.
                             </TSS>
+							<Guidance/>
                             <Tests>
                                 The evaluator shall perform the following test:<h:p/>
                                 <testlist>
@@ -3591,6 +3612,8 @@
                             unsuccessful authentication attempts.
                         </note>
                         <aactivity>
+							<TSS/>
+							<Guidance/>
                             <Tests>
                                 The evaluator shall perform the following tests for each credential selected in FIA_AFL_EXT.1.1:<h:p/>
                                 The evaluator will set an Administrator-configurable threshold n for failed attempts, or note
@@ -3671,6 +3694,7 @@
 							optionally list additional special characters supported using the assignment. “Administrative
 							passwords” refers to passwords used by administrators to gain access to the Management Subsystem.</note>
                         <aactivity>
+							<TSS/>
                             <Guidance>
                                 The evaluator shall examine the operational guidance to determine that it provides guidance to
                                 security administrators in the composition of strong passwords, and that it provides instructions
@@ -3738,6 +3762,8 @@
 							describing how the multiple authentication mechanisms provide authentication</assignable>.
                         </title>
                         <aactivity>
+							<TSS/>
+							<Guidance/>
                             <Tests>
                                 If ‘username and password authentication‘ is selected, the evaluator will configure the VS with a 
 								known username and password and conduct the following tests:
@@ -3839,6 +3865,7 @@
                                 to ensure the services provided before login are limited, the evaluator shall determine that the
                                 operational guidance provides sufficient instruction on limiting the allowed services.
 				</Guidance>
+				<Tests/>
                         </aactivity>
                     </f-element>
 					<audit-event> 
@@ -3948,6 +3975,7 @@
 								action, then the evaluator shall ensure that the operational guidance contains instructions on how 
 								this configuration action is performed.
 							</TSS>
+							<Guidance/>
                             <Tests>
                                 The tests described must be performed in conjunction with the other Certificate Services evaluation 
 								activities, including the uses listed in FIA_X509_EXT.2.1. The tests for the extendedKeyUsage rules 
@@ -3967,14 +3995,14 @@
 									</test>
                                     <test>The evaluator shall demonstrate that validating an expired certificate results in the
 										function failing.</test>
-                                    <test>The evaluator shall test that the TOE can properly handle revoked certificates – conditional
+                                    <test>(conditional, performed except for use cases identified in exceptions that cannot be configured to allow revocation) The evaluator shall test that the TOE can properly handle revoked certificates – conditional
 										on whether CRL, OCSP, OCSP stapling, or OCSP multi-stapling is selected; if multiple
 										methods are selected, then a test is performed for each method. The evaluator has to 
 										only test one up in the trust chain (future revisions may require to ensure the validation
 										is done up the entire chain). The evaluator shall ensure that a valid certificate is used,
 										and that the validation function succeeds. The evaluator shall then attempt the test with
 										a certificate that will be revoked (for each method chosen in the selection) and verify
-										that the validation function fails.</test>
+										that the validation function fails. If the exceptions are configurable, the evaluator shall attempt to configure the exceptions to allow revocation checking for each function indicated in FIA_X509_EXT.2.</test>
 									<test> If any OCSP option is selected, the evaluator shall present a delegated OCSP certificate 
 										that does not have the OCSP signing purpose
 										and verify that validation of the OCSP response fails. If CRL is selected, the evaluator
@@ -4077,6 +4105,7 @@
                                 specifies the default action, then the evaluator shall ensure that the operational guidance contains
                                 instructions on how this configuration action is performed.
                             </TSS>
+							<Guidance>The evaluator shall ensure that the guidance documentation describes the configuration required in the operating environment so the TOE can use the certificates. The guidance documentation shall also include any required configuration on the TOE to use the certificates. The guidance documentation shall also describe the steps for the Security Administrator to follow if the connection cannot be established during the validity check of a certificate used in establishing a trusted channel.</Guidance>
                             <Tests>
                                 The evaluator shall perform Test 1 for each function listed in FIA_X509_EXT.2.1 that requires the
 								use of certificates:<h:p/>
@@ -4111,6 +4140,26 @@
                     </f-element>
 			<audit-event/>
                 </f-component>
+				<f-component cc-id="fia_x509_ext.4" name="Exceptions to X509 Certificate Revocation Checking" status="sel-based" id="fia-x509-ext-4">
+					<consistency-rationale/>
+					<comp-lev/>
+					<management/>
+					<audit/>
+					<dependencies/>
+					<f-element id="fia_x509_ext.4-1">
+					
+						<title>The OS shall provide alternate functionality to standard X509 certificate revocation checking for the following exceptions: <selectables><selectable>firmware checking of updates: invalidate automatic updates if the firmware certificate is compromised</selectable><assignable>other exceptions and corresponding functionality</assignable></selectables>.</title>
+						<aactivity>
+							<TSS>The evaluator will ensure the TSS describes, for each exception, the alternate functionality the TOE implements to handle the lack of certificate revocation. The description must be consistent with the selection in the requirement.</TSS>
+							<Guidance/>
+							<Tests>
+							<testlist>
+								<test>For each exception, the evaluator shall configure the TSF as necessary to meet the exceptional condition described, and exercise the function using a certificate chain without revocation information. The evaluator shall attempt to examine TSF logging or behavior as described in the TSS to confirm the alternative action described is performed. For example, in the case of firmware updates that invalidate automatic updates, the evaluator shall invoke an automatic update and observe that the update is not performed. In other cases, the TSS describes the alternative action.</test>
+							</testlist></Tests>
+						</aactivity>
+					</f-element>
+					<audit-event/>
+				</f-component>
             </section>
             
 	    <!-- 5.1.6 Security Management (FMT) -->
@@ -4265,6 +4314,8 @@
                             domain's pages that the driver domain has permitted the device access to, or the identification of a 
                             dedicated area of memory reserved for the device or driver domain).
                         </TSS>
+						<Guidance/>
+						<Tests/>
                     </aactivity>
                 </f-element>
 				<audit-event/>
@@ -4290,6 +4341,8 @@
                             The purpose of this requirement is to reduce the attack surface of the VMM by blocking access to unused interfaces.
 			    </note>
                         <aactivity>
+							<TSS/>
+							<Guidance/>
                             <Tests>
                                 The evaluator shall connect a device to a VM, then from within the guest scan the VM's devices
                                 to ensure that the connected device is present--using a device driver or other available means
@@ -4340,6 +4393,8 @@
                                 mechanisms used by the TOE on that platform. The evaluator shall ensure that the
                                 lists correspond to what is specified in FPT_EEM_EXT.1.1.
                             </TSS>
+							<Guidance/>
+							<Test/>
                         </aactivity>
                     </f-element>
 		    <audit-event/>
@@ -4382,6 +4437,8 @@
                                 importation/migration, on demand, etc.), and which actions are taken if a VM fails
                                 the integrity check (or which range of actions are possible if the action is configurable).
                             </TSS>
+							<Guidance/>
+							<Tests/>
                         </aactivity>
                     </f-element>
 		    <audit-event>
@@ -4428,6 +4485,8 @@
                                 TOE on that platform. The evaluator shall ensure that these lists correspond to what 
                                 is specified in the applicable FPT_HAS_EXT component.
                             </TSS>
+							<Guidance/>
+							<Tests/>
                         </aactivity>
                     </f-element>
 		    <audit-event/>
@@ -4515,6 +4574,7 @@
                                 implemented and the format of the tags. The evaluator shall verify that the format complies with
                                 FPT_IDV_EXT.1.1 and that SWIDs are stored in accordance with FPT_IDV_EXT.1.2.
                             </TSS>
+							<Guidance/>
                             <Tests>
                                 The evaluator shall perform the following test:
                                 <testlist>
@@ -4562,6 +4622,7 @@
                                 The evaluator shall examine the operational guidance to ensure that it contains instructions for
                                 configuration of the introspection mechanism.
                             </Guidance>
+							<Test/>
                         </aactivity>
                     </f-element>
 		    <audit-event>
@@ -4626,6 +4687,7 @@
                                 shall examine the operational guidance to verify that it documents how to access the measurements in 
                                 the Management Subsystem.
                             </TSS>
+							<Guidance>The evaluator shall examine the operational guidance to verify that it documents how to access the measurements in the Management Subsystem.</Guidance>
                             <Tests>
                                 The evaluator shall perform the following test:<h:p/>
                                 <testlist>
@@ -4830,6 +4892,7 @@
                                 that the TSS (or administrator guidance) describes how the certificates are
                                 installed/updated/selected, if necessary.
                             </TSS>
+							<Guidance/>
                             <Tests>
                                 The evaluator shall perform the following tests:<h:p/>
                                 <testlist>
@@ -4890,6 +4953,8 @@
                             Validity is determined by the certificate path, the expiration date, and the revocation status in 
 				accordance with FIA_X509_EXT.1.</note>
                         <aactivity>
+							<TSS/>
+							<Guidance/>
                             <Tests>
                                 The evaluation activity for this requirement is performed in conjunction with the evaluation activity
 				    for FIA_X509_EXT.1 and FIA_X509_EXT.2.
@@ -4938,6 +5003,7 @@
                                	There is no expectation that evaluators will examine source code to verify the “all” part of the 
                                	evaluation activity.
                             </TSS>
+							<Guidance/>
                             <Tests>
 								For each virtual device interface, the evaluator shall attempt to access the interface 
 								using at least one parameter value that is out of range or illegal. The test is passed if the
@@ -4997,6 +5063,8 @@
 								that guest software cannot degrade or disrupt the functioning of other VMs, the VMM or the platform. And 
 								how the TSF prevents guests from invoking higher-privilege platform code, such as the examples in the note.
 							</TSS>
+							<Guidance/>	
+							<Tests/>
                         </aactivity>
                     </f-element>
 		    <audit-event/>
@@ -5019,6 +5087,8 @@
                             a network) are not required to be covered by this requirement.<h:p/>
                         </note>
                     <aactivity>
+						<TSS/>
+						<Guidance/>
                         <Tests>
                             The evaluator shall configure the TOE to display the advisory warning message 
                             “TEST TEST Warning Message TEST TEST”. The evaluator shall then log out and confirm that the advisory 
@@ -5114,6 +5184,7 @@
                                 the TOE uses for remote communications, including both the external entities and 
                                 remote users used for the channel as well as the protocol that is used for each.
                             </TSS>
+							<Guidance/>
                             <Tests>
                                 The evaluator will configure the TOE to communicate with each external IT entity 
                                 and type of remote user identified in the TSS. The evaluator will monitor network
@@ -5295,6 +5366,7 @@
                                 VMs to the user, how identities are assigned to VMs, and how 
                                 conflicts are prevented.
                             </TSS>
+							<Guidance/>
                             <Tests>
                                 The evaluator shall perform the following test:<h:p/>
                                 The evaluator shall attempt to create and start at least three Guest VMs on a single 
