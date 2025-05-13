@@ -32,8 +32,6 @@
             <br>
             <a href="#Comment-7-">Comment: Comment-7-</a>
             <br>
-            <a href="#Comment-8-">Comment: Comment-8-</a>
-            <br>
         </div>
         <h1 class="title" style="page-break-before:auto;">Protection Profile for Virtualization</h1>
         <h1 style="text-align:center; border-style: dashed; border-width: medium; border-color: red;">This page is best viewed with JavaScript enabled!</h1>
@@ -364,7 +362,19 @@
             <dd>
                 <ul>
                     <li>
-                        This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> does not conform to any functional packages.
+                        This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is Functional Package for Secure Shell Version 2.0 conformant.
+                    </li>
+                    <li>
+                        This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is Functional Package for Transport Layer Security Version 2.1 conformant.
+                    </li>
+                    <li>
+                        This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is Functional Package for X.509 Version 1.0 conformant.
+                    </li>
+                    <li>
+                        This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is Assurance Package for Flaw Remediation Version 1.0 conformant.
+                    </li>
+                    <li>
+                        This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is conformant.
                     </li>
                     <li>
                         This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> does not conform to any assurance packages.
@@ -415,21 +425,21 @@
             </dd>
             <dt class="threat defined" id="T.UNAUTHORIZED_ACCESS">T.UNAUTHORIZED_ACCESS</dt>
             <dd>
-                <span class="description"> <span style="" class="comment " id="Comment-4-">need to revisit the addressed by <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>.</span> Functions performed by the management layer include <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> configuration, virtualized network configuration, allocation of physical resources, and reporting. Only certain authorized system users (administrators) are allowed to exercise management functions or obtain sensitive information from the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.
+                <span class="description"> <span style="" class="comment " id="Comment-3-">need to revisit the addressed by <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>.</span> Functions performed by the management layer include <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> configuration, virtualized network configuration, allocation of physical resources, and reporting. Only certain authorized system users (administrators) are allowed to exercise management functions or obtain sensitive information from the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.
                     <p></p>
                      Virtualization Systems are often managed remotely over communication networks. Members of these networks can be both geographically and logically separated from each other, and pass through a variety of other systems which may be under the control of an adversary, and offer the opportunity for communications to be compromised. An adversary with access to an open management network could inject commands into the management infrastructure or extract sensitive information. This would provide an adversary with administrator privilege on the platform, and administrative control over the VMs and virtual network connections. The adversary could also gain access to the management network by hijacking the management network channel. </span>
             </dd>
             <dt class="threat defined" id="T.WEAK_CRYPTO">T.WEAK_CRYPTO</dt>
             <dd>
-                <span class="description"> <span style="" class="comment " id="Comment-5-">need to revisit the addressed by <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>.</span> To the extent that VMs appear isolated within the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr>, a threat of weak cryptography may arise if the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> does not provide good entropy to support security-related features that depend on entropy to implement cryptographic algorithms. For example, a random number generator keeps an estimate of the number of bits of noise in the entropy pool. From this entropy pool random numbers are created. Good random numbers are essential to implementing strong cryptography. Cryptography implemented using poor random numbers can be defeated by a sophisticated adversary. Such defeat can result in the compromise of Guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> data and credentials, and of <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> data and credentials, and can enable unauthorized access to the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> or VMs. </span>
+                <span class="description"> <span style="" class="comment " id="Comment-4-">need to revisit the addressed by <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>.</span> To the extent that VMs appear isolated within the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr>, a threat of weak cryptography may arise if the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> does not provide good entropy to support security-related features that depend on entropy to implement cryptographic algorithms. For example, a random number generator keeps an estimate of the number of bits of noise in the entropy pool. From this entropy pool random numbers are created. Good random numbers are essential to implementing strong cryptography. Cryptography implemented using poor random numbers can be defeated by a sophisticated adversary. Such defeat can result in the compromise of Guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> data and credentials, and of <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> data and credentials, and can enable unauthorized access to the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> or VMs. </span>
             </dd>
             <dt class="threat defined" id="T.UNPATCHED_SOFTWARE">T.UNPATCHED_SOFTWARE</dt>
             <dd>
-                <span class="description"> <span style="" class="comment " id="Comment-6-">need to revisit the addressed by <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>.</span> Vulnerabilities in outdated or unpatched software can be exploited by adversaries to compromise the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> or platform. </span>
+                <span class="description"> <span style="" class="comment " id="Comment-5-">need to revisit the addressed by <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>.</span> Vulnerabilities in outdated or unpatched software can be exploited by adversaries to compromise the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> or platform. </span>
             </dd>
             <dt class="threat defined" id="T.MISCONFIGURATION">T.MISCONFIGURATION</dt>
             <dd>
-                <span class="description"> <span style="" class="comment " id="Comment-7-">need to revisit the addressed by <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>.</span> The <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> may be misconfigured, which could impact its functioning and security. This misconfiguration could be due to an administrative error or the use of faulty configuration data. </span>
+                <span class="description"> <span style="" class="comment " id="Comment-6-">need to revisit the addressed by <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr>.</span> The <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> may be misconfigured, which could impact its functioning and security. This misconfiguration could be due to an administrative error or the use of faulty configuration data. </span>
             </dd>
             <dt class="threat defined" id="T.DENIAL_OF_SERVICE">T.DENIAL_OF_SERVICE</dt>
             <dd>
@@ -918,10 +928,10 @@
                                         <span class="selectable-content" id="sel-at4">Auditable events defined in <a href="#t-audit-sel-based" class="t-audit-sel-based-ref">Table <span class="counter">7</span></a> for Selection-Based <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="sel-attls">Auditable events for the <a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439">Functional Package for Transport Layer Security (TLS), version 1.1</a> listed in <a href="#atref-pkgs" class="atref-pkgs-ref">Table <span class="counter">3</span></a></span>
+                                        <span class="selectable-content" id="sel-attls">Auditable events for the <a href="https://commoncriteria.github.io/tls/release-2.0/tls-release.html">Functional Package for Transport Layer Security (TLS), version 1.1</a> listed in <a href="#atref-pkgs" class="atref-pkgs-ref">Table <span class="counter">3</span></a></span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="sel-atssh">Auditable events defined in the audit table for the <a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=459&amp;id=459">Functional Package for Secure Shell (SSH), version 1.0</a></span>
+                                        <span class="selectable-content" id="sel-atssh">Auditable events defined in the audit table for the <a href="https://commoncriteria.github.io/ssh/release-2.0/ssh-release.html">Functional Package for Secure Shell (SSH), version 2.0</a></span>
                                     </li>
                                     <li style="">
                                         <span class="selectable-content" id="_s_6">no other auditable events</span>
@@ -959,10 +969,10 @@
                                         <span class="selectable-content" id="_s_9">Additional information defined in <a href="#t-audit-sel-based" class="t-audit-sel-based-ref">Table <span class="counter">7</span></a> for Selection-Based <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_10">Additional information for the <a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439">Functional Package for Transport Layer Security (TLS), version 1.1</a> listed in <a href="#atref-pkgs" class="atref-pkgs-ref">Table <span class="counter">3</span></a></span>
+                                        <span class="selectable-content" id="_s_10">Additional information for the <a href="https://commoncriteria.github.io/tls/release-2.0/tls-release.html">Functional Package for Transport Layer Security (TLS), version 1.1</a> listed in <a href="#atref-pkgs" class="atref-pkgs-ref">Table <span class="counter">3</span></a></span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_11">Additional information defined in the audit table for the <a href="https://www.niap-ccevs.org/Profile/Info.cfm?PPID=459&amp;id=459">Functional Package for Secure Shell (SSH), version 1.0</a></span>
+                                        <span class="selectable-content" id="_s_11">Additional information defined in the audit table for the <a href="https://commoncriteria.github.io/ssh/release-2.0/ssh-release.html">Functional Package for Secure Shell (SSH), version 2.0</a></span>
                                     </li>
                                     <li style="">
                                         <span class="selectable-content" id="_s_12">no other information</span>

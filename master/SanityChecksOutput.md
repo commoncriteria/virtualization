@@ -1,8 +1,8 @@
 * Warning: This document still has at least one comment.
 * Error: Detected dangling id-reference to s-ftp_ssh from attribute
-        on/PP[1]""/include-pkg[1]""/depends[1]""/on[1]""
+        on/PP[1]""/include-pkg[2]""/depends[1]""/on[1]""
 * Error: Detected dangling id-reference to s-uau-ssh from attribute
-        also/PP[1]""/include-pkg[1]""/depends[1]""/also[1]""
+        also/PP[1]""/include-pkg[2]""/depends[1]""/also[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"The scope"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[2]""

@@ -34,13 +34,23 @@
             <subject>CC:2022 conversion.</subject>
         </entry>
     </RevisionHistory>
-
-  <release-notes><h:h3>TDs Applied</h:h3></release-notes><include-pkg id="pkg-ssh">
+	<release-notes><h:h3>TDs Applied</h:h3></release-notes><include-pkg id="pkg-x509">
+		<git>
+		  <url>https://github.com/commoncriteria/x509</url>
+		  <branch>release-1.0</branch>
+		</git>
+		<depends on-sel="sel-tud-digsign-cert"/>
+		<depends on-sel="sel-uau-x509"/>
+		<depends on-sel="sel-itc-certauth"/>
+		<url>https://commoncriteria.github.io/X509/release-1.0/X509-release.html</url>
+	  </include-pkg>
+	  
+  <include-pkg id="pkg-ssh">
     <git>
       <url>https://github.com/commoncriteria/ssh</url>
-      <branch>release-1.0</branch>
+      <branch>release-2.0</branch>
     </git>
-    <url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=459&amp;id=459</url>
+    <url>https://commoncriteria.github.io/ssh/release-2.0/ssh-release.html</url>
     <depends on="s-ftp_ssh" also="s-uau-ssh"/>
   </include-pkg>
   <include-pkg id="pkg-tls">
@@ -48,7 +58,7 @@
       <url>https://github.com/commoncriteria/tls</url>
       <branch>release-1.1</branch>
     </git>
-    <url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=439&amp;id=439</url>
+    <url>https://commoncriteria.github.io/tls/release-2.0/tls-release.html</url>
     <depends on-sel="sel-itc-ssh"/>
     <depends on-sel="sel-x509-2-ssh"/>
     </include-pkg>
@@ -343,7 +353,13 @@
 		</cc-pp-config-with>
 
 		<!-- Package claims -->
-		<cc-pkg-claim>This PP is Functional Package for TLS-conformant. This PP is Functional Package for Secure Shell conformant. This PP is Assurance Package for Flaw Remediation Version 1.0 Conformant. <comment>TBD</comment></cc-pkg-claim>
+		<cc-pkg-claim>
+			<FP-cc-ref conf="conformant">Functional Package for Secure Shell Version 2.0</FP-cc-ref>
+			<FP-cc-ref conf="conformant">Functional Package for Transport Layer Security Version 2.1</FP-cc-ref>
+			<FP-cc-ref conf="conformant">Functional Package for X.509 Version 1.0</FP-cc-ref>
+			<FP-cc-ref conf="conformant">Assurance Package for Flaw Remediation Version 1.0</FP-cc-ref>
+			<FP-cc-ref conf="conformant"><xref to="pkg-x509"/></FP-cc-ref>
+		</cc-pkg-claim>
 
 
 	
