@@ -106,6 +106,9 @@
 		<depends on-sel="sel-tud-digsign-cert" />
 		<depends on-sel="sel-uau-x509" />
 		<depends on-sel="sel-itc-certauth"/>
+		<depends on-sel="sel-x509-2-ssh"/>
+		<depends on-sel="sel-itc-tls"/>
+		<depends on-sel="sel-itc-https"/>
 	  </include-pkg>
 	  
   <include-pkg id="pkg-ssh">
@@ -115,6 +118,7 @@
     </git>
     <url>https://commoncriteria.github.io/ssh/release-2.0/ssh-release.html</url>
     <depends on="s-ftp_ssh" also="s-uau-ssh"/>
+	<depends on-sel="sel-itc-ssh"/>
   </include-pkg>
   <include-pkg id="pkg-tls">
     <git>
@@ -122,8 +126,8 @@
       <branch>release-1.1</branch>
     </git>
     <url>https://commoncriteria.github.io/tls/release-2.0/tls-release.html</url>
-    <depends on-sel="sel-itc-ssh"/>
-    <depends on-sel="sel-x509-2-ssh"/>
+    <depends on-sel="sel-itc-tls"/>
+	<depends on-sel="sel-itc-https"/>
     </include-pkg>
     <modules required="yes">
       <module id="client-virt">
@@ -469,7 +473,7 @@
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                     <addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to protect domain data in shared storage.</rationale>
 					<addressed-by>FCS_ENT_EXT.1</addressed-by><rationale>Requires that domains have access to high-quality entropy for cryptographic purposes.</rationale>
-					<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+					<addressed-by>FCS_RBG.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
 					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated to another domain.</rationale>
 					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from physical storage upon re-allocation of the storage to another domain.</rationale>
 					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between domains are done securely.</rationale>
@@ -493,7 +497,7 @@
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events can report potential integrity breaches and attempts.</rationale>
 					<addressed-by>FCS_CKM.1</addressed-by><rationale>Requires generation of asymmetric keys for protection of integrity measures.</rationale>
 					<addressed-by>FCS_COP.1</addressed-by><rationale>Ensures proper functioning of cryptographic algorithms used to protect data integrity.</rationale>
-					<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+					<addressed-by>FCS_RBG.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
 					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
 					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.</rationale>
 					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
@@ -516,7 +520,7 @@
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events can report potential integrity breaches and attempts.</rationale>
 					<addressed-by>FCS_CKM.1</addressed-by><rationale>Requires generation of asymmetric keys for protection of integrity measures.</rationale>
 					<addressed-by>FCS_COP.1</addressed-by><rationale>Ensures proper functioning of cryptographic algorithms used to protect data integrity.</rationale>
-					<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+					<addressed-by>FCS_RBG.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
 					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
 					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.</rationale>
 					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
@@ -568,7 +572,7 @@
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events can report potential integrity breaches and attempts.</rationale>
 					<addressed-by>FCS_CKM.1</addressed-by><rationale>Requires generation of asymmetric keys for protection of integrity measures.</rationale>
 					<addressed-by>FCS_COP.1</addressed-by><rationale>Ensures proper functioning of cryptographic algorithms used to protect data integrity.</rationale>
-					<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+					<addressed-by>FCS_RBG.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
 					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
 					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.</rationale>
 					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
@@ -591,7 +595,7 @@
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events can report potential integrity breaches and attempts.</rationale>
 					<addressed-by>FCS_CKM.1</addressed-by><rationale>Requires generation of asymmetric keys for protection of integrity measures.</rationale>
 					<addressed-by>FCS_COP.1</addressed-by><rationale>Ensures proper functioning of cryptographic algorithms used to protect data integrity.</rationale>
-					<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+					<addressed-by>FCS_RBG.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
 					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
 					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>Ensures that authorized data transfers between VMs are done securely.</rationale>
 					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>Ensures that network traffic is visible only to VMs configured to be that network.</rationale>
@@ -657,7 +661,7 @@
 					<addressed-by>FCS_COP.1</addressed-by><rationale>Ensures proper functioning of cryptographic algorithms used to implement access controls.</rationale>
 					<addressed-by>FCS_HTTPS_EXT.1</addressed-by><rationale>Ensures that HTTPS trusted communications channels are implemented properly.</rationale>
 					<addressed-by>FCS_IPSEC_EXT.1</addressed-by><rationale>Ensures that IPsec trusted communications channels are implemented properly.</rationale>
-					<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+					<addressed-by>FCS_RBG.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
 					<addressed-by>FIA_AFL_EXT.1</addressed-by><rationale>Requires that the TOE detect failed authentication attempts for Administrator access.</rationale>
 					<addressed-by>FIA_PMG_EXT.1</addressed-by><rationale>Ensures that password-based administrator login is properly implemented.</rationale>
 					<addressed-by>FIA_UAU.5</addressed-by><rationale>Ensures that strong mechanisms are used for Administrator authentication.</rationale>
@@ -682,7 +686,7 @@
 			    to the VS or VMs.
                     </description>
                     <addressed-by>FCS_ENT_EXT.1</addressed-by><rationale>Requires that domains have access to high-quality entropy for cryptographic purposes.</rationale>
-					<addressed-by>FCS_RBG_EXT.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+					<addressed-by>FCS_RBG.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
                     
                 </threat>
                 <threat name="T.UNPATCHED_SOFTWARE">
@@ -876,7 +880,7 @@
                                     <selectable>Additional information defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable>
                                     <selectable>Additional information defined in <xref g="t-audit-objective"/> for Objective SFRs</selectable>
                                     <selectable>Additional information defined in <xref g="t-audit-sel-based"/> for Selection-Based SFRs</selectable>
-									<selectable>Additional information for the <xref to="pkg-tls"/> listed in <xref to="atref-pkgs"/></selectable>
+									<selectable >Additional information for the <xref to="pkg-tls"/> listed in <xref to="atref-pkgs"/></selectable>
 									<selectable>Additional information defined in the audit table for the <xref to="pkg-ssh"/></selectable>
                                     <selectable exclusive="yes">no other information</selectable>
 								</selectables></refinement></h:li>
@@ -1193,11 +1197,7 @@
 						This family defines requirements for protecting communications using IPsec.
 					</fam-behavior>
 				</ext-comp-def>
-			    <ext-comp-def title="Cryptographic Operation (Random Bit Generation)" fam-id="FCS_RBG_EXT">
-					<fam-behavior>
-						This family defines requirements for random bit/number generation.
-					</fam-behavior>
-				</ext-comp-def>
+			    
                 
                 <!-- FCS_CKM.1 -->
                 <f-component cc-id="fcs_ckm.1" name="Cryptographic Key Generation">
@@ -2200,9 +2200,9 @@
 					<comp-lev>requires the TSF to provide entropy data to VMs in a specified manner.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
-					<dependencies>FCS_RBG_EXT.1 Cryptographic Operation (Random Bit Generation)</dependencies>
+					<dependencies>FCS_RBG.1 Cryptographic Operation (Random Bit Generation)</dependencies>
                     <f-element id="fcs-ent-ext-1e1">
-                        <title>The TSF shall provide a mechanism to make available to VMs entropy that meets FCS_RBG_EXT.1 through
+                        <title>The TSF shall provide a mechanism to make available to VMs entropy that meets FCS_RBG.1 through
                             <selectables>
                                 <selectable>Hypercall interface</selectable>
                                 <selectable>virtual device interface</selectable>
@@ -2341,7 +2341,7 @@
 					<dependencies>FCS_CKM.1 Cryptographic Key Generation<h:p/>
 								FCS_CKM.2 Cryptographic Key Establishment<h:p/>
 								FCS_COP.1 Cryptographic Operation<h:p/>
-								FCS_RBG_EXT.1 Cryptographic Operation (Random Bit Generation)<h:p/>
+								FCS_RBG.1 Cryptographic Operation (Random Bit Generation)<h:p/>
 								FIA_X509_EXT.1 X.509 Certificate Validation</dependencies>
                     <f-element id="fcs-ipsec-ext-1e1">
                         <title>The TSF shall implement the IPsec architecture as specified in RFC 4301.
@@ -2812,7 +2812,7 @@
                     <f-element id="fcs-ipsec-ext-1e9">
                         <title>The TSF shall generate the secret value x used in the IKE Diffie-Hellman key
 				exchange (“x” in gx mod p) using the random bit generator specified in
-				FCS_RBG_EXT.1, and having a length of at least 
+				FCS_RBG.1, and having a length of at least 
 				<assignable>(one or more) number of bits that is at least twice the “bits of
 					security” value associated with the negotiated Diffie-Hellman group as 
 					listed in Table 2 of NIST SP 800-57, Recommendation for Key Management – Part
@@ -3078,20 +3078,11 @@
 		</audit-event>
                 </f-component>
 				
-                <!-- FCS_RBG_EXT.1 -->
-                <f-component cc-id="fcs_rbg_ext.1" name="Cryptographic Operation (Random Bit Generation)">
+                <!-- FCS_RBG.1 -->
+                <f-component cc-id="fcs_rbg.1" name="Cryptographic Operation (Random Bit Generation)">
 					<consistency-rationale/>
-					<comp-lev>requires random bit generation to be performed in accordance with
-						selected standards and seeded by an entropy source.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>The following actions should be auditable if FAU_GEN Security audit data
-						generation is included in the PP/ST:
-						<h:ol type="a">
-							<h:li>Failure of the randomization process.</h:li>
-						</h:ol>
-					</audit>
-					<dependencies>FCS_COP.1 Cryptographic Operation</dependencies>
-                    <f-element id="fcs-rbg-ext-1e1">
+					
+                    <f-element id="fcs-rbg-1e1">
                         <title>The TSF shall perform all deterministic random bit generation services in accordance with NIST Special 
 							Publication 800-90A using
                             <selectables>
@@ -3101,7 +3092,7 @@
                             </selectables>
                         </title>
                     </f-element>
-                    <f-element id="fcs-rbg-ext-1e2">
+                    <f-element id="fcs-rbg-1e2">
                         <title>The deterministic RBG shall be seeded by an entropy source that accumulates entropy from
                             <selectables>
                                 <selectable>a software-based noise source</selectable>
@@ -3122,7 +3113,7 @@
 							implementations for CTR_DRBG are allowed.<h:p/>
                             If the key length for the AES implementation used here is different than that used to encrypt the user 
 							data, then FCS_COP.1/UDE may have to be adjusted or iterated to reflect the different key length. For the
-							selection in FCS_RBG_EXT.1.2, the ST author selects the minimum number of bits of
+							selection in FCS_RBG.1.2, the ST author selects the minimum number of bits of
 							entropy that is used to seed the RBG.
                         </note>
                         <aactivity>
@@ -3174,6 +3165,65 @@
 						<audit-event-descr>Failure of the randomization process.</audit-event-descr>
 					</audit-event>
                 </f-component>		
+				<f-component cc-id="fcs_rbg.2" name="" status="sel-based">
+					<consistency-rationale/>
+					
+                    <f-element id="fcs-rbg-2e1">
+                        <title>The TSF shall be able to accept a minimum input of <assignable>minimum input length greater than zero</assignable> from a TSF interface for the purpose of seeding.
+                        </title>
+						<aactivity>
+							<TSS/>
+							<Guidance/>
+							<Tests/>
+						</aactivity>
+                    </f-element>
+					
+                    <audit-event/>
+                </f-component>
+				<f-component cc-id="fcs_rbg.3" name="" status="sel-based">
+					<consistency-rationale/>
+					
+                    <f-element id="fcs-rbg-3e1">
+                        <title><h:b>The TSF shall be able to seed the RBG using a <selectables choose-one-of="yes"><selectable>TSF software-based
+							noise source</selectable><selectable>TSF hardware-based noise source</selectable></selectables> <assignable>name of noise source</assignable> with a minimum of <assignable>number of bits</assignable> bit of min-entropy</h:b>.
+                        </title>
+						<aactivity>
+							<TSS/>
+							<Guidance/>
+							<Tests/>
+						</aactivity>
+                    </f-element>
+					
+                    <audit-event/>
+                </f-component>
+				<f-component cc-id="fcs_rbg.4" name="" status="sel-based">
+					<consistency-rationale/>
+					
+                    <f-element id="fcs-rbg-4e1" >
+                        <title><h:b>The TSF shall be able to seed the RBG using <selectables><selectable><assignable>number</assignable> TSF software-based noise source(s)</selectable><selectable><assignable>number</assignable> TSF hardware-based noise source(s)</selectable></selectables>.
+                        </h:b></title>
+						<aactivity>
+							<TSS/>
+							<Guidance/>
+							<Tests/>
+						</aactivity>
+                    </f-element>
+                    <audit-event/>
+                </f-component>	
+				<f-component cc-id="fcs_rbg.5" name="" status="sel-based">
+					<consistency-rationale/>
+					
+                    <f-element id="fcs-rbg-5e1">
+                        <title><h:b>The TSF shall <assignable>combining operation</assignable> <selectables><selectable>output from TSF noise source(s)</selectable><selectable>input from TSF interface(s) for seeding)<comment> the CC2022 has a close paratheses that does not go have a open parathesis before it.</comment></selectable></selectables> to create the entropy input into the derivation function as defined in <assignable>list of standards</assignable>, resulting in a minimum of <assignable>number of bits</assignable>bits of min-entropy.</h:b>
+                        </title>
+						<aactivity>
+							<TSS/>
+							<Guidance/>
+							<Tests/>
+						</aactivity>
+                    </f-element>
+                    <audit-event/>
+                </f-component>
             </section>
 
 			<!-- 5.1.4 User Data Protection -->
@@ -6345,13 +6395,6 @@
     <!-- Appendix G: References -->
     <bibliography>
         <cc-entry/>
-        <entry id="bibCEM">
-          <tag>CEM</tag>
-          <description>
-            <h:a href="http://www.commoncriteriaportal.org/files/ccfiles/CEMV3.1R5.pdf">Common
-              Evaluation Methodology for Information Technology Security - Evaluation Methodology</h:a>,
-              CCMB-2017-04-004, Version 3.1, Revision 5, April 2017. 
-          </description>
-        </entry>
+        
       </bibliography>
 </PP>
