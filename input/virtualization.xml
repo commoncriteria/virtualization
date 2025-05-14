@@ -1417,7 +1417,10 @@
 					<dependencies>[FCS_CKM.1 Cryptographic Key Generation, or<h:p/>
 								FCS_CKM.2 Cryptographic Key Distribution]</dependencies>
                     <f-element id="fcs-ckm-6e1">
-                        <title>The TSF shall <h:b>destroy <assignable>list of cryptographic keys (including keying material)</assignable> when <seletables><selectable>no longer needed</selectable><selectable><assignable>other circumstances for key or keying material destruction</assignable></selectable></seletables></h:b> <comment>Title has been iterated but the App notes/TSS/Guidance/Test remained the same to before it was converted from FCS_CKM_EXT.4.</comment>
+                        <title>The TSF shall <h:b>destroy <assignable>list of cryptographic keys (including keying material)</assignable> when <selectables>
+							<selectable>no longer needed</selectable>
+							<selectable><assignable>other circumstances for key or keying material destruction</assignable></selectable>
+						</selectables></h:b> <comment>Title has been iterated but the App notes/TSS/Guidance/Test remained the same to before it was converted from FCS_CKM_EXT.4.</comment>
                         </title>
                         <note role="application">The threat addressed by this element is the recovery of disused cryptographic keys
 							from volatile memory by unauthorized processes.<h:p/>
@@ -3059,7 +3062,7 @@
                 <!-- FCS_RBG.1 -->
                 <f-component cc-id="fcs_rbg.1" name="Cryptographic Operation (Random Bit Generation)" id="fcs-rbg-1">
 					<consistency-rationale/>
-					
+					<f-element id="fcs-rbg-1e1">
                     <title>
 						The TSF shall perform deterministic random bit generation services using 
 						<selectables linebreak="yes">
@@ -3096,8 +3099,7 @@
 							  If "TSF interface for seeding" is selected, FCS_RBG.2 must be claimed. 
 							</h:p>
 						  </note>
-						
-							  </h:p>
+						</f-element>
 					<f-element id="fcs-rbg-1e3">
 						<title>
 							The TSF shall update the RBG state by <selectables>
@@ -3113,7 +3115,7 @@
 							</selectables>
 							in accordance with <assignable>list of standards</assignable>.
 						  </title>
-					</f-element>
+					
                         <aactivity>
                             <TSS/>
 							<Guidance/>
