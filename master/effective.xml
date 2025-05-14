@@ -394,7 +394,7 @@
 					made accessible to unauthorized entities.
                     </description>
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events can report attempts to breach isolation.</rationale>
-					<addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to protect domain data in shared storage.</rationale>
+					<addressed-by>FCS_CKM.6</addressed-by><rationale>Requires cryptographic key destruction to protect domain data in shared storage.</rationale>
 					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
 					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated.</rationale>
 					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from physical storage upon re-allocation of the storage.</rationale>
@@ -405,7 +405,7 @@
 					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>Requires that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
 					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>Requires validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
-                    <addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to protect domain data in shared storage.</rationale>
+                    <addressed-by>FCS_CKM.6</addressed-by><rationale>Requires cryptographic key destruction to protect domain data in shared storage.</rationale>
 					<addressed-by>FCS_ENT_EXT.1</addressed-by><rationale>Requires that domains have access to high-quality entropy for cryptographic purposes.</rationale>
 					<addressed-by>FCS_RBG.1</addressed-by><rationale>Requires that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
 					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated to another domain.</rationale>
@@ -469,8 +469,8 @@
 					<addressed-by>FAU_GEN.1</addressed-by><rationale>Requires reporting of audit events.</rationale>
 					<addressed-by>FAU_SAA.1</addressed-by><rationale>Requires support for rules for indicating security violations based on audit events (optional).</rationale>
 					<addressed-by>FAU_SAR.1</addressed-by><rationale>Requires support for Administrator review of audit records.</rationale>
-					<addressed-by>FAU_STG.1</addressed-by><rationale>Requires protection of stored audit records.</rationale>
-					<addressed-by>FAU_STG_EXT.1</addressed-by><rationale>Requires support for protected transmission of audit records off the TOE.</rationale>
+					<addressed-by>FAU_STG.2</addressed-by><rationale>Requires protection of stored audit records.</rationale>
+					<addressed-by>FAU_STG.1</addressed-by><rationale>Requires support for protected transmission of audit records off the TOE.</rationale>
                 </threat>
                 <threat name="T.USER_ERROR">
                     <description>
@@ -481,7 +481,7 @@
 			    between domains. The VS must take measures to minimize the likelihood of such confusion.
                     </description>
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events can report attempts to breach isolation.</rationale>
-					<addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to protect domain data in shared storage.</rationale>
+					<addressed-by>FCS_CKM.6</addressed-by><rationale>Requires cryptographic key destruction to protect domain data in shared storage.</rationale>
 					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
 					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated.</rationale>
 					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from physical storage upon re-allocation of the storage.</rationale>
@@ -542,7 +542,7 @@
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                    
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>Audit events can report attempts to breach isolation.</rationale>
-					<addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to protect domain data in shared storage.</rationale>
+					<addressed-by>FCS_CKM.6</addressed-by><rationale>Requires cryptographic key destruction to protect domain data in shared storage.</rationale>
 					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>Requires support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
 					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated.</rationale>
 					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from physical storage upon re-allocation of the storage.</rationale>
@@ -647,7 +647,7 @@
 			    via a resource exhaustion attack.
                     </description>
 					<comment>need to revisit the addressed by SFRs.</comment>
-                    <addressed-by>FCS_CKM_EXT.4</addressed-by><rationale>Requires cryptographic key destruction to ensure residual data in shared storage is unrecoverable.</rationale>
+                    <addressed-by>FCS_CKM.6</addressed-by><rationale>Requires cryptographic key destruction to ensure residual data in shared storage is unrecoverable.</rationale>
 					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>Ensures that domain data is cleared from memory before memory is re-allocated.</rationale>
 					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>Ensures that domain data is cleared from storage upon re-allocation of the storage.</rationale>
                 </threat>
@@ -749,11 +749,7 @@
 			<!-- 5.1.2 Security Audit (FAU) -->
             <section id="ss-fau" title="Security Audit (FAU)">
 			
-			    <ext-comp-def title="Off-Loading of Audit Data" fam-id="FAU_STG_EXT">
-					<fam-behavior>This family defines requirements for the TSF to be able to securely 
-						transmit audit data between the TOE and an external IT entity.</fam-behavior>
-				</ext-comp-def>
-		    
+	
                 <!-- FAU_ARP.1 -->
                 <f-component cc-id="fau_arp.1" name="Security Audit Automatic Response" status="optional">
                     <f-element id="fau-arp-1e1">
@@ -964,13 +960,13 @@
 					<audit-event/>
                 </f-component>
 
-                <!-- FAU_STG.1 -->
-                <f-component cc-id="fau_stg.1" name="Protected Audit Trail Storage">
-                    <f-element id="fau-stg-1e1">
+                <!-- FAU_STG.2 -->
+                <f-component cc-id="fau_stg.2" name="Protected Audit Trail Storage">
+                    <f-element id="fau-stg-2e1">
                         <title>The TSF shall protect the stored audit records in the audit trail from unauthorized deletion.
                         </title>
                     </f-element> 
-                    <f-element id="fau-stg-1e2">
+                    <f-element id="fau-stg-2e2">
 			    <title>The TSF shall be able to [<h:i>prevent</h:i>] unauthorized modifications to the stored audit records in the audit trail.
                         </title>
                         <note role="application">The evaluation activity for this SFR is not intended to imply that the TOE must
@@ -1002,28 +998,10 @@
 					<audit-event/>
                 </f-component>
 			    
-                <!-- FAU_STG_EXT.1 -->
-                <f-component cc-id="fau_stg_ext.1" name="Off-Loading of Audit Data">
-					<consistency-rationale/>
-					<comp-lev>requires the TSF to transmit audit data using a trusted channel to an outside entity and to specify 
-						the action to be taken when local audit storage is full.</comp-lev>
-					<management>The following actions could be considered for the management functions in FMT:
-						<h:ol type="a">
-							<h:li>Ability to configure and manage the audit system and audit data,
-							including the ability to configure name/address of audit/logging server
-							to which to send audit/logging records.</h:li>
-						</h:ol>
-					</management>
-					<audit>The following actions should be auditable if FAU_GEN Security audit data generation 
-						is included in the PP/ST:
-						<h:ol type="a">
-							<h:li>Failure of audit data capture due to lack of disk space or pre-defined limit.</h:li>
-							<h:li>On failure of logging function, capture record of failure and record upon restart of logging function.</h:li>
-						</h:ol>
-					</audit>
-					<dependencies>FAU_GEN.1 Audit Data Generation<h:p/>
-								FTP_ITC_EXT.1 Trusted Channel Communications</dependencies>
-                    <f-element id="fau-stg-ext-1e1">
+                <!-- FAU_STG.1 -->
+                <f-component cc-id="fau_stg.1" name="External Audit Storage">
+					
+                    <f-element id="fau-stg-1e1">
                         <title>The TSF shall be able to transmit the generated audit data to an external IT entity using a trusted 
 							channel as specified in FTP_ITC_EXT.1.
                         </title>
@@ -1058,7 +1036,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-                    <f-element id="fau-stg-ext-1e2">
+                    <f-element id="fau-stg-1e2">
                         <title>The TSF shall
                             <selectables>
                                 <selectable exclusive="yes">drop new audit data</selectable>
@@ -1088,7 +1066,7 @@
                                 The evaluator shall perform operations that generate audit data and verify that this data is 
                                 stored locally. The evaluator shall perform operations that generate audit data until the local 
                                 storage space is exceeded and verifies that the TOE complies with the behavior 
-                                defined in the ST for FAU_STG_EXT.1.2.
+                                defined in the ST for FAU_STG.1.2.
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -1361,20 +1339,19 @@
 			<audit-event/>
                 </f-component>
 
-                <!-- FCS_CKM_EXT.4 -->
-                <f-component cc-id="fcs_ckm_ext.4" name="Cryptographic Key Destruction">
+                <!-- FCS_CKM_EXT.4  converted to FCS_CKM.6-->
+                <f-component cc-id="fcs_ckm.6" name="Cryptographic Key Destruction">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to destroy or make unrecoverable empty keys in volatile and 
 						non-volatile memory. Note that component level 4 is used here because of this
-						component’s similarity to the CC Part 2 component FCS_CKM.4.</comp-lev>
+						component’s similarity to the CC Part 2 component FCS_CKM.6.</comp-lev>
 					<management>No specific management functions are identified.
 					</management>
 					<audit>There are no auditable events foreseen.</audit>
 					<dependencies>[FCS_CKM.1 Cryptographic Key Generation, or<h:p/>
 								FCS_CKM.2 Cryptographic Key Distribution]</dependencies>
-                    <f-element id="fcs-ckm-4e1">
-                        <title>The TSF shall cause disused cryptographic keys in volatile memory to be destroyed or rendered 
-							unrecoverable.
+                    <f-element id="fcs-ckm-6e1">
+                        <title>The TSF shall <h:b>destroy <assignable>list of cryptographic keys (including keying material)</assignable> when <seletables><selectable>no longer needed</selectable><selectable><assignable>other circumstances for key or keying material destruction</assignable></selectable></seletables></h:b> <comment>Title has been iterated but the App notes/TSS/Guidance/Test remained the same.</comment>
                         </title>
                         <note role="application">The threat addressed by this element is the recovery of disused cryptographic keys
 							from volatile memory by unauthorized processes.<h:p/>
@@ -1402,9 +1379,10 @@
 							keys created and used by Guest VMs. The Guest is responsible for disposing of such keys.
 						</note>
                     </f-element>
-                    <f-element id="fcs-ckm-4e2">
-                        <title>The TSF shall cause disused cryptographic keys in non-volatile storage to be destroyed or rendered 
-							unrecoverable.
+                    <f-element id="fcs-ckm-6e2">
+                        <title>The TSF shall <h:b>destroy cryptographic keys and keying material specified by FCS_CKM.6.1 in
+							accordance with a specified cryptographic key destruction method <assignable>cryptographic key destruction method</assignable> that meets the following: <assignable> list of standards</assignable>.
+							</h:b><comment>Title has been iterated but the App notes/TSS/Guidance/Test remained the same.</comment>
                         </title>
                         <note role="application">
                             The ultimate goal of this element is to ensure that disused cryptographic keys are inaccessible not only
@@ -5194,7 +5172,7 @@
 							<h:li>Failures of the trusted path functions.</h:li>
 						</h:ol>
 					</audit>
-					<dependencies>FAU_STG_EXT.1 Off-Loading of Audit Data</dependencies>
+					<dependencies>FAU_STG.1 External Audit Storage</dependencies>
                     <f-element id="ftp-itc-ext-1e1">
                         <title>The TSF shall use
                             <selectables linebreak="yes">
@@ -5213,7 +5191,7 @@
 				    <selectable>no authentication of the remote peer</selectable>
 				</selectables>
                             to provide a trusted communication channel between itself, and<h:p/>
-                            <h:li>audit servers (as required by FAU_STG_EXT.1), and</h:li>
+                            <h:li>audit servers (as required by FAU_STG.1), and</h:li>
                             <selectables linebreak="yes">
                                 <selectable>remote administrators (as required by FTP_TRP.1.1 if selected in FMT_MOF_EXT.1.1 in the Client or Server PP-Module)</selectable>
                                 <selectable>separation of management and operational networks (if selected in FMT_SMO_EXT.1)</selectable>
@@ -5228,7 +5206,7 @@
 			<assignable> transport mechanism </assignable>
 			and <assignable>authentication mechanism</assignable>
                             to provide a trusted communication channel between itself, and<h:p/>
-                            <h:li>audit servers (as required by FAU_STG_EXT.1), and</h:li>
+                            <h:li>audit servers (as required by FAU_STG.1), and</h:li>
 			    <assignable>remote entities</assignable>
                             that is logically distinct from other communication paths and provides assured identification of its
                             endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.
@@ -5938,21 +5916,21 @@
 	<h:tr>
 	<h:td>FCS_CKM.4 – Cryptographic Key Destruction</h:td>
 	<h:td>
-	  FCS_CKM.1 has a dependency on FCS_CKM.4. The extended SFR FCS_CKM_EXT.4 addresses this dependency 
+	  FCS_CKM.1 has a dependency on FCS_CKM.4. The extended SFR FCS_CKM.6 addresses this dependency 
 	  by defining an alternate requirement for key destruction.
 	</h:td>
 	</h:tr>
 	<h:tr>
 	<h:td>FCS_CKM.4 – Cryptographic Key Destruction</h:td>
 	<h:td>
-	  FCS_CKM.2 has a dependency on FCS_CKM.4. The extended SFR FCS_CKM_EXT.4 addresses this dependency by 
+	  FCS_CKM.2 has a dependency on FCS_CKM.4. The extended SFR FCS_CKM.6 addresses this dependency by 
 	  defining an alternate requirement for key destruction.
 	</h:td>
 	</h:tr>
 	<h:tr>
 	<h:td>FCS_CKM.4 – Cryptographic Key Destruction</h:td>
 	<h:td>
-	  Each iteration of FCS_COP.1 has a dependency on FCS_CKM.4. The extended SFR FCS_CKM_EXT.4 addresses this 
+	  Each iteration of FCS_COP.1 has a dependency on FCS_CKM.4. The extended SFR FCS_CKM.6 addresses this 
 	  dependency by defining an alternate requirement for key destruction.
 	</h:td>
 	</h:tr>
