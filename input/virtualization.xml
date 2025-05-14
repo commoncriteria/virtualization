@@ -1417,7 +1417,7 @@
 					<dependencies>[FCS_CKM.1 Cryptographic Key Generation, or<h:p/>
 								FCS_CKM.2 Cryptographic Key Distribution]</dependencies>
                     <f-element id="fcs-ckm-6e1">
-                        <title>The TSF shall <h:b>destroy <assignable>list of cryptographic keys (including keying material)</assignable> when <seletables><selectable>no longer needed</selectable><selectable><assignable>other circumstances for key or keying material destruction</assignable></selectable></seletables></h:b> <comment>Title has been iterated but the App notes/TSS/Guidance/Test remained the same.</comment>
+                        <title>The TSF shall <h:b>destroy <assignable>list of cryptographic keys (including keying material)</assignable> when <seletables><selectable>no longer needed</selectable><selectable><assignable>other circumstances for key or keying material destruction</assignable></selectable></seletables></h:b> <comment>Title has been iterated but the App notes/TSS/Guidance/Test remained the same to before it was converted from FCS_CKM_EXT.4.</comment>
                         </title>
                         <note role="application">The threat addressed by this element is the recovery of disused cryptographic keys
 							from volatile memory by unauthorized processes.<h:p/>
@@ -3057,43 +3057,63 @@
                 </f-component>
 				
                 <!-- FCS_RBG.1 -->
-                <f-component cc-id="fcs_rbg.1" name="Cryptographic Operation (Random Bit Generation)">
+                <f-component cc-id="fcs_rbg.1" name="Cryptographic Operation (Random Bit Generation)" id="fcs-rbg-1">
 					<consistency-rationale/>
 					
-                    <f-element id="fcs-rbg-1e1">
-                        <title>The TSF shall perform all deterministic random bit generation services in accordance with NIST Special 
-							Publication 800-90A using
-                            <selectables>
-                                <selectable>Hash_DRBG (any)</selectable>
-                                <selectable>HMAC_DRBG (any)</selectable>
-                                <selectable>CTR_DRBG (AES)</selectable>
-                            </selectables>
-                        </title>
+                    <title>
+						The TSF shall perform deterministic random bit generation services using 
+						<selectables linebreak="yes">
+						  <selectable>Hash_DRBG (any)</selectable>
+						  <selectable>HMAC_DRBG (any)</selectable>
+						  <selectable>CTR_DRBG (AES)</selectable>
+						</selectables>
+						in accordance
+						with [<h:i>NIST SP 800-90A</h:i>] after initialization with a seed.              
+					  </title>
                     </f-element>
                     <f-element id="fcs-rbg-1e2">
-                        <title>The deterministic RBG shall be seeded by an entropy source that accumulates entropy from
-                            <selectables>
-                                <selectable>a software-based noise source</selectable>
-                                <selectable>a hardware-based noise source</selectable>
-                            </selectables> with a minimum of
-                            <selectables>
-                                <selectable>128 bits</selectable>
-                                <selectable>192 bits</selectable>
-                                <selectable>256 bits</selectable>
-                            </selectables> of entropy at least equal to the greatest security strength according to NIST SP 800-57, of
-							the keys and hashes that it will generate.
-                        </title>
-                        <note role="application">NIST SP 800-90A contains three different methods of generating random numbers; each 
-							of these, in turn, depends on underlying cryptographic primitives (hash functions/ciphers). The ST 
-							author will select the function used, and include the specific underlying cryptographic primitives 
-							used in the requirement. While any of the identified hash functions (SHA-1, SHA-224, SHA-256, SHA-384,
-							SHA-512) <!-- here check this 512 -->are allowed for Hash_DRBG or HMAC_DRBG, only AES-based 
-							implementations for CTR_DRBG are allowed.<h:p/>
-                            If the key length for the AES implementation used here is different than that used to encrypt the user 
-							data, then FCS_COP.1/UDE may have to be adjusted or iterated to reflect the different key length. For the
-							selection in FCS_RBG.1.2, the ST author selects the minimum number of bits of
-							entropy that is used to seed the RBG.
-                        </note>
+                        <title>
+							The TSF shall use a <selectables>
+							  <selectable id="internal-seed">TSF noise source <assignable>name of noise source</assignable></selectable>
+							  <selectable id="internal-seeds"><h:b>multiple TSF noise sources <assignable>names of noise sources</assignable></h:b></selectable>
+							  <selectable id="external-seed">TSF interface for seeding</selectable>
+							</selectables>
+							for initialized seeding.
+						  </title>
+						  <note role="application">
+							<h:p>
+							  For the 
+							  selection in this requirement, the ST author selects "TSF noise source" if
+							  a single noise source is used as input to the DRBG. The ST author selects "multiple TSF noise sources" if a seed is formed from a combination of two or more noise sources within the TOE boundary. If the TSF implements two or more separate DRBGs that are seeded in separate manners, this SFR should be iterated for each DRBG. If multiple distinct noise sources exist such that each DRBG only uses one of them, then each iteration would select "TSF noise source"; "multiple TSF noise sources" is only selected if a single DRBG uses multiple noise sources for its seed. The ST author selects "TSF interface for seeding" if noise source data is generated outside the TOE boundary.
+							</h:p>
+							<h:p>
+							  If "TSF noise source" is selected, FCS_RBG.3 must be claimed.
+							</h:p>
+							<h:p>
+							  If "multiple TSF noise sources" is selected, FCS_RBG.4 and FCS_RBG.5 must be claimed. 
+							</h:p>
+							<h:p>
+							  If "TSF interface for seeding" is selected, FCS_RBG.2 must be claimed. 
+							</h:p>
+						  </note>
+						
+							  </h:p>
+					<f-element id="fcs-rbg-1e3">
+						<title>
+							The TSF shall update the RBG state by <selectables>
+							  <selectable>reseeding</selectable>
+							  <selectable>uninstantiating and reinstantiating</selectable>
+							</selectables> using a <selectables>
+							  <selectable>TSF noise source <assignable>name of noise source</assignable></selectable>
+							  <selectable>TSF interface for seeding</selectable></selectables>
+							in the following situations: <selectables linebreak="yes">
+							  <selectable>on demand</selectable>
+							  <selectable>on the condition: <assignable>condition</assignable></selectable>
+							  <selectable>after <assignable>time</assignable></selectable>
+							</selectables>
+							in accordance with <assignable>list of standards</assignable>.
+						  </title>
+					</f-element>
                         <aactivity>
                             <TSS/>
 							<Guidance/>
@@ -3145,7 +3165,7 @@
                 </f-component>		
 				<f-component cc-id="fcs_rbg.2" name="" status="sel-based">
 					<consistency-rationale/>
-					
+					<depends on="external-seed"/>
                     <f-element id="fcs-rbg-2e1">
                         <title>The TSF shall be able to accept a minimum input of <assignable>minimum input length greater than zero</assignable> from a TSF interface for the purpose of seeding.
                         </title>
@@ -3160,7 +3180,7 @@
                 </f-component>
 				<f-component cc-id="fcs_rbg.3" name="" status="sel-based">
 					<consistency-rationale/>
-					
+					<depends on="internal-seed"/>
                     <f-element id="fcs-rbg-3e1">
                         <title><h:b>The TSF shall be able to seed the RBG using a <selectables choose-one-of="yes"><selectable>TSF software-based
 							noise source</selectable><selectable>TSF hardware-based noise source</selectable></selectables> <assignable>name of noise source</assignable> with a minimum of <assignable>number of bits</assignable> bit of min-entropy</h:b>.
@@ -3176,7 +3196,7 @@
                 </f-component>
 				<f-component cc-id="fcs_rbg.4" name="" status="sel-based">
 					<consistency-rationale/>
-					
+					<depends on="internal-seeds"/>
                     <f-element id="fcs-rbg-4e1" >
                         <title><h:b>The TSF shall be able to seed the RBG using <selectables><selectable><assignable>number</assignable> TSF software-based noise source(s)</selectable><selectable><assignable>number</assignable> TSF hardware-based noise source(s)</selectable></selectables>.
                         </h:b></title>
@@ -3190,7 +3210,7 @@
                 </f-component>	
 				<f-component cc-id="fcs_rbg.5" name="" status="sel-based">
 					<consistency-rationale/>
-					
+					<depends on="internal-seeds"/>
                     <f-element id="fcs-rbg-5e1">
                         <title><h:b>The TSF shall <assignable>combining operation</assignable> <selectables><selectable>output from TSF noise source(s)</selectable><selectable>input from TSF interface(s) for seeding)<comment> the CC2022 has a close paratheses that does not go have a open parathesis before it.</comment></selectable></selectables> to create the entropy input into the derivation function as defined in <assignable>list of standards</assignable>, resulting in a minimum of <assignable>number of bits</assignable>bits of min-entropy.</h:b>
                         </title>
