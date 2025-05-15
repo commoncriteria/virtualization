@@ -847,7 +847,7 @@
 			<!-- FAU_GEN.1 -->
 			<f-component cc-id="fau_gen.1" name="Audit Data Generation">
                     <f-element id="fau-gen-1e1">
-                        <title>The TSF shall be able to generate an audit record of the following auditable events:
+                        <title>The TSF shall be able to generate an audit <h:b>data</h:b> of the following auditable events:
                             <h:ol type="a">
                                 <h:li>Start-up and shutdown of audit functions</h:li>
                                 <h:li>[<refinement>All administrative actions relevant to claimed SFRs as defined in the 
@@ -865,7 +865,7 @@
                         </title>
                     </f-element>
                     <f-element id="fau-gen-1e2">
-                        <title>The TSF shall record within each audit record at least the following information:
+                        <title>The TSF shall record within each audit <h:b>data</h:b> at least the following information:
                             <h:ol type="a">
                                 <h:li>Date and time of the event</h:li>
                                 <h:li>Type of event</h:li>
@@ -1003,11 +1003,11 @@
                 <!-- FAU_SAR.1 -->
                 <f-component cc-id="fau_sar.1" name="Audit Review">
                     <f-element id="fau-sar-1e1">
-			    <title>The TSF shall provide [<h:i>administrators</h:i>] with the capability to read [<h:i>all information</h:i>] from the audit records.
+			    <title>The TSF shall provide [<h:i>administrators</h:i>] with the capability to read [<h:i>all information</h:i>] from the audit <h:b>data</h:b>.
                         </title>
                     </f-element>
                     <f-element id="fau-sar-1e2">
-                        <title>The TSF shall provide the audit records in a manner suitable for the user to interpret the information.
+                        <title>The TSF shall provide the audit <h:b>data</h:b> in a manner suitable for the user to interpret the information.
                         </title>
                         <aactivity>
                             <TSS/>
@@ -1027,49 +1027,12 @@
                 </f-component>
 
                 <!-- FAU_STG.2 -->
-                <f-component cc-id="fau_stg.2" name="Protected Audit Trail Storage">
-                    <f-element id="fau-stg-2e1">
-                        <title>The TSF shall protect the stored audit records in the audit trail from unauthorized deletion.
-                        </title>
-                    </f-element> 
-                    <f-element id="fau-stg-2e2">
-			    <title>The TSF shall be able to [<h:i>prevent</h:i>] unauthorized modifications to the stored audit records in the audit trail.
-                        </title>
-                        <note role="application">The evaluation activity for this SFR is not intended to imply that the TOE must
-							support an administrator’s ability to designate individual audit records for deletion. That level 
-							of granularity is not required.
-						</note>
-						<aactivity>
-							<TSS>
-								The evaluator shall ensure that the TSS describes how the audit records are protected from 
-								unauthorized modification or deletion. The evaluator shall ensure that the TSS describes the
-								conditions that must be met for authorized deletion of audit records. 
-							</TSS>
-							<Guidance/>
-                            <Tests>
-								The evaluator shall perform the following tests:
-                                <testlist>
-                                    <test>The evaluator shall access the audit trail as an unauthorized Administrator and attempt 
-                                        to modify and delete the audit records. The evaluator shall verify that these attempts 
-                                        fail.
-                                    </test>
-                                    <test>The evaluator shall access the audit trail as an authorized Administrator and attempt 
-                                        to delete the audit records. The evaluator shall verify that these attempts succeed. 
-                                        The evaluator shall verify that only the records authorized for deletion are deleted.
-                                    </test>
-                                </testlist>
-                            </Tests>
-                        </aactivity>
-                    </f-element>
-					<audit-event />
-                </f-component>
-			    
+                
                 <!-- FAU_STG.1 -->
                 <f-component cc-id="fau_stg.1" name="External Audit Storage">
 					
                     <f-element id="fau-stg-1e1">
-                        <title>The TSF shall be able to transmit the generated audit data to an external IT entity using a trusted 
-							channel as specified in FTP_ITC_EXT.1.
+                        <title>The TSF shall be able to transmit the generated audit data to an external IT entity using a trusted channel as specified in FTP_ITC_EXT.1.
                         </title>
                         <aactivity level="element">
                             Protocols used for implementing the trusted channel must be selected in FTP_ITC_EXT.1.
@@ -1147,7 +1110,43 @@
                         </audit-event-descr>
 					</audit-event>
                 </f-component>
-                
+                <f-component cc-id="fau_stg.2" name="Protected Audit Trail Storage">
+                    <f-element id="fau-stg-2e1">
+                        <title>The TSF shall protect the stored audit <h:b>data</h:b> in the audit trail from unauthorized deletion.
+                        </title>
+                    </f-element> 
+                    <f-element id="fau-stg-2e2">
+			    <title>The TSF shall be able to [<h:i>prevent</h:i>] unauthorized modifications to the stored audit records in the audit trail.
+                        </title>
+                        <note role="application">The evaluation activity for this SFR is not intended to imply that the TOE must
+							support an administrator’s ability to designate individual audit records for deletion. That level 
+							of granularity is not required.
+						</note>
+						<aactivity>
+							<TSS>
+								The evaluator shall ensure that the TSS describes how the audit records are protected from 
+								unauthorized modification or deletion. The evaluator shall ensure that the TSS describes the
+								conditions that must be met for authorized deletion of audit records. 
+							</TSS>
+							<Guidance/>
+                            <Tests>
+								The evaluator shall perform the following tests:
+                                <testlist>
+                                    <test>The evaluator shall access the audit trail as an unauthorized Administrator and attempt 
+                                        to modify and delete the audit records. The evaluator shall verify that these attempts 
+                                        fail.
+                                    </test>
+                                    <test>The evaluator shall access the audit trail as an authorized Administrator and attempt 
+                                        to delete the audit records. The evaluator shall verify that these attempts succeed. 
+                                        The evaluator shall verify that only the records authorized for deletion are deleted.
+                                    </test>
+                                </testlist>
+                            </Tests>
+                        </aactivity>
+                    </f-element>
+					<audit-event />
+                </f-component>
+			    
             </section>
             
 			<!-- 5.1.3 Cryptographic Support (FCS) -->
@@ -1527,7 +1526,7 @@
 				<selectable id="sel-hash-sha-3-256">SHA-3-256</selectable>
 				<selectable id="sel-hash-sha-3-384">SHA-3-384</selectable>
 				<selectable id="sel-hash-sha-3-512">SHA-3-512</selectable>		    
-                            </selectables> and message digest sizes
+                            </selectables> and message <h:b>key</h:b>> sizes
                             <selectables>
                                 <selectable>160</selectable>
 <!-- Is this a thing?		<selectable>224</selectable>    -->
