@@ -1526,7 +1526,7 @@
 				<selectable id="sel-hash-sha-3-256">SHA-3-256</selectable>
 				<selectable id="sel-hash-sha-3-384">SHA-3-384</selectable>
 				<selectable id="sel-hash-sha-3-512">SHA-3-512</selectable>		    
-                            </selectables> and message <h:b>key</h:b>> sizes
+                            </selectables> and message <h:b>key</h:b> sizes
                             <selectables>
                                 <selectable>160</selectable>
 <!-- Is this a thing?		<selectable>224</selectable>    -->
@@ -1690,6 +1690,7 @@
                             that meet the following:
                             [<h:b><h:i>FIPS Pub 198-1, "The Keyed-Hash Message Authentication Code," and FIPS Pub 180-4, “Secure Hash
 							Standard"</h:i></h:b>].
+							<comment>the virtualization PP adds the message digest sizes, which is not a selectable option of the cc2022 prt2. Further input is needed.</comment>
                         </title>
                         <note role="application">The selection in this requirement must be consistent with the key size specified for
 							the size of the keys used in conjunction with the keyed-hash message authentication.<h:p/></note>
@@ -1756,7 +1757,7 @@
                             <selectables linebreak="yes">
                                 <selectable id="sel-sig-rsa">RSA schemes using cryptographic key sizes [2048-bit or greater] that meet
 									the following: [<h:i>FIPS PUB 186-5, “Digital Signature Standard (DSS)”, Section 4</h:i>]</selectable>
-                                <selectable id="sel-sig-ecdsa">ECDSA schemes using [“NIST curves” P-256, P-384 and
+                                <selectable id="sel-sig-ecdsa">ECDSA schemes using <h:b>cryptographic key sizes</h:b>[“NIST curves” P-256, P-384 and
                                     <selectables>
                                         <selectable>P-521</selectable>
                                         <selectable exclusive="yes">no other curves</selectable>
@@ -1837,7 +1838,9 @@
                             <selectables>
                                 <selectable id="sel-ude-keysize-128">128-bit key sizes</selectable>
                                 <selectable id="sel-ude-keysize-256">256-bit key sizes</selectable>
-                            </selectables>.
+                            </selectables>. <comment> should each selection have it's own ending? for example <h:p/>"The TSF shall perform [encryption and decryption] in accordance with a specified cryptographic algorithm [selection: AES Key Wrap (KW) and cryptographic key sizes [selection: 128-bit key sizes, 256-bit key sizes] that meet the following: NIST SP 800-38F,..]
+							Further input needed. 
+							</comment>
                         </title>
                         <note role="application">For the first selection of FCS_COP.1.1/UDE, the ST author should choose the mode or
 							modes in which AES operates. For the second selection, the ST author should choose the key sizes that
@@ -3063,24 +3066,24 @@
 					<consistency-rationale/>
 					<f-element id="fcs-rbg-1e1">
                     <title>
-						The TSF shall perform deterministic random bit generation services using 
+						The TSF shall perform deterministic random bit generation services <h:b>using 
 						<selectables linebreak="yes">
 						  <selectable>Hash_DRBG (any)</selectable>
 						  <selectable>HMAC_DRBG (any)</selectable>
 						  <selectable>CTR_DRBG (AES)</selectable>
 						</selectables>
 						in accordance
-						with [<h:i>NIST SP 800-90A</h:i>] after initialization with a seed.              
+						with [<h:i>NIST SP 800-90A</h:i>] after initialization with a seed. </h:b>             
 					  </title>
                     </f-element>
                     <f-element id="fcs-rbg-1e2">
                         <title>
-							The TSF shall use a <selectables>
+							<h:b>The TSF shall use a <selectables>
 							  <selectable id="internal-seed">TSF noise source <assignable>name of noise source</assignable></selectable>
 							  <selectable id="internal-seeds"><h:b>multiple TSF noise sources <assignable>names of noise sources</assignable></h:b></selectable>
 							  <selectable id="external-seed">TSF interface for seeding</selectable>
 							</selectables>
-							for initialized seeding.
+							for initialized seeding.</h:b>
 						  </title>
 						  <note role="application">
 							<h:p>
@@ -3101,7 +3104,7 @@
 						</f-element>
 					<f-element id="fcs-rbg-1e3">
 						<title>
-							The TSF shall update the RBG state by <selectables>
+							<h:b>The TSF shall update the RBG state by <selectables>
 							  <selectable>reseeding</selectable>
 							  <selectable>uninstantiating and reinstantiating</selectable>
 							</selectables> using a <selectables>
@@ -3112,7 +3115,7 @@
 							  <selectable>on the condition: <assignable>condition</assignable></selectable>
 							  <selectable>after <assignable>time</assignable></selectable>
 							</selectables>
-							in accordance with <assignable>list of standards</assignable>.
+							in accordance with <assignable>list of standards</assignable>.</h:b>
 						  </title>
 					
                         <aactivity>
@@ -3168,7 +3171,7 @@
 					<consistency-rationale/>
 					<depends on="external-seed"/>
                     <f-element id="fcs-rbg-2e1">
-                        <title>The TSF shall be able to accept a minimum input of <assignable>minimum input length greater than zero</assignable> from a TSF interface for the purpose of seeding.
+                        <title><h:b>The TSF shall be able to accept a minimum input of <assignable>minimum input length greater than zero</assignable> from a TSF interface for the purpose of seeding.</h:b>
                         </title>
 						<aactivity>
 							<TSS/>
@@ -3852,7 +3855,7 @@
                 <!-- FIA_UAU.5 -->
                 <f-component cc-id="fia_uau.5" name="Multiple Authentication Mechanisms">
                     <f-element id="fia-uau-5e1">
-                        <title>The TSF shall provide the following authentication mechanisms:
+                        <title>The TSF shall provide <h:s></h:s>the following authentication mechanisms:</h:s>
                             <selectables linebreak="yes">
                                 <selectable id="sel-uau-pwd">
                                     <selectables>
@@ -3878,7 +3881,7 @@
                                     authentication based on an SSH public key credential
                                 </selectable>
                             </selectables>                            
-                            to support Administrator authentication.
+                            to support <h:s>Administrator</h:s> authentication.
                         </title>
                         <note role="application">Selection of ‘authentication based on username and password’ requires that 
 							FIA_PMG_EXT.1 be included in the ST. This also requires that the ST include a management function for
@@ -3890,7 +3893,7 @@
                         </note>
                     </f-element>
                     <f-element id="fia-uau-5e2">
-                        <title>The TSF shall authenticate any <refinement>Administrator’s</refinement> claimed identity according to the <assignable>rules
+                        <title>The TSF shall authenticate any <h:s>Administrator</h:s> <h:b>user’s</h:b> claimed identity according to the <assignable>rules
 							describing how the multiple authentication mechanisms provide authentication</assignable>.
                         </title>
                         <aactivity>
@@ -5209,9 +5212,8 @@
                 <!-- FTA_TAB.1 -->
                 <f-component cc-id="fta_tab.1" name="TOE Access Banner">
                     <f-element id="fta-tab-ext-1e1">
-                        <title>Before establishing an administrative user session, the TSF shall display a
-                            security Administrator-specified advisory notice and consent warning message regarding
-                            use of the TOE.
+                        <title>Before establishing an <h:s>administrative</h:s> user session, the <h:b><selectables><selectable>TSF</selectable><selectable>TOE platform</selectable></selectables></h:b> shall display a<h:b>n <assignable>description of the message</assignable> </h:b> message. 
+                            
                         </title>
                         <note role="application">
                             This requirement is intended to apply to interactive sessions between a human user and a TOE. IT
@@ -5379,6 +5381,8 @@
                     </f-element>
 			<f-element id="ftp-trp-1e3">
                         <title>The TSF shall require the use of the trusted path for [<h:i>[all remote administration actions]</h:i>].
+							<comment><h:br/>Please double check conversion.</comment>
+
                         </title>
                         <note role="application">
 				This SFR is included in the ST if "remote" is selected in FMT_MOF_EXT.1.1 of the client or server PP-Module.<h:p/>
