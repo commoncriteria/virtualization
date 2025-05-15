@@ -1274,18 +1274,18 @@
 				    specified cryptographic key generation algorithm
                             <selectables linebreak="yes">
                                 <selectable>
-                                    RSA schemes using cryptographic key sizes [2048-bit or greater] that meet the following: [FIPS PUB 186-5, “Digital Signature Standard (DSS)”, Appendix B.3]
+                                    RSA schemes using cryptographic key sizes [3072-bit or greater] that meet the following: [FIPS PUB 186-5, “Digital Signature Standard (DSS)”, Appendix B.3]
                                 </selectable>
                                 <selectable>
-                                    ECC schemes using [“NIST curves” P-256, P-384, and
+                                    ECC schemes using [“NIST curves” P-384, and
                                     <selectables>
                                         <selectable>P-521</selectable>
                                         <selectable exclusive="yes">no other curves</selectable>
                                     </selectables>
-                                    that meet the following: [FIPS PUB 186-5, “Digital Signature Standard (DSS)”, Appendix B.4]
+                                    that meet the following: [<h:i>FIPS PUB 186-5, “Digital Signature Standard (DSS)”, Appendix B.4</h:i>]
                                     </selectable>
                                 <selectable>
-                                    FFC schemes using cryptographic key sizes [2048-bit or greater] that meet the following: [FIPS PUB 186-5, “Digital Signature Standard (DSS)”, Appendix B.1]].
+                                    FFC schemes using cryptographic key sizes [2048-bit or greater<comment>Should this be replaced with 3072- per CNSA 1.0? CNSA 1.0 does not reference FFC</comment>] that meet the following: [FIPS PUB 186-5, “Digital Signature Standard (DSS)”, Appendix B.1]].
                                 </selectable>
 				<selectable>FFC Schemes using Diffie-Hellman group 14 that meet the following: [RFC 3526]</selectable>
 				<selectable>FFC Schemes using safe primes that meet the following: [‘NIST Special Publication 800-56A Revision 3,
@@ -1345,14 +1345,14 @@
 								good implementation.<h:p/>
                                 <h:b>Key Generation for Elliptic Curve Cryptography (ECC)</h:b><h:p/>
                                 <h:p> FIPS 186-5 ECC Key Generation Test</h:p><h:p/>
-                                For each supported NIST curve (i.e., P-256, P-384 and P-521) the evaluator shall require the
+                                For each supported NIST curve (i.e., P-384 and P-521) the evaluator shall require the
 								implementation under test (IUT) to generate 10 private/public key pairs. The private key shall
 								be generated using an approved random bit generator (RBG). To determine correctness, the evaluator
 								shall submit the generated key pairs to the public key verification (PKV) function of a known
 								good implementation.
                                 <h:br/>
                                 <h:p>FIPS 186-5 Public Key Verification (PKV) Test</h:p>
-                                For each supported NIST curve (i.e., P-256, P-384 and P-521) the evaluator shall generate 10
+                                For each supported NIST curve (i.e., P-384 and P-521) the evaluator shall generate 10
 								private/public key pairs using the key generation function of a known good implementation and
 								modify five of the public key values so that they are incorrect, leaving five values unchanged
 								(i.e., correct). The evaluator shall obtain in response a set of 10 PASS/FAIL values.<h:p/>
@@ -1609,11 +1609,10 @@
                     <f-element id="fcs-cop-1e1-hash">
 			    <title>The TSF shall perform [<h:i>cryptographic hashing</h:i>] in accordance with a specified cryptographic algorithm
                             <selectables>
-                                <selectable id="sel-hash-sha-1">SHA-1</selectable>
-                                <selectable id="sel-hash-sha-256">SHA-256</selectable>
+                                
                                 <selectable id="sel-hash-sha-384">SHA-384</selectable>
                                 <selectable id="sel-hash-sha-512">SHA-512</selectable>
-				<selectable id="sel-hash-sha-3-224">SHA-3-224</selectable>
+				<selectable id="sel-hash-sha-3-224">SHA-3-224<comment> Should SHA-3-224 and 256 be removed? Is SHA-256/224 the same as SHA-3-256/224? This is in reference to the latest CNSA 1.0 requirements.</comment></selectable>
 				<selectable id="sel-hash-sha-3-256">SHA-3-256</selectable>
 				<selectable id="sel-hash-sha-3-384">SHA-3-384</selectable>
 				<selectable id="sel-hash-sha-3-512">SHA-3-512</selectable>		    
@@ -1639,6 +1638,7 @@
 							message digest size selection. The hash selection should be consistent with the overall strength of
 							the algorithm used (for example, SHA 256 for 128-bit keys).
                             <h:p/>
+							<comment> should this be removed?^</comment>
                         </note>
                         <aactivity>
                             <TSS>
@@ -1651,6 +1651,7 @@
                                 be done to configure the functionality for the required hash sizes is present. 
                             </Guidance>
                             <Tests>
+								
 								<h:b><h:u>SHA-1 and SHA-2 Tests</h:u></h:b>
                                 The TSF hashing functions can be implemented in one of two modes. The first mode is the byte-oriented
 								mode. In this mode the TSF only hashes messages that are an integral number of bytes in length;
@@ -1658,6 +1659,8 @@
 								bit-oriented mode. In this mode the TSF hashes messages of arbitrary length. As there are different
 								tests for each mode, an indication is given in the following sections for the bit-oriented vs. the
 								byte-oriented test MACs.
+							<h:p/><comment> Should this TA be removed/updated for the CNSA 1.0 requirement?</comment>
+						
                                 <h:p/>
                                 The evaluator shall perform all of the following tests for each hash algorithm implemented by the TSF
 								and used to satisfy the requirements of this PP.
@@ -1730,13 +1733,13 @@
 								<h:b>Selected Long Messages Test, Bit-oriented Mode</h:b><h:br/><h:br/>
 								The evaluators devise an input set consisting of 100 long messages ranging in size from 
 								rate+(rate+1) to rate+(100*(rate+1)), incrementing by rate+1. (For example, SHA-3-256 has a rate
-								of 1088 bits. Therefore, 100 messages will be generated with lengths 2177, 3266, …, 109988 bits.)
+								of 1088 bits. Therefore, 100 messages will be generated with lengths 2177, 3266, …, 109988 bits.)<comment> the example may need to be updated per the base standard of CNSA 1.0. Further input needed. </comment>
 								The message text shall be pseudorandomly generated. The evaluators compute the message digest for
 								each of the messages and ensure that the correct result is produced when the messages are provided
 								to the TSF.<h:br/><h:br/><h:br/>
 								<h:b>Selected Long Messages Test, Byte-oriented Mode</h:b><h:br/><h:br/>
 								The evaluators devise an input set consisting of 100 messages ranging in size from (rate+(rate+8))
-								to (rate+100*(rate+8)), incrementing by rate+8. (For example, SHA-3-256 has a rate of 1088 bits.
+								to (rate+100*(rate+8)), incrementing by rate+8. (For example, SHA-3-256 has a rate of 1088 bits.<comment> the example may need to be updated per the base standard of CNSA 1.0. Further input needed. </comment>
 								Therefore 100 messages will be generated of lengths 2184, 3280, 4376, …, 110688 bits.) The message
 								text shall be pseudorandomly generated. The evaluators compute the message digest for each of the
 								messages and ensure that the correct result is produced when the messages are provided to the TSF.<h:br/><h:br/><h:br/>
@@ -1760,11 +1763,11 @@
                         <title>The TSF shall perform [<h:i>keyed-hash message authentication</h:i>] in accordance with a specified
 							cryptographic algorithm
                             <selectables>
-                                <selectable id="sel-hmac-sha-1">HMAC-SHA-1</selectable>
-                                <selectable id="sel-hmac-sha-256">HMAC-SHA-256</selectable>
+                                
+                                
                                 <selectable id="sel-hmac-sha-384">HMAC-SHA-384</selectable>
                                 <selectable id="sel-hmac-sha-512">HMAC-SHA-512</selectable>
-				<selectable id="sel-hmac-sha-3-224">SHA-3-224</selectable>
+				<selectable id="sel-hmac-sha-3-224">SHA-3-224<comment> Should SHA-3-224 and 256 be removed? Is SHA-256/224 the same as SHA-3-256/224? This is in reference to the latest CNSA 1.0 requirements.</comment></selectable>
 				<selectable id="sel-hmac-sha-3-256">SHA-3-256</selectable>
 				<selectable id="sel-hmac-sha-3-384">SHA-3-384</selectable>
 				<selectable id="sel-hmac-sha-3-512">SHA-3-512</selectable>		    
@@ -1846,13 +1849,13 @@
                         <title>The TSF shall perform [<h:i>cryptographic signature services (generation and verification)</h:i>] in 
 							accordance with a specified cryptographic algorithm
                             <selectables linebreak="yes">
-                                <selectable id="sel-sig-rsa">RSA schemes using cryptographic key sizes [2048-bit or greater] that meet
+                                <selectable id="sel-sig-rsa">RSA schemes using cryptographic key sizes [3072-bit or greater] that meet
 									the following: [<h:i>FIPS PUB 186-5, “Digital Signature Standard (DSS)”, Section 4</h:i>]</selectable>
-                                <selectable id="sel-sig-ecdsa">ECDSA schemes using <h:b>cryptographic key sizes</h:b>[“NIST curves” P-256, P-384 and
+                                <selectable id="sel-sig-ecdsa">ECDSA schemes using <h:b>cryptographic key sizes</h:b>[<h:i>P-384 and
                                     <selectables>
                                         <selectable>P-521</selectable>
                                         <selectable exclusive="yes">no other curves</selectable>
-                                    </selectables>] that meet the following: [FIPS PUB 186-5, “Digital Signature Standard (DSS)”, Section 5]
+                                    </selectables></h:i>] that meet the following: [<h:i>FIPS PUB 186-5, “Digital Signature Standard (DSS)”, Section 5</h:i>]
                                 </selectable>
                             </selectables>.
                         </title>
@@ -1870,13 +1873,13 @@
                                 <h:p/>
 								<h:b>ECDSA Algorithm Tests</h:b><h:p/>
                                 <h:b><h:i>ECDSA FIPS 186-5 Signature Generation Test</h:i></h:b><h:p/>
-                                For each supported NIST curve (i.e., P-256, P-384 and P-521) and SHA function pair, the evaluator
+                                For each supported NIST curve (i.e., P-384 and P-521) and SHA function pair, the evaluator
 								shall generate 10 1024-bit long messages and obtain for each message a public key and the 
 								resulting signature values R and S. To determine correctness, the evaluator shall use the 
 								signature verification function of a known good implementation.
                                 <h:p/>
                                 <h:b><h:i>ECDSA FIPS 186-5 Signature Verification Test</h:i></h:b><h:p/>
-                                For each supported NIST curve (i.e., P-256, P-384 and P-521) and SHA function pair, the evaluator 
+                                For each supported NIST curve (i.e., P-384 and P-521) and SHA function pair, the evaluator 
 								shall generate a set of 10 1024-bit message, public key and signature tuples and modify one of
 								the values (message, public key or signature) in five of the 10 tuples. The evaluator shall obtain 
 								in response a set of 10 PASS/FAIL values.
@@ -1925,11 +1928,7 @@
                                 <selectable id="sel-ude-aes-cbc">AES-CBC (as defined in FIPS PUB 197, and NIST SP 800-38A) mode</selectable>
 								<selectable id="sel-ude-aes-ctr">AES-CTR (as defined in NIST SP 800-38A) mode</selectable>
 							</selectables>
-                            and cryptographic key sizes
-                            <selectables>
-                                <selectable id="sel-ude-keysize-128">128-bit key sizes</selectable>
-                                <selectable id="sel-ude-keysize-256">256-bit key sizes</selectable>
-                            </selectables>. <comment> should each selection have it's own ending? for example <h:p/>"The TSF shall perform [encryption and decryption] in accordance with a specified cryptographic algorithm [selection: AES Key Wrap (KW) and cryptographic key sizes [selection: 128-bit key sizes, 256-bit key sizes] that meet the following: NIST SP 800-38F,..]
+                            and cryptographic key sizes [<h:i>256-bit key sizes</h:i>]. <comment> should each selection have it's own ending? for example <h:p/>"The TSF shall perform [encryption and decryption] in accordance with a specified cryptographic algorithm [selection: AES Key Wrap (KW) and cryptographic key sizes [256-bit key sizes] that meet the following: NIST SP 800-38F,..]
 							Further input needed. 
 							</comment>
                         </title>
@@ -2842,9 +2841,9 @@
                         <title>The TSF shall ensure that all IKE protocols implement DH groups [19 (256-bit
 				Random ECP), 20 (384-bit Random ECP), and 
 				<selectables>
-					<selectable>24 (2048-bit MODP with 256-bit POS)</selectable>
+					<selectable>24 (2048-bit MODP with 256-bit POS)<comment>Should this be removed- per CNSA 1.0?</comment></selectable>
 					<selectable>15 (3072-bit MODP)</selectable>
-					<selectable>14 (2048-bit MODP)</selectable>
+					<selectable>14 (2048-bit MODP)<comment>Should this be removed- per CNSA 1.0?</comment></selectable>
 					<selectable exclusive="yes">no other DH groups</selectable>
 				</selectables>].
 			</title>
@@ -2860,7 +2859,7 @@
 				security” associated with the DH group. Each unique value is then used to fill in
 				the assignment (for 1.9 they are doubled; for 1.10 they are inserted directly into
 				the assignment). For example, suppose the implementation supports DH group
-				14 (2048-bit MODP) and group 20 (ECDH using NIST curve P-384). From Table 2,
+				14 (2048-bit MODP)<comment>Should this be removed- per CNSA 1.0?</comment> and group 20 (ECDH using NIST curve P-384). From Table 2,
 				the bits of security value for group 14 is 112, and for group 20 it is 192. For
 				FCS_IPSEC_EXT.1.9, then, the assignment would read “[224, 384]” and for
 				FCS_IPSEC_EXT.1.10 it would read “[112, 192]” (although in this case the
@@ -3978,7 +3977,7 @@
 							FIA_PMG_EXT.1 be included in the ST. This also requires that the ST include a management function for
 							password management. If the ST author selects ‘authentication based on an SSH public-key credential’,
 							the TSF shall be validated against the Functional Package for Secure Shell. The ST must include 
-							FIA_X509_EXT.1 and FIA_X509_EXT.2 if 'authentication based on X.509 certificates' is selected. <h:br/><h:br/>
+							FIA_X509_EXT.1 and FIA_X509_EXT.2 if 'authentication based on X.509 certificates' is selected, as defined in <ixref to="pkg-x509"/>. <h:br/><h:br/>
 							PINs used to access OE-protected storage are set and managed by the OE-protected storage mechanism. Thus
 							requirements on PIN management are outside the scope of the TOE.<h:p/>
                         </note>
