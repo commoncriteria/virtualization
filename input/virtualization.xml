@@ -494,22 +494,36 @@
                     </description>
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is migitaged by this SFR because the audit events can report potential integrity breaches and attempts.</rationale>
 					<addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
-					<addressed-by>FCS_COP.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of cryptographic algorithms used to protect data integrity.</rationale>
+					<addressed-by>FCS_COP.1/Hash</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of cryptographic hashing.</rationale>
+					<addressed-by>FCS_COP.1/KeyedHash</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of keyed-hash message authentication.</rationale>
+					<addressed-by>FCS_COP.1/Sig</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of cryptographic signature services.</rationale>
+					<addressed-by>FCS_COP.1/UDE</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of encryption and decryption.</rationale>
 					<addressed-by>FCS_RBG.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
+					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
+					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
+					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
+					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that Hypercall parameters be validated.</rationale>
+					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
+					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
+
+					<addressed-by>FPT_DDI_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
+					<addressed-by>FPT_ML_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
+
 					<addressed-by>FCS_RBG.2</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes while seeding from an external source.<comment>Please review</comment></rationale>
 					<addressed-by>FCS_RBG.3</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes while seeding from a single internal source.<comment>Please review</comment></rationale>
 					<addressed-by>FCS_RBG.4</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes while seeding from multiple internal sources.<comment>Please review</comment></rationale>
 					<addressed-by>FCS_RBG.5</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes while combining noise sources.<comment>Please review</comment></rationale>
-					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
-					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
-					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
-					<addressed-by>FPT_DDI_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
-					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
-					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that Hypercall parameters be validated.</rationale>
-					<addressed-by>FPT_ML_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
-					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
-					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
+					
+					
+					
+					
+					
+					
+					
+					
+					
                 </threat>
                 <threat name="T.UNAUTHORIZED_MODIFICATION">
                     <description>
@@ -519,25 +533,51 @@
 			    rest. Likewise, malicious code running within a virtual machine must not be able to modify Virtualization
 			    System components.
                     </description>
-                    <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is migitaged by this SFR because the audit events can report potential integrity breaches and attempts.</rationale>
-					<addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
-					<addressed-by>FCS_COP.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of cryptographic algorithms used to protect data integrity.</rationale>
-					<addressed-by>FCS_RBG.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
-					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
-					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
-					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
-					<addressed-by>FPT_DDI_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
-					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
-					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that Hypercall parameters be validated.</rationale>
-					<addressed-by>FPT_ML_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
-					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
-					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
-                    <addressed-by>FAU_ARP.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for automatic responses to audit events (optional).</rationale>
-					<addressed-by>FAU_SAA.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for rules for indicating security violations based on audit events (optional).</rationale>
-					<addressed-by>FAU_SAR.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for Administrator review of audit records.</rationale>
-					<addressed-by>FAU_STG.2</addressed-by><rationale>This threat is migitaged by this SFR by requiring protection of stored audit records.</rationale>
-					<addressed-by>FAU_STG.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for protected transmission of audit records off the TOE.</rationale>
+						<addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is migitaged by this SFR because the audit events can report potential integrity breaches and attempts.</rationale>
+						<addressed-by>FAU_SAR.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for Administrator review of audit records.</rationale>
+						<addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
+						<addressed-by>FAU_STG.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for protected transmission of audit records off the TOE.</rationale>
+						<addressed-by>FAU_STG.2</addressed-by><rationale>This threat is migitaged by this SFR by requiring protection of stored audit records.</rationale>
+						<addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
+						<addressed-by>FCS_COP.1/Hash</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of cryptographic hashing.</rationale>
+						<addressed-by>FCS_COP.1/KeyedHash</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of keyed-hash message authentication.</rationale>
+						<addressed-by>FCS_COP.1/Sig</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of cryptographic signature services.</rationale>
+						<addressed-by>FCS_COP.1/UDE</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of encryption and decryption.</rationale>
+						<addressed-by>FCS_RBG.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+						<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
+						<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
+						<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
+						<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
+						<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+						<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that Hypercall parameters be validated.</rationale>
+						<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale> 
+						<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
+
+						<addressed-by>FAU_ARP.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for automatic responses to audit events (optional).</rationale>
+						<addressed-by>FAU_SAA.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for rules for indicating security violations based on audit events (optional).</rationale>
+						<addressed-by>FPT_DDI_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
+						<addressed-by>FPT_ML_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
+
+					
+						<addressed-by>FCS_RBG.2</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes while seeding from an external source.<comment>Please review</comment></rationale>
+						<addressed-by>FCS_RBG.3</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes while seeding from a single internal source.<comment>Please review</comment></rationale>
+						<addressed-by>FCS_RBG.4</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes while seeding from multiple internal sources.<comment>Please review</comment></rationale>
+						<addressed-by>FCS_RBG.5</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes while combining noise sources.<comment>Please review</comment></rationale>
+					
+
+					
+					
+					
+					
+					
+					
+					
+					
+                    
+					
+					
+					
+					
                 </threat>
                 <threat name="T.USER_ERROR">
                     <description>
@@ -547,13 +587,21 @@
 			    indistinguishable. Malicious code may also attempt to interfere with the user’s ability to distinguish
 			    between domains. The VS must take measures to minimize the likelihood of such confusion.
                     </description>
+
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is migitaged by this SFR because the audit events can report attempts to breach isolation.</rationale>
 					<addressed-by>FCS_CKM.6</addressed-by><rationale>This threat is migitaged by this SFR by requiring cryptographic key destruction to protect domain data in shared storage.</rationale>
+
 					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
+
+
 					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that domain data is cleared from memory before memory is re-allocated.</rationale>
 					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that domain data is cleared from physical storage upon re-allocation of the storage.</rationale>
+
+
 					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
 					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
+
+
 					<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that VMs can access only those virtual devices that they are configured to access.</rationale>
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
 					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
@@ -572,22 +620,31 @@
                     </description>
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is migitaged by this SFR because the audit events can report potential integrity breaches and attempts.</rationale>
 					<addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
-					<addressed-by>FCS_COP.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of cryptographic algorithms used to protect data integrity.</rationale>
+					<addressed-by>FCS_COP.1/Hash</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of cryptographic hashing.</rationale>
+					<addressed-by>FCS_COP.1/KeyedHash</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of keyed-hash message authentication.</rationale>
+					<addressed-by>FCS_COP.1/Sig</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of cryptographic signature services.</rationale>
+					<addressed-by>FCS_COP.1/UDE</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of encryption and decryption.</rationale>
 					<addressed-by>FCS_RBG.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+					
+
+					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
+					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
+					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
+					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
+					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that Hypercall parameters be validated.</rationale>
+					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
+					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
+
+
+					<addressed-by>FPT_DDI_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
+					
+					<addressed-by>FPT_ML_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
+					
 					<addressed-by>FCS_RBG.2</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes while seeding from an external source.<comment>Please review</comment></rationale>
 					<addressed-by>FCS_RBG.3</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes while seeding from a single internal source.<comment>Please review</comment></rationale>
 					<addressed-by>FCS_RBG.4</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes while seeding from multiple internal sources.<comment>Please review</comment></rationale>
 					<addressed-by>FCS_RBG.5</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes while combining noise sources.<comment>Please review</comment></rationale>
-					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
-					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
-					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
-					<addressed-by>FPT_DDI_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
-					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
-					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that Hypercall parameters be validated.</rationale>
-					<addressed-by>FPT_ML_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
-					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
-					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                 </threat>
                 <threat name="T.VMM_COMPROMISE">
                     <description>
@@ -599,32 +656,35 @@
                     </description>
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is migitaged by this SFR because the audit events can report potential integrity breaches and attempts.</rationale>
 					<addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
-					<addressed-by>FCS_COP.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of cryptographic algorithms used to protect data integrity.</rationale>
+					<addressed-by>FCS_CKM.6</addressed-by><rationale>This threat is migitaged by this SFR by requiring cryptographic key destruction to protect domain data in shared storage.</rationale>
+					<addressed-by>FCS_COP.1/Hash</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of cryptographic hashing.</rationale>
+					<addressed-by>FCS_COP.1/KeyedHash</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of keyed-hash message authentication.</rationale>
+					<addressed-by>FCS_COP.1/Sig</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of cryptographic signature services.</rationale>
+					<addressed-by>FCS_COP.1/UDE</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of encryption and decryption.</rationale>
 					<addressed-by>FCS_RBG.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+					
+					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
+					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that domain data is cleared from memory before memory is re-allocated.</rationale>
+					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that domain data is cleared from physical storage upon re-allocation of the storage.</rationale>
+					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
+					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
+					<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that VMs can access only those virtual devices that they are configured to access.</rationale>
+					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
+					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that Hypercall parameters be validated.</rationale>
+					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
+					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
+
+
+					<addressed-by>FPT_DDI_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
+					
+					<addressed-by>FPT_ML_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
+				
+					
 					<addressed-by>FCS_RBG.2</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes while seeding from an external source.<comment>Please review</comment></rationale>
 					<addressed-by>FCS_RBG.3</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes while seeding from a single internal source.<comment>Please review</comment></rationale>
 					<addressed-by>FCS_RBG.4</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes while seeding from multiple internal sources.<comment>Please review</comment></rationale>
 					<addressed-by>FCS_RBG.5</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes while combining noise sources.<comment>Please review</comment></rationale>
-					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
-					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
-					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
-					<addressed-by>FPT_DDI_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
-					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
-					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that Hypercall parameters be validated.</rationale>
-					<addressed-by>FPT_ML_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
-					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
-					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
-                   
-                    
-					<addressed-by>FCS_CKM.6</addressed-by><rationale>This threat is migitaged by this SFR by requiring cryptographic key destruction to protect domain data in shared storage.</rationale>
-					
-					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that domain data is cleared from memory before memory is re-allocated.</rationale>
-					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that domain data is cleared from physical storage upon re-allocation of the storage.</rationale>
-					
-					
-					<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that VMs can access only those virtual devices that they are configured to access.</rationale>
-					
 					
                 </threat>
                 <threat name="T.PLATFORM_COMPROMISE">
@@ -636,7 +696,10 @@
 			    be able to modify system firmware or software—compromising both the VS and the 
 			    underlying platform.
                     </description>
+
+
                     <addressed-by>FDP_HBI_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE use platform-supported mechanisms for access to physical devices.</rationale>
+				
 					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
 					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
 					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
@@ -644,9 +707,10 @@
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
 					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
 					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that Hypercall parameters be validated.</rationale>
-					<addressed-by>FPT_ML_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
 					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
+					<addressed-by>FPT_ML_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
+					
                 </threat>
                 <threat name="T.UNAUTHORIZED_ACCESS">
                     <description>
@@ -662,27 +726,39 @@
 			    and administrative control over the VMs and virtual network connections. The adversary could also gain
 			    access to the management network by hijacking the management network channel.
                     </description>
-                    <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is migitaged by this SFR because the audit events can report potential attempts to access the management subsystem.</rationale>
+                   	<addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is migitaged by this SFR because the audit events can report potential attempts to access the management subsystem.</rationale>
 					<addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
 					<addressed-by>FCS_CKM.2</addressed-by><rationale>This threat is migitaged by this SFR by using secure cryptographic key distribution for trusted communications channels.</rationale>
-					<addressed-by>FCS_COP.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of cryptographic algorithms used to implement access controls.</rationale>
+					<addressed-by>FCS_COP.1/Hash</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of cryptographic hashing.</rationale>
+					<addressed-by>FCS_COP.1/KeyedHash</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of keyed-hash message authentication.</rationale>
+					<addressed-by>FCS_COP.1/Sig</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of cryptographic signature services.</rationale>
+					<addressed-by>FCS_COP.1/UDE</addressed-by><rationale>This threat is migitaged by this SFR by ensuring proper functioning of encryption and decryption.</rationale>
+					<addressed-by>FCS_RBG.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+
+					<addressed-by>FIA_AFL_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE detect failed authentication attempts for Administrator access.</rationale>
+					<addressed-by>FIA_UAU.5</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that strong mechanisms are used for Administrator authentication.</rationale>
+					<addressed-by>FIA_UIA_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that Administrators be successfully authenticated before performing management functions.</rationale>
+
+					
+					
+					
+					
+					<addressed-by>FMT_SMO_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE support having separate management and operational networks.</rationale>
+					
+					
+					<addressed-by>FTA_TAB.1</addressed-by><rationale>This threat is migitaged by this SFR by displays advisory notice and consent warning message regarding use of the TOE to Administrators.</rationale>
+					<addressed-by>FTP_ITC_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that trusted communications channels are implemented using good cryptography.</rationale>
 					<addressed-by>FCS_HTTPS_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that HTTPS trusted communications channels are implemented properly.</rationale>
 					<addressed-by>FCS_IPSEC_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that IPsec trusted communications channels are implemented properly.</rationale>
-					<addressed-by>FCS_RBG.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+					
 					<addressed-by>FCS_RBG.2</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes while seeding from an external source.<comment>Please review</comment></rationale>
 					<addressed-by>FCS_RBG.3</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes while seeding from a single internal source.<comment>Please review</comment></rationale>
 					<addressed-by>FCS_RBG.4</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes while seeding from multiple internal sources.<comment>Please review</comment></rationale>
 					<addressed-by>FCS_RBG.5</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes while combining noise sources.<comment>Please review</comment></rationale>
-					<addressed-by>FIA_AFL_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE detect failed authentication attempts for Administrator access.</rationale>
 					<addressed-by>FIA_PMG_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that password-based administrator login is properly implemented.</rationale>
-					<addressed-by>FIA_UAU.5</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that strong mechanisms are used for Administrator authentication.</rationale>
-					<addressed-by>FIA_UIA_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that Administrators be successfully authenticated before performing management functions.</rationale>
 					<addressed-by>FIA_X509_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that certificate validation is implemented properly.</rationale>
 					<addressed-by>FIA_X509_EXT.2</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that certificate-based authentication is implemented properly.t functions.</rationale>
-					<addressed-by>FMT_SMO_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring that the TOE support having separate management and operational networks.</rationale>
-					<addressed-by>FTP_ITC_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that trusted communications channels are implemented using good cryptography.</rationale>
 					<addressed-by>FTP_TRP.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that certain communications use a trusted path.</rationale>
-					<addressed-by>FTA_TAB.1</addressed-by><rationale>This threat is migitaged by this SFR by displays advisory notice and consent warning message regarding use of the TOE to Administrators.</rationale>
                 </threat>
                 <threat name="T.WEAK_CRYPTO">
                     <description>
@@ -707,8 +783,9 @@
                         Vulnerabilities in outdated or unpatched software can be exploited by adversaries to compromise the
 			    VS or platform.
                     </description>
-                    <addressed-by>FPT_IDV_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for software identification labels (optional).</rationale>
-					<addressed-by>FPT_TUD_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for product updates.</rationale>
+                   
+					<addressed-by>FPT_TUD_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for product updates.</rationale> 
+					<addressed-by>FPT_IDV_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for software identification labels (optional).</rationale>
 					<addressed-by>FPT_TUD_EXT.2</addressed-by><rationale>This threat is migitaged by this SFR by requiring specific requirements for certificate-based code signing for update.</rationale>
                 </threat>
                 <threat name="T.MISCONFIGURATION">
