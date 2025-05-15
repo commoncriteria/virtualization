@@ -13,7 +13,7 @@
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/section[1]"Figure 1 "/h:p[2]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:spd[1]""/sec:Threats[1]""/threats[1]""/threat[1]""/description[1]"It is a f"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:spd[1]""/sec:Threats[1]""/threats[1]""/threat[1]""/description[1]"It is a f"/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:spd[1]""/sec:Threats[1]""/threats[1]""/threat[8]""/description[1]""/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:spd[1]""/sec:Threats[1]""/threats[1]""/threat[8]""/description[1]"Functions"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[2]""/f-component[1]""/f-element[1]""/note[1]"In certai"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[2]""/f-component[2]""/f-element[2]""/note[1]"The ST au"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[2]""/f-component[2]""/f-element[2]""/note[1]"The ST au"/h:p[2]""

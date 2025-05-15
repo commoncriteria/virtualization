@@ -648,7 +648,7 @@
                 </threat>
                 <threat name="T.UNAUTHORIZED_ACCESS">
                     <description>
-						<comment>need to revisit the addressed by SFRs.</comment>
+						
                         Functions performed by the management layer include VM configuration, virtualized network configuration, 
 			    allocation of physical resources, and reporting. Only certain authorized system users (administrators) 
 			    are allowed to exercise management functions or obtain sensitive information from the TOE.<h:p/>
@@ -692,11 +692,12 @@
 					<addressed-by>FIA_PMG_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that password-based administrator login is properly implemented.</rationale>
 					<addressed-by>FIA_X509_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that certificate validation is implemented properly.</rationale>
 					<addressed-by>FIA_X509_EXT.2</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that certificate-based authentication is implemented properly.t functions.</rationale>
+					<addressed-by>FIA_X509_EXT.4</addressed-by><rationale>This threat is migitaged by this SFR by requiring an exception to be met without the need to validate the revocation of the certificate.</rationale>
 					<addressed-by>FTP_TRP.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that certain communications use a trusted path.</rationale>
                 </threat>
                 <threat name="T.WEAK_CRYPTO">
                     <description>
-						<comment>need to revisit the addressed by SFRs.</comment>
+						
                         To the extent that VMs appear isolated within the VS, a threat of weak cryptography may 
 			    arise if the VMM does not provide good entropy to support security-related features that depend on
 			    entropy to implement cryptographic algorithms. For example, a random number generator keeps an estimate
@@ -713,7 +714,7 @@
                 </threat>
                 <threat name="T.UNPATCHED_SOFTWARE">
                     <description>
-						<comment>need to revisit the addressed by SFRs.</comment>
+						
                         Vulnerabilities in outdated or unpatched software can be exploited by adversaries to compromise the
 			    VS or platform.
                     </description>
@@ -721,10 +722,11 @@
 					<addressed-by>FPT_TUD_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for product updates.</rationale> 
 					<addressed-by>FPT_IDV_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by requiring support for software identification labels (optional).</rationale>
 					<addressed-by>FPT_TUD_EXT.2</addressed-by><rationale>This threat is migitaged by this SFR by requiring specific requirements for certificate-based code signing for update.</rationale>
+					
                 </threat>
                 <threat name="T.MISCONFIGURATION">
                     <description>
-						<comment>need to revisit the addressed by SFRs.</comment>
+						
                         The VS may be misconfigured, which could impact its functioning and security. This 
 			    misconfiguration could be due to an administrative error or the use of faulty configuration data.
                     </description>
@@ -735,7 +737,7 @@
                         A VM may block others from system resources (e.g., system memory, persistent storage, and processing time)
 			    via a resource exhaustion attack.
                     </description>
-					<comment>need to revisit the addressed by SFRs.</comment>
+					
                     <addressed-by>FCS_CKM.6</addressed-by><rationale>This threat is migitaged by this SFR by requiring cryptographic key destruction to ensure residual data in shared storage is unrecoverable.</rationale>
 					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that domain data is cleared from memory before memory is re-allocated.</rationale>
 					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>This threat is migitaged by this SFR by ensuring that domain data is cleared from storage upon re-allocation of the storage.</rationale>
