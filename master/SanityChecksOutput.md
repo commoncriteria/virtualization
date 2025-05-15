@@ -3,6 +3,22 @@
         on/PP[1]""/include-pkg[2]""/depends[1]""/on[1]""
 * Error: Detected dangling id-reference to s-uau-ssh from attribute
         also/PP[1]""/include-pkg[2]""/depends[1]""/also[1]""
+* Error: Detected dangling ref-id to 'sel-hmac-sha-1'.
+	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[5]""/f-element[1]""/rule[1]""/if[1]""/ref-id[1]"sel-hmac-"
+* Error: Detected dangling ref-id to 'sel-hash-sha-1'.
+	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[5]""/f-element[1]""/rule[1]""/then[1]""/ref-id[1]"sel-hash-"
+* Error: Detected dangling ref-id to 'sel-hmac-sha-256'.
+	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[5]""/f-element[1]""/rule[2]""/if[1]""/ref-id[1]"sel-hmac-"
+* Error: Detected dangling ref-id to 'sel-hash-sha-256'.
+	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[5]""/f-element[1]""/rule[2]""/then[1]""/ref-id[1]"sel-hash-"
+* Error: Detected dangling ref-id to 'sel-ude-keysize-128'.
+	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[7]""/f-element[1]""/rule[1]""/then[1]""/and[1]""/ref-id[2]"sel-ude-k"
+* Error: Detected dangling ref-id to 'sel-ude-keysize-256'.
+	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[7]""/f-element[1]""/rule[1]""/then[1]""/and[1]""/ref-id[3]"sel-ude-k"
+* Error: Detected dangling ref-id to 'sel-ude-keysize-128'.
+	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[7]""/f-element[1]""/rule[2]""/then[1]""/and[1]""/ref-id[3]"sel-ude-k"
+* Error: Detected dangling ref-id to 'sel-ude-keysize-256'.
+	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[7]""/f-element[1]""/rule[2]""/then[1]""/and[1]""/ref-id[4]"sel-ude-k"
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"The scope"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[2]""
@@ -90,6 +106,7 @@
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[4]""/f-element[1]""/aactivity[1]""/Tests[1]""/h:p[11]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[4]""/f-element[1]""/aactivity[1]""/Tests[1]""/h:p[12]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[4]""/f-element[1]""/aactivity[1]""/Tests[1]""/h:p[13]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[4]""/f-element[1]""/aactivity[1]""/Tests[1]""/h:p[14]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[5]""/f-element[1]""/note[1]"The selec"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[5]""/f-element[1]""/aactivity[1]""/Tests[1]"The follo"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[6]""/f-element[1]""/aactivity[1]""/Tests[1]"The follo"/h:p[1]""
@@ -346,5 +363,17 @@
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[2]"The Secur"/section[5]"Testing i"/a-component[1]"Testing i"/a-element[4]""/aactivity[1]"The evalu"/h:p[3]""
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[4]""/section[1]"Documenta"/h:p[1]""
 * Rules without a 'Validation Guidelines' appendix has been detected.
+ Failed to find a reference to sel-ude-keysize-128.
+ Failed to find a reference to sel-ude-keysize-256.
+ Failed to find a reference to sel-ude-keysize-128.
+ Failed to find a reference to sel-ude-keysize-256.
+ Failed to find a reference to sel-ude-keysize-128.
+ Failed to find a reference to sel-ude-keysize-256.
+ Failed to find a reference to sel-ude-keysize-128.
+ Failed to find a reference to sel-ude-keysize-256.
+ Failed to find a reference to sel-ude-keysize-128.
+ Failed to find a reference to sel-ude-keysize-256.
 * Warning: Since FIA_X509_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
+ Failed to find a reference to sel-hmac-sha-1.
+ Failed to find a reference to sel-hash-sha-1.
