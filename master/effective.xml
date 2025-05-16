@@ -1057,9 +1057,13 @@
                 <f-component cc-id="fau_stg.1" name="External Audit Storage">
 					
                     <f-element id="fau-stg-1e1">
-                        <title>The TSF shall be able to transmit the generated audit data to an external IT entity using a trusted channel as specified in FTP_ITC_EXT.1.
+                        <title>
+							The TSF shall be able to store generated audit data on the [<h:i>TOE itself, transmit the generated audit data to an external IT entity using a trusted channel according to FTP_ITC</h:i>].
+
+
+							
                         </title>
-                        <aactivity level="element">
+                        <aactivity>
                             Protocols used for implementing the trusted channel must be selected in FTP_ITC_EXT.1.
                             <TSS>
                                 The evaluator shall examine the TSS to ensure it describes the means by which 
@@ -1090,40 +1094,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-                    <f-element id="fau-stg-1e2">
-                        <title>The TSF shall
-                            <selectables>
-                                <selectable exclusive="yes">drop new audit data</selectable>
-                                <selectable>overwrite previous audit records according to the following rule:
-                                    <assignable>rule for overwriting previous audit records</assignable></selectable>
-                                <selectable><assignable>other action</assignable></selectable>
-                            </selectables>
-                            when the local storage space for audit data is full.
-                        </title>
-                        <note role="application">An external log server, if available, might be used as alternative storage space
-							in case the local storage space is full. An ‘other action’ could be defined in this case as ‘send the
-							new audit data to an external IT entity’.
-						</note>
-                        <aactivity level="element">
-                            <TSS>
-                                The evaluator shall examine the TSS to ensure it describes what happens when the 
-                                local audit data store is full. 
-                            </TSS>
-                            <Guidance>
-                                The evaluator shall also examine the operational guidance to 
-                                determine that it describes the relationship between the local audit data and the audit data that 
-                                are sent to the audit log server. For example, when an audit event is generated, is it simultaneously
-                                sent to the external server and the local store, or is the local store used as a buffer and “cleared”
-                                periodically by sending the data to the audit server.
-                            </Guidance>
-                            <Tests>
-                                The evaluator shall perform operations that generate audit data and verify that this data is 
-                                stored locally. The evaluator shall perform operations that generate audit data until the local 
-                                storage space is exceeded and verifies that the TOE complies with the behavior 
-                                defined in the ST for FAU_STG.1.2.
-                            </Tests>
-                        </aactivity>
-                    </f-element>
+                    
 					<audit-event>
                         <audit-event-descr>
 							Failure of audit data capture due to lack of disk space or pre-defined limit.
@@ -1171,6 +1142,33 @@
                     </f-element>
 					<audit-event/>
                 </f-component>
+				<f-component cc-id="fau_stg.5" name="Prevention of Audit Data Loss">
+				<f-element id="fau-stg-5e1">
+                        <title>The TSF shall <selectables><selectable><h:b>ignore</h:b> audited events</selectable><selectable>ignore audited events</selectable><selectable/>“prevent audited events, except those taken by the authorized user with special rights”<selectable>overwrite the oldest stored audit records</selectable></selectables>, <assignable>other actions to be taken in case of audit storage failure and conditions for the actions</assignable> if the audit data storage is full.</title>
+                        <note role="application">An external log server, if available, might be used as alternative storage space
+							in case the local storage space is full. An ‘other action’ could be defined in this case as ‘send the
+							new audit data to an external IT entity’.
+						</note>
+                        <aactivity>
+                            <TSS>
+                                The evaluator shall examine the TSS to ensure it describes what happens when the 
+                                local audit data store is full. 
+                            </TSS>
+                            <Guidance>
+                                The evaluator shall also examine the operational guidance to 
+                                determine that it describes the relationship between the local audit data and the audit data that 
+                                are sent to the audit log server. For example, when an audit event is generated, is it simultaneously
+                                sent to the external server and the local store, or is the local store used as a buffer and “cleared”
+                                periodically by sending the data to the audit server.
+                            </Guidance>
+                            <Tests>
+                                The evaluator shall perform operations that generate audit data and verify that this data is 
+                                stored locally. The evaluator shall perform operations that generate audit data until the local 
+                                storage space is exceeded and verifies that the TOE complies with the behavior 
+                                defined in the ST for FAU_STG.5
+                            </Tests>
+                        </aactivity>
+                    </f-element> </f-component>
 			    
             </section>
             
