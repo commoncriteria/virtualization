@@ -1210,7 +1210,7 @@
                 </f-component>
 				<f-component cc-id="fau_stg.5" name="Prevention of Audit Data Loss">
 				<f-element id="fau-stg-5e1">
-                        <title>The TSF shall <selectables><selectable><h:b>ignore</h:b> audited events</selectable><selectable>ignore audited events</selectable><selectable></selectable>“prevent audited events, except those taken by the authorized user with special rights”<selectable>overwrite the oldest stored audit records</selectable></selectables>, <assignable>other actions to be taken in case of audit storage failure and conditions for the actions</assignable> if the audit data storage is full.</title>
+                        <title>The TSF shall <selectables><selectable><h:b>ignore</h:b> audited events</selectable><selectable>ignore audited events</selectable><selectable>“prevent audited events, except those taken by the authorized user with special rights”</selectable><selectable>overwrite the oldest stored audit records</selectable></selectables>, <assignable>other actions to be taken in case of audit storage failure and conditions for the actions</assignable> if the audit data storage is full.</title>
                         <note role="application">An external log server, if available, might be used as alternative storage space
 							in case the local storage space is full. An ‘other action’ could be defined in this case as ‘send the
 							new audit data to an external IT entity’.
@@ -3147,7 +3147,7 @@
 				
                 <!-- FCS_RBG.1 -->
                 <f-component cc-id="fcs_rbg.1" name="Cryptographic Operation (Random Bit Generation)" id="fcs-rbg-1">
-					<consistency-rationale/>
+					<<consistency-rationale/>
 					<comp-lev/>
 					<management/>
 					<audit/>
@@ -3261,6 +3261,7 @@
 					<management/>
 					<audit/>
 					<dependencies/>
+					<description/>
 					<depends on="external-seed"/>
                     <f-element id="fcs-rbg-2e1">
                         <title><h:b>The TSF shall be able to accept a minimum input of <assignable>minimum input length greater than zero</assignable> from a TSF interface for the purpose of seeding.</h:b>
@@ -3271,7 +3272,7 @@
 							<Tests/>
 						</aactivity>
                     </f-element>
-					
+
                     <audit-event/>
                 </f-component>
 				<f-component cc-id="fcs_rbg.3" name="" status="sel-based">
@@ -4382,7 +4383,7 @@
 					<comp-lev/>
 					<management/>
 					<audit/>
-					<dependencies/>
+					<dependencies>FIA_X509_EXT.1 X.509 Certificate Validation</dependencies>
 					<depends on-sel="sel-x509-4"/>
 					<f-element id="fia-x509-ext-4-1">
 					
