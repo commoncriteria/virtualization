@@ -367,6 +367,12 @@
  Failed to find a reference to sel-ude-keysize-256.
  Failed to find a reference to sel-ude-keysize-128.
  Failed to find a reference to sel-ude-keysize-256.
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
  Failed to find a reference to sel-ude-keysize-128.
  Failed to find a reference to sel-ude-keysize-256.
  Failed to find a reference to sel-ude-keysize-128.

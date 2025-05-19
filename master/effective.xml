@@ -3082,6 +3082,10 @@
                 <!-- FCS_RBG.1 -->
                 <f-component cc-id="fcs_rbg.1" name="Cryptographic Operation (Random Bit Generation)" id="fcs-rbg-1">
 					<consistency-rationale/>
+					<comp-lev/>
+					<management/>
+					<audit/>
+					<dependencies/>
 					<f-element id="fcs-rbg-1e1">
                     <title>
 						The TSF shall perform deterministic random bit generation services <h:b>using 
@@ -3187,6 +3191,10 @@
                 </f-component>		
 				<f-component cc-id="fcs_rbg.2" name="" status="sel-based">
 					<consistency-rationale/>
+					<comp-lev/>
+					<management/>
+					<audit/>
+					<dependencies/>
 					<depends on="external-seed"/>
                     <f-element id="fcs-rbg-2e1">
                         <title><h:b>The TSF shall be able to accept a minimum input of <assignable>minimum input length greater than zero</assignable> from a TSF interface for the purpose of seeding.</h:b>
@@ -3218,6 +3226,11 @@
                 </f-component>
 				<f-component cc-id="fcs_rbg.4" name="" status="sel-based">
 					<consistency-rationale/>
+					
+					<comp-lev/>
+					<management/>
+					<audit/>
+					<dependencies/>
 					<depends on="internal-seeds"/>
                     <f-element id="fcs-rbg-4e1">
                         <title><h:b>The TSF shall be able to seed the RBG using <selectables><selectable><assignable>number</assignable> TSF software-based noise source(s)</selectable><selectable><assignable>number</assignable> TSF hardware-based noise source(s)</selectable></selectables>.
@@ -3232,6 +3245,10 @@
                 </f-component>	
 				<f-component cc-id="fcs_rbg.5" name="" status="sel-based">
 					<consistency-rationale/>
+					<comp-lev/>
+					<management/>
+					<audit/>
+					<dependencies/>
 					<depends on="internal-seeds"/>
                     <f-element id="fcs-rbg-5e1">
                         <title><h:b>The TSF shall <assignable>combining operation</assignable> <selectables><selectable>output from TSF noise source(s)</selectable><selectable>input from TSF interface(s) for seeding)<comment> the CC2022 has a close paratheses that does not go have a open parathesis before it.</comment></selectable></selectables> to create the entropy input into the derivation function as defined in <assignable>list of standards</assignable>, resulting in a minimum of <assignable>number of bits</assignable>bits of min-entropy.</h:b>
@@ -3905,7 +3922,8 @@
 							FIA_PMG_EXT.1 be included in the ST. This also requires that the ST include a management function for
 							password management. If the ST author selects ‘authentication based on an SSH public-key credential’,
 							the TSF shall be validated against the Functional Package for Secure Shell. The ST must include 
-							FIA_X509_EXT.1 and FIA_X509_EXT.2 if 'authentication based on X.509 certificates' is selected, as defined in <ixref to="pkg-x509"/>. <h:br/><h:br/>
+							FIA_X509_EXT.1 and FIA_X509_EXT.2 if 'authentication based on X.509 certificates' is selected, as defined in <xref to="pkg-x509"/>. 
+							<h:br/><h:br/>
 							PINs used to access OE-protected storage are set and managed by the OE-protected storage mechanism. Thus
 							requirements on PIN management are outside the scope of the TOE.<h:p/>
                         </note>
@@ -4300,7 +4318,7 @@
 					<audit/>
 					<dependencies/>
 					<depends on-sel="sel-x509-4"/>
-					<f-element id="fia_x509_ext.4-1">
+					<f-element id="fia-x509-ext-4-1">
 					
 						<title>The OS shall provide alternate functionality to standard X509 certificate revocation checking for the following exceptions: <selectables><selectable>firmware checking of updates: invalidate automatic updates if the firmware certificate is compromised</selectable><selectable><assignable>other exceptions and corresponding functionality</assignable></selectable></selectables>.</title>
 						<aactivity>
