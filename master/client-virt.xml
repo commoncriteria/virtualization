@@ -1,28 +1,34 @@
-<Module xmlns="https://niap-ccevs.org/cc/v1" xmlns:htm="http://www.w3.org/1999/xhtml" xmlns:sec="https://niap-ccevs.org/cc/v1/section" boilerplate="yes" target-product="Client Virtualization Systems" target-products="Client Virtualization Systems" name="Client Virtualization">
+<Module xmlns="https://niap-ccevs.org/cc/v1" xmlns:sec="https://niap-ccevs.org/cc/v1/section" xmlns:h="http://www.w3.org/1999/xhtml" boilerplate="yes" target-product="Client Virtualization Systems" name="Client Virtualization Systems">
 
-    <PPReference>
-       <ReferenceTable>
-            <PPVersion>1.1</PPVersion>
-            <PPAuthor>National Information Assurance Partnership</PPAuthor>
-            <PPPubDate>2021-06-14</PPPubDate>
-            <Keywords>Client Virtualization</Keywords>
-        </ReferenceTable>
-    </PPReference>
 
+
+   <PPReference>
+    <ReferenceTable>
+      <PPVersion>1.2</PPVersion>
+      <PPAuthor>National Information Assurance Partnership</PPAuthor>
+      <PPPubDate>2025-05-19</PPPubDate>
+      <Keywords>QQQQ</Keywords>               <!-- This field is unused and optional -->
+    </ReferenceTable>
+
+  </PPReference>
     <RevisionHistory>
-        <entry>
-            <version>1.0</version>
-            <date>2016-11-17</date>
-            <subject>Initial Publication</subject>
-        </entry>
-        <entry>
-            <version>1.1</version>
-            <date>2021-06-14</date>
-            <subject>Published as a PP-Module</subject>
-        </entry>
-    </RevisionHistory>
-    
-    <release-notes><htm:h3>TDs Applied</htm:h3></release-notes><!-- 1. Introduction -->
+    <entry>
+      <version>1.0</version>
+      <date>2016-11-17</date>
+      <subject>Initial Publication</subject>
+    </entry>
+    <entry>
+      <version>1.1</version>
+      <date>2021-06-14</date>
+      <subject>Published as a PP-Module</subject>
+    </entry>
+    <entry>
+      <version>1.2</version>
+      <date>2025-05-19</date>
+      <subject>CC2022 Conversion</subject>
+    </entry>
+  </RevisionHistory>
+  <release-notes><h:h3>TDs Applied</h:h3></release-notes><!-- 1. Introduction -->
   <section id="Introduction" title="Introduction">
 
     <!-- 1.1 Overview -->
@@ -32,9 +38,9 @@
 	    products. This PP-Module is not complete in itself, but rather is intended for use with 
 	    the following Base-PP:
 	   
-	      <htm:ul>
-		      <htm:li>Protection Profile for Virtualization, Version 1.1, 14 Jun 2021.</htm:li>
-	      </htm:ul>    
+	      <h:ul>
+		      <h:li>Protection Profile for Virtualization, Version 1.1, 14 Jun 2021.<comment> TBD</comment></h:li>
+	      </h:ul>    
       
     	This Base-PP is valid because Client Virtualization is a specific type of Virtualization System and is expected to
       implement security functionality that is not common to all Virtualization Systems. One additional SFR
@@ -89,7 +95,7 @@
     
     <!-- 1.3 Compliant Targets of Evaluation -->
     <section id="targets" title="Compliant Targets of Evaluation">
-            Client Virtualization, for the purposes of this PP-Module, refers to a Virtualization 
+            <h:p>Client Virtualization, for the purposes of this PP-Module, refers to a Virtualization 
 	    System that implements virtualized hardware components locally on an endpoint machine. 
 	    Endpoints are typically client hardware such as desktop or laptop computers that a user 
 	    interacts with directly, but may also include headless embedded systems without direct 
@@ -98,10 +104,10 @@
 	    to execute concurrently while maintaining isolation and the appearance of exclusive control
 	    over assigned computing resources. Client virtualization is generally used on endpoint 
 	    systems, making use of the local machine's resources (memory, CPU, etc.) to provide 
-	    isolated user environments.<htm:br/><htm:br/>
+	    isolated user environments.</h:p><h:p>
 	    This document does not address virtualization on mobile devices (typically devices that use
 	    a baseband processor or connect to a cellular network), nor does it address application 
-	    virtualization or containers.
+	    virtualization or containers.</h:p>
  
 	    	<!-- 1.3.1 TOE Boundary -->
 	    <section id="TOEboundary" title="TOE Boundary">
@@ -147,30 +153,42 @@
     </section>
 	
 	<!-- 2. Conformance Claims -->
-    <section id="conf" title="Conformance Claims" boilerplate="no">
-    <cclaims>
-        <cclaim name="Conformance Statement">
-            <description>
-                This PP-Module inherits exact conformance as required from the Virtualization PP and as
-		    defined in the CC and CEM addenda for Exact Conformance, Selection-Based SFRs, and
-		    Optional SFRs (dated May 2017). <htm:p/> 
-	    	There are no other PP-Modules that are allowed to be specified in a PP-Configuration with this PP-Module.
-            </description>
-        </cclaim>
-        <cclaim name="CC Conformance Claims">
-            <description>
-                This PP Module is conformant to Parts 2 (extended) and 3 (extended) of Common Criteria Version 3.1, 
-                Release 5 [CC].
-            </description>
-        </cclaim>
-    </cclaims>
-    </section>
+<section title="Conformance Claims" id="sec-cclaims">
+
+	<!-- cc-version: cc-2022r1 or cc-31r5   -->
+	<!-- cc-approach: standard or direct-rationale  -->
+	<!-- display: Should this info be displayed in the Conformance -->
+	<!-- Claims section? If no, you have to write a free-form section -->
+	<CClaimsInfo cc-version="cc-2022r1" cc-approach="direct-rationale" display="yes">                 
+
+		<!-- Conformance for STs: exact, strict, or demonstrable -->
+		<cc-st-conf>exact</cc-st-conf>                  
+
+		<!-- Part 2 & 3 conformance (extended or conformant) -->
+		<cc-pt2-conf>extended</cc-pt2-conf>           
+		<cc-pt3-conf>extended</cc-pt3-conf>           
+
+		<!-- Claims conformance to these other PPs (none)-->
+		<cc-pp-conf/>              		  
+		
+		<!-- Can be in a configuration with these PPs and Modules -->
+		<cc-pp-config-with/>
+
+		<!-- Package claims -->
+        
+		<cc-pkg-claim/>
+
+		
+
+	</CClaimsInfo>
+  </section>  
+
 	
 	<!-- 3. Security Problem Description -->
     <section id="spd" title="Security Problem Description">
       The security problem is described in terms of the threats that the TOE is expected to address, assumptions
       about its operational environment, and any organizational security policies that the TOE is expected to 
-      enforce.<htm:br/><htm:br/>
+      enforce.
 	    
 	<!-- 3.1 Threats -->
       <section id="threats" title="Threats">
@@ -180,20 +198,14 @@
 	      <threat name="T.UNAUTHORIZED_UPDATE">
 		      <description>See Virtualization PP, Section 3.1.</description>
 		      <consistency-rationale>This threat comes directly from the PP.</consistency-rationale>
-		      <objective-refer ref="O.VMM_INTEGRITY">
-			      <rationale>Integrity of a Virtualization System can be maintained by ensuring that the only way to modify 
-				      the VS is through a trusted update process initiated by an authorized Administrator
-				      as required by FMT_MOF_EXT.
-			      </rationale>
-		      </objective-refer>
+		      <addressed-by>FMT_MOF_EXT.1</addressed-by><rationale>This SFR mitigates this threat by ensuring that the only way to modify the VS is through a trusted update process initiated by an authorized Administrator as required by FMT_MOF_EXT.1.</rationale>
+		      
 	      </threat>
 	      <threat name="T.UNAUTHORIZED_ACCESS">
 		      <description>See Virtualization PP, Section 3.1.</description>
 		      <consistency-rationale>This threat comes directly from the PP.</consistency-rationale>
-		      <objective-refer ref="O.MANAGEMENT_ACCESS">
-			      <rationale>Access to management functions must be limited to authorized Administrators as
-				      managed through controls required by FMT_MOF_EXT.1.</rationale>
-		      </objective-refer>
+		      <addressed-by>FMT_MOF_EXT.1</addressed-by>
+				<rationale>This SFR mitigates this threat by limiting the management functions to be limited to authorized Administrators as managed through controls required by FMT_MOF_EXT.1.</rationale>
 	      </threat>		      
 	      </threats>     
       </section>
@@ -210,46 +222,22 @@
     <section id="objectives" title="Security Objectives">
 	    
  	    <!-- 4.1 Security Objectives for the TOE -->
-       <section id="TOEobjectives" title="Security Objectives for the TOE">
-            This PP-Module defines no additional TOE security objectives beyond those defined in the base Virtualization PP. Note however 
-		that the SFR defined in this PP-Module will assist in the achievement of the following objectives defined in the Base-PP:    
-		<SOs>
-			<SO name="O.VMM_INTEGRITY">
-				<description>See Virtualization PP, Section 4.1.</description>
-				<consistency-rationale>This objective comes directly from the PP.</consistency-rationale> 
-				<addressed-by>FMT_MOF_EXT.1</addressed-by>
-				<rationale>Integrity of a Virtualization System can be maintained by ensuring that the only way to modify 
-				      the VS is through a trusted update process initiated by an authorized Administrator
-				      as required by FMT_MOF_EXT.1.</rationale>
-			</SO>
-			<SO name="O.MANAGEMENT_ACCESS">
-				<description>See Virtualization PP, Section 4.1.</description>
-				<consistency-rationale>This objective comes directly from the PP.</consistency-rationale>  
-				<addressed-by>FMT_MOF_EXT.1</addressed-by>
-				<rationale>Access to management functions must be limited to authorized Administrators as
-				      managed through controls required by FMT_MOF_EXT.1.</rationale>
-		</SO>
-		</SOs>
-        </section>
 	    
 	<!-- 4.2 Security Objectives for the Operational Environment -->
         <section id="objectivesEnvironment" title="Security Objectives for the Operational Environment">
             Because this Module does not define any additional assumptions or organizational security policies, there are no additional 
 		security objectives for the Operational Environment to satisfy.        
         </section>
-	    
-	 <!-- 4.3 Security Objectives Rationale -->
-	<section title="Security Objectives Rationale" id="rationale">
-         <!-- Note: This section should remain empty and is populated from the rationale tags in the previous sections.  -->
-         </section>	    
     </section>
+	 <!-- 4.3 Security Objectives Rationale -->
+
 	
 	
 	<!-- 5. Security Requirements -->
     <section id="sfr" title="Security Requirements">
 	    
 	<!-- 5.1 Virtualization PP -->
-	<base-pp id="b-virt">
+	<base-pp id="b-virt" version="1.2" name="Client Virtualization Systems" product="Client Virtualization Systems" short="CV" plural="Client Virtualization Systems">
 	  <git>
 	    <url>https://raw.githubusercontent.com/commoncriteria/virtualization</url>
 	    <branch>master</branch>
@@ -264,9 +252,6 @@
 			required VS functionality.
 		</sec-func-req-dir>
 
-		<!-- 5.1.1 Modified SFRs -->	
-		<modified-sfrs/> 
-		<additional-sfrs/>
 	 
 		<!-- Consistency Rationale -->
 		<!-- Consistency of TOE Type -->
@@ -284,11 +269,12 @@
 	</base-pp>
 		
 	 <!-- 5.2 TOE Security Functional Requirements -->
-	  <man-sfrs>
+
+     <man-sfrs>
 		  
 	          <section id="ss-audit-table" title="Auditable Events for Mandatory SFRs">
         	  	<audit-table table="mandatory" id="at-mandatory">
-  	     			<htm:br/><htm:b><ctr ctr-type="Table" id="atref-mandatory">: Auditable Events for Mandatory SFRs</ctr></htm:b>
+  	     			<h:br/><h:b><ctr ctr-type="Table" id="atref-mandatory">: Auditable Events for Mandatory SFRs</ctr></h:b>
 	  		</audit-table>
 	         </section>
 
@@ -298,6 +284,7 @@
 				additional component, FMT_MOF_EXT.1. 
 				</mod-def>		
 			</ext-comp-def>
+        
 	    
 		<f-component cc-id="fmt_mof_ext.1" name="Management of Security Functions Behavior">
 			<consistency-rationale>This SFR requires the Client Virtualization product to manage security functionality
@@ -326,237 +313,237 @@
                         <note role="application">Selection of “remote” requires the selection-based requirement FTP_TRP.1 defined in the Base-PP to be included in the ST.</note>
                     </f-element>
                     <f-element id="fmt-mof-ext-1e2">
-                        <title>The TSF shall be capable of performing the following management functions, [<htm:i>controlled by an Administrator 
-				or User as shown in <xref to="manfunc"/>, based on the following key:</htm:i><htm:p/>
-                            <htm:center><htm:h4><ctr ctr-type="Table" pre="Table " id="manfunc">: Client Virtualization Management Functions</ctr></htm:h4></htm:center>
-			    <htm:div class="table-key" style="border-style: solid; padding: 5px;">
-				X = Mandatory (TOE must provide that function to that role)<htm:br/>
-				O = Optional (TOE may or may not provide that function to that role)<htm:br/>
-				N = Not Permitted (TOE must not provide that function to that role)<htm:br/>
-				S = Selection-Based (TOE must provide that function to that role if the TOE claims a particular selection-based SFR)<htm:br/>
-			    </htm:div><!--
-                            <htm:ul class="table-key" style="list-style: none;">
-                                <htm:li>X = Mandatory (TOE must provide that function to that role)</htm:li>
-                                <htm:li>O = Optional (TOE may or may not provide that function to that role)</htm:li>
-                                <htm:li>N = Not Permitted (TOE must not provide that function to that role)</htm:li>
-                                <htm:li>S = Selection-Based (TOE must provide that function to that role if the TOE claims a particular selection-based SFR)</htm:li>
-                            </htm:ul>-->
-                            <htm:table>
-                                <htm:tr>
-                                    <htm:th>Number</htm:th> 
-                                    <htm:th>Function</htm:th> 
-                                    <htm:th>Admin</htm:th> 
-                                    <htm:th>User</htm:th> 
-                                    <htm:th>Notes (all SFR references are from the base Virtualization PP</htm:th> 
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>1</htm:td> 
-                                    <htm:td>Ability to update the Virtualization System</htm:td> 
-                                    <htm:td>X</htm:td> 
-                                    <htm:td>N</htm:td> 
-                                    <htm:td>See FPT_TUD_EXT.1</htm:td> 
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>2</htm:td>
-                                    <htm:td><selectables>
+                        <title>The TSF shall be capable of performing the following management functions, [<h:i>controlled by an Administrator 
+				or User as shown in <xref to="manfunc"/>, based on the following key:</h:i><h:p/>
+                            <h:center><h:h4><ctr ctr-type="Table" pre="Table " id="manfunc">: Client Virtualization Management Functions</ctr></h:h4></h:center>
+			    <h:div class="table-key" style="border-style: solid; padding: 5px;">
+				X = Mandatory (TOE must provide that function to that role)<h:br/>
+				O = Optional (TOE may or may not provide that function to that role)<h:br/>
+				N = Not Permitted (TOE must not provide that function to that role)<h:br/>
+				S = Selection-Based (TOE must provide that function to that role if the TOE claims a particular selection-based SFR)<h:br/>
+			    </h:div><!--
+                            <h:ul class="table-key" style="list-style: none;">
+                                <h:li>X = Mandatory (TOE must provide that function to that role)</h:li>
+                                <h:li>O = Optional (TOE may or may not provide that function to that role)</h:li>
+                                <h:li>N = Not Permitted (TOE must not provide that function to that role)</h:li>
+                                <h:li>S = Selection-Based (TOE must provide that function to that role if the TOE claims a particular selection-based SFR)</h:li>
+                            </h:ul>-->
+                            <h:table>
+                                <h:tr>
+                                    <h:th>Number</h:th> 
+                                    <h:th>Function</h:th> 
+                                    <h:th>Admin</h:th> 
+                                    <h:th>User</h:th> 
+                                    <h:th>Notes (all SFR references are from the base Virtualization PP</h:th> 
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>1</h:td> 
+                                    <h:td>Ability to update the Virtualization System</h:td> 
+                                    <h:td>X</h:td> 
+                                    <h:td>N</h:td> 
+                                    <h:td>See FPT_TUD_EXT.1</h:td> 
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>2</h:td>
+                                    <h:td><selectables>
 					    <selectable id="sel-mf-pwd-policy">Ability to configure Administrator password policy as defined in FIA_PMG_EXT.1</selectable>
-					    <selectable>Not applicable.</selectable></selectables></htm:td>
-                                    <htm:td>S</htm:td>
-                                    <htm:td>N</htm:td>
-                                    <htm:td>Must be selected if ST includes FIA_PMG_EXT.1.</htm:td>
+					    <selectable>Not applicable.</selectable></selectables></h:td>
+                                    <h:td>S</h:td>
+                                    <h:td>N</h:td>
+                                    <h:td>Must be selected if ST includes FIA_PMG_EXT.1.</h:td>
 				    <!-- sel "sel-mf-2" if req="fia-uau-5e1" ids="sel-uau-pwd"  -->
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>3</htm:td>
-                                    <htm:td>Ability to create, configure and delete VMs</htm:td>
-                                    <htm:td>X</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td> </htm:td>
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>4</htm:td>
-                                    <htm:td>Ability to set default initial VM configurations</htm:td>
-                                    <htm:td>X</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td> </htm:td>
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>5</htm:td>
-                                    <htm:td>Ability to configure virtual networks including VM</htm:td>
-                                    <htm:td>X</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td>See FDP_VNC_EXT.1</htm:td>
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>6</htm:td>
-                                    <htm:td>Ability to configure and manage the audit system and audit data</htm:td>
-                                    <htm:td>X</htm:td>
-                                    <htm:td>N</htm:td>
-                                    <htm:td> </htm:td>
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>7</htm:td>
-                                    <htm:td>Ability to configure VM access to physical devices</htm:td>
-                                    <htm:td>X</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td>See FDP_PPR_EXT.1</htm:td>
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>8</htm:td>
-                                    <htm:td>Ability to configure inter-VM data sharing</htm:td>
-                                    <htm:td>X</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td>See FDP_VMS_EXT.1</htm:td>
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>9</htm:td>
-                                    <htm:td><htm:s>Ability to enable/disable VM access to Hypercall functions</htm:s></htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td>Management function 9 is no longer required</htm:td>
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>10</htm:td>
-                                    <htm:td>Ability to configure removable media policy</htm:td>
-                                    <htm:td>X</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td>See FPT_RDM_EXT.1</htm:td>
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>11</htm:td>
-                                    <htm:td>Ability to configure the cryptographic functionality</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td>See FCS_CKM.1, FCS_CKM.2, and FCS_COP.1/HASH. See also, the Functional Packages
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>3</h:td>
+                                    <h:td>Ability to create, configure and delete VMs</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>4</h:td>
+                                    <h:td>Ability to set default initial VM configurations</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>5</h:td>
+                                    <h:td>Ability to configure virtual networks including VM</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>See FDP_VNC_EXT.1</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>6</h:td>
+                                    <h:td>Ability to configure and manage the audit system and audit data</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>N</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>7</h:td>
+                                    <h:td>Ability to configure VM access to physical devices</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>See FDP_PPR_EXT.1</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>8</h:td>
+                                    <h:td>Ability to configure inter-VM data sharing</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>See FDP_VMS_EXT.1</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>9</h:td>
+                                    <h:td><h:s>Ability to enable/disable VM access to Hypercall functions</h:s></h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>Management function 9 is no longer required</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>10</h:td>
+                                    <h:td>Ability to configure removable media policy</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>See FPT_RDM_EXT.1</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>11</h:td>
+                                    <h:td>Ability to configure the cryptographic functionality</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>See FCS_CKM.1, FCS_CKM.2, and FCS_COP.1/HASH. See also, the Functional Packages
 					    for Transport Layer Security (TLS) and for Secure Shell (SSH) if claimed for methods
-					    to configure their respective cryptographic functionality.</htm:td>
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>12</htm:td>
-                                    <htm:td>Ability to change default authorization factors</htm:td>
-                                    <htm:td>X</htm:td>
-                                    <htm:td>N</htm:td>
-                                    <htm:td>See FIA_PMG_EXT.1</htm:td>
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>13</htm:td>
-                                    <htm:td>Ability to enable/disable screen lock</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td> </htm:td>
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>14</htm:td>
-                                    <htm:td>Ability to configure screen lock inactivity timeout</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td> </htm:td>
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>15</htm:td>
-                                    <htm:td>Ability to configure remote connection inactivity timeout</htm:td>
-                                    <htm:td>X</htm:td>
-                                    <htm:td>N</htm:td>
-                                    <htm:td> </htm:td>
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>16</htm:td>
-                                    <htm:td>Ability to configure lockout policy for unsuccessful authentication attempts through 
+					    to configure their respective cryptographic functionality.</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>12</h:td>
+                                    <h:td>Ability to change default authorization factors</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>N</h:td>
+                                    <h:td>See FIA_PMG_EXT.1</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>13</h:td>
+                                    <h:td>Ability to enable/disable screen lock</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>14</h:td>
+                                    <h:td>Ability to configure screen lock inactivity timeout</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>15</h:td>
+                                    <h:td>Ability to configure remote connection inactivity timeout</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>N</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>16</h:td>
+                                    <h:td>Ability to configure lockout policy for unsuccessful authentication attempts through 
                                         <selectables>
                                             <selectable>timeouts between attempts</selectable>
                                             <selectable>limiting number of attempts during a time period</selectable>
-                                        </selectables></htm:td>
-                                    <htm:td>X</htm:td>
-                                    <htm:td>N</htm:td>
-                                    <htm:td>See FIA_AFL_EXT.1</htm:td>
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>17</htm:td>
-                                    <htm:td><selectables>
+                                        </selectables></h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>N</h:td>
+                                    <h:td>See FIA_AFL_EXT.1</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>17</h:td>
+                                    <h:td><selectables>
 					    <selectable id="sel-mf-dir-server">Ability to configure name/address of directory server to bind with</selectable>
-					    <selectable>Not applicable</selectable></selectables></htm:td>
-                                    <htm:td>S</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td>Must be selected if "directory-based" is selected anywhere in FIA_UAU.5.1 in the base Virtualization PP.</htm:td>
+					    <selectable>Not applicable</selectable></selectables></h:td>
+                                    <h:td>S</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>Must be selected if "directory-based" is selected anywhere in FIA_UAU.5.1 in the base Virtualization PP.</h:td>
 				    <!-- sel "sel-mf-17" if req="fia-uau-5e1" ids="sel-uau-ssh-dirbased;sel-uau-pwd-dirbased; sel-uau-x509-dirbased"  -->
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>18</htm:td>
-                                    <htm:td>Ability to configure name/address of audit/logging server to which to send audit/logging records</htm:td>
-                                    <htm:td>X</htm:td>
-                                    <htm:td>N</htm:td>
-                                    <htm:td>See FAU_STG_EXT.1.</htm:td>
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>19</htm:td>
-                                    <htm:td>Ability to configure name/address of network time server</htm:td>
-                                    <htm:td>X</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td> </htm:td>
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>20</htm:td>
-                                    <htm:td>Ability to configure banner</htm:td>
-                                    <htm:td>X</htm:td>
-                                    <htm:td>N</htm:td>
-                                    <htm:td>See FTA_TAB.1</htm:td>
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>21</htm:td>
-                                    <htm:td>Ability to connect/disconnect removable devices to/from a VM</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td>See FPT_RDM_EXT.1</htm:td>
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>22</htm:td>
-                                    <htm:td>Ability to start a VM</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td> </htm:td>
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>23</htm:td>
-                                    <htm:td>Ability to stop/halt a VM</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td> </htm:td>
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>24</htm:td>
-                                    <htm:td>Ability to checkpoint a VM</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td> </htm:td>
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>25</htm:td>
-                                    <htm:td>Ability to suspend a VM</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td> </htm:td>
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>26</htm:td>
-                                    <htm:td>Ability to resume a VM</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td>O</htm:td>
-                                    <htm:td> </htm:td>
-                                </htm:tr>
-                                <htm:tr>
-                                    <htm:td>27</htm:td>
-                                    <htm:td><selectables>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>18</h:td>
+                                    <h:td>Ability to configure name/address of audit/logging server to which to send audit/logging records</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>N</h:td>
+                                    <h:td>See FAU_STG_EXT.1.</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>19</h:td>
+                                    <h:td>Ability to configure name/address of network time server</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>20</h:td>
+                                    <h:td>Ability to configure banner</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>N</h:td>
+                                    <h:td>See FTA_TAB.1</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>21</h:td>
+                                    <h:td>Ability to connect/disconnect removable devices to/from a VM</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>See FPT_RDM_EXT.1</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>22</h:td>
+                                    <h:td>Ability to start a VM</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>23</h:td>
+                                    <h:td>Ability to stop/halt a VM</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>24</h:td>
+                                    <h:td>Ability to checkpoint a VM</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>25</h:td>
+                                    <h:td>Ability to suspend a VM</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>26</h:td>
+                                    <h:td>Ability to resume a VM</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>27</h:td>
+                                    <h:td><selectables>
 					    <selectable id="sel-mf-cert-no-validity-action">Ability to configure action taken if unable to determine the validity of a certificate</selectable>
 					    <selectable>Not applicable</selectable></selectables>
-				    </htm:td>
-                                    <htm:td>S</htm:td>
-                                    <htm:td>N</htm:td>
-                                    <htm:td>This function must be selected if "allow the administrator to choose whether to accept the certificate in these cases"
-					    in FIA_X509_EXT.2.2 in the Base-PP.</htm:td>
+				    </h:td>
+                                    <h:td>S</h:td>
+                                    <h:td>N</h:td>
+                                    <h:td>This function must be selected if "allow the administrator to choose whether to accept the certificate in these cases"
+					    in FIA_X509_EXT.2.2 in the Base-PP.</h:td>
 				    <!-- sel "sel-mf-27" if req="fia-x509-ext-2e2" ids="sel-x509-adminset"  -->
-                                </htm:tr>
-                            </htm:table>
-							<htm:br/>]
+                                </h:tr>
+                            </h:table>
+							<h:br/>]
                         </title>
                         <ext-comp-def-title>
                           <title>The TSF shall be capable of performing the following management functions
@@ -568,23 +555,23 @@
 				whether any of the ‘optional’ or ‘selection-based’ functions are 
 				included as part of the TOE. The ST author may also omit the ‘Notes’ 
 				column as it is provided in this PP-Module as an aid to the ST author in 
-				constructing the table.<htm:br/><htm:br/>
+				constructing the table.<h:br/><h:br/>
                             This SFR addresses the roles of the CC Part 2 SFRs FMT_MOF.1, FMT_SMF.1,
-				and FMT_SMR.2.<htm:br/><htm:br/>
+				and FMT_SMR.2.<h:br/><h:br/>
                             Administration is considered “local” if the Administrator is physically 
-				present at the machine on which the VS is installed.<htm:br/><htm:br/>
+				present at the machine on which the VS is installed.<h:br/><h:br/>
                             Administration is considered “remote” if communications between the
 				Administrator and the Management Subsystem travel on a network.
-				<htm:br/><htm:br/>
+				<h:br/><h:br/>
                             There is no requirement to authenticate Users of the Virtualization
 				System. Users that have access to VMs but not to the Management
 				Subsystem need not authenticate to the Virtualization System in order 
 				to use Guest VMs. Requirements for authentication of VM users is
 				determined by the policies of the domains running within the Guest VMs.
-				<htm:br/><htm:br/>
+				<h:br/><h:br/>
                             For a VS where the OS is part of the platform and not part of the TOE, it 
 				is acceptable for the VS to invoke the Host OS screen lock.
-				<htm:br/><htm:br/>
+				<h:br/><h:br/>
                         </note>
                         <aactivity>
 				<TSS>
@@ -598,16 +585,16 @@
                                          the defined 
 					role is able to perform all mandatory functions as well as all 
 					optional or selection-based functions claimed in the ST.
-					<htm:br/><htm:br/>
+					<h:br/><h:br/>
 				</TSS>
 				<Guidance>
                             	The evaluator shall examine the Operational Guidance to ensure that it
 					describes how the Administrator and User are able to perform
 					each management function that the ST claims the TOE supports.
-					<htm:br/><htm:br/>
+					<h:br/><h:br/>
                             	The evaluator shall verify for each claimed management function that 
 					the Operational Guidance is sufficiently detailed to allow the 
-					function to be performed and that the function can be performed.<htm:br/><htm:br/>
+					function to be performed and that the function can be performed.<h:br/><h:br/>
 				</Guidance>
 				<Tests>
 				The evaluator shall test each management function for each role listed in the FMT_MOF_EXT.1.1
@@ -621,7 +608,7 @@
                                         <!-- TODO: Fix reference <xref to="manfunc"/>, -->
                                         that if the TOE claims not to provide a particular role with access to the function, then it is not possible to access the 
 					TOE as that role and perform that function.
-					<htm:br/><htm:br/>
+					<h:br/><h:br/>
 				</Tests>
                         </aactivity>
                     </f-element>
@@ -631,13 +618,14 @@
 			<audit-event-info>Identity of actor</audit-event-info>
 		</audit-event>			
                 </f-component>
-            </section>
-	  </man-sfrs>
-          <opt-sfrs/>
-          <sel-sfrs/>
-          <obj-sfrs/>
-		  <impl-dep-sfrs/>
-	    <!-- 5.3 TOE Security Functional Requirements Rationale -->
+              </section>
+        </man-sfrs>
+        <opt-sfrs/>
+        <obj-sfrs/>
+        <sel-sfrs/>
+        <impl-dep-sfrs/>
+
+              
     </section>
  
     <appendix id="ent" title="Entropy">
