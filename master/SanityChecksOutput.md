@@ -356,7 +356,7 @@
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[2]"The Secur"/section[5]"Testing i"/a-component[1]"Testing i"/a-element[4]""/aactivity[1]"The evalu"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[2]"The Secur"/section[5]"Testing i"/a-component[1]"Testing i"/a-element[4]""/aactivity[1]"The evalu"/h:p[2]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[2]"The Secur"/section[5]"Testing i"/a-component[1]"Testing i"/a-element[4]""/aactivity[1]"The evalu"/h:p[3]""
-* Warning: Detected an empty _p_ element./PP[1]""/appendix[4]""/section[1]"Documenta"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/appendix[3]""/section[1]"Documenta"/h:p[1]""
 * Rules without a 'Validation Guidelines' appendix has been detected.
  Failed to find a reference to sel-ude-keysize-128.
  Failed to find a reference to sel-ude-keysize-256.
