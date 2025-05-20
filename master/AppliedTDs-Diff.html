@@ -24,12 +24,6 @@
             <br>
             <a href="#Comment-3-">Comment: Comment-3-</a>
             <br>
-            <a href="#Comment-4-">Comment: Comment-4-</a>
-            <br>
-            <a href="#Comment-5-">Comment: Comment-5-</a>
-            <br>
-            <a href="#Comment-6-">Comment: Comment-6-</a>
-            <br>
         </div>
         <h1 class="title" style="page-break-before:auto;">Protection Profile for Virtualization</h1>
         <h1 style="text-align:center; border-style: dashed; border-width: medium; border-color: red;">This page is best viewed with JavaScript enabled!</h1>
@@ -1585,7 +1579,7 @@
                             <p></p>
                              The intent of this requirement is to specify the hashing function. The hash selection shall support the message digest size selection. The hash selection should be consistent with the overall strength of the algorithm used (for example, SHA 256 for 128-bit keys). 
                             <p></p>
-                             <span style="" class="comment " id="Comment-3-"> should this be removed?^</span> </span>
+                        </span>
                     </div>
                     <div class="validationguidelines_label">Validation Guidelines:</div>
                     <p></p>
@@ -1627,7 +1621,6 @@
                         <div class="ea">
                              <b><u>SHA-1 and SHA-2 Tests</u></b> The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> hashing functions can be implemented in one of two modes. The first mode is the byte-oriented mode. In this mode the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> only hashes messages that are an integral number of bytes in length; i.e., the length (in bits) of the message to be hashed is divisible by 8. The second mode is the bit-oriented mode. In this mode the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> hashes messages of arbitrary length. As there are different tests for each mode, an indication is given in the following sections for the bit-oriented vs. the byte-oriented test MACs. 
                             <p></p>
-                            <span style="" class="comment " id="Comment-4-"> Should this TA be removed/updated for the CNSA 1.0 requirement?</span> 
                             <p></p>
                              The evaluator shall perform all of the following tests for each hash algorithm implemented by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and used to satisfy the requirements of this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>. 
                             <p></p>
@@ -5651,7 +5644,7 @@
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note"> The selection is used to specify additional DH groups supported. This applies to IKEv1 and IKEv2 exchanges. It should be noted that if any additional DH groups are specified, they must comply with the requirements (in terms of the ephemeral keys that are established) listed in <a href="#FCS_CKM.1">FCS_CKM.1</a>.
                             <p></p>
-                             Since the implementation may allow different Diffie-Hellman groups to be negotiated for use in forming the SAs, the assignments in <a href="#FCS_IPSEC_EXT.1.9">FCS_IPSEC_EXT.1.9</a> and <a href="#FCS_IPSEC_EXT.1.10">FCS_IPSEC_EXT.1.10</a> may contain multiple values. For each DH group supported, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author consults Table 2 in 800-57 to determine the &ldquo;bits of security&rdquo; associated with the DH group. Each unique value is then used to fill in the assignment (for 1.9 they are doubled; for 1.10 they are inserted directly into the assignment). For example, suppose the implementation supports DH group 14 (2048-bit MODP)<span style="" class="comment " id="Comment-5-">Should this be removed- per CNSA 1.0?</span> and group 20 (ECDH using <abbr class="dyn-abbr"><a href="#abbr_NIST">NIST</a></abbr> curve P-384). From Table 2, the bits of security value for group 14 is 112, and for group 20 it is 192. For <a href="#FCS_IPSEC_EXT.1.9">FCS_IPSEC_EXT.1.9</a>, then, the assignment would read &ldquo;[224, 384]&rdquo; and for <a href="#FCS_IPSEC_EXT.1.10">FCS_IPSEC_EXT.1.10</a> it would read &ldquo;[112, 192]&rdquo; (although in this case the requirement should probably be refined so that it makes sense mathematically).</span>
+                             Since the implementation may allow different Diffie-Hellman groups to be negotiated for use in forming the SAs, the assignments in <a href="#FCS_IPSEC_EXT.1.9">FCS_IPSEC_EXT.1.9</a> and <a href="#FCS_IPSEC_EXT.1.10">FCS_IPSEC_EXT.1.10</a> may contain multiple values. For each DH group supported, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author consults Table 2 in 800-57 to determine the &ldquo;bits of security&rdquo; associated with the DH group. Each unique value is then used to fill in the assignment (for 1.9 they are doubled; for 1.10 they are inserted directly into the assignment). For example, suppose the implementation supports group 20 (ECDH using <abbr class="dyn-abbr"><a href="#abbr_NIST">NIST</a></abbr> curve P-384). From Table 2, the bits of security value for group 14 is 112, and for group 20 it is 192. For <a href="#FCS_IPSEC_EXT.1.9">FCS_IPSEC_EXT.1.9</a>, then, the assignment would read &ldquo;[224, 384]&rdquo; and for <a href="#FCS_IPSEC_EXT.1.10">FCS_IPSEC_EXT.1.10</a> it would read &ldquo;[112, 192]&rdquo; (although in this case the requirement should probably be refined so that it makes sense mathematically).</span>
                     </div>
                 </div>
             </div>
@@ -6382,7 +6375,7 @@
                     <a href="#FIA_X509_EXT.1.1" class="abbr">FIA_X509_EXT.1.1</a>
                 </div>
                 <div class="reqdesc">
-                    <span style="" class="comment " id="Comment-6-">further decisions need to be made on how this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is referenced with accordance to the x509 functional package. 
+                    <span style="" class="comment " id="Comment-3-">further decisions need to be made on how this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is referenced with accordance to the x509 functional package. 
                         <br>
                     </span>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall validate certificates in accordance with the following rules: 
                     <ul>
@@ -7255,7 +7248,7 @@
                             </tr>
                         </table>
                         <h4 id="ext-comp-FIA_X509_EXT.1.1">FIA_X509_EXT.1.1</h4>
-                        <span style="" class="comment " id="Comment-6-">further decisions need to be made on how this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is referenced with accordance to the x509 functional package. 
+                        <span style="" class="comment " id="Comment-3-">further decisions need to be made on how this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is referenced with accordance to the x509 functional package. 
                             <br>
                         </span>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall validate certificates in accordance with the following rules: 
                         <ul>
