@@ -280,12 +280,10 @@
 
 		  <section id="management-fmt" title="Security Management (FMT)">
 			<ext-comp-def fam-id="FMT_MOF_EXT" title="Management of Security Functions Behavior">
-           			<mod-def> This family is defined in the Virtualization PP. This Module augments the extended family by adding one
+           			<fam-behavior> This family is defined in the Virtualization PP. This Module augments the extended family by adding one
 				additional component, FMT_MOF_EXT.1. 
-				</mod-def>		
+                    </fam-behavior>		
 			</ext-comp-def>
-        
-	    
 		<f-component cc-id="fmt_mof_ext.1" name="Management of Security Functions Behavior">
 			<consistency-rationale>This SFR requires the Client Virtualization product to manage security functionality
 				defined in the Virtualization PP in FPT_TUD_EXT.1, FIA_PMG_EXT.1, FDP_VNC_EXT.1, FDP_PPR_EXT.1, FDP_VMS_EXT.1,
@@ -296,7 +294,7 @@
            		<audit>There are no auditable events defined for this SFR.</audit>
 <!--            		<dependencies>FPT_TUD_EXT.1, FIA_PMG_EXT.1, FDP_VNC_EXT.1, FDP_VMS_EXT.1,
 				FMT_MSA_EXT.1, FPT_HCL_EXT.1, FPT_RDM_EXT.1, FIA_AFL_EXT.1, and FTA_TAB.1.</dependencies>	 -->
-			<dependencies>No other dependencies.</dependencies>
+			    <dependencies>No other dependencies.</dependencies>
                     	<f-element id="fmt-mof-ext-1e1">
                         	<title>The TSF shall be capable of supporting 
                             		<selectables>
@@ -304,12 +302,7 @@
         	                        	<selectable id="sel-mof-1e1-remote-client">remote</selectable>
                             		</selectables> administration.
                         	</title>
-                                <ext-comp-def-title> 
-                                        <title>The TSF shall be capable of supporting 
-                            		<assignable>a type of administration</assignable>
-                            		administration.
-                        	</title>
-                                </ext-comp-def-title> 
+                                
                         <note role="application">Selection of “remote” requires the selection-based requirement FTP_TRP.1 defined in the Base-PP to be included in the ST.</note>
                     </f-element>
                     <f-element id="fmt-mof-ext-1e2">
