@@ -3,10 +3,6 @@
         on/PP[1]""/include-pkg[2]""/depends[1]""/on[1]""
 * Error: Detected dangling id-reference to s-uau-ssh from attribute
         also/PP[1]""/include-pkg[2]""/depends[1]""/also[1]""
-* Error: Detected dangling ref-id to 'sel-hmac-sha-256'.
-	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[5]""/f-element[1]""/rule[1]""/if[1]""/ref-id[1]"sel-hmac-"
-* Error: Detected dangling ref-id to 'sel-hash-sha-256'.
-	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[5]""/f-element[1]""/rule[1]""/then[1]""/ref-id[1]"sel-hash-"
 * Error: Detected dangling ref-id to 'sel-ude-keysize-128'.
 	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[7]""/f-element[1]""/rule[1]""/then[1]""/and[1]""/ref-id[2]"sel-ude-k"
 * Error: Detected dangling ref-id to 'sel-ude-keysize-256'.
@@ -376,5 +372,3 @@ output/pkg-x509.xml:1: parser error : Document is empty
  Failed to find a reference to sel-ude-keysize-256.
 * Warning: Since FIA_X509_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
- Failed to find a reference to sel-hmac-sha-256.
- Failed to find a reference to sel-hash-sha-256.
