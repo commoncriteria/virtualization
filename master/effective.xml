@@ -136,13 +136,13 @@
 		<tech-terms>
 		  <suppress>Distributed TOE</suppress>
 		  <term full="Administrator">Administrators perform management activities on the VS. These management functions do not 
-			  include administration of software running within Guest VMs, such as the Guest OS. Administrators need not be human 
+			  include administration of software running within guest VMs, such as the Guest OS. Administrators need not be human 
 			  as in the case of embedded or headless VMs. Administrators are often nothing more than software entities that 
 			  operate within the VM.</term>
 		  <term abbr="AES" full="Advanced Encryption Standard"/>
 		  <term full="Auditor">Auditors are responsible for managing the audit capabilities of the TOE. An Auditor may also be an
-			  Administrator. It is not a requirement that the TOE be capable of supporting an Auditor role that is separate from
-			  that of an Administrator.</term>
+			  administrator. It is not a requirement that the TOE be capable of supporting an Auditor role that is separate from
+			  that of an administrator.</term>
 			  <term abbr="CPU" full="Central Processing Unit"/>
 			  <term abbr="DEP" full="Data Execution Prevention"/>
 			  <term abbr="DKM" full="Derived Keying Material"/>
@@ -156,14 +156,14 @@
 			  <term abbr="FIPS" full="Federal Information Processing Standard"/>
 			  <term abbr="FFC" full="Finite-Field Cryptography"/>
 		  <term full="Guest Network">See Operational Network.</term>
-		  <term full="Guest Operating System (OS)">An operating system that runs within a Guest VM.</term>
-		  <term full="Guest VM">A Guest VM is a VM that contains a virtual environment for the execution of an independent computing
+		  <term full="Guest Operating System (OS)">An operating system that runs within a guest VM.</term>
+		  <term full="guest VM">A guest VM is a VM that contains a virtual environment for the execution of an independent computing
 			  system. Virtual environments execute mission workloads and implement customer-specific client or server functionality
-			  in Guest VMs, such as a web server or desktop productivity applications.</term>
-		  <term full="Helper VM">A Helper VM is a VM that performs services on behalf of one or more Guest VMs, but does not qualify
+			  in guest VMs, such as a web server or desktop productivity applications.</term>
+		  <term full="Helper VM">A Helper VM is a VM that performs services on behalf of one or more guest VMs, but does not qualify
 			  as a Service VM—and therefore is not part of the VMM. Helper VMs implement functions or services that are particular
-			  to the workloads of Guest VMs. For example, a VM that provides a virus scanning service for a Guest VM would be
-			  considered a Helper VM. For the purposes of this document, Helper VMs are considered a type of Guest VM, and are 
+			  to the workloads of guest VMs. For example, a VM that provides a virus scanning service for a guest VM would be
+			  considered a Helper VM. For the purposes of this document, Helper VMs are considered a type of guest VM, and are 
 			  therefore subject to all the same requirements, unless specifically stated otherwise.</term>
 		  <term full="Host Operating System (OS)">An operating system onto which a VS is installed. Relative to the VS, the Host OS is 
 			  part of the Platform. There need not be a Host OS, but often VSes employ a Host OS or Control Domain to support
@@ -184,17 +184,17 @@
 			  <term abbr="KDF" full="Key Derivation Function"/>
 			  <term abbr="MAC" full="Message Authentication Code"/>
 		  <term full="Management Network">A network, which may have both physical and virtualized components, used to manage and 
-			  administer a VS. Management networks include networks used by VS Administrators to communicate with management
+			  administer a VS. Management networks include networks used by VS administrators to communicate with management
 			  components of the VS, and networks used by the VS for communications between VS components. For purposes of this
 			  document, networks that connect physical hosts and backend storage networks for purposes of VM transfer or backup 
 			  are considered management networks. </term>
-		  <term full="Management Subsystem">Components of the VS that allow VS Administrators to configure and manage the VMM, as 
-			  well as configure Guest VMs. VMM management functions include VM configuration, virtualized network configuration,
+		  <term full="Management Subsystem">Components of the VS that allow VS administrators to configure and manage the VMM, as 
+			  well as configure guest VMs. VMM management functions include VM configuration, virtualized network configuration,
 			  and allocation of physical resources.</term>
 			  <term abbr="NIST" full="National Institute of Standards and Technology"/>
 			  <term abbr="NVLAP" full="National Voluntary Laboratory Accreditation Program"/>
 		  <term full="Operational Network">An Operational Network is a network, which may have both physical and virtualized 
-			  components, used to connect Guest VMs to each other and potentially to other entities outside of the VS. Operational
+			  components, used to connect guest VMs to each other and potentially to other entities outside of the VS. Operational
 			  Networks support mission workloads and customer-specific client or server functionality. Also called a 
 			  “Guest Network.”</term>
 			  <term abbr="OS" full="Operating System"/>
@@ -204,11 +204,11 @@
 		  <term full="Platform">The hardware, firmware, and software environment into which a VS is installed and executes.</term>
 			  <term abbr="RSA" full="Rivest, Shamir, Adleman"/>
 		  <term full="Service VM">A Service VM is a VM whose purpose is to support the Hypervisor in providing the resources or
-			  services necessary to support Guest VMs. Service VMs may implement some portion of Hypervisor functionality, but 
+			  services necessary to support guest VMs. Service VMs may implement some portion of Hypervisor functionality, but 
 			  also may contain important system functionality that is not necessary for Hypervisor operation. As with any VM,
 			  Service VMs necessarily execute without full Hypervisor privileges—only the privileges required to perform its 
 			  designed functionality. Examples of Service VMs include device driver VMs that manage access to physical devices,
-			  VMs that provide life-cycle management and provisioning of Hypervisor and Guest VMs, and name-service VMs that 
+			  VMs that provide life-cycle management and provisioning of Hypervisor and guest VMs, and name-service VMs that 
 			  help establish communication paths between VMs.</term>
 			  <term abbr="SP" full="Special Publication"/>
 			  <term abbr="SPD" full="Security Policy Database"/>
@@ -216,7 +216,7 @@
 			  of VMs and users.</term>
 			  <term abbr="SWID" full="Software Identification"/>
 			  <term abbr="TPM" full="Trusted Platform Module"/>
-		  <term full="User">Users operate Guest VMs and are subject to configuration policies applied to the VS by Administrators.
+		  <term full="User">Users operate guest VMs and are subject to configuration policies applied to the VS by administrators.
 			  Users need not be human as in the case of embedded or headless VMs, users are often nothing more than software
 			  entities that operate within the VM.</term>
 		  <term full="Virtual Machine" abbr="VM">A Virtual Machine is a virtualized hardware environment in which an operating system
@@ -250,32 +250,32 @@
 			delegation of the management of all other hardware devices on the hardware platform. This document does not specify
 			any Hypervisor-specific requirements, though many VMM requirements would naturally apply to a Hypervisor.<h:p/>
 				A Service VM is a VM whose purpose is to support the Hypervisor in providing the resources or services necessary to
-			support Guest VMs. Service VMs may implement some portion of Hypervisor functionality, but also may contain important
+			support guest VMs. Service VMs may implement some portion of Hypervisor functionality, but also may contain important
 			system functionality that is not necessary for Hypervisor operation. As with any VM, Service VMs necessarily execute
 			without full Hypervisor privileges—only the privileges required to perform its designed functionality. Examples of 
 			Service VMs include device driver VMs that manage access to physical devices, VMs that provide life-cycle management and 
-			provisioning of Hypervisor and Guest VMs, and name-service VMs that help establish 
+			provisioning of Hypervisor and guest VMs, and name-service VMs that help establish 
 			communication paths between VMs.<h:p/>
-				A Guest VM is a VM that contains a virtual environment for the execution of an independent computing system. Virtual 
-			environments execute mission workloads and implement customer-specific client or server functionality in Guest VMs, 
+				A guest VM is a VM that contains a virtual environment for the execution of an independent computing system. Virtual 
+			environments execute mission workloads and implement customer-specific client or server functionality in guest VMs, 
 			such as a web server or desktop productivity applications. A Helper VM is a VM that performs services on behalf of
-			one or more Guest VMs, but does not qualify as a Service VM—and therefore is not part of the VMM. Helper VMs implement
-			functions or services that are particular to the workloads of Guest VMs. For example, a VM that provides a virus 
-			scanning service for a Guest VM would be considered a Helper VM. The line between Helper and Service VMs can easily
+			one or more guest VMs, but does not qualify as a Service VM—and therefore is not part of the VMM. Helper VMs implement
+			functions or services that are particular to the workloads of guest VMs. For example, a VM that provides a virus 
+			scanning service for a guest VM would be considered a Helper VM. The line between Helper and Service VMs can easily
 			be blurred. For instance, a VM that implements a cryptographic function—such as an in-line encryption VM—could be 
 			identified as either a Service or Helper VM depending on the particular virtualization solution. If the cryptographic
-			functions are necessary only for the privacy of Guest VM data in support of the Guest’s mission applications, it would
+			functions are necessary only for the privacy of guest VM data in support of the Guest’s mission applications, it would
 			be proper to classify the encryption VM as a Helper. But if the encryption VM is necessary for the VMM to isolate
-			Guest VMs, it would be proper to classify the encryption VM as a Service 
+			guest VMs, it would be proper to classify the encryption VM as a Service 
 			VM. For the purposes of this document, Helper VMs are subject to all requirements
-			that apply to Guest VMs, unless specifically stated otherwise.<h:p/>
+			that apply to guest VMs, unless specifically stated otherwise.<h:p/>
 			
 			<!-- 1.3.1 TOE Boundary -->
 			<section id="ss-toeboundary" title="TOE Boundary">
 				Figure 1 shows a greatly simplified view of a generic Virtualization System and Platform. TOE components are displayed
 				in Red. Non-TOE components are in Blue. The Platform is the hardware, firmware, and software onto which the VS is 
 				installed. The VMM includes the Hypervisor, Service VMs, and VM containers, but not the software that runs inside
-				Guest VMs or Helper VMs. The Management Subsystem is part of the TOE, but may or may not be part of the VMM. 
+				guest VMs or Helper VMs. The Management Subsystem is part of the TOE, but may or may not be part of the VMM. 
 				<h:p/>
 
 				<figure entity="images/figure1.png" title="Virtualization System and Platform " id="vsplatform"/><h:br/><h:br/>
@@ -402,7 +402,7 @@
                     <addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
                     <addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
                     <addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-                    <addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that Hypercall parameters be validated.</rationale>
+                    <addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that hypercall parameters be validated.</rationale>
                     <addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
                     <addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                      <addressed-by>FCS_RBG.2 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from an external source.</rationale>
@@ -445,8 +445,8 @@
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                     <addressed-by>FTP_UIF_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that users are able to determine the domain with the current input focus.</rationale>
 					<addressed-by>FTP_UIF_EXT.2</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that users can know the identity of any VM that they can access.</rationale>
-                    <addressed-by>FPT_GVI_EXT.1 (optional)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE support Guest VM measurements and integrity checks (optional).</rationale>
-                    <addressed-by>FPT_INT_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE support introspection into Guest VMs (optional).</rationale>
+                    <addressed-by>FPT_GVI_EXT.1 (optional)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE support guest VM measurements and integrity checks (optional).</rationale>
+                    <addressed-by>FPT_INT_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE support introspection into guest VMs (optional).</rationale>
                     <addressed-by>FCS_RBG.2 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from an external source.</rationale>
                     <addressed-by>FCS_RBG.3 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from a single internal source.</rationale>
                     <addressed-by>FCS_RBG.4 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from multiple internal sources.</rationale>
@@ -487,7 +487,7 @@
                     <addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that VMs cannot access virtual devices that they are not configured to access.</rationale>
                     <addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
                     <addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-                    <addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that Hypercall parameters be validated.</rationale>
+                    <addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that hypercall parameters be validated.</rationale>
                     <addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
                     <addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                     <addressed-by>FPT_ML_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
@@ -514,11 +514,11 @@
                     <addressed-by>FCS_COP.1/Sig</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of cryptographic signature services.</rationale>
                     <addressed-by>FCS_COP.1/UDE</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of encryption and decryption.</rationale>
                     <addressed-by>FCS_RBG.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
-                    <addressed-by>FIA_AFL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE detect failed authentication attempts for Administrator access.</rationale>
-                    <addressed-by>FIA_UAU.5</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that strong mechanisms are used for Administrator authentication.</rationale>
-                    <addressed-by>FIA_UIA_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that Administrators be successfully authenticated before performing management functions.</rationale>
+                    <addressed-by>FIA_AFL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE detect failed authentication attempts for administrator access.</rationale>
+                    <addressed-by>FIA_UAU.5</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that strong mechanisms are used for administrator authentication.</rationale>
+                    <addressed-by>FIA_UIA_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that administrators be successfully authenticated before performing management functions.</rationale>
                     <addressed-by>FMT_SMO_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE support having separate management and operational networks.</rationale>
-                    <addressed-by>FTA_TAB.1</addressed-by><rationale>This threat is mitigated by this SFR by displays advisory notice and consent warning message regarding use of the TOE to Administrators.</rationale>
+                    <addressed-by>FTA_TAB.1</addressed-by><rationale>This threat is mitigated by this SFR by displays advisory notice and consent warning message regarding use of the TOE to administrators.</rationale>
                     <addressed-by>FTP_ITC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that trusted communications channels are implemented using good cryptography.</rationale>
                     <addressed-by>FCS_HTTPS_EXT.1 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that HTTPS trusted communications channels are implemented properly.</rationale>
                     <addressed-by>FCS_IPSEC_EXT.1 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that IPsec trusted communications channels are implemented properly.</rationale>
@@ -542,7 +542,7 @@
 			             System components.
                     </description>
 						<addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report potential integrity breaches and attempts.</rationale>
-						<addressed-by>FAU_SAR.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for Administrator review of audit records.</rationale>
+						<addressed-by>FAU_SAR.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for administrator review of audit records.</rationale>
 						<addressed-by>FAU_STG.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for protected transmission of audit records off the TOE.</rationale>
 						<addressed-by>FAU_STG.2</addressed-by><rationale>This threat is mitigated by this SFR by requiring protection of stored audit records.</rationale>
                         <addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
@@ -556,7 +556,7 @@
 						<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
 						<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
 						<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-						<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that Hypercall parameters be validated.</rationale>
+						<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that hypercall parameters be validated.</rationale>
 						<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale> 
 						<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                         <addressed-by>FAU_ARP.1 (optional)</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for automatic responses to audit events (optional).</rationale>
@@ -588,7 +588,7 @@
 					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
 					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that Hypercall parameters be validated.</rationale>
+					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that hypercall parameters be validated.</rationale>
 					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                     <addressed-by>FPT_DDI_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
@@ -655,7 +655,7 @@
 					<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that VMs can access only those virtual devices that they are configured to access.</rationale>
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
 					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that Hypercall parameters be validated.</rationale>
+					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that hypercall parameters be validated.</rationale>
 					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                     <addressed-by>FPT_DDI_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
@@ -674,7 +674,7 @@
 			             of the number of bits of noise in the entropy pool. From this entropy pool random numbers are created.
 			             Good random numbers are essential to implementing strong cryptography. Cryptography implemented using
 			             poor random numbers can be defeated by a sophisticated adversary. Such defeat can result in the compromise
-			             of Guest VM data and credentials, and of VS data and credentials, and can enable unauthorized access 
+			             of guest VM data and credentials, and of VS data and credentials, and can enable unauthorized access 
 			             to the VS or VMs.
                     </description>
                     <addressed-by>FCS_ENT_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that domains have access to high-quality entropy for cryptographic purposes.</rationale>
@@ -719,7 +719,7 @@
                 </assumption>
                 
                 <assumption name="A.TRUSTED_ADMIN">
-                    <description>TOE Administrators are trusted to follow and apply all administrator guidance.</description>
+                    <description>TOE administrators are trusted to follow and apply all administrator guidance.</description>
                     <objective-refer ref="OE.TRUSTED_ADMIN">
                         <rationale>Providing guidance to administrators and ensuring that individuals are properly trained and vetted before being given administrative responsibilities will ensure that they are trusted.</rationale>
                     </objective-refer>
@@ -755,7 +755,7 @@
                     </description>
                 </SOE>
                 <SOE name="OE.TRUSTED_ADMIN">
-                    <description>TOE Administrators are trusted to follow and apply all administrator guidance in a trusted manner.
+                    <description>TOE administrators are trusted to follow and apply all administrator guidance in a trusted manner.
                     </description>
                 </SOE>
                 
@@ -775,7 +775,7 @@
 		
 			<!-- 5.1.1 Auditable Events for Mandatory SFRs -->
 			<section id="ss-audit-table" title="Auditable Events for Mandatory SFRs">
-				<audit-table id="t.audit-mandatory" table="mandatory"/>
+				<audit-table id="t-audit-mandatory" table="mandatory"/>
 			</section>
 
 			<!-- 5.1.2 Security Audit (FAU) -->
@@ -969,11 +969,11 @@
                 <!-- FAU_SAR.1 -->
                 <f-component cc-id="fau_sar.1" name="Audit Review">
                     <f-element id="fau-sar-1e1">
-			    <title>The TSF shall provide [<h:i>administrators</h:i>] with the capability to read [<h:i>all information</h:i>] from the audit <h:b>data</h:b>.
+			    <title>The TSF shall provide [<h:i>administrators</h:i>] with the capability to read [<h:i>all information</h:i>] from the audit data.
                         </title>
                     </f-element>
                     <f-element id="fau-sar-1e2">
-                        <title>The TSF shall provide the audit <h:b>data</h:b> in a manner suitable for the user to interpret the information.
+                        <title>The TSF shall provide the audit data in a manner suitable for the user to interpret the information.
                         </title>
                         <aactivity>
                             <TSS/>
@@ -1049,7 +1049,7 @@
                 </f-component>
                 <f-component cc-id="fau_stg.2" name="Protected Audit Trail Storage">
                     <f-element id="fau-stg-2e1">
-                        <title>The TSF shall protect the stored audit <h:b>data</h:b> in the audit trail from unauthorized deletion.
+                        <title>The TSF shall protect the stored audit data in the audit trail from unauthorized deletion.
                         </title>
                     </f-element> 
                     <f-element id="fau-stg-2e2">
@@ -1069,11 +1069,11 @@
                             <Tests>
 								The evaluator shall perform the following tests:
                                 <testlist>
-                                    <test>The evaluator shall access the audit trail as an unauthorized Administrator and attempt 
+                                    <test>The evaluator shall access the audit trail as an unauthorized administrator and attempt 
                                         to modify and delete the audit records. The evaluator shall verify that these attempts 
                                         fail.
                                     </test>
-                                    <test>The evaluator shall access the audit trail as an authorized Administrator and attempt 
+                                    <test>The evaluator shall access the audit trail as an authorized administrator and attempt 
                                         to delete the audit records. The evaluator shall verify that these attempts succeed. 
                                         The evaluator shall verify that only the records authorized for deletion are deleted.
                                     </test>
@@ -1085,7 +1085,7 @@
                 </f-component>
 				<f-component cc-id="fau_stg.5" name="Prevention of Audit Data Loss">
 				<f-element id="fau-stg-5e1">
-                        <title>The TSF shall <selectables><selectable><h:b>ignore</h:b> audited events</selectable><selectable>ignore audited events</selectable><selectable>“prevent audited events, except those taken by the authorized user with special rights”</selectable><selectable>overwrite the oldest stored audit records</selectable></selectables>, <assignable>other actions to be taken in case of audit storage failure and conditions for the actions</assignable> if the audit data storage is full.</title>
+                        <title>The TSF shall <selectables><selectable>ignore audited events</selectable><selectable>“prevent audited events, except those taken by the authorized user with special rights”</selectable><selectable>overwrite the oldest stored audit records</selectable></selectables>, <assignable>other actions to be taken in case of audit storage failure and conditions for the actions</assignable> if the audit data storage is full.</title>
                         <note role="application">An external log server, if available, might be used as alternative storage space
 							in case the local storage space is full. An ‘other action’ could be defined in this case as ‘send the
 							new audit data to an external IT entity’.
@@ -1126,7 +1126,7 @@
 			    <ext-comp-def title="HTTPS Protocol" fam-id="FCS_HTTPS_EXT">
 					<fam-behavior>
 						This family defines requirements for protecting remote management sessions between the TOE and a 
-						Security Administrator. This family describes how HTTPS will be implemented.
+						security administrator. This family describes how HTTPS will be implemented.
 					</fam-behavior>
 				</ext-comp-def>
 			    <ext-comp-def title="IPsec Protocol" fam-id="FCS_IPSEC_EXT">
@@ -1146,7 +1146,7 @@
                                     RSA schemes using cryptographic key sizes [3072-bit or greater] that meet the following: [FIPS PUB 186-5, “Digital Signature Standard (DSS)”, Appendix B.3]
                                 </selectable>
                                 <selectable>
-                                    ECC schemes using [“NIST curves” P-384, and
+                                    ECC schemes using [“NIST curves” P-384,] and
                                     <selectables>
                                         <selectable>P-521</selectable>
                                         <selectable exclusive="yes">no other curves</selectable>
@@ -1373,10 +1373,10 @@
 					<dependencies>[FCS_CKM.1 Cryptographic Key Generation, or<h:p/>
 								FCS_CKM.2 Cryptographic Key Distribution]</dependencies>
                     <f-element id="fcs-ckm-6e1">
-                        <title>The TSF shall <h:b>destroy <assignable>list of cryptographic keys (including keying material)</assignable> when <selectables>
+                        <title>The TSF shall destroy <assignable>list of cryptographic keys (including keying material)</assignable> when <selectables>
 							<selectable>no longer needed</selectable>
 							<selectable><assignable>other circumstances for key or keying material destruction</assignable></selectable>
-						</selectables></h:b> 
+						</selectables> 
                         </title>
                         <note role="application">The threat addressed by this element is the recovery of disused cryptographic keys
 							from volatile memory by unauthorized processes.<h:p/>
@@ -1401,13 +1401,13 @@
                             Likewise, if keys reside in memory within the execution context of a third-party module, then the 
 							TOE should take whatever feasible actions it can to cause the keys to be destroyed.<h:p/>
                             Cryptographic keys in non-TOE volatile memory are not covered by this requirement. This expressly includes 
-							keys created and used by Guest VMs. The Guest is responsible for disposing of such keys.
+							keys created and used by guest VMs. The Guest is responsible for disposing of such keys.
 						</note>
                     </f-element>
                     <f-element id="fcs-ckm-6e2">
-                        <title>The TSF shall <h:b>destroy cryptographic keys and keying material specified by FCS_CKM.6.1 in
+                        <title>The TSF shall destroy cryptographic keys and keying material specified by FCS_CKM.6.1 in
 							accordance with a specified cryptographic key destruction method <assignable>cryptographic key destruction method</assignable> that meets the following: <assignable> list of standards</assignable>.
-							</h:b>
+							
                         </title>
                         <note role="application">
                             The ultimate goal of this element is to ensure that disused cryptographic keys are inaccessible not only
@@ -1482,7 +1482,7 @@
 				<selectable id="sel-hash-sha-3-256">SHA-3-256</selectable>
 				<selectable id="sel-hash-sha-3-384">SHA-3-384</selectable>
 				<selectable id="sel-hash-sha-3-512">SHA-3-512</selectable>		    
-                            </selectables> and message <h:b>key</h:b> sizes
+                            </selectables> and <h:b>message</h:b> key sizes
                             <selectables>
                                 <selectable>160</selectable>
 <!-- Is this a thing?		<selectable>224</selectable>    -->
@@ -1639,12 +1639,12 @@
 				<selectable id="sel-hmac-sha-3-512">SHA-3-512</selectable>		    
 			    </selectables>
                             and cryptographic key sizes
-                            <assignable>key size (in bits) used in HMAC</assignable> and message digest sizes
+                            <assignable>key size (in bits) used in HMAC</assignable> <h:b>and message digest sizes
                             <selectables>
     
                                 <selectable>384 bits</selectable>
                                 <selectable>512 bits</selectable>
-                            </selectables>
+                            </selectables></h:b>
                             that meet the following:
                             [<h:i>FIPS Pub 198-1, "The Keyed-Hash Message Authentication Code," and FIPS Pub 180-4, “Secure Hash
 							Standard"</h:i>].
@@ -1704,7 +1704,8 @@
                             <selectables linebreak="yes">
                                 <selectable id="sel-sig-rsa">RSA schemes using cryptographic key sizes [3072-bit or greater] that meet
 									the following: [<h:i>FIPS PUB 186-5, “Digital Signature Standard (DSS)”, Section 4</h:i>]</selectable>
-                                <selectable id="sel-sig-ecdsa">ECDSA schemes using <h:b>cryptographic key sizes</h:b>[<h:i>P-384 and
+                                <selectable id="sel-sig-ecdsa">ECDSA schemes using cryptographic key
+                                    sizes [<h:i>P-384 and
                                     <selectables>
                                         <selectable>P-521</selectable>
                                         <selectable exclusive="yes">no other curves</selectable>
@@ -1781,7 +1782,8 @@
                                 <selectable id="sel-ude-aes-cbc">AES-CBC (as defined in FIPS PUB 197, and NIST SP 800-38A) mode</selectable>
 								<selectable id="sel-ude-aes-ctr">AES-CTR (as defined in NIST SP 800-38A) mode</selectable>
 							</selectables>
-                            and cryptographic key sizes [<h:i>384-bit key sizes</h:i>]. 
+                            and cryptographic key sizes [<h:i>384-bit key sizes</h:i>]. <h:s>that
+                                meet the following <assignable>list of standards</assignable></h:s> 
                         </title>
                         <note role="application">For the first selection of FCS_COP.1.1/UDE, the ST author should choose the mode or
 							modes in which AES operates. For the second selection, the ST author should choose the key sizes that
@@ -2141,10 +2143,10 @@
                             This requirement ensures that sufficient entropy is available to any VM that requires it. The entropy 
 							need not provide high-quality entropy for every possible method that a VM might acquire it. The VMM
 							must, however, provide some means for VMs to get sufficient entropy. For example, the VMM can
-							provide an interface that returns entropy to a Guest VM. Alternatively, the VMM could provide 
+							provide an interface that returns entropy to a guest VM. Alternatively, the VMM could provide 
 							pass-through access to entropy sources provided by the host platform.<h:p/>
                             This requirement allows for three general ways of providing entropy to guests: 1) The VS can provide a 
-							Hypercall accessible to VM-aware guests, 2) access to a virtualized device that provides entropy, or 
+							hypercall accessible to VM-aware guests, 2) access to a virtualized device that provides entropy, or 
 							3) pass-through access to a hardware entropy source (including a source of random numbers). In all 
 							cases, it is possible that the guest is made VM-aware through installation of software or drivers.
 							For the second and third cases, it is possible that the guest could be VM-unaware. There is no
@@ -2152,20 +2154,20 @@
 							does not have to anticipate every way a guest might try to acquire entropy as long as it supplies a
 							mechanism that can be used by VM-aware guests, or provides access to a standard mechanism that a 
 							VM-unaware guest would use.<h:p/>
-                            The ST author should select “Hypercall interface” if the TSF provides an API function through which 
+                            The ST author should select “hypercall interface” if the TSF provides an API function through which 
 							guest-resident software can obtain entropy or random numbers. The ST author should select 
 							“virtual device interface” if the TSF presents a virtual device interface to the Guest OS through
 							which it can obtain entropy or random numbers. Such an interface could present a virtualized real
 							device, such as a TPM, that can be accessed by VM-unaware guests, or a virtualized fictional device
 							that would require the Guest OS to be VM-aware. The ST author should select “pass-through access to 
-							hardware entropy source” if the TSF permits Guest VMs to have direct access to hardware entropy or
+							hardware entropy source” if the TSF permits guest VMs to have direct access to hardware entropy or
 							random number source on the platform. The ST author should select all items that are appropriate.<h:p/>
                             For FCS_ENT_EXT.1.2, the VMM must ensure that the provision of entropy to one VM cannot affect the quality
 							of entropy provided to another VM on the same platform.
                         </note>
                          <aactivity>
                             <TSS>
-                                The evaluator shall verify that the TSS describes how the TOE provides entropy to Guest VMs, and
+                                The evaluator shall verify that the TSS describes how the TOE provides entropy to guest VMs, and
 								how to access the interface to acquire entropy or random numbers. The evaluator shall verify that
 								the TSS describes the mechanisms for ensuring that one VM does not affect the entropy acquired by 
 								another. 
@@ -2175,7 +2177,7 @@
                                The evaluator shall perform the following tests:
                                <testlist>
                                  <test>
-                                     The evaluator shall invoke entropy from each Guest VM. The evaluator shall 
+                                     The evaluator shall invoke entropy from each guest VM. The evaluator shall 
                                      verify that each VM acquires values from the interface.
                                  </test>
                                  <test>The evaluator shall invoke entropy from multiple VMs as nearly 
@@ -2344,7 +2346,7 @@
 				established SA. <h:p/>
                             </TSS>
                             <Guidance>
-                                The evaluator shall examine the operational guidance to verify it instructs the Administrator how 
+                                The evaluator shall examine the operational guidance to verify it instructs the administrator how 
                                 to construct entries into the SPD that specify a rule for processing a packet. The description 
                                 includes all three cases – a rule that ensures packets are encrypted/decrypted, dropped, and 
                                 flow through the TOE without being encrypted. The evaluator shall determine 
@@ -2597,7 +2599,7 @@
 				<selectables>
 					<selectable>IKEv2 SA lifetimes can be configured by
 						<selectables>
-							<selectable>an Administrator</selectable>
+							<selectable>an administrator</selectable>
 							<selectable>a VPN Gateway</selectable>
 						</selectables> based on 
 						<selectables>
@@ -2607,7 +2609,7 @@
 					</selectable>
 					<selectable>IKEv1 SA lifetimes can be configured by 
 						<selectables>
-							<selectable>an Administrator</selectable>
+							<selectable>an administrator</selectable>
 							<selectable>a VPN Gateway</selectable>
 						</selectables> based on 
 						<selectables>
@@ -2637,7 +2639,7 @@
 				the appropriate selection to indicate which type of lifetime limits are supported.<h:p/>
 				The ST author chooses either the IKEv1 requirements or IKEv2 requirements (or
 				both, depending on the selection in FCS_IPSEC_EXT.1.5. The IKEv1 requirement
-				can be accomplished either by providing Authorized Administrator-configurable
+				can be accomplished either by providing Authorized administrator-configurable
 				lifetimes (with appropriate instructions in documents mandated by AGD_OPE),
 				or by “hard coding” the limits in the implementation. For IKEv2, there are no
 				hard-coded limits, but in this case it is required that an administrator be able to
@@ -2655,7 +2657,7 @@
                             <Guidance>
                                The evaluator shall check the operational guidance to ensure it provides instructions on how the TOE
 				configures the values for SA lifetimes. In addition, the evaluator shall check that the guidance has the
-				option for either the Administrator or VPN Gateway to configure Phase 1 SAs if time-based limits are
+				option for either the administrator or VPN Gateway to configure Phase 1 SAs if time-based limits are
 				supported. Currently there are no values mandated for the number of packets or number of bytes, the
 				evaluator shall simply check the operational guidance to ensure that this can be configured if selected in
 				the requirement.
@@ -2808,7 +2810,7 @@
 				generated and established.<h:p/>
 				The evaluator ensures the operational guidance describes how to set up the TOE to use the cryptographic
 				algorithms RSA or ECDSA (as selected).<h:p/>
-				In order to construct the environment and configure the TOE for the following tests, the evaluator will
+				In order to construct the environment and configure the TOE for the following tests, the evaluator shall
 				ensure that the operational guidance also describes how to configure the TOE to connect to a trusted CA,
 				and ensure a valid certificate for that CA is loaded into the TOE as a trusted CA.<h:p/>
 				The evaluator shall also ensure that the operational guidance includes the configuration of the reference
@@ -2948,7 +2950,7 @@
 			</title>
                         <note role="application">
 				If this functionality is configurable, the TSF may be configured by a VPN Gateway
-				or by an Administrator of the TOE itself.<h:p/>
+				or by an administrator of the TOE itself.<h:p/>
 				The ST author chooses either or both of the IKE selections based on what is
 				implemented by the TOE. Obviously, the IKE versions chosen should be
 				consistent not only in this element, but with other choices for other elements in
@@ -3008,24 +3010,23 @@
 					<dependencies/>
 					<f-element id="fcs-rbg-1e1">
                     <title>
-						The TSF shall perform deterministic random bit generation services <h:b>using 
+						The TSF shall perform deterministic random bit generation services using 
 						<selectables linebreak="yes">
 						  <selectable>Hash_DRBG (any)</selectable>
 						  <selectable>HMAC_DRBG (any)</selectable>
 						  <selectable>CTR_DRBG (AES)</selectable>
 						</selectables>
-						in accordance
-						with [<h:i>NIST SP 800-90A</h:i>] after initialization with a seed. </h:b>             
+						in accordance with [<h:i>NIST SP 800-90A</h:i>] after initialization with a seed.              
 					  </title>
                     </f-element>
                     <f-element id="fcs-rbg-1e2">
                         <title>
-							<h:b>The TSF shall use a <selectables>
+							The TSF shall use a <selectables>
 							  <selectable id="internal-seed">TSF noise source <assignable>name of noise source</assignable></selectable>
 							  <selectable id="internal-seeds"><h:b>multiple TSF noise sources <assignable>names of noise sources</assignable></h:b></selectable>
 							  <selectable id="external-seed">TSF interface for seeding</selectable>
 							</selectables>
-							for initialized seeding.</h:b>
+							for initialized seeding.
 						  </title>
 						  <note role="application">
 							<h:p>
@@ -3046,18 +3047,19 @@
 						</f-element>
 					<f-element id="fcs-rbg-1e3">
 						<title>
-							<h:b>The TSF shall update the RBG state by <selectables>
+							The TSF shall update the RBG state by <selectables>
 							  <selectable>reseeding</selectable>
 							  <selectable>uninstantiating and reinstantiating</selectable>
 							</selectables> using a <selectables>
 							  <selectable>TSF noise source <assignable>name of noise source</assignable></selectable>
 							  <selectable>TSF interface for seeding</selectable></selectables>
 							in the following situations: <selectables linebreak="yes">
+							  <selectable>never</selectable>
 							  <selectable>on demand</selectable>
 							  <selectable>on the condition: <assignable>condition</assignable></selectable>
 							  <selectable>after <assignable>time</assignable></selectable>
 							</selectables>
-							in accordance with <assignable>list of standards</assignable>.</h:b>
+							in accordance with <assignable>list of standards</assignable>.
 						  </title>
 					
                         <aactivity>
@@ -3191,30 +3193,30 @@
             <sec:User_Data_Protection title="User Data Protection (FDP)">
 			
 			    <ext-comp-def title="Hardware-Based Isolation Mechanisms" fam-id="FDP_HBI_EXT">
-					<fam-behavior>This family defines requirements for isolation of Guest VMs from the hardware resources
-						of the physical device on which the Guest VMs are deployed.</fam-behavior>
+					<fam-behavior>This family defines requirements for isolation of guest VMs from the hardware resources
+						of the physical device on which the guest VMs are deployed.</fam-behavior>
 				</ext-comp-def>
 			    <ext-comp-def title="Physical Platform Resource Controls" fam-id="FDP_PPR_EXT">
 					<fam-behavior>This family defines requirements for the physical resources that
-						the TOE will allow or prohibit Guest VMs to access.</fam-behavior>
+						the TOE will allow or prohibit guest VMs to access.</fam-behavior>
 				</ext-comp-def>
 			    <ext-comp-def title="Residual Information in Memory" fam-id="FDP_RIP_EXT">
-					<fam-behavior>This family defines requirements for ensuring that allocation of data to a Guest VM 
+					<fam-behavior>This family defines requirements for ensuring that allocation of data to a guest VM 
 						does not cause a disclosure of residual data from a previous VM.</fam-behavior>
 				</ext-comp-def>
 			    <ext-comp-def title="VM Separation" fam-id="FDP_VMS_EXT">
-					<fam-behavior>This family defines requirements for the logical separation of multiple Guest VMs
+					<fam-behavior>This family defines requirements for the logical separation of multiple guest VMs
 						that are managed by the same Virtualization System.</fam-behavior>
 				</ext-comp-def>
 			    <ext-comp-def title="Virtual Networking Components" fam-id="FDP_VNC_EXT">
 					<fam-behavior>This family defines requirements for configuration of virtual networking
-						between Guest VMs that are managed by the Virtualization System.</fam-behavior>
+						between guest VMs that are managed by the Virtualization System.</fam-behavior>
 				</ext-comp-def>
 
                 <!-- FDP_HBI_EXT.1 -->
                 <f-component cc-id="fdp_hbi_ext.1" name="Hardware-Based Isolation Mechanisms">
 					<consistency-rationale/>
-					<comp-lev>requires the TSF to identify the mechanisms used to isolate Guest VMs from platform
+					<comp-lev>requires the TSF to identify the mechanisms used to isolate guest VMs from platform
 						hardware resources.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
@@ -3224,10 +3226,10 @@
                             <selectables>
                                 <selectable exclusive="yes">no mechanism</selectable>
                                 <selectable><assignable>list of platform-provided, hardware-based mechanisms</assignable></selectable>
-                            </selectables> to constrain a Guest VM's direct access to the following physical devices:
+                            </selectables> to constrain a guest VM's direct access to the following physical devices:
                             <selectables>
                                 <selectable exclusive="yes">no devices</selectable>
-                                <selectable><assignable> physical devices to which the VMM allows Guest VMs physical access</assignable></selectable>
+                                <selectable><assignable> physical devices to which the VMM allows guest VMs physical access</assignable></selectable>
                             </selectables>.                        
                         </title>
                         <note role="application">The TSF must use available hardware-based isolation mechanisms to constrain VMs
@@ -3254,7 +3256,7 @@
                 <!-- FDP_PPR_EXT.1 -->
                 <f-component cc-id="fdp_ppr_ext.1" name="Physical Platform Resource Controls">
 					<consistency-rationale/>
-					<comp-lev>requires the TSF to define the hardware resources that Guest VMs may always access, may never access,
+					<comp-lev>requires the TSF to define the hardware resources that guest VMs may always access, may never access,
 						and may conditionally access based on administrative configuration.</comp-lev>
 					<management>The following actions could be considered for the management functions in FMT:
 						<h:ol type="a">
@@ -3272,13 +3274,13 @@
 					<dependencies>FDP_HBI_EXT.1 Hardware-Based Isolation Mechanisms<h:p/>
 							FMT_SMR.1 Security Roles</dependencies>
                     <f-element id="fdp-ppr-ext-1e1">
-                        <title>The TSF shall allow an authorized administrator to control Guest VM access to the following physical
+                        <title>The TSF shall allow an authorized administrator to control guest VM access to the following physical
 							platform resources: <assignable>list of physical platform resources the VMM is
 							able to control access to</assignable>.
                         </title>
                     </f-element>
                     <f-element id="fdp-ppr-ext-1e2">
-                        <title>The TSF shall explicitly deny all Guest VMs access to the following physical platform resources:
+                        <title>The TSF shall explicitly deny all guest VMs access to the following physical platform resources:
                             <selectables>
                                 <selectable exclusive="yes">no physical platform resources</selectable>
                                 <selectable><assignable>list of physical platform resources to which access is explicitly denied</assignable></selectable>
@@ -3286,7 +3288,7 @@
                         </title>
                     </f-element>
                     <f-element id="fdp-ppr-ext-1e3">
-                        <title>The TSF shall explicitly allow all Guest VMs access to the following physical platform resources:
+                        <title>The TSF shall explicitly allow all guest VMs access to the following physical platform resources:
                             <selectables>
                                 <selectable exclusive="yes">no physical platform resources</selectable>
                                 <selectable><assignable>list of physical platform resources to which access is always allowed</assignable></selectable>
@@ -3294,33 +3296,32 @@
                         </title>
                         <note role="application">
 				For purposes of this requirement, physical platform resources are divided into three categories: 
-				<h:ol a="1">
+				<h:ul>
 					<h:li>those to which Guest OS access is configurable and moderated by the VMM</h:li>
 					<h:li>those to which the Guest OS is never allowed to have direct access, and</h:li>
 					<h:li>those to which the Guest OS is always allowed to have direct access.</h:li>
-				</h:ol>
-                            	For element 1, the ST author lists the physical platform resources that can be configured for Guest VM access by 
+				</h:ul>
+                            	For element 1, the ST author lists the physical platform resources that can be configured for guest VM access by 
 				an administrator. For element 2, the ST author lists the physical platform resources to which 
-				Guest VMs may never be allowed direct access. If there are no such resources, the ST author selects "no physical platform 
-				resources." Likewise, any resources to which all Guest VMs automatically have access to are to be listed in 
+				guest VMs may never be allowed direct access. If there are no such resources, the ST author selects "no physical platform 
+				resources." Likewise, any resources to which all guest VMs automatically have access to are to be listed in 
 				the third element. If there are no such resources, then "no physical platform resources" is selected.
                         </note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall examine the TSS to determine that it describes the mechanism by which the VMM controls a Guest VM's access to
+                                The evaluator shall examine the TSS to determine that it describes the mechanism by which the VMM controls a guest VM's access to
                                 physical platform resources. This description shall cover all of the physical
-                                platforms allowed in the evaluated configuration by the ST. It should explain how the VMM distinguishes among Guest VMs, and 
+                                platforms allowed in the evaluated configuration by the ST. It should explain how the VMM distinguishes among guest VMs, and 
                                 how each physical platform resource that is controllable (that is, listed in the assignment
-                                statement in the first element) is identified to an Administrator.<h:p/> 
-				The evaluator shall ensure that the TSS describes how the Guest VM is associated with each 
-                                physical resource, and how other Guest VMs cannot access a physical resource
+                                statement in the first element) is identified to an administrator.<h:p/> 
+				The evaluator shall ensure that the TSS describes how the guest VM is associated with each 
+                                physical resource, and how other guest VMs cannot access a physical resource
                                 without being granted explicit access. For TOEs that implement a robust 
                                 interface (other than just "allow access" or "deny access"), the evaluator shall ensure that the
-                                TSS describes the possible operations or modes of access between a Guest 
-                                VM's and physical platform resources.<h:p/>
+                                TSS describes the possible operations or modes of access between a guest VM's and physical platform resources.<h:p/>
                                 If physical resources are listed in the second element, the evaluator shall examine the 
                                 TSS and operational guidance to determine that there appears to be no way to
-                                configure those resources for access by a Guest VM. The evaluator shall
+                                configure those resources for access by a guest VM. The evaluator shall
                                 document in the evaluation report their analysis of why the controls offered to configure access
                                 to physical resources can't be used to specify access to the resources identified in the second 
                                 element (for example, if the interface offers a drop-down list of resources to assign, and the
@@ -3329,8 +3330,7 @@
                             </TSS>
                             <Guidance>
                                 The evaluator shall examine the operational guidance to determine that it describes how an 
-                                administrator is able to configure access to physical platform resources for Guest 
-                                VMs for each platform allowed in the evaluated configuration according to the 
+                                administrator is able to configure access to physical platform resources for guest VMs for each platform allowed in the evaluated configuration according to the 
                                 ST. The evaluator shall also determine that the operational guidance identifies
                                 those resources listed in the second and third elements of the component and notes that access to 
                                 these resources is explicitly denied/allowed, respectively.
@@ -3339,22 +3339,22 @@
                                 Using the operational guidance, the evaluator shall perform the following tests for each physical platform identified in the ST:<h:p/>
                                <testlist>
                                     <test>For each physical platform resource identified in the first element, the evaluator shall
-										configure a Guest VM to have access to that resource and show that the Guest VM is able to
+										configure a guest VM to have access to that resource and show that the guest VM is able to
 										successfully access that resource.</test>
                                     <test>For each physical platform resource identified in the first element, the evaluator shall
-										configure the system such that a Guest VM does not have access to that resource and show
-										that the Guest VM is unable to successfully access that resource.</test>
+										configure the system such that a guest VM does not have access to that resource and show
+										that the guest VM is unable to successfully access that resource.</test>
                                     <test>[conditional]: For TOEs that have a robust control interface, the evaluator shall exercise 
 										each element of the interface as described in the TSS and the operational guidance to
 										ensure that the behavior described in the operational guidance is exhibited.</test>
                                     <test>[conditional]: If the TOE explicitly denies access to certain physical resources, the
 										evaluator shall attempt to access each listed (in FDP_PPR_EXT.1.2) physical resource 
-										from a Guest VM and observe that access is denied.</test>
+										from a guest VM and observe that access is denied.</test>
                                     <test>[conditional]: If the TOE explicitly allows access to certain physical resources, the 
 										evaluator shall attempt to access each listed (in FDP_PPR_EXT.1.3) physical resource 
-										from a Guest VM and observe that the access is allowed. If the operational guidance
-										specifies that access is allowed simultaneously by more than one Guest VM, the evaluator
-										shall attempt to access each resource listed from more than one Guest VM and show that
+										from a guest VM and observe that the access is allowed. If the operational guidance
+										specifies that access is allowed simultaneously by more than one guest VM, the evaluator
+										shall attempt to access each resource listed from more than one guest VM and show that
 										access is allowed.</test>
                                 </testlist>
                             </Tests>
@@ -3377,13 +3377,13 @@
                 <f-component cc-id="fdp_rip_ext.1" name="Residual Information in Memory">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to ensure that physical memory is cleared to zeros prior to its allocation to a
-						Guest VM.</comp-lev>
+						guest VM.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
 					<dependencies>No dependencies.</dependencies>
                     <f-element id="fdp-rip-ext-1e1">
                         <title>The TSF shall ensure that any previous information content of physical memory is cleared prior to 
-							allocation to a Guest VM.
+							allocation to a guest VM.
                         </title>
                         <note role="application">Physical memory must be zeroed before it is made accessible to a VM for general use
 							by a Guest OS. <h:p/>
@@ -3397,10 +3397,10 @@
                         <aactivity>
                             <TSS>
                                 The evaluator shall ensure that the TSS documents the process used for clearing
-                                physical memory prior to allocation to a Guest VM, providing details on when 
+                                physical memory prior to allocation to a guest VM, providing details on when 
                                 and how this is performed. Additionally, the evaluator shall ensure that the TSS
                                 documents the conditions under which physical memory is not cleared prior to allocation to a
-                                Guest VM, and describes when and how the memory is cleared.
+                                guest VM, and describes when and how the memory is cleared.
                             </TSS>
 							<Guidance/>
 							<Tests/>
@@ -3413,13 +3413,13 @@
                 <f-component cc-id="fdp_rip_ext.2" name="Residual Information on Disk">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to ensure that physical disk storage is cleared upon 
-						allocation to a Guest VM.</comp-lev>
+						allocation to a guest VM.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
 					<dependencies>No dependencies.</dependencies>
                     <f-element id="fdp-rip-ext-2e1">
                         <title>The TSF shall ensure that any previous information content of physical disk storage is cleared to zeros upon
-							allocation to a Guest VM.
+							allocation to a guest VM.
                         </title>
                         <note role="application">
                             The purpose of this requirement is to ensure that a VM does not receive disk storage containing data
@@ -3430,7 +3430,7 @@
                         <aactivity>
                             <TSS>
                                 The evaluator shall ensure that the TSS documents how the TSF ensures that disk storage is zeroed upon allocation to 
-				    Guest VMs. Also, the TSS must document any conditions under which disk storage is not cleared prior to allocation to a Guest VM. 
+				    guest VMs. Also, the TSS must document any conditions under which disk storage is not cleared prior to allocation to a guest VM. 
 				    Any file system format and metadata information needed by the evaluator to perform the below test shall be made available
 				    to the evaluator, but need not be published in the TSS.
                             </TSS>
@@ -3443,8 +3443,8 @@
 					    storage device (or multiple files whose individual sizes add up to more than half the size of 
 					    the storage media).  This file (or files) shall be filled entirely with a non-zero value. 
 					    Then, the file (or files) shall be released (freed for use but not cleared).  Next, the 
-					    evaluator (as a VS Administrator) creates a virtual disk at least that large on the same
-					    physical storage device and connects it to a powered-off VM.  Then, from outside the Guest VM,
+					    evaluator (as a VS administrator) creates a virtual disk at least that large on the same
+					    physical storage device and connects it to a powered-off VM.  Then, from outside the guest VM,
 					    scan through and check that all the non-metadata (as documented in the TSS) in the file
 					    corresponding to that virtual disk is set to zero.
 					</test>
@@ -3458,7 +3458,7 @@
                 <!-- FDP_VMS_EXT.1 -->
                 <f-component cc-id="fdp_vms_ext.1" name="VM Separation">
 					<consistency-rationale/>
-					<comp-lev>requires the TSF to maintain logical separation between Guest VMs
+					<comp-lev>requires the TSF to maintain logical separation between guest VMs
 						except through the use of specific configurable methods.</comp-lev>
 					<management>The following actions could be considered for the management 
 						functions in FMT:
@@ -3469,7 +3469,7 @@
 					<audit>There are no auditable events foreseen.</audit>
 					<dependencies>No dependencies.</dependencies>
                     <f-element id="fdp-vms-ext-1e1">
-                        <title>The VS shall provide the following mechanisms for transferring data between Guest VMs:
+                        <title>The VS shall provide the following mechanisms for transferring data between guest VMs:
                             <selectables linebreak="yes">
                                 <selectable exclusive="yes">no mechanism</selectable>
                                 <selectable>virtual networking</selectable>
@@ -3478,15 +3478,15 @@
                         </title>
                     </f-element>
                     <f-element id="fdp-vms-ext-1e2">
-			<title>The TSF shall by default enforce a policy prohibiting sharing of data between Guest VMs.</title>
+			<title>The TSF shall by default enforce a policy prohibiting sharing of data between guest VMs.</title>
 		    </f-element>			
                     <f-element id="fdp-vms-ext-1e3">
-                        <title>The TSF shall allow Administrators to configure the mechanisms selected in FDP_VMS_EXT.1.1 to
-                            enable and disable the transfer of data between Guest VMs.
+                        <title>The TSF shall allow administrators to configure the mechanisms selected in FDP_VMS_EXT.1.1 to
+                            enable and disable the transfer of data between guest VMs.
                         </title>
                     </f-element>
                     <f-element id="fdp-vms-ext-1e4">
-                        <title>The VS shall ensure that no Guest VM is able to read or transfer data to or from another Guest VM except
+                        <title>The VS shall ensure that no guest VM is able to read or transfer data to or from another guest VM except
 							through the mechanisms listed in FDP_VMS_EXT.1.1.
                         </title>
                         <note role="application">
@@ -3495,16 +3495,16 @@
 							requirement is to ensure that VMs, VMMs, and the VS as a whole is implemented with 
 							this fundamental requirement in mind.<h:p/>
                             The ST author should select “no mechanism” in the unlikely event that the VS implements no mechanisms for
-							transferring data between Guest VMs. Otherwise, the ST author should select “virtual networking” 
-							and identify all other mechanisms through which data can be transferred between Guest VMs. <h:p/>
+							transferring data between guest VMs. Otherwise, the ST author should select “virtual networking” 
+							and identify all other mechanisms through which data can be transferred between guest VMs. <h:p/>
 							Examples of non-network inter-VM sharing mechanisms are:<h:p/>
                             <h:ul>
                                 <h:li>User interface-based mechanisms, such as copy-paste and drag-and-drop</h:li>
                                 <h:li>Shared virtual or physical devices</h:li>
-                                <h:li>API-based mechanisms such as Hypercalls</h:li>
+                                <h:li>API-based mechanisms such as hypercalls</h:li>
                             </h:ul>
-                            For data transfer mechanisms implemented in terms of Hypercall functions, FDP_VMS_EXT.1.3 is met if 
-							FPT_HCL_EXT.1.1 is met for those Hypercall functions (Hypercall function parameters are checked).<h:p/>
+                            For data transfer mechanisms implemented in terms of hypercall functions, FDP_VMS_EXT.1.3 is met if 
+							FPT_HCL_EXT.1.1 is met for those hypercall functions (hypercall function parameters are checked).<h:p/>
                             For data transfer mechanisms that use shared physical devices, FDP_VMS_EXT.1.3 is met if the device is 
 							listed in and meets FDP_PPR_EXT.1.1 (VM access to the physical device is configurable).<h:p/>
                             For data transfer mechanisms that use virtual networking, FDP_VMS_EXT.1.3 is met if FDP_VNC_EXT.1.1 
@@ -3535,9 +3535,9 @@
 								tested enabled, and the second with the inter-VM communications channel currently
 								being tested disabled.</h:li>
                                             <h:li>Test that communications cannot be passed between the VMs through the channel.</h:li>
-                                            <h:li>As an Administrator, enable inter-VM communications between the VMs on the second VM.</h:li>
+                                            <h:li>As an administrator, enable inter-VM communications between the VMs on the second VM.</h:li>
                                             <h:li>Test that communications can be passed through the inter-VM channel.</h:li>
-                                            <h:li>As an Administrator again, disable inter-VM communications between the two VMs.</h:li>
+                                            <h:li>As an administrator again, disable inter-VM communications between the two VMs.</h:li>
                                             <h:li>Test that communications can no longer be passed through the channel.</h:li>
                                         </h:ol>
 					FDP_VMS_EXT.1.2 is met if communication is unsuccessful in step (b).
@@ -3554,7 +3554,7 @@
                 <!-- FDP_VNC_EXT.1 -->
                 <f-component cc-id="fdp_vnc_ext.1" name="Virtual Networking Components">
 					<consistency-rationale/>
-					<comp-lev>requires the TSF to support the configuration of virtual networking between Guest VMs.</comp-lev>
+					<comp-lev>requires the TSF to support the configuration of virtual networking between guest VMs.</comp-lev>
 					<management>The following actions could be considered for the management
 						functions in FMT:
 						<h:ol type="a">
@@ -3574,25 +3574,26 @@
 					<dependencies>FDP_VMS_EXT.1 VM Separation<h:p/>
 						FMT_SMR.1 Security Roles</dependencies>
                     <f-element id="fdp-vnc-ext-1e1">
-                        <title>The TSF shall allow Administrators to configure virtual networking components to connect VMs to each
+                        <title>The TSF shall allow administrators to configure virtual networking components to connect VMs to each
 							other and to physical networks.
                         </title>
                     </f-element>
                     <f-element id="fdp-vnc-ext-1e2">
-                        <title>The TSF shall ensure that network traffic visible to a Guest VM on a virtual network--or virtual 
-							segment of a physical network--is visible only to Guest VMs configured to be on that virtual network
+                        <title>The TSF shall ensure that network traffic visible to a guest VM on a
+                            virtual network–or virtual 
+                            segment of a physical network–is visible only to guest VMs configured to be on that virtual network
 							or segment.
                         </title>
                         <note role="application">
                             Virtual networks must be separated from one another to provide isolation commensurate with that provided by 
 							physically separate networks. It must not be possible for data to cross between properly configured
-							virtual networks regardless of whether the traffic originated from a local Guest VM or a remote host.<h:p/>
+							virtual networks regardless of whether the traffic originated from a local guest VM or a remote host.<h:p/>
                             Unprivileged users must not be able to connect VMs to each other or to external networks.<h:p/>
                         </note>
                         <aactivity>
                             <TSS>
                                The evaluator shall examine the TSS (or a proprietary annex) to verify that it describes the mechanism 
-							   by which virtual network traffic is ensured to be visible only to Guest VMs configured to be on that virtual network.
+							   by which virtual network traffic is ensured to be visible only to guest VMs configured to be on that virtual network.
 							</TSS>
 							<Guidance>
                                The evaluator must ensure that the Operational Guidance describes how
@@ -3600,12 +3601,12 @@
                             </Guidance>
                             <Tests>
                             <testlist>
-                                <test>The evaluator shall assume the role of the Administrator and attempt to configure a VM to
+                                <test>The evaluator shall assume the role of the administrator and attempt to configure a VM to
 									connect to a network component. The evaluator shall verify that the attempt is successful. The
 									evaluator shall then assume the role of an unprivileged user and attempt the same connection.
 									If the attempt fails, or there is no way for an unprivileged user to configure VM network 
 									connections, the requirement is met.</test>
-								<test>The evaluator shall assume the role of the Administrator and attempt to configure a VM to connect
+								<test>The evaluator shall assume the role of the administrator and attempt to configure a VM to connect
 									to a physical network. The evaluator shall verify that the attempt is successful. The
 									evaluator shall then assume the role of an unprivileged user and make the same attempt.
 									If the attempt fails, or there is no way for an unprivileged user to configure VM network 
@@ -3676,7 +3677,7 @@
                                 <selectable>an administrator configurable positive integer within a
                                     <assignable>range of acceptable values</assignable></selectable>
                             </selectables>
-                            unsuccessful authentication attempts occur related to Administrators attempting 
+                            unsuccessful authentication attempts occur related to administrators attempting 
 							to authenticate remotely using
                             <selectables>
                                 <selectable>username and password</selectable>
@@ -3690,16 +3691,16 @@
                         <title>When the defined number of unsuccessful authentication attempts has been met, the TSF
                             shall:
                             <selectables>
-                                <selectable>prevent the offending Administrator from successfully establishing a remote session using
+                                <selectable>prevent the offending administrator from successfully establishing a remote session using
                                     any authentication method that involves a password or PIN until
-                                    <assignable>action to unlock</assignable> is taken by an Administrator</selectable>
-                                <selectable>prevent the offending Administrator from successfully establishing a remote session using
-                                    any authentication method that involves a password or PIN until an Administrator-defined time
+                                    <assignable>action to unlock</assignable> is taken by an administrator</selectable>
+                                <selectable>prevent the offending administrator from successfully establishing a remote session using
+                                    any authentication method that involves a password or PIN until an administrator-defined time
                                     period has elapsed</selectable>
                             </selectables>
                         </title>
                         <note role="application">The action to be taken shall be populated in the selection of the ST
-                            and defined in the Administrator guidance.<h:p/>
+                            and defined in the administrator guidance.<h:p/>
                             This requirement applies to a defined number of successive unsuccessful remote password or PIN-based
                             authentication attempts and does not apply to local Administrative access. Compliant TOEs may optionally
                             include cryptographic and local authentication failures in the number of
@@ -3710,7 +3711,7 @@
 							<Guidance/>
                             <Tests>
                                 The evaluator shall perform the following tests for each credential selected in FIA_AFL_EXT.1.1:<h:p/>
-                                The evaluator will set an Administrator-configurable threshold n for failed attempts, or note
+                                The evaluator will set an administrator-configurable threshold n for failed attempts, or note
 									the ST-specified assignment.
                                 <testlist>
                                     <test>The evaluator will attempt to authenticate remotely with the credential n-1 times. The 
@@ -3724,10 +3725,10 @@
                                     After reaching the limit for unsuccessful authentication attempts the evaluator will proceed
                                         as follows:
                                  <testlist>
-                                      <test>If the Administrator action selection in FIA_AFL_EXT.1.2 is selected, then the evaluator
+                                      <test>If the administrator action selection in FIA_AFL_EXT.1.2 is selected, then the evaluator
                                            will confirm by testing that following the operational guidance and performing each action
-                                            specified in the ST to re-enable the remote Administrator’s access results in successful
-                                            access (when using valid credentials for that Administrator).</test>
+                                            specified in the ST to re-enable the remote administrator’s access results in successful
+                                            access (when using valid credentials for that administrator).</test>
                                         <test>If the time period selection in FIA_AFL_EXT.1.2 is selected, the evaluator will wait for
                                             just less than the time period configured and show that an authentication attempt using
                                             valid credentials does not result in successful access. The evaluator will then wait until
@@ -3753,7 +3754,7 @@
 					<management>The following actions could be considered for the management functions 
 						in FMT:
 						<h:ol type="a">
-							<h:li>Ability to configure Administrator password policy, including
+							<h:li>Ability to configure administrator password policy, including
 								the ability to change default authorization factors.</h:li>
 						</h:ol>
 					</management>
@@ -3814,7 +3815,7 @@
                 <!-- FIA_UAU.5 -->
                 <f-component cc-id="fia_uau.5" name="Multiple Authentication Mechanisms">
                     <f-element id="fia-uau-5e1">
-                        <title>The TSF shall provide <h:s>the following authentication mechanisms:</h:s>
+                        <title>The TSF shall provide 
                             <selectables linebreak="yes">
                                 <selectable id="sel-uau-pwd">
                                     <selectables>
@@ -3840,7 +3841,7 @@
                                     authentication based on an SSH public key credential
                                 </selectable>
                             </selectables>                            
-                            to support <h:s>Administrator</h:s> authentication.
+                            to support user authentication.
                         </title>
                         <note role="application">Selection of ‘authentication based on username and password’ requires that 
 							FIA_PMG_EXT.1 be included in the ST. This also requires that the ST include a management function for
@@ -3853,7 +3854,7 @@
                         </note>
                     </f-element>
                     <f-element id="fia-uau-5e2">
-                        <title>The TSF shall authenticate any <h:s>Administrator</h:s> <h:b>user’s</h:b> claimed identity according to the <assignable>rules
+                        <title>The TSF shall authenticate any user’s claimed identity according to the <assignable>rules
 							describing how the multiple authentication mechanisms provide authentication</assignable>.
                         </title>
                         <aactivity>
@@ -3880,7 +3881,7 @@
 										PIN. The evaluator will ensure that the authentication attempt is unsuccessful.</test>
 								</testlist>
 								If ‘X.509 certificate authentication‘ is selected, the evaluator will generate an X.509v3 certificate for 
-								an Administrator user with the Client Authentication Enhanced Key Usage field set. The evaluator
+								an administrator user with the Client Authentication Enhanced Key Usage field set. The evaluator
 								will provision the VS for authentication with the X.509v3 certificate. The evaluator will ensure
 								that the certificates are validated by the VS as per FIA_X509_EXT.1.1 and then conduct the
 								following tests:
@@ -3916,7 +3917,7 @@
 			<rule id="rule-mf-pwd-policy">
 				<!-- <xref to="sel-mf-pwd-policy"/> -->
 				<description>If <h:i>"authentication based on username and password"</h:i> is selected in FIA_UAU.5.1 then 
-					<h:i>"Ability to configure Administrator password policy as defined in FIA_PMG_EXT.1"</h:i> must be selected in the Client or Server module 
+					<h:i>"Ability to configure administrator password policy as defined in FIA_PMG_EXT.1"</h:i> must be selected in the Client or Server module 
 					management function table.</description>
 				<if><ref-id>sel-uau-pwd</ref-id></if><then><or><doc ref="server-virt"><ref-id>sel-mf-pwd-policy</ref-id></doc><doc ref="client-virt"><ref-id>sel-mf-pwd-policy</ref-id></doc></or></then>
 					</rule>					     
@@ -3940,16 +3941,17 @@
 					</audit>
 					<dependencies>FIA_UAU.5 Multiple Authentication Mechanisms</dependencies>
                     <f-element id="fia-uia-ext-1e1">
-                        <title>The TSF shall require Administrators to be successfully identified and authenticated
+                        <title>The TSF shall require administrators to be successfully identified and authenticated
                             using one of the methods in FIA_UAU.5 before allowing any TSF-mediated management
-                            function to be performed by that Administrator.
+                            function to be performed by that administrator.
                         </title>
-                        <note role="application">Users do not have to authenticate, only Administrators need to authenticate.</note>
+                        <note role="application">Users do not have to authenticate, only administrators need to authenticate.</note>
                         <aactivity>
                             <TSS>
                                 The evaluator shall examine the TSS to determine that it describes the logon
                                 process for each logon method (local, remote (HTTPS, SSH, etc.)) supported for the product. 
-                                This description shall contain information pertaining to the credentials allowed/used, any 
+                                This description shall contain information pertaining to the
+                                credentials allowed or used, any 
                                 protocol transactions that take place, and what constitutes a “successful logon.” 
 				</TSS>
 				<Guidance>
@@ -4200,7 +4202,10 @@
                                 specifies the default action, then the evaluator shall ensure that the operational guidance contains
                                 instructions on how this configuration action is performed.
                             </TSS>
-							<Guidance>The evaluator shall ensure that the guidance documentation describes the configuration required in the operating environment so the TOE can use the certificates. The guidance documentation shall also include any required configuration on the TOE to use the certificates. The guidance documentation shall also describe the steps for the Security Administrator to follow if the connection cannot be established during the validity check of a certificate used in establishing a trusted channel.</Guidance>
+							<Guidance>The evaluator shall ensure that the guidance documentation describes the
+							    configuration required in the operating environment so the TOE can use the certificates.
+							    The guidance documentation shall also include any required configuration on the TOE to
+							    use the certificates. The guidance documentation shall also describe the steps for the security administrator to follow if the connection cannot be established during the validity check of a certificate used in establishing a trusted channel.</Guidance>
                             <Tests>
                                 The evaluator shall perform Test 1 for each function listed in FIA_X509_EXT.2.1 that requires the
 								use of certificates:<h:p/>
@@ -4247,7 +4252,7 @@
 					
 						<title>The OS shall provide alternate functionality to standard X509 certificate revocation checking for the following exceptions: <selectables><selectable>firmware checking of updates: invalidate automatic updates if the firmware certificate is compromised</selectable><selectable><assignable>other exceptions and corresponding functionality</assignable></selectable></selectables>.</title>
 						<aactivity>
-							<TSS>The evaluator will ensure the TSS describes, for each exception, the alternate functionality the TOE implements to handle the lack of certificate revocation. The description must be consistent with the selection in the requirement.</TSS>
+							<TSS>The evaluator shall ensure the TSS describes, for each exception, the alternate functionality the TOE implements to handle the lack of certificate revocation. The description must be consistent with the selection in the requirement.</TSS>
 							<Guidance/>
 							<Tests>
 							<testlist>
@@ -4281,9 +4286,19 @@
                                 <selectable>separate physical networks</selectable>
                                 <selectable>separate logical networks</selectable>
                                 <selectable>trusted channels as defined in FTP_ITC_EXT.1</selectable>
-								<selectable>data encryption using an algorithm specified in FCS_COP.1/UDE</selectable>
+								<selectable>data encryption using an algorithm specified in FCS_COP.1<h:b>/UDE</h:b></selectable>
                             </selectables>.
                         </title>
+                        <ext-comp-def-title>
+                            <title>The TSF shall support the separation of management and operational network traffic through
+                                <selectables>
+                                    <selectable>separate physical networks</selectable>
+                                    <selectable>separate logical networks</selectable>
+                                    <selectable>trusted channels as defined in FTP_ITC_EXT.1</selectable>
+                                    <selectable>data encryption using an algorithm specified in FCS_COP.1</selectable>
+                                </selectables>.
+                            </title>
+                        </ext-comp-def-title>
                         <note role="application">Management communications must be separate from user workload communications. Administrative 
 							network traffic—including communications between physical hosts concerning load balancing, audit data,
 							VM startup and shutdown—must be isolated from guest operational networks. For purposes of this requirement, 
@@ -4301,7 +4316,7 @@
 							deployment, or live migration, and does not send the data through a tunnel. 
 							If the ST author selects "data encryption..." then the algorithms and key sizes must be selected in FCS_COP.1/UDE.<h:p/>
 							The ST author should select as many mechanisms as apply.
-                        </note>
+                        </note>                       
                         <aactivity>
                             <TSS>
                                 The evaluator shall examine the TSS to verify that it describes how management and
@@ -4334,7 +4349,7 @@
 					<fam-behavior>This family defines requirements for isolation of device drivers</fam-behavior>
 				</ext-comp-def>
 			    <ext-comp-def title="Non-Existence of Disconnected Virtual Devices" fam-id="FPT_DVD_EXT">
-					<fam-behavior>This family defines requirements for ensuring that Guest VMs cannot access
+					<fam-behavior>This family defines requirements for ensuring that guest VMs cannot access
 						the virtual hardware interfaces disabled or disconnected virtual devices.</fam-behavior>
 				</ext-comp-def>
 			    <ext-comp-def title="Execution Environment Mitigations" fam-id="FPT_EEM_EXT">
@@ -4342,16 +4357,16 @@
 						vulnerabilities that allow for the execution of unauthorized code or bypass of 
 						access restrictions on memory or storage.</fam-behavior>
 				</ext-comp-def>
-			    <ext-comp-def title="Guest VM Integrity" fam-id="FPT_GVI_EXT">
+			    <ext-comp-def title="guest VM Integrity" fam-id="FPT_GVI_EXT">
 					<fam-behavior>This family defines requirements for the TOE to assert the integrity of
-						Guest VMs.</fam-behavior>
+						guest VMs.</fam-behavior>
 				</ext-comp-def>
 			    <ext-comp-def title="Hardware Assists" fam-id="FPT_HAS_EXT">
 					<fam-behavior>This family defines requirements for use of hardware-based virtualization 
 						assists as performance enhancements.</fam-behavior>
 				</ext-comp-def>
 			    <ext-comp-def title="Hypercall Controls" fam-id="FPT_HCL_EXT">
-					<fam-behavior>This family defines requirements for control of Hypercall interfaces.</fam-behavior>
+					<fam-behavior>This family defines requirements for control of hypercall interfaces.</fam-behavior>
 				</ext-comp-def>
 			    <ext-comp-def title="Software Identification and Versions" fam-id="FPT_IDV_EXT">
 					<fam-behavior>This family defines requirements for the use of SWID tags to identify the TOE.</fam-behavior>
@@ -4372,11 +4387,11 @@
 				</ext-comp-def>
 			    <ext-comp-def title="Virtual Device Parameters" fam-id="FPT_VDP_EXT">
 					<fam-behavior>This family defines requirements for processing data transmitted to the TOE from
-						a Guest VM.</fam-behavior>
+						a guest VM.</fam-behavior>
 				</ext-comp-def>
 			    <ext-comp-def title="VMM Isolation from VMs" fam-id="FPT_VIV_EXT">
 					<fam-behavior>This family defines requirements for ensuring the TOE is logically 
-						isolated from its Guest VMs</fam-behavior>
+						isolated from its guest VMs</fam-behavior>
 				</ext-comp-def>
 				
                 <!-- FPT_DDI_EXT.1 -->
@@ -4421,13 +4436,13 @@
                 <!-- FPT_DVD_EXT.1 -->
                 <f-component cc-id="fpt_dvd_ext.1" name="Non-Existence of Disconnected Virtual Devices">
 					<consistency-rationale/>
-					<comp-lev>requires the TSF to prevent Guest VMs from accessing virtual devices
+					<comp-lev>requires the TSF to prevent guest VMs from accessing virtual devices
 						that it is not configured to have access to.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
 					<dependencies>FPT_VDP_EXT.1 Virtual Device Parameters</dependencies>
                     <f-element id="fpt-dvd-ext-1e1">
-                        <title>The TSF shall prevent Guest VMs from accessing virtual device interfaces that are not present in the VM’s current
+                        <title>The TSF shall prevent guest VMs from accessing virtual device interfaces that are not present in the VM’s current
 				virtual hardware configuration.
                         </title>
                         <note role="application">The virtualized hardware abstraction implemented by a particular VS might include the
@@ -4497,10 +4512,10 @@
                 </f-component>
                 
                 <!-- FPT_GVI_EXT.1 -->
-                <f-component cc-id="fpt_gvi_ext.1" name="Guest VM Integrity" status="optional">
+                <f-component cc-id="fpt_gvi_ext.1" name="guest VM Integrity" status="optional">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to specify the mechanisms it uses to verify the
-						integrity of Guest VMs.</comp-lev>
+						integrity of guest VMs.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>The following actions should be auditable if FAU_GEN Security 
 						audit data generation is included in the PP/ST:
@@ -4510,12 +4525,12 @@
 					</audit>
 					<dependencies>No dependencies.</dependencies>
                     <f-element id="fpt-gvi-ext-1e1">
-                        <title>The TSF shall verify the integrity of Guest VMs through the following mechanisms: 
-				<assignable>list of Guest VM integrity mechanisms</assignable>.
+                        <title>The TSF shall verify the integrity of guest VMs through the following mechanisms: 
+				<assignable>list of guest VM integrity mechanisms</assignable>.
                         </title>
                         <note role="application">The primary purpose of this requirement is to identify and describe 
-				the mechanisms used to verify the integrity of Guest VMs that have been 'imported' in some fashion,
-				though these mechanisms could also be applied to all Guest VMs, depending on the mechanism used.
+				the mechanisms used to verify the integrity of guest VMs that have been 'imported' in some fashion,
+				though these mechanisms could also be applied to all guest VMs, depending on the mechanism used.
 				Importation for this requirement could include VM migration (live or otherwise), the importation of
 				virtual disk files that were previously exported, VMs in shared storage, etc. It is possible that a 
 				trusted VM could have been modified during the migration or import/export process, or VMs could have 
@@ -4527,8 +4542,7 @@
                         <aactivity>
                             <TSS>
                                 For each mechanism listed in the assignment, the evaluator shall ensure that the TSS 
-                                documents the mechanism, including how it verifies VM integrity, which set of Guest
-                                VMs it will check (all Guest VMs, only migrated VM
+                                documents the mechanism, including how it verifies VM integrity, which set of guest VMs it will check (all guest VMs, only migrated VM
                                 s, etc.), when such checks occur (before VM startup, immediately following 
                                 importation/migration, on demand, etc.), and which actions are taken if a VM fails
                                 the integrity check (or which range of actions are possible if the action is configurable).
@@ -4603,12 +4617,12 @@
 					</audit>
 					<dependencies>FMT_SMR.1 Security Roles</dependencies>
                     <f-element id="fpt-hcl-ext-1e2">
-                        <title>The TSF shall validate the parameters passed to Hypercall interfaces prior to execution of the VMM 
+                        <title>The TSF shall validate the parameters passed to hypercall interfaces prior to execution of the VMM 
 				functionality exposed by each interface.
                         </title>
                         <note role="application">The purpose of this requirement is to help ensure the integrity of the
-                            VMM by protecting the attack surface exposed to untrusted Guest VMs through Hypercalls. <h:p/>
-                            A Hypercall interface allows VMM functionality to be invoked by VM-aware guest software. 
+                            VMM by protecting the attack surface exposed to untrusted guest VMs through hypercalls. <h:p/>
+                            A hypercall interface allows VMM functionality to be invoked by VM-aware guest software. 
 				For example, a hypercall interface could be used to get information about
 				the real world, such as the time of day or the underlying hardware of the host system. A hypercall 
 				could also be used to transfer data between VMs through a copy-paste mechanism. Because hypercall 
@@ -4779,15 +4793,13 @@
                         <aactivity>
                             <TSS>
                                 The evaluator shall verify that the TSS or Operational Guidance describes how 
-                                integrity measurements are performed and made available to the Management Subsystem. The evaluator 
-                                shall examine the operational guidance to verify that it documents how to access the measurements in 
-                                the Management Subsystem.
+                                integrity measurements are performed and made available to the Management Subsystem.
                             </TSS>
 							<Guidance>The evaluator shall examine the operational guidance to verify that it documents how to access the measurements in the Management Subsystem.</Guidance>
                             <Tests>
                                 The evaluator shall perform the following test:<h:p/>
                                 <testlist>
-                                    <test>The evaluator shall start the VS, login as an Administrator, and verify that the measurements for the specified components are viewable in the Management Subsystem.</test>
+                                    <test>The evaluator shall start the VS, login as an administrator, and verify that the measurements for the specified components are viewable in the Management Subsystem.</test>
                               </testlist>
                             </Tests>
                         </aactivity>
@@ -4832,7 +4844,7 @@
 				information domains, then
                             
                             <selectables linebreak="yes">
-                                <selectable>the Administrator has granted explicit access for the media or device to be connected to
+                                <selectable>the administrator has granted explicit access for the media or device to be connected to
 					the receiving domain</selectable>
                                 <selectable>the media in a device that is being transferred is ejected prior to the receiving domain
 					being allowed access to the device</selectable>
@@ -5063,8 +5075,8 @@
                 <!-- FPT_VDP_EXT.1 -->
                 <f-component cc-id="fpt_vdp_ext.1" name="Virtual Device Parameters">
 					<consistency-rationale/>
-					<comp-lev>requires the TSF to interface with Guest VMs through virtual hardware abstractions
-						so that any data transmitted to the TOE from a Guest VM can be validated 
+					<comp-lev>requires the TSF to interface with guest VMs through virtual hardware abstractions
+						so that any data transmitted to the TOE from a guest VM can be validated 
 						as well-formed.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
@@ -5115,7 +5127,7 @@
                 <!-- FPT_VIV_EXT.1 -->
                 <f-component cc-id="fpt_viv_ext.1" name="VMM Isolation from VMs">
 					<consistency-rationale/>
-					<comp-lev>requires the TSF to ensure that there is no mechanism by which a Guest VM can interface
+					<comp-lev>requires the TSF to ensure that there is no mechanism by which a guest VM can interface
 						with the TOE, other VMs, or the hardware platform without authorization.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
@@ -5127,11 +5139,11 @@
                         </title>
                     </f-element>
                     <f-element id="fpt-viv-ext-1e2">
-                        <title>The TSF must ensure that a Guest VM is unable to invoke platform code that runs at a privilege level 
+                        <title>The TSF must ensure that a guest VM is unable to invoke platform code that runs at a privilege level 
 							equal to or exceeding that of the VMM without involvement of the VMM.
                         </title>
-                        <note role="application">This requirement is intended to ensure that software running within a Guest VM cannot
-							compromise other VMs, the VMM, or the platform. This requirement is not met if Guest VM 
+                        <note role="application">This requirement is intended to ensure that software running within a guest VM cannot
+							compromise other VMs, the VMM, or the platform. This requirement is not met if guest VM 
 							software—whatever its privilege level—can crash the VS or the Platform, or breakout
 							of its virtual hardware abstraction to gain execution on the platform, within or outside of the context
 							of the VMM.<h:p/>
@@ -5204,7 +5216,7 @@
 				</ext-comp-def>
 			    <ext-comp-def title="User Interface" fam-id="FTP_UIF_EXT">
 					<fam-behavior>This family defines requirements for unambiguously identifying the specific
-						Guest VM that a TOE user is interacting with at any given point in time.</fam-behavior>
+						guest VM that a TOE user is interacting with at any given point in time.</fam-behavior>
 				</ext-comp-def>
                 
                 <!-- FTP_ITC_EXT.1 -->
@@ -5406,7 +5418,7 @@
                 <!-- FTP_UIF_EXT.1 -->
                 <f-component cc-id="ftp_uif_ext.1" name="User Interface: I/O Focus">
 					<consistency-rationale/>
-					<comp-lev>requires the TSF to unambiguously identify the Guest VM that has
+					<comp-lev>requires the TSF to unambiguously identify the guest VM that has
 						the current input focus for input peripherals.</comp-lev>
 					<management>No specific management functions are identified.</management>
 					<audit>There are no auditable events foreseen.</audit>
@@ -5414,7 +5426,7 @@
                     <f-element id="ftp-uif-ext-1e1">
                         <title>The TSF shall indicate to users which VM, if any, has the current input focus.
                         </title>
-                        <note role="application">This requirement applies to all users—whether User or Administrator.
+                        <note role="application">This requirement applies to all users—whether user or administrator.
                             In environments where multiple VMs run at the same time, the user must have a way of knowing which
 				VM user input is directed to at any given moment. This is especially important in multiple-domain 
 				environments.<h:p/>
@@ -5466,7 +5478,7 @@
 							<Guidance/>
                             <Tests>
                                 The evaluator shall perform the following test:<h:p/>
-                                The evaluator shall attempt to create and start at least three Guest VMs on a single 
+                                The evaluator shall attempt to create and start at least three guest VMs on a single 
                                 display device where the evaluator attempts to assign two of the VMs the same
                                 identifier. If the user interface displays different identifiers for each VM, then 
                                 the requirement is met. Likewise, the requirement is met if the system refuses to create or start a

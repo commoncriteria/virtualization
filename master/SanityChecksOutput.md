@@ -1,3 +1,5 @@
+* Error: Found a "assignable" element that is buried under stricken text:
+        /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[7]""/f-element[1]""/title[1]"The TSF s"/h:s[1]"that meet"/assignable[1]"list of s"
 * Warning: This document still has at least one comment.
 * Error: Detected dangling id-reference to s-ftp_ssh from attribute
         on/PP[1]""/include-pkg[2]""/depends[1]""/on[1]""
