@@ -172,7 +172,7 @@
                 <tr>
                     <td>
                         <div id="Administrator">Administrator</div>
-                    </td><td>Administrators perform management activities on the VS. These management functions do not include administration of software running within guest VMs, such as the Guest OS. Administrators need not be human as in the case of embedded or headless VMs. Administrators are often nothing more than software entities that operate within the VM.</td>
+                    </td><td>Administrators perform management activities on the VS. These management functions do not include administration of software running within guest VMs, such as the guest OS. Administrators need not be human as in the case of embedded or headless VMs. Administrators are often nothing more than software entities that operate within the VM.</td>
                 </tr>
                 <tr>
                     <td>
@@ -904,7 +904,7 @@
                             [<span class="refinement">All administrative actions relevant to claimed <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> as defined in the Auditable Events Table from the Client and Server <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Modules</span>]
                         </li>
                         <li>
-                            [<span class="refinement">Auditable events defined in Table <a href="#t-audit-mandatory" class="t-audit-mandatory-ref">Table <span class="counter">2</span></a></span>]
+                            [<span class="refinement">Auditable events defined in <a href="#t-audit-mandatory" class="t-audit-mandatory-ref">Table <span class="counter">2</span></a></span>]
                         </li>
                         <li>
                             <span class="refinement">[<b>selection</b>: 
@@ -945,7 +945,7 @@
                         <li>Subject and object identity (if applicable)</li>
                         <li>The outcome (success or failure) of the event</li>
                         <li>
-                            [<span class="refinement">Additional information defined in Table <a href="#t-audit-mandatory" class="t-audit-mandatory-ref">Table <span class="counter">2</span></a></span>]
+                            [<span class="refinement">Additional information defined in <a href="#t-audit-mandatory" class="t-audit-mandatory-ref">Table <span class="counter">2</span></a></span>]
                         </li>
                         <li>
                             <span class="refinement">[<b>selection</b>: 
@@ -973,11 +973,11 @@
                         </li>
                     </ol>
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note"> The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author can include other auditable events directly in Table <a href="#t-audit-mandatory" class="t-audit-mandatory-ref">Table <span class="counter">2</span></a>; they are not limited to the list presented. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should update the table in <a href="#FAU_GEN.1.2">FAU_GEN.1.2</a> with any additional information generated. &ldquo;Subject identity&rdquo; in <a href="#FAU_GEN.1.2">FAU_GEN.1.2</a> could be a user id or an identifier specifying a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>, for example.
+                        <span class="note-header">Application Note: </span><span class="note"> The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author can include other auditable events directly in <a href="#t-audit-mandatory" class="t-audit-mandatory-ref">Table <span class="counter">2</span></a>; they are not limited to the list presented. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should update the table in <a href="#FAU_GEN.1.2">FAU_GEN.1.2</a> with any additional information generated. &ldquo;Subject identity&rdquo; in <a href="#FAU_GEN.1.2">FAU_GEN.1.2</a> could be a user id or an identifier specifying a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>, for example.
                             <p></p>
                              Appropriate entries from <a href="#t-audit-optional" class="t-audit-optional-ref">Table <span class="counter">5</span></a>, <a href="#t-audit-objective" class="t-audit-objective-ref">Table <span class="counter">6</span></a>, and <a href="#t-audit-sel-based" class="t-audit-sel-based-ref">Table <span class="counter">7</span></a> should be included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if the associated <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> and selections are included.
                             <p></p>
-                             The Table <a href="#t-audit-mandatory" class="t-audit-mandatory-ref">Table <span class="counter">2</span></a> entry for <a href="#FDP_VNC_EXT.1">FDP_VNC_EXT.1</a> refers to configuration settings that attach VMs to virtualized network components. Changes to these configurations can be made during <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> execution or when VMs are not running. Audit records must be generated for either case.
+                             The <a href="#t-audit-mandatory" class="t-audit-mandatory-ref">Table <span class="counter">2</span></a> entry for <a href="#FDP_VNC_EXT.1">FDP_VNC_EXT.1</a> refers to configuration settings that attach VMs to virtualized network components. Changes to these configurations can be made during <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> execution or when VMs are not running. Audit records must be generated for either case.
                             <p></p>
                              The intent of the audit requirement for <a href="#FDP_PPR_EXT.1">FDP_PPR_EXT.1</a> is to log that the <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> is connected to a physical device (when the device becomes part of the <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>'s hardware view), not to log every time that the device is accessed. Generally, this is only once at <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> startup. However, some devices can be connected and disconnected during operation (e.g., virtual USB devices such as CD-ROMs). All such connection/disconnection events must be logged.
                             <p></p>
@@ -1782,7 +1782,7 @@
                     </ul>
                     ]. 
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note">The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> Author should choose the algorithm implemented to perform digital signatures; if more than one algorithm is available, this requirement should be iterated to specify the functionality. For the algorithm chosen, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should make the appropriate assignments/selections to specify the parameters that are implemented for that algorithm. </span>
+                        <span class="note-header">Application Note: </span><span class="note">The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should choose the algorithm implemented to perform digital signatures; if more than one algorithm is available, this requirement should be iterated to specify the functionality. For the algorithm chosen, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should make the appropriate assignments/selections to specify the parameters that are implemented for that algorithm. </span>
                     </div>
                 </div>
             </div>
@@ -2143,7 +2143,7 @@
                             <p></p>
                              This requirement allows for three general ways of providing entropy to guests: 1) The <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> can provide a hypercall accessible to <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>-aware guests, 2) access to a virtualized device that provides entropy, or 3) pass-through access to a hardware entropy source (including a source of random numbers). In all cases, it is possible that the guest is made <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>-aware through installation of software or drivers. For the second and third cases, it is possible that the guest could be <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>-unaware. There is no requirement that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> provide entropy sources as expected by <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>-unaware guests. That is, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> does not have to anticipate every way a guest might try to acquire entropy as long as it supplies a mechanism that can be used by <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>-aware guests, or provides access to a standard mechanism that a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>-unaware guest would use.
                             <p></p>
-                             The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should select &ldquo;hypercall interface&rdquo; if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> provides an API function through which guest-resident software can obtain entropy or random numbers. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should select &ldquo;virtual device interface&rdquo; if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> presents a virtual device interface to the Guest <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> through which it can obtain entropy or random numbers. Such an interface could present a virtualized real device, such as a <abbr class="dyn-abbr"><a href="#abbr_TPM">TPM</a></abbr>, that can be accessed by <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>-unaware guests, or a virtualized fictional device that would require the Guest <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> to be <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>-aware. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should select &ldquo;pass-through access to hardware entropy source&rdquo; if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> permits guest VMs to have direct access to hardware entropy or random number source on the platform. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should select all items that are appropriate.
+                             The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should select &ldquo;hypercall interface&rdquo; if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> provides an API function through which guest-resident software can obtain entropy or random numbers. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should select &ldquo;virtual device interface&rdquo; if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> presents a virtual device interface to the guest <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> through which it can obtain entropy or random numbers. Such an interface could present a virtualized real device, such as a <abbr class="dyn-abbr"><a href="#abbr_TPM">TPM</a></abbr>, that can be accessed by <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>-unaware guests, or a virtualized fictional device that would require the guest <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> to be <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>-aware. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should select &ldquo;pass-through access to hardware entropy source&rdquo; if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> permits guest VMs to have direct access to hardware entropy or random number source on the platform. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should select all items that are appropriate.
                             <p></p>
                              For <a href="#FCS_ENT_EXT.1.2">FCS_ENT_EXT.1.2</a>, the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> must ensure that the provision of entropy to one <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> cannot affect the quality of entropy provided to another <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> on the same platform. </span>
                     </div>
@@ -2198,13 +2198,13 @@
                      The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform deterministic random bit generation services using [<b>selection</b>: 
                     <ul>
                         <li style="">
-                            <span class="selectable-content" id="_s_110">Hash_DRBG (any)</span>
+                            <span class="selectable-content" id="_s_112">Hash_DRBG (any)</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_111">HMAC_DRBG (any)</span>
+                            <span class="selectable-content" id="_s_113">HMAC_DRBG (any)</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_112">CTR_DRBG (<abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>)</span>
+                            <span class="selectable-content" id="_s_114">CTR_DRBG (<abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>)</span>
                         </li>
                     </ul>
                     ] in accordance with [<i><abbr class="dyn-abbr"><a href="#abbr_NIST">NIST</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_SP">SP</a></abbr> 800-90A</i>] after initialization with a seed. 
@@ -2239,19 +2239,19 @@
                     <a href="#FCS_RBG.1.3" class="abbr">FCS_RBG.1.3</a>
                 </div>
                 <div class="reqdesc">
-                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall update the RBG state by [<b>selection</b>: <span class="selectable-content" id="_s_116">reseeding</span>, <span class="selectable-content" id="_s_117">uninstantiating and reinstantiating</span>] using a [<b>selection</b>: <span class="selectable-content" id="_s_118"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise source [<b>assignment</b>: <span class="assignable-content">name of noise source</span>]</span>, <span class="selectable-content" id="_s_119"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for seeding</span>] in the following situations: [<b>selection</b>: 
+                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall update the RBG state by [<b>selection</b>: <span class="selectable-content" id="_s_118">reseeding</span>, <span class="selectable-content" id="_s_119">uninstantiating and reinstantiating</span>] using a [<b>selection</b>: <span class="selectable-content" id="_s_120"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise source [<b>assignment</b>: <span class="assignable-content">name of noise source</span>]</span>, <span class="selectable-content" id="_s_121"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for seeding</span>] in the following situations: [<b>selection</b>: 
                     <ul>
                         <li style="">
-                            <span class="selectable-content" id="_s_120">never</span>
+                            <span class="selectable-content" id="_s_122">never</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_121">on demand</span>
+                            <span class="selectable-content" id="_s_123">on demand</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_122">on the condition: [<b>assignment</b>: <span class="assignable-content">condition</span>]</span>
+                            <span class="selectable-content" id="_s_124">on the condition: [<b>assignment</b>: <span class="assignable-content">condition</span>]</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_123">after [<b>assignment</b>: <span class="assignable-content">time</span>]</span>
+                            <span class="selectable-content" id="_s_125">after [<b>assignment</b>: <span class="assignable-content">time</span>]</span>
                         </li>
                     </ul>
                     ] in accordance with [<b>assignment</b>: <span class="assignable-content">list of standards</span>]. 
@@ -2310,7 +2310,7 @@
                     <a href="#FDP_HBI_EXT.1.1" class="abbr">FDP_HBI_EXT.1.1</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall use [<b>selection</b>: <span class="selectable-content" id="_s_130">no mechanism</span>, <span class="selectable-content" id="_s_131">[<b>assignment</b>: <span class="assignable-content">list of platform-provided, hardware-based mechanisms</span>]</span>] to constrain a guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>'s direct access to the following physical devices: [<b>selection</b>: <span class="selectable-content" id="_s_132">no devices</span>, <span class="selectable-content" id="_s_133">[<b>assignment</b>: <span class="assignable-content"> physical devices to which the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> allows guest VMs physical access</span>]</span>]. 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall use [<b>selection</b>: <span class="selectable-content" id="_s_132">no mechanism</span>, <span class="selectable-content" id="_s_133">[<b>assignment</b>: <span class="assignable-content">list of platform-provided, hardware-based mechanisms</span>]</span>] to constrain a guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>'s direct access to the following physical devices: [<b>selection</b>: <span class="selectable-content" id="_s_134">no devices</span>, <span class="selectable-content" id="_s_135">[<b>assignment</b>: <span class="assignable-content"> physical devices to which the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> allows guest VMs physical access</span>]</span>]. 
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> must use available hardware-based isolation mechanisms to constrain VMs when VMs have direct access to physical devices. &ldquo;Direct access&rdquo; in this context means that the <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> can read or write device memory or access device I/O ports without the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> being able to intercept and validate every transaction.</span>
                     </div>
@@ -2359,7 +2359,7 @@
                     <a href="#FDP_PPR_EXT.1.2" class="abbr">FDP_PPR_EXT.1.2</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall explicitly deny all guest VMs access to the following physical platform resources: [<b>selection</b>: <span class="selectable-content" id="_s_134">no physical platform resources</span>, <span class="selectable-content" id="_s_135">[<b>assignment</b>: <span class="assignable-content">list of physical platform resources to which access is explicitly denied</span>]</span>]. 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall explicitly deny all guest VMs access to the following physical platform resources: [<b>selection</b>: <span class="selectable-content" id="_s_136">no physical platform resources</span>, <span class="selectable-content" id="_s_137">[<b>assignment</b>: <span class="assignable-content">list of physical platform resources to which access is explicitly denied</span>]</span>]. 
                 </div>
             </div>
             <div class="element">
@@ -2367,18 +2367,18 @@
                     <a href="#FDP_PPR_EXT.1.3" class="abbr">FDP_PPR_EXT.1.3</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall explicitly allow all guest VMs access to the following physical platform resources: [<b>selection</b>: <span class="selectable-content" id="_s_136">no physical platform resources</span>, <span class="selectable-content" id="_s_137">[<b>assignment</b>: <span class="assignable-content">list of physical platform resources to which access is always allowed</span>]</span>]. 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall explicitly allow all guest VMs access to the following physical platform resources: [<b>selection</b>: <span class="selectable-content" id="_s_138">no physical platform resources</span>, <span class="selectable-content" id="_s_139">[<b>assignment</b>: <span class="assignable-content">list of physical platform resources to which access is always allowed</span>]</span>]. 
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note"> For purposes of this requirement, physical platform resources are divided into three categories: 
                             <ul>
                                 <li>
-                                    those to which Guest <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> access is configurable and moderated by the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>
+                                    those to which guest <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> access is configurable and moderated by the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>
                                 </li>
                                 <li>
-                                    those to which the Guest <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> is never allowed to have direct access, and
+                                    those to which the guest <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> is never allowed to have direct access, and
                                 </li>
                                 <li>
-                                    those to which the Guest <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> is always allowed to have direct access.
+                                    those to which the guest <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> is always allowed to have direct access.
                                 </li>
                             </ul>
                              For element 1, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author lists the physical platform resources that can be configured for guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> access by an administrator. For element 2, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author lists the physical platform resources to which guest VMs may never be allowed direct access. If there are no such resources, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects "no physical platform resources." Likewise, any resources to which all guest VMs automatically have access to are to be listed in the third element. If there are no such resources, then "no physical platform resources" is selected. </span>
@@ -2449,11 +2449,11 @@
                 <div class="reqdesc">
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall ensure that any previous information content of physical memory is cleared prior to allocation to a guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>. 
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note">Physical memory must be zeroed before it is made accessible to a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> for general use by a Guest <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr>. 
+                        <span class="note-header">Application Note: </span><span class="note">Physical memory must be zeroed before it is made accessible to a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> for general use by a guest <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr>. 
                             <p></p>
                              The purpose of this requirement is to ensure that a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> does not receive memory containing data previously used by another <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> or the host.
                             <p></p>
-                             &ldquo;For general use&rdquo; means for use by the Guest <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> in its page tables for running applications or system software.
+                             &ldquo;For general use&rdquo; means for use by the guest <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> in its page tables for running applications or system software.
                             <p></p>
                              This does not apply to pages shared by design or policy between VMs or between the VMMs and VMs, such as read-only <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> pages or pages used for virtual device buffers. </span>
                     </div>
@@ -2553,13 +2553,13 @@
                     The <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> shall provide the following mechanisms for transferring data between guest VMs: [<b>selection</b>: 
                     <ul>
                         <li style="">
-                            <span class="selectable-content" id="_s_138">no mechanism</span>
+                            <span class="selectable-content" id="_s_140">no mechanism</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_139">virtual networking</span>
+                            <span class="selectable-content" id="_s_141">virtual networking</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_140">[<b>assignment</b>: <span class="assignable-content">other inter-VM data sharing mechanisms</span>]</span>
+                            <span class="selectable-content" id="_s_142">[<b>assignment</b>: <span class="assignable-content">other inter-VM data sharing mechanisms</span>]</span>
                         </li>
                     </ul>
                     ]. 
@@ -2738,13 +2738,13 @@
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall detect when [<b>selection</b>: 
                     <ul>
                         <li style="">
-                            <span class="selectable-content" id="_s_141">[<b>assignment</b>: <span class="assignable-content">a positive integer number</span>]</span>
+                            <span class="selectable-content" id="_s_143">[<b>assignment</b>: <span class="assignable-content">a positive integer number</span>]</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_142">an administrator configurable positive integer within a [<b>assignment</b>: <span class="assignable-content">range of acceptable values</span>]</span>
+                            <span class="selectable-content" id="_s_144">an administrator configurable positive integer within a [<b>assignment</b>: <span class="assignable-content">range of acceptable values</span>]</span>
                         </li>
                     </ul>
-                    ] unsuccessful authentication attempts occur related to administrators attempting to authenticate remotely using [<b>selection</b>: <span class="selectable-content" id="_s_143">username and password</span>, <span class="selectable-content" id="_s_144">username and PIN</span>]. 
+                    ] unsuccessful authentication attempts occur related to administrators attempting to authenticate remotely using [<b>selection</b>: <span class="selectable-content" id="_s_145">username and password</span>, <span class="selectable-content" id="_s_146">username and PIN</span>]. 
                 </div>
             </div>
             <div class="element">
@@ -2752,7 +2752,7 @@
                     <a href="#FIA_AFL_EXT.1.2" class="abbr">FIA_AFL_EXT.1.2</a>
                 </div>
                 <div class="reqdesc">
-                    When the defined number of unsuccessful authentication attempts has been met, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall: [<b>selection</b>: <span class="selectable-content" id="_s_145">prevent the offending administrator from successfully establishing a remote session using any authentication method that involves a password or PIN until [<b>assignment</b>: <span class="assignable-content">action to unlock</span>] is taken by an administrator</span>, <span class="selectable-content" id="_s_146">prevent the offending administrator from successfully establishing a remote session using any authentication method that involves a password or PIN until an administrator-defined time period has elapsed</span>] 
+                    When the defined number of unsuccessful authentication attempts has been met, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall: [<b>selection</b>: <span class="selectable-content" id="_s_147">prevent the offending administrator from successfully establishing a remote session using any authentication method that involves a password or PIN until [<b>assignment</b>: <span class="assignable-content">action to unlock</span>] is taken by an administrator</span>, <span class="selectable-content" id="_s_148">prevent the offending administrator from successfully establishing a remote session using any authentication method that involves a password or PIN until an administrator-defined time period has elapsed</span>] 
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note">The action to be taken shall be populated in the selection of the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> and defined in the administrator guidance.
                             <p></p>
@@ -2821,16 +2821,16 @@
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide [<b>selection</b>: 
                     <ul>
                         <li style="">
-                            <span class="selectable-content" id="sel-uau-pwd"> [<b>selection</b>: <span class="selectable-content" id="_s_159">local</span>, <span class="selectable-content" id="sel-uau-pwd-dirbased">directory-based</span>] authentication based on username and password </span>
+                            <span class="selectable-content" id="sel-uau-pwd"> [<b>selection</b>: <span class="selectable-content" id="_s_161">local</span>, <span class="selectable-content" id="sel-uau-pwd-dirbased">directory-based</span>] authentication based on username and password </span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_161">authentication based on username and a PIN that releases an asymmetric key stored in <abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr>-protected storage</span>
+                            <span class="selectable-content" id="_s_163">authentication based on username and a PIN that releases an asymmetric key stored in <abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr>-protected storage</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="sel-uau-x509"> [<b>selection</b>: <span class="selectable-content" id="_s_163">local</span>, <span class="selectable-content" id="sel-uau-x509-dirbased">directory-based</span>] authentication based on X.509 certificates </span>
+                            <span class="selectable-content" id="sel-uau-x509"> [<b>selection</b>: <span class="selectable-content" id="_s_165">local</span>, <span class="selectable-content" id="sel-uau-x509-dirbased">directory-based</span>] authentication based on X.509 certificates </span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="sel-uau-ssh"> [<b>selection</b>: <span class="selectable-content" id="_s_166">local</span>, <span class="selectable-content" id="sel-uau-ssh-dirbased">directory-based</span>] authentication based on an SSH public key credential </span>
+                            <span class="selectable-content" id="sel-uau-ssh"> [<b>selection</b>: <span class="selectable-content" id="_s_168">local</span>, <span class="selectable-content" id="sel-uau-ssh-dirbased">directory-based</span>] authentication based on an SSH public key credential </span>
                         </li>
                     </ul>
                     ] to support user authentication. 
@@ -2974,7 +2974,7 @@
                     <a href="#FMT_SMO_EXT.1.1" class="abbr">FMT_SMO_EXT.1.1</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support the separation of management and operational network traffic through [<b>selection</b>: <span class="selectable-content" id="_s_185">separate physical networks</span>, <span class="selectable-content" id="_s_186">separate logical networks</span>, <span class="selectable-content" id="_s_187">trusted channels as defined in <a href="#FTP_ITC_EXT.1">FTP_ITC_EXT.1</a></span>, <span class="selectable-content" id="_s_188">data encryption using an algorithm specified in FCS_COP.1<b>/UDE</b></span>]. 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support the separation of management and operational network traffic through [<b>selection</b>: <span class="selectable-content" id="_s_187">separate physical networks</span>, <span class="selectable-content" id="_s_188">separate logical networks</span>, <span class="selectable-content" id="_s_189">trusted channels as defined in <a href="#FTP_ITC_EXT.1">FTP_ITC_EXT.1</a></span>, <span class="selectable-content" id="_s_190">data encryption using an algorithm specified in FCS_COP.1<b>/UDE</b></span>]. 
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note">Management communications must be separate from user workload communications. Administrative network traffic&mdash;including communications between physical hosts concerning load balancing, audit data, <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> startup and shutdown&mdash;must be isolated from guest operational networks. For purposes of this requirement, management traffic also includes VMs transmitted over management networks whether for backup, live migration, or deployment.
                             <p></p>
@@ -3083,22 +3083,22 @@
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall take advantage of execution environment-based vulnerability mitigation mechanisms supported by the Platform such as: [<b>selection</b>: 
                     <ul>
                         <li style="">
-                            <span class="selectable-content" id="_s_193">Address space randomization</span>
+                            <span class="selectable-content" id="_s_195">Address space randomization</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_194">Memory execution protection (e.g., <abbr class="dyn-abbr"><a href="#abbr_DEP">DEP</a></abbr>)</span>
+                            <span class="selectable-content" id="_s_196">Memory execution protection (e.g., <abbr class="dyn-abbr"><a href="#abbr_DEP">DEP</a></abbr>)</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_195">Stack buffer overflow protection</span>
+                            <span class="selectable-content" id="_s_197">Stack buffer overflow protection</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_196">Heap corruption detection</span>
+                            <span class="selectable-content" id="_s_198">Heap corruption detection</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_197">[<b>assignment</b>: <span class="assignable-content">other mechanisms</span>]</span>
+                            <span class="selectable-content" id="_s_199">[<b>assignment</b>: <span class="assignable-content">other mechanisms</span>]</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_198">No mechanisms</span>
+                            <span class="selectable-content" id="_s_200">No mechanisms</span>
                         </li>
                     </ul>
                     ] 
@@ -3260,16 +3260,16 @@
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall enforce the following rules when [<b>assignment</b>: <span class="assignable-content">virtual or physical removable media and virtual or physical removable media devices</span>] are switched between information domains, then [<b>selection</b>: 
                     <ul>
                         <li style="">
-                            <span class="selectable-content" id="_s_203">the administrator has granted explicit access for the media or device to be connected to the receiving domain</span>
+                            <span class="selectable-content" id="_s_205">the administrator has granted explicit access for the media or device to be connected to the receiving domain</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_204">the media in a device that is being transferred is ejected prior to the receiving domain being allowed access to the device</span>
+                            <span class="selectable-content" id="_s_206">the media in a device that is being transferred is ejected prior to the receiving domain being allowed access to the device</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_205">the user of the receiving domain expressly authorizes the connection</span>
+                            <span class="selectable-content" id="_s_207">the user of the receiving domain expressly authorizes the connection</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_206">the device or media that is being transferred is prevented from being accessed by the receiving domain</span>
+                            <span class="selectable-content" id="_s_208">the device or media that is being transferred is prevented from being accessed by the receiving domain</span>
                         </li>
                     </ul>
                     ] 
@@ -3341,7 +3341,7 @@
                     <a href="#FPT_TUD_EXT.1.1" class="abbr">FPT_TUD_EXT.1.1</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide administrators the ability to query the currently executed version of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> firmware/software as well as the most recently installed version of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> firmware/software. 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide administrators the ability to query the currently executed version of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> firmware and software as well as the most recently installed version of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> firmware and software. 
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note"> The version currently running (being executed) may not be the version most recently installed. For instance, maybe the update was installed but the system requires a reboot before this update will run. Therefore, it needs to be clear that the query should indicate both the most recently executed version as well as the most recently installed update. </span>
                     </div>
@@ -3352,7 +3352,7 @@
                     <a href="#FPT_TUD_EXT.1.2" class="abbr">FPT_TUD_EXT.1.2</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide administrators the ability to manually initiate updates to <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> firmware/software and [<b>selection</b>: <span class="selectable-content" id="_s_207">automatic updates</span>, <span class="selectable-content" id="_s_208">no other update mechanism</span>]. 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide administrators the ability to manually initiate updates to <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> firmware and software and [<b>selection</b>: <span class="selectable-content" id="_s_209">automatic updates</span>, <span class="selectable-content" id="_s_210">no other update mechanism</span>]. 
                 </div>
             </div>
             <div class="element">
@@ -3360,7 +3360,7 @@
                     <a href="#FPT_TUD_EXT.1.3" class="abbr">FPT_TUD_EXT.1.3</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide means to authenticate firmware/software updates to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> using a [<b>selection</b>: <span class="selectable-content" id="sel-tud-digsign-cert">digital signature mechanism using certificates</span>, <span class="selectable-content" id="sel-tud-digsign">digital signature mechanism not using certificates</span>, <span class="selectable-content" id="_s_211">published hash</span>] prior to installing those updates. 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide means to authenticate firmware and software updates to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> using a [<b>selection</b>: <span class="selectable-content" id="sel-tud-digsign-cert">digital signature mechanism using certificates</span>, <span class="selectable-content" id="sel-tud-digsign">digital signature mechanism not using certificates</span>, <span class="selectable-content" id="_s_213">published hash</span>] prior to installing those updates. 
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note">The digital signature mechanism referenced in <a href="#FPT_TUD_EXT.1.3">FPT_TUD_EXT.1.3</a> is one of the algorithms specified in FCS_COP.1/SIG.
                             <p></p>
@@ -3445,7 +3445,7 @@
                 <div class="reqdesc">
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall validate the parameters passed to the virtual device interface prior to execution of the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> functionality exposed by those interfaces. 
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note">The purpose of this requirement is to ensure that the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> is not vulnerable to compromise through the processing of malformed data passed to the virtual device interface from a Guest <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr>. The <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> cannot assume that any data coming from a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> is well-formed&mdash;even if the virtual device interface is unique to the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> and the data comes from a virtual device driver supplied by the Virtualization Vendor.
+                        <span class="note-header">Application Note: </span><span class="note">The purpose of this requirement is to ensure that the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> is not vulnerable to compromise through the processing of malformed data passed to the virtual device interface from a guest <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr>. The <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> cannot assume that any data coming from a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> is well-formed&mdash;even if the virtual device interface is unique to the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> and the data comes from a virtual device driver supplied by the Virtualization Vendor.
                             <br>
                         </span>
                     </div>
@@ -3494,7 +3494,7 @@
                     <a href="#FPT_VIV_EXT.1.1" class="abbr">FPT_VIV_EXT.1.1</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> must ensure that software running in a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> is not able to degrade or disrupt the functioning of other VMs, the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>, or the Platform. 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> must ensure that software running in a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> is not able to degrade or disrupt the functioning of other VMs, the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>, or the platform. 
                 </div>
             </div>
             <div class="element">
@@ -3506,7 +3506,7 @@
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note">This requirement is intended to ensure that software running within a guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> cannot compromise other VMs, the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>, or the platform. This requirement is not met if guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> software&mdash;whatever its privilege level&mdash;can crash the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> or the Platform, or breakout of its virtual hardware abstraction to gain execution on the platform, within or outside of the context of the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>.
                             <p></p>
-                             This requirement is not violated if software running within a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> can crash the Guest <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> and there is no way for an attacker to gain execution in the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> or outside of the virtualized domain.
+                             This requirement is not violated if software running within a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> can crash the guest <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> and there is no way for an attacker to gain execution in the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> or outside of the virtualized domain.
                             <p></p>
                              <a href="#FPT_VIV_EXT.1.2">FPT_VIV_EXT.1.2</a> addresses several specific mechanisms that must not be permitted to bypass the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> and invoke privileged code on the Platform.
                             <p></p>
@@ -3562,7 +3562,7 @@
                     <a href="#FTA_TAB.1.1" class="abbr">FTA_TAB.1.1</a>
                 </div>
                 <div class="reqdesc">
-                    Before establishing an <s>administrative</s> user session, the <b>[<b>selection</b>: <span class="selectable-content" id="_s_212"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></span>, <span class="selectable-content" id="_s_213"><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> platform</span>]</b> shall display a<b>n [<b>assignment</b>: <span class="assignable-content">description of the message</span>] </b> message. 
+                    Before establishing a user session, the [<b>selection</b>: <span class="selectable-content" id="_s_214"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></span>, <span class="selectable-content" id="_s_215"><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> platform</span>] shall display a [<b>assignment</b>: <span class="assignable-content">description of the message</span>] message. 
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note"> This requirement is intended to apply to interactive sessions between a human user and a <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. <abbr class="dyn-abbr"><a href="#abbr_IT">IT</a></abbr> entities establishing connections or programmatic connections (e.g., remote procedure calls over a network) are not required to be covered by this requirement.
                             <p></p>
@@ -3628,30 +3628,31 @@
                             <span class="selectable-content" id="sel-itc-certauth">certificate-based authentication of the remote peer</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_219">non-certificate-based authentication of the remote peer</span>
+                            <span class="selectable-content" id="_s_221">non-certificate-based authentication of the remote peer</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_220">no authentication of the remote peer</span>
+                            <span class="selectable-content" id="_s_222">no authentication of the remote peer</span>
                         </li>
                     </ul>
-                    ] to provide a trusted communication channel between itself, and
-                    <p></p>
-                    <li>
-                        audit servers (as required by <a href="#FAU_STG.1">FAU_STG.1</a>), and
-                    </li>
+                    ] to provide a trusted communication channel between itself and 
+                    <ul>
+                        <li>
+                            audit servers (as required by <a href="#FAU_STG.1">FAU_STG.1</a>) and
+                        </li>
+                    </ul>
                      [<b>selection</b>: 
                     <ul>
                         <li style="">
-                            <span class="selectable-content" id="_s_221">remote administrators (as required by <a href="#FTP_TRP.1.1">FTP_TRP.1.1</a> if selected in FMT_MOF_EXT.1.1 in the Client or Server <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>)</span>
+                            <span class="selectable-content" id="_s_223">remote administrators (as required by <a href="#FTP_TRP.1.1">FTP_TRP.1.1</a> if selected in FMT_MOF_EXT.1.1 in the Client or Server <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>)</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_222">separation of management and operational networks (if selected in <a href="#FMT_SMO_EXT.1">FMT_SMO_EXT.1</a>)</span>
+                            <span class="selectable-content" id="_s_224">separation of management and operational networks (if selected in <a href="#FMT_SMO_EXT.1">FMT_SMO_EXT.1</a>)</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_223">[<b>assignment</b>: <span class="assignable-content">other capabilities</span>]</span>
+                            <span class="selectable-content" id="_s_225">[<b>assignment</b>: <span class="assignable-content">other capabilities</span>]</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_224">no other capabilities</span>
+                            <span class="selectable-content" id="_s_226">no other capabilities</span>
                         </li>
                     </ul>
                     ] that is logically distinct from other communication paths and provides assured identification of its endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data. 
@@ -5207,7 +5208,7 @@
                 <div class="reqdesc">
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support a mechanism for permitting the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> or privileged VMs to access the internals of another <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> for purposes of introspection. 
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note">Introspection can be used to support malware and anomaly detection from outside of the guest environment. This not only helps protect the Guest <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr>, it also protects the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> by providing an opportunity for the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> to detect threats to itself that originate within VMs, and that may attempt to break out of the <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> and compromise the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> or other VMs.
+                        <span class="note-header">Application Note: </span><span class="note">Introspection can be used to support malware and anomaly detection from outside of the guest environment. This not only helps protect the guest <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr>, it also protects the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> by providing an opportunity for the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> to detect threats to itself that originate within VMs, and that may attempt to break out of the <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> and compromise the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> or other VMs.
                             <p></p>
                              The hosting of malware detection software outside of the guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> helps protect the guest and helps ensure the integrity of the malware detection/antivirus software. This capability can be implemented in the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> itself, but ideally it should be hosted by a Service <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> so that it can be better contained and does not introduce bugs into the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>.</span>
                     </div>
@@ -5251,16 +5252,16 @@
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support a measured launch of the Virtualization System. Measured components of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> shall include the static executable image of the Hypervisor and: [<b>selection</b>: 
                     <ul>
                         <li style="">
-                            <span class="selectable-content" id="_s_199">Static executable images of the Management Subsystem</span>
+                            <span class="selectable-content" id="_s_201">Static executable images of the Management Subsystem</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_200">[<b>assignment</b>: <span class="assignable-content">list of (static images of) Service VMs</span>]</span>
+                            <span class="selectable-content" id="_s_202">[<b>assignment</b>: <span class="assignable-content">list of (static images of) Service VMs</span>]</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_201">[<b>assignment</b>: <span class="assignable-content">list of configuration files</span>]</span>
+                            <span class="selectable-content" id="_s_203">[<b>assignment</b>: <span class="assignable-content">list of configuration files</span>]</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_202">no other components</span>
+                            <span class="selectable-content" id="_s_204">no other components</span>
                         </li>
                     </ul>
                     ] 
@@ -5486,7 +5487,7 @@
                 <div class="reqdesc">
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement the HTTPS protocol that complies with RFC 2818. 
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note">This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> Author selects "TLS/HTTPS" in <a href="#FTP_ITC_EXT.1.1">FTP_ITC_EXT.1.1</a>.
+                        <span class="note-header">Application Note: </span><span class="note">This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects "TLS/HTTPS" in <a href="#FTP_ITC_EXT.1.1">FTP_ITC_EXT.1.1</a>.
                             <br>
                             <br>
                              The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author must provide enough detail to determine how the implementation is complying with the standards identified; this can be done either by adding elements to this component, or by additional detail in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr>.</span>
@@ -5541,7 +5542,7 @@
                 <div class="reqdesc">
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement the IPsec architecture as specified in RFC 4301. 
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note"> This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> Author selected "IPsec" in <a href="#FTP_ITC_EXT.1.1">FTP_ITC_EXT.1.1</a>.
+                        <span class="note-header">Application Note: </span><span class="note"> This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selected "IPsec" in <a href="#FTP_ITC_EXT.1.1">FTP_ITC_EXT.1.1</a>.
                             <br>
                             <br>
                              RFC 4301 calls for an IPsec implementation to protect <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> traffic through the use of a Security Policy Database (<abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr>). The <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr> is used to define how <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> packets are to be handled: PROTECT the packet (e.g., encrypt the packet), BYPASS the IPsec services (e.g., no encryption), or DISCARD the packet (e.g., drop the packet). The <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr> can be implemented in various ways, including router access control lists, firewall rule-sets, a "traditional" <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr>, etc. Regardless of the implementation details, there is a notion of a "rule" that a packet is "matched" against and a resulting action that takes place. 
@@ -5580,7 +5581,7 @@
                     <a href="#FCS_IPSEC_EXT.1.4" class="abbr">FCS_IPSEC_EXT.1.4</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement the IPsec protocol ESP as defined by RFC 4303 using the cryptographic algorithms [<abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-GCM-128, <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-GCM-256 (as specified in RFC 4106), [<b>selection</b>: <span class="selectable-content" id="_s_63"><abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC-128 (specified in RFC 3602)</span>, <span class="selectable-content" id="_s_64"><abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC-256 (specified in RFC 3602)</span>, <span class="selectable-content" id="_s_65">no other algorithms</span>]] together with a Secure Hash Algorithm (SHA)-based HMAC. 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement the IPsec protocol ESP as defined by RFC 4303 using the cryptographic algorithms [<i><abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-GCM-128, <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-GCM-256 (as specified in RFC 4106), [<b>selection</b>: <span class="selectable-content" id="_s_63"><abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC-128 (specified in RFC 3602)</span>, <span class="selectable-content" id="_s_64"><abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC-256 (specified in RFC 3602)</span>, <span class="selectable-content" id="_s_65">no other algorithms</span>]</i>] together with a Secure Hash Algorithm (SHA)-based HMAC. 
                 </div>
             </div>
             <div class="element">
@@ -5636,7 +5637,7 @@
                             <p></p>
                              As far as SA lifetimes are concerned, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> can limit the lifetime based on the number of bytes transmitted, or the number of packets transmitted. Either packet-based or volume-based SA lifetimes are acceptable; the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author makes the appropriate selection to indicate which type of lifetime limits are supported.
                             <p></p>
-                             The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author chooses either the IKEv1 requirements or IKEv2 requirements (or both, depending on the selection in <a href="#FCS_IPSEC_EXT.1.5">FCS_IPSEC_EXT.1.5</a>. The IKEv1 requirement can be accomplished either by providing Authorized administrator-configurable lifetimes (with appropriate instructions in documents mandated by AGD_OPE), or by &ldquo;hard coding&rdquo; the limits in the implementation. For IKEv2, there are no hard-coded limits, but in this case it is required that an administrator be able to configure the values. In general, instructions for setting the parameters of the implementation, including lifetime of the SAs, should be included in the operational guidance generated for AGD_OPE. It is appropriate to refine the requirement in terms of number of MB/KB instead of number of packets, as long as the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is capable of setting a limit on the amount of traffic that is protected by the same key (the total volume of all IPsec traffic protected by that key). </span>
+                             The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author chooses either the IKEv1 requirements or IKEv2 requirements (or both, depending on the selection in <a href="#FCS_IPSEC_EXT.1.5">FCS_IPSEC_EXT.1.5</a>. The IKEv1 requirement can be accomplished either by providing authorized administrator-configurable lifetimes (with appropriate instructions in documents mandated by AGD_OPE), or by &ldquo;hard coding&rdquo; the limits in the implementation. For IKEv2, there are no hard-coded limits, but in this case it is required that an administrator be able to configure the values. In general, instructions for setting the parameters of the implementation, including lifetime of the SAs, should be included in the operational guidance generated for AGD_OPE. It is appropriate to refine the requirement in terms of number of MB/KB instead of number of packets, as long as the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is capable of setting a limit on the amount of traffic that is protected by the same key (the total volume of all IPsec traffic protected by that key). </span>
                     </div>
                 </div>
             </div>
@@ -5687,7 +5688,7 @@
                     <a href="#FCS_IPSEC_EXT.1.12" class="abbr">FCS_IPSEC_EXT.1.12</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not establish an SA if the [ [<b>selection</b>: <span class="selectable-content" id="_s_100"><abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address</span>, <span class="selectable-content" id="_s_101">Fully Qualified Domain Name (FQDN)</span>, <span class="selectable-content" id="_s_102">user FQDN</span>, <span class="selectable-content" id="_s_103">Distinguished Name (DN)</span>] and [<b>selection</b>: <span class="selectable-content" id="_s_104">no other reference identifier type</span>, <span class="selectable-content" id="_s_105">[<b>assignment</b>: <span class="assignable-content">other supported reference identifier types</span>]</span>]] contained in a certificate does not match the expected values for the entity attempting to establish a connection. 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not establish an SA if the [<b>selection</b>: <span class="selectable-content" id="_s_100"><abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address</span>, <span class="selectable-content" id="_s_101">Fully Qualified Domain Name (FQDN)</span>, <span class="selectable-content" id="_s_102">user FQDN</span>, <span class="selectable-content" id="_s_103">Distinguished Name (DN)</span>] and [<b>selection</b>: <span class="selectable-content" id="_s_104">no other reference identifier type</span>, <span class="selectable-content" id="_s_105">[<b>assignment</b>: <span class="assignable-content">other supported reference identifier types</span>]</span>] contained in a certificate does not match the expected values for the entity attempting to establish a connection. 
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note"> The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must support at least one of the following identifier types: <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address, Fully Qualified Domain Name (FQDN), user FQDN, or Distinguished Name (DN). In the future, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> will be required to support all of these identifier types. The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is expected to support as many <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address formats (IPv4 and IPv6) as <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> versions supported by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> in general. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author may assign additional supported identifier types in the second selection. </span>
                     </div>
@@ -5715,7 +5716,7 @@
                     <a href="#FCS_IPSEC_EXT.1.14" class="abbr">FCS_IPSEC_EXT.1.14</a>
                 </div>
                 <div class="reqdesc">
-                    The [<b>selection</b>: <span class="selectable-content" id="_s_106"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></span>, <span class="selectable-content" id="_s_107">VPN Gateway</span>] shall be able to ensure by default that the strength of the symmetric algorithm (in terms of the number of bits in the key) negotiated to protect the [<b>selection</b>: <span class="selectable-content" id="_s_108">IKEv1 Phase 1</span>, <span class="selectable-content" id="_s_109">IKEv2 IKE_SA</span>] connection is greater than or equal to the strength of the symmetric algorithm (in terms of the number of bits in the key) negotiated to protect the [selection: IKEv1 Phase 2, IKEv2 CHILD_SA] connection. 
+                    The [<b>selection</b>: <span class="selectable-content" id="_s_106"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></span>, <span class="selectable-content" id="_s_107">VPN Gateway</span>] shall be able to ensure by default that the strength of the symmetric algorithm (in terms of the number of bits in the key) negotiated to protect the [<b>selection</b>: <span class="selectable-content" id="_s_108">IKEv1 Phase 1</span>, <span class="selectable-content" id="_s_109">IKEv2 IKE_SA</span>] connection is greater than or equal to the strength of the symmetric algorithm (in terms of the number of bits in the key) negotiated to protect the [<b>selection</b>: <span class="selectable-content" id="_s_110">IKEv1 Phase 2</span>, <span class="selectable-content" id="_s_111">IKEv2 CHILD_SA</span>] connection. 
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note"> If this functionality is configurable, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> may be configured by a VPN Gateway or by an administrator of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> itself.
                             <p></p>
@@ -6145,7 +6146,7 @@
             </div>
         </div>
         <div class="comp" id="FCS_RBG.2">
-            <h4>FCS_RBG.2 </h4>
+            <h4>FCS_RBG.2 Random Bit Generation (External Seeding)</h4>
             <div class="statustag">
                 <b><i>The inclusion of this selection-based component depends upon selection in <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a>. </i></b>
             </div>
@@ -6155,7 +6156,7 @@
                     <a href="#FCS_RBG.2.1" class="abbr">FCS_RBG.2.1</a>
                 </div>
                 <div class="reqdesc">
-                    <b>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to accept a minimum input of [<b>assignment</b>: <span class="assignable-content">minimum input length greater than zero</span>] from a <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for the purpose of seeding.</b> 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to accept a minimum input of [<b>assignment</b>: <span class="assignable-content">minimum input length greater than zero</span>] from a <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for the purpose of seeding. 
                 </div>
             </div>
             <div class="activity_pane hide">
@@ -6187,7 +6188,7 @@
             </div>
         </div>
         <div class="comp" id="FCS_RBG.3">
-            <h4>FCS_RBG.3 </h4>
+            <h4>FCS_RBG.3 Random Bit Generation (Internal Seeding - Single Source)</h4>
             <div class="statustag">
                 <b><i>The inclusion of this selection-based component depends upon selection in <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a>. </i></b>
             </div>
@@ -6196,7 +6197,7 @@
                     <a href="#FCS_RBG.3.1" class="abbr">FCS_RBG.3.1</a>
                 </div>
                 <div class="reqdesc">
-                    <b>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to seed the RBG using a [<b>selection</b><b>, choose one of</b>: <span class="selectable-content" id="_s_124"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> software-based noise source</span>, <span class="selectable-content" id="_s_125"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> hardware-based noise source</span>] [<b>assignment</b>: <span class="assignable-content">name of noise source</span>] with a minimum of [<b>assignment</b>: <span class="assignable-content">number of bits</span>] bit of min-entropy</b>. 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to seed the RBG using a [<b>selection</b><b>, choose one of</b>: <span class="selectable-content" id="_s_126"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> software-based noise source</span>, <span class="selectable-content" id="_s_127"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> hardware-based noise source</span>] [<b>assignment</b>: <span class="assignable-content">name of noise source</span>] with a minimum of [<b>assignment</b>: <span class="assignable-content">number of bits</span>] bits of min-entropy. 
                 </div>
             </div>
             <div class="activity_pane hide">
@@ -6228,7 +6229,7 @@
             </div>
         </div>
         <div class="comp" id="FCS_RBG.4">
-            <h4>FCS_RBG.4 </h4>
+            <h4>FCS_RBG.4 Random Bit Generation (Internal Seeding - Multiple Sources)</h4>
             <div class="statustag">
                 <b><i>The inclusion of this selection-based component depends upon selection in <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a>. </i></b>
             </div>
@@ -6237,7 +6238,7 @@
                     <a href="#FCS_RBG.4.1" class="abbr">FCS_RBG.4.1</a>
                 </div>
                 <div class="reqdesc">
-                    <b>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to seed the RBG using [<b>selection</b>: <span class="selectable-content" id="_s_126">[<b>assignment</b>: <span class="assignable-content">number</span>] <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> software-based noise source(s)</span>, <span class="selectable-content" id="_s_127">[<b>assignment</b>: <span class="assignable-content">number</span>] <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> hardware-based noise source(s)</span>]. </b>
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to seed the RBG using [<b>selection</b>: <span class="selectable-content" id="_s_128">[<b>assignment</b>: <span class="assignable-content">number</span>] <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> software-based noise source(s)</span>, <span class="selectable-content" id="_s_129">[<b>assignment</b>: <span class="assignable-content">number</span>] <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> hardware-based noise source(s)</span>]. 
                 </div>
             </div>
             <div class="activity_pane hide">
@@ -6269,7 +6270,7 @@
             </div>
         </div>
         <div class="comp" id="FCS_RBG.5">
-            <h4>FCS_RBG.5 </h4>
+            <h4>FCS_RBG.5 Random Bit Generation (Combining Noise Sources Sources)</h4>
             <div class="statustag">
                 <b><i>The inclusion of this selection-based component depends upon selection in <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a>. </i></b>
             </div>
@@ -6278,7 +6279,7 @@
                     <a href="#FCS_RBG.5.1" class="abbr">FCS_RBG.5.1</a>
                 </div>
                 <div class="reqdesc">
-                    <b>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>assignment</b>: <span class="assignable-content">combining operation</span>] [<b>selection</b>: <span class="selectable-content" id="_s_128">output from <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise source(s)</span>, <span class="selectable-content" id="_s_129">input from <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface(s) for seeding</span>] to create the entropy input into the derivation function as defined in [<b>assignment</b>: <span class="assignable-content">list of standards</span>], resulting in a minimum of [<b>assignment</b>: <span class="assignable-content">number of bits</span>]bits of min-entropy.</b> 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>assignment</b>: <span class="assignable-content">combining operation</span>] [<b>selection</b>: <span class="selectable-content" id="_s_130">output from <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise source(s)</span>, <span class="selectable-content" id="_s_131">input from <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface(s) for seeding</span>] to create the entropy input into the derivation function as defined in [<b>assignment</b>: <span class="assignable-content">list of standards</span>], resulting in a minimum of [<b>assignment</b>: <span class="assignable-content">number of bits</span>] bits of min-entropy. 
                 </div>
             </div>
             <div class="activity_pane hide">
@@ -6323,13 +6324,13 @@
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide the following password management capabilities for administrative passwords: 
                     <ol type="a">
                         <li>
-                            Passwords shall be able to be composed of any combination of upper and lower case characters, digits, and the following special characters: [<b>selection</b>: <span class="selectable-content" id="_s_147">&ldquo;!&rdquo;</span>, <span class="selectable-content" id="_s_148">&ldquo;@&rdquo;</span>, <span class="selectable-content" id="_s_149">&ldquo;#&rdquo;</span>, <span class="selectable-content" id="_s_150">&ldquo;$&rdquo;</span>, <span class="selectable-content" id="_s_151">&ldquo;%&rdquo;</span>, <span class="selectable-content" id="_s_152">&ldquo;^&rdquo;</span>, <span class="selectable-content" id="_s_153">&ldquo;&amp; &rdquo;</span>, <span class="selectable-content" id="_s_154">&ldquo;*&rdquo;</span>, <span class="selectable-content" id="_s_155">&ldquo;(&ldquo;</span>, <span class="selectable-content" id="_s_156">&ldquo;)&rdquo;</span>, <span class="selectable-content" id="_s_157">[<b>assignment</b>: <span class="assignable-content">other characters</span>]</span>]
+                            Passwords shall be able to be composed of any combination of upper and lower case characters, digits, and the following special characters: [<b>selection</b>: <span class="selectable-content" id="_s_149">&ldquo;!&rdquo;</span>, <span class="selectable-content" id="_s_150">&ldquo;@&rdquo;</span>, <span class="selectable-content" id="_s_151">&ldquo;#&rdquo;</span>, <span class="selectable-content" id="_s_152">&ldquo;$&rdquo;</span>, <span class="selectable-content" id="_s_153">&ldquo;%&rdquo;</span>, <span class="selectable-content" id="_s_154">&ldquo;^&rdquo;</span>, <span class="selectable-content" id="_s_155">&ldquo;&amp; &rdquo;</span>, <span class="selectable-content" id="_s_156">&ldquo;*&rdquo;</span>, <span class="selectable-content" id="_s_157">&ldquo;(&ldquo;</span>, <span class="selectable-content" id="_s_158">&ldquo;)&rdquo;</span>, <span class="selectable-content" id="_s_159">[<b>assignment</b>: <span class="assignable-content">other characters</span>]</span>]
                         </li>
                         <li>Minimum password length shall be configurable</li>
                         <li>Passwords of at least 15 characters in length shall be supported</li>
                     </ol>
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note"> This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> Author selects &lsquo;authentication based on username and password&rsquo; in <a href="#FIA_UAU.5.1">FIA_UAU.5.1</a>.
+                        <span class="note-header">Application Note: </span><span class="note"> This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects &lsquo;authentication based on username and password&rsquo; in <a href="#FIA_UAU.5.1">FIA_UAU.5.1</a>.
                             <br>
                             <br>
                              The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects the special characters that are supported by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>; they may optionally list additional special characters supported using the assignment. &ldquo;Administrative passwords&rdquo; refers to passwords used by administrators to gain access to the Management Subsystem.</span>
@@ -6393,7 +6394,7 @@
                             The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall validate that any CA certificate includes caSigning purpose in the key usage field
                         </li>
                         <li>
-                            The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall validate revocation status of the certificate using [<b>selection</b>: <span class="selectable-content" id="_s_168">OCSP as specified in RFC 6960</span>, <span class="selectable-content" id="_s_169">a CRL as specified in RFC 5759</span>, <span class="selectable-content" id="_s_170">an OCSP TLS Status Request Extension (OCSP stapling) as specified in RFC 6066</span>, <span class="selectable-content" id="_s_171">OCSP TLS Multi-Certificate Status Request Extension (i.e., OCSP Multi-Stapling) as specified in RFC 6961</span>] with [<b>selection</b>: <span class="selectable-content" id="_s_172">no exceptions</span>, <span class="selectable-content" id="sel-x509-4">exceptions as specified in <a href="#FIA_X509_EXT.4">FIA_X509_EXT.4</a></span>] 
+                            The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall validate revocation status of the certificate using [<b>selection</b>: <span class="selectable-content" id="_s_170">OCSP as specified in RFC 6960</span>, <span class="selectable-content" id="_s_171">a CRL as specified in RFC 5759</span>, <span class="selectable-content" id="_s_172">an OCSP TLS Status Request Extension (OCSP stapling) as specified in RFC 6066</span>, <span class="selectable-content" id="_s_173">OCSP TLS Multi-Certificate Status Request Extension (i.e., OCSP Multi-Stapling) as specified in RFC 6961</span>] with [<b>selection</b>: <span class="selectable-content" id="_s_174">no exceptions</span>, <span class="selectable-content" id="sel-x509-4">exceptions as specified in <a href="#FIA_X509_EXT.4">FIA_X509_EXT.4</a></span>] 
                         </li>
                         <li>
                             The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall validate the extendedKeyUsage field according to the following rules: 
@@ -6513,7 +6514,7 @@
                     <a href="#FIA_X509_EXT.2.1" class="abbr">FIA_X509_EXT.2.1</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall use X.509v3 certificates as defined by RFC 5280 to support authentication for [<b>selection</b>: <span class="selectable-content" id="sel-x509-2-ipsec">IPsec</span>, <span class="selectable-content" id="sel-x509-2-tls">TLS</span>, <span class="selectable-content" id="sel-x509-2-https">HTTPS</span>, <span class="selectable-content" id="sel-x509-2-ssh">SSH</span>, <span class="selectable-content" id="sel-x5092-signed-updates">code signing for system software updates</span>, <span class="selectable-content" id="_s_179">[<b>assignment</b>: <span class="assignable-content">other uses</span>]</span>] 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall use X.509v3 certificates as defined by RFC 5280 to support authentication for [<b>selection</b>: <span class="selectable-content" id="sel-x509-2-ipsec">IPsec</span>, <span class="selectable-content" id="sel-x509-2-tls">TLS</span>, <span class="selectable-content" id="sel-x509-2-https">HTTPS</span>, <span class="selectable-content" id="sel-x509-2-ssh">SSH</span>, <span class="selectable-content" id="sel-x5092-signed-updates">code signing for system software updates</span>, <span class="selectable-content" id="_s_181">[<b>assignment</b>: <span class="assignable-content">other uses</span>]</span>] 
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note">This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> must be included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if the selection for <a href="#FPT_TUD_EXT.1.3">FPT_TUD_EXT.1.3</a> is &ldquo;digital signature mechanism,&rdquo; if "certificate-based authentication of the remote peer" is selected in <a href="#FTP_ITC_EXT.1">FTP_ITC_EXT.1</a>, or if "authentication based on X.509 certificates" is selected in <a href="#FIA_UAU.5.1">FIA_UAU.5.1</a>.
                             <p></p>
@@ -6547,9 +6548,9 @@
                     <a href="#FIA_X509_EXT.2.2" class="abbr">FIA_X509_EXT.2.2</a>
                 </div>
                 <div class="reqdesc">
-                    When the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> cannot establish a connection to determine the validity of a certificate, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>selection</b><b>, choose one of</b>: <span class="selectable-content" id="sel-x509-adminset">allow the administrator to choose whether to accept the certificate in these cases</span>, <span class="selectable-content" id="_s_181">accept the certificate</span>, <span class="selectable-content" id="_s_182">not accept the certificate</span>]. 
+                    When the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> cannot establish a connection to determine the validity of a certificate, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>selection</b><b>, choose one of</b>: <span class="selectable-content" id="sel-x509-adminset">allow the administrator to choose whether to accept the certificate in these cases</span>, <span class="selectable-content" id="_s_183">accept the certificate</span>, <span class="selectable-content" id="_s_184">not accept the certificate</span>]. 
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note"> Often a connection must be established to check the revocation status of a certificate - either to download a CRL or to perform a lookup using OCSP. The selection is used to describe the behavior in the event that such a connection cannot be established (for example, due to a network error). If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> has determined the certificate valid according to all other rules in <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a>, the behavior indicated in the selection shall determine the validity. The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must not accept the certificate if it fails any of the other validation rules in <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a>. If the administrator-configured option is selected by the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> Author, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> Author must ensure that this is also defined as a management function that is provided by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.
+                        <span class="note-header">Application Note: </span><span class="note"> Often a connection must be established to check the revocation status of a certificate - either to download a CRL or to perform a lookup using OCSP. The selection is used to describe the behavior in the event that such a connection cannot be established (for example, due to a network error). If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> has determined the certificate valid according to all other rules in <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a>, the behavior indicated in the selection shall determine the validity. The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must not accept the certificate if it fails any of the other validation rules in <a href="#FIA_X509_EXT.1">FIA_X509_EXT.1</a>. If the administrator-configured option is selected by the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author must ensure that this is also defined as a management function that is provided by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.
                             <p></p>
                         </span>
                     </div>
@@ -6614,7 +6615,7 @@
                     <a href="#FIA_X509_EXT.4.1" class="abbr">FIA_X509_EXT.4.1</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> shall provide alternate functionality to standard X509 certificate revocation checking for the following exceptions: [<b>selection</b>: <span class="selectable-content" id="_s_183">firmware checking of updates: invalidate automatic updates if the firmware certificate is compromised</span>, <span class="selectable-content" id="_s_184">[<b>assignment</b>: <span class="assignable-content">other exceptions and corresponding functionality</span>]</span>].
+                    The <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> shall provide alternate functionality to standard X509 certificate revocation checking for the following exceptions: [<b>selection</b>: <span class="selectable-content" id="_s_185">firmware checking of updates: invalidate automatic updates if the firmware certificate is compromised</span>, <span class="selectable-content" id="_s_186">[<b>assignment</b>: <span class="assignable-content">other exceptions and corresponding functionality</span>]</span>].
                 </div>
             </div>
             <div class="activity_pane hide">
@@ -7009,7 +7010,7 @@
                         <h4 id="ext-comp-FCS_IPSEC_EXT.1.3">FCS_IPSEC_EXT.1.3</h4>
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall have a nominal, final entry in the <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr> that matches anything that is otherwise unmatched, and discards it. 
                         <h4 id="ext-comp-FCS_IPSEC_EXT.1.4">FCS_IPSEC_EXT.1.4</h4>
-                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement the IPsec protocol ESP as defined by RFC 4303 using the cryptographic algorithms [<abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-GCM-128, <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-GCM-256 (as specified in RFC 4106), [<b>selection</b>: <span class="selectable-content" id="_s_63"><abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC-128 (specified in RFC 3602)</span>, <span class="selectable-content" id="_s_64"><abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC-256 (specified in RFC 3602)</span>, <span class="selectable-content" id="_s_65">no other algorithms</span>]] together with a Secure Hash Algorithm (SHA)-based HMAC. 
+                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement the IPsec protocol ESP as defined by RFC 4303 using the cryptographic algorithms [<b>assignment</b>: <span class="assignable-content">cryptographic algorithms</span>] together with a Secure Hash Algorithm (SHA)-based HMAC. 
                         <h4 id="ext-comp-FCS_IPSEC_EXT.1.5">FCS_IPSEC_EXT.1.5</h4>
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement the protocol: 
                         <p></p>
@@ -7040,7 +7041,7 @@
                         </ul>
                         ] 
                         <h4 id="ext-comp-FCS_IPSEC_EXT.1.8">FCS_IPSEC_EXT.1.8</h4>
-                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall ensure that all IKE protocols implement DH groups [<i>19 (256-bit Random ECP), 20 (384-bit Random ECP), and </i>[<b>selection</b>: <span class="selectable-content" id="_s_94">15 (3072-bit MODP)</span>, <span class="selectable-content" id="_s_95">no other DH groups</span>]]. 
+                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall ensure that all IKE protocols implement DH groups [<b>assignment</b>: <span class="assignable-content">DH Groups</span>]. 
                         <h4 id="ext-comp-FCS_IPSEC_EXT.1.9">FCS_IPSEC_EXT.1.9</h4>
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall generate the secret value x used in the IKE Diffie-Hellman key exchange (&ldquo;x&rdquo; in gx mod p) using the random bit generator specified in <a href="#FCS_RBG.1">FCS_RBG.1</a>, and having a length of at least [<b>assignment</b>: <span class="assignable-content">(one or more) number of bits that is at least twice the &ldquo;bits of security&rdquo; value associated with the negotiated Diffie-Hellman group as listed in Table 2 of <abbr class="dyn-abbr"><a href="#abbr_NIST">NIST</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_SP">SP</a></abbr> 800-57, Recommendation for Key Management &ndash; Part 1: General</span>] bits. 
                         <h4 id="ext-comp-FCS_IPSEC_EXT.1.10">FCS_IPSEC_EXT.1.10</h4>
@@ -7048,11 +7049,11 @@
                         <h4 id="ext-comp-FCS_IPSEC_EXT.1.11">FCS_IPSEC_EXT.1.11</h4>
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall ensure that all IKE protocols perform peer authentication using a [<b>selection</b>: <span class="selectable-content" id="_s_96"><abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr></span>, <span class="selectable-content" id="_s_97">ECDSA</span>] that use X.509v3 certificates that conform to RFC 4945 and [<b>selection</b>: <span class="selectable-content" id="_s_98">Pre-shared Keys</span>, <span class="selectable-content" id="_s_99">no other method</span>]. 
                         <h4 id="ext-comp-FCS_IPSEC_EXT.1.12">FCS_IPSEC_EXT.1.12</h4>
-                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not establish an SA if the [ [<b>selection</b>: <span class="selectable-content" id="_s_100"><abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> address</span>, <span class="selectable-content" id="_s_101">Fully Qualified Domain Name (FQDN)</span>, <span class="selectable-content" id="_s_102">user FQDN</span>, <span class="selectable-content" id="_s_103">Distinguished Name (DN)</span>] and [<b>selection</b>: <span class="selectable-content" id="_s_104">no other reference identifier type</span>, <span class="selectable-content" id="_s_105">[<b>assignment</b>: <span class="assignable-content">other supported reference identifier types</span>]</span>]] contained in a certificate does not match the expected values for the entity attempting to establish a connection. 
+                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not establish an SA if the [<b>assignment</b>: <span class="assignable-content">specific certificate reference identifier</span>] and [<b>assignment</b>: <span class="assignable-content">other certificate reference identifier type</span>] contained in a certificate does not match the expected value(s) for the entity attempting to establish a connection. 
                         <h4 id="ext-comp-FCS_IPSEC_EXT.1.13">FCS_IPSEC_EXT.1.13</h4>
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall not establish an SA if the presented identifier does not match the configured reference identifier of the peer. 
                         <h4 id="ext-comp-FCS_IPSEC_EXT.1.14">FCS_IPSEC_EXT.1.14</h4>
-                        The [<b>selection</b>: <span class="selectable-content" id="_s_106"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></span>, <span class="selectable-content" id="_s_107">VPN Gateway</span>] shall be able to ensure by default that the strength of the symmetric algorithm (in terms of the number of bits in the key) negotiated to protect the [<b>selection</b>: <span class="selectable-content" id="_s_108">IKEv1 Phase 1</span>, <span class="selectable-content" id="_s_109">IKEv2 IKE_SA</span>] connection is greater than or equal to the strength of the symmetric algorithm (in terms of the number of bits in the key) negotiated to protect the [selection: IKEv1 Phase 2, IKEv2 CHILD_SA] connection. 
+                        The [<b>selection</b>: <span class="selectable-content" id="_s_106"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></span>, <span class="selectable-content" id="_s_107">VPN Gateway</span>] shall be able to ensure by default that the strength of the symmetric algorithm (in terms of the number of bits in the key) negotiated to protect the [<b>selection</b>: <span class="selectable-content" id="_s_108">IKEv1 Phase 1</span>, <span class="selectable-content" id="_s_109">IKEv2 IKE_SA</span>] connection is greater than or equal to the strength of the symmetric algorithm (in terms of the number of bits in the key) negotiated to protect the [<b>selection</b>: <span class="selectable-content" id="_s_110">IKEv1 Phase 2</span>, <span class="selectable-content" id="_s_111">IKEv2 CHILD_SA</span>] connection. 
                     </div>
                 </div>
             </span><span data-sortkey="Identification and Authentication (FIA)">
@@ -7103,15 +7104,15 @@
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall detect when [<b>selection</b>: 
                         <ul>
                             <li style="">
-                                <span class="selectable-content" id="_s_141">[<b>assignment</b>: <span class="assignable-content">a positive integer number</span>]</span>
+                                <span class="selectable-content" id="_s_143">[<b>assignment</b>: <span class="assignable-content">a positive integer number</span>]</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_142">an administrator configurable positive integer within a [<b>assignment</b>: <span class="assignable-content">range of acceptable values</span>]</span>
+                                <span class="selectable-content" id="_s_144">an administrator configurable positive integer within a [<b>assignment</b>: <span class="assignable-content">range of acceptable values</span>]</span>
                             </li>
                         </ul>
-                        ] unsuccessful authentication attempts occur related to administrators attempting to authenticate remotely using [<b>selection</b>: <span class="selectable-content" id="_s_143">username and password</span>, <span class="selectable-content" id="_s_144">username and PIN</span>]. 
+                        ] unsuccessful authentication attempts occur related to administrators attempting to authenticate remotely using [<b>selection</b>: <span class="selectable-content" id="_s_145">username and password</span>, <span class="selectable-content" id="_s_146">username and PIN</span>]. 
                         <h4 id="ext-comp-FIA_AFL_EXT.1.2">FIA_AFL_EXT.1.2</h4>
-                        When the defined number of unsuccessful authentication attempts has been met, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall: [<b>selection</b>: <span class="selectable-content" id="_s_145">prevent the offending administrator from successfully establishing a remote session using any authentication method that involves a password or PIN until [<b>assignment</b>: <span class="assignable-content">action to unlock</span>] is taken by an administrator</span>, <span class="selectable-content" id="_s_146">prevent the offending administrator from successfully establishing a remote session using any authentication method that involves a password or PIN until an administrator-defined time period has elapsed</span>] 
+                        When the defined number of unsuccessful authentication attempts has been met, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall: [<b>selection</b>: <span class="selectable-content" id="_s_147">prevent the offending administrator from successfully establishing a remote session using any authentication method that involves a password or PIN until [<b>assignment</b>: <span class="assignable-content">action to unlock</span>] is taken by an administrator</span>, <span class="selectable-content" id="_s_148">prevent the offending administrator from successfully establishing a remote session using any authentication method that involves a password or PIN until an administrator-defined time period has elapsed</span>] 
                     </div>
                 </div>
                 <h3 id="ext-comp-FIA_PMG_EXT" class="indexable" data-level="4">C.2.2.2 FIA_PMG_EXT Password Management</h3>
@@ -7152,7 +7153,7 @@
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide the following password management capabilities for administrative passwords: 
                         <ol type="a">
                             <li>
-                                Passwords shall be able to be composed of any combination of upper and lower case characters, digits, and the following special characters: [<b>selection</b>: <span class="selectable-content" id="_s_147">&ldquo;!&rdquo;</span>, <span class="selectable-content" id="_s_148">&ldquo;@&rdquo;</span>, <span class="selectable-content" id="_s_149">&ldquo;#&rdquo;</span>, <span class="selectable-content" id="_s_150">&ldquo;$&rdquo;</span>, <span class="selectable-content" id="_s_151">&ldquo;%&rdquo;</span>, <span class="selectable-content" id="_s_152">&ldquo;^&rdquo;</span>, <span class="selectable-content" id="_s_153">&ldquo;&amp; &rdquo;</span>, <span class="selectable-content" id="_s_154">&ldquo;*&rdquo;</span>, <span class="selectable-content" id="_s_155">&ldquo;(&ldquo;</span>, <span class="selectable-content" id="_s_156">&ldquo;)&rdquo;</span>, <span class="selectable-content" id="_s_157">[<b>assignment</b>: <span class="assignable-content">other characters</span>]</span>]
+                                Passwords shall be able to be composed of any combination of upper and lower case characters, digits, and the following special characters: [<b>selection</b>: <span class="selectable-content" id="_s_149">&ldquo;!&rdquo;</span>, <span class="selectable-content" id="_s_150">&ldquo;@&rdquo;</span>, <span class="selectable-content" id="_s_151">&ldquo;#&rdquo;</span>, <span class="selectable-content" id="_s_152">&ldquo;$&rdquo;</span>, <span class="selectable-content" id="_s_153">&ldquo;%&rdquo;</span>, <span class="selectable-content" id="_s_154">&ldquo;^&rdquo;</span>, <span class="selectable-content" id="_s_155">&ldquo;&amp; &rdquo;</span>, <span class="selectable-content" id="_s_156">&ldquo;*&rdquo;</span>, <span class="selectable-content" id="_s_157">&ldquo;(&ldquo;</span>, <span class="selectable-content" id="_s_158">&ldquo;)&rdquo;</span>, <span class="selectable-content" id="_s_159">[<b>assignment</b>: <span class="assignable-content">other characters</span>]</span>]
                             </li>
                             <li>Minimum password length shall be configurable</li>
                             <li>Passwords of at least 15 characters in length shall be supported</li>
@@ -7266,7 +7267,7 @@
                                 The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall validate that any CA certificate includes caSigning purpose in the key usage field
                             </li>
                             <li>
-                                The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall validate revocation status of the certificate using [<b>selection</b>: <span class="selectable-content" id="_s_168">OCSP as specified in RFC 6960</span>, <span class="selectable-content" id="_s_169">a CRL as specified in RFC 5759</span>, <span class="selectable-content" id="_s_170">an OCSP TLS Status Request Extension (OCSP stapling) as specified in RFC 6066</span>, <span class="selectable-content" id="_s_171">OCSP TLS Multi-Certificate Status Request Extension (i.e., OCSP Multi-Stapling) as specified in RFC 6961</span>] with [<b>selection</b>: <span class="selectable-content" id="_s_172">no exceptions</span>, <span class="selectable-content" id="sel-x509-4">exceptions as specified in <a href="#FIA_X509_EXT.4">FIA_X509_EXT.4</a></span>] 
+                                The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall validate revocation status of the certificate using [<b>selection</b>: <span class="selectable-content" id="_s_170">OCSP as specified in RFC 6960</span>, <span class="selectable-content" id="_s_171">a CRL as specified in RFC 5759</span>, <span class="selectable-content" id="_s_172">an OCSP TLS Status Request Extension (OCSP stapling) as specified in RFC 6066</span>, <span class="selectable-content" id="_s_173">OCSP TLS Multi-Certificate Status Request Extension (i.e., OCSP Multi-Stapling) as specified in RFC 6961</span>] with [<b>selection</b>: <span class="selectable-content" id="_s_174">no exceptions</span>, <span class="selectable-content" id="sel-x509-4">exceptions as specified in <a href="#FIA_X509_EXT.4">FIA_X509_EXT.4</a></span>] 
                             </li>
                             <li>
                                 The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall validate the extendedKeyUsage field according to the following rules: 
@@ -7324,7 +7325,7 @@
                             </tr>
                         </table>
                         <h4 id="ext-comp-FIA_X509_EXT.4.1">FIA_X509_EXT.4.1</h4>
-                        The <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> shall provide alternate functionality to standard X509 certificate revocation checking for the following exceptions: [<b>selection</b>: <span class="selectable-content" id="_s_183">firmware checking of updates: invalidate automatic updates if the firmware certificate is compromised</span>, <span class="selectable-content" id="_s_184">[<b>assignment</b>: <span class="assignable-content">other exceptions and corresponding functionality</span>]</span>].
+                        The <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> shall provide alternate functionality to standard X509 certificate revocation checking for the following exceptions: [<b>selection</b>: <span class="selectable-content" id="_s_185">firmware checking of updates: invalidate automatic updates if the firmware certificate is compromised</span>, <span class="selectable-content" id="_s_186">[<b>assignment</b>: <span class="assignable-content">other exceptions and corresponding functionality</span>]</span>].
                     </div>
                 </div>
             </span><span data-sortkey="Protection of the TSF (FPT)">
@@ -7431,22 +7432,22 @@
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall take advantage of execution environment-based vulnerability mitigation mechanisms supported by the Platform such as: [<b>selection</b>: 
                         <ul>
                             <li style="">
-                                <span class="selectable-content" id="_s_193">Address space randomization</span>
+                                <span class="selectable-content" id="_s_195">Address space randomization</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_194">Memory execution protection (e.g., <abbr class="dyn-abbr"><a href="#abbr_DEP">DEP</a></abbr>)</span>
+                                <span class="selectable-content" id="_s_196">Memory execution protection (e.g., <abbr class="dyn-abbr"><a href="#abbr_DEP">DEP</a></abbr>)</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_195">Stack buffer overflow protection</span>
+                                <span class="selectable-content" id="_s_197">Stack buffer overflow protection</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_196">Heap corruption detection</span>
+                                <span class="selectable-content" id="_s_198">Heap corruption detection</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_197">[<b>assignment</b>: <span class="assignable-content">other mechanisms</span>]</span>
+                                <span class="selectable-content" id="_s_199">[<b>assignment</b>: <span class="assignable-content">other mechanisms</span>]</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_198">No mechanisms</span>
+                                <span class="selectable-content" id="_s_200">No mechanisms</span>
                             </li>
                         </ul>
                         ] 
@@ -7681,16 +7682,16 @@
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support a measured launch of the Virtualization System. Measured components of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> shall include the static executable image of the Hypervisor and: [<b>selection</b>: 
                         <ul>
                             <li style="">
-                                <span class="selectable-content" id="_s_199">Static executable images of the Management Subsystem</span>
+                                <span class="selectable-content" id="_s_201">Static executable images of the Management Subsystem</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_200">[<b>assignment</b>: <span class="assignable-content">list of (static images of) Service VMs</span>]</span>
+                                <span class="selectable-content" id="_s_202">[<b>assignment</b>: <span class="assignable-content">list of (static images of) Service VMs</span>]</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_201">[<b>assignment</b>: <span class="assignable-content">list of configuration files</span>]</span>
+                                <span class="selectable-content" id="_s_203">[<b>assignment</b>: <span class="assignable-content">list of configuration files</span>]</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_202">no other components</span>
+                                <span class="selectable-content" id="_s_204">no other components</span>
                             </li>
                         </ul>
                         ] 
@@ -7751,16 +7752,16 @@
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall enforce the following rules when [<b>assignment</b>: <span class="assignable-content">virtual or physical removable media and virtual or physical removable media devices</span>] are switched between information domains, then [<b>selection</b>: 
                         <ul>
                             <li style="">
-                                <span class="selectable-content" id="_s_203">the administrator has granted explicit access for the media or device to be connected to the receiving domain</span>
+                                <span class="selectable-content" id="_s_205">the administrator has granted explicit access for the media or device to be connected to the receiving domain</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_204">the media in a device that is being transferred is ejected prior to the receiving domain being allowed access to the device</span>
+                                <span class="selectable-content" id="_s_206">the media in a device that is being transferred is ejected prior to the receiving domain being allowed access to the device</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_205">the user of the receiving domain expressly authorizes the connection</span>
+                                <span class="selectable-content" id="_s_207">the user of the receiving domain expressly authorizes the connection</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_206">the device or media that is being transferred is prevented from being accessed by the receiving domain</span>
+                                <span class="selectable-content" id="_s_208">the device or media that is being transferred is prevented from being accessed by the receiving domain</span>
                             </li>
                         </ul>
                         ] 
@@ -7815,11 +7816,11 @@
                             </tr>
                         </table>
                         <h4 id="ext-comp-FPT_TUD_EXT.1.1">FPT_TUD_EXT.1.1</h4>
-                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide administrators the ability to query the currently executed version of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> firmware/software as well as the most recently installed version of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> firmware/software. 
+                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide administrators the ability to query the currently executed version of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> firmware and software as well as the most recently installed version of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> firmware and software. 
                         <h4 id="ext-comp-FPT_TUD_EXT.1.2">FPT_TUD_EXT.1.2</h4>
-                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide administrators the ability to manually initiate updates to <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> firmware/software and [<b>selection</b>: <span class="selectable-content" id="_s_207">automatic updates</span>, <span class="selectable-content" id="_s_208">no other update mechanism</span>]. 
+                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide administrators the ability to manually initiate updates to <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> firmware and software and [<b>selection</b>: <span class="selectable-content" id="_s_209">automatic updates</span>, <span class="selectable-content" id="_s_210">no other update mechanism</span>]. 
                         <h4 id="ext-comp-FPT_TUD_EXT.1.3">FPT_TUD_EXT.1.3</h4>
-                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide means to authenticate firmware/software updates to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> using a [<b>assignment</b>: <span class="assignable-content">integrity action</span>] prior to installing those updates. 
+                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide means to authenticate firmware and software updates to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> using a [<b>assignment</b>: <span class="assignable-content">integrity action</span>] prior to installing those updates. 
                     </div>
                     <h4>Management: FPT_TUD_EXT.2</h4>
                     <p>No specific management functions are identified.</p>
@@ -7914,7 +7915,7 @@
                             </tr>
                         </table>
                         <h4 id="ext-comp-FPT_VIV_EXT.1.1">FPT_VIV_EXT.1.1</h4>
-                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> must ensure that software running in a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> is not able to degrade or disrupt the functioning of other VMs, the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>, or the Platform. 
+                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> must ensure that software running in a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> is not able to degrade or disrupt the functioning of other VMs, the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>, or the platform. 
                         <h4 id="ext-comp-FPT_VIV_EXT.1.2">FPT_VIV_EXT.1.2</h4>
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> must ensure that a guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> is unable to invoke platform code that runs at a privilege level equal to or exceeding that of the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> without involvement of the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>. 
                     </div>
@@ -7952,7 +7953,7 @@
                             </tr>
                         </table>
                         <h4 id="ext-comp-FMT_SMO_EXT.1.1">FMT_SMO_EXT.1.1</h4>
-                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support the separation of management and operational network traffic through [<b>selection</b>: <span class="selectable-content" id="_s_189">separate physical networks</span>, <span class="selectable-content" id="_s_190">separate logical networks</span>, <span class="selectable-content" id="_s_191">trusted channels as defined in <a href="#FTP_ITC_EXT.1">FTP_ITC_EXT.1</a></span>, <span class="selectable-content" id="_s_192">data encryption using an algorithm specified in FCS_COP.1</span>]. 
+                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support the separation of management and operational network traffic through [<b>selection</b>: <span class="selectable-content" id="_s_191">separate physical networks</span>, <span class="selectable-content" id="_s_192">separate logical networks</span>, <span class="selectable-content" id="_s_193">trusted channels as defined in <a href="#FTP_ITC_EXT.1">FTP_ITC_EXT.1</a></span>, <span class="selectable-content" id="_s_194">data encryption using an algorithm specified in FCS_COP.1</span>]. 
                     </div>
                 </div>
             </span><span data-sortkey="Trusted Path/Channel (FTP)">
@@ -7997,11 +7998,12 @@
                             </tr>
                         </table>
                         <h4 id="ext-comp-FTP_ITC_EXT.1.1">FTP_ITC_EXT.1.1</h4>
-                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall use [<b>assignment</b>: <span class="assignable-content"> transport mechanism </span>] and [<b>assignment</b>: <span class="assignable-content">authentication mechanism</span>] to provide a trusted communication channel between itself, and
-                        <p></p>
-                        <li>
-                            audit servers (as required by <a href="#FAU_STG.1">FAU_STG.1</a>), and
-                        </li>
+                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall use [<b>assignment</b>: <span class="assignable-content"> transport mechanism </span>] and [<b>assignment</b>: <span class="assignable-content">authentication mechanism</span>] to provide a trusted communication channel between itself and
+                        <ul>
+                            <li>
+                                audit servers (as required by <a href="#FAU_STG.1">FAU_STG.1</a>) and
+                            </li>
+                        </ul>
                          [<b>assignment</b>: <span class="assignable-content">remote entities</span>] that is logically distinct from other communication paths and provides assured identification of its endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data. 
                     </div>
                 </div>
@@ -8096,7 +8098,7 @@
                             </tr>
                         </table>
                         <h4 id="ext-comp-FDP_HBI_EXT.1.1">FDP_HBI_EXT.1.1</h4>
-                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall use [<b>selection</b>: <span class="selectable-content" id="_s_130">no mechanism</span>, <span class="selectable-content" id="_s_131">[<b>assignment</b>: <span class="assignable-content">list of platform-provided, hardware-based mechanisms</span>]</span>] to constrain a guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>'s direct access to the following physical devices: [<b>selection</b>: <span class="selectable-content" id="_s_132">no devices</span>, <span class="selectable-content" id="_s_133">[<b>assignment</b>: <span class="assignable-content"> physical devices to which the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> allows guest VMs physical access</span>]</span>]. 
+                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall use [<b>selection</b>: <span class="selectable-content" id="_s_132">no mechanism</span>, <span class="selectable-content" id="_s_133">[<b>assignment</b>: <span class="assignable-content">list of platform-provided, hardware-based mechanisms</span>]</span>] to constrain a guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>'s direct access to the following physical devices: [<b>selection</b>: <span class="selectable-content" id="_s_134">no devices</span>, <span class="selectable-content" id="_s_135">[<b>assignment</b>: <span class="assignable-content"> physical devices to which the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> allows guest VMs physical access</span>]</span>]. 
                     </div>
                 </div>
                 <h3 id="ext-comp-FDP_PPR_EXT" class="indexable" data-level="4">C.2.6.2 FDP_PPR_EXT Physical Platform Resource Controls</h3>
@@ -8150,9 +8152,9 @@
                         <h4 id="ext-comp-FDP_PPR_EXT.1.1">FDP_PPR_EXT.1.1</h4>
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall allow an authorized administrator to control guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> access to the following physical platform resources: [<b>assignment</b>: <span class="assignable-content">list of physical platform resources the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> is able to control access to</span>]. 
                         <h4 id="ext-comp-FDP_PPR_EXT.1.2">FDP_PPR_EXT.1.2</h4>
-                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall explicitly deny all guest VMs access to the following physical platform resources: [<b>selection</b>: <span class="selectable-content" id="_s_134">no physical platform resources</span>, <span class="selectable-content" id="_s_135">[<b>assignment</b>: <span class="assignable-content">list of physical platform resources to which access is explicitly denied</span>]</span>]. 
+                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall explicitly deny all guest VMs access to the following physical platform resources: [<b>selection</b>: <span class="selectable-content" id="_s_136">no physical platform resources</span>, <span class="selectable-content" id="_s_137">[<b>assignment</b>: <span class="assignable-content">list of physical platform resources to which access is explicitly denied</span>]</span>]. 
                         <h4 id="ext-comp-FDP_PPR_EXT.1.3">FDP_PPR_EXT.1.3</h4>
-                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall explicitly allow all guest VMs access to the following physical platform resources: [<b>selection</b>: <span class="selectable-content" id="_s_136">no physical platform resources</span>, <span class="selectable-content" id="_s_137">[<b>assignment</b>: <span class="assignable-content">list of physical platform resources to which access is always allowed</span>]</span>]. 
+                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall explicitly allow all guest VMs access to the following physical platform resources: [<b>selection</b>: <span class="selectable-content" id="_s_138">no physical platform resources</span>, <span class="selectable-content" id="_s_139">[<b>assignment</b>: <span class="assignable-content">list of physical platform resources to which access is always allowed</span>]</span>]. 
                     </div>
                 </div>
                 <h3 id="ext-comp-FDP_RIP_EXT" class="indexable" data-level="4">C.2.6.3 FDP_RIP_EXT Residual Information in Memory</h3>
@@ -8251,13 +8253,13 @@
                         The <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> shall provide the following mechanisms for transferring data between guest VMs: [<b>selection</b>: 
                         <ul>
                             <li style="">
-                                <span class="selectable-content" id="_s_138">no mechanism</span>
+                                <span class="selectable-content" id="_s_140">no mechanism</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_139">virtual networking</span>
+                                <span class="selectable-content" id="_s_141">virtual networking</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_140">[<b>assignment</b>: <span class="assignable-content">other inter-VM data sharing mechanisms</span>]</span>
+                                <span class="selectable-content" id="_s_142">[<b>assignment</b>: <span class="assignable-content">other inter-VM data sharing mechanisms</span>]</span>
                             </li>
                         </ul>
                         ]. 
