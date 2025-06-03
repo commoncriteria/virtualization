@@ -199,7 +199,7 @@
 		<tech-terms>
 		  <suppress>Distributed TOE</suppress>
 		  <term full="Administrator">Administrators perform management activities on the VS. These management functions do not 
-			  include administration of software running within guest VMs, such as the Guest OS. Administrators need not be human 
+			  include administration of software running within guest VMs, such as the guest OS. Administrators need not be human 
 			  as in the case of embedded or headless VMs. Administrators are often nothing more than software entities that 
 			  operate within the VM.</term>
 		  <term abbr="AES" full="Advanced Encryption Standard"/>
@@ -884,7 +884,7 @@
                                 <h:li>Start-up and shutdown of audit functions</h:li>
                                 <h:li>[<refinement>All administrative actions relevant to claimed SFRs as defined in the 
 									Auditable Events Table from the Client and Server PP-Modules</refinement>]</h:li>		    
-								<h:li>[<refinement>Auditable events defined in Table <xref g="t-audit-mandatory"/></refinement>]</h:li>
+								<h:li>[<refinement>Auditable events defined in <xref g="t-audit-mandatory"/></refinement>]</h:li>
                                 <h:li><refinement><selectables linebreak="yes">
                                     <selectable id="sel-at2">Auditable events defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable>
 									<selectable id="sel-at3">Auditable events defined in <xref g="t-audit-objective"/> for Objective SFRs</selectable>
@@ -903,7 +903,7 @@
                                 <h:li>Type of event</h:li>
                                 <h:li>Subject and object identity (if applicable)</h:li>
                                 <h:li>The outcome (success or failure) of the event</h:li>
-                                <h:li>[<refinement>Additional information defined in Table <xref g="t-audit-mandatory"/></refinement>]</h:li>
+                                <h:li>[<refinement>Additional information defined in <xref g="t-audit-mandatory"/></refinement>]</h:li>
                                 <h:li><refinement><selectables linebreak="yes">
                                     <selectable>Additional information defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable>
                                     <selectable>Additional information defined in <xref g="t-audit-objective"/> for Objective SFRs</selectable>
@@ -915,14 +915,14 @@
                             </h:ol>
                         </title>
                         <note role="application">
-                            The ST author can include other auditable events directly in Table <xref g="t-audit-mandatory"/>; they are not
+                            The ST author can include other auditable events directly in <xref g="t-audit-mandatory"/>; they are not
 							limited to the list presented. The ST author should update the table in 
 							FAU_GEN.1.2 with any additional information generated. “Subject identity” in FAU_GEN.1.2 could be a 
 							user id or an identifier specifying a VM, for example.<h:p/>
 							Appropriate entries from <xref g="t-audit-optional"/>, <xref g="t-audit-objective"/>, and
 							<xref g="t-audit-sel-based"/> should be included in the ST if the 
 							associated SFRs and selections are included.<h:p/>
-							The Table <xref g="t-audit-mandatory"/> entry for FDP_VNC_EXT.1 refers to configuration settings that attach 
+							The <xref g="t-audit-mandatory"/> entry for FDP_VNC_EXT.1 refers to configuration settings that attach 
 							VMs to virtualized network components. Changes to these configurations can be made 
 							during VM execution or when VMs are not running. Audit records 
 							must be generated for either case.<h:p/>
@@ -1779,7 +1779,7 @@
                                 </selectable>
                             </selectables>.
                         </title>
-                        <note role="application">The ST Author should choose the algorithm implemented to perform digital signatures;
+                        <note role="application">The ST author should choose the algorithm implemented to perform digital signatures;
 							if more than one algorithm is available, this requirement should be iterated to specify the
 							functionality. For the algorithm chosen, the ST author should make the appropriate 
 							assignments/selections to specify the parameters that are implemented for that algorithm.
@@ -2222,10 +2222,10 @@
 							VM-unaware guest would use.<h:p/>
                             The ST author should select “hypercall interface” if the TSF provides an API function through which 
 							guest-resident software can obtain entropy or random numbers. The ST author should select 
-							“virtual device interface” if the TSF presents a virtual device interface to the Guest OS through
+							“virtual device interface” if the TSF presents a virtual device interface to the guest OS through
 							which it can obtain entropy or random numbers. Such an interface could present a virtualized real
 							device, such as a TPM, that can be accessed by VM-unaware guests, or a virtualized fictional device
-							that would require the Guest OS to be VM-aware. The ST author should select “pass-through access to 
+							that would require the guest OS to be VM-aware. The ST author should select “pass-through access to 
 							hardware entropy source” if the TSF permits guest VMs to have direct access to hardware entropy or
 							random number source on the platform. The ST author should select all items that are appropriate.<h:p/>
                             For FCS_ENT_EXT.1.2, the VMM must ensure that the provision of entropy to one VM cannot affect the quality
@@ -2280,7 +2280,7 @@
                     <f-element id="fcs-https-ext-1e1">
                         <title>The TSF shall implement the HTTPS protocol that complies with RFC 2818.
                         </title>
-                        <note role="application">This SFR is included in the ST if the ST Author selects "TLS/HTTPS" in FTP_ITC_EXT.1.1.<h:br/><h:br/>
+                        <note role="application">This SFR is included in the ST if the ST author selects "TLS/HTTPS" in FTP_ITC_EXT.1.1.<h:br/><h:br/>
 						The ST author must provide enough detail to determine how the implementation is 
 						complying with the standards identified; this can be done either by adding elements to this 
 						component, or by additional detail in the TSS.</note>
@@ -2339,7 +2339,7 @@
                         <title>The TSF shall implement the IPsec architecture as specified in RFC 4301.
                         </title>
                         <note role="application">
-							This SFR is included in the ST if the ST Author selected "IPsec" in FTP_ITC_EXT.1.1.<h:br/><h:br/>
+							This SFR is included in the ST if the ST author selected "IPsec" in FTP_ITC_EXT.1.1.<h:br/><h:br/>
 							RFC 4301 calls for an IPsec implementation to protect IP traffic through the use
 							of a Security Policy Database (SPD). The SPD is used to define how IP packets are
 							to be handled: PROTECT the packet (e.g., encrypt the packet), BYPASS the IPsec
@@ -2526,13 +2526,18 @@
                     </f-element>
                     <f-element id="fcs-ipsec-ext-1e4">
                         <title>The TSF shall implement the IPsec protocol ESP as defined by RFC 4303 using the cryptographic 
-				algorithms [AES-GCM-128, AES-GCM-256 (as specified in RFC 4106),
+				algorithms [<h:i>AES-GCM-128, AES-GCM-256 (as specified in RFC 4106),
                             <selectables>
                                 <selectable>AES-CBC-128 (specified in RFC 3602)</selectable>
                                 <selectable>AES-CBC-256 (specified in RFC 3602)</selectable>
                                 <selectable exclusive="yes">no other algorithms</selectable>
-                            </selectables>] together with a Secure Hash Algorithm (SHA)-based HMAC.
+                            </selectables></h:i>] together with a Secure Hash Algorithm (SHA)-based HMAC.
                         </title>
+                        <ext-comp-def-title><title>
+                            The TSF shall implement the IPsec protocol ESP as defined by RFC 4303 using the cryptographic 
+                            algorithms <assignable>cryptographic algorithms</assignable>
+                            together with a Secure Hash Algorithm (SHA)-based HMAC.
+                        </title></ext-comp-def-title>
                         <aactivity level="element">
                             <TSS>
                                 The evaluator shall examine the TSS to verify that the algorithms AES-GCM-128 and 
@@ -2705,7 +2710,7 @@
 				the appropriate selection to indicate which type of lifetime limits are supported.<h:p/>
 				The ST author chooses either the IKEv1 requirements or IKEv2 requirements (or
 				both, depending on the selection in FCS_IPSEC_EXT.1.5. The IKEv1 requirement
-				can be accomplished either by providing Authorized administrator-configurable
+				can be accomplished either by providing authorized administrator-configurable
 				lifetimes (with appropriate instructions in documents mandated by AGD_OPE),
 				or by “hard coding” the limits in the implementation. For IKEv2, there are no
 				hard-coded limits, but in this case it is required that an administrator be able to
@@ -2764,6 +2769,9 @@
 					<selectable exclusive="yes">no other DH groups</selectable>
 				</selectables>].
 			</title>
+                        <ext-comp-def-title><title>
+                            The TSF shall ensure that all IKE protocols implement DH groups <assignable>DH Groups</assignable>.
+                        </title></ext-comp-def-title>
                         <note role="application">
 				The selection is used to specify additional DH groups supported. This applies to
 				IKEv1 and IKEv2 exchanges. It should be noted that if any additional DH groups
@@ -2942,7 +2950,7 @@
                         </aactivity>
                     </f-element>
                     <f-element id="fcs-ipsec-ext-1e12">
-                        <title>The TSF shall not establish an SA if the [
+                        <title>The TSF shall not establish an SA if the 
 				<selectables>
 					<selectable>IP address</selectable>
 					<selectable>Fully Qualified Domain Name (FQDN)</selectable>
@@ -2952,9 +2960,15 @@
 				<selectables>
 					<selectable exclusive="yes">no other reference identifier type</selectable>
 					<selectable><assignable>other supported reference identifier types</assignable></selectable>
-				</selectables>] contained in a certificate does not match the expected values for the
+				</selectables> contained in a certificate does not match the expected values for the
 				entity attempting to establish a connection.
 			</title>
+                        <ext-comp-def-title>
+                            <title>The TSF shall not establish an SA if the <assignable>specific certificate reference identifier</assignable>
+                                and <assignable>other certificate reference identifier type</assignable> contained in a certificate does
+                                not match the expected value(s) for the entity attempting to establish a connection.
+                            </title>
+                        </ext-comp-def-title>
                         <note role="application">
 				The TOE must support at least one of the following identifier types: IP address,
 				Fully Qualified Domain Name (FQDN), user FQDN, or Distinguished Name (DN).
@@ -3011,8 +3025,10 @@
 					<selectable>IKEv1 Phase 1</selectable>
 					<selectable>IKEv2 IKE_SA</selectable>
 				</selectables> connection is greater than or equal to the strength of the symmetric algorithm (in terms of
-				the number of bits in the key) negotiated to protect the [selection: IKEv1 Phase
-				2, IKEv2 CHILD_SA] connection.
+				the number of bits in the key) negotiated to protect the <selectables>
+				    <selectable>IKEv1 Phase 2</selectable>
+				    <selectable>IKEv2 CHILD_SA</selectable>
+				</selectables> connection.
 			</title>
                         <note role="application">
 				If this functionality is configurable, the TSF may be configured by a VPN Gateway
@@ -3177,7 +3193,7 @@
 						<audit-event-descr>Failure of the randomization process.</audit-event-descr>
 					</audit-event>
                 </f-component>		
-				<f-component cc-id="fcs_rbg.2" name="" status="sel-based">
+				<f-component cc-id="fcs_rbg.2" name="Random Bit Generation (External Seeding)" status="sel-based">
 					<depends on="external-seed"/>
 				    <consistency-rationale/>
 					<comp-lev/>
@@ -3187,7 +3203,7 @@
 					<description/>
 					
                     <f-element id="fcs-rbg-2e1">
-                        <title><h:b>The TSF shall be able to accept a minimum input of <assignable>minimum input length greater than zero</assignable> from a TSF interface for the purpose of seeding.</h:b>
+                        <title>The TSF shall be able to accept a minimum input of <assignable>minimum input length greater than zero</assignable> from a TSF interface for the purpose of seeding.
                         </title>
 						<aactivity>
 							<TSS/>
@@ -3198,13 +3214,14 @@
 
                     <audit-event/>
                 </f-component>
-				<f-component cc-id="fcs_rbg.3" name="" status="sel-based">
+                <f-component cc-id="fcs_rbg.3" name="Random Bit Generation (Internal Seeding - Single Source)" status="sel-based">
 					<depends on="internal-seed"/>
 				    <consistency-rationale/>
 					
                     <f-element id="fcs-rbg-3e1">
-                        <title><h:b>The TSF shall be able to seed the RBG using a <selectables choose-one-of="yes"><selectable>TSF software-based
-							noise source</selectable><selectable>TSF hardware-based noise source</selectable></selectables> <assignable>name of noise source</assignable> with a minimum of <assignable>number of bits</assignable> bit of min-entropy</h:b>.
+                        <title>The TSF shall be able to seed the RBG using a <selectables choose-one-of="yes"><selectable>TSF software-based
+							noise source</selectable><selectable>TSF hardware-based noise
+							    source</selectable></selectables> <assignable>name of noise source</assignable> with a minimum of <assignable>number of bits</assignable> bits of min-entropy.
                         </title>
 						<aactivity>
 							<TSS/>
@@ -3215,7 +3232,7 @@
 					
                     <audit-event/>
                 </f-component>
-				<f-component cc-id="fcs_rbg.4" name="" status="sel-based">
+                <f-component cc-id="fcs_rbg.4" name="Random Bit Generation (Internal Seeding - Multiple Sources)" status="sel-based">
 				    <depends on="internal-seeds"/>
 					<consistency-rationale/>
 					<comp-lev/>
@@ -3224,8 +3241,8 @@
 					<dependencies/>
 					
                     <f-element id="fcs-rbg-4e1" >
-                        <title><h:b>The TSF shall be able to seed the RBG using <selectables><selectable><assignable>number</assignable> TSF software-based noise source(s)</selectable><selectable><assignable>number</assignable> TSF hardware-based noise source(s)</selectable></selectables>.
-                        </h:b></title>
+                        <title>The TSF shall be able to seed the RBG using <selectables><selectable><assignable>number</assignable> TSF software-based noise source(s)</selectable><selectable><assignable>number</assignable> TSF hardware-based noise source(s)</selectable></selectables>.
+                        </title>
 						<aactivity>
 							<TSS/>
 							<Guidance/>
@@ -3234,7 +3251,7 @@
                     </f-element>
                     <audit-event/>
                 </f-component>	
-				<f-component cc-id="fcs_rbg.5" name="" status="sel-based">
+                <f-component cc-id="fcs_rbg.5" name="Random Bit Generation (Combining Noise Sources Sources)" status="sel-based">
 				    <depends on="internal-seeds"/>
 					<consistency-rationale/>
 					<comp-lev/>
@@ -3243,7 +3260,8 @@
 					<dependencies/>
 					
                     <f-element id="fcs-rbg-5e1">
-                        <title><h:b>The TSF shall <assignable>combining operation</assignable> <selectables><selectable>output from TSF noise source(s)</selectable><selectable>input from TSF interface(s) for seeding</selectable></selectables> to create the entropy input into the derivation function as defined in <assignable>list of standards</assignable>, resulting in a minimum of <assignable>number of bits</assignable>bits of min-entropy.</h:b>
+                        <title>The TSF shall <assignable>combining operation</assignable>
+                            <selectables><selectable>output from TSF noise source(s)</selectable><selectable>input from TSF interface(s) for seeding</selectable></selectables> to create the entropy input into the derivation function as defined in <assignable>list of standards</assignable>, resulting in a minimum of <assignable>number of bits</assignable> bits of min-entropy.
                         </title>
 						<aactivity>
 							<TSS/>
@@ -3363,9 +3381,9 @@
                         <note role="application">
 				For purposes of this requirement, physical platform resources are divided into three categories: 
 				<h:ul>
-					<h:li>those to which Guest OS access is configurable and moderated by the VMM</h:li>
-					<h:li>those to which the Guest OS is never allowed to have direct access, and</h:li>
-					<h:li>those to which the Guest OS is always allowed to have direct access.</h:li>
+					<h:li>those to which guest OS access is configurable and moderated by the VMM</h:li>
+					<h:li>those to which the guest OS is never allowed to have direct access, and</h:li>
+					<h:li>those to which the guest OS is always allowed to have direct access.</h:li>
 				</h:ul>
                             	For element 1, the ST author lists the physical platform resources that can be configured for guest VM access by 
 				an administrator. For element 2, the ST author lists the physical platform resources to which 
@@ -3452,10 +3470,10 @@
 							allocation to a guest VM.
                         </title>
                         <note role="application">Physical memory must be zeroed before it is made accessible to a VM for general use
-							by a Guest OS. <h:p/>
+							by a guest OS. <h:p/>
                             The purpose of this requirement is to ensure that a VM does not receive memory
 							containing data previously used by another VM or the host.<h:p/>
-                            “For general use” means for use by the Guest OS in its page tables for running applications or system
+                            “For general use” means for use by the guest OS in its page tables for running applications or system
 							software.<h:p/>
                             This does not apply to pages shared by design or policy between VMs or between the VMMs and VMs, such
 							as read-only OS pages or pages used for virtual device buffers.
@@ -3849,7 +3867,7 @@
                             </h:ol>
                         </title>
                         <note role="application">
-							This SFR is included in the ST if the ST Author selects ‘authentication based on username and password’ 
+							This SFR is included in the ST if the ST author selects ‘authentication based on username and password’ 
 							in FIA_UAU.5.1.<h:br/><h:br/>
 							The ST author selects the special characters that are supported by the TOE; they may
 							optionally list additional special characters supported using the assignment. “Administrative
@@ -4254,7 +4272,7 @@
 							a network error). If the TOE has determined the certificate valid according to all other rules in 
 							FIA_X509_EXT.1, the behavior indicated in the selection shall determine the validity. The TOE must
 							not accept the certificate if it fails any of the other validation rules in FIA_X509_EXT.1. If the 
-							administrator-configured option is selected by the ST Author, the ST Author must ensure that this is
+							administrator-configured option is selected by the ST author, the ST author must ensure that this is
 							also defined as a management function that is provided by the TOE.<h:p/></note>
                         <aactivity>
                             <TSS>
@@ -4781,7 +4799,7 @@
 				another VM for purposes of introspection.
                         </title>
                         <note role="application">Introspection can be used to support malware and anomaly detection from outside of
-				the guest environment. This not only helps protect the Guest OS, it also protects the VS by providing 
+				the guest environment. This not only helps protect the guest OS, it also protects the VS by providing 
 				an opportunity for the VS to detect threats to itself that originate within VMs, and that may attempt
 				to break out of the VM and compromise the VMM or other VMs.<h:p/>
                             The hosting of malware detection software outside of the guest VM helps protect the guest and helps ensure
@@ -4998,7 +5016,7 @@
 					<dependencies>FCS_COP.1 Cryptographic Operation</dependencies>
                     <f-element id="fpt-tud-ext-1e1">
                         <title>The TSF shall provide administrators the ability to query the currently executed version of the TOE 
-				firmware/software as well as the most recently installed version of the TOE firmware/software.
+				firmware and software as well as the most recently installed version of the TOE firmware and software.
                         </title>
                         <note role="application">
                             The version currently running (being executed) may not be the version most recently installed. For
@@ -5008,7 +5026,7 @@
                         </note>
                     </f-element>
                     <f-element id="fpt-tud-ext-1e2">
-                        <title>The TSF shall provide administrators the ability to manually initiate updates to	TOE firmware/software and
+                        <title>The TSF shall provide administrators the ability to manually initiate updates to	TOE firmware and software and
                             <selectables>
                                 <selectable>automatic updates</selectable>
                                 <selectable exclusive="yes">no other update mechanism</selectable>
@@ -5016,14 +5034,14 @@
                         </title>
                     </f-element>
                     <f-element id="fpt-tud-ext-1e3">
-                        <title>The TSF shall provide means to authenticate firmware/software updates to the TOE using a
+                        <title>The TSF shall provide means to authenticate firmware and software updates to the TOE using a
                             <selectables>
                                 <selectable id="sel-tud-digsign-cert">digital signature mechanism using certificates</selectable>
                                 <selectable id="sel-tud-digsign">digital signature mechanism not using certificates</selectable>
                                 <selectable>published hash</selectable> 
                             </selectables> prior to installing those updates.
                         </title>
-			<ext-comp-def-title><title>The TSF shall provide means to authenticate firmware/software updates to the TOE using a <assignable>integrity action</assignable> prior to installing those updates.
+			<ext-comp-def-title><title>The TSF shall provide means to authenticate firmware and software updates to the TOE using a <assignable>integrity action</assignable> prior to installing those updates.
                          </title></ext-comp-def-title>
 
                         <note role="application">The digital signature mechanism referenced in FPT_TUD_EXT.1.3 is one of the 
@@ -5158,7 +5176,7 @@
                         </title>
                         <note role="application">The purpose of this requirement is to ensure that the VMM is not vulnerable to
 				compromise through the processing of malformed data passed to the virtual device interface from a 
-				Guest OS. The VMM cannot assume that any data coming from a VM is well-formed—even if the virtual
+				guest OS. The VMM cannot assume that any data coming from a VM is well-formed—even if the virtual
 				device interface is unique to the VS and the data comes from a virtual device
 				driver supplied by the Virtualization Vendor.<h:br/>
                         </note>
@@ -5201,7 +5219,7 @@
 						FDP_VMS_EXT.1 VM Separation</dependencies>
                     <f-element id="fpt-viv-ext-1e1">
                         <title>The TSF must ensure that software running in a VM is not able to degrade or disrupt the functioning of 
-							other VMs, the VMM, or the Platform.
+							other VMs, the VMM, or the platform.
                         </title>
                     </f-element>
                     <f-element id="fpt-viv-ext-1e2">
@@ -5213,7 +5231,7 @@
 							software—whatever its privilege level—can crash the VS or the Platform, or breakout
 							of its virtual hardware abstraction to gain execution on the platform, within or outside of the context
 							of the VMM.<h:p/>
-                            This requirement is not violated if software running within a VM can crash the Guest OS and there is no
+                            This requirement is not violated if software running within a VM can crash the guest OS and there is no
 							way for an attacker to gain execution in the VMM or outside of the virtualized domain.<h:p/>
                             FPT_VIV_EXT.1.2 addresses several specific mechanisms that must not be permitted to bypass the VMM and
 							invoke privileged code on the Platform.<h:p/>
@@ -5251,8 +5269,11 @@
                 <!-- FTA_TAB.1 -->
                 <f-component cc-id="fta_tab.1" name="TOE Access Banner">
                     <f-element id="fta-tab-ext-1e1">
-                        <title>Before establishing an <h:s>administrative</h:s> user session, the <h:b><selectables><selectable>TSF</selectable><selectable>TOE platform</selectable></selectables></h:b> shall display a<h:b>n <assignable>description of the message</assignable> </h:b> message. 
-                            
+                        <title>Before establishing a user session, the <selectables>
+                            <selectable>TSF</selectable>
+                            <selectable>TOE platform</selectable>
+                        </selectables> 
+                            shall display a <assignable>description of the message</assignable> message.                            
                         </title>
                         <note role="application">
                             This requirement is intended to apply to interactive sessions between a human user and a TOE. IT
@@ -5318,8 +5339,8 @@
 				    <selectable>non-certificate-based authentication of the remote peer</selectable>
 				    <selectable>no authentication of the remote peer</selectable>
 				</selectables>
-                            to provide a trusted communication channel between itself, and<h:p/>
-                            <h:li>audit servers (as required by FAU_STG.1), and</h:li>
+                            to provide a trusted communication channel between itself and <h:ul>
+                                <h:li>audit servers (as required by FAU_STG.1) and</h:li></h:ul>
                             <selectables linebreak="yes">
                                 <selectable>remote administrators (as required by FTP_TRP.1.1 if selected in FMT_MOF_EXT.1.1 in the Client or Server PP-Module)</selectable>
                                 <selectable>separation of management and operational networks (if selected in FMT_SMO_EXT.1)</selectable>
@@ -5333,8 +5354,8 @@
                         <title>The TSF shall use
 			<assignable> transport mechanism </assignable>
 			and <assignable>authentication mechanism</assignable>
-                            to provide a trusted communication channel between itself, and<h:p/>
-                            <h:li>audit servers (as required by FAU_STG.1), and</h:li>
+                            to provide a trusted communication channel between itself and<h:ul>
+                                <h:li>audit servers (as required by FAU_STG.1) and</h:li></h:ul>
 			    <assignable>remote entities</assignable>
                             that is logically distinct from other communication paths and provides assured identification of its
                             endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.
