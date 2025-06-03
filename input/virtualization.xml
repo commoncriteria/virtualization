@@ -54,7 +54,7 @@
 
     -->
 
-<?xml-model href="CCProtectionProfile.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>    
+<?xml-model href="https://raw.githubusercontent.com/commoncriteria/transforms/master/schemas/CCProtectionProfile.rng" type="application/xml"?>    
 
 <!-- TITLE PAGE -->
 
@@ -67,7 +67,7 @@
             <PPTitle>Protection Profile for Virtualization</PPTitle>
             <PPVersion>2.0</PPVersion>
             <PPAuthor>National Information Assurance Partnership</PPAuthor>
-            <PPPubDate>2025-05-07</PPPubDate> 
+            <PPPubDate>2025-06-06</PPPubDate> 
             <Keywords>Virtualization</Keywords>
         </ReferenceTable>
     </PPReference>
@@ -93,7 +93,7 @@
         </entry>
 		<entry>
             <version>2.0</version>
-            <date>2025-05-07</date>
+            <date>2025-06-06</date>
             <subject>CC:2022 conversion.</subject>
         </entry>
     </RevisionHistory>
@@ -120,6 +120,7 @@
     <depends on="s-ftp_ssh" also="s-uau-ssh"/>
 	<depends on-sel="sel-itc-ssh"/>
   </include-pkg>
+    
   <include-pkg id="pkg-tls">
     <git>
       <url>https://github.com/commoncriteria/tls</url>
@@ -129,6 +130,7 @@
     <depends on-sel="sel-itc-tls"/>
 	<depends on-sel="sel-itc-https"/>
     </include-pkg>
+    
     <modules required="yes">
       <module id="client-virt">
 	<git>
@@ -394,7 +396,7 @@
  <!-- 2. Conformance Claims -->
 <!--	<sec:Conformance_Claims/>   -->
 <section title="Conformance Claims" id="sec-cclaims" boilerplate="no">
-
+    <comment>Module versions will need to be updated when new versions are published.</comment>
 	<!-- cc-version: cc-2022r1 or cc-31r5   -->
 	<!-- cc-approach: standard or direct-rationale  -->
 	<!-- display: Should this info be displayed in the Conformance -->
@@ -417,8 +419,8 @@
 		<!-- Can be in a configuration with these PPs and Modules -->
 		<cc-pp-config-with>             
 	        
-          <Mod-cc-ref>PP-Module for Client Virtualization Systems, Version 1.1 <comment>version will need to be updated.</comment></Mod-cc-ref>
-		  <Mod-cc-ref>PP-Module for Server Virtualization Systems, Version 1.1 <comment>version will need to be updated.</comment></Mod-cc-ref>
+          <Mod-cc-ref>PP-Module for Client Virtualization Systems, Version 1.1</Mod-cc-ref>
+		  <Mod-cc-ref>PP-Module for Server Virtualization Systems, Version 1.1</Mod-cc-ref>
 			
 		</cc-pp-config-with>
 
@@ -444,24 +446,59 @@
 		<!-- 3.1 Threats -->
 		<sec:Threats>
             <threats>
+                <threat name="T.3P_SOFTWARE">
+                    <description>
+                        In some VS implementations, functions critical to the security of the TOE are by necessity performed by 
+                        software not produced by the virtualization vendor. Such software may include physical device drivers, 
+                        and even non-TOE entities such as Host Operating Systems. Since this software has the same or similar
+                        privilege level as the VS, vulnerabilities can be exploited by an adversary to compromise the VS and VMs.
+                        Where possible, the VS should mitigate the results of potential vulnerabilities or malicious content in
+                        third-party code on which it relies. For example, physical device drivers (potentially the Host OS) could 
+                        be encapsulated within VMs in order to limit the effects of compromise. 
+                    </description>
+                    <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report potential integrity breaches and attempts.</rationale>
+                    <addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
+                    <addressed-by>FCS_COP.1/Hash</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of cryptographic hashing.</rationale>
+                    <addressed-by>FCS_COP.1/KeyedHash</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of keyed-hash message authentication.</rationale>
+                    <addressed-by>FCS_COP.1/Sig</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of cryptographic signature services.</rationale>
+                    <addressed-by>FCS_COP.1/UDE</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of encryption and decryption.</rationale>
+                    <addressed-by>FCS_RBG.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+                    <addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
+                    <addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
+                    <addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
+                    <addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
+                    <addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+                    <addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that Hypercall parameters be validated.</rationale>
+                    <addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
+                    <addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
+                     <addressed-by>FCS_RBG.2 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from an external source.</rationale>
+                    <addressed-by>FCS_RBG.3 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from a single internal source.</rationale>
+                    <addressed-by>FCS_RBG.4 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from multiple internal sources.</rationale>
+                    <addressed-by>FCS_RBG.5 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding while combining noise sources.</rationale>
+                    <addressed-by>FPT_DDI_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
+                    <addressed-by>FPT_ML_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>                    
+                </threat>
+                
                 <threat name="T.DATA_LEAKAGE">
                     <description>
                     It is a fundamental property of VMs that the domains encapsulated by different VMs remain separate unless 
 					data sharing is permitted by policy. For this reason, all Virtualization Systems shall support a policy
-					that prohibits information transfer between VMs.<h:p/>
-                        It shall be possible to configure VMs such that data cannot be moved between domains from VM to VM, or
+					that prohibits information transfer between VMs.<h:br/><h:br/>
+                    It shall be possible to configure VMs such that data cannot be moved between domains from VM to VM, or
 					through virtual or physical network components under the control of the VS. When VMs are configured as
 					such, it shall not be possible for data to leak between domains, neither by the express efforts of
 					software or users of a VM, nor because of vulnerabilities or errors in the implementation of the VMM or
-					other VS components.<h:p/>
-                        If it is possible for data to leak between domains when prohibited by policy, then an adversary on one domain 
+					other VS components.<h:br/><h:br/>
+                    If it is possible for data to leak between domains when prohibited by policy, then an adversary on one domain 
 					or network can obtain data from another domain. Such cross-domain data leakage can, for example, cause
 					classified information, corporate proprietary information, or personally identifiable information to be
 					made accessible to unauthorized entities.
                     </description>
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report attempts to breach isolation.</rationale>
 					<addressed-by>FCS_CKM.6</addressed-by><rationale>This threat is mitigated by this SFR by requiring cryptographic key destruction to protect domain data in shared storage.</rationale>
-					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
+                    <addressed-by>FCS_ENT_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that domains have access to high-quality entropy for cryptographic purposes.</rationale>
+                    <addressed-by>FCS_RBG.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+                    <addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
 					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that domain data is cleared from memory before memory is re-allocated.</rationale>
 					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that domain data is cleared from physical storage upon re-allocation of the storage.</rationale>
 					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
@@ -469,76 +506,112 @@
 					<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that VMs can access only those virtual devices that they are configured to access.</rationale>
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
 					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
+                    <addressed-by>FPT_RDM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for rules for switching removable media between domains to reduce the chance of data spillage.</rationale>
+                    <addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
-					<addressed-by>FCS_ENT_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that domains have access to high-quality entropy for cryptographic purposes.</rationale>
-					<addressed-by>FCS_RBG.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
-					<addressed-by>FCS_RBG.2</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from an external source.</rationale>
-					<addressed-by>FCS_RBG.3</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from a single internal source.</rationale>
-					<addressed-by>FCS_RBG.4</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from multiple internal sources.</rationale>
-					<addressed-by>FCS_RBG.5</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding while combining noise sources.</rationale>
-					<addressed-by>FPT_GVI_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE support Guest VM measurements and integrity checks (optional).</rationale>
-					
-					<addressed-by>FPT_INT_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE support introspection into Guest VMs (optional).</rationale>
-					<addressed-by>FPT_RDM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for rules for switching removable media between domains to reduce the chance of data spillage.</rationale>
-					
-					<addressed-by>FTP_UIF_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that users are able to determine the domain with the current input focus.</rationale>
+                    <addressed-by>FTP_UIF_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that users are able to determine the domain with the current input focus.</rationale>
 					<addressed-by>FTP_UIF_EXT.2</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that users can know the identity of any VM that they can access.</rationale>
-                </threat>
-                <threat name="T.UNAUTHORIZED_UPDATE">
+                    <addressed-by>FPT_GVI_EXT.1 (optional)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE support Guest VM measurements and integrity checks (optional).</rationale>
+                    <addressed-by>FPT_INT_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE support introspection into Guest VMs (optional).</rationale>
+                    <addressed-by>FCS_RBG.2 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from an external source.</rationale>
+                    <addressed-by>FCS_RBG.3 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from a single internal source.</rationale>
+                    <addressed-by>FCS_RBG.4 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from multiple internal sources.</rationale>
+                    <addressed-by>FCS_RBG.5 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding while combining noise sources.</rationale>
+				</threat>
+                
+                <threat name="T.DENIAL_OF_SERVICE">
                     <description>
-                        It is common for attackers to target outdated versions of software containing known flaws. This means it is
-			    extremely important to update VS software as soon as possible when updates are
-			    available. But the source of the updates and the updates themselves must be trusted. If an attacker can
-			    write their own update containing malicious code they can take control of the VS.
+                        A VM may block others from system resources (e.g., system memory, persistent storage, and processing time)
+                        via a resource exhaustion attack.
                     </description>
-                    <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report potential integrity breaches and attempts.</rationale>
-					<addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
-					<addressed-by>FCS_COP.1/Hash</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of cryptographic hashing.</rationale>
-					<addressed-by>FCS_COP.1/KeyedHash</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of keyed-hash message authentication.</rationale>
-					<addressed-by>FCS_COP.1/Sig</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of cryptographic signature services.</rationale>
-					<addressed-by>FCS_COP.1/UDE</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of encryption and decryption.</rationale>
-					<addressed-by>FCS_RBG.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
-					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
-					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
-					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
-					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
-					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that Hypercall parameters be validated.</rationale>
-					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
-					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
-
-					<addressed-by>FPT_DDI_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
-					<addressed-by>FPT_ML_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
-
-					<addressed-by>FCS_RBG.2</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from an external source.</rationale>
-					<addressed-by>FCS_RBG.3</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from a single internal source.</rationale>
-					<addressed-by>FCS_RBG.4</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from multiple internal sources.</rationale>
-					<addressed-by>FCS_RBG.5</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding while combining noise sources.</rationale>
-					
-					
-					
-					
-					
-					
-					
-					
-					
+                    <addressed-by>FCS_CKM.6</addressed-by><rationale>This threat is mitigated by this SFR by requiring cryptographic key destruction to ensure residual data in shared storage is unrecoverable.</rationale>
+                    <addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that domain data is cleared from memory before memory is re-allocated.</rationale>
+                    <addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that domain data is cleared from storage upon re-allocation of the storage.</rationale>
                 </threat>
+                
+                <threat name="T.MISCONFIGURATION">
+                    <description>
+                        The VS may be misconfigured, which could impact its functioning and security. This 
+                        misconfiguration could be due to an administrative error or the use of faulty configuration data.
+                    </description>
+                    <addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that data sharing between VMs is turned off by default.</rationale>
+                </threat>
+                
+                <threat name="T.PLATFORM_COMPROMISE">
+                    <description>
+                        The VS must be capable of protecting the platform from threats that originate within VMs and operational
+                        networks connected to the VS. The hosting of untrusted—even malicious—domains by the VS cannot be 
+                        permitted to compromise the security and integrity of the platform on which the VS executes. If an 
+                        attacker can access the underlying platform in a manner not controlled by the VMM, the attacker might 
+                        be able to modify system firmware or software—compromising both the VS and the 
+                        underlying platform.
+                    </description>
+                    <addressed-by>FDP_HBI_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported mechanisms for access to physical devices.</rationale>
+                    <addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
+                    <addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
+                    <addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
+                    <addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that VMs cannot access virtual devices that they are not configured to access.</rationale>
+                    <addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
+                    <addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+                    <addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that Hypercall parameters be validated.</rationale>
+                    <addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
+                    <addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
+                    <addressed-by>FPT_ML_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
+                </threat>
+                
+                <threat name="T.UNAUTHORIZED_ACCESS">
+                    <description>
+                        Functions performed by the management layer include VM configuration, virtualized network configuration, 
+                        allocation of physical resources, and reporting. Only certain authorized system users (administrators) 
+                        are allowed to exercise management functions or obtain sensitive information from the TOE.<h:p/>
+                        Virtualization Systems are often managed remotely over communication networks. Members of these networks can
+                        be both geographically and logically separated from each other, and pass through a variety of other 
+                        systems which may be under the control of an adversary, and offer the opportunity for communications to be
+                        compromised. An adversary with access to an open management network could inject commands into the
+                        management infrastructure or extract sensitive information. This would provide an adversary with administrator privilege on the platform,
+                        and administrative control over the VMs and virtual network connections. The adversary could also gain
+                        access to the management network by hijacking the management network channel.
+                    </description>
+                    <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report potential attempts to access the management subsystem.</rationale>
+                    <addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
+                    <addressed-by>FCS_CKM.2</addressed-by><rationale>This threat is mitigated by this SFR by using secure cryptographic key distribution for trusted communications channels.</rationale>
+                    <addressed-by>FCS_COP.1/Hash</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of cryptographic hashing.</rationale>
+                    <addressed-by>FCS_COP.1/KeyedHash</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of keyed-hash message authentication.</rationale>
+                    <addressed-by>FCS_COP.1/Sig</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of cryptographic signature services.</rationale>
+                    <addressed-by>FCS_COP.1/UDE</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of encryption and decryption.</rationale>
+                    <addressed-by>FCS_RBG.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+                    <addressed-by>FIA_AFL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE detect failed authentication attempts for Administrator access.</rationale>
+                    <addressed-by>FIA_UAU.5</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that strong mechanisms are used for Administrator authentication.</rationale>
+                    <addressed-by>FIA_UIA_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that Administrators be successfully authenticated before performing management functions.</rationale>
+                    <addressed-by>FMT_SMO_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE support having separate management and operational networks.</rationale>
+                    <addressed-by>FTA_TAB.1</addressed-by><rationale>This threat is mitigated by this SFR by displays advisory notice and consent warning message regarding use of the TOE to Administrators.</rationale>
+                    <addressed-by>FTP_ITC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that trusted communications channels are implemented using good cryptography.</rationale>
+                    <addressed-by>FCS_HTTPS_EXT.1 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that HTTPS trusted communications channels are implemented properly.</rationale>
+                    <addressed-by>FCS_IPSEC_EXT.1 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that IPsec trusted communications channels are implemented properly.</rationale>
+                    <addressed-by>FCS_RBG.2 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from an external source.</rationale>
+                    <addressed-by>FCS_RBG.3 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from a single internal source.</rationale>
+                    <addressed-by>FCS_RBG.4 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from multiple internal sources.</rationale>
+                    <addressed-by>FCS_RBG.5 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding while combining noise sources.</rationale>
+                    <addressed-by>FIA_PMG_EXT.1 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that password-based administrator login is properly implemented.</rationale>
+                    <addressed-by>FIA_X509_EXT.1 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that certificate validation is implemented properly.</rationale>
+                    <addressed-by>FIA_X509_EXT.2 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that certificate-based authentication is implemented properly.t functions.</rationale>
+                    <addressed-by>FIA_X509_EXT.4 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by requiring an exception to be met without the need to validate the revocation of the certificate.</rationale>
+                    <addressed-by>FTP_TRP.1 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that certain communications use a trusted path.</rationale>
+                </threat>
+                
                 <threat name="T.UNAUTHORIZED_MODIFICATION">
                     <description>
-                        System integrity is a core security objective for Virtualization Systems. To achieve system integrity, the
-			    integrity of each VMM component must be established and maintained. Malware running on the platform must
-			    not be able to undetectably modify VS components while the system is running or at 
-			    rest. Likewise, malicious code running within a virtual machine must not be able to modify Virtualization
-			    System components.
+                         System integrity is a core security objective for Virtualization Systems. To achieve system integrity, the
+			             integrity of each VMM component must be established and maintained. Malware running on the platform must
+			             not be able to undetectably modify VS components while the system is running or at 
+			             rest. Likewise, malicious code running within a virtual machine must not be able to modify Virtualization
+			             System components.
                     </description>
 						<addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report potential integrity breaches and attempts.</rationale>
 						<addressed-by>FAU_SAR.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for Administrator review of audit records.</rationale>
-						<addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
 						<addressed-by>FAU_STG.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for protected transmission of audit records off the TOE.</rationale>
 						<addressed-by>FAU_STG.2</addressed-by><rationale>This threat is mitigated by this SFR by requiring protection of stored audit records.</rationale>
-						<addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
+                        <addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
 						<addressed-by>FCS_COP.1/Hash</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of cryptographic hashing.</rationale>
 						<addressed-by>FCS_COP.1/KeyedHash</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of keyed-hash message authentication.</rationale>
 						<addressed-by>FCS_COP.1/Sig</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of cryptographic signature services.</rationale>
@@ -552,107 +625,85 @@
 						<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that Hypercall parameters be validated.</rationale>
 						<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale> 
 						<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
-
-						<addressed-by>FAU_ARP.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for automatic responses to audit events (optional).</rationale>
-						<addressed-by>FAU_SAA.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for rules for indicating security violations based on audit events (optional).</rationale>
-						<addressed-by>FPT_DDI_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
-						<addressed-by>FPT_ML_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
-
-					
-						<addressed-by>FCS_RBG.2</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from an external source.</rationale>
-					<addressed-by>FCS_RBG.3</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from a single internal source.</rationale>
-					<addressed-by>FCS_RBG.4</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from multiple internal sources.</rationale>
-					<addressed-by>FCS_RBG.5</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding while combining noise sources.</rationale>
-					
-
-					
-					
-					
-					
-					
-					
-					
-					
-                    
-					
-					
-					
-					
-                </threat>
+                        <addressed-by>FAU_ARP.1 (optional)</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for automatic responses to audit events (optional).</rationale>
+						<addressed-by>FAU_SAA.1 (optional)</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for rules for indicating security violations based on audit events (optional).</rationale>
+						<addressed-by>FPT_DDI_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
+						<addressed-by>FPT_ML_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
+                        <addressed-by>FCS_RBG.2 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from an external source.</rationale>
+                        <addressed-by>FCS_RBG.3 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from a single internal source.</rationale>
+                        <addressed-by>FCS_RBG.4 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from multiple internal sources.</rationale>
+                        <addressed-by>FCS_RBG.5 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding while combining noise sources.</rationale>
+					</threat>
+                
+                    <threat name="T.UNAUTHORIZED_UPDATE">
+                    <description>
+                         It is common for attackers to target outdated versions of software containing known flaws. This means it is
+			             extremely important to update VS software as soon as possible when updates are
+        			     available. But the source of the updates and the updates themselves must be trusted. If an attacker can
+			             write their own update containing malicious code they can take control of the VS.
+                    </description>
+                    <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report potential integrity breaches and attempts.</rationale>
+					<addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
+					<addressed-by>FCS_COP.1/Hash</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of cryptographic hashing.</rationale>
+					<addressed-by>FCS_COP.1/KeyedHash</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of keyed-hash message authentication.</rationale>
+					<addressed-by>FCS_COP.1/Sig</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of cryptographic signature services.</rationale>
+					<addressed-by>FCS_COP.1/UDE</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of encryption and decryption.</rationale>
+					<addressed-by>FCS_RBG.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
+					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
+					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
+					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
+					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that Hypercall parameters be validated.</rationale>
+					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
+					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
+                    <addressed-by>FPT_DDI_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
+					<addressed-by>FPT_ML_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
+                    <addressed-by>FCS_RBG.2 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from an external source.</rationale>
+                    <addressed-by>FCS_RBG.3 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from a single internal source.</rationale>
+                    <addressed-by>FCS_RBG.4 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from multiple internal sources.</rationale>
+                    <addressed-by>FCS_RBG.5 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding while combining noise sources.</rationale>
+				</threat>
+                
+               <threat name="T.UNPATCHED_SOFTWARE">
+                    <description>
+                         Vulnerabilities in outdated or unpatched software can be exploited by adversaries to compromise the
+			             VS or platform.
+                    </description>
+					<addressed-by>FPT_TUD_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for product updates.</rationale> 
+					<addressed-by>FPT_IDV_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for software identification labels (optional).</rationale>
+                   <addressed-by>FPT_TUD_EXT.2 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by requiring specific requirements for certificate-based code signing for update.</rationale>
+                </threat> 
+                
                 <threat name="T.USER_ERROR">
                     <description>
-                        If a Virtualization System is capable of simultaneously displaying VMs of different domains to the same user
-			    at the same time, there is always the chance that the user will become confused and unintentionally leak
-			    information between domains. This is especially likely if VMs belonging to different domains are 
-			    indistinguishable. Malicious code may also attempt to interfere with the user’s ability to distinguish
-			    between domains. The VS must take measures to minimize the likelihood of such confusion.
+                         If a Virtualization System is capable of simultaneously displaying VMs of different domains to the same user
+			             at the same time, there is always the chance that the user will become confused and unintentionally leak
+			             information between domains. This is especially likely if VMs belonging to different domains are 
+			             indistinguishable. Malicious code may also attempt to interfere with the user’s ability to distinguish
+			             between domains. The VS must take measures to minimize the likelihood of such confusion.
                     </description>
-
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report attempts to breach isolation.</rationale>
 					<addressed-by>FCS_CKM.6</addressed-by><rationale>This threat is mitigated by this SFR by requiring cryptographic key destruction to protect domain data in shared storage.</rationale>
-
-					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
-
-
-					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that domain data is cleared from memory before memory is re-allocated.</rationale>
+                    <addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
+                    <addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that domain data is cleared from memory before memory is re-allocated.</rationale>
 					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that domain data is cleared from physical storage upon re-allocation of the storage.</rationale>
-
-
-					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
+                    <addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
 					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
-
-
-					<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that VMs can access only those virtual devices that they are configured to access.</rationale>
+                    <addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that VMs can access only those virtual devices that they are configured to access.</rationale>
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
 					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
 					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                 </threat>
-                <threat name="T.3P_SOFTWARE">
-                    <description>
-                        In some VS implementations, functions critical to the security of the TOE are by necessity performed by 
-			    software not produced by the virtualization vendor. Such software may include physical device drivers, 
-			    and even non-TOE entities such as Host Operating Systems. Since this software has the same or similar
-			    privilege level as the VS, vulnerabilities can be exploited by an adversary to compromise the VS and VMs.
-			    Where possible, the VS should mitigate the results of potential vulnerabilities or malicious content in
-			    third-party code on which it relies. For example, physical device drivers (potentially the Host OS) could 
-			    be encapsulated within VMs in order to limit the effects of compromise. 
-                    </description>
-                    <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report potential integrity breaches and attempts.</rationale>
-					<addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
-					<addressed-by>FCS_COP.1/Hash</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of cryptographic hashing.</rationale>
-					<addressed-by>FCS_COP.1/KeyedHash</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of keyed-hash message authentication.</rationale>
-					<addressed-by>FCS_COP.1/Sig</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of cryptographic signature services.</rationale>
-					<addressed-by>FCS_COP.1/UDE</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of encryption and decryption.</rationale>
-					<addressed-by>FCS_RBG.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
-					
-
-					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
-					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
-					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
-					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
-					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that Hypercall parameters be validated.</rationale>
-					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
-					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
-
-
-					<addressed-by>FPT_DDI_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
-					
-					<addressed-by>FPT_ML_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
-					
-					<addressed-by>FCS_RBG.2</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from an external source.</rationale>
-					<addressed-by>FCS_RBG.3</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from a single internal source.</rationale>
-					<addressed-by>FCS_RBG.4</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from multiple internal sources.</rationale>
-					<addressed-by>FCS_RBG.5</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding while combining noise sources.</rationale>
-                </threat>
+                
                 <threat name="T.VMM_COMPROMISE">
                     <description>
-                        The VS is designed to provide the appearance of exclusivity to the VMs and is designed
-			    to separate or isolate their functions except where specifically shared. Failure of security mechanisms
-			    could lead to unauthorized intrusion into or modification of the VMM, or bypass of the VMM altogether,
-			    by non-TOE software, such as that running in Guest or Helper VMs or on the host platform. 
-			    This must be prevented to avoid compromising the VS.
+                         The VS is designed to provide the appearance of exclusivity to the VMs and is designed
+			             to separate or isolate their functions except where specifically shared. Failure of security mechanisms
+			             could lead to unauthorized intrusion into or modification of the VMM, or bypass of the VMM altogether,
+			             by non-TOE software, such as that running in Guest or Helper VMs or on the host platform. 
+			             This must be prevented to avoid compromising the VS.
                     </description>
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report potential integrity breaches and attempts.</rationale>
 					<addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
@@ -662,7 +713,6 @@
 					<addressed-by>FCS_COP.1/Sig</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of cryptographic signature services.</rationale>
 					<addressed-by>FCS_COP.1/UDE</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of encryption and decryption.</rationale>
 					<addressed-by>FCS_RBG.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
-					
 					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
 					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that domain data is cleared from memory before memory is re-allocated.</rationale>
 					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that domain data is cleared from physical storage upon re-allocation of the storage.</rationale>
@@ -674,179 +724,70 @@
 					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that Hypercall parameters be validated.</rationale>
 					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
-
-
-					<addressed-by>FPT_DDI_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
-					
-					<addressed-by>FPT_ML_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
-				
-					
-					<addressed-by>FCS_RBG.2</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from an external source.</rationale>
-					<addressed-by>FCS_RBG.3</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from a single internal source.</rationale>
-					<addressed-by>FCS_RBG.4</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from multiple internal sources.</rationale>
-					<addressed-by>FCS_RBG.5</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding while combining noise sources.</rationale>
-					
-                </threat>
-                <threat name="T.PLATFORM_COMPROMISE">
-                    <description>
-                        The VS must be capable of protecting the platform from threats that originate within VMs and operational
-			    networks connected to the VS. The hosting of untrusted—even malicious—domains by the VS cannot be 
-			    permitted to compromise the security and integrity of the platform on which the VS executes. If an 
-			    attacker can access the underlying platform in a manner not controlled by the VMM, the attacker might 
-			    be able to modify system firmware or software—compromising both the VS and the 
-			    underlying platform.
-                    </description>
-
-
-                    <addressed-by>FDP_HBI_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported mechanisms for access to physical devices.</rationale>
-				
-					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
-					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
-					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
-					<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that VMs cannot access virtual devices that they are not configured to access.</rationale>
-					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
-					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that Hypercall parameters be validated.</rationale>
-					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
-					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
-					<addressed-by>FPT_ML_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
-					
-                </threat>
-                <threat name="T.UNAUTHORIZED_ACCESS">
-                    <description>
-						
-                        Functions performed by the management layer include VM configuration, virtualized network configuration, 
-			    allocation of physical resources, and reporting. Only certain authorized system users (administrators) 
-			    are allowed to exercise management functions or obtain sensitive information from the TOE.<h:p/>
-                        Virtualization Systems are often managed remotely over communication networks. Members of these networks can
-			    be both geographically and logically separated from each other, and pass through a variety of other 
-			    systems which may be under the control of an adversary, and offer the opportunity for communications to be
-			    compromised. An adversary with access to an open management network could inject commands into the
-			    management infrastructure or extract sensitive information. This would provide an adversary with administrator privilege on the platform,
-			    and administrative control over the VMs and virtual network connections. The adversary could also gain
-			    access to the management network by hijacking the management network channel.
-                    </description>
-                   	<addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report potential attempts to access the management subsystem.</rationale>
-					<addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
-					<addressed-by>FCS_CKM.2</addressed-by><rationale>This threat is mitigated by this SFR by using secure cryptographic key distribution for trusted communications channels.</rationale>
-					<addressed-by>FCS_COP.1/Hash</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of cryptographic hashing.</rationale>
-					<addressed-by>FCS_COP.1/KeyedHash</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of keyed-hash message authentication.</rationale>
-					<addressed-by>FCS_COP.1/Sig</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of cryptographic signature services.</rationale>
-					<addressed-by>FCS_COP.1/UDE</addressed-by><rationale>This threat is mitigated by this SFR by ensuring proper functioning of encryption and decryption.</rationale>
-					<addressed-by>FCS_RBG.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
-
-					<addressed-by>FIA_AFL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE detect failed authentication attempts for Administrator access.</rationale>
-					<addressed-by>FIA_UAU.5</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that strong mechanisms are used for Administrator authentication.</rationale>
-					<addressed-by>FIA_UIA_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that Administrators be successfully authenticated before performing management functions.</rationale>
-
-					
-					
-					
-					
-					<addressed-by>FMT_SMO_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE support having separate management and operational networks.</rationale>
-					
-					
-					<addressed-by>FTA_TAB.1</addressed-by><rationale>This threat is mitigated by this SFR by displays advisory notice and consent warning message regarding use of the TOE to Administrators.</rationale>
-					<addressed-by>FTP_ITC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that trusted communications channels are implemented using good cryptography.</rationale>
-					<addressed-by>FCS_HTTPS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that HTTPS trusted communications channels are implemented properly.</rationale>
-					<addressed-by>FCS_IPSEC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that IPsec trusted communications channels are implemented properly.</rationale>
-					
-					<addressed-by>FCS_RBG.2</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from an external source.</rationale>
-					<addressed-by>FCS_RBG.3</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from a single internal source.</rationale>
-					<addressed-by>FCS_RBG.4</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from multiple internal sources.</rationale>
-					<addressed-by>FCS_RBG.5</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding while combining noise sources.</rationale>
-					<addressed-by>FIA_PMG_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that password-based administrator login is properly implemented.</rationale>
-					<addressed-by>FIA_X509_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that certificate validation is implemented properly.</rationale>
-					<addressed-by>FIA_X509_EXT.2</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that certificate-based authentication is implemented properly.t functions.</rationale>
-					<addressed-by>FIA_X509_EXT.4</addressed-by><rationale>This threat is mitigated by this SFR by requiring an exception to be met without the need to validate the revocation of the certificate.</rationale>
-					<addressed-by>FTP_TRP.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that certain communications use a trusted path.</rationale>
-                </threat>
+                    <addressed-by>FPT_DDI_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
+					<addressed-by>FPT_ML_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
+				    <addressed-by>FCS_RBG.2 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from an external source.</rationale>
+                    <addressed-by>FCS_RBG.3 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from a single internal source.</rationale>
+                    <addressed-by>FCS_RBG.4 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from multiple internal sources.</rationale>
+                    <addressed-by>FCS_RBG.5 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding while combining noise sources.</rationale>
+				</threat>
+                
                 <threat name="T.WEAK_CRYPTO">
                     <description>
-						
-                        To the extent that VMs appear isolated within the VS, a threat of weak cryptography may 
-			    arise if the VMM does not provide good entropy to support security-related features that depend on
-			    entropy to implement cryptographic algorithms. For example, a random number generator keeps an estimate
-			    of the number of bits of noise in the entropy pool. From this entropy pool random numbers are created.
-			    Good random numbers are essential to implementing strong cryptography. Cryptography implemented using
-			    poor random numbers can be defeated by a sophisticated adversary. Such defeat can result in the compromise
-			    of Guest VM data and credentials, and of VS data and credentials, and can enable unauthorized access 
-			    to the VS or VMs.
+				         To the extent that VMs appear isolated within the VS, a threat of weak cryptography may 
+			             arise if the VMM does not provide good entropy to support security-related features that depend on
+        			     entropy to implement cryptographic algorithms. For example, a random number generator keeps an estimate
+			             of the number of bits of noise in the entropy pool. From this entropy pool random numbers are created.
+			             Good random numbers are essential to implementing strong cryptography. Cryptography implemented using
+			             poor random numbers can be defeated by a sophisticated adversary. Such defeat can result in the compromise
+			             of Guest VM data and credentials, and of VS data and credentials, and can enable unauthorized access 
+			             to the VS or VMs.
                     </description>
                     <addressed-by>FCS_ENT_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that domains have access to high-quality entropy for cryptographic purposes.</rationale>
 					<addressed-by>FCS_RBG.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
-				
-                    
-                </threat>
-                <threat name="T.UNPATCHED_SOFTWARE">
-                    <description>
-						
-                        Vulnerabilities in outdated or unpatched software can be exploited by adversaries to compromise the
-			    VS or platform.
-                    </description>
-                   
-					<addressed-by>FPT_TUD_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for product updates.</rationale> 
-					<addressed-by>FPT_IDV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for software identification labels (optional).</rationale>
-					<addressed-by>FPT_TUD_EXT.2</addressed-by><rationale>This threat is mitigated by this SFR by requiring specific requirements for certificate-based code signing for update.</rationale>
-					
-                </threat>
-                <threat name="T.MISCONFIGURATION">
-                    <description>
-						
-                        The VS may be misconfigured, which could impact its functioning and security. This 
-			    misconfiguration could be due to an administrative error or the use of faulty configuration data.
-                    </description>
-                    <addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that data sharing between VMs is turned off by default.</rationale>
-                </threat>
-                <threat name="T.DENIAL_OF_SERVICE">
-                    <description>
-                        A VM may block others from system resources (e.g., system memory, persistent storage, and processing time)
-			    via a resource exhaustion attack.
-                    </description>
-					
-                    <addressed-by>FCS_CKM.6</addressed-by><rationale>This threat is mitigated by this SFR by requiring cryptographic key destruction to ensure residual data in shared storage is unrecoverable.</rationale>
-					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that domain data is cleared from memory before memory is re-allocated.</rationale>
-					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that domain data is cleared from storage upon re-allocation of the storage.</rationale>
-                </threat>
-            </threats>
+				</threat>
+             </threats>
 		</sec:Threats>
-<!--        </section>  -->
+
+	    <!--        </section>  -->
         
 	<!-- 3.2 Assumptions -->
         <section id="s-assumptions" title="Assumptions">
             <assumptions>
-                <assumption name="A.PLATFORM_INTEGRITY">
-                    <description>The platform has not been compromised prior to installation of the VS.</description>
-                    <objective-refer ref="OE.PHYSICAL">
-                        <rationale>If the underlying platform has not been compromised prior to installation of the TOE, its integrity
-				can be assumed to be intact.</rationale>
-                    </objective-refer>
-                </assumption>
-                <assumption name="A.PHYSICAL">
-                    <description>Physical security commensurate with the value of the TOE and the data it contains is assumed to 
-			    be provided by the environment.</description>
-                    <objective-refer ref="OE.PHYSICAL">
-                        <rationale>If the TOE is deployed in a location that has appropriate physical safeguards, it can be assumed
-				to be physically secure.</rationale>
-                    </objective-refer>
-                </assumption>
-                <assumption name="A.TRUSTED_ADMIN">
-                    <description>TOE Administrators are trusted to follow and apply all administrator guidance.</description>
-                    <objective-refer ref="OE.TRUSTED_ADMIN">
-                        <rationale>Providing guidance to administrators and ensuring that individuals are properly trained and
-				vetted before being given administrative responsibilities will ensure that they are trusted.</rationale>
-                    </objective-refer>
-                </assumption>
                 <assumption name="A.NON_MALICIOUS_USER">
-                    <description>The user of the VS is not willfully negligent or hostile, and uses the VS in compliance with the
-			    applied enterprise security policy and guidance. At the same time, malicious applications could act as
-			    the user, so requirements which confine malicious applications are still in scope.</description>
+                    <description>
+                         The user of the VS is not willfully negligent or hostile, and uses the VS in compliance with the
+			             applied enterprise security policy and guidance. At the same time, malicious applications could act as
+			             the user, so requirements which confine malicious applications are still in scope.</description>
                     <objective-refer ref="OE.NON_MALICIOUS_USER">
                         <rationale>If the organization properly vets and trains users, it is expected that they will be non-malicious.</rationale>
                     </objective-refer>
                     <objective-refer ref="OE.CONFIG">
                         <rationale>If the TOE is administered by a non-malicious and non-negligent user, the expected result is that the TOE
-				will be configured in a correct and secure manner.</rationale>
+				            will be configured in a correct and secure manner.</rationale>
+                    </objective-refer>
+                </assumption>
+                
+                <assumption name="A.PHYSICAL">
+                    <description>
+                         Physical security commensurate with the value of the TOE and the data it contains is assumed to 
+			             be provided by the environment.</description>
+                    <objective-refer ref="OE.PHYSICAL">
+                        <rationale>If the TOE is deployed in a location that has appropriate physical safeguards, it can be assumed to be physically secure.</rationale>
+                    </objective-refer>
+                </assumption>
+                
+                <assumption name="A.PLATFORM_INTEGRITY">
+                    <description>The platform has not been compromised prior to installation of the VS.</description>
+                    <objective-refer ref="OE.PHYSICAL">
+                        <rationale>If the underlying platform has not been compromised prior to installation of the TOE, its integrity can be assumed to be intact.</rationale>
+                    </objective-refer>
+                </assumption>
+                
+                <assumption name="A.TRUSTED_ADMIN">
+                    <description>TOE Administrators are trusted to follow and apply all administrator guidance.</description>
+                    <objective-refer ref="OE.TRUSTED_ADMIN">
+                        <rationale>Providing guidance to administrators and ensuring that individuals are properly trained and vetted before being given administrative responsibilities will ensure that they are trusted.</rationale>
                     </objective-refer>
                 </assumption>
             </assumptions>
@@ -866,24 +807,24 @@
         <section id="s-secobjoe" title="Security Objectives for the Operational Environment">
             <SOEs>
                 <SOE name="OE.CONFIG">
-                    <description>TOE administrators will configure the VS correctly to create the intended security
-						policy.
+                    <description>TOE administrators will configure the VS correctly to create the intended security policy.
                     </description>
                 </SOE>
+                
+                <SOE name="OE.NON_MALICIOUS_USER">
+                    <description>Users are trusted to not be willfully negligent or hostile and use the VS in compliance with the applied enterprise security policy and guidance.
+                    </description>
+                </SOE>
+                
                 <SOE name="OE.PHYSICAL">
-                    <description>Physical security, commensurate with the value of the TOE and the data it contains, is provided by 
-						the environment.
+                    <description>Physical security, commensurate with the value of the TOE and the data it contains, is provided by the environment.
                     </description>
                 </SOE>
                 <SOE name="OE.TRUSTED_ADMIN">
                     <description>TOE Administrators are trusted to follow and apply all administrator guidance in a trusted manner.
                     </description>
                 </SOE>
-                <SOE name="OE.NON_MALICIOUS_USER">
-                    <description>Users are trusted to not be willfully negligent or hostile and use the VS in compliance with the
-						applied enterprise security policy and guidance.
-                    </description>
-                </SOE>
+                
             </SOEs>
         </section>
 	    
@@ -900,7 +841,7 @@
 		
 			<!-- 5.1.1 Auditable Events for Mandatory SFRs -->
 			<section id="ss-audit-table" title="Auditable Events for Mandatory SFRs">
-				<audit-table id="at-mandatory" table="mandatory"/>
+				<audit-table id="t.audit-mandatory" table="mandatory"/>
 			</section>
 
 			<!-- 5.1.2 Security Audit (FAU) -->
@@ -943,7 +884,7 @@
                                 <h:li>Start-up and shutdown of audit functions</h:li>
                                 <h:li>[<refinement>All administrative actions relevant to claimed SFRs as defined in the 
 									Auditable Events Table from the Client and Server PP-Modules</refinement>]</h:li>		    
-								<h:li>[<refinement>Auditable events defined in Table <xref g="at-mandatory"/></refinement>]</h:li>
+								<h:li>[<refinement>Auditable events defined in Table <xref g="t-audit-mandatory"/></refinement>]</h:li>
                                 <h:li><refinement><selectables linebreak="yes">
                                     <selectable id="sel-at2">Auditable events defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable>
 									<selectable id="sel-at3">Auditable events defined in <xref g="t-audit-objective"/> for Objective SFRs</selectable>
@@ -962,7 +903,7 @@
                                 <h:li>Type of event</h:li>
                                 <h:li>Subject and object identity (if applicable)</h:li>
                                 <h:li>The outcome (success or failure) of the event</h:li>
-								<h:li>[<refinement>Additional information defined in Table <xref g="at-mandatory"/></refinement>]</h:li>
+                                <h:li>[<refinement>Additional information defined in Table <xref g="t-audit-mandatory"/></refinement>]</h:li>
                                 <h:li><refinement><selectables linebreak="yes">
                                     <selectable>Additional information defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable>
                                     <selectable>Additional information defined in <xref g="t-audit-objective"/> for Objective SFRs</selectable>
@@ -974,7 +915,7 @@
                             </h:ol>
                         </title>
                         <note role="application">
-                            The ST author can include other auditable events directly in Table <xref g="at-mandatory"/>; they are not
+                            The ST author can include other auditable events directly in Table <xref g="t-audit-mandatory"/>; they are not
 							limited to the list presented. The ST author should update the table in 
 							FAU_GEN.1.2 with any additional information generated. “Subject identity” in FAU_GEN.1.2 could be a 
 							user id or an identifier specifying a VM, for example.<h:p/>
@@ -3235,13 +3176,14 @@
 					</audit-event>
                 </f-component>		
 				<f-component cc-id="fcs_rbg.2" name="" status="sel-based">
-					<consistency-rationale/>
+					<depends on="external-seed"/>
+				    <consistency-rationale/>
 					<comp-lev/>
 					<management/>
 					<audit/>
 					<dependencies/>
 					<description/>
-					<depends on="external-seed"/>
+					
                     <f-element id="fcs-rbg-2e1">
                         <title><h:b>The TSF shall be able to accept a minimum input of <assignable>minimum input length greater than zero</assignable> from a TSF interface for the purpose of seeding.</h:b>
                         </title>
@@ -3255,8 +3197,9 @@
                     <audit-event/>
                 </f-component>
 				<f-component cc-id="fcs_rbg.3" name="" status="sel-based">
-					<consistency-rationale/>
 					<depends on="internal-seed"/>
+				    <consistency-rationale/>
+					
                     <f-element id="fcs-rbg-3e1">
                         <title><h:b>The TSF shall be able to seed the RBG using a <selectables choose-one-of="yes"><selectable>TSF software-based
 							noise source</selectable><selectable>TSF hardware-based noise source</selectable></selectables> <assignable>name of noise source</assignable> with a minimum of <assignable>number of bits</assignable> bit of min-entropy</h:b>.
@@ -3271,13 +3214,13 @@
                     <audit-event/>
                 </f-component>
 				<f-component cc-id="fcs_rbg.4" name="" status="sel-based">
+				    <depends on="internal-seeds"/>
 					<consistency-rationale/>
-					
 					<comp-lev/>
 					<management/>
 					<audit/>
 					<dependencies/>
-					<depends on="internal-seeds"/>
+					
                     <f-element id="fcs-rbg-4e1" >
                         <title><h:b>The TSF shall be able to seed the RBG using <selectables><selectable><assignable>number</assignable> TSF software-based noise source(s)</selectable><selectable><assignable>number</assignable> TSF hardware-based noise source(s)</selectable></selectables>.
                         </h:b></title>
@@ -3290,12 +3233,13 @@
                     <audit-event/>
                 </f-component>	
 				<f-component cc-id="fcs_rbg.5" name="" status="sel-based">
+				    <depends on="internal-seeds"/>
 					<consistency-rationale/>
 					<comp-lev/>
 					<management/>
 					<audit/>
 					<dependencies/>
-					<depends on="internal-seeds"/>
+					
                     <f-element id="fcs-rbg-5e1">
                         <title><h:b>The TSF shall <assignable>combining operation</assignable> <selectables><selectable>output from TSF noise source(s)</selectable><selectable>input from TSF interface(s) for seeding</selectable></selectables> to create the entropy input into the derivation function as defined in <assignable>list of standards</assignable>, resulting in a minimum of <assignable>number of bits</assignable>bits of min-entropy.</h:b>
                         </title>
@@ -4358,12 +4302,13 @@
 			<audit-event />
                 </f-component>
 				<f-component cc-id="fia_x509_ext.4" name="Exceptions to X509 Certificate Revocation Checking"  status="sel-based" id="fia-x509-ext-4">
+				    <depends on-sel="sel-x509-4"/>
 					<consistency-rationale/>
 					<comp-lev/>
 					<management/>
 					<audit/>
 					<dependencies>FIA_X509_EXT.1 X.509 Certificate Validation</dependencies>
-					<depends on-sel="sel-x509-4"/>
+					
 					<f-element id="fia-x509-ext-4-1">
 					
 						<title>The OS shall provide alternate functionality to standard X509 certificate revocation checking for the following exceptions: <selectables><selectable>firmware checking of updates: invalidate automatic updates if the firmware certificate is compromised</selectable><selectable><assignable>other exceptions and corresponding functionality</assignable></selectable></selectables>.</title>
