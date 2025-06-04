@@ -33,23 +33,9 @@
             <date>2025-06-06</date>
             <subject>CC:2022 conversion.</subject>
         </entry>
-    </RevisionHistory>
-	
-    <release-notes><h:h3>TDs Applied</h:h3></release-notes><include-pkg id="pkg-x509">
-        <git>
-            <url>https://github.com/commoncriteria/x509</url>
-            <branch>master</branch>
-        </git>
-        <url>https://www.niap-ccevs.org/protectionprofiles/511</url>
-        <depends on-sel="sel-tud-digsign-cert"/>
-		<depends on-sel="sel-uau-x509"/>
-		<depends on-sel="sel-itc-certauth"/>
-		<depends on-sel="sel-x509-2-ssh"/>
-		<depends on-sel="sel-itc-tls"/>
-		<depends on-sel="sel-itc-https"/>
-    </include-pkg>    
+    </RevisionHistory>	
       
-  <include-pkg id="pkg-ssh">
+  <release-notes><h:h3>TDs Applied</h:h3></release-notes><include-pkg id="pkg-ssh">
     <git>
       <url>https://github.com/commoncriteria/ssh</url>
       <branch>release-2.0</branch>
@@ -67,14 +53,19 @@
     <url>https://commoncriteria.github.io/tls/release-2.0/tls-release.html</url>
     <depends on-sel="sel-itc-tls"/>
 	<depends on-sel="sel-itc-https"/>
-    </include-pkg>
+    </include-pkg>    
     
     <include-pkg id="pkg-x509">
         <git>
             <url>https://github.com/commoncriteria/X509</url>
-            <branch>master</branch>
+            <branch>release-1.0</branch>
         </git>
-        <url>https://www.niap-ccevs.org/protectionprofiles/511</url>
+        <url>https://www.niap-ccevs.org/static_html/protection-profile/511/Functional%20Package%20for%20X.509_v1.0.html</url>
+        <depends on="fcs-ipsec-ext-1e11"/>
+        <depends on="fia-uau-5e1"/>
+        <depends on="fpt-tud-ext-1e3"/>
+        <depends on="fpt-tud-ext-2e1"/>
+        <depends on="ftp-itc-ext-1e1"/>
     </include-pkg>
     
     <modules required="yes">
@@ -2845,7 +2836,8 @@
 			</Guidance>
 			<Tests>
 				For efficiency’s sake, the testing that is performed here has been combined with the testing for
-				FIA_X509_EXT.2 and FIA_X509_EXT.3 in the <xref to="pkg-x509"/> (for IPsec connections and depending on the Base-PP),
+				FIA_X509_EXT.2 and FIA_X509_EXT.3 in the <!-- <xref to="pkg-509"/> --> Functional Package for
+			    X.509, version 1.0 (for IPsec connections and depending on the Base-PP),
 				FCS_IPSEC_EXT.1.12, and FCS_IPSEC_EXT.1.13. The following tests shall be repeated for each peer
 				authentication protocol selected in the FCS_IPSEC_EXT.1.11 selection above:<h:p/>
 				    <testlist>
@@ -3884,8 +3876,11 @@
 							FIA_PMG_EXT.1 be included in the ST. This also requires that the ST include a management function for
 							password management. If the ST author selects ‘authentication based on an SSH public-key credential’,
 							the TSF shall be validated against the <xref to="pkg-ssh"/>. The ST must include 
-                            FIA_X509_EXT.1 and FIA_X509_EXT.2 from the <xref to="pkg-x509"/>, if
-                            'authentication based on X.509 certificates' is selected, as defined in the <xref to="pkg-x509"/>. 
+                            FIA_X509_EXT.1 and FIA_X509_EXT.2  <!-- <xref to="pkg-509"/> --> Functional Package for
+                            X.509, version 1.0, if
+                            'authentication based on X.509 certificates' is selected, as defined in
+                            the <!-- <xref to="pkg-509"/> --> Functional Package for
+                            X.509, version 1.0 . 
 							<h:br/><h:br/>
 							PINs used to access OE-protected storage are set and managed by the OE-protected storage mechanism. Thus
 							requirements on PIN management are outside the scope of the TOE.<h:p/>
@@ -3921,7 +3916,8 @@
 								If ‘X.509 certificate authentication‘ is selected, the evaluator will generate an X.509v3 certificate for 
 								an administrator user with the Client Authentication Enhanced Key Usage field set. The evaluator
 								will provision the VS for authentication with the X.509v3 certificate. The evaluator shall ensure
-								that the certificates are validated by the VS as per FIA_X509_EXT.1.1 in the <xref to="pkg-x509"/> and then conduct the
+								that the certificates are validated by the VS as per FIA_X509_EXT.1.1 in the <!-- <xref to="pkg-509"/> --> Functional Package for
+                                X.509, version 1.0 and then conduct the
 								following tests:
 								<testlist>
 									<test>The evaluator will attempt to authenticate to the VS using the X.509v3 certificate. The 
@@ -4821,10 +4817,12 @@
                         <note role="application">The digital signature mechanism referenced in FPT_TUD_EXT.1.3 is one of the 
 				algorithms specified in FCS_COP.1/SIG.<h:p/>
                             If certificates are used by the update verification mechanism, then
-                            FIA_X509_EXT.1 and FIA_X509_EXT.2 in the <xref to="pkg-x509"/>
-                            must be included in the ST. Certificates are validated in accordance
-                            with FIA_X509_EXT.1 in the <xref to="pkg-x509"/> and 
-                            the appropriate selections should be made in FIA_X509_EXT.2.1 in the <xref to="pkg-x509"/>. Additionally, FPT_TUD_EXT.2 must be
+                            FIA_X509_EXT.1 and FIA_X509_EXT.2 in the  <!-- <xref to="pkg-509"/> --> Functional Package for
+                            X.509, version 1.0  must be included in the ST. Certificates are validated in accordance
+                            with FIA_X509_EXT.1 in the  <!-- <xref to="pkg-509"/> --> Functional Package for
+                            X.509, version 1.0 and 
+                            the appropriate selections should be made in FIA_X509_EXT.2.1 in the  <!-- <xref to="pkg-509"/> --> Functional Package for
+                            X.509, version 1.0. Additionally, FPT_TUD_EXT.2 must be
 				included in the ST.<h:p/>
                             “Update” in the context of this SFR refers to the process of replacing a non-volatile, system resident
 				software component with another. The former is referred to as the NV image, and the latter is the
@@ -4888,7 +4886,8 @@
                         </aactivity>
 						<rule id="rule-certs-for-update">
 							<description>If <xref to="sel-tud-digsign-cert"/> is selected in FPT_TUD_EXT.1.3 
-							    then <xref to="sel-x5092-signed-updates"/> must be selected in FIA_X509_EXT.2.1 in the <xref to="pkg-x509"/>.</description>
+							    then <xref to="sel-x5092-signed-updates"/> must be selected in FIA_X509_EXT.2.1 in the <!-- <xref to="pkg-509"/> --> Functional Package for
+							    X.509, version 1.0.</description>
 							<if><ref-id>sel-tud-digsign-cert</ref-id></if><then><ref-id>sel-x5092-signed-updates</ref-id></then></rule>
                     </f-element>
 		    <audit-event>
@@ -4916,16 +4915,19 @@
                         </title>
                         <note role="application">Certificates may optionally be used for code signing of system software updates
 				(FPT_TUD_EXT.1.3). This element must be included in the ST if certificates are used for validating 
-				updates. If “code signing for system software updates” is selected in FIA_X509_EXT.2.1 from the <xref to="pkg-x509"/>, FPT_TUD_EXT.2 
+				updates. If “code signing for system software updates” is selected in FIA_X509_EXT.2.1 from the <!-- <xref to="pkg-509"/> --> Functional Package for
+                            X.509, version 1.0, FPT_TUD_EXT.2 
 				must be included in the ST.<h:p/>
                             Validity is determined by the certificate path, the expiration date, and the revocation status in 
-                            accordance with FIA_X509_EXT.1 in the <xref to="pkg-x509"/>.</note>
+                            accordance with FIA_X509_EXT.1 in the <!-- <xref to="pkg-509"/> --> Functional Package for
+                            X.509, version 1.0.</note>
                         <aactivity>
 							<TSS/>
 							<Guidance/>
                             <Tests>
                                 The evaluation activity for this requirement is performed in conjunction with the evaluation activity
-                                for FIA_X509_EXT.1  and FIA_X509_EXT.2 in the <xref to="pkg-x509"/>.
+                                for FIA_X509_EXT.1  and FIA_X509_EXT.2 in the <!-- <xref to="pkg-509"/> --> Functional Package for
+                                X.509, version 1.0.
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -5144,7 +5146,8 @@
 				requirements be included by the PP, so selection of TLS or HTTPS causes FIA_X509_EXT.* to be selected.<h:p/>
                             If the ST author selects SSH, the TSF shall be validated against the <xref to="pkg-ssh"/>.<h:br/> <h:br/>
 			    If the ST author selects "certificate-based authentication of the remote peer," then FIA_X509_EXT.1 and FIA_X509_EXT.2
-			    in the <xref to="pkg-x509"/> must be included in the ST. "No authentication of the remote peer" should be selected only if the TOE is acting 
+			    in the <!-- <xref to="pkg-509"/> --> Functional Package for
+                            X.509, version 1.0 must be included in the ST. "No authentication of the remote peer" should be selected only if the TOE is acting 
 				as a server in a non-mutual authentication configuration.<h:p/>			    
 			    The ST author must include the security functional requirements for the
                             trusted channel protocol selected in FTP_ITC_EXT.1 in the main body of the ST.<h:p/>
@@ -5171,17 +5174,20 @@
 								<then><ref-id>sel-x509-2-tls</ref-id></then></rule>
 						<rule id="rule-cert-based-https">
 							<description>If "<h:i><xref to="sel-itc-certauth"/></h:i>" and "<h:i><xref to="sel-itc-https"/></h:i>" are selected in FTP_ITC_EXT.1.1
-							    then "<h:i><xref to="sel-x509-2-https"/></h:i>" must be selected in FIA_X509_EXT.2.1 in the <xref to="pkg-x509"/>.</description>
+							    then "<h:i><xref to="sel-x509-2-https"/></h:i>" must be selected in FIA_X509_EXT.2.1 in the <!-- <xref to="pkg-509"/> --> Functional Package for
+							    X.509, version 1.0.</description>
 							<if><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-https</ref-id></and></if>
 								<then><ref-id>sel-x509-2-https</ref-id></then></rule>
 						<rule id="rule-cert-based-ipsec">
 							<description>If "<h:i><xref to="sel-itc-certauth"/></h:i>" and "<h:i><xref to="sel-itc-ipsec"/></h:i>" are selected in FTP_ITC_EXT.1.1
-							    then "<h:i><xref to="sel-x509-2-ipsec"/></h:i>" must be selected in FIA_X509_EXT.2.1 in the <xref to="pkg-x509"/>.</description>
+							    then "<h:i><xref to="sel-x509-2-ipsec"/></h:i>" must be selected in FIA_X509_EXT.2.1 in the <!-- <xref to="pkg-509"/> --> Functional Package for
+							    X.509, version 1.0.</description>
 							<if><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-ipsec</ref-id></and></if>
 								<then><ref-id>sel-x509-2-ipsec</ref-id></then></rule>
 						<rule id="rule-cert-based-ssh">
 							<description>If "<h:i><xref to="sel-itc-certauth"/></h:i>" and "<h:i><xref to="sel-itc-ssh"/></h:i>" are selected in FTP_ITC_EXT.1.1
-							    then "<h:i><xref to="sel-x509-2-ssh"/></h:i>" must be selected in FIA_X509_EXT.2.1 in the <xref to="pkg-x509"/>.</description>
+							    then "<h:i><xref to="sel-x509-2-ssh"/></h:i>" must be selected in FIA_X509_EXT.2.1 in the <!-- <xref to="pkg-509"/> --> Functional Package for
+							    X.509, version 1.0.</description>
 							<if><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-ssh</ref-id></and></if>
 								<then><ref-id>sel-x509-2-ssh</ref-id></then></rule>
                     </f-element>
@@ -5864,7 +5870,8 @@
             <h:tr>
                 <h:td>FPT_STM.1 - Reliable Time Stamps</h:td>
                 <h:td>
-                    FIA_X509_EXT.1 in the <xref to="pkg-x509"/> has a dependency on FPT_STM.1. While not explicitly stated in the PP, it is
+                    FIA_X509_EXT.1 in the <!-- <xref to="pkg-509"/> --> Functional Package for
+                    X.509, version 1.0 has a dependency on FPT_STM.1. While not explicitly stated in the PP, it is
                     assumed that this will be provided by the underlying hardware platform on which the TOE
                     is installed. This is because the TOE is installed as a software or firmware product that runs
                     on general-purpose computing hardware so a hardware clock is assumed to be available.

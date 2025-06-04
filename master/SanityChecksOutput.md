@@ -1,20 +1,16 @@
 * Error: Found a "assignable" element that is buried under stricken text:
         /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[7]""/f-element[1]""/title[1]"The TSF s"/h:s[1]"that meet"/assignable[1]"list of s"
 * Warning: This document still has at least one comment.
-* Error: Detected dangling id-reference to sel-x509-2-ssh from attribute
-        on-sel/PP[1]""/include-pkg[1]""/depends[4]""/on-sel[1]""
 * Error: Detected dangling id-reference to s-ftp_ssh from attribute
-        on/PP[1]""/include-pkg[2]""/depends[1]""/on[1]""
+        on/PP[1]""/include-pkg[1]""/depends[1]""/on[1]""
 * Error: Detected dangling id-reference to s-uau-ssh from attribute
-        also/PP[1]""/include-pkg[2]""/depends[1]""/also[1]""
+        also/PP[1]""/include-pkg[1]""/depends[1]""/also[1]""
 * Error: Detected dangling id-reference to sel-x509-2-https from attribute
         on-sel/PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[9]""/depends[2]""/on-sel[1]""
 * Error: Detected dangling id-reference to sel-x509-2-ipsec from attribute
         on-sel/PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[10]""/depends[2]""/on-sel[1]""
 * Error: Detected dangling id-reference to sel-x5092-signed-updates from attribute
         on-sel/PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[14]""/depends[2]""/on-sel[1]""
-* Error: Detected multiple elements with an id of 'pkg-x509'.
-* Error: Detected multiple elements with an id of 'pkg-x509'.
 * Error: Detected dangling ref-id to 'sel-x509-2-ssh'.
 	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[7]""/f-element[1]""/rule[1]""/if[1]""/or[1]""/ref-id[2]"sel-x509-"
 * Error: Detected dangling ref-id to 'sel-ude-keysize-128'.
@@ -370,223 +366,13 @@
  Failed to find a reference to sel-ude-keysize-256.
  Failed to find a reference to sel-ude-keysize-128.
  Failed to find a reference to sel-ude-keysize-256.
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
  Failed to find a reference to entropyappendix.
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
  Failed to find a reference to sel-x5092-signed-updates.
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
  Failed to find a reference to sel-ude-keysize-128.
  Failed to find a reference to sel-ude-keysize-256.
  Failed to find a reference to sel-ude-keysize-128.
  Failed to find a reference to sel-ude-keysize-256.
  Failed to find a reference to sel-x509-2-tls.
  Failed to find a reference to sel-x509-2-https.
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
  Failed to find a reference to sel-x509-2-ipsec.
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
  Failed to find a reference to sel-x509-2-ssh.
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
-output/pkg-x509.xml:1: parser error : Document is empty
-
-^
