@@ -11,26 +11,6 @@
         on-sel/PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[10]""/depends[2]""/on-sel[1]""
 * Error: Detected dangling id-reference to sel-x5092-signed-updates from attribute
         on-sel/PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[14]""/depends[2]""/on-sel[1]""
-* Error: Detected dangling ref-id to 'sel-x509-2-ssh'.
-	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[7]""/f-element[1]""/rule[1]""/if[1]""/or[1]""/ref-id[2]"sel-x509-"
-* Error: Detected dangling ref-id to 'sel-ude-keysize-128'.
-	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[7]""/f-element[1]""/rule[1]""/then[1]""/and[1]""/ref-id[2]"sel-ude-k"
-* Error: Detected dangling ref-id to 'sel-ude-keysize-256'.
-	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[7]""/f-element[1]""/rule[1]""/then[1]""/and[1]""/ref-id[3]"sel-ude-k"
-* Error: Detected dangling ref-id to 'sel-ude-keysize-128'.
-	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[7]""/f-element[1]""/rule[2]""/then[1]""/and[1]""/ref-id[3]"sel-ude-k"
-* Error: Detected dangling ref-id to 'sel-ude-keysize-256'.
-	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[7]""/f-element[1]""/rule[2]""/then[1]""/and[1]""/ref-id[4]"sel-ude-k"
-* Error: Detected dangling ref-id to 'sel-x5092-signed-updates'.
-	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[13]""/f-element[3]""/rule[1]""/then[1]""/ref-id[1]"sel-x5092"
-* Error: Detected dangling ref-id to 'sel-x509-2-tls'.
-	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[8]""/f-component[1]""/f-element[1]""/rule[1]""/then[1]""/ref-id[1]"sel-x509-"
-* Error: Detected dangling ref-id to 'sel-x509-2-https'.
-	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[8]""/f-component[1]""/f-element[1]""/rule[2]""/then[1]""/ref-id[1]"sel-x509-"
-* Error: Detected dangling ref-id to 'sel-x509-2-ipsec'.
-	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[8]""/f-component[1]""/f-element[1]""/rule[3]""/then[1]""/ref-id[1]"sel-x509-"
-* Error: Detected dangling ref-id to 'sel-x509-2-ssh'.
-	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[8]""/f-component[1]""/f-element[1]""/rule[4]""/then[1]""/ref-id[1]"sel-x509-"
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"The scope"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[2]""
@@ -361,18 +341,4 @@
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[2]"The Secur"/section[5]"Testing i"/a-component[1]"Testing i"/a-element[4]""/aactivity[1]"The evalu"/h:p[2]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[2]"The Secur"/section[5]"Testing i"/a-component[1]"Testing i"/a-element[4]""/aactivity[1]"The evalu"/h:p[3]""
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[4]""/section[1]"Documenta"/h:p[1]""
-* Rules without a 'Validation Guidelines' appendix has been detected.
- Failed to find a reference to sel-ude-keysize-128.
- Failed to find a reference to sel-ude-keysize-256.
- Failed to find a reference to sel-ude-keysize-128.
- Failed to find a reference to sel-ude-keysize-256.
  Failed to find a reference to entropyappendix.
- Failed to find a reference to sel-x5092-signed-updates.
- Failed to find a reference to sel-ude-keysize-128.
- Failed to find a reference to sel-ude-keysize-256.
- Failed to find a reference to sel-ude-keysize-128.
- Failed to find a reference to sel-ude-keysize-256.
- Failed to find a reference to sel-x509-2-tls.
- Failed to find a reference to sel-x509-2-https.
- Failed to find a reference to sel-x509-2-ipsec.
- Failed to find a reference to sel-x509-2-ssh.
