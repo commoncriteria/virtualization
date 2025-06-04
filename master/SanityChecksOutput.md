@@ -1,10 +1,22 @@
 * Error: Found a "assignable" element that is buried under stricken text:
         /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[7]""/f-element[1]""/title[1]"The TSF s"/h:s[1]"that meet"/assignable[1]"list of s"
 * Warning: This document still has at least one comment.
+* Error: Detected dangling id-reference to sel-x509-2-ssh from attribute
+        on-sel/PP[1]""/include-pkg[1]""/depends[4]""/on-sel[1]""
 * Error: Detected dangling id-reference to s-ftp_ssh from attribute
         on/PP[1]""/include-pkg[2]""/depends[1]""/on[1]""
 * Error: Detected dangling id-reference to s-uau-ssh from attribute
         also/PP[1]""/include-pkg[2]""/depends[1]""/also[1]""
+* Error: Detected dangling id-reference to sel-x509-2-https from attribute
+        on-sel/PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[9]""/depends[2]""/on-sel[1]""
+* Error: Detected dangling id-reference to sel-x509-2-ipsec from attribute
+        on-sel/PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[10]""/depends[2]""/on-sel[1]""
+* Error: Detected dangling id-reference to sel-x5092-signed-updates from attribute
+        on-sel/PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[14]""/depends[2]""/on-sel[1]""
+* Error: Detected multiple elements with an id of 'pkg-x509'.
+* Error: Detected multiple elements with an id of 'pkg-x509'.
+* Error: Detected dangling ref-id to 'sel-x509-2-ssh'.
+	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[7]""/f-element[1]""/rule[1]""/if[1]""/or[1]""/ref-id[2]"sel-x509-"
 * Error: Detected dangling ref-id to 'sel-ude-keysize-128'.
 	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[7]""/f-element[1]""/rule[1]""/then[1]""/and[1]""/ref-id[2]"sel-ude-k"
 * Error: Detected dangling ref-id to 'sel-ude-keysize-256'.
@@ -13,6 +25,16 @@
 	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[7]""/f-element[1]""/rule[2]""/then[1]""/and[1]""/ref-id[3]"sel-ude-k"
 * Error: Detected dangling ref-id to 'sel-ude-keysize-256'.
 	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[7]""/f-element[1]""/rule[2]""/then[1]""/and[1]""/ref-id[4]"sel-ude-k"
+* Error: Detected dangling ref-id to 'sel-x5092-signed-updates'.
+	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[13]""/f-element[3]""/rule[1]""/then[1]""/ref-id[1]"sel-x5092"
+* Error: Detected dangling ref-id to 'sel-x509-2-tls'.
+	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[8]""/f-component[1]""/f-element[1]""/rule[1]""/then[1]""/ref-id[1]"sel-x509-"
+* Error: Detected dangling ref-id to 'sel-x509-2-https'.
+	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[8]""/f-component[1]""/f-element[1]""/rule[2]""/then[1]""/ref-id[1]"sel-x509-"
+* Error: Detected dangling ref-id to 'sel-x509-2-ipsec'.
+	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[8]""/f-component[1]""/f-element[1]""/rule[3]""/then[1]""/ref-id[1]"sel-x509-"
+* Error: Detected dangling ref-id to 'sel-x509-2-ssh'.
+	  /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[8]""/f-component[1]""/f-element[1]""/rule[4]""/then[1]""/ref-id[1]"sel-x509-"
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"The scope"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[2]""
@@ -276,14 +298,6 @@
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[4]""/f-component[1]""/f-element[2]""/aactivity[1]""/Tests[1]"The evalu"/h:p[2]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[4]""/f-component[3]""/f-element[1]""/note[1]"Selection"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[4]""/f-component[3]""/f-element[2]""/aactivity[1]""/Tests[1]"If ‘usern"/testlist[4]""/test[2]"The evalu"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[4]""/f-component[5]""/f-element[1]""/note[1]"This SFR "/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[4]""/f-component[6]""/dependencies[1]"FIA_X509_"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[4]""/f-component[6]""/f-element[1]""/note[1]"This SFR "/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[4]""/f-component[6]""/f-element[1]""/note[1]"This SFR "/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[4]""/f-component[6]""/f-element[2]""/note[1]"Often a c"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[4]""/f-component[6]""/f-element[2]""/aactivity[1]""/TSS[1]"The evalu"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[4]""/f-component[6]""/f-element[2]""/aactivity[1]""/Tests[1]"The evalu"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[4]""/f-component[6]""/f-element[2]""/aactivity[1]""/Tests[1]"The evalu"/testlist[1]""/test[2]"The evalu"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[5]""/f-component[1]""/f-element[1]""/note[1]"Managemen"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[5]""/f-component[1]""/f-element[1]""/note[1]"Managemen"/h:p[2]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[5]""/f-component[1]""/f-element[1]""/note[1]"Managemen"/h:p[3]""
@@ -296,39 +310,39 @@
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[2]""/f-element[1]""/note[1]"The virtu"/h:p[2]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[3]""/f-element[1]""/note[1]"Processor"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[3]""/f-element[1]""/note[1]"Processor"/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[5]""/f-element[2]""/note[1]"These har"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[5]""/f-element[2]""/note[1]"These har"/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[6]""/f-element[1]""/note[1]"The purpo"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[6]""/f-element[1]""/note[1]"The purpo"/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[6]""/f-element[1]""/aactivity[1]""/Tests[1]"The evalu"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[8]""/f-element[1]""/note[1]"Introspec"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[9]""/f-element[2]""/note[1]"A measure"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[9]""/f-element[2]""/note[1]"A measure"/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[9]""/f-element[2]""/note[1]"A measure"/h:p[3]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[9]""/f-element[2]""/aactivity[1]""/Tests[1]"The evalu"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[10]""/f-element[2]""/note[1]"The purpo"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[10]""/f-element[2]""/note[1]"The purpo"/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[10]""/f-element[2]""/note[1]"The purpo"/h:p[3]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[10]""/f-element[2]""/note[1]"The purpo"/h:p[4]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[10]""/f-element[2]""/note[1]"The purpo"/h:p[5]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[11]""/f-element[3]""/note[1]"The digit"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[11]""/f-element[3]""/note[1]"The digit"/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[11]""/f-element[3]""/note[1]"The digit"/h:p[3]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[11]""/f-element[3]""/note[1]"The digit"/h:p[4]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[11]""/f-element[3]""/note[1]"The digit"/h:p[5]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[11]""/f-element[3]""/aactivity[1]""/TSS[1]"The evalu"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[11]""/f-element[3]""/aactivity[1]""/Tests[1]"The evalu"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[12]""/dependencies[1]"FPT_TUD_E"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[12]""/dependencies[1]"FPT_TUD_E"/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[12]""/f-element[1]""/note[1]"Certifica"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[13]""/f-element[2]""/aactivity[1]""/TSS[1]"The evalu"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[13]""/f-element[2]""/aactivity[1]""/TSS[1]"The evalu"/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[13]""/f-element[2]""/aactivity[1]""/TSS[1]"The evalu"/h:p[3]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[14]""/dependencies[1]"FDP_PPR_E"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[14]""/f-element[2]""/note[1]"This requ"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[14]""/f-element[2]""/note[1]"This requ"/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[14]""/f-element[2]""/note[1]"This requ"/h:p[3]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[14]""/f-element[2]""/note[1]"This requ"/h:p[4]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[6]""/f-element[2]""/note[1]"These har"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[6]""/f-element[2]""/note[1]"These har"/h:p[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[7]""/f-element[1]""/note[1]"The purpo"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[7]""/f-element[1]""/note[1]"The purpo"/h:p[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[7]""/f-element[1]""/aactivity[1]""/Tests[1]"The evalu"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[9]""/f-element[1]""/note[1]"Introspec"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[10]""/f-element[2]""/note[1]"A measure"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[10]""/f-element[2]""/note[1]"A measure"/h:p[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[10]""/f-element[2]""/note[1]"A measure"/h:p[3]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[10]""/f-element[2]""/aactivity[1]""/Tests[1]"The evalu"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[11]""/f-element[2]""/note[1]"The purpo"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[11]""/f-element[2]""/note[1]"The purpo"/h:p[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[11]""/f-element[2]""/note[1]"The purpo"/h:p[3]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[11]""/f-element[2]""/note[1]"The purpo"/h:p[4]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[11]""/f-element[2]""/note[1]"The purpo"/h:p[5]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[13]""/f-element[3]""/note[1]"The digit"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[13]""/f-element[3]""/note[1]"The digit"/h:p[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[13]""/f-element[3]""/note[1]"The digit"/h:p[3]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[13]""/f-element[3]""/note[1]"The digit"/h:p[4]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[13]""/f-element[3]""/note[1]"The digit"/h:p[5]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[13]""/f-element[3]""/aactivity[1]""/TSS[1]"The evalu"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[13]""/f-element[3]""/aactivity[1]""/Tests[1]"The evalu"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[14]""/dependencies[1]"FPT_TUD_E"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[14]""/dependencies[1]"FPT_TUD_E"/h:p[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[14]""/f-element[1]""/note[1]"Certifica"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[15]""/f-element[2]""/aactivity[1]""/TSS[1]"The evalu"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[15]""/f-element[2]""/aactivity[1]""/TSS[1]"The evalu"/h:p[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[15]""/f-element[2]""/aactivity[1]""/TSS[1]"The evalu"/h:p[3]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[16]""/dependencies[1]"FDP_PPR_E"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[16]""/f-element[2]""/note[1]"This requ"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[16]""/f-element[2]""/note[1]"This requ"/h:p[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[16]""/f-element[2]""/note[1]"This requ"/h:p[3]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[16]""/f-element[2]""/note[1]"This requ"/h:p[4]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[7]""/f-component[1]""/f-element[1]""/note[1]"This requ"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[8]""/f-component[1]""/f-element[1]""/note[1]"If the ST"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[8]""/f-component[1]""/f-element[1]""/note[1]"If the ST"/h:p[2]""
@@ -350,7 +364,7 @@
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[2]"The Secur"/section[5]"Testing i"/a-component[1]"Testing i"/a-element[4]""/aactivity[1]"The evalu"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[2]"The Secur"/section[5]"Testing i"/a-component[1]"Testing i"/a-element[4]""/aactivity[1]"The evalu"/h:p[2]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[2]"The Secur"/section[5]"Testing i"/a-component[1]"Testing i"/a-element[4]""/aactivity[1]"The evalu"/h:p[3]""
-* Warning: Detected an empty _p_ element./PP[1]""/appendix[3]""/section[1]"Documenta"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/appendix[4]""/section[1]"Documenta"/h:p[1]""
 * Rules without a 'Validation Guidelines' appendix has been detected.
  Failed to find a reference to sel-ude-keysize-128.
  Failed to find a reference to sel-ude-keysize-256.
@@ -362,11 +376,217 @@ output/pkg-x509.xml:1: parser error : Document is empty
 output/pkg-x509.xml:1: parser error : Document is empty
 
 ^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+ Failed to find a reference to entropyappendix.
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+ Failed to find a reference to sel-x5092-signed-updates.
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
  Failed to find a reference to sel-ude-keysize-128.
  Failed to find a reference to sel-ude-keysize-256.
  Failed to find a reference to sel-ude-keysize-128.
  Failed to find a reference to sel-ude-keysize-256.
- Failed to find a reference to sel-ude-keysize-128.
- Failed to find a reference to sel-ude-keysize-256.
-* Warning: Since FIA_X509_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
-                       
+ Failed to find a reference to sel-x509-2-tls.
+ Failed to find a reference to sel-x509-2-https.
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+ Failed to find a reference to sel-x509-2-ipsec.
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+ Failed to find a reference to sel-x509-2-ssh.
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^
+output/pkg-x509.xml:1: parser error : Document is empty
+
+^

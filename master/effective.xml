@@ -68,20 +68,28 @@
 	<depends on-sel="sel-itc-https"/>
     </include-pkg>
     
+    <include-pkg id="pkg-x509">
+        <git>
+            <url>https://github.com/commoncriteria/X509/tree/master</url>
+            <branch>release-1.0</branch>
+        </git>
+        <url>https://www.niap-ccevs.org/protectionprofiles/511</url>
+    </include-pkg>
+    
     <modules required="yes">
       <module id="client-virt">
 	<git>
 	  <url>https://github.com/commoncriteria/clientvirtualization</url>
 	  <branch>master</branch>
 	</git>
-        <url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=409&amp;id=409</url> 
+          <url>https://www.niap-ccevs.org/protectionprofiles/457</url> 
     </module>
     <module id="server-virt">
 	<git>
 	  <url>https://github.com/commoncriteria/servervirtualization</url>
 	  <branch>master</branch>
 	</git>
-	<url>https://www.niap-ccevs.org/Profile/Info.cfm?PPID=410&amp;id=410</url>
+        <url>https://www.niap-ccevs.org/protectionprofiles/458</url>
 	</module>
     </modules>
 	<!-- Rules - These are rules where selections in the base require selections in the PP-Modules.
@@ -527,8 +535,6 @@
                     <addressed-by>FCS_RBG.4 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from multiple internal sources.</rationale>
                     <addressed-by>FCS_RBG.5 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding while combining noise sources.</rationale>
                     <addressed-by>FIA_PMG_EXT.1 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that password-based administrator login is properly implemented.</rationale>
-                    <addressed-by>FIA_X509_EXT.1 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that certificate validation is implemented properly.</rationale>
-                    <addressed-by>FIA_X509_EXT.2 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that certificate-based authentication is implemented properly.t functions.</rationale>
                     <addressed-by>FIA_X509_EXT.4 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by requiring an exception to be met without the need to validate the revocation of the certificate.</rationale>
                     <addressed-by>FTP_TRP.1 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that certain communications use a trusted path.</rationale>
                 </threat>
@@ -995,14 +1001,11 @@
                 <!-- FAU_STG.2 -->
                 
                 <!-- FAU_STG.1 -->
-                <f-component cc-id="fau_stg.1" name="External Audit Storage">
-					
+                <f-component cc-id="fau_stg.1" name="External Audit Storage">					
                     <f-element id="fau-stg-1e1">
                         <title>
-							The TSF shall be able to store generated audit data on the [<h:i>TOE itself, transmit the generated audit data to an external IT entity using a trusted channel according to FTP_ITC</h:i>].
-
-
-							
+							The TSF shall be able to <h:s>store generated audit data on the</h:s> [<h:i>transmit the generated audit data to an external IT
+							    entity using a trusted channel according to FTP_ITC</h:i>].						
                         </title>
                         <aactivity>
                             Protocols used for implementing the trusted channel must be selected in FTP_ITC_EXT.1.
@@ -1047,13 +1050,14 @@
                         </audit-event-descr>
 					</audit-event>
                 </f-component>
+                
                 <f-component cc-id="fau_stg.2" name="Protected Audit Trail Storage">
                     <f-element id="fau-stg-2e1">
                         <title>The TSF shall protect the stored audit data in the audit trail from unauthorized deletion.
                         </title>
                     </f-element> 
                     <f-element id="fau-stg-2e2">
-			    <title>The TSF shall be able to [<h:i>prevent</h:i>] unauthorized modifications to the stored audit records in the audit trail.
+			    <title>The TSF shall be able to [<h:i>prevent</h:i>] unauthorized modifications to the stored audit in the audit trail.
                         </title>
                         <note role="application">The evaluation activity for this SFR is not intended to imply that the TOE must
 							support an administrator’s ability to designate individual audit records for deletion. That level 
@@ -2826,7 +2830,7 @@
 			</Guidance>
 			<Tests>
 				For efficiency’s sake, the testing that is performed here has been combined with the testing for
-				FIA_X509_EXT.2 and FIA_X509_EXT.3 (for IPsec connections and depending on the Base-PP),
+				FIA_X509_EXT.2 and FIA_X509_EXT.3 in the <xref to="pkg-x509"/> (for IPsec connections and depending on the Base-PP),
 				FCS_IPSEC_EXT.1.12, and FCS_IPSEC_EXT.1.13. The following tests shall be repeated for each peer
 				authentication protocol selected in the FCS_IPSEC_EXT.1.11 selection above:<h:p/>
 				    <testlist>
@@ -3865,7 +3869,8 @@
 							FIA_PMG_EXT.1 be included in the ST. This also requires that the ST include a management function for
 							password management. If the ST author selects ‘authentication based on an SSH public-key credential’,
 							the TSF shall be validated against the <xref to="pkg-ssh"/>. The ST must include 
-							FIA_X509_EXT.1 and FIA_X509_EXT.2 if 'authentication based on X.509 certificates' is selected, as defined in <xref to="pkg-x509"/>. 
+                            FIA_X509_EXT.1 and FIA_X509_EXT.2 from the <xref to="pkg-x509"/>, if
+                            'authentication based on X.509 certificates' is selected, as defined in the <xref to="pkg-x509"/>. 
 							<h:br/><h:br/>
 							PINs used to access OE-protected storage are set and managed by the OE-protected storage mechanism. Thus
 							requirements on PIN management are outside the scope of the TOE.<h:p/>
@@ -3900,8 +3905,8 @@
 								</testlist>
 								If ‘X.509 certificate authentication‘ is selected, the evaluator will generate an X.509v3 certificate for 
 								an administrator user with the Client Authentication Enhanced Key Usage field set. The evaluator
-								will provision the VS for authentication with the X.509v3 certificate. The evaluator will ensure
-								that the certificates are validated by the VS as per FIA_X509_EXT.1.1 and then conduct the
+								will provision the VS for authentication with the X.509v3 certificate. The evaluator shall ensure
+								that the certificates are validated by the VS as per FIA_X509_EXT.1.1 in the <xref to="pkg-x509"/> and then conduct the
 								following tests:
 								<testlist>
 									<test>The evaluator will attempt to authenticate to the VS using the X.509v3 certificate. The 
@@ -3996,270 +4001,10 @@
 						<audit-event-descr>Start and end of administrator session.</audit-event-descr>
                         <audit-event-info>Start time and end time of administrator session.</audit-event-info>
 					</audit-event> 
-                </f-component>
-		    
-                <!-- FIA_X509_EXT.1 -->
-                <!-- Depends on x509 certificates being used for administrator authentication -->
-                <f-component cc-id="fia_x509_ext.1" name="X.509 Certificate Validation" status="sel-based">
-                    <depends on-sel="sel-tud-digsign"/>
-                    <depends on-sel="sel-uau-x509"/> 
-					<depends on-sel="sel-itc-certauth"/>
-					<consistency-rationale/>
-					<comp-lev>defines how the TSF must validate X.509 certificates that are presented to it.</comp-lev>
-					<management>The following actions could be considered for the management functions in FMT:
-						<h:ol type="a">
-							<h:li>Configuration of action to take if unable to determine the validity of a certificate.</h:li>
-						</h:ol>
-					</management>
-					<audit>The following actions should be auditable if FAU_GEN Security audit data
-						generation is included in the PP/ST:
-						<h:ol type="a">
-							<h:li>Failure to validate a certificate.</h:li>
-						</h:ol>
-					</audit>
-					<dependencies>FPT_STM.1 Reliable Time Stamps</dependencies>
-                    <f-element id="fia-x509-ext-1e1">
-                        <title><comment>further decisions need to be made on how this SFR is referenced with accordance to the x509 functional package. <h:br/></comment>The TSF shall validate certificates in accordance with the following rules:
-                            <h:ul>
-                                <h:li>RFC 5280 certificate validation and certificate path validation</h:li>
-                                <h:li>The certificate path must terminate with a trusted certificate</h:li>
-                                <h:li>The TOE shall validate a certificate path by ensuring the presence of the basicConstraints
-									extension, that the CA flag is set to TRUE for all CA certificates, and that any path
-									constraints are met.</h:li>
-								<h:li>The TSF shall validate that any CA certificate includes caSigning purpose in the key usage field</h:li>
-								<h:li>The TSF shall validate revocation status of the certificate using 
-									<selectables>
-										<selectable>OCSP as specified in RFC 6960</selectable>
-										<selectable>a CRL as specified in RFC 5759</selectable>
-										<selectable>an OCSP TLS Status Request Extension (OCSP stapling) as specified in 
-											RFC 6066</selectable>
-										<selectable>OCSP TLS Multi-Certificate Status Request Extension (i.e., OCSP 
-											Multi-Stapling) as specified in RFC 6961</selectable>
-									</selectables> with <selectables><selectable>no exceptions</selectable><selectable id="sel-x509-4">exceptions as specified in FIA_X509_EXT.4</selectable></selectables>  </h:li>
-                                <h:li>The TSF shall validate the extendedKeyUsage field according to the following rules:
-                                    <h:ul>
-                                        <h:li>Certificates used for trusted updates and executable code integrity verification shall 
-											have the Code Signing Purpose (id-kp 3 with OID 1.3.6.1.5.5.7.3.3) in the 
-											extendedKeyUsage field.</h:li>
-                                        <h:li>Server certificates presented for TLS shall have the Server Authentication purpose
-											(id-kp 1 with OID 1.3.6.1.5.5.7.3.1) in the extendedKeyUsage field.</h:li>
-                                        <h:li>Client certificates presented for TLS shall have the Client Authentication purpose
-											(id-kp 2 with OID 1.3.6.1.5.5.7.3.2) in the EKU field.</h:li>
-                                        <h:li>OCSP certificates presented for OCSP responses shall have the OCSP Signing Purpose 
-											(id-kp 9 with OID 1.3.6.1.5.5.7.3.9) in the EKU field.</h:li>
-                                    </h:ul>
-                                </h:li>
-                            </h:ul>
-                        </title>
-                        <note role="application"> This SFR must be included in the ST if the selection for FPT_TUD_EXT.1.3 is “digital
-							signature mechanism,” if the selection for FTP_ITC_EXT.1 includes “IPsec,” “TLS,” or “TLS/HTTPS,” if "certificate-based authentication of the remote peer" is
-							selected in FTP_ITC_EXT.1.1, or if "authentication based on X.509 certificates"
-							is selected in FIA_UAU.5.1.<h:br/><h:br/>
-                            FIA_X509_EXT.1.1 lists the rules for validating certificates. The ST author shall select whether revocation
-							status is verified using OCSP or CRLs. FIA_X509_EXT.2 requires that certificates are used for IPsec;
-							this use requires that the extendedKeyUsage rules are verified. Certificates may optionally be used 
-							for SSH, TLS, and HTTPs and, if implemented, must be validated to contain the corresponding 
-							extendedKeyUsage.<h:br/><h:br/>
-                            OCSP stapling and OCSP multi-stapling support only TLS server certificate validation. If other certificate 
-							types are validated, either OCSP or CRL must be claimed. If OCSP is not supported the EKU provision 
-							for checking the OCSP Signing purpose is met by default.<h:br/><h:br/>
-							Regardless of the selection of TSF or TOE platform, the validation must result in a trusted root
-							CA certificate in a root store managed by the platform.<h:p/>
-							<h:p>If the TOE cannot perform revocation in accordance with one of the specified methods in FIA_X509_EXT.1.1, then "exceptions as specified in FIA_X509_EXT.4" should be chosen and FIA_X509_EXT.4 included in the ST.</h:p>
-							<h:p>
-				OCSP responses are signed using either the certificate’s issuer’s CA certificate or an OCSP certificate
-				issued to an OCSP responder delegated by that issuer to sign OCSP responses. A compliant TOE is able to
-				validate OCSP responses in either case, but the OCSP signing extended key usage purpose is only required
-				to be checked in OCSP certificates.</h:p>
-			</note>
-                    </f-element>
-                    <f-element id="fia-x509-ext-1e2">
-                        <title>The TSF shall only treat a certificate as a CA certificate if the basicConstraints extension is present 
-							and the CA flag is set to TRUE.
-                        </title>
-                        <note role="application">This requirement applies to certificates that are used and processed by the TSF and
-							restricts the certificates that may be added as trusted CA certificates.</note>
-                        <aactivity>
-                            <TSS>
-                                The evaluator shall ensure the TSS describes where the check of validity of the certificates takes place.
-								The evaluator ensures the TSS also provides a description of the certificate path validation algorithm.
-								<h:br/><h:br/>
-								The evaluator shall examine the TSS to confirm that it describes the behavior of the TOE when a 
-								connection cannot be established during the validity check of a certificate used in establishing 
-								a trusted channel. If the requirement that the administrator is able to specify the default
-								action, then the evaluator shall ensure that the operational guidance contains instructions on how 
-								this configuration action is performed.
-							</TSS>
-							<Guidance/>
-                            <Tests>
-                                The tests described must be performed in conjunction with the other Certificate Services evaluation 
-								activities, including the uses listed in FIA_X509_EXT.2.1. The tests for the extendedKeyUsage rules 
-								are performed in conjunction with the uses that require those rules.<h:br/><h:br/>
-                                <testlist>
-                                    <test>The evaluator shall demonstrate that validating a certificate without a valid certification
-										path results in the function failing, for each of the following reasons, in turn:
-										<h:ul>
-										<h:li>by establishing a certificate path in which one of the issuing certificates is not a CA certificate,</h:li>
-										<h:li>by omitting the basicConstraints field in one of the issuing certificates,</h:li>
-										<h:li>by setting the basicConstraints field in an issuing certificate to have CA=False,</h:li>
-										<h:li>by omitting the CA signing bit of the key usage field in an issuing certificate, and</h:li>
-										<h:li>by setting the path length field of a valid CA field to a value strictly less than the certificate path.</h:li>
-										</h:ul>
-										The evaluator shall then establish a valid certificate path consisting of valid CA certificates, and demonstrate that the function
-										succeeds. The evaluator shall then remove trust in one of the CA certificates, and show that the function fails.
-									</test>
-                                    <test>The evaluator shall demonstrate that validating an expired certificate results in the
-										function failing.</test>
-                                    <test>(conditional, performed except for use cases identified in exceptions that cannot be configured to allow revocation) The evaluator shall test that the TOE can properly handle revoked certificates – conditional
-										on whether CRL, OCSP, OCSP stapling, or OCSP multi-stapling is selected; if multiple
-										methods are selected, then a test is performed for each method. The evaluator has to 
-										only test one up in the trust chain (future revisions may require to ensure the validation
-										is done up the entire chain). The evaluator shall ensure that a valid certificate is used,
-										and that the validation function succeeds. The evaluator shall then attempt the test with
-										a certificate that will be revoked (for each method chosen in the selection) and verify
-										that the validation function fails. If the exceptions are configurable, the evaluator shall attempt to configure the exceptions to allow revocation checking for each function indicated in FIA_X509_EXT.2.</test>
-									<test> If any OCSP option is selected, the evaluator shall present a delegated OCSP certificate 
-										that does not have the OCSP signing purpose
-										and verify that validation of the OCSP response fails. If CRL is selected, the evaluator
-										shall configure the CA to sign a CRL with a certificate that does not have the cRLsign key 
-										usage bit set and verify that validation of the CRL fails.</test>
-                                    <test>(Conditional on support for EC certificates as indicated in FCS_COP.1/SIG). The evaluator
-										shall establish a valid, trusted certificate chain consisting of an EC leaf certificate, 
-										an EC Intermediate CA certificate not designated as a trust anchor, and an EC certificate
-										designated as a trusted anchor, where the elliptic curve parameters are specified as a
-										named curve. The evaluator shall confirm that the TOE validates the certificate chain.</test>
-									<test>(Conditional on support for EC certificates as indicated in FCS_COP.1/SIG). The evaluator shall
-										replace the intermediate certificate in the certificate chain for Test 5 with a modified 
-										certificate, where the modified intermediate CA has a public key information field where
-										the EC parameters uses an explicit format version of the Elliptic Curve parameters in the
-										public key information field of the intermediate CA certificate from Test 5, and the
-										modified Intermediate CA certificate is signed by the trusted EC root CA, but having no
-										other changes. The evaluator shall confirm the TOE treats the certificate as invalid.
-									</test>	
-                                </testlist>
-                            </Tests>
-                        </aactivity>
-                    </f-element>
-					<audit-event>
-						<audit-event-descr>Failure to validate a certificate.</audit-event-descr>
-                        <audit-event-info>Reason for failure.</audit-event-info>
-					</audit-event>
-                </f-component>
+                </f-component>		    
 
-                <!-- FIA_X509_EXT.2 -->
-                <!-- Depends on digital signatures being used for trusted updates or administrator authentication -->
-                <f-component cc-id="fia_x509_ext.2" name="X.509 Certificate Authentication" status="sel-based">
-                    <depends on-sel="sel-tud-digsign-cert"/>
-                    <depends on-sel="sel-uau-x509"/> 
-					<depends on-sel="sel-itc-certauth"/>
-					<consistency-rationale/>
-					<comp-lev>requires the TSF to identify the functions for which it uses X.509 
-						certificates for authentication</comp-lev>
-					<management>The following actions could be considered for the management functions in FMT:
-						<h:ol type="a">
-							<h:li>Configuration of TSF behavior when certificate revocation status
-								cannot be determined.</h:li>
-						</h:ol>
-					</management>
-					<audit>There are no auditable events foreseen.</audit>
-					<dependencies>FIA_X509_EXT.1 X.509 Certificate Validation<h:p/>
-						FTP_ITC_EXT.1 Trusted Channel Communications</dependencies>
-                    <f-element id="fia-x509-ext-2e1">
-                        <title>The TSF shall use X.509v3 certificates as defined by RFC 5280 to support authentication for
-                            <selectables>
-                                <selectable id="sel-x509-2-ipsec">IPsec</selectable>
-                                <selectable id="sel-x509-2-tls">TLS</selectable>
-                                <selectable id="sel-x509-2-https">HTTPS</selectable>
-                                <selectable id="sel-x509-2-ssh">SSH</selectable>
-                                <selectable id="sel-x5092-signed-updates">code signing for system software updates</selectable>
-                                <selectable><assignable>other uses</assignable></selectable>
-                            </selectables>
-                        </title>
-			<ext-comp-def-title>
-			<title>The TSF shall use X.509v3 certificates as defined by RFC 5280 to support authentication for <assignable>secure transport protocols</assignable>
-, and <assignable> other uses </assignable>.</title>
-			</ext-comp-def-title>
-                        <note role="application">This SFR must be included in the ST if the selection for FPT_TUD_EXT.1.3 is “digital
-							signature mechanism,” if "certificate-based authentication of the remote peer" is
-							selected in FTP_ITC_EXT.1, or if "authentication based on X.509 certificates"
-							is selected in FIA_UAU.5.1.<h:p/>
-							This SFR must also be included in the ST if X.509 certificate-based authentication is used for "other uses"
-							as listed in the assignment in FIA_X509_EXT.2.1.<h:p/>
-			    </note>
-					</f-element>
-                    <f-element id="fia-x509-ext-2e2">
-                        <title>When the TSF cannot establish a connection to determine the validity of a certificate, the TSF shall
-                            <selectables onlyone="yes">
-                                <selectable id="sel-x509-adminset">allow the administrator to choose whether to accept the certificate in these cases</selectable>
-                                <selectable>accept the certificate</selectable>
-                                <selectable>not accept the certificate</selectable>
-                            </selectables>.
-                        </title>
-			<ext-comp-def-title><title>When the TSF cannot establish a connection to determine the validity of a certificate, the TSF shall <assignable>action to take</assignable>.
-                        </title></ext-comp-def-title>
-
-                        <note role="application">
-				
-				Often a connection must be established to check the revocation status of a 
-							certificate - either to download a CRL or to perform a lookup using OCSP. The selection is used to 
-							describe the behavior in the event that such a connection cannot be established (for example, due to 
-							a network error). If the TOE has determined the certificate valid according to all other rules in 
-							FIA_X509_EXT.1, the behavior indicated in the selection shall determine the validity. The TOE must
-							not accept the certificate if it fails any of the other validation rules in FIA_X509_EXT.1. If the 
-							administrator-configured option is selected by the ST author, the ST author must ensure that this is
-							also defined as a management function that is provided by the TOE.<h:p/></note>
-                        <aactivity>
-                            <TSS>
-                                The evaluator shall check the TSS to ensure that it describes how the 
-                                TOE chooses which certificates to use, and any necessary instructions in the
-                                administrative guidance for configuring the operating environment so that the TOE 
-                                can use the certificates.<h:p/>
-                                The evaluator shall examine the TSS to confirm that it describes the behavior of the
-                                TOE when a connection cannot be established during the validity check of a
-                                certificate used in establishing a trusted channel. If the requirement states that the administrator  
-                                specifies the default action, then the evaluator shall ensure that the operational guidance contains
-                                instructions on how this configuration action is performed.
-                            </TSS>
-							<Guidance>The evaluator shall ensure that the guidance documentation describes the
-							    configuration required in the operating environment so the TOE can use the certificates.
-							    The guidance documentation shall also include any required configuration on the TOE to
-							    use the certificates. The guidance documentation shall also describe the steps for the security administrator to follow if the connection cannot be established during the validity check of a certificate used in establishing a trusted channel.</Guidance>
-                            <Tests>
-                                The evaluator shall perform Test 1 for each function listed in FIA_X509_EXT.2.1 that requires the
-								use of certificates:<h:p/>
-                                <testlist>
-                                    <test>The evaluator shall demonstrate that using a certificate without a valid certification path
-										results in the function failing. Using the administrative guidance, the evaluator shall 
-										then load a certificate or certificates needed to validate the certificate to be used in
-										the function, and demonstrate that the function succeeds. The evaluator then shall delete
-										one of the certificates, and show that the function fails.</test>
-                                    <test>The evaluator shall demonstrate that using a valid certificate requires that certificate 
-										validation checking be performed in at least some part by communicating with a non-TOE
-										IT entity. The evaluator shall then manipulate the environment so that the TOE is unable
-										to verify the validity of the certificate, and observe that the action selected in
-										FIA_X509_EXT.2.2 is performed. If the selected action is administrator-configurable, then
-										the evaluator shall follow the operational guidance to determine that all supported
-										administrator-configurable options behave in their documented manner.<h:p/></test>
-                                </testlist>
-                            </Tests>
-                        </aactivity>
-			<rule id="rule-admin-action-cert-validity">
-				<!-- <xref to="sel-mf-cert-no-validity-action"/> -->
-				<description>If "<h:i><xref to="sel-x509-adminset"/></h:i>" is selected then 
-					"<h:i>Ability to configure action taken if unable to determine the validity of a certificate</h:i>" in the Client or Server module 
-					management function table must also be selected.</description>
-				<if><ref-id>sel-x509-adminset</ref-id></if>
-				<then><or>
-					<doc ref="client-virt"><ref-id>sel-mf-cert-no-validity-action</ref-id></doc>
-					<doc ref="server-virt"><ref-id>sel-mf-cert-no-validity-action</ref-id></doc>
-                               
-			        </or></then>
-                         </rule>
-                    </f-element>
-			<audit-event/>
-                </f-component>
-				<f-component cc-id="fia_x509_ext.4" name="Exceptions to X509 Certificate Revocation Checking" status="sel-based" id="fia-x509-ext-4">
-				    <depends on-sel="sel-x509-4"/>
+				<f-component cc-id="fia_x509_ext.4" name="Exceptions to X.509 Certificate Revocation Checking" status="sel-based" id="fia-x509-ext-4">
+				    <depends on-sel="fia-x509-ext-1e1"><external-doc ref="pkg-x509"/></depends>
 					<consistency-rationale/>
 					<comp-lev/>
 					<management/>
@@ -4268,7 +4013,7 @@
 					
 					<f-element id="fia-x509-ext-4-1">
 					
-						<title>The OS shall provide alternate functionality to standard X509 certificate revocation checking for the following exceptions: <selectables><selectable>firmware checking of updates: invalidate automatic updates if the firmware certificate is compromised</selectable><selectable><assignable>other exceptions and corresponding functionality</assignable></selectable></selectables>.</title>
+						<title>The TSF shall provide alternate functionality to standard X.509 certificate revocation checking for the following exceptions: <selectables><selectable>firmware checking of updates: invalidate automatic updates if the firmware certificate is compromised</selectable><selectable><assignable>other exceptions and corresponding functionality</assignable></selectable></selectables>.</title>
 						<aactivity>
 							<TSS>The evaluator shall ensure the TSS describes, for each exception, the alternate functionality the TOE implements to handle the lack of certificate revocation. The description must be consistent with the selection in the requirement.</TSS>
 							<Guidance/>
@@ -4527,6 +4272,26 @@
                         </aactivity>
                     </f-element>
 		    <audit-event/>
+                </f-component>
+                
+                <!-- FPT_FLS.1 -->
+                <f-component cc-id="fpt_fls.1" name="Failure with Preservation of Secure State">                    
+                    <f-element id="fel-pres-sec-state">
+                        <title>
+                            The TSF shall preserve a secure state when the following types of failures occur: [<h:i>DRBG self-test failure</h:i>].              
+                        </title>
+                        <note role="application">The intent of this requirement is to ensure that cryptographic services requiring random bit generation cannot be performed if a failure of a self-test defined in FPT_TST.1 occurs.</note>
+                        <aactivity>              
+                            <TSS>
+                                The evaluator shall verify that the TSF describes how the TOE enters an error state in the event of a DRBG self-test failure.
+                            </TSS>
+                            <Guidance>
+                                The evaluator shall verify that the guidance documentation describes the error state that results from a DRBG self-test failure and the actions that a user or administrator should take in response to attempt to resolve the error state.
+                            </Guidance>
+                            <Tests/>
+                        </aactivity>
+                    </f-element>
+                    
                 </f-component>
                 
                 <!-- FPT_GVI_EXT.1 -->
@@ -4929,6 +4694,55 @@
 				(connect/disconnect, ejection/insertion, etc.).</audit-event-info>
 		    </audit-event>
                 </f-component>
+                
+                <f-component cc-id="fpt_tst.1" name="TSF Self-Testing">
+                    
+                    <f-element id="fel-tsf-self-test">
+                        <title>
+                            The TSF shall run a suite of the following self-tests <selectables>
+                                <selectable>during initial start-up</selectable>
+                                <selectable>periodically during normal operation</selectable>
+                                <selectable>at the request of the authorized user</selectable>
+                                <selectable>at the conditions <assignable>conditions under which self-test should occur</assignable></selectable>
+                            </selectables>
+                            to demonstrate the correct operation of [<h:i>TSF DRBG specified in FCS_RBG.1</h:i>].              
+                        </title>
+                    </f-element>
+                    
+                    <f-element id="fel-tsf-ver-int-data">
+                        <title>
+                            The TSF shall provide authorized users with the capability to verify the integrity of [<h:i>[DRBG seed/output data]</h:i>].
+                        </title>
+                    </f-element>
+                    
+                    <f-element id="fel-tsf-ver-int">
+                        <title>
+                            The TSF shall provide authorized users with the capability to verify the integrity of [<h:i>[TSF DRBG specified in FCS_RBG.1]</h:i>].
+                        </title>
+                        <note role="application">This SFR is a required dependency of FCS_RBG.1. It is intended to require that any DRBG implemented by the TOE undergo health testing to ensure that the random bit generation functionality has not been degraded. If the TSF supports multiple DRBGs, this SFR should be iterated to describe the self-test behavior for each.</note>
+                        <aactivity>
+                            <TSS>
+                                <h:p>
+                                    The	evaluator shall examine the TSS to ensure that it details the self-tests that are run by the TSF along with how they are run. This description should include an outline of what the tests are actually doing. The evaluator shall ensure that the TSS makes an argument that the tests are sufficient to demonstrate that the DRBG is operating correctly.
+                                </h:p><h:p>
+                                    Note that this information may also be placed in the entropy documentation specified by <xref to="entropyappendix"/>. 
+                                </h:p>
+                            </TSS>
+                            <Guidance>
+                                <h:p>
+                                    If a self-test can be executed at the request of an authorized user, the evaluator shall verify that the operational guidance provides instructions on how to execute that self-test.
+                                </h:p>
+                            </Guidance>
+                            <Tests>
+                                <h:p>
+                                    For each self-test, the evaluator shall verify that evidence is produced that the self-test is executed when specified by FPT_TST.1.1.
+                                </h:p><h:p>
+                                    If a self-test can be executed at the request of an authorized user, the evaluator shall verify that following the steps documented in the operational guidance to perform the self-test will result in execution of the self-test.
+                                </h:p>
+                            </Tests>
+                        </aactivity>
+                    </f-element>    		
+                </f-component>
 
                 <!-- FPT_TUD_EXT.1 -->
                 <f-component cc-id="fpt_tud_ext.1" name="Trusted Updates to the Virtualization System">
@@ -4980,9 +4794,11 @@
 
                         <note role="application">The digital signature mechanism referenced in FPT_TUD_EXT.1.3 is one of the 
 				algorithms specified in FCS_COP.1/SIG.<h:p/>
-                            If certificates are used by the update verification mechanism, then FIA_X509_EXT.1 and FIA_X509_EXT.2
-				must be included in the ST. Certificates are validated in accordance with FIA_X509_EXT.1 and 
-				the appropriate selections should be made in FIA_X509_EXT.2.1. Additionally, FPT_TUD_EXT.2 must be
+                            If certificates are used by the update verification mechanism, then
+                            FIA_X509_EXT.1 and FIA_X509_EXT.2 in the <xref to="pkg-x509"/>
+                            must be included in the ST. Certificates are validated in accordance
+                            with FIA_X509_EXT.1 in the <xref to="pkg-x509"/> and 
+                            the appropriate selections should be made in FIA_X509_EXT.2.1 in the <xref to="pkg-x509"/>. Additionally, FPT_TUD_EXT.2 must be
 				included in the ST.<h:p/>
                             “Update” in the context of this SFR refers to the process of replacing a non-volatile, system resident
 				software component with another. The former is referred to as the NV image, and the latter is the
@@ -5046,7 +4862,7 @@
                         </aactivity>
 						<rule id="rule-certs-for-update">
 							<description>If <xref to="sel-tud-digsign-cert"/> is selected in FPT_TUD_EXT.1.3 
-								then <xref to="sel-x5092-signed-updates"/> must be selected in FIA_X509_EXT.2.1.</description>
+							    then <xref to="sel-x5092-signed-updates"/> must be selected in FIA_X509_EXT.2.1 in the <xref to="pkg-x509"/>.</description>
 							<if><ref-id>sel-tud-digsign-cert</ref-id></if><then><ref-id>sel-x5092-signed-updates</ref-id></then></rule>
                     </f-element>
 		    <audit-event>
@@ -5074,16 +4890,16 @@
                         </title>
                         <note role="application">Certificates may optionally be used for code signing of system software updates
 				(FPT_TUD_EXT.1.3). This element must be included in the ST if certificates are used for validating 
-				updates. If “code signing for system software updates” is selected in FIA_X509_EXT.2.1, FPT_TUD_EXT.2 
+				updates. If “code signing for system software updates” is selected in FIA_X509_EXT.2.1 from the <xref to="pkg-x509"/>, FPT_TUD_EXT.2 
 				must be included in the ST.<h:p/>
                             Validity is determined by the certificate path, the expiration date, and the revocation status in 
-				accordance with FIA_X509_EXT.1.</note>
+                            accordance with FIA_X509_EXT.1 in the <xref to="pkg-x509"/>.</note>
                         <aactivity>
 							<TSS/>
 							<Guidance/>
                             <Tests>
                                 The evaluation activity for this requirement is performed in conjunction with the evaluation activity
-				    for FIA_X509_EXT.1 and FIA_X509_EXT.2.
+                                for FIA_X509_EXT.1  and FIA_X509_EXT.2 in the <xref to="pkg-x509"/>.
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -5259,12 +5075,12 @@
                     <f-element id="ftp-itc-ext-1e1">
                         <title>The TSF shall use
                             <selectables linebreak="yes">
-                                <selectable id="sel-itc-tls">TLS as conforming to the <h:a href="https://www.niap-ccevs.org/MMO/PP/-439-/">
+                                <selectable id="sel-itc-tls">TLS as conforming to the <h:a href="https://www.niap-ccevs.org/protectionprofiles/465">
 					<h:i><xref to="pkg-tls"/></h:i></h:a></selectable>
                                 <selectable id="sel-itc-https">TLS/HTTPS as conforming to FCS_HTTPS_EXT.1</selectable>
                                 <selectable id="sel-itc-ipsec">IPsec as conforming to FCS_IPSEC_EXT.1</selectable>
                                 <selectable id="sel-itc-ssh">SSH as conforming to the
-					<h:a href="https://www.niap-ccevs.org/MMO/PP/-459-/"><h:i>Functional Package
+                                    <h:a href="https://www.niap-ccevs.org/protectionprofiles/515"><h:i>Functional Package
 					for Secure Shell</h:i></h:a></selectable>
                             </selectables>
 			    and
@@ -5297,11 +5113,12 @@
                         <note role="application">If the ST author selects either TLS or HTTPS, the TSF shall be validated against the 
                             <xref to="pkg-tls"/>. This PP does not mandate that a product implement TLS with mutual authentication,
 				but if the product includes the capability to perform TLS with mutual authentication, then
-				mutual authentication must be included within the TOE boundary. The TLS Package requires that the X509 
+				mutual authentication must be included within the TOE boundary. The TLS Package requires that
+				the X.509 
 				requirements be included by the PP, so selection of TLS or HTTPS causes FIA_X509_EXT.* to be selected.<h:p/>
                             If the ST author selects SSH, the TSF shall be validated against the <xref to="pkg-ssh"/>.<h:br/> <h:br/>
 			    If the ST author selects "certificate-based authentication of the remote peer," then FIA_X509_EXT.1 and FIA_X509_EXT.2
-				must be included in the ST. "No authentication of the remote peer" should be selected only if the TOE is acting 
+			    in the <xref to="pkg-x509"/> must be included in the ST. "No authentication of the remote peer" should be selected only if the TOE is acting 
 				as a server in a non-mutual authentication configuration.<h:p/>			    
 			    The ST author must include the security functional requirements for the
                             trusted channel protocol selected in FTP_ITC_EXT.1 in the main body of the ST.<h:p/>
@@ -5328,17 +5145,17 @@
 								<then><ref-id>sel-x509-2-tls</ref-id></then></rule>
 						<rule id="rule-cert-based-https">
 							<description>If "<h:i><xref to="sel-itc-certauth"/></h:i>" and "<h:i><xref to="sel-itc-https"/></h:i>" are selected in FTP_ITC_EXT.1.1
-								then "<h:i><xref to="sel-x509-2-https"/></h:i>" must be selected in FIA_X509_EXT.2.1.</description>
+							    then "<h:i><xref to="sel-x509-2-https"/></h:i>" must be selected in FIA_X509_EXT.2.1 in the <xref to="pkg-x509"/>.</description>
 							<if><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-https</ref-id></and></if>
 								<then><ref-id>sel-x509-2-https</ref-id></then></rule>
 						<rule id="rule-cert-based-ipsec">
 							<description>If "<h:i><xref to="sel-itc-certauth"/></h:i>" and "<h:i><xref to="sel-itc-ipsec"/></h:i>" are selected in FTP_ITC_EXT.1.1
-								then "<h:i><xref to="sel-x509-2-ipsec"/></h:i>" must be selected in FIA_X509_EXT.2.1.</description>
+							    then "<h:i><xref to="sel-x509-2-ipsec"/></h:i>" must be selected in FIA_X509_EXT.2.1 in the <xref to="pkg-x509"/>.</description>
 							<if><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-ipsec</ref-id></and></if>
 								<then><ref-id>sel-x509-2-ipsec</ref-id></then></rule>
 						<rule id="rule-cert-based-ssh">
 							<description>If "<h:i><xref to="sel-itc-certauth"/></h:i>" and "<h:i><xref to="sel-itc-ssh"/></h:i>" are selected in FTP_ITC_EXT.1.1
-								then "<h:i><xref to="sel-x509-2-ssh"/></h:i>" must be selected in FIA_X509_EXT.2.1.</description>
+							    then "<h:i><xref to="sel-x509-2-ssh"/></h:i>" must be selected in FIA_X509_EXT.2.1 in the <xref to="pkg-x509"/>.</description>
 							<if><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-ssh</ref-id></and></if>
 								<then><ref-id>sel-x509-2-ssh</ref-id></then></rule>
                     </f-element>
@@ -5359,8 +5176,9 @@
                 <!-- FTP_TRP.1 -->
                 <!-- Included in th ST if "remote" is selected in FMT_MOF_EXT.1.1 in the server or client PP-Module. -->
                 <f-component cc-id="ftp_trp.1" name="Trusted Path" status="sel-based">
-			<depends on-sel="sel-mof-1e1-remote-client"><external-doc ref="client-virt"/></depends> 
-			<depends on-sel="sel-mof-1e1-remote-server"><external-doc ref="server-virt"/></depends>
+                    <depends on-sel="ftp-itc-ext-1e1"/>
+			        <depends on-sel="sel-mof-1e1-remote-client"><external-doc ref="client-virt"/></depends> 
+			        <depends on-sel="sel-mof-1e1-remote-server"><external-doc ref="server-virt"/></depends>
                     <f-element id="ftp-trp-1e1">
 			    <title>The TSF shall <refinement>use a trusted channel as specified in FTP_ITC_EXT.1 to</refinement> 
 				    provide a <refinement>trusted</refinement> communication path between itself and 
@@ -5370,7 +5188,7 @@
                         </title>
                     </f-element>
                     <f-element id="ftp-trp-1e2">
-			    <title>The TSF shall permit [<h:i>remote administrators</h:i>] to initiate communication via the trusted path.
+			    <title>The TSF shall permit [<h:i>remote <h:b>administrators</h:b></h:i>] to initiate communication via the trusted path.
                         </title>
                     </f-element>
 			<f-element id="ftp-trp-1e3">
@@ -5993,7 +5811,43 @@
 	<!-- auto-generated -->
 	
 	<!-- Appendix D: Implicity Satisfied Requirements -->
-	
+    <appendix title="Implicitly Satisfied Requirements" id="satisfiedreqs">
+        <h:table>
+            <h:tr class="header">
+                <h:td>Requirement</h:td>
+                <h:td>Rationale for Satisfaction</h:td>
+            </h:tr>
+            <h:tr>
+                <h:td>FIA_UID.1 - Timing of Identification</h:td>
+                <h:td>
+                    FMT_SMR.2 has a dependency on FIA_UID.1. The extended SFR FIA_UID_EXT.1 expresses
+                    this dependency by also requiring user identification for use of the TOE.
+                </h:td>
+            </h:tr>            
+            
+            <h:tr>
+                <h:td>FPT_STM.1 - Reliable Time Stamps</h:td>
+                <h:td>
+                    FAU_GEN.1 has a dependency on FPT_STM.1. While not explicitly stated in the PP, it is
+                    assumed that this will be provided by the underlying hardware platform on which the TOE
+                    is installed. This is because the TOE is installed as a software or firmware product that runs
+                    on general-purpose computing hardware so a hardware clock is assumed to be available.
+                </h:td>
+            </h:tr>
+            
+            <h:tr>
+                <h:td>FPT_STM.1 - Reliable Time Stamps</h:td>
+                <h:td>
+                    FIA_X509_EXT.1 in the <xref to="pkg-x509"/> has a dependency on FPT_STM.1. While not explicitly stated in the PP, it is
+                    assumed that this will be provided by the underlying hardware platform on which the TOE
+                    is installed. This is because the TOE is installed as a software or firmware product that runs
+                    on general-purpose computing hardware so a hardware clock is assumed to be available.
+                </h:td>
+            </h:tr>
+            
+        </h:table>
+        
+    </appendix>
 
 	
     <!-- Annex E: Entropy Documentation and Assessment -->
