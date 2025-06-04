@@ -97,20 +97,21 @@
             <subject>CC:2022 conversion.</subject>
         </entry>
     </RevisionHistory>
-	<include-pkg id="pkg-x509">
-		<git>
-		  <url>https://github.com/commoncriteria/x509</url>
-		  <branch>release-1.0</branch>
-		</git>
-		<url>https://commoncriteria.github.io/X509/release-1.0/X509-release.html</url>
-		<depends on-sel="sel-tud-digsign-cert" />
+	
+    <include-pkg id="pkg-x509">
+        <git>
+            <url>https://github.com/commoncriteria/x509</url>
+            <branch>release-1.0</branch>
+        </git>
+        <url>https://www.niap-ccevs.org/protectionprofiles/511</url>
+        <depends on-sel="sel-tud-digsign-cert" />
 		<depends on-sel="sel-uau-x509" />
 		<depends on-sel="sel-itc-certauth"/>
 		<depends on-sel="sel-x509-2-ssh"/>
 		<depends on-sel="sel-itc-tls"/>
 		<depends on-sel="sel-itc-https"/>
-	  </include-pkg>
-	  
+    </include-pkg>    
+      
   <include-pkg id="pkg-ssh">
     <git>
       <url>https://github.com/commoncriteria/ssh</url>
@@ -475,8 +476,10 @@
                     <addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
                     <addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
                     <addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
+                    <addressed-by>FPT_FLS.1</addressed-by><rationale>This threat is mitigated by this SFR by protecting from certain types of failures.</rationale>
                     <addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
                     <addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that hypercall parameters be validated.</rationale>
+                    <addressed-by>FPT_TST.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring self-tests to maintain integrity.</rationale>
                     <addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
                     <addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                      <addressed-by>FCS_RBG.2 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by defining how entropy is obtained for secure DRBG seeding from an external source.</rationale>
@@ -513,8 +516,10 @@
 					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
 					<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that VMs can access only those virtual devices that they are configured to access.</rationale>
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
-					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+                    <addressed-by>FPT_FLS.1</addressed-by><rationale>This threat is mitigated by this SFR by protecting from certain types of failures.</rationale>                    
+                    <addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
                     <addressed-by>FPT_RDM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for rules for switching removable media between domains to reduce the chance of data spillage.</rationale>
+                    <addressed-by>FPT_TST.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring self-tests to maintain integrity.</rationale>
                     <addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                     <addressed-by>FTP_UIF_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that users are able to determine the domain with the current input focus.</rationale>
@@ -592,6 +597,8 @@
                     <addressed-by>FIA_UAU.5</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that strong mechanisms are used for administrator authentication.</rationale>
                     <addressed-by>FIA_UIA_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that administrators be successfully authenticated before performing management functions.</rationale>
                     <addressed-by>FMT_SMO_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE support having separate management and operational networks.</rationale>
+                    <addressed-by>FPT_FLS.1</addressed-by><rationale>This threat is mitigated by this SFR by protecting from certain types of failures.</rationale>
+                    <addressed-by>FPT_TST.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring self-tests to maintain integrity.</rationale>
                     <addressed-by>FTA_TAB.1</addressed-by><rationale>This threat is mitigated by this SFR by displays advisory notice and consent warning message regarding use of the TOE to administrators.</rationale>
                     <addressed-by>FTP_ITC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that trusted communications channels are implemented using good cryptography.</rationale>
                     <addressed-by>FCS_HTTPS_EXT.1 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that HTTPS trusted communications channels are implemented properly.</rationale>
@@ -626,10 +633,12 @@
 						<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
 						<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
 						<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
-						<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
+                        <addressed-by>FPT_FLS.1</addressed-by><rationale>This threat is mitigated by this SFR by protecting from certain types of failures.</rationale>                        	
+                        <addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
 						<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
 						<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that hypercall parameters be validated.</rationale>
-						<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale> 
+						<addressed-by>FPT_TST.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring self-tests to maintain integrity.</rationale>
+                        <addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale> 
 						<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                         <addressed-by>FAU_ARP.1 (optional)</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for automatic responses to audit events (optional).</rationale>
 						<addressed-by>FAU_SAA.1 (optional)</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for rules for indicating security violations based on audit events (optional).</rationale>
@@ -659,9 +668,11 @@
 					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
 					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
-					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+                    <addressed-by>FPT_FLS.1</addressed-by><rationale>This threat is mitigated by this SFR by protecting from certain types of failures.</rationale>
+                    <addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
 					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that hypercall parameters be validated.</rationale>
-					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
+					<addressed-by>FPT_TST.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring self-tests to maintain integrity.</rationale>
+                    <addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                     <addressed-by>FPT_DDI_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
 					<addressed-by>FPT_ML_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
@@ -726,9 +737,11 @@
 					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
 					<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that VMs can access only those virtual devices that they are configured to access.</rationale>
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
-					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+                    <addressed-by>FPT_FLS.1</addressed-by><rationale>This threat is mitigated by this SFR by protecting from certain types of failures.</rationale>                    
+                    <addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
 					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that hypercall parameters be validated.</rationale>
-					<addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
+					<addressed-by>FPT_TST.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring self-tests to maintain integrity.</rationale>
+                    <addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                     <addressed-by>FPT_DDI_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
 					<addressed-by>FPT_ML_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
@@ -751,6 +764,8 @@
                     </description>
                     <addressed-by>FCS_ENT_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that domains have access to high-quality entropy for cryptographic purposes.</rationale>
 					<addressed-by>FCS_RBG.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
+                    <addressed-by>FPT_FLS.1</addressed-by><rationale>This threat is mitigated by this SFR by protecting from certain types of failures.</rationale>
+                    <addressed-by>FPT_TST.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring self-tests to maintain integrity.</rationale>
 				</threat>
              </threats>
 		</sec:Threats>
@@ -4357,7 +4372,10 @@
                             <Tests/>
                         </aactivity>
                     </f-element>
-                    
+                    <audit-event>
+                        <audit-event-descr>Failure of the TSF.</audit-event-descr>
+                        <audit-event-info/>
+                    </audit-event>
                 </f-component>
                 
                 <!-- FPT_GVI_EXT.1 -->
@@ -4807,7 +4825,15 @@
                                 </h:p>
                             </Tests>
                         </aactivity>
-                    </f-element>    		
+                    </f-element>
+                    <audit-event>
+                        <audit-event-descr>Indication that the TSF self-tests were completed and any failures of the tests.</audit-event-descr>
+                        <audit-event-info/>                        
+                    </audit-event>
+                    <audit-event>
+                        <audit-event-descr>Execution of the TSF self-tests and the results of the tests.</audit-event-descr>
+                        <audit-event-info/>                        
+                    </audit-event>                                            
                 </f-component>
 
                 <!-- FPT_TUD_EXT.1 -->
