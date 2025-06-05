@@ -210,7 +210,7 @@
                 <tr>
                     <td>
                         <div id="Hypervisor">Hypervisor</div>
-                    </td><td>The Hypervisor is part of the VMM. It is the software executive of the physical platform of a VS. A Hypervisor&rsquo;s primary function is to mediate access to all CPU and memory resources, but it is also responsible for either the direct management or the delegation of the management of all other hardware devices on the hardware platform.</td>
+                    </td><td>The hypervisor is part of the VMM. It is the software executive of the physical platform of a VS. A hypervisor&rsquo;s primary function is to mediate access to all CPU and memory resources, but it is also responsible for either the direct management or the delegation of the management of all other hardware devices on the hardware platform.</td>
                 </tr>
                 <tr>
                     <td>
@@ -250,7 +250,7 @@
                 <tr>
                     <td>
                         <div id="Service_VM">Service VM</div>
-                    </td><td>A Service VM is a VM whose purpose is to support the Hypervisor in providing the resources or services necessary to support guest VMs. Service VMs may implement some portion of Hypervisor functionality, but also may contain important system functionality that is not necessary for Hypervisor operation. As with any VM, Service VMs necessarily execute without full Hypervisor privileges&mdash;only the privileges required to perform its designed functionality. Examples of Service VMs include device driver VMs that manage access to physical devices, VMs that provide life-cycle management and provisioning of Hypervisor and guest VMs, and name-service VMs that help establish communication paths between VMs.</td>
+                    </td><td>A Service VM is a VM whose purpose is to support the hypervisor in providing the resources or services necessary to support guest VMs. Service VMs may implement some portion of hypervisor functionality, but also may contain important system functionality that is not necessary for hypervisor operation. As with any VM, Service VMs necessarily execute without full hypervisor privileges&mdash;only the privileges required to perform its designed functionality. Examples of Service VMs include device driver VMs that manage access to physical devices, VMs that provide life-cycle management and provisioning of hypervisor and guest VMs, and name-service VMs that help establish communication paths between VMs.</td>
                 </tr>
                 <tr>
                     <td>
@@ -270,7 +270,7 @@
                 <tr>
                     <td>
                         <div id="Virtual_Machine_Manager">Virtual Machine Manager (VMM)</div>
-                    </td><td>A VMM is a collection of software components responsible for enabling VMs to function as expected by the software executing within them. Generally, the VMM consists of a Hypervisor, Service VMs, and other components of the VS, such as virtual devices, binary translation systems, and physical device drivers. It manages concurrent execution of all VMs and virtualizes platform resources as needed.</td>
+                    </td><td>A VMM is a collection of software components responsible for enabling VMs to function as expected by the software executing within them. Generally, the VMM consists of a hypervisor, Service VMs, and other components of the VS, such as virtual devices, binary translation systems, and physical device drivers. It manages concurrent execution of all VMs and virtualizes platform resources as needed.</td>
                 </tr>
                 <tr>
                     <td>
@@ -287,16 +287,16 @@
         <h2 class="indexable" data-level="2" id="s-complianttargets">1.3 Compliant Targets of Evaluation</h2>
          A Virtualization System (<abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr>) is a software product that enables multiple independent computing systems to execute on the same physical hardware platform without interference from one another. A <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> creates a virtualized hardware environment (virtual machines or VMs) for each instance of an operating system permitting these environments to execute concurrently while maintaining isolation and the appearance of exclusive control over assigned computing resources. For the purposes of this document, the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> consists of a Virtual Machine Manager (<abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>), Virtual Machine (<abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>) abstractions, a management subsystem, and other components.
         <p></p>
-         A <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> is a collection of software components responsible for enabling VMs to function as expected by the software executing within them. Generally, the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> consists of a Hypervisor, Service VMs, and other components of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr>, such as virtual devices, binary translation systems, and physical device drivers. It manages concurrent execution of all VMs and virtualizes platform resources as needed.
+         A <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> is a collection of software components responsible for enabling VMs to function as expected by the software executing within them. Generally, the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> consists of a hypervisor, Service VMs, and other components of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr>, such as virtual devices, binary translation systems, and physical device drivers. It manages concurrent execution of all VMs and virtualizes platform resources as needed.
         <p></p>
-         The Hypervisor is the software executive of the physical platform of a <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr>. A hypervisor operates at the highest <abbr class="dyn-abbr"><a href="#abbr_CPU">CPU</a></abbr> privilege level and manages access to all of the physical resources of the hardware platform. It exports a well-defined, protected interface for access to the resources it manages. A Hypervisor&rsquo;s primary function is to mediate access to all <abbr class="dyn-abbr"><a href="#abbr_CPU">CPU</a></abbr> and memory resources, but it is also responsible for either the direct management or the delegation of the management of all other hardware devices on the hardware platform. This document does not specify any Hypervisor-specific requirements, though many <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> requirements would naturally apply to a Hypervisor.
+         The hypervisor is the software executive of the physical platform of a <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr>. A hypervisor operates at the highest <abbr class="dyn-abbr"><a href="#abbr_CPU">CPU</a></abbr> privilege level and manages access to all of the physical resources of the hardware platform. It exports a well-defined, protected interface for access to the resources it manages. A hypervisor&rsquo;s primary function is to mediate access to all <abbr class="dyn-abbr"><a href="#abbr_CPU">CPU</a></abbr> and memory resources, but it is also responsible for either the direct management or the delegation of the management of all other hardware devices on the hardware platform. This document does not specify any hypervisor-specific requirements, though many <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> requirements would naturally apply to a hypervisor.
         <p></p>
-         A Service <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> is a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> whose purpose is to support the Hypervisor in providing the resources or services necessary to support guest VMs. Service VMs may implement some portion of Hypervisor functionality, but also may contain important system functionality that is not necessary for Hypervisor operation. As with any <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>, Service VMs necessarily execute without full Hypervisor privileges&mdash;only the privileges required to perform its designed functionality. Examples of Service VMs include device driver VMs that manage access to physical devices, VMs that provide life-cycle management and provisioning of Hypervisor and guest VMs, and name-service VMs that help establish communication paths between VMs.
+         A Service <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> is a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> whose purpose is to support the hypervisor in providing the resources or services necessary to support guest VMs. Service VMs may implement some portion of hypervisor functionality, but also may contain important system functionality that is not necessary for hypervisor operation. As with any <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>, Service VMs necessarily execute without full hypervisor privileges&mdash;only the privileges required to perform its designed functionality. Examples of Service VMs include device driver VMs that manage access to physical devices, VMs that provide life-cycle management and provisioning of hypervisor and guest VMs, and name-service VMs that help establish communication paths between VMs.
         <p></p>
          A guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> is a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> that contains a virtual environment for the execution of an independent computing system. Virtual environments execute mission workloads and implement customer-specific client or server functionality in guest VMs, such as a web server or desktop productivity applications. A Helper <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> is a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> that performs services on behalf of one or more guest VMs, but does not qualify as a Service <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>&mdash;and therefore is not part of the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>. Helper VMs implement functions or services that are particular to the workloads of guest VMs. For example, a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> that provides a virus scanning service for a guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> would be considered a Helper <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>. The line between Helper and Service VMs can easily be blurred. For instance, a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> that implements a cryptographic function&mdash;such as an in-line encryption <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>&mdash;could be identified as either a Service or Helper <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> depending on the particular virtualization solution. If the cryptographic functions are necessary only for the privacy of guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> data in support of the Guest&rsquo;s mission applications, it would be proper to classify the encryption <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> as a Helper. But if the encryption <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> is necessary for the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> to isolate guest VMs, it would be proper to classify the encryption <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> as a Service <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>. For the purposes of this document, Helper VMs are subject to all requirements that apply to guest VMs, unless specifically stated otherwise.
         <p></p>
         <h3 class="indexable" data-level="3" id="ss-toeboundary">1.3.1 TOE Boundary</h3>
-         Figure 1 shows a greatly simplified view of a generic Virtualization System and Platform. <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components are displayed in Red. Non-TOE components are in Blue. The Platform is the hardware, firmware, and software onto which the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> is installed. The <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> includes the Hypervisor, Service VMs, and <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> containers, but not the software that runs inside guest VMs or Helper VMs. The Management Subsystem is part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, but may or may not be part of the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>. 
+         Figure 1 shows a greatly simplified view of a generic Virtualization System and Platform. <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components are displayed in Red. Non-TOE components are in Blue. The Platform is the hardware, firmware, and software onto which the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> is installed. The <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> includes the hypervisor, Service VMs, and <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> containers, but not the software that runs inside guest VMs or Helper VMs. The Management Subsystem is part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, but may or may not be part of the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>. 
         <p></p>
         <div class="figure" id="figure-vsplatform">
             <img id="vsplatform" src="images/figure1.png" width="" height="">
@@ -788,7 +788,7 @@
                 <td></td>
             </tr>
             <tr data-sortkey="FPT_FLS.1.1">
-                <td>Failure of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>.</td><td></td>
+                <td>Failure of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>.</td><td> No additional information </td>
             </tr>
             <tr data-sortkey="FPT_HAS_EXT.1">
                 <td rowspan="2"><a href="#FPT_HAS_EXT.1">FPT_HAS_EXT.1</a></td><td style="display:none"></td>
@@ -806,10 +806,10 @@
                 <td></td>
             </tr>
             <tr data-sortkey="FPT_HCL_EXT.1.6">
-                <td><b>[selection: </b><i>Invalid parameter to hypercall detected., None</i><b>]</b></td><td>Hypercall interface for which access was attempted.</td>
+                <td><b>[selection: </b><i>Invalid parameter to hypercall detected., None</i><b>]</b></td><td>Hypercall interface for which access was attempted</td>
             </tr>
             <tr data-sortkey="FPT_HCL_EXT.1.7">
-                <td><b>[selection: </b><i>Hypercall interface invoked when documented preconditions are not met., None</i><b>]</b></td><td> No additional information </td>
+                <td><b>[selection: </b><i>Hypercall interface invoked when documented preconditions are not met, None</i><b>]</b></td><td> No additional information </td>
             </tr>
             <tr data-sortkey="FPT_RDM_EXT.1">
                 <td rowspan="3"><a href="#FPT_RDM_EXT.1">FPT_RDM_EXT.1</a></td><td style="display:none"></td>
@@ -833,7 +833,7 @@
                 <td>Indication that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> self-tests were completed and any failures of the tests.</td><td></td>
             </tr>
             <tr data-sortkey="FPT_TST.1.4">
-                <td>Execution of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> self-tests and the results of the tests.</td><td></td>
+                <td>Execution of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> self-tests and the results of the tests.</td><td> No additional information </td>
             </tr>
             <tr data-sortkey="FPT_TUD_EXT.1">
                 <td rowspan="3"><a href="#FPT_TUD_EXT.1">FPT_TUD_EXT.1</a></td><td style="display:none"></td>
@@ -2115,7 +2115,7 @@
                     <a href="#FCS_ENT_EXT.1.1" class="abbr">FCS_ENT_EXT.1.1</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide a mechanism to make available to VMs entropy that meets <a href="#FCS_RBG.1">FCS_RBG.1</a> through [<b>selection</b>: <span class="selectable-content" id="_s_58">Hypercall interface</span>, <span class="selectable-content" id="_s_59">virtual device interface</span>, <span class="selectable-content" id="_s_60">pass-through access to hardware entropy source</span>]. 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide a mechanism to make available to VMs entropy that meets <a href="#FCS_RBG.1">FCS_RBG.1</a> through [<b>selection</b>: <span class="selectable-content" id="_s_58">hypercall interface</span>, <span class="selectable-content" id="_s_59">virtual device interface</span>, <span class="selectable-content" id="_s_60">pass-through access to hardware entropy source</span>]. 
                 </div>
             </div>
             <div class="element">
@@ -5350,7 +5350,7 @@
                     <a href="#FPT_ML_EXT.1.1" class="abbr">FPT_ML_EXT.1.1</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support a measured launch of the Virtualization System. Measured components of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> shall include the static executable image of the Hypervisor and: [<b>selection</b>: 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support a measured launch of the Virtualization System. Measured components of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> shall include the static executable image of the hypervisor and: [<b>selection</b>: 
                     <ul>
                         <li style="">
                             <span class="selectable-content" id="_s_186">Static executable images of the Management Subsystem</span>
@@ -5831,7 +5831,7 @@
                         <div class="ea">
                              In addition to the Operational Guidance EAs for the individual <a href="#FCS_IPSEC_EXT.1">FCS_IPSEC_EXT.1</a> elements below, the evaluator shall perform the following:
                             <p></p>
-                             If the configuration of the IPsec behavior is from an environmental source, most notably a VPN gateway (e.g through receipt of required connection parameters from a VPN gateway), the evaluator shall ensure that the operational guidance contains any appropriate information for ensuring that this configuration can be properly applied.
+                             If the configuration of the IPsec behavior is from an environmental source, most notably a VPN gateway (e.g. through receipt of required connection parameters from a VPN gateway), the evaluator shall ensure that the operational guidance contains any appropriate information for ensuring that this configuration can be properly applied.
                             <p></p>
                              Note in this case that the implementation of the IPsec protocol must be enforced entirely within the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary; i.e. it is not permissible for a software application <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to be a graphical front-end for IPsec functionality implemented totally or in part by the underlying <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> platform. The behavior referenced here is for the possibility that the configuration of the IPsec connection is initiated from outside the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, which is permissible so long as the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> is solely responsible for enforcing the configured behavior. However, it is allowable for the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to rely on low-level platform-provided networking functions to implement the <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr> from the client (e.g., enforcement of packet routing decisions).
                             <p></p>
@@ -6023,7 +6023,7 @@
                          <span class="testlist-">
                             <ul>
                                 <li class="test-">
-                                    <a id="_t_23" class="defined" href="#_t_23">Test FCS_IPSEC_EXT.1.6:1</a>: The evaluator shall configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to use the ciphersuite under test to encrypt the IKEv1 or IKEv2 payload and establish a connection with a peer device, which is configured to only accept the payload encrypted using the indicated ciphersuite. The evaluator will confirm the algorithm was that used in the negotiation. The evaluator will confirm that the connection is successful by confirming that data can be passed through the connection once it is established. For example, the evaluator may connect to a webpage on the remote network and verify that it can be reached.
+                                    <a id="_t_23" class="defined" href="#_t_23">Test FCS_IPSEC_EXT.1.6:1</a>: The evaluator shall configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to use the ciphersuite under test to encrypt the IKEv1 or IKEv2 payload and establish a connection with a peer device, which is configured to only accept the payload encrypted using the indicated ciphersuite. The evaluator will confirm the algorithm was that used in the negotiation. The evaluator will confirm that the connection is successful by confirming that data can be passed through the connection once it is established. For example, the evaluator may connect to a web page on the remote network and verify that it can be reached.
                                 </li>
                             </ul>
                         </span> 
@@ -6753,7 +6753,7 @@
                             </tr>
                         </table>
                         <h4 id="ext-comp-FCS_ENT_EXT.1.1">FCS_ENT_EXT.1.1</h4>
-                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide a mechanism to make available to VMs entropy that meets <a href="#FCS_RBG.1">FCS_RBG.1</a> through [<b>selection</b>: <span class="selectable-content" id="_s_58">Hypercall interface</span>, <span class="selectable-content" id="_s_59">virtual device interface</span>, <span class="selectable-content" id="_s_60">pass-through access to hardware entropy source</span>]. 
+                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide a mechanism to make available to VMs entropy that meets <a href="#FCS_RBG.1">FCS_RBG.1</a> through [<b>selection</b>: <span class="selectable-content" id="_s_58">hypercall interface</span>, <span class="selectable-content" id="_s_59">virtual device interface</span>, <span class="selectable-content" id="_s_60">pass-through access to hardware entropy source</span>]. 
                         <h4 id="ext-comp-FCS_ENT_EXT.1.2">FCS_ENT_EXT.1.2</h4>
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide independent entropy across multiple VMs. 
                     </div>
@@ -7433,7 +7433,7 @@
                             </tr>
                         </table>
                         <h4 id="ext-comp-FPT_ML_EXT.1.1">FPT_ML_EXT.1.1</h4>
-                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support a measured launch of the Virtualization System. Measured components of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> shall include the static executable image of the Hypervisor and: [<b>selection</b>: 
+                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support a measured launch of the Virtualization System. Measured components of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> shall include the static executable image of the hypervisor and: [<b>selection</b>: 
                         <ul>
                             <li style="">
                                 <span class="selectable-content" id="_s_186">Static executable images of the Management Subsystem</span>

@@ -168,8 +168,8 @@
 		  <term full="Host Operating System (OS)">An operating system onto which a VS is installed. Relative to the VS, the Host OS is 
 			  part of the Platform. There need not be a Host OS, but often VSes employ a Host OS or Control Domain to support
 			  guest access to host resources. Sometimes these domains are themselves encapsulated within VMs.</term>
-		  <term full="Hypervisor">The Hypervisor is part of the VMM. It is the software executive of the physical platform of a VS.
-			  A Hypervisor’s primary function is to mediate access to all CPU and memory resources, but it is also responsible 
+		  <term full="Hypervisor">The hypervisor is part of the VMM. It is the software executive of the physical platform of a VS.
+			  A hypervisor’s primary function is to mediate access to all CPU and memory resources, but it is also responsible 
 			  for either the direct management or the delegation of the management of all other hardware devices on the hardware 
 			  platform.</term>
 		  <term full="Hypercall">An API function that allows VM-aware software running within a VM to invoke VMM functionality.</term>
@@ -203,12 +203,12 @@
 			  <term abbr="PKV" full="Public Key Verification"/>
 		  <term full="Platform">The hardware, firmware, and software environment into which a VS is installed and executes.</term>
 			  <term abbr="RSA" full="Rivest, Shamir, Adleman"/>
-		  <term full="Service VM">A Service VM is a VM whose purpose is to support the Hypervisor in providing the resources or
-			  services necessary to support guest VMs. Service VMs may implement some portion of Hypervisor functionality, but 
-			  also may contain important system functionality that is not necessary for Hypervisor operation. As with any VM,
-			  Service VMs necessarily execute without full Hypervisor privileges—only the privileges required to perform its 
+		  <term full="Service VM">A Service VM is a VM whose purpose is to support the hypervisor in providing the resources or
+			  services necessary to support guest VMs. Service VMs may implement some portion of hypervisor functionality, but 
+			  also may contain important system functionality that is not necessary for hypervisor operation. As with any VM,
+			  Service VMs necessarily execute without full hypervisor privileges—only the privileges required to perform its 
 			  designed functionality. Examples of Service VMs include device driver VMs that manage access to physical devices,
-			  VMs that provide life-cycle management and provisioning of Hypervisor and guest VMs, and name-service VMs that 
+			  VMs that provide life-cycle management and provisioning of hypervisor and guest VMs, and name-service VMs that 
 			  help establish communication paths between VMs.</term>
 			  <term abbr="SP" full="Special Publication"/>
 			  <term abbr="SPD" full="Security Policy Database"/>
@@ -222,7 +222,7 @@
 		  <term full="Virtual Machine" abbr="VM">A Virtual Machine is a virtualized hardware environment in which an operating system
 			  may execute.</term>
 		  <term full="Virtual Machine Manager" abbr="VMM">A VMM is a collection of software components responsible for enabling VMs to
-			  function as expected by the software executing within them. Generally, the VMM consists of a Hypervisor, Service 
+			  function as expected by the software executing within them. Generally, the VMM consists of a hypervisor, Service 
 			  VMs, and other components of the VS, such as virtual devices, binary translation systems, and physical device
 			  drivers. It manages concurrent execution of all VMs and virtualizes platform resources as needed.</term>
 		  <term full="Virtualization System" abbr="VS">A software product that enables multiple independent computing systems to 
@@ -240,21 +240,21 @@
 			For the purposes of this document, the VS consists of a Virtual Machine Manager (VMM), Virtual Machine (VM) 
 			abstractions, a management subsystem, and other components.<h:p/>
 				A VMM is a collection of software components responsible for enabling VMs to function as expected by the software
-			executing within them. Generally, the VMM consists of a Hypervisor, Service VMs, and other components of the VS,
+			executing within them. Generally, the VMM consists of a hypervisor, Service VMs, and other components of the VS,
 			such as virtual devices, binary translation systems, and physical device drivers. It manages concurrent execution of 
 			all VMs and virtualizes platform resources as needed.<h:p/>
-				The Hypervisor is the software executive of the physical platform of a VS. A hypervisor operates at 
+				The hypervisor is the software executive of the physical platform of a VS. A hypervisor operates at 
 			the highest CPU privilege level and manages access to all of the physical resources of the hardware platform. It
-			exports a well-defined, protected interface for access to the resources it manages. A Hypervisor’s primary function is 
+			exports a well-defined, protected interface for access to the resources it manages. A hypervisor’s primary function is 
 			to mediate access to all CPU and memory resources, but it is also responsible for either the direct management or the
 			delegation of the management of all other hardware devices on the hardware platform. This document does not specify
-			any Hypervisor-specific requirements, though many VMM requirements would naturally apply to a Hypervisor.<h:p/>
-				A Service VM is a VM whose purpose is to support the Hypervisor in providing the resources or services necessary to
-			support guest VMs. Service VMs may implement some portion of Hypervisor functionality, but also may contain important
-			system functionality that is not necessary for Hypervisor operation. As with any VM, Service VMs necessarily execute
-			without full Hypervisor privileges—only the privileges required to perform its designed functionality. Examples of 
+			any hypervisor-specific requirements, though many VMM requirements would naturally apply to a hypervisor.<h:p/>
+				A Service VM is a VM whose purpose is to support the hypervisor in providing the resources or services necessary to
+			support guest VMs. Service VMs may implement some portion of hypervisor functionality, but also may contain important
+			system functionality that is not necessary for hypervisor operation. As with any VM, Service VMs necessarily execute
+			without full hypervisor privileges—only the privileges required to perform its designed functionality. Examples of 
 			Service VMs include device driver VMs that manage access to physical devices, VMs that provide life-cycle management and 
-			provisioning of Hypervisor and guest VMs, and name-service VMs that help establish 
+			provisioning of hypervisor and guest VMs, and name-service VMs that help establish 
 			communication paths between VMs.<h:p/>
 				A guest VM is a VM that contains a virtual environment for the execution of an independent computing system. Virtual 
 			environments execute mission workloads and implement customer-specific client or server functionality in guest VMs, 
@@ -274,7 +274,7 @@
 			<section id="ss-toeboundary" title="TOE Boundary">
 				Figure 1 shows a greatly simplified view of a generic Virtualization System and Platform. TOE components are displayed
 				in Red. Non-TOE components are in Blue. The Platform is the hardware, firmware, and software onto which the VS is 
-				installed. The VMM includes the Hypervisor, Service VMs, and VM containers, but not the software that runs inside
+				installed. The VMM includes the hypervisor, Service VMs, and VM containers, but not the software that runs inside
 				guest VMs or Helper VMs. The Management Subsystem is part of the TOE, but may or may not be part of the VMM. 
 				<h:p/>
 
@@ -2143,7 +2143,7 @@
                     <f-element id="fcs-ent-ext-1e1">
                         <title>The TSF shall provide a mechanism to make available to VMs entropy that meets FCS_RBG.1 through
                             <selectables>
-                                <selectable>Hypercall interface</selectable>
+                                <selectable>hypercall interface</selectable>
                                 <selectable>virtual device interface</selectable>
                                 <selectable>pass-through access to hardware entropy source</selectable>
                             </selectables>.
@@ -2313,7 +2313,7 @@
 								In addition to the Operational Guidance EAs for the individual FCS_IPSEC_EXT.1 elements below, the
 								evaluator shall perform the following:<h:p/>
 								If the configuration of the IPsec behavior is from an environmental source, most notably a VPN gateway
-								(e.g through receipt of required connection parameters from a VPN gateway), the evaluator shall ensure
+								(e.g. through receipt of required connection parameters from a VPN gateway), the evaluator shall ensure
 								that the operational guidance contains any appropriate information for ensuring that this configuration
 								can be properly applied.<h:p/>
 								Note in this case that the implementation of the IPsec protocol must be enforced entirely within the TOE
@@ -2607,7 +2607,7 @@
 					payload encrypted using the indicated ciphersuite. The evaluator will confirm the algorithm was that used
 					in the negotiation. The evaluator will confirm that the connection is successful by confirming that data
 					can be passed through the connection once it is established. For example, the evaluator may connect to
-					a webpage on the remote network and verify that it can be reached.</test>
+					a web page on the remote network and verify that it can be reached.</test>
 				</testlist>
                             </Tests>
                         </aactivity>
@@ -4311,8 +4311,7 @@
                         </aactivity>
                     </f-element>
                     <audit-event>
-                        <audit-event-descr>Failure of the TSF.</audit-event-descr>
-                        <audit-event-info/>
+                        <audit-event-descr>Failure of the TSF.</audit-event-descr>                        
                     </audit-event>
                 </f-component>
                 
@@ -4457,10 +4456,10 @@
                     </f-element>
 		    <audit-event type="optional">
 			<audit-event-descr>Invalid parameter to hypercall detected.</audit-event-descr>
-			<audit-event-info>Hypercall interface for which access was attempted.</audit-event-info>
+			<audit-event-info>Hypercall interface for which access was attempted</audit-event-info>
 		    </audit-event>
 		    <audit-event type="optional">
-			<audit-event-descr>Hypercall interface invoked when documented preconditions are not met.</audit-event-descr>
+			<audit-event-descr>Hypercall interface invoked when documented preconditions are not met</audit-event-descr>
 		    </audit-event>
                 </f-component>
 
@@ -4560,7 +4559,7 @@
 					<dependencies>No dependencies.</dependencies>
                     <f-element id="fpt-ml-ext-1e1">
                         <title>The TSF shall support a measured launch of the Virtualization System. Measured 
-				components of the VS shall include the static executable image of the Hypervisor
+				components of the VS shall include the static executable image of the hypervisor
 				and:
                             <selectables linebreak="yes">
                                 <selectable>Static executable images of the Management Subsystem</selectable>
@@ -4769,8 +4768,7 @@
                         <audit-event-info/>                        
                     </audit-event>
                     <audit-event>
-                        <audit-event-descr>Execution of the TSF self-tests and the results of the tests.</audit-event-descr>
-                        <audit-event-info/>                        
+                        <audit-event-descr>Execution of the TSF self-tests and the results of the tests.</audit-event-descr>                                                
                     </audit-event>                                            
                 </f-component>
 
@@ -5181,7 +5179,8 @@
                         <!--
 						<rule id="rule-cert-based-tls">
 							<description>If "<h:i><xref to="sel-itc-certauth"/></h:i>" and "<h:i><xref to="sel-itc-tls"/></h:i>" are selected in FTP_ITC_EXT.1.1
-								then "<h:i><xref to="sel-x509-2-tls"/></h:i>" must be selected in FIA_X509_EXT.2.1.</description>
+							    then "<h:i><xref to="sel-x509-2-tls"/></h:i>" must be selected in FIA_X509_EXT.2.1 in
+							    the </description>
 							<if><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-tls</ref-id></and></if>
 								<then><ref-id>sel-x509-2-tls</ref-id></then></rule>
 						<rule id="rule-cert-based-https">
