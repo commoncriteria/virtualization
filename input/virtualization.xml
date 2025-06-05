@@ -1746,7 +1746,7 @@
                         </aactivity>
 			
 						
-			
+			<!--
 			<rule id="keyedhash-alg-match-sha-384">
 			  <description>If "<h:i><xref to="sel-hmac-sha-384"/></h:i>" is selected in FCS_COP.1/KeyedHash then "<h:i><xref to="sel-hash-sha-384"/></h:i>"
                           must be selected in FCS_COP.1/Hash.</description>
@@ -1765,6 +1765,7 @@
 			  <description>If "<h:i><xref to="sel-hmac-sha-3-512"/></h:i>" is selected in FCS_COP.1/KeyedHash then "<h:i><xref to="sel-hash-sha-3-512"/></h:i>"
                           must be selected in FCS_COP.1/Hash.</description>
 				<if><ref-id>sel-hmac-sha-3-512</ref-id></if><then><ref-id>sel-hash-sha-3-512</ref-id></then></rule>
+				-->
                     </f-element>
 		    <audit-event />
                 </f-component>
@@ -2173,6 +2174,7 @@
 					</testlist>
 					</Tests>
 					</aactivity>
+                        <!--
 					<rule id="rule-ssh-included-ude">
 						<description>If the SSH Package is included in the ST then "<h:i><xref to="sel-ude-aes-ctr"/></h:i>,"  
 								"<h:i><xref to="sel-ude-keysize-128"/></h:i>," and "<h:i><xref to="sel-ude-keysize-256"/></h:i>" must be selected in FCS_COP.1/UDE.
@@ -2191,6 +2193,7 @@
 											<ref-id>sel-ude-keysize-256</ref-id></and>
 							</then>							
 						</rule>
+						-->
                     </f-element>
 				<audit-event />
 				</f-component>
@@ -4007,20 +4010,25 @@
 								</testlist>
                             </Tests>
                         </aactivity>
-			<rule id="rule-mf-dir-based">
+                        <!--
+			<rule id="rule-mf-dir-based"> -->
 				<!-- <xref to="sel-mf-dir-server"/> -->
+                        <!--
 				<description>If <h:i>"directory-based"</h:i> is selected anywhere in FIA_UAU.5.1 then 
 					"<h:i>Ability to configure name/address of directory server to bind with</h:i>" must be selected in the Client or Server module 
 					management function table.</description>
 				<if><or><ref-id>sel-uau-x509-dirbased</ref-id><ref-id>sel-uau-ssh-dirbased</ref-id><ref-id>sel-uau-pwd-dirbased</ref-id></or></if>
 				<then><doc ref="server-virt"><ref-id>sel-mf-dir-server</ref-id></doc></then></rule>
 			<rule id="rule-mf-pwd-policy">
+			-->
 				<!-- <xref to="sel-mf-pwd-policy"/> -->
+                        <!--
 				<description>If <h:i>"authentication based on username and password"</h:i> is selected in FIA_UAU.5.1 then 
 					<h:i>"Ability to configure administrator password policy as defined in FIA_PMG_EXT.1"</h:i> must be selected in the Client or Server module 
 					management function table.</description>
 				<if><ref-id>sel-uau-pwd</ref-id></if><then><or><doc ref="server-virt"><ref-id>sel-mf-pwd-policy</ref-id></doc><doc ref="client-virt"><ref-id>sel-mf-pwd-policy</ref-id></doc></or></then>
 					</rule>					     
+					-->
                     </f-element>
 			<audit-event />
                 </f-component>
@@ -4950,11 +4958,14 @@
                                 </testlist>
                             </Tests>
                         </aactivity>
+                        <!--
 						<rule id="rule-certs-for-update">
 							<description>If <xref to="sel-tud-digsign-cert"/> is selected in FPT_TUD_EXT.1.3 
-							    then <xref to="sel-x5092-signed-updates"/> must be selected in FIA_X509_EXT.2.1 in the <!-- <xref to="pkg-509"/> --> Functional Package for
+							    then <xref to="sel-x5092-signed-updates"/> must be selected in FIA_X509_EXT.2.1 in the --><!-- <xref to="pkg-509"/> --> 
+                        <!-- Functional Package for
 							    X.509, version 1.0.</description>
 							<if><ref-id>sel-tud-digsign-cert</ref-id></if><then><ref-id>sel-x5092-signed-updates</ref-id></then></rule>
+							-->
                     </f-element>
 		    <audit-event>
 			<audit-event-descr>Initiation of update.</audit-event-descr>
@@ -5232,7 +5243,8 @@
                                 that for each session a trusted channel was established in conformance with the protocols identified 
                                 in the selection.
                             </Tests>
-                        </aactivity>						
+                        </aactivity>	
+                        <!--
 						<rule id="rule-cert-based-tls">
 							<description>If "<h:i><xref to="sel-itc-certauth"/></h:i>" and "<h:i><xref to="sel-itc-tls"/></h:i>" are selected in FTP_ITC_EXT.1.1
 							    then "<h:i><xref to="sel-x509-2-tls"/></h:i>" must be selected in FIA_X509_EXT.2.1 in
@@ -5242,22 +5254,24 @@
 								<then><ref-id>sel-x509-2-tls</ref-id></then></rule>
 						<rule id="rule-cert-based-https">
 							<description>If "<h:i><xref to="sel-itc-certauth"/></h:i>" and "<h:i><xref to="sel-itc-https"/></h:i>" are selected in FTP_ITC_EXT.1.1
-							    then "<h:i><xref to="sel-x509-2-https"/></h:i>" must be selected in FIA_X509_EXT.2.1 in the <!-- <xref to="pkg-509"/> --> Functional Package for
+							    then "<h:i><xref to="sel-x509-2-https"/></h:i>" must be selected in FIA_X509_EXT.2.1 in the --><!-- <xref to="pkg-509"/> -->
+                        <!-- Functional Package for
 							    X.509, version 1.0.</description>
 							<if><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-https</ref-id></and></if>
 								<then><ref-id>sel-x509-2-https</ref-id></then></rule>
 						<rule id="rule-cert-based-ipsec">
 							<description>If "<h:i><xref to="sel-itc-certauth"/></h:i>" and "<h:i><xref to="sel-itc-ipsec"/></h:i>" are selected in FTP_ITC_EXT.1.1
-							    then "<h:i><xref to="sel-x509-2-ipsec"/></h:i>" must be selected in FIA_X509_EXT.2.1 in the <!-- <xref to="pkg-509"/> --> Functional Package for
+							    then "<h:i><xref to="sel-x509-2-ipsec"/></h:i>" must be selected in FIA_X509_EXT.2.1 in the --><!-- <xref to="pkg-509"/> --> <!-- Functional Package for
 							    X.509, version 1.0.</description>
 							<if><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-ipsec</ref-id></and></if>
 								<then><ref-id>sel-x509-2-ipsec</ref-id></then></rule>
 						<rule id="rule-cert-based-ssh">
 							<description>If "<h:i><xref to="sel-itc-certauth"/></h:i>" and "<h:i><xref to="sel-itc-ssh"/></h:i>" are selected in FTP_ITC_EXT.1.1
-							    then "<h:i><xref to="sel-x509-2-ssh"/></h:i>" must be selected in FIA_X509_EXT.2.1 in the <!-- <xref to="pkg-509"/> --> Functional Package for
+							    then "<h:i><xref to="sel-x509-2-ssh"/></h:i>" must be selected in FIA_X509_EXT.2.1 in the --><!-- <xref to="pkg-509"/> --> 
+                        <!-- Functional Package for
 							    X.509, version 1.0.</description>
 							<if><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-ssh</ref-id></and></if>
-								<then><ref-id>sel-x509-2-ssh</ref-id></then></rule>
+								<then><ref-id>sel-x509-2-ssh</ref-id></then></rule> -->
                     </f-element>
 		    <audit-event>
 			<audit-event-descr>Initiation of the trusted channel.</audit-event-descr>
