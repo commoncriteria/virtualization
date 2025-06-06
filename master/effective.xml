@@ -367,13 +367,7 @@
             <threats>
                 <threat name="T.3P_SOFTWARE">
                     <description>
-                        In some VS implementations, functions critical to the security of the TOE are by necessity performed by 
-                        software not produced by the virtualization vendor. Such software may include physical device drivers, 
-                        and even non-TOE entities such as Host Operating Systems. Since this software has the same or similar
-                        privilege level as the VS, vulnerabilities can be exploited by an adversary to compromise the VS and VMs.
-                        Where possible, the VS should mitigate the results of potential vulnerabilities or malicious content in
-                        third-party code on which it relies. For example, physical device drivers (potentially the Host OS) could 
-                        be encapsulated within VMs in order to limit the effects of compromise. 
+                        Malicious or poorly-coded third-party software or firmware that supports the functionality of the TOE (e.g. device drivers, operating systems) may be used to compromise the VS or its VMs if they have excessive privileges to interact with the TSF (e.g., physical device drivers that are not encapsulated within a VM could expose entities outside of that VM to compromise).
                     </description>
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report potential integrity breaches and attempts.</rationale>
                     <addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
@@ -402,6 +396,8 @@
                 
                 <threat name="T.DATA_LEAKAGE">
                     <description>
+                    A poorly-implemented mechanism for domain separation could allow data to be maliciously or inadvertently transmitted between two VMs that should not be permitted to share information.<!-- 
+                    
                     It is a fundamental property of VMs that the domains encapsulated by different VMs remain separate unless 
 					data sharing is permitted by policy. For this reason, all Virtualization Systems shall support a policy
 					that prohibits information transfer between VMs.<h:br/><h:br/>
@@ -413,7 +409,7 @@
                     If it is possible for data to leak between domains when prohibited by policy, then an adversary on one domain 
 					or network can obtain data from another domain. Such cross-domain data leakage can, for example, cause
 					classified information, corporate proprietary information, or personally identifiable information to be
-					made accessible to unauthorized entities.
+					made accessible to unauthorized entities. -->
                     </description>
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report attempts to breach isolation.</rationale>
 					<addressed-by>FCS_CKM.6</addressed-by><rationale>This threat is mitigated by this SFR by requiring cryptographic key destruction to protect domain data in shared storage.</rationale>
@@ -444,7 +440,7 @@
                 
                 <threat name="T.DENIAL_OF_SERVICE">
                     <description>
-                        A VM may block others from system resources (e.g., system memory, persistent storage, and processing time)
+                        A maliciously-configured or poorly-implemented VM may block other VMs from accessing system resources (e.g., system memory, persistent storage, and processing time)
                         via a resource exhaustion attack.
                     </description>
                     <addressed-by>FCS_CKM.6</addressed-by><rationale>This threat is mitigated by this SFR by requiring cryptographic key destruction to ensure residual data in shared storage is unrecoverable.</rationale>
@@ -454,20 +450,21 @@
                 
                 <threat name="T.MISCONFIGURATION">
                     <description>
-                        The VS may be misconfigured, which could impact its functioning and security. This 
-                        misconfiguration could be due to an administrative error or the use of faulty configuration data.
+                        A malicious or inattentive administrator may misconfigure the VS, or faulty configuration data my cause the VS to behave in an unintended manner, which could impact its functioning and security.
                     </description>
                     <addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that data sharing between VMs is turned off by default.</rationale>
                 </threat>
                 
                 <threat name="T.PLATFORM_COMPROMISE">
                     <description>
+                        A malicious user or process may operate a VM in a manner that allows it to compromise the behavior of the system on which the VS runs (e.g., through shared access to system-level resources), leading to either unauthorized modification of the system or the behavior of the VS.
+                        <!--
                         The VS must be capable of protecting the platform from threats that originate within VMs and operational
                         networks connected to the VS. The hosting of untrusted—even malicious—domains by the VS cannot be 
                         permitted to compromise the security and integrity of the platform on which the VS executes. If an 
                         attacker can access the underlying platform in a manner not controlled by the VMM, the attacker might 
                         be able to modify system firmware or software—compromising both the VS and the 
-                        underlying platform.
+                        underlying platform. -->
                     </description>
                     <addressed-by>FDP_HBI_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported mechanisms for access to physical devices.</rationale>
                     <addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
@@ -484,7 +481,8 @@
                 
                 <threat name="T.UNAUTHORIZED_ACCESS">
                     <description>
-                        Functions performed by the management layer include VM configuration, virtualized network configuration, 
+                        A malicious user or outside entity may gain access to the TSF or its data, either through poorly-implemented access control or through insecure communications, allowing for unintended management actions to be performed against the VS without proper authorization. 
+                        <!-- Functions performed by the management layer include VM configuration, virtualized network configuration, 
                         allocation of physical resources, and reporting. Only certain authorized system users (administrators) 
                         are allowed to exercise management functions or obtain sensitive information from the TOE.<h:p/>
                         Virtualization Systems are often managed remotely over communication networks. Members of these networks can
@@ -493,7 +491,7 @@
                         compromised. An adversary with access to an open management network could inject commands into the
                         management infrastructure or extract sensitive information. This would provide an adversary with administrator privilege on the platform,
                         and administrative control over the VMs and virtual network connections. The adversary could also gain
-                        access to the management network by hijacking the management network channel.
+                        access to the management network by hijacking the management network channel. -->
                     </description>
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report potential attempts to access the management subsystem.</rationale>
                     <addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
@@ -524,11 +522,7 @@
                 
                 <threat name="T.UNAUTHORIZED_MODIFICATION">
                     <description>
-                         System integrity is a core security objective for Virtualization Systems. To achieve system integrity, the
-			             integrity of each VMM component must be established and maintained. Malware running on the platform must
-			             not be able to undetectably modify VS components while the system is running or at 
-			             rest. Likewise, malicious code running within a virtual machine must not be able to modify Virtualization
-			             System components.
+                         A malicious user or administrator could alter the behavior of the VS by having it execute illicitly modified code, whether as an alteration of the VS itself or as code running within a VM, that causes it to behave in an unintended manner. 
                     </description>
 						<addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report potential integrity breaches and attempts.</rationale>
 						<addressed-by>FAU_SAR.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for administrator review of audit records.</rationale>
@@ -562,10 +556,11 @@
                 
                     <threat name="T.UNAUTHORIZED_UPDATE">
                     <description>
+                         A malicious user or process may attempt to illicitly modify the behavior of the VS by applying a software update to it that was modified in a manner that will compromise its behavior. <!--
                          It is common for attackers to target outdated versions of software containing known flaws. This means it is
 			             extremely important to update VS software as soon as possible when updates are
         			     available. But the source of the updates and the updates themselves must be trusted. If an attacker can
-			             write their own update containing malicious code they can take control of the VS.
+			             write their own update containing malicious code they can take control of the VS. -->
                     </description>
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report potential integrity breaches and attempts.</rationale>
 					<addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
@@ -604,11 +599,13 @@
                 
                 <threat name="T.USER_ERROR">
                     <description>
+                         A careless user may inadvertently introduce information to a particular VM that is not intended to receive it because the VMs are identified in an ambiguous manner.
+                         <!--
                          If a Virtualization System is capable of simultaneously displaying VMs of different domains to the same user
 			             at the same time, there is always the chance that the user will become confused and unintentionally leak
 			             information between domains. This is especially likely if VMs belonging to different domains are 
 			             indistinguishable. Malicious code may also attempt to interfere with the user’s ability to distinguish
-			             between domains. The VS must take measures to minimize the likelihood of such confusion.
+			             between domains. The VS must take measures to minimize the likelihood of such confusion. -->
                     </description>
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report attempts to breach isolation.</rationale>
 					<addressed-by>FCS_CKM.6</addressed-by><rationale>This threat is mitigated by this SFR by requiring cryptographic key destruction to protect domain data in shared storage.</rationale>
@@ -626,11 +623,13 @@
                 
                 <threat name="T.VMM_COMPROMISE">
                     <description>
+                         A malicious user or process may alter the behavior of the VMM or cause it to fail in a way that eliminates domain separation between multiple VMs that are not intended to be visible to one another.
+                         <!--
                          The VS is designed to provide the appearance of exclusivity to the VMs and is designed
 			             to separate or isolate their functions except where specifically shared. Failure of security mechanisms
 			             could lead to unauthorized intrusion into or modification of the VMM, or bypass of the VMM altogether,
 			             by non-TOE software, such as that running in Guest or Helper VMs or on the host platform. 
-			             This must be prevented to avoid compromising the VS.
+			             This must be prevented to avoid compromising the VS. -->
                     </description>
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report potential integrity breaches and attempts.</rationale>
 					<addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
@@ -663,6 +662,8 @@
                 
                 <threat name="T.WEAK_CRYPTO">
                     <description>
+				         A malicious user or process could force the disclosure of sensitive data at rest or in transit because weak cryptographic algorithms were used to protect this data or because implementation flaws in the generation and use of cryptographic data did not maximize the effective strength of the implementation.
+				         <!--
 				         To the extent that VMs appear isolated within the VS, a threat of weak cryptography may 
 			             arise if the VMM does not provide good entropy to support security-related features that depend on
         			     entropy to implement cryptographic algorithms. For example, a random number generator keeps an estimate
@@ -670,7 +671,7 @@
 			             Good random numbers are essential to implementing strong cryptography. Cryptography implemented using
 			             poor random numbers can be defeated by a sophisticated adversary. Such defeat can result in the compromise
 			             of guest VM data and credentials, and of VS data and credentials, and can enable unauthorized access 
-			             to the VS or VMs.
+			             to the VS or VMs. -->
                     </description>
                     <addressed-by>FCS_ENT_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that domains have access to high-quality entropy for cryptographic purposes.</rationale>
 					<addressed-by>FCS_RBG.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
