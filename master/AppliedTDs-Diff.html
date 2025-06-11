@@ -17,10 +17,6 @@
                 </tr>
             </table>
         </div>
-        <div id="commmentbox-">
-            <a href="#Comment-1-">Comment: Comment-1-</a>
-            <br>
-        </div>
         <h1 class="title" style="page-break-before:auto;">Protection Profile for Virtualization</h1>
         <h1 style="text-align:center; border-style: dashed; border-width: medium; border-color: red;">This page is best viewed with JavaScript enabled!</h1>
         <div class="center">
@@ -28,7 +24,7 @@
             <br>
              Version: 2.0
             <br>
-            2025-06-06
+            2025-06-11
             <br>
             <b>National Information Assurance Partnership</b>
             <br>
@@ -48,7 +44,7 @@
                 <td>1.1.1</td><td>2021-08-19</td><td>Errata release. Fixes a few typos.</td>
             </tr>
             <tr>
-                <td>2.0</td><td>2025-06-06</td><td><abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022 conversion.</td>
+                <td>2.0</td><td>2025-06-11</td><td><abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022 conversion, remove Modules.</td>
             </tr>
         </table>
         <h3>
@@ -56,11 +52,11 @@
         </h3>
         <h2>Contents</h2>
         <div class="toc" id="toc">
-            <a href="#Introduction" style="text-indent:0px">1<span>Introduction</span></a><a href="#s-overview" style="text-indent:10px">1.1<span>Overview</span></a><a href="#glossary" style="text-indent:10px">1.2<span>Terms</span></a><a href="#cc-terms" style="text-indent:20px">1.2.1<span>Common Criteria Terms</span></a><a href="#tech-terms" style="text-indent:20px">1.2.2<span>Technical Terms</span></a><a href="#s-complianttargets" style="text-indent:10px">1.3<span>Compliant Targets of Evaluation</span></a><a href="#ss-toeboundary" style="text-indent:20px">1.3.1<span>TOE Boundary</span></a><a href="#ss-platformreqs" style="text-indent:20px">1.3.2<span>Requirements Met by the Platform</span></a><a href="#ss-scopecert" style="text-indent:20px">1.3.3<span>Scope of Certification</span></a><a href="#ss-equiv" style="text-indent:20px">1.3.4<span>Product and Platform Equivalence</span></a><a href="#s-usecases" style="text-indent:10px">1.4<span>Use Cases</span></a><a href="#sec-cclaims" style="text-indent:0px">2<span>Conformance Claims</span></a><a href="#spd" style="text-indent:0px">3<span>Security Problem Definition</span></a><a href="#Threats" style="text-indent:10px">3.1<span>Threats</span></a><a href="#s-assumptions" style="text-indent:10px">3.2<span>Assumptions</span></a><a href="#Organizational_Security_Policies" style="text-indent:10px">3.3<span>Organizational Security Policies</span></a><a href="#Security_Objectives" style="text-indent:0px">4<span>Security Objectives</span></a><a href="#s-secobjoe" style="text-indent:10px">4.1<span>Security Objectives for the Operational Environment</span></a><a href="#secobjrat" style="text-indent:10px">4.2<span>Security Objectives Rationale</span></a><a href="#Security_Requirements" style="text-indent:0px">5<span>Security Requirements</span></a><a href="#s-sfr" style="text-indent:10px">5.1<span>Security Functional Requirements</span></a><a href="#ss-audit-table" style="text-indent:20px">5.1.1<span>Auditable Events for Mandatory SFRs</span></a><a href="#ss-fau" style="text-indent:20px">5.1.2<span>Security Audit (FAU)</span></a><a href="#ss-fcs" style="text-indent:20px">5.1.3<span>Cryptographic Support (FCS)</span></a><a href="#User_Data_Protection" style="text-indent:20px">5.1.4<span>User Data Protection (FDP)</span></a><a href="#ss-fia" style="text-indent:20px">5.1.5<span>Identification and Authentication (FIA)</span></a><a href="#ss-fmt" style="text-indent:20px">5.1.6<span>Security Management (FMT)</span></a><a href="#ss-fpt" style="text-indent:20px">5.1.7<span>Protection of the TSF (FPT)</span></a><a href="#ss-fta" style="text-indent:20px">5.1.8<span>TOE Access Banner (FTA)</span></a><a href="#ss-ftp" style="text-indent:20px">5.1.9<span>Trusted Path/Channel (FTP)</span></a><a href="#obj-req-map" style="text-indent:20px">5.1.10<span>TOE Security Functional Requirements Rationale</span></a><a href="#s-sar" style="text-indent:10px">5.2<span>Security Assurance Requirements</span></a><a href="#ss-ase" style="text-indent:20px">5.2.1<span>Class ASE: Security Target Evaluation</span></a><a href="#ss-adv" style="text-indent:20px">5.2.2<span>Class ADV: Development</span></a><a href="#ss-agd" style="text-indent:20px">5.2.3<span>Class AGD: Guidance Documents</span></a><a href="#ss-alc" style="text-indent:20px">5.2.4<span>Class ALC: Life-Cycle Support</span></a><a href="#ss-ate" style="text-indent:20px">5.2.5<span>Class ATE: Tests</span></a><a href="#ss-ava" style="text-indent:20px">5.2.6<span>Class AVA: Vulnerability Assessment</span></a><a href="#opt-app" style="text-indent:0px">Appendix A - <span>Optional Requirements</span></a><a href="#optional-reqs" style="text-indent:10px">A.1<span>Strictly Optional Requirements </span></a><a href="#optional-reqs-audit" style="text-indent:20px">A.1.1<span> Auditable Events for Strictly Optional Requirements </span></a><a href="#ss-fau-optional" style="text-indent:20px">A.1.2<span>Security Audit (FAU)</span></a><a href="#ss-fpt-optional" style="text-indent:20px">A.1.3<span>Protection of the TSF (FPT)</span></a><a href="#objective-reqs" style="text-indent:10px">A.2<span>Objective Requirements </span></a><a href="#objective-reqs-audit" style="text-indent:20px">A.2.1<span> Auditable Events for Objective Requirements </span></a><a href="#ss-fpt-objective" style="text-indent:20px">A.2.2<span>Protection of the TSF (FPT)</span></a><a href="#feat-based-reqs" style="text-indent:10px">A.3<span>Implementation-dependent Requirements </span></a><a href="#sel-based-reqs" style="text-indent:0px">Appendix B - <span>Selection-based Requirements </span></a><a href="#sel-based-reqs-audit" style="text-indent:10px">B.1<span> Auditable Events for Selection-based Requirements </span></a><a href="#ss-fcs-sel-based" style="text-indent:10px">B.2<span>Cryptographic Support (FCS)</span></a><a href="#ss-fia-sel-based" style="text-indent:10px">B.3<span>Identification and Authentication (FIA)</span></a><a href="#ss-fpt-sel-based" style="text-indent:10px">B.4<span>Protection of the TSF (FPT)</span></a><a href="#ss-ftp-sel-based" style="text-indent:10px">B.5<span>Trusted Path/Channel (FTP)</span></a><a href="#ext-comp-defs" style="text-indent:0px">Appendix C - <span>Extended Component Definitions</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">C.1<span>Extended Components Table</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">C.2<span>Extended Component Definitions</span></a><a href="#ext-comp-FCS" style="text-indent:20px">C.2.1<span>Cryptographic Support (FCS)</span></a><a href="#ext-comp-FCS_ENT_EXT" style="text-indent:30px">C.2.1.1<span>FCS_ENT_EXT Entropy for Virtual Machines</span></a><a href="#ext-comp-FCS_HTTPS_EXT" style="text-indent:30px">C.2.1.2<span>FCS_HTTPS_EXT HTTPS Protocol</span></a><a href="#ext-comp-FCS_IPSEC_EXT" style="text-indent:30px">C.2.1.3<span>FCS_IPSEC_EXT IPsec Protocol</span></a><a href="#ext-comp-FIA" style="text-indent:20px">C.2.2<span>Identification and Authentication (FIA)</span></a><a href="#ext-comp-FIA_AFL_EXT" style="text-indent:30px">C.2.2.1<span>FIA_AFL_EXT Authentication Failure Handling</span></a><a href="#ext-comp-FIA_PMG_EXT" style="text-indent:30px">C.2.2.2<span>FIA_PMG_EXT Password Management</span></a><a href="#ext-comp-FIA_UIA_EXT" style="text-indent:30px">C.2.2.3<span>FIA_UIA_EXT Administrator Identification and Authentication</span></a><a href="#ext-comp-FIA_X509_EXT" style="text-indent:30px">C.2.2.4<span>FIA_X509_EXT X.509 Certificate</span></a><a href="#ext-comp-FPT" style="text-indent:20px">C.2.3<span>Protection of the TSF (FPT)</span></a><a href="#ext-comp-FPT_DDI_EXT" style="text-indent:30px">C.2.3.1<span>FPT_DDI_EXT Device Driver Isolation</span></a><a href="#ext-comp-FPT_DVD_EXT" style="text-indent:30px">C.2.3.2<span>FPT_DVD_EXT Non-Existence of Disconnected Virtual Devices</span></a><a href="#ext-comp-FPT_EEM_EXT" style="text-indent:30px">C.2.3.3<span>FPT_EEM_EXT Execution Environment Mitigations</span></a><a href="#ext-comp-FPT_GVI_EXT" style="text-indent:30px">C.2.3.4<span>FPT_GVI_EXT guest VM Integrity</span></a><a href="#ext-comp-FPT_HAS_EXT" style="text-indent:30px">C.2.3.5<span>FPT_HAS_EXT Hardware Assists</span></a><a href="#ext-comp-FPT_HCL_EXT" style="text-indent:30px">C.2.3.6<span>FPT_HCL_EXT Hypercall Controls</span></a><a href="#ext-comp-FPT_IDV_EXT" style="text-indent:30px">C.2.3.7<span>FPT_IDV_EXT Software Identification and Versions</span></a><a href="#ext-comp-FPT_INT_EXT" style="text-indent:30px">C.2.3.8<span>FPT_INT_EXT Support for Introspection</span></a><a href="#ext-comp-FPT_ML_EXT" style="text-indent:30px">C.2.3.9<span>FPT_ML_EXT Measured Launch of Platform and VMM</span></a><a href="#ext-comp-FPT_RDM_EXT" style="text-indent:30px">C.2.3.10<span>FPT_RDM_EXT Removable Devices and Media</span></a><a href="#ext-comp-FPT_TUD_EXT" style="text-indent:30px">C.2.3.11<span>FPT_TUD_EXT Trusted Updates</span></a><a href="#ext-comp-FPT_VDP_EXT" style="text-indent:30px">C.2.3.12<span>FPT_VDP_EXT Virtual Device Parameters</span></a><a href="#ext-comp-FPT_VIV_EXT" style="text-indent:30px">C.2.3.13<span>FPT_VIV_EXT VMM Isolation from VMs</span></a><a href="#ext-comp-FMT" style="text-indent:20px">C.2.4<span>Security Management (FMT)</span></a><a href="#ext-comp-FMT_SMO_EXT" style="text-indent:30px">C.2.4.1<span>FMT_SMO_EXT Separation of Management and Operational Networks</span></a><a href="#ext-comp-FTP" style="text-indent:20px">C.2.5<span>Trusted Path/Channel (FTP)</span></a><a href="#ext-comp-FTP_ITC_EXT" style="text-indent:30px">C.2.5.1<span>FTP_ITC_EXT Trusted Channel Communications</span></a><a href="#ext-comp-FTP_UIF_EXT" style="text-indent:30px">C.2.5.2<span>FTP_UIF_EXT User Interface</span></a><a href="#ext-comp-FDP" style="text-indent:20px">C.2.6<span>User Data Protection (FDP)</span></a><a href="#ext-comp-FDP_HBI_EXT" style="text-indent:30px">C.2.6.1<span>FDP_HBI_EXT Hardware-Based Isolation Mechanisms</span></a><a href="#ext-comp-FDP_PPR_EXT" style="text-indent:30px">C.2.6.2<span>FDP_PPR_EXT Physical Platform Resource Controls</span></a><a href="#ext-comp-FDP_RIP_EXT" style="text-indent:30px">C.2.6.3<span>FDP_RIP_EXT Residual Information in Memory</span></a><a href="#ext-comp-FDP_VMS_EXT" style="text-indent:30px">C.2.6.4<span>FDP_VMS_EXT VM Separation</span></a><a href="#ext-comp-FDP_VNC_EXT" style="text-indent:30px">C.2.6.5<span>FDP_VNC_EXT Virtual Networking Components</span></a><a href="#satisfiedreqs" style="text-indent:0px">Appendix D - <span>Implicitly Satisfied Requirements</span></a><a href="#appendix-entropy" style="text-indent:0px">Appendix E - <span>Entropy Documentation and Assessment</span></a><a href="#s-design" style="text-indent:10px">E.1<span>Design Description</span></a><a href="#s-justification" style="text-indent:10px">E.2<span>Entropy Justification</span></a><a href="#s-oc" style="text-indent:10px">E.3<span>Operating Conditions</span></a><a href="#s-health" style="text-indent:10px">E.4<span>Health Testing</span></a><a href="#appendix-equiv" style="text-indent:0px">Appendix F - <span>Equivalency Guidelines</span></a><a href="#s-vm-intro" style="text-indent:10px">F.1<span>Introduction</span></a><a href="#s-approach" style="text-indent:10px">F.2<span>Approach to Equivalency Analysis</span></a><a href="#s-modelequiv" style="text-indent:10px">F.3<span>Specific Guidance for Determining Product Model Equivalence</span></a><a href="#s-versionequiv" style="text-indent:10px">F.4<span>Specific Guidance for Determining Product Version Equivalence</span></a><a href="#s-platformequiv" style="text-indent:10px">F.5<span>Specific Guidance for Determining Platform Equivalence</span></a><a href="#ss-hardware-equiv" style="text-indent:20px">F.5.1<span>Hardware Platform Equivalence</span></a><a href="#ss-os-equiv" style="text-indent:20px">F.5.2<span>Software Platform Equivalence</span></a><a href="#s-specificity" style="text-indent:10px">F.6<span>Level of Specificity for Tested and Claimed Equivalent Configurations</span></a><a href="#acronyms" style="text-indent:0px">Appendix G - <span>Acronyms</span></a><a href="#appendix-bibliography" style="text-indent:0px">Appendix H - <span>Bibliography</span></a>
+            <a href="#Introduction" style="text-indent:0px">1<span>Introduction</span></a><a href="#s-overview" style="text-indent:10px">1.1<span>Overview</span></a><a href="#glossary" style="text-indent:10px">1.2<span>Terms</span></a><a href="#cc-terms" style="text-indent:20px">1.2.1<span>Common Criteria Terms</span></a><a href="#tech-terms" style="text-indent:20px">1.2.2<span>Technical Terms</span></a><a href="#s-complianttargets" style="text-indent:10px">1.3<span>Compliant Targets of Evaluation</span></a><a href="#ss-toeboundary" style="text-indent:20px">1.3.1<span>TOE Boundary</span></a><a href="#ss-platformreqs" style="text-indent:20px">1.3.2<span>Requirements Met by the Platform</span></a><a href="#ss-scopecert" style="text-indent:20px">1.3.3<span>Scope of Certification</span></a><a href="#ss-equiv" style="text-indent:20px">1.3.4<span>Product and Platform Equivalence</span></a><a href="#s-usecases" style="text-indent:10px">1.4<span>Use Cases</span></a><a href="#sec-cclaims" style="text-indent:0px">2<span>Conformance Claims</span></a><a href="#spd" style="text-indent:0px">3<span>Security Problem Definition</span></a><a href="#Threats" style="text-indent:10px">3.1<span>Threats</span></a><a href="#s-assumptions" style="text-indent:10px">3.2<span>Assumptions</span></a><a href="#Organizational_Security_Policies" style="text-indent:10px">3.3<span>Organizational Security Policies</span></a><a href="#Security_Objectives" style="text-indent:0px">4<span>Security Objectives</span></a><a href="#s-secobjoe" style="text-indent:10px">4.1<span>Security Objectives for the Operational Environment</span></a><a href="#secobjrat" style="text-indent:10px">4.2<span>Security Objectives Rationale</span></a><a href="#Security_Requirements" style="text-indent:0px">5<span>Security Requirements</span></a><a href="#s-sfr" style="text-indent:10px">5.1<span>Security Functional Requirements</span></a><a href="#ss-audit-table" style="text-indent:20px">5.1.1<span>Auditable Events for Mandatory SFRs</span></a><a href="#ss-fau" style="text-indent:20px">5.1.2<span>Security Audit (FAU)</span></a><a href="#ss-fcs" style="text-indent:20px">5.1.3<span>Cryptographic Support (FCS)</span></a><a href="#User_Data_Protection" style="text-indent:20px">5.1.4<span>User Data Protection (FDP)</span></a><a href="#ss-fia" style="text-indent:20px">5.1.5<span>Identification and Authentication (FIA)</span></a><a href="#ss-fmt" style="text-indent:20px">5.1.6<span>Security Management (FMT)</span></a><a href="#ss-fpt" style="text-indent:20px">5.1.7<span>Protection of the TSF (FPT)</span></a><a href="#ss-fta" style="text-indent:20px">5.1.8<span>TOE Access Banner (FTA)</span></a><a href="#ss-ftp" style="text-indent:20px">5.1.9<span>Trusted Path/Channel (FTP)</span></a><a href="#obj-req-map" style="text-indent:20px">5.1.10<span>TOE Security Functional Requirements Rationale</span></a><a href="#s-sar" style="text-indent:10px">5.2<span>Security Assurance Requirements</span></a><a href="#ss-ase" style="text-indent:20px">5.2.1<span>Class ASE: Security Target Evaluation</span></a><a href="#ss-adv" style="text-indent:20px">5.2.2<span>Class ADV: Development</span></a><a href="#ss-agd" style="text-indent:20px">5.2.3<span>Class AGD: Guidance Documents</span></a><a href="#ss-alc" style="text-indent:20px">5.2.4<span>Class ALC: Life-Cycle Support</span></a><a href="#ss-ate" style="text-indent:20px">5.2.5<span>Class ATE: Tests</span></a><a href="#ss-ava" style="text-indent:20px">5.2.6<span>Class AVA: Vulnerability Assessment</span></a><a href="#opt-app" style="text-indent:0px">Appendix A - <span>Optional Requirements</span></a><a href="#optional-reqs" style="text-indent:10px">A.1<span>Strictly Optional Requirements </span></a><a href="#optional-reqs-audit" style="text-indent:20px">A.1.1<span> Auditable Events for Strictly Optional Requirements </span></a><a href="#ss-alc-optional" style="text-indent:20px">A.1.2<span>Class ALC: Life-Cycle Support</span></a><a href="#ss-fau-optional" style="text-indent:20px">A.1.3<span>Security Audit (FAU)</span></a><a href="#ss-fpt-optional" style="text-indent:20px">A.1.4<span>Protection of the TSF (FPT)</span></a><a href="#objective-reqs" style="text-indent:10px">A.2<span>Objective Requirements </span></a><a href="#objective-reqs-audit" style="text-indent:20px">A.2.1<span> Auditable Events for Objective Requirements </span></a><a href="#ss-fpt-objective" style="text-indent:20px">A.2.2<span>Protection of the TSF (FPT)</span></a><a href="#feat-based-reqs" style="text-indent:10px">A.3<span>Implementation-dependent Requirements </span></a><a href="#sel-based-reqs" style="text-indent:0px">Appendix B - <span>Selection-based Requirements </span></a><a href="#sel-based-reqs-audit" style="text-indent:10px">B.1<span> Auditable Events for Selection-based Requirements </span></a><a href="#ss-fcs-sel-based" style="text-indent:10px">B.2<span>Cryptographic Support (FCS)</span></a><a href="#ss-fia-sel-based" style="text-indent:10px">B.3<span>Identification and Authentication (FIA)</span></a><a href="#ss-fpt-sel-based" style="text-indent:10px">B.4<span>Protection of the TSF (FPT)</span></a><a href="#ss-ftp-sel-based" style="text-indent:10px">B.5<span>Trusted Path/Channel (FTP)</span></a><a href="#ext-comp-defs" style="text-indent:0px">Appendix C - <span>Extended Component Definitions</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">C.1<span>Extended Components Table</span></a><a href="#ext-comp-defs-bg" style="text-indent:10px">C.2<span>Extended Component Definitions</span></a><a href="#ext-comp-FCS" style="text-indent:20px">C.2.1<span>Cryptographic Support (FCS)</span></a><a href="#ext-comp-FCS_ENT_EXT" style="text-indent:30px">C.2.1.1<span>FCS_ENT_EXT Entropy for Virtual Machines</span></a><a href="#ext-comp-FCS_HTTPS_EXT" style="text-indent:30px">C.2.1.2<span>FCS_HTTPS_EXT HTTPS Protocol</span></a><a href="#ext-comp-FCS_IPSEC_EXT" style="text-indent:30px">C.2.1.3<span>FCS_IPSEC_EXT IPsec Protocol</span></a><a href="#ext-comp-FIA" style="text-indent:20px">C.2.2<span>Identification and Authentication (FIA)</span></a><a href="#ext-comp-FIA_AFL_EXT" style="text-indent:30px">C.2.2.1<span>FIA_AFL_EXT Authentication Failure Handling</span></a><a href="#ext-comp-FIA_PMG_EXT" style="text-indent:30px">C.2.2.2<span>FIA_PMG_EXT Password Management</span></a><a href="#ext-comp-FIA_UIA_EXT" style="text-indent:30px">C.2.2.3<span>FIA_UIA_EXT Administrator Identification and Authentication</span></a><a href="#ext-comp-FIA_X509_EXT" style="text-indent:30px">C.2.2.4<span>FIA_X509_EXT X.509 Certificate</span></a><a href="#ext-comp-FPT" style="text-indent:20px">C.2.3<span>Protection of the TSF (FPT)</span></a><a href="#ext-comp-FPT_DDI_EXT" style="text-indent:30px">C.2.3.1<span>FPT_DDI_EXT Device Driver Isolation</span></a><a href="#ext-comp-FPT_DVD_EXT" style="text-indent:30px">C.2.3.2<span>FPT_DVD_EXT Non-Existence of Disconnected Virtual Devices</span></a><a href="#ext-comp-FPT_EEM_EXT" style="text-indent:30px">C.2.3.3<span>FPT_EEM_EXT Execution Environment Mitigations</span></a><a href="#ext-comp-FPT_GVI_EXT" style="text-indent:30px">C.2.3.4<span>FPT_GVI_EXT guest VM Integrity</span></a><a href="#ext-comp-FPT_HAS_EXT" style="text-indent:30px">C.2.3.5<span>FPT_HAS_EXT Hardware Assists</span></a><a href="#ext-comp-FPT_HCL_EXT" style="text-indent:30px">C.2.3.6<span>FPT_HCL_EXT Hypercall Controls</span></a><a href="#ext-comp-FPT_IDV_EXT" style="text-indent:30px">C.2.3.7<span>FPT_IDV_EXT Software Identification and Versions</span></a><a href="#ext-comp-FPT_INT_EXT" style="text-indent:30px">C.2.3.8<span>FPT_INT_EXT Support for Introspection</span></a><a href="#ext-comp-FPT_ML_EXT" style="text-indent:30px">C.2.3.9<span>FPT_ML_EXT Measured Launch of Platform and VMM</span></a><a href="#ext-comp-FPT_RDM_EXT" style="text-indent:30px">C.2.3.10<span>FPT_RDM_EXT Removable Devices and Media</span></a><a href="#ext-comp-FPT_TUD_EXT" style="text-indent:30px">C.2.3.11<span>FPT_TUD_EXT Trusted Updates</span></a><a href="#ext-comp-FPT_VDP_EXT" style="text-indent:30px">C.2.3.12<span>FPT_VDP_EXT Virtual Device Parameters</span></a><a href="#ext-comp-FPT_VIV_EXT" style="text-indent:30px">C.2.3.13<span>FPT_VIV_EXT VMM Isolation from VMs</span></a><a href="#ext-comp-FMT" style="text-indent:20px">C.2.4<span>Security Management (FMT)</span></a><a href="#ext-comp-FMT_SMO_EXT" style="text-indent:30px">C.2.4.1<span>FMT_SMO_EXT Separation of Management and Operational Networks</span></a><a href="#ext-comp-FMT_MOF_EXT" style="text-indent:30px">C.2.4.2<span>FMT_MOF_EXT Management of Security Functions Behavior</span></a><a href="#ext-comp-FTP" style="text-indent:20px">C.2.5<span>Trusted Path/Channel (FTP)</span></a><a href="#ext-comp-FTP_ITC_EXT" style="text-indent:30px">C.2.5.1<span>FTP_ITC_EXT Trusted Channel Communications</span></a><a href="#ext-comp-FTP_UIF_EXT" style="text-indent:30px">C.2.5.2<span>FTP_UIF_EXT User Interface</span></a><a href="#ext-comp-FDP" style="text-indent:20px">C.2.6<span>User Data Protection (FDP)</span></a><a href="#ext-comp-FDP_HBI_EXT" style="text-indent:30px">C.2.6.1<span>FDP_HBI_EXT Hardware-Based Isolation Mechanisms</span></a><a href="#ext-comp-FDP_PPR_EXT" style="text-indent:30px">C.2.6.2<span>FDP_PPR_EXT Physical Platform Resource Controls</span></a><a href="#ext-comp-FDP_RIP_EXT" style="text-indent:30px">C.2.6.3<span>FDP_RIP_EXT Residual Information in Memory</span></a><a href="#ext-comp-FDP_VMS_EXT" style="text-indent:30px">C.2.6.4<span>FDP_VMS_EXT VM Separation</span></a><a href="#ext-comp-FDP_VNC_EXT" style="text-indent:30px">C.2.6.5<span>FDP_VNC_EXT Virtual Networking Components</span></a><a href="#satisfiedreqs" style="text-indent:0px">Appendix D - <span>Implicitly Satisfied Requirements</span></a><a href="#appendix-entropy" style="text-indent:0px">Appendix E - <span>Entropy Documentation and Assessment</span></a><a href="#s-design" style="text-indent:10px">E.1<span>Design Description</span></a><a href="#s-justification" style="text-indent:10px">E.2<span>Entropy Justification</span></a><a href="#s-oc" style="text-indent:10px">E.3<span>Operating Conditions</span></a><a href="#s-health" style="text-indent:10px">E.4<span>Health Testing</span></a><a href="#appendix-equiv" style="text-indent:0px">Appendix F - <span>Equivalency Guidelines</span></a><a href="#s-vm-intro" style="text-indent:10px">F.1<span>Introduction</span></a><a href="#s-approach" style="text-indent:10px">F.2<span>Approach to Equivalency Analysis</span></a><a href="#s-modelequiv" style="text-indent:10px">F.3<span>Specific Guidance for Determining Product Model Equivalence</span></a><a href="#s-versionequiv" style="text-indent:10px">F.4<span>Specific Guidance for Determining Product Version Equivalence</span></a><a href="#s-platformequiv" style="text-indent:10px">F.5<span>Specific Guidance for Determining Platform Equivalence</span></a><a href="#ss-hardware-equiv" style="text-indent:20px">F.5.1<span>Hardware Platform Equivalence</span></a><a href="#ss-os-equiv" style="text-indent:20px">F.5.2<span>Software Platform Equivalence</span></a><a href="#s-specificity" style="text-indent:10px">F.6<span>Level of Specificity for Tested and Claimed Equivalent Configurations</span></a><a href="#acronyms" style="text-indent:0px">Appendix G - <span>Acronyms</span></a><a href="#appendix-bibliography" style="text-indent:0px">Appendix H - <span>Bibliography</span></a>
         </div>
         <h1 class="indexable" data-level="1" id="Introduction">1 Introduction</h1>
         <h2 class="indexable" data-level="2" id="s-overview">1.1 Overview</h2>
-         The scope of this Protection Profile (<abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>) is to describe the security functionality of virtualization technologies in terms of [<abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>] and to define security functional and assurance requirements for such products. This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is not complete in itself, but rather provides a set of requirements that are common to the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Modules for Server Virtualization and for Client Virtualization. These capabilities have been broken out into this generic &lsquo;base&rsquo; <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> due to the high degree of similarity between the two product types.
+         The scope of this Protection Profile (<abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>) is to describe the security functionality of virtualization technologies in terms of [<abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>] and to define security functional and assurance requirements for such products. This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> includes the requirements formerly specified in the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for Server Virtualization and the <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for Client Virtualization. These two <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Modules have been incorporated as use cases in this document.
         <p></p>
          Due to the increasing prevalence of virtualization technology in enterprise computing environments and the shift to cloud computing, it is essential to ensure that this technology is implemented securely in order to mitigate the risk introduced by sharing multiple computers and their resident data across a single physical system. 
         <br>
@@ -315,9 +311,24 @@
         <h3 class="indexable" data-level="3" id="ss-equiv">1.3.4 Product and Platform Equivalence</h3>
          The tests in this Protection Profile must be run on all product versions and Platforms with which the Vendor would like to claim compliance&mdash;subject to this Profile&rsquo;s equivalency guidelines (see <a href="#appendix-equiv" class="dynref">Appendix F - Equivalency Guidelines</a>). 
         <h2 class="indexable" data-level="2" id="s-usecases">1.4 Use Cases</h2>
-         This <abbr class="dyn-abbr"><a href="#abbr_Base-PP">Base-PP</a></abbr> does not define any use cases for virtualization technology. Client Virtualization and Server Virtualization products have different use cases and so these are defined in their respective <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Modules. 
+         This Protection Profile supports two use cases: Server Virtualization and Client Virtualization. A product must align with one use case or the other to be evaluated against this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>.
+        <p></p>
+         This document does not address virtualization on mobile devices (typically devices that use a baseband processor or connect to a cellular network), nor does it address application virtualization or containers.
+        <p></p>
+         
+        <dl>
+            <dt id="uc-server-virt"> [USE CASE 1] Server Virtualization</dt>
+            <dd>
+                <span class="description"> Server Virtualization, for the purposes of this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, refers to a virtualization system that implements virtualized hardware components on server-class hardware. It creates a virtualized hardware environment for each instance of an operating system (virtual machines or VMs) permitting these environments to execute concurrently while maintaining isolation and the appearance of exclusive control over assigned computing resources. Each <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> instance supports applications such as file servers, web servers, and mail servers. Server virtualization may also support client operating systems in a virtual desktop or thin-client environment. Typically, virtualized servers provide services to remote clients from a data center, and are generally not directly accessible by non-administrative users. </span>
+            </dd>
+            <dt id="uc-client-virt"> [USE CASE 2] Client Virtualization</dt>
+            <dd>
+                <span class="description"> Client Virtualization, for the purposes of this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, refers to a Virtualization System that implements virtualized hardware components locally on an endpoint machine. Endpoints are typically client hardware such as desktop or laptop computers that a user interacts with directly, but may also include headless embedded systems without direct human interaction. A Virtualization System creates a virtualized hardware environment for each instance of a guest operating system (a virtual machine) permitting these environments to execute concurrently while maintaining isolation and the appearance of exclusive control over assigned computing resources. Client virtualization is generally used on endpoint systems, making use of the local machine's resources (memory, <abbr class="dyn-abbr"><a href="#abbr_CPU">CPU</a></abbr>, etc.) to provide isolated user environments. </span>
+            </dd>
+        </dl>
+         
         <h1 class="indexable" data-level="1" id="sec-cclaims">2 Conformance Claims</h1>
-         <span style="" class="comment " id="Comment-1-">Module versions will need to be updated when new versions are published.</span> 
+         
         <dl>
             <dt>Conformance Statement</dt>
             <p></p>
@@ -340,15 +351,7 @@
             </dd>
             <p></p>
             <dd>
-                The following <abbr class="dyn-abbr"><a href="#abbr_PP">PPs</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Modules are allowed to be specified in a <abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr> with this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>: 
-                <ul>
-                    <li>
-                        <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for Client Virtualization Systems, Version 1.1
-                    </li>
-                    <li>
-                        <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> for Server Virtualization Systems, Version 1.1
-                    </li>
-                </ul>
+                There are no <abbr class="dyn-abbr"><a href="#abbr_PP">PPs</a></abbr> or <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Modules that are allowed in a <abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr> with this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>.
             </dd>
             <dt>Package Claim</dt>
             <p></p>
@@ -364,7 +367,7 @@
                         This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is Functional Package for X.509 Version 1.0 conformant.
                     </li>
                     <li>
-                        This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is Assurance Package for Flaw Remediation Version 1.0 conformant.
+                        This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> does not conform to any assurance packages.
                     </li>
                 </ul>
             </dd>
@@ -400,7 +403,7 @@
             </dd>
             <dt class="threat defined" id="T.UNAUTHORIZED_ACCESS">T.UNAUTHORIZED_ACCESS</dt>
             <dd>
-                <span class="description"> A malicious user or outside entity may gain access to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> or its data, either through poorly-implemented access control or through insecure communications, allowing for unintended management actions to be performed against the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> without proper authorization. </span>
+                <span class="description"> A malicious user or outside entity may gain access to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> or its data, either through poorly implemented access control or through insecure communications, allowing for unintended management actions to be performed against the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> without proper authorization. </span>
             </dd>
             <dt class="threat defined" id="T.UNAUTHORIZED_MODIFICATION">T.UNAUTHORIZED_MODIFICATION</dt>
             <dd>
@@ -433,7 +436,7 @@
         <dl>
             <dt class="assumption defined" id="A.NON_MALICIOUS_USER">A.NON_MALICIOUS_USER</dt>
             <dd>
-                <span class="description"> The user of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> is not willfully negligent or hostile, and uses the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> in compliance with the applied enterprise security policy and guidance. At the same time, malicious applications could act as the user, so requirements which confine malicious applications are still in scope.</span>
+                <span class="description"> The user of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> is not willfully negligent or hostile, and uses the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> in compliance with the applied enterprise security policy and guidance. At the same time, malicious applications could act as the user, so requirements which confine malicious applications are still in scope. </span>
             </dd>
             <dt class="assumption defined" id="A.PHYSICAL">A.PHYSICAL</dt>
             <dd>
@@ -640,7 +643,7 @@
             <tr style="display:none;" data-sortkey="FCS_RBG.1#">
                 <td></td>
             </tr>
-            <tr data-sortkey="FCS_RBG.1.8">
+            <tr data-sortkey="FCS_RBG.1.3">
                 <td>Failure of the randomization process.</td><td> No additional information </td>
             </tr>
             <tr data-sortkey="FDP_HBI_EXT.1">
@@ -745,6 +748,20 @@
             </tr>
             <tr data-sortkey="FIA_UIA_EXT.1.8">
                 <td><b>[selection: </b><i>Start and end of administrator session., None</i><b>]</b></td><td>Start time and end time of administrator session.</td>
+            </tr>
+            <tr data-sortkey="FMT_MOF_EXT.1">
+                <td rowspan="2"><a href="#FMT_MOF_EXT.1">FMT_MOF_EXT.1</a></td><td style="display:none"></td>
+            </tr>
+            <tr style="display:none;" data-sortkey="FMT_MOF_EXT.1#">
+                <td></td>
+            </tr>
+            <tr data-sortkey="FMT_MOF_EXT.1.7">
+                <td>Attempts to invoke any of the management functions listed in <a href="#manfunc" class="manfunc-ref">Table <span class="counter">4</span></a>.</td><td>
+                    <ul>
+                        <li>Success or failure of attempt</li>
+                        <li>Identity of actor</li>
+                    </ul>
+                </td>
             </tr>
             <tr data-sortkey="FMT_SMO_EXT.1">
                 <td rowspan="2"><a href="#FMT_SMO_EXT.1">FMT_SMO_EXT.1</a></td><td style="display:none"></td>
@@ -921,13 +938,13 @@
                             <span class="refinement">[<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="sel-at2">Auditable events defined in <a href="#t-audit-optional" class="t-audit-optional-ref">Table <span class="counter">5</span></a> for Strictly Optional <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span>
+                                        <span class="selectable-content" id="sel-at2">Auditable events defined in <a href="#t-audit-optional" class="t-audit-optional-ref">Table <span class="counter">6</span></a> for Strictly Optional <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="sel-at3">Auditable events defined in <a href="#t-audit-objective" class="t-audit-objective-ref">Table <span class="counter">6</span></a> for Objective <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span>
+                                        <span class="selectable-content" id="sel-at3">Auditable events defined in <a href="#t-audit-objective" class="t-audit-objective-ref">Table <span class="counter">7</span></a> for Objective <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="sel-at4">Auditable events defined in <a href="#t-audit-sel-based" class="t-audit-sel-based-ref">Table <span class="counter">7</span></a> for Selection-Based <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span>
+                                        <span class="selectable-content" id="sel-at4">Auditable events defined in <a href="#t-audit-sel-based" class="t-audit-sel-based-ref">Table <span class="counter">8</span></a> for Selection-Based <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span>
                                     </li>
                                     <li style="">
                                         <span class="selectable-content" id="sel-attls">Auditable events for the <a href="https://commoncriteria.github.io/tls/release-2.0/tls-release.html">Functional Package for Transport Layer Security (TLS), version 1.1</a> listed in <a href="#atref-pkgs" class="atref-pkgs-ref">Table <span class="counter">3</span></a></span>
@@ -962,13 +979,13 @@
                             <span class="refinement">[<b>selection</b>: 
                                 <ul>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_7">Additional information defined in <a href="#t-audit-optional" class="t-audit-optional-ref">Table <span class="counter">5</span></a> for Strictly Optional <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span>
+                                        <span class="selectable-content" id="_s_7">Additional information defined in <a href="#t-audit-optional" class="t-audit-optional-ref">Table <span class="counter">6</span></a> for Strictly Optional <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_8">Additional information defined in <a href="#t-audit-objective" class="t-audit-objective-ref">Table <span class="counter">6</span></a> for Objective <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span>
+                                        <span class="selectable-content" id="_s_8">Additional information defined in <a href="#t-audit-objective" class="t-audit-objective-ref">Table <span class="counter">7</span></a> for Objective <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_9">Additional information defined in <a href="#t-audit-sel-based" class="t-audit-sel-based-ref">Table <span class="counter">7</span></a> for Selection-Based <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span>
+                                        <span class="selectable-content" id="_s_9">Additional information defined in <a href="#t-audit-sel-based" class="t-audit-sel-based-ref">Table <span class="counter">8</span></a> for Selection-Based <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span>
                                     </li>
                                     <li style="">
                                         <span class="selectable-content" id="_s_10">Additional information for the <a href="https://commoncriteria.github.io/tls/release-2.0/tls-release.html">Functional Package for Transport Layer Security (TLS), version 1.1</a> listed in <a href="#atref-pkgs" class="atref-pkgs-ref">Table <span class="counter">3</span></a></span>
@@ -986,7 +1003,7 @@
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note"> The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author can include other auditable events directly in <a href="#t-audit-mandatory" class="t-audit-mandatory-ref">Table <span class="counter">2</span></a>; they are not limited to the list presented. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should update the table in <a href="#FAU_GEN.1.2">FAU_GEN.1.2</a> with any additional information generated. &ldquo;Subject identity&rdquo; in <a href="#FAU_GEN.1.2">FAU_GEN.1.2</a> could be a user id or an identifier specifying a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>, for example.
                             <p></p>
-                             Appropriate entries from <a href="#t-audit-optional" class="t-audit-optional-ref">Table <span class="counter">5</span></a>, <a href="#t-audit-objective" class="t-audit-objective-ref">Table <span class="counter">6</span></a>, and <a href="#t-audit-sel-based" class="t-audit-sel-based-ref">Table <span class="counter">7</span></a> should be included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if the associated <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> and selections are included.
+                             Appropriate entries from <a href="#t-audit-optional" class="t-audit-optional-ref">Table <span class="counter">6</span></a>, <a href="#t-audit-objective" class="t-audit-objective-ref">Table <span class="counter">7</span></a>, and <a href="#t-audit-sel-based" class="t-audit-sel-based-ref">Table <span class="counter">8</span></a> should be included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if the associated <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> and selections are included.
                             <p></p>
                              The <a href="#t-audit-mandatory" class="t-audit-mandatory-ref">Table <span class="counter">2</span></a> entry for <a href="#FDP_VNC_EXT.1">FDP_VNC_EXT.1</a> refers to configuration settings that attach VMs to virtualized network components. Changes to these configurations can be made during <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> execution or when VMs are not running. Audit records must be generated for either case.
                             <p></p>
@@ -1033,25 +1050,21 @@
                     </div>
                     <div class="ea">
                         <div class="ea">
-                             The evaluator shall check the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> and ensure that it lists all of the auditable events and provides a format for audit records. Each audit record format type shall be covered, along with a brief description of each field. The evaluator shall check to make sure that every audit event type mandated by the <abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr> is described in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr>.
-                            <p></p>
+                             The evaluator shall check the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> and ensure that it lists all of the auditable events and provides a format for audit records. Each audit record format type shall be covered, along with a brief description of each field. The evaluator shall check to make sure that every audit event type mandated by the <abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr> is described in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr>. 
                         </div>
                     </div>
                     <div class="eacategory">Guidance</div>
                     <div class="ea">
                         <div class="ea">
-                             The evaluator shall also make a determination of the administrative actions that are relevant in the context of this <abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr>. The evaluator shall examine the administrative guide and make a determination of which administrative commands, including subcommands, scripts, and configuration files, are related to the configuration (including enabling or disabling) of the mechanisms implemented in the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> that are necessary to enforce the requirements specified in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Modules. The evaluator shall document the methodology or approach taken while determining which actions in the administrative guide are security-relevant with respect to this <abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr>.
-                            <p></p>
+                             The evaluator shall also make a determination of the administrative actions that are relevant in the context of this <abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr>. The evaluator shall examine the administrative guide and make a determination of which administrative commands, including subcommands, scripts, and configuration files, are related to the configuration (including enabling or disabling) of the mechanisms implemented in the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> that are necessary to enforce the requirements specified in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> and <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Modules. The evaluator shall document the methodology or approach taken while determining which actions in the administrative guide are security-relevant with respect to this <abbr class="dyn-abbr"><a href="#abbr_PP-Configuration">PP-Configuration</a></abbr>. 
                         </div>
                     </div>
                     <div class="eacategory">Tests</div>
                     <div class="ea">
                         <div class="ea">
                              The evaluator shall test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>&rsquo;s ability to correctly generate audit records by having the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> generate audit records for the events listed and administrative actions. For administrative actions, the evaluator shall test that each action determined by the evaluator above to be security relevant in the context of this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is auditable. When verifying the test results, the evaluator shall ensure the audit records generated during testing match the format specified in the administrative guide, and that the fields in each audit record have the proper entries.
-                            <br>
-                            <br>
-                             Note that the testing here can be accomplished in conjunction with the testing of the security mechanisms directly.
                             <p></p>
+                             Note that the testing here can be accomplished in conjunction with the testing of the security mechanisms directly. 
                         </div>
                     </div>
                 </div>
@@ -1313,7 +1326,7 @@
                              Note: The following tests require the developer to provide access to a test platform that provides the evaluator with tools that are typically not found on factory products.
                             <p></p>
                              <b>Key Generation for <abbr class="dyn-abbr"><a href="#abbr_FIPS">FIPS</a></abbr> PUB 186-5 <abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr> Schemes</b>
-                            <br>
+                            <p></p>
                              The evaluator shall verify the implementation of <abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr> Key Generation by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> using the Key Generation test. This test verifies the ability of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to correctly produce values for the key components including the public verification exponent e, the private prime factors p and q, the public modulus n and the calculation of the private signature exponent d.
                             <p></p>
                              Key Pair generation specifies 5 ways (or methods) to generate the primes p and q. These include:
@@ -1341,11 +1354,11 @@
                              <b>Key Generation for Elliptic Curve Cryptography (<abbr class="dyn-abbr"><a href="#abbr_ECC">ECC</a></abbr>)</b>
                             <p></p>
                             <p>
-                                 <abbr class="dyn-abbr"><a href="#abbr_FIPS">FIPS</a></abbr> 186-5 <abbr class="dyn-abbr"><a href="#abbr_ECC">ECC</a></abbr> Key Generation Test
+                                <abbr class="dyn-abbr"><a href="#abbr_FIPS">FIPS</a></abbr> 186-5 <abbr class="dyn-abbr"><a href="#abbr_ECC">ECC</a></abbr> Key Generation Test
                             </p>
                             <p></p>
                              For each supported <abbr class="dyn-abbr"><a href="#abbr_NIST">NIST</a></abbr> curve (i.e., P-384 and P-521) the evaluator shall require the implementation under test (IUT) to generate 10 private/public key pairs. The private key shall be generated using an approved random bit generator (RBG). To determine correctness, the evaluator shall submit the generated key pairs to the public key verification (<abbr class="dyn-abbr"><a href="#abbr_PKV">PKV</a></abbr>) function of a known good implementation. 
-                            <br>
+                            <p></p>
                             <p>
                                 <abbr class="dyn-abbr"><a href="#abbr_FIPS">FIPS</a></abbr> 186-5 Public Key Verification (<abbr class="dyn-abbr"><a href="#abbr_PKV">PKV</a></abbr>) Test
                             </p>
@@ -2581,9 +2594,7 @@
                             <p></p>
                              For data transfer mechanisms that use shared physical devices, <a href="#FDP_VMS_EXT.1.3">FDP_VMS_EXT.1.3</a> is met if the device is listed in and meets <a href="#FDP_PPR_EXT.1.1">FDP_PPR_EXT.1.1</a> (<abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> access to the physical device is configurable).
                             <p></p>
-                             For data transfer mechanisms that use virtual networking, <a href="#FDP_VMS_EXT.1.3">FDP_VMS_EXT.1.3</a> is met if <a href="#FDP_VNC_EXT.1.1">FDP_VNC_EXT.1.1</a> is met (<abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> access to virtual networks is configurable).
-                            <p></p>
-                        </span>
+                             For data transfer mechanisms that use virtual networking, <a href="#FDP_VMS_EXT.1.3">FDP_VMS_EXT.1.3</a> is met if <a href="#FDP_VNC_EXT.1.1">FDP_VNC_EXT.1.1</a> is met (<abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> access to virtual networks is configurable). </span>
                     </div>
                 </div>
             </div>
@@ -2661,9 +2672,7 @@
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note"> Virtual networks must be separated from one another to provide isolation commensurate with that provided by physically separate networks. It must not be possible for data to cross between properly configured virtual networks regardless of whether the traffic originated from a local guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> or a remote host.
                             <p></p>
-                             Unprivileged users must not be able to connect VMs to each other or to external networks.
-                            <p></p>
-                        </span>
+                             Unprivileged users must not be able to connect VMs to each other or to external networks. </span>
                     </div>
                 </div>
             </div>
@@ -2816,9 +2825,7 @@
                         <span class="note-header">Application Note: </span><span class="note">Selection of &lsquo;authentication based on username and password&rsquo; requires that <a href="#FIA_PMG_EXT.1">FIA_PMG_EXT.1</a> be included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. This also requires that the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> include a management function for password management. If the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects &lsquo;authentication based on an SSH public-key credential&rsquo;, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be validated against the <a href="https://commoncriteria.github.io/ssh/release-2.0/ssh-release.html">Functional Package for Secure Shell (SSH), version 2.0</a>. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must include FIA_X509_EXT.1 and FIA_X509_EXT.2 Functional Package for X.509, version 1.0, if 'authentication based on X.509 certificates' is selected, as defined in the Functional Package for X.509, version 1.0 . 
                             <br>
                             <br>
-                             PINs used to access <abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr>-protected storage are set and managed by the <abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr>-protected storage mechanism. Thus requirements on PIN management are outside the scope of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.
-                            <p></p>
-                        </span>
+                             PINs used to access <abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr>-protected storage are set and managed by the <abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr>-protected storage mechanism. Thus requirements on PIN management are outside the scope of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. </span>
                     </div>
                 </div>
             </div>
@@ -2938,6 +2945,179 @@
             </div>
         </div>
         <h3 id="ss-fmt" class="indexable" data-level="3">5.1.6 Security Management (FMT)</h3>
+        <div class="comp" id="FMT_MOF_EXT.1">
+            <h4>FMT_MOF_EXT.1 Management of Security Functions Behavior</h4>
+            <div class="element">
+                <div class="reqid" id="FMT_MOF_EXT.1.1">
+                    <a href="#FMT_MOF_EXT.1.1" class="abbr">FMT_MOF_EXT.1.1</a>
+                </div>
+                <div class="reqdesc">
+                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be capable of supporting [<b>selection</b>: <span class="selectable-content" id="_s_172">local</span>, <span class="selectable-content" id="sel-mof-1e1-remote">remote</span>] administration. 
+                    <div class="appnote">
+                        <span class="note-header">Application Note: </span><span class="note"> Selection of &ldquo;remote&rdquo; requires the selection-based requirement <a href="#FTP_TRP.1">FTP_TRP.1</a> to be cleimed in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. </span>
+                    </div>
+                </div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="FMT_MOF_EXT.1.2">
+                    <a href="#FMT_MOF_EXT.1.2" class="abbr">FMT_MOF_EXT.1.2</a>
+                </div>
+                <div class="reqdesc">
+                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be capable of performing the following management functions, [<i>controlled by an administrator or user as shown in the key in <a href="#manfunc" class="manfunc-ref">Table <span class="counter">4</span></a>.</i>]
+                    <p></p>
+                     
+                    <center>
+                        <h4>
+                            <span class="ctr" data-myid="manfunc" data-counter-type="ct-Table" id="manfunc">Table <span class="counter">4</span>: Virtualization Management Functions</span>
+                        </h4>
+                    </center>
+                     
+                    <div class="table-key" style="border-style: solid; padding: 5px;">
+                         X = Mandatory (<abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must provide that function to that role)
+                        <br>
+                         O = Optional (<abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> may or may not provide that function to that role)
+                        <br>
+                         N = Not Permitted (<abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must not provide that function to that role)
+                        <br>
+                         S = Selection-Based (<abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must provide that function to that role if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> claims a particular selection-based <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>)
+                        <br>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Number</th><th>Function</th><th>Admin</th><th>User</th><th>Notes</th>
+                        </tr>
+                        <tr>
+                            <td>1</td><td>Ability to update the Virtualization System</td><td>X</td><td>N</td><td>See <a href="#FPT_TUD_EXT.1">FPT_TUD_EXT.1</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td><td>[<b>selection</b>: <span class="selectable-content" id="sel-mf-pwd-policy">Ability to configure administrator password policy as defined in <a href="#FIA_PMG_EXT.1">FIA_PMG_EXT.1</a></span>, <span class="selectable-content" id="_s_175">Not applicable.</span>]</td><td>S</td><td>N</td><td>Must be selected if <a href="#FIA_PMG_EXT.1">FIA_PMG_EXT.1</a> is claimed.</td>
+                        </tr>
+                        <tr>
+                            <td>3</td><td>Ability to create, configure and delete VMs</td><td>X</td><td>O</td><td></td>
+                        </tr>
+                        <tr>
+                            <td>4</td><td>Ability to set default initial <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> configurations</td><td>X</td><td>O</td><td></td>
+                        </tr>
+                        <tr>
+                            <td>5</td><td>Ability to configure virtual networks including <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr></td><td>X</td><td>O</td><td>See <a href="#FDP_VNC_EXT.1">FDP_VNC_EXT.1</a></td>
+                        </tr>
+                        <tr>
+                            <td>6</td><td>Ability to configure and manage the audit system and audit data</td><td>X</td><td>N</td><td></td>
+                        </tr>
+                        <tr>
+                            <td>7</td><td>Ability to configure <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> access to physical devices</td><td>X</td><td>O</td><td>See <a href="#FDP_PPR_EXT.1">FDP_PPR_EXT.1</a></td>
+                        </tr>
+                        <tr>
+                            <td>8</td><td>Ability to configure inter-VM data sharing</td><td>X</td><td>O</td><td>See <a href="#FDP_VMS_EXT.1">FDP_VMS_EXT.1</a></td>
+                        </tr>
+                        <tr>
+                            <td>9</td><td><s>Ability to enable/disable <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> access to Hypercall functions</s></td><td>O</td><td>O</td><td>Management function 9 is no longer required</td>
+                        </tr>
+                        <tr>
+                            <td>10</td><td>Ability to configure removable media policy</td><td>X</td><td>O</td><td>See <a href="#FPT_RDM_EXT.1">FPT_RDM_EXT.1</a></td>
+                        </tr>
+                        <tr>
+                            <td>11</td><td>Ability to configure the cryptographic functionality</td><td>O</td><td>O</td><td>See <a href="#FCS_CKM.1">FCS_CKM.1</a>, <a href="#FCS_CKM.2">FCS_CKM.2</a>, and FCS_COP.1/HASH. See also, the <a href="https://commoncriteria.github.io/tls/release-2.0/tls-release.html">Functional Package for Transport Layer Security (TLS), version 1.1</a> and <a href="https://commoncriteria.github.io/ssh/release-2.0/ssh-release.html">Functional Package for Secure Shell (SSH), version 2.0</a> if claimed for methods to configure their respective cryptographic functionality.</td>
+                        </tr>
+                        <tr>
+                            <td>12</td><td>Ability to change default authorization factors</td><td>X</td><td>N</td><td>See <a href="#FIA_PMG_EXT.1">FIA_PMG_EXT.1</a></td>
+                        </tr>
+                        <tr>
+                            <td>13</td><td>Ability to enable/disable screen lock</td><td>O</td><td>O</td><td></td>
+                        </tr>
+                        <tr>
+                            <td>14</td><td>Ability to configure screen lock inactivity timeout</td><td>O</td><td>O</td><td></td>
+                        </tr>
+                        <tr>
+                            <td>15</td><td>Ability to configure remote connection inactivity timeout</td><td>X</td><td>N</td><td></td>
+                        </tr>
+                        <tr>
+                            <td>16</td><td>Ability to configure lockout policy for unsuccessful authentication attempts through [<b>selection</b>: <span class="selectable-content" id="_s_176">timeouts between attempts</span>, <span class="selectable-content" id="_s_177">limiting number of attempts during a time period</span>]</td><td>X</td><td>N</td><td>See <a href="#FIA_AFL_EXT.1">FIA_AFL_EXT.1</a></td>
+                        </tr>
+                        <tr>
+                            <td>17</td><td>[<b>selection</b>: <span class="selectable-content" id="sel-mf-dir-server">Ability to configure name/address of directory server to bind with</span>, <span class="selectable-content" id="_s_179">Not applicable</span>]</td><td>S</td><td>O</td><td>Must be selected if "directory-based" is selected anywhere in <a href="#FIA_UAU.5.1">FIA_UAU.5.1</a>.</td>
+                        </tr>
+                        <tr>
+                            <td>18</td><td>Ability to configure name/address of audit/logging server to which to send audit/logging records</td><td>X</td><td>N</td><td>See FAU_STG_EXT.1.</td>
+                        </tr>
+                        <tr>
+                            <td>19</td><td>Ability to configure name/address of network time server</td><td>X</td><td>O</td><td></td>
+                        </tr>
+                        <tr>
+                            <td>20</td><td>Ability to configure banner</td><td>X</td><td>N</td><td>See <a href="#FTA_TAB.1">FTA_TAB.1</a></td>
+                        </tr>
+                        <tr>
+                            <td>21</td><td>Ability to connect/disconnect removable devices to/from a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr></td><td>O</td><td>O</td><td>See <a href="#FPT_RDM_EXT.1">FPT_RDM_EXT.1</a></td>
+                        </tr>
+                        <tr>
+                            <td>22</td><td>Ability to start a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr></td><td>O</td><td>O</td><td></td>
+                        </tr>
+                        <tr>
+                            <td>23</td><td>Ability to stop/halt a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr></td><td>O</td><td>O</td><td></td>
+                        </tr>
+                        <tr>
+                            <td>24</td><td>Ability to checkpoint a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr></td><td>O</td><td>O</td><td></td>
+                        </tr>
+                        <tr>
+                            <td>25</td><td>Ability to suspend a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr></td><td>O</td><td>O</td><td></td>
+                        </tr>
+                        <tr>
+                            <td>26</td><td>Ability to resume a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr></td><td>O</td><td>O</td><td></td>
+                        </tr>
+                        <tr>
+                            <td>27</td><td>[<b>selection</b>: <span class="selectable-content" id="sel-mf-cert-no-validity-action">Ability to configure action taken if unable to determine the validity of a certificate</span>, <span class="selectable-content" id="_s_181">Not applicable</span>] </td><td>S</td><td>N</td><td>This function must be selected if "allow the administrator to choose whether to accept the certificate in these cases" in FIA_X509_EXT.2.2.</td>
+                        </tr>
+                    </table>
+                    <br>
+                    ] 
+                    <div class="appnote">
+                        <span class="note-header">Application Note: </span><span class="note"> The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author is expected to update <a href="#manfunc" class="manfunc-ref">Table <span class="counter">4</span></a> with an indication as to whether any of the &lsquo;optional&rsquo; or &lsquo;selection-based&rsquo; functions are included as part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author may also omit the &lsquo;Notes&rsquo; column as it is provided in this <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> as an aid to the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author in constructing the table.
+                            <p></p>
+                             This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> addresses the roles of the <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr> Part 2 <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> FMT_MOF.1, FMT_SMF.1, and FMT_SMR.2.
+                            <p></p>
+                             Administration is considered &ldquo;local&rdquo; if the administrator is physically present at the machine on which the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> is installed.
+                            <p></p>
+                             Administration is considered &ldquo;remote&rdquo; if communications between the administrator and the Management Subsystem travel on a network.
+                            <p></p>
+                             There is no requirement to authenticate users of the Virtualization System. Users that have access to VMs but not to the Management Subsystem need not authenticate to the Virtualization System in order to use Guest VMs. Requirements for authentication of <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> users is determined by the policies of the domains running within the Guest VMs. 
+                            <p></p>
+                             For a <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> where the <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> is part of the platform and not part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, it is acceptable for the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> to invoke the Host <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> screen lock. </span>
+                    </div>
+                </div>
+            </div>
+            <div class="activity_pane hide">
+                <div class="activity_pane_header">
+                    <a href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a>
+                </div>
+                <div class="activity_pane_body">
+                    <div class="component-activity-header">
+                        <a href="#FMT_MOF_EXT.1">FMT_MOF_EXT.1</a>
+                    </div>
+                    <div class="eacategory">
+                        <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr>
+                    </div>
+                    <div class="ea">
+                        <div class="ea">
+                             The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> and Operational Guidance to ensure that it describes which security management functions require administrator privilege and the actions associated with each management function. The evaluator shall verify that for each management function and role specified in <a href="#manfunc" class="manfunc-ref">Table <span class="counter">4</span></a>, the defined role is able to perform all mandatory functions as well as all optional or selection-based functions claimed in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. 
+                        </div>
+                    </div>
+                    <div class="eacategory">Guidance</div>
+                    <div class="ea">
+                        <div class="ea">
+                             The evaluator shall examine the Operational Guidance to ensure that it describes how the administrator and user are able to perform each management function that the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> claims the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports.
+                            <p></p>
+                             The evaluator shall verify for each claimed management function that the Operational Guidance is sufficiently detailed to allow the function to be performed and that the function can be performed. 
+                        </div>
+                    </div>
+                    <div class="eacategory">Tests</div>
+                    <div class="ea">
+                        <div class="ea">
+                             The evaluator shall test each management function for each role listed in the <a href="#FMT_MOF_EXT.1.1">FMT_MOF_EXT.1.1</a> <a href="#manfunc" class="manfunc-ref">Table <span class="counter">4</span></a> in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> to demonstrate that the function can be performed by the roles that are authorized to do so and the result of the function is demonstrated. The evaluator shall also verify for each claimed management function in <a href="#manfunc" class="manfunc-ref">Table <span class="counter">4</span></a>, that if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> claims not to provide a particular role with access to the function, then it is not possible to access the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as that role and perform that function. 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="comp" id="FMT_SMO_EXT.1">
             <h4>FMT_SMO_EXT.1 Separation of Management and Operational Networks</h4>
             <div class="element">
@@ -2945,7 +3125,7 @@
                     <a href="#FMT_SMO_EXT.1.1" class="abbr">FMT_SMO_EXT.1.1</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support the separation of management and operational network traffic through [<b>selection</b>: <span class="selectable-content" id="_s_172">separate physical networks</span>, <span class="selectable-content" id="_s_173">separate logical networks</span>, <span class="selectable-content" id="_s_174">trusted channels as defined in <a href="#FTP_ITC_EXT.1">FTP_ITC_EXT.1</a></span>, <span class="selectable-content" id="_s_175">data encryption using an algorithm specified in FCS_COP.1<b>/UDE</b></span>]. 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support the separation of management and operational network traffic through [<b>selection</b>: <span class="selectable-content" id="_s_182">separate physical networks</span>, <span class="selectable-content" id="_s_183">separate logical networks</span>, <span class="selectable-content" id="_s_184">trusted channels as defined in <a href="#FTP_ITC_EXT.1">FTP_ITC_EXT.1</a></span>, <span class="selectable-content" id="_s_185">data encryption using an algorithm specified in FCS_COP.1<b>/UDE</b></span>]. 
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note">Management communications must be separate from user workload communications. Administrative network traffic&mdash;including communications between physical hosts concerning load balancing, audit data, <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> startup and shutdown&mdash;must be isolated from guest operational networks. For purposes of this requirement, management traffic also includes VMs transmitted over management networks whether for backup, live migration, or deployment.
                             <p></p>
@@ -2990,8 +3170,7 @@
                             <p></p>
                              If separation uses trusted channels, then the evaluator shall capture packets on the network over which traffic is tunneled. If plaintext Guest network traffic is detected, the requirement is not met.
                             <p></p>
-                             If data encryption is used, then the evaluator shall capture packets on the network over which the data is sent while a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> or other large data structure is being transmitted. If plaintext <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> contents are detected, the requirement is not met.
-                            <p></p>
+                             If data encryption is used, then the evaluator shall capture packets on the network over which the data is sent while a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> or other large data structure is being transmitted. If plaintext <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> contents are detected, the requirement is not met. 
                         </div>
                     </div>
                 </div>
@@ -3054,22 +3233,22 @@
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall take advantage of execution environment-based vulnerability mitigation mechanisms supported by the Platform such as: [<b>selection</b>: 
                     <ul>
                         <li style="">
-                            <span class="selectable-content" id="_s_180">Address space randomization</span>
+                            <span class="selectable-content" id="_s_190">Address space randomization</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_181">Memory execution protection (e.g., <abbr class="dyn-abbr"><a href="#abbr_DEP">DEP</a></abbr>)</span>
+                            <span class="selectable-content" id="_s_191">Memory execution protection (e.g., <abbr class="dyn-abbr"><a href="#abbr_DEP">DEP</a></abbr>)</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_182">Stack buffer overflow protection</span>
+                            <span class="selectable-content" id="_s_192">Stack buffer overflow protection</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_183">Heap corruption detection</span>
+                            <span class="selectable-content" id="_s_193">Heap corruption detection</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_184">[<b>assignment</b>: <span class="assignable-content">other mechanisms</span>]</span>
+                            <span class="selectable-content" id="_s_194">[<b>assignment</b>: <span class="assignable-content">other mechanisms</span>]</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_185">No mechanisms</span>
+                            <span class="selectable-content" id="_s_195">No mechanisms</span>
                         </li>
                     </ul>
                     ] 
@@ -3272,16 +3451,16 @@
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall enforce the following rules when [<b>assignment</b>: <span class="assignable-content">virtual or physical removable media and virtual or physical removable media devices</span>] are switched between information domains, then [<b>selection</b>: 
                     <ul>
                         <li style="">
-                            <span class="selectable-content" id="_s_190">the administrator has granted explicit access for the media or device to be connected to the receiving domain</span>
+                            <span class="selectable-content" id="_s_200">the administrator has granted explicit access for the media or device to be connected to the receiving domain</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_191">the media in a device that is being transferred is ejected prior to the receiving domain being allowed access to the device</span>
+                            <span class="selectable-content" id="_s_201">the media in a device that is being transferred is ejected prior to the receiving domain being allowed access to the device</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_192">the user of the receiving domain expressly authorizes the connection</span>
+                            <span class="selectable-content" id="_s_202">the user of the receiving domain expressly authorizes the connection</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_193">the device or media that is being transferred is prevented from being accessed by the receiving domain</span>
+                            <span class="selectable-content" id="_s_203">the device or media that is being transferred is prevented from being accessed by the receiving domain</span>
                         </li>
                     </ul>
                     ] 
@@ -3353,7 +3532,7 @@
                     <a href="#FPT_TST.1.1" class="abbr">FPT_TST.1.1</a>
                 </div>
                 <div class="reqdesc">
-                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall run a suite of the following self-tests [<b>selection</b>: <span class="selectable-content" id="_s_194">during initial start-up</span>, <span class="selectable-content" id="_s_195">periodically during normal operation</span>, <span class="selectable-content" id="_s_196">at the request of the authorized user</span>, <span class="selectable-content" id="_s_197">at the conditions [<b>assignment</b>: <span class="assignable-content">conditions under which self-test should occur</span>]</span>] to demonstrate the correct operation of [<i><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> DRBG specified in <a href="#FCS_RBG.1">FCS_RBG.1</a></i>]. 
+                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall run a suite of the following self-tests [<b>selection</b>: <span class="selectable-content" id="_s_204">during initial start-up</span>, <span class="selectable-content" id="_s_205">periodically during normal operation</span>, <span class="selectable-content" id="_s_206">at the request of the authorized user</span>, <span class="selectable-content" id="_s_207">at the conditions [<b>assignment</b>: <span class="assignable-content">conditions under which self-test should occur</span>]</span>] to demonstrate the correct operation of [<i><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> DRBG specified in <a href="#FCS_RBG.1">FCS_RBG.1</a></i>]. 
                 </div>
             </div>
             <div class="element">
@@ -3388,27 +3567,21 @@
                     </div>
                     <div class="ea">
                         <div class="ea">
-                            <p>
-                                 The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to ensure that it details the self-tests that are run by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> along with how they are run. This description should include an outline of what the tests are actually doing. The evaluator shall ensure that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> makes an argument that the tests are sufficient to demonstrate that the DRBG is operating correctly. 
-                            </p>
-                            <p>
-                                 Note that this information may also be placed in the entropy documentation specified by <a href="#entropyappendix" class="dynref" data-format=""></a>. 
-                            </p>
+                             The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to ensure that it details the self-tests that are run by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> along with how they are run. This description should include an outline of what the tests are actually doing. The evaluator shall ensure that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> makes an argument that the tests are sufficient to demonstrate that the DRBG is operating correctly.
+                            <p></p>
+                             Note that this information may also be placed in the entropy documentation specified by <a href="#entropyappendix" class="dynref" data-format=""></a>. 
                         </div>
                     </div>
                     <div class="eacategory">Guidance</div>
                     <div class="ea">
-                        <div class="ea">
-                            <p> If a self-test can be executed at the request of an authorized user, the evaluator shall verify that the operational guidance provides instructions on how to execute that self-test. </p>
-                        </div>
+                        <div class="ea"> If a self-test can be executed at the request of an authorized user, the evaluator shall verify that the operational guidance provides instructions on how to execute that self-test. </div>
                     </div>
                     <div class="eacategory">Tests</div>
                     <div class="ea">
                         <div class="ea">
-                            <p>
-                                 For each self-test, the evaluator shall verify that evidence is produced that the self-test is executed when specified by <a href="#FPT_TST.1.1">FPT_TST.1.1</a>. 
-                            </p>
-                            <p> If a self-test can be executed at the request of an authorized user, the evaluator shall verify that following the steps documented in the operational guidance to perform the self-test will result in execution of the self-test. </p>
+                             For each self-test, the evaluator shall verify that evidence is produced that the self-test is executed when specified by <a href="#FPT_TST.1.1">FPT_TST.1.1</a>.
+                            <p></p>
+                             If a self-test can be executed at the request of an authorized user, the evaluator shall verify that following the steps documented in the operational guidance to perform the self-test will result in execution of the self-test. 
                         </div>
                     </div>
                 </div>
@@ -3432,7 +3605,7 @@
                     <a href="#FPT_TUD_EXT.1.2" class="abbr">FPT_TUD_EXT.1.2</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide administrators the ability to manually initiate updates to <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> firmware and software and [<b>selection</b>: <span class="selectable-content" id="_s_198">automatic updates</span>, <span class="selectable-content" id="_s_199">no other update mechanism</span>]. 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide administrators the ability to manually initiate updates to <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> firmware and software and [<b>selection</b>: <span class="selectable-content" id="_s_208">automatic updates</span>, <span class="selectable-content" id="_s_209">no other update mechanism</span>]. 
                 </div>
             </div>
             <div class="element">
@@ -3440,7 +3613,7 @@
                     <a href="#FPT_TUD_EXT.1.3" class="abbr">FPT_TUD_EXT.1.3</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide means to authenticate firmware and software updates to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> using a [<b>selection</b>: <span class="selectable-content" id="sel-tud-digsign-cert">digital signature mechanism using certificates</span>, <span class="selectable-content" id="sel-tud-digsign">digital signature mechanism not using certificates</span>, <span class="selectable-content" id="_s_202">published hash</span>] prior to installing those updates. 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide means to authenticate firmware and software updates to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> using a [<b>selection</b>: <span class="selectable-content" id="sel-tud-digsign-cert">digital signature mechanism using certificates</span>, <span class="selectable-content" id="sel-tud-digsign">digital signature mechanism not using certificates</span>, <span class="selectable-content" id="_s_212">published hash</span>] prior to installing those updates. 
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note">The digital signature mechanism referenced in <a href="#FPT_TUD_EXT.1.3">FPT_TUD_EXT.1.3</a> is one of the algorithms specified in FCS_COP.1/SIG.
                             <p></p>
@@ -3450,9 +3623,7 @@
                             <p></p>
                              All discrete software components (e.g., applications, drivers, kernel, firmware) of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>, should be digitally signed by the corresponding manufacturer and subsequently verified by the mechanism performing the update. Since it is recognized that components may be signed by different manufacturers, it is essential that the update process verify that both the update and NV images were produced by the same manufacturer (e.g., by comparing public keys) or signed by legitimate signing keys (e.g., successful verification of certificates when using X.509 certificates).
                             <p></p>
-                             The Digital Signature option is the preferred mechanism for authenticating updates. The Published Hash option will be removed from a future version of this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>.
-                            <p></p>
-                        </span>
+                             The Digital Signature option is the preferred mechanism for authenticating updates. The Published Hash option will be removed from a future version of this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>. </span>
                     </div>
                 </div>
             </div>
@@ -3521,9 +3692,7 @@
                 <div class="reqdesc">
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall validate the parameters passed to the virtual device interface prior to execution of the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> functionality exposed by those interfaces. 
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note">The purpose of this requirement is to ensure that the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> is not vulnerable to compromise through the processing of malformed data passed to the virtual device interface from a guest <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr>. The <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> cannot assume that any data coming from a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> is well-formed&mdash;even if the virtual device interface is unique to the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> and the data comes from a virtual device driver supplied by the Virtualization Vendor.
-                            <br>
-                        </span>
+                        <span class="note-header">Application Note: </span><span class="note">The purpose of this requirement is to ensure that the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> is not vulnerable to compromise through the processing of malformed data passed to the virtual device interface from a guest <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr>. The <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> cannot assume that any data coming from a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> is well-formed&mdash;even if the virtual device interface is unique to the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> and the data comes from a virtual device driver supplied by the Virtualization Vendor. </span>
                     </div>
                 </div>
             </div>
@@ -3595,9 +3764,7 @@
                                     An attempt to update virtual firmware or virtual BIOS cannot cause the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> to be modified.
                                 </li>
                             </ul>
-                             Of the above, the first bullet does not apply to platforms that do not support SMM. The rationale behind the third bullet is that a firmware update of a single <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> must not affect other VMs. So if multiple VMs share the same firmware image as part of a common hardware abstraction, then the update of a single machine&rsquo;s BIOS must not be allowed to change the common abstraction. The virtual hardware abstraction is part of the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>.
-                            <br>
-                        </span>
+                             Of the above, the first bullet does not apply to platforms that do not support SMM. The rationale behind the third bullet is that a firmware update of a single <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> must not affect other VMs. So if multiple VMs share the same firmware image as part of a common hardware abstraction, then the update of a single machine&rsquo;s BIOS must not be allowed to change the common abstraction. The virtual hardware abstraction is part of the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>. </span>
                     </div>
                 </div>
             </div>
@@ -3638,7 +3805,7 @@
                     <a href="#FTA_TAB.1.1" class="abbr">FTA_TAB.1.1</a>
                 </div>
                 <div class="reqdesc">
-                    Before establishing a user session, the [<b>selection</b>: <span class="selectable-content" id="_s_203"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></span>, <span class="selectable-content" id="_s_204"><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> platform</span>] shall display a [<b>assignment</b>: <span class="assignable-content">description of the message</span>] message. 
+                    Before establishing a user session, the [<b>selection</b>: <span class="selectable-content" id="_s_213"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></span>, <span class="selectable-content" id="_s_214"><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> platform</span>] shall display a [<b>assignment</b>: <span class="assignable-content">description of the message</span>] message. 
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note"> This requirement is intended to apply to interactive sessions between a human user and a <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. <abbr class="dyn-abbr"><a href="#abbr_IT">IT</a></abbr> entities establishing connections or programmatic connections (e.g., remote procedure calls over a network) are not required to be covered by this requirement.
                             <p></p>
@@ -3704,10 +3871,10 @@
                             <span class="selectable-content" id="sel-itc-certauth">certificate-based authentication of the remote peer</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_210">non-certificate-based authentication of the remote peer</span>
+                            <span class="selectable-content" id="_s_220">non-certificate-based authentication of the remote peer</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_211">no authentication of the remote peer</span>
+                            <span class="selectable-content" id="_s_221">no authentication of the remote peer</span>
                         </li>
                     </ul>
                     ] to provide a trusted communication channel between itself and 
@@ -3719,16 +3886,16 @@
                      [<b>selection</b>: 
                     <ul>
                         <li style="">
-                            <span class="selectable-content" id="_s_212">remote administrators (as required by <a href="#FTP_TRP.1.1">FTP_TRP.1.1</a> if selected in FMT_MOF_EXT.1.1 in the Client or Server <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>)</span>
+                            <span class="selectable-content" id="_s_222">remote administrators (as required by <a href="#FTP_TRP.1.1">FTP_TRP.1.1</a> if selected in <a href="#FMT_MOF_EXT.1.1">FMT_MOF_EXT.1.1</a> in the Client or Server <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>)</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_213">separation of management and operational networks (if selected in <a href="#FMT_SMO_EXT.1">FMT_SMO_EXT.1</a>)</span>
+                            <span class="selectable-content" id="_s_223">separation of management and operational networks (if selected in <a href="#FMT_SMO_EXT.1">FMT_SMO_EXT.1</a>)</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_214">[<b>assignment</b>: <span class="assignable-content">other capabilities</span>]</span>
+                            <span class="selectable-content" id="_s_224">[<b>assignment</b>: <span class="assignable-content">other capabilities</span>]</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_215">no other capabilities</span>
+                            <span class="selectable-content" id="_s_225">no other capabilities</span>
                         </li>
                     </ul>
                     ] that is logically distinct from other communication paths and provides assured identification of its endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data. 
@@ -3740,9 +3907,7 @@
                             <br>
                              If the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects "certificate-based authentication of the remote peer," then FIA_X509_EXT.1 and FIA_X509_EXT.2 in the Functional Package for X.509, version 1.0 must be included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. "No authentication of the remote peer" should be selected only if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is acting as a server in a non-mutual authentication configuration.
                             <p></p>
-                             The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author must include the security functional requirements for the trusted channel protocol selected in <a href="#FTP_ITC_EXT.1">FTP_ITC_EXT.1</a> in the main body of the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>.
-                            <p></p>
-                        </span>
+                             The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author must include the security functional requirements for the trusted channel protocol selected in <a href="#FTP_ITC_EXT.1">FTP_ITC_EXT.1</a> in the main body of the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. </span>
                     </div>
                 </div>
             </div>
@@ -3873,7 +4038,7 @@
             <br>
             <table>
                 <caption>
-                    <span class="ctr" data-myid="t-obj_map" data-counter-type="ct-Table" id="t-obj_map">Table <span class="counter">4</span></span>: <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> Rationale
+                    <span class="ctr" data-myid="t-obj_map" data-counter-type="ct-Table" id="t-obj_map">Table <span class="counter">5</span></span>: <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> Rationale
                 </caption>
                 <tr>
                     <th>Threat</th><th>Addressed by</th><th>Rationale</th>
@@ -3888,7 +4053,7 @@
                     <td><a href="#FCS_COP.1/KeyedHash">FCS_COP.1/KeyedHash</a></td><td>This threat is mitigated by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> by implementing cryptographic authenticity verification measures.</td>
                 </tr>
                 <tr>
-                    <td><a href="#FCS_COP.1/Sig">FCS_COP.1/Sig</a></td><td>This threat is mitigated by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> by implementing cryptographic authenticity verification measures.</td>
+                    <td><a href="#FCS_COP.1/Sig">FCS_COP.1/Sig</a></td><td>This threat is mitigated by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> by implementing cryptographic Authenticity verification measures.</td>
                 </tr>
                 <tr>
                     <td><a href="#FDP_PPR_EXT.1">FDP_PPR_EXT.1</a></td><td>This threat is mitigated by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</td>
@@ -4029,7 +4194,7 @@
                     <td><a href="#FPT_ML_EXT.1">FPT_ML_EXT.1</a> (objective)</td><td>This threat is mitigated by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> by requiring measured launch of the platform and <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> (objective).</td>
                 </tr>
                 <tr class="major-row">
-                    <td rowspan="25"><a href="#T.UNAUTHORIZED_ACCESS">T.UNAUTHORIZED_​ACCESS</a></td><td><a href="#FAU_GEN.1">FAU_GEN.1</a></td><td>This threat is mitigated by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> because the audit events can report potential attempts to access the management subsystem.</td>
+                    <td rowspan="26"><a href="#T.UNAUTHORIZED_ACCESS">T.UNAUTHORIZED_​ACCESS</a></td><td><a href="#FAU_GEN.1">FAU_GEN.1</a></td><td>This threat is mitigated by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> because the audit events can report potential attempts to access the management subsystem.</td>
                 </tr>
                 <tr>
                     <td><a href="#FCS_CKM.1">FCS_CKM.1</a></td><td>This threat is mitigated by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> by requiring generation of strong asymmetric cryptographic keys.</td>
@@ -4103,6 +4268,9 @@
                 <tr>
                     <td><a href="#FTP_TRP.1">FTP_TRP.1</a> (selection-based)</td><td>This threat is mitigated by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> by ensuring that certain communications use a trusted path.</td>
                 </tr>
+                <tr>
+                    <td><a href="#FMT_MOF_EXT.1">FMT_MOF_EXT.1</a></td><td>This threat is mitigated by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> by limiting the management functions to be limited to authorized administrators as managed through controls required by <a href="#FMT_MOF_EXT.1">FMT_MOF_EXT.1</a>.</td>
+                </tr>
                 <tr class="major-row">
                     <td rowspan="20"><a href="#T.UNAUTHORIZED_MODIFICATION">T.UNAUTHORIZED_​MODIFICATION</a></td><td><a href="#FAU_GEN.1">FAU_GEN.1</a></td><td>This threat is mitigated by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> because the audit events can report potential integrity breaches and attempts.</td>
                 </tr>
@@ -4164,7 +4332,7 @@
                     <td><a href="#FPT_ML_EXT.1">FPT_ML_EXT.1</a> (objective)</td><td>This threat is mitigated by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> by requiring measured launch of the platform and <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> (objective).</td>
                 </tr>
                 <tr class="major-row">
-                    <td rowspan="15"><a href="#T.UNAUTHORIZED_UPDATE">T.UNAUTHORIZED_​UPDATE</a></td><td><a href="#FAU_GEN.1">FAU_GEN.1</a></td><td>This threat is mitigated by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> because the audit events can report potential integrity breaches and attempts.</td>
+                    <td rowspan="16"><a href="#T.UNAUTHORIZED_UPDATE">T.UNAUTHORIZED_​UPDATE</a></td><td><a href="#FAU_GEN.1">FAU_GEN.1</a></td><td>This threat is mitigated by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> because the audit events can report potential integrity breaches and attempts.</td>
                 </tr>
                 <tr>
                     <td><a href="#FCS_CKM.1">FCS_CKM.1</a></td><td>This threat is mitigated by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> by requiring generation of asymmetric keys for protection of integrity measures.</td>
@@ -4207,6 +4375,9 @@
                 </tr>
                 <tr>
                     <td><a href="#FPT_ML_EXT.1">FPT_ML_EXT.1</a> (objective)</td><td>This threat is mitigated by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> by requiring measured launch of the platform and <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> (objective).</td>
+                </tr>
+                <tr>
+                    <td><a href="#FMT_MOF_EXT.1">FMT_MOF_EXT.1</a></td><td>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> mitigates this threat by ensuring that the only way to modify the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> is through a trusted update process initiated by an authorized administrator as required by <a href="#FMT_MOF_EXT.1">FMT_MOF_EXT.1</a>.</td>
                 </tr>
                 <tr class="major-row">
                     <td rowspan="3"><a href="#T.UNPATCHED_SOFTWARE">T.UNPATCHED_​SOFTWARE</a></td><td><a href="#FPT_TUD_EXT.1">FPT_TUD_EXT.1</a></td><td>This threat is mitigated by this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> by requiring support for product updates.</td>
@@ -4880,7 +5051,7 @@
         <h3 id="optional-reqs-audit" class="indexable" data-level="3">A.1.1 Auditable Events for Strictly Optional Requirements </h3>
         <table class="sort_kids_" border="1">
             <caption data-sortkey="#0">
-                <span class="ctr" data-myid="t-audit-optional" data-counter-type="ct-Table" id="t-audit-optional">Table <span class="counter">5</span></span>: Auditable Events for Strictly Optional Requirements
+                <span class="ctr" data-myid="t-audit-optional" data-counter-type="ct-Table" id="t-audit-optional">Table <span class="counter">6</span></span>: Auditable Events for Strictly Optional Requirements
             </caption>
             <tr data-sortkey="#1">
                 <th>Requirement</th><th>Auditable Events</th><th>Additional Audit Record Contents</th>
@@ -4916,7 +5087,306 @@
                 <td>Actions taken due to failed integrity check.</td><td> No additional information </td>
             </tr>
         </table>
-        <h3 id="ss-fau-optional" class="indexable" data-level="3">A.1.2 Security Audit (FAU)</h3>
+        <h3 id="ss-alc-optional" class="indexable" data-level="3">A.1.2 Class ALC: Life-Cycle Support</h3>
+        <div class="comp" id="ALC_FLR.1">
+            <h4>ALC_FLR.1 Basic Flaw Remediation (ALC_FLR.1)</h4>
+            <div class="statustag">
+                <b><i>This <abbr class="dyn-abbr"><a href="#abbr_SAR">SAR</a></abbr> is optional and may be claimed at the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>-Author's discretion.</i></b>
+            </div>
+            <h4>Developer action elements: </h4>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.1.1D">
+                    <a href="#ALC_FLR.1.1D" class="abbr">ALC_FLR.1.1D</a>
+                </div>
+                <div class="reqdesc">
+                    The developer shall document and provide flaw remediation procedures addressed to <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> developers.
+                </div>
+            </div>
+            <h4>Content and presentation elements: </h4>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.1.1C">
+                    <a href="#ALC_FLR.1.1C" class="abbr">ALC_FLR.1.1C</a>
+                </div>
+                <div class="reqdesc">
+                    The flaw remediation procedures documentation shall describe the procedures used to track all reported security flaws in each release of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.
+                </div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.1.2C">
+                    <a href="#ALC_FLR.1.2C" class="abbr">ALC_FLR.1.2C</a>
+                </div>
+                <div class="reqdesc">The flaw remediation procedures shall require that a description of the nature and effect of each security flaw be provided, as well as the status of finding a correction to that flaw.</div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.1.3C">
+                    <a href="#ALC_FLR.1.3C" class="abbr">ALC_FLR.1.3C</a>
+                </div>
+                <div class="reqdesc">The flaw remediation procedures shall require that corrective actions be identified for each of the security flaws.</div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.1.4C">
+                    <a href="#ALC_FLR.1.4C" class="abbr">ALC_FLR.1.4C</a>
+                </div>
+                <div class="reqdesc">
+                    The flaw remediation procedures documentation shall describe the methods used to provide flaw information, corrections and guidance on corrective actions to <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> users.
+                </div>
+            </div>
+            <h4>Evaluator action elements: </h4>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.1.1E">
+                    <a href="#ALC_FLR.1.1E" class="abbr">ALC_FLR.1.1E</a>
+                </div>
+                <div class="reqdesc">The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</div>
+            </div>
+            <div class="activity_pane hide">
+                <div class="activity_pane_header">
+                    <a href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a>
+                </div>
+                <div class="activity_pane_body">
+                    <div class="component-activity-header">
+                        <a href="#ALC_FLR.1">ALC_FLR.1</a>
+                    </div>
+                     The evaluator shall inspect the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> and verify it identifies how to access the flaw remediation procedures. 
+                </div>
+            </div>
+        </div>
+        <div class="comp" id="ALC_FLR.2">
+            <h4>ALC_FLR.2 Flaw Reporting Procedures (ALC_FLR.2)</h4>
+            <div class="statustag">
+                <b><i>This <abbr class="dyn-abbr"><a href="#abbr_SAR">SAR</a></abbr> is optional and may be claimed at the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>-Author's discretion.</i></b>
+            </div>
+            <h4>Developer action elements: </h4>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.2.1D">
+                    <a href="#ALC_FLR.2.1D" class="abbr">ALC_FLR.2.1D</a>
+                </div>
+                <div class="reqdesc">
+                     The developer shall document and provide flaw remediation procedures addressed to <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> developers.
+                </div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.2.2D">
+                    <a href="#ALC_FLR.2.2D" class="abbr">ALC_FLR.2.2D</a>
+                </div>
+                <div class="reqdesc"> The developer shall establish a procedure for accepting and acting upon all reports of security flaws and requests for corrections to those flaws. </div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.2.3D">
+                    <a href="#ALC_FLR.2.3D" class="abbr">ALC_FLR.2.3D</a>
+                </div>
+                <div class="reqdesc">
+                     The developer shall provide flaw remediation guidance addressed to <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> users. 
+                </div>
+            </div>
+            <h4>Content and presentation elements: </h4>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.2.1C">
+                    <a href="#ALC_FLR.2.1C" class="abbr">ALC_FLR.2.1C</a>
+                </div>
+                <div class="reqdesc">
+                     The flaw remediation procedures documentation shall describe the procedures used to track all reported security flaws in each release of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.
+                </div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.2.2C">
+                    <a href="#ALC_FLR.2.2C" class="abbr">ALC_FLR.2.2C</a>
+                </div>
+                <div class="reqdesc"> The flaw remediation procedures shall require that a description of the nature and effect of each security flaw be provided, as well as the status of finding a correction to that flaw.</div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.2.3C">
+                    <a href="#ALC_FLR.2.3C" class="abbr">ALC_FLR.2.3C</a>
+                </div>
+                <div class="reqdesc"> The flaw remediation procedures shall require that corrective actions be identified for each of the security flaws.</div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.2.4C">
+                    <a href="#ALC_FLR.2.4C" class="abbr">ALC_FLR.2.4C</a>
+                </div>
+                <div class="reqdesc">
+                     The flaw remediation procedures documentation shall describe the methods used to provide flaw information, corrections and guidance on corrective actions to <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> users. 
+                </div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.2.5C">
+                    <a href="#ALC_FLR.2.5C" class="abbr">ALC_FLR.2.5C</a>
+                </div>
+                <div class="reqdesc">
+                     The flaw remediation procedures shall describe a means by which the developer receives from <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> users reports and enquiries of suspected security flaws in the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. 
+                </div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.2.6C">
+                    <a href="#ALC_FLR.2.6C" class="abbr">ALC_FLR.2.6C</a>
+                </div>
+                <div class="reqdesc">
+                     The procedures for processing reported security flaws shall ensure that any reported flaws are remediated and the remediation procedures issued to <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> users. 
+                </div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.2.7C">
+                    <a href="#ALC_FLR.2.7C" class="abbr">ALC_FLR.2.7C</a>
+                </div>
+                <div class="reqdesc"> The procedures for processing reported security flaws shall provide safeguards that any corrections to these security flaws do not introduce any new flaws. </div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.2.8C">
+                    <a href="#ALC_FLR.2.8C" class="abbr">ALC_FLR.2.8C</a>
+                </div>
+                <div class="reqdesc">
+                     The flaw remediation guidance shall describe a means by which <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> users report to the developer any suspected security flaws in the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. 
+                </div>
+            </div>
+            <h4>Evaluator action elements: </h4>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.2.1E">
+                    <a href="#ALC_FLR.2.1E" class="abbr">ALC_FLR.2.1E</a>
+                </div>
+                <div class="reqdesc"> The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</div>
+            </div>
+            <div class="activity_pane hide">
+                <div class="activity_pane_header">
+                    <a href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a>
+                </div>
+                <div class="activity_pane_body">
+                    <div class="component-activity-header">
+                        <a href="#ALC_FLR.2">ALC_FLR.2</a>
+                    </div>
+                     The evaluator shall inspect the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> and verify it identifies how to access the flaw remediation procedures. 
+                    <p> The evaluator shall inspect the guidance document and verify it describes how to access the flaw remediation guidance.</p>
+                </div>
+            </div>
+        </div>
+        <div class="comp" id="ALC_FLR.3">
+            <h4>ALC_FLR.3 Systematic Flaw Remediation (ALC_FLR.3)</h4>
+            <div class="statustag">
+                <b><i>This <abbr class="dyn-abbr"><a href="#abbr_SAR">SAR</a></abbr> is optional and may be claimed at the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>-Author's discretion.</i></b>
+            </div>
+            <h4>Developer action elements: </h4>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.3.1D">
+                    <a href="#ALC_FLR.3.1D" class="abbr">ALC_FLR.3.1D</a>
+                </div>
+                <div class="reqdesc">
+                     The developer shall document and provide flaw remediation procedures addressed to <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> developers. 
+                </div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.3.2D">
+                    <a href="#ALC_FLR.3.2D" class="abbr">ALC_FLR.3.2D</a>
+                </div>
+                <div class="reqdesc"> The developer shall establish a procedure for accepting and acting upon all reports of security flaws and requests for corrections to those flaws. </div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.3.3D">
+                    <a href="#ALC_FLR.3.3D" class="abbr">ALC_FLR.3.3D</a>
+                </div>
+                <div class="reqdesc">
+                     The developer shall provide flaw remediation guidance addressed to <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> users. 
+                </div>
+            </div>
+            <h4>Content and presentation elements: </h4>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.3.1C">
+                    <a href="#ALC_FLR.3.1C" class="abbr">ALC_FLR.3.1C</a>
+                </div>
+                <div class="reqdesc">
+                     The flaw remediation procedures documentation shall describe the procedures used to track all reported security flaws in each release of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. 
+                </div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.3.2C">
+                    <a href="#ALC_FLR.3.2C" class="abbr">ALC_FLR.3.2C</a>
+                </div>
+                <div class="reqdesc"> The flaw remediation procedures shall require that a description of the nature and effect of each security flaw be provided, as well as the status of finding a correction to that flaw. </div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.3.3C">
+                    <a href="#ALC_FLR.3.3C" class="abbr">ALC_FLR.3.3C</a>
+                </div>
+                <div class="reqdesc"> The flaw remediation procedures shall require that corrective actions be identified for each of the security flaws. </div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.3.4C">
+                    <a href="#ALC_FLR.3.4C" class="abbr">ALC_FLR.3.4C</a>
+                </div>
+                <div class="reqdesc">
+                     The flaw remediation procedures documentation shall describe the methods used to provide flaw information, corrections and guidance on corrective actions to <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> users. 
+                </div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.3.5C">
+                    <a href="#ALC_FLR.3.5C" class="abbr">ALC_FLR.3.5C</a>
+                </div>
+                <div class="reqdesc">
+                     The flaw remediation procedures shall describe a means by which the developer receives from <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> users reports and enquiries of suspected security flaws in the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. 
+                </div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.3.6C">
+                    <a href="#ALC_FLR.3.6C" class="abbr">ALC_FLR.3.6C</a>
+                </div>
+                <div class="reqdesc"> The flaw remediation procedures shall include a procedure requiring timely response and the automatic distribution of security flaw reports and the associated corrections to registered users who might be affected by the security flaw. </div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.3.7C">
+                    <a href="#ALC_FLR.3.7C" class="abbr">ALC_FLR.3.7C</a>
+                </div>
+                <div class="reqdesc">
+                     The procedures for processing reported security flaws shall ensure that any reported flaws are remediated and the remediation procedures issued to <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> users. 
+                </div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.3.8C">
+                    <a href="#ALC_FLR.3.8C" class="abbr">ALC_FLR.3.8C</a>
+                </div>
+                <div class="reqdesc"> The procedures for processing reported security flaws shall provide safeguards that any corrections to these security flaws do not introduce any new flaws. </div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.3.9C">
+                    <a href="#ALC_FLR.3.9C" class="abbr">ALC_FLR.3.9C</a>
+                </div>
+                <div class="reqdesc">
+                     The flaw remediation guidance shall describe a means by which <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> users report to the developer any suspected security flaws in the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. 
+                </div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.3.10C">
+                    <a href="#ALC_FLR.3.10C" class="abbr">ALC_FLR.3.10C</a>
+                </div>
+                <div class="reqdesc">
+                     The flaw remediation guidance shall describe a means by which <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> users may register with the developer, to be eligible to receive security flaw reports and corrections. 
+                </div>
+            </div>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.3.11C">
+                    <a href="#ALC_FLR.3.11C" class="abbr">ALC_FLR.3.11C</a>
+                </div>
+                <div class="reqdesc">
+                     The flaw remediation guidance shall identify the specific points of contact for all reports and enquiries about security issues involving the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. 
+                </div>
+            </div>
+            <h4>Evaluator action elements: </h4>
+            <div class="element">
+                <div class="reqid" id="ALC_FLR.3.1E">
+                    <a href="#ALC_FLR.3.1E" class="abbr">ALC_FLR.3.1E</a>
+                </div>
+                <div class="reqdesc"> The evaluator shall confirm that the information provided meets all requirements for content and presentation of evidence.</div>
+            </div>
+            <div class="activity_pane hide">
+                <div class="activity_pane_header">
+                    <a href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a>
+                </div>
+                <div class="activity_pane_body">
+                    <div class="component-activity-header">
+                        <a href="#ALC_FLR.3">ALC_FLR.3</a>
+                    </div>
+                     The evaluator shall inspect the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> and verify it identifies how to access the flaw remediation procedures. 
+                    <p> The evaluator shall inspect the guidance document and verify it describes how to access the flaw remediation guidance. </p>
+                </div>
+            </div>
+        </div>
+        <h3 id="ss-fau-optional" class="indexable" data-level="3">A.1.3 Security Audit (FAU)</h3>
         <div class="comp" id="FAU_ARP.1">
             <h4>FAU_ARP.1 Security Audit Automatic Response</h4>
             <div class="element">
@@ -5019,7 +5489,7 @@
                 </div>
             </div>
         </div>
-        <h3 id="ss-fpt-optional" class="indexable" data-level="3">A.1.3 Protection of the TSF (FPT)</h3>
+        <h3 id="ss-fpt-optional" class="indexable" data-level="3">A.1.4 Protection of the TSF (FPT)</h3>
         <div class="comp" id="FPT_GVI_EXT.1">
             <h4>FPT_GVI_EXT.1 guest VM Integrity</h4>
             <div class="element">
@@ -5066,7 +5536,7 @@
         <h3 id="objective-reqs-audit" class="indexable" data-level="3">A.2.1 Auditable Events for Objective Requirements </h3>
         <table class="sort_kids_" border="1">
             <caption data-sortkey="#0">
-                <span class="ctr" data-myid="t-audit-objective" data-counter-type="ct-Table" id="t-audit-objective">Table <span class="counter">6</span></span>: Auditable Events for Objective Requirements
+                <span class="ctr" data-myid="t-audit-objective" data-counter-type="ct-Table" id="t-audit-objective">Table <span class="counter">7</span></span>: Auditable Events for Objective Requirements
             </caption>
             <tr data-sortkey="#1">
                 <th>Requirement</th><th>Auditable Events</th><th>Additional Audit Record Contents</th>
@@ -5261,16 +5731,16 @@
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support a measured launch of the Virtualization System. Measured components of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> shall include the static executable image of the hypervisor and: [<b>selection</b>: 
                     <ul>
                         <li style="">
-                            <span class="selectable-content" id="_s_186">Static executable images of the Management Subsystem</span>
+                            <span class="selectable-content" id="_s_196">Static executable images of the Management Subsystem</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_187">[<b>assignment</b>: <span class="assignable-content">list of (static images of) Service VMs</span>]</span>
+                            <span class="selectable-content" id="_s_197">[<b>assignment</b>: <span class="assignable-content">list of (static images of) Service VMs</span>]</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_188">[<b>assignment</b>: <span class="assignable-content">list of configuration files</span>]</span>
+                            <span class="selectable-content" id="_s_198">[<b>assignment</b>: <span class="assignable-content">list of configuration files</span>]</span>
                         </li>
                         <li style="">
-                            <span class="selectable-content" id="_s_189">no other components</span>
+                            <span class="selectable-content" id="_s_199">no other components</span>
                         </li>
                     </ul>
                     ] 
@@ -5343,7 +5813,7 @@
         <h2 id="sel-based-reqs-audit" class="indexable" data-level="2">B.1 Auditable Events for Selection-based Requirements </h2>
         <table class="sort_kids_" border="1">
             <caption data-sortkey="#0">
-                <span class="ctr" data-myid="t-audit-sel-based" data-counter-type="ct-Table" id="t-audit-sel-based">Table <span class="counter">7</span></span>: Auditable Events for Selection-based Requirements
+                <span class="ctr" data-myid="t-audit-sel-based" data-counter-type="ct-Table" id="t-audit-sel-based">Table <span class="counter">8</span></span>: Auditable Events for Selection-based Requirements
             </caption>
             <tr data-sortkey="#1">
                 <th>Requirement</th><th>Auditable Events</th><th>Additional Audit Record Contents</th>
@@ -5455,13 +5925,13 @@
             <tr style="display:none;" data-sortkey="FTP_TRP.1#">
                 <td></td>
             </tr>
-            <tr data-sortkey="FTP_TRP.1.6">
+            <tr data-sortkey="FTP_TRP.1.5">
                 <td>Initiation of the trusted channel.</td><td>User ID and remote source (<abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> Address) if feasible.</td>
             </tr>
-            <tr data-sortkey="FTP_TRP.1.7">
+            <tr data-sortkey="FTP_TRP.1.6">
                 <td>Termination of the trusted channel.</td><td>User ID and remote source (<abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> Address) if feasible.</td>
             </tr>
-            <tr data-sortkey="FTP_TRP.1.8">
+            <tr data-sortkey="FTP_TRP.1.7">
                 <td>Failures of the trusted path functions.</td><td>User ID and remote source (<abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> Address) if feasible.</td>
             </tr>
         </table>
@@ -5696,9 +6166,7 @@
                             <p></p>
                              Excluding the DN identifier type (which is necessarily the Subject DN in the peer certificate), the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> may support the identifier in either the Common Name or Subject Alternative Name (SAN) or both. If both are supported, the preferred logic is to compare the reference identifier to a presented SAN, and only if the peer&rsquo;s certificate does not contain a SAN, to fall back to a comparison against the Common Name. In the future, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> will be required to compare the reference identifier to the presented identifier in the SAN only, ignoring the Common Name.
                             <p></p>
-                             The configuration of the peer reference identifier is addressed by FMT_SMF.1.1/VPN. 
-                            <p></p>
-                        </span>
+                             The configuration of the peer reference identifier is addressed by FMT_SMF.1.1/VPN. </span>
                     </div>
                 </div>
             </div>
@@ -5776,12 +6244,10 @@
                          The evaluator shall ensure that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes how the <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr> is implemented and the rules for processing both inbound and outbound packets in terms of the IPsec policy. The <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes the rules that are available and the resulting actions available after matching a rule. The <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes how the available rules and actions form the <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr> using terms defined in RFC 4301 such as BYPASS (e.g., no encryption), DISCARD (e.g., drop the packet), and PROTECT (e.g., encrypt the packet) actions defined in RFC 4301. 
                         <p></p>
                          As noted in section 4.4.1 of RFC 4301, the processing of entries in the <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr> is non-trivial and the evaluator shall determine that the description in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> is sufficient to determine which rules will be applied given the rule structure implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. For example, if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> allows specification of ranges, conditional rules, etc., the evaluator shall determine that the description of rule processing (for both inbound and outbound packets) is sufficient to determine the action that will be applied, especially in the case where two different rules may apply. This description shall cover both the initial packets (that is, no SA is established on the interface or for that particular packet) as well as packets that are part of an established SA. 
-                        <p></p>
                     </div>
                     <div class="eacategory">Guidance</div>
                     <div class="ea">
-                         The evaluator shall examine the operational guidance to verify it instructs the administrator how to construct entries into the <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr> that specify a rule for processing a packet. The description includes all three cases &ndash; a rule that ensures packets are encrypted/decrypted, dropped, and flow through the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> without being encrypted. The evaluator shall determine that the description in the operational guidance is consistent with the description in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr>, and that the level of detail in the operational guidance is sufficient to allow the administrator to set up the <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr> in an unambiguous fashion. This includes a discussion of how ordering of rules impacts the processing of an <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> packet.
-                        <p></p>
+                         The evaluator shall examine the operational guidance to verify it instructs the administrator how to construct entries into the <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr> that specify a rule for processing a packet. The description includes all three cases &ndash; a rule that ensures packets are encrypted/decrypted, dropped, and flow through the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> without being encrypted. The evaluator shall determine that the description in the operational guidance is consistent with the description in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr>, and that the level of detail in the operational guidance is sufficient to allow the administrator to set up the <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr> in an unambiguous fashion. This includes a discussion of how ordering of rules impacts the processing of an <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> packet. 
                     </div>
                     <div class="eacategory">Tests</div>
                     <div class="ea">
@@ -5805,15 +6271,13 @@
                         <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr>
                     </div>
                     <div class="ea">
-                         The evaluator checks the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to ensure it states that an IPsec VPN can be established to operate in tunnel mode or transport mode (as selected).
-                        <p></p>
+                         The evaluator checks the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to ensure it states that an IPsec VPN can be established to operate in tunnel mode or transport mode (as selected). 
                     </div>
                     <div class="eacategory">Guidance</div>
                     <div class="ea">
                          The evaluator shall confirm that the operational guidance contains instructions on how to configure the connection in each mode selected.
                         <p></p>
-                         If both transport mode and tunnel mode are implemented, the evaluator shall review the operational guidance to determine how the use of a given mode is specified.
-                        <p></p>
+                         If both transport mode and tunnel mode are implemented, the evaluator shall review the operational guidance to determine how the use of a given mode is specified. 
                     </div>
                     <div class="eacategory">Tests</div>
                     <div class="ea">
@@ -5859,13 +6323,11 @@
                         <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr>
                     </div>
                     <div class="ea">
-                         The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to verify that the algorithms <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-GCM-128 and <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-GCM-256 are implemented. If the "<abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>" author has selected either <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC-128 or <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC-256 in the requirement, then the evaluator verifies the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes these as well. In addition, the evaluator ensures that the SHA-based HMAC algorithm conforms to the algorithms specified in <a href="#FCS_COP.1/KeyedHash">FCS_COP.1/KeyedHash</a> Cryptographic Operations (Keyed Hash Algorithms).
-                        <p></p>
+                         The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to verify that the algorithms <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-GCM-128 and <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-GCM-256 are implemented. If the "<abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>" author has selected either <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC-128 or <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC-256 in the requirement, then the evaluator verifies the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes these as well. In addition, the evaluator ensures that the SHA-based HMAC algorithm conforms to the algorithms specified in <a href="#FCS_COP.1/KeyedHash">FCS_COP.1/KeyedHash</a> Cryptographic Operations (Keyed Hash Algorithms). 
                     </div>
                     <div class="eacategory">Guidance</div>
                     <div class="ea">
-                         The evaluator checks the operational guidance to ensure it provides instructions on how the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is configured to use the algorithms selected in this component and whether this is performed through direct configuration, defined during initial installation, or defined by acquiring configuration settings from an environmental component.
-                        <p></p>
+                         The evaluator checks the operational guidance to ensure it provides instructions on how the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is configured to use the algorithms selected in this component and whether this is performed through direct configuration, defined during initial installation, or defined by acquiring configuration settings from an environmental component. 
                     </div>
                     <div class="eacategory">Tests</div>
                     <div class="ea">
@@ -5884,15 +6346,13 @@
                         <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr>
                     </div>
                     <div class="ea">
-                         The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to verify that IKEv1 or IKEv2 (as selected) are implemented. If IKEv1 is implemented, the evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> indicates whether or not XAUTH is supported, and that aggressive mode is not used for IKEv1 Phase 1 exchanges (i.e. only main mode is used). It may be that these are configurable options.
-                        <p></p>
+                         The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to verify that IKEv1 or IKEv2 (as selected) are implemented. If IKEv1 is implemented, the evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> indicates whether or not XAUTH is supported, and that aggressive mode is not used for IKEv1 Phase 1 exchanges (i.e. only main mode is used). It may be that these are configurable options. 
                     </div>
                     <div class="eacategory">Guidance</div>
                     <div class="ea">
                          The evaluator shall check the operational guidance to ensure it instructs the administrator how to configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to use IKEv1 or IKEv2 (as selected), and uses the guidance to configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to perform NAT traversal for the test below. If XAUTH is implemented, the evaluator shall verify that the operational guidance provides instructions on how it is enabled or disabled.
                         <p></p>
-                         If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports IKEv1, the evaluator shall verify that the operational guidance either asserts that only main mode is used for Phase 1 exchanges, or provides instructions for disabling aggressive mode.
-                        <p></p>
+                         If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports IKEv1, the evaluator shall verify that the operational guidance either asserts that only main mode is used for Phase 1 exchanges, or provides instructions for disabling aggressive mode. 
                     </div>
                     <div class="eacategory">Tests</div>
                     <div class="ea">
@@ -5916,13 +6376,11 @@
                         <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr>
                     </div>
                     <div class="ea">
-                         The evaluator shall ensure the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> identifies the algorithms used for encrypting the IKEv1 or IKEv2 payload, and that the algorithms <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC-128, <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC-256 are specified, and if others are chosen in the selection of the requirement, those are included in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> discussion.
-                        <p></p>
+                         The evaluator shall ensure the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> identifies the algorithms used for encrypting the IKEv1 or IKEv2 payload, and that the algorithms <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC-128, <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC-256 are specified, and if others are chosen in the selection of the requirement, those are included in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> discussion. 
                     </div>
                     <div class="eacategory">Guidance</div>
                     <div class="ea">
                          The evaluator checks the operational guidance to ensure it provides instructions on how the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is configured to use the algorithms selected in this component and whether this is performed through direct configuration, defined during initial installation, or defined by acquiring configuration settings from an environmental component. 
-                        <p></p>
                     </div>
                     <div class="eacategory">Tests</div>
                     <div class="ea">
@@ -5942,10 +6400,9 @@
                     <div class="eacategory">
                         <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr>
                     </div>
-                    <div class="ea">
-                         There are no <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> EAs for this requirement.
-                        <p></p>
-                    </div>
+                     There are no additional <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> evaluation activities for this element.
+                    <br>
+                    <br>
                     <div class="eacategory">Guidance</div>
                     <div class="ea">
                          The evaluator shall check the operational guidance to ensure it provides instructions on how the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> configures the values for SA lifetimes. In addition, the evaluator shall check that the guidance has the option for either the administrator or VPN Gateway to configure Phase 1 SAs if time-based limits are supported. Currently there are no values mandated for the number of packets or number of bytes, the evaluator shall simply check the operational guidance to ensure that this can be configured if selected in the requirement. 
@@ -5981,7 +6438,9 @@
                          The evaluator shall check to ensure that the DH groups specified in the requirement are listed as being supported in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr>. If there is more than one DH group supported, the evaluator checks to ensure the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes how a particular DH group is specified/negotiated with a peer. 
                     </div>
                     <div class="eacategory">Guidance</div>
-                    <div class="ea"> There are no AGD EAs for this requirement. </div>
+                     There are no additional Guidance evaluation activities for this element.
+                    <br>
+                    <br>
                     <div class="eacategory">Tests</div>
                     <div class="ea">
                          The evaluator shall perform the following test: 
@@ -6001,19 +6460,16 @@
                         <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr>
                     </div>
                     <div class="ea">
-                         The evaluator shall check to ensure that, for each DH group supported, the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes the process for generating "x" (as defined in <a href="#FCS_IPSEC_EXT.1.9">FCS_IPSEC_EXT.1.9</a>) and each nonce. The evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> indicates that the random number generated that meets the requirements in this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is used, and that the length of "x" and the nonces meet the stipulations in the requirement.
-                        <p></p>
+                         The evaluator shall check to ensure that, for each DH group supported, the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes the process for generating "x" (as defined in <a href="#FCS_IPSEC_EXT.1.9">FCS_IPSEC_EXT.1.9</a>) and each nonce. The evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> indicates that the random number generated that meets the requirements in this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> is used, and that the length of "x" and the nonces meet the stipulations in the requirement. 
                     </div>
                     <div class="eacategory">Guidance</div>
-                    <div class="ea">
-                         There are no AGD EAs for this requirement.
-                        <p></p>
-                    </div>
+                     There are no additional Guidance evaluation activities for this element.
+                    <br>
+                    <br>
                     <div class="eacategory">Tests</div>
-                    <div class="ea">
-                         There are no test EAs for this requirement.
-                        <p></p>
-                    </div>
+                     There are no test activities for this element.
+                    <br>
+                    <br>
                     <div class="element-activity-header">
                         <a href="#FCS_IPSEC_EXT.1.10">FCS_IPSEC_EXT.1.10</a>
                     </div>
@@ -6031,8 +6487,7 @@
                         <p></p>
                          If pre-shared keys are chosen in the selection, the evaluator shall check to ensure that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes how pre-shared keys are established and used in authentication of IPsec connections. The description in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> shall also indicate how pre-shared key establishment is accomplished depending on whether the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> can generate a pre-shared key, accept a pre-shared key, or both.
                         <p></p>
-                         The evaluator shall ensure that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes how the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> compares the peer&rsquo;s presented identifier to the reference identifier. This description shall include whether the certificate presented identifier is compared to the ID payload presented identifier, which fields of the certificate are used as the presented identifier (DN, Common Name, or SAN) and, if multiple fields are supported, the logical order comparison. If the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author assigned an additional identifier type, the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> description shall also include a description of that type and the method by which that type is compared to the peer&rsquo;s presented certificate.
-                        <p></p>
+                         The evaluator shall ensure that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes how the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> compares the peer&rsquo;s presented identifier to the reference identifier. This description shall include whether the certificate presented identifier is compared to the ID payload presented identifier, which fields of the certificate are used as the presented identifier (DN, Common Name, or SAN) and, if multiple fields are supported, the logical order comparison. If the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author assigned an additional identifier type, the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> description shall also include a description of that type and the method by which that type is compared to the peer&rsquo;s presented certificate. 
                     </div>
                     <div class="eacategory">Guidance</div>
                     <div class="ea">
@@ -6042,8 +6497,7 @@
                         <p></p>
                          In order to construct the environment and configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> for the following tests, the evaluator shall ensure that the operational guidance also describes how to configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to connect to a trusted CA, and ensure a valid certificate for that CA is loaded into the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as a trusted CA.
                         <p></p>
-                         The evaluator shall also ensure that the operational guidance includes the configuration of the reference identifiers for the peer.
-                        <p></p>
+                         The evaluator shall also ensure that the operational guidance includes the configuration of the reference identifiers for the peer. 
                     </div>
                     <div class="eacategory">Tests</div>
                     <div class="ea">
@@ -6111,7 +6565,9 @@
                          The evaluator shall check that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes the potential strengths (in terms of the number of bits in the symmetric key) of the algorithms that are allowed for the IKE and ESP exchanges. The <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> shall also describe the checks that are done when negotiating IKEv1 Phase 2 and IKEv2 CHILD_SA suites to ensure that the strength (in terms of the number of bits of key in the symmetric algorithm) of the negotiated algorithm is less than or equal to that of the IKE SA that is protecting the negotiation. 
                     </div>
                     <div class="eacategory">Guidance</div>
-                    <div class="ea"> There are no AGD EAs for this requirement. </div>
+                     There are no additional Guidance evaluation activities for this element.
+                    <br>
+                    <br>
                     <div class="eacategory">Tests</div>
                     <div class="ea">
                          The evaluator follows the guidance to configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to perform the following tests:
@@ -6141,7 +6597,6 @@
             <div class="statustag">
                 <b><i>The inclusion of this selection-based component depends upon selection in <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a>. </i></b>
             </div>
-             <span class="description"></span> 
             <div class="element">
                 <div class="reqid" id="FCS_RBG.2.1">
                     <a href="#FCS_RBG.2.1" class="abbr">FCS_RBG.2.1</a>
@@ -6461,7 +6916,7 @@
         <div class="comp" id="FTP_TRP.1">
             <h4>FTP_TRP.1 Trusted Path</h4>
             <div class="statustag">
-                <b><i>The inclusion of this selection-based component depends upon selection in <a href="#FTP_ITC_EXT.1.1">FTP_ITC_EXT.1.1</a>. </i></b>
+                <b><i>The inclusion of this selection-based component depends upon selection in <a href="#FMT_MOF_EXT.1.1">FMT_MOF_EXT.1.1</a>, <a href="#FTP_ITC_EXT.1.1">FTP_ITC_EXT.1.1</a>. </i></b>
             </div>
             <div class="element">
                 <div class="reqid" id="FTP_TRP.1.1">
@@ -6486,7 +6941,7 @@
                 <div class="reqdesc">
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall require the use of the trusted path for [<i>[all remote administration actions]</i>]. 
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note"> This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if "remote" is selected in FMT_MOF_EXT.1.1 of the client or server <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>.
+                        <span class="note-header">Application Note: </span><span class="note"> This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if "remote" is selected in <a href="#FMT_MOF_EXT.1.1">FMT_MOF_EXT.1.1</a> of the client or server <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>.
                             <p></p>
                              Protocols used to implement the remote administration trusted channel must be selected in <a href="#FTP_ITC_EXT.1">FTP_ITC_EXT.1</a>.
                             <br>
@@ -6545,7 +7000,7 @@
          All extended components specified in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> are listed in this table: 
         <table class="sort_kids_">
             <caption data-sortkey="#0">
-                <b><span class="ctr" data-myid="" data-counter-type="ct-Table" id="">Table <span class="counter">8</span></span>: Extended Component Definitions</b>
+                <b><span class="ctr" data-myid="" data-counter-type="ct-Table" id="">Table <span class="counter">9</span></span>: Extended Component Definitions</b>
             </caption>
             <tr data-sortkey="#1">
                 <th>Functional Class</th><th>Functional Components</th>
@@ -6600,7 +7055,9 @@
                 </td>
             </tr>
             <tr data-sortkey="Security Management (FMT)">
-                <td>Security Management (FMT)</td><td>FMT_SMO_EXT Separation of Management and Operational Networks
+                <td>Security Management (FMT)</td><td>FMT_MOF_EXT Management of Security Functions Behavior
+                    <br>
+                    FMT_SMO_EXT Separation of Management and Operational Networks
                     <br>
                 </td>
             </tr>
@@ -7094,22 +7551,22 @@
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall take advantage of execution environment-based vulnerability mitigation mechanisms supported by the Platform such as: [<b>selection</b>: 
                         <ul>
                             <li style="">
-                                <span class="selectable-content" id="_s_180">Address space randomization</span>
+                                <span class="selectable-content" id="_s_190">Address space randomization</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_181">Memory execution protection (e.g., <abbr class="dyn-abbr"><a href="#abbr_DEP">DEP</a></abbr>)</span>
+                                <span class="selectable-content" id="_s_191">Memory execution protection (e.g., <abbr class="dyn-abbr"><a href="#abbr_DEP">DEP</a></abbr>)</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_182">Stack buffer overflow protection</span>
+                                <span class="selectable-content" id="_s_192">Stack buffer overflow protection</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_183">Heap corruption detection</span>
+                                <span class="selectable-content" id="_s_193">Heap corruption detection</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_184">[<b>assignment</b>: <span class="assignable-content">other mechanisms</span>]</span>
+                                <span class="selectable-content" id="_s_194">[<b>assignment</b>: <span class="assignable-content">other mechanisms</span>]</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_185">No mechanisms</span>
+                                <span class="selectable-content" id="_s_195">No mechanisms</span>
                             </li>
                         </ul>
                         ] 
@@ -7344,16 +7801,16 @@
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support a measured launch of the Virtualization System. Measured components of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> shall include the static executable image of the hypervisor and: [<b>selection</b>: 
                         <ul>
                             <li style="">
-                                <span class="selectable-content" id="_s_186">Static executable images of the Management Subsystem</span>
+                                <span class="selectable-content" id="_s_196">Static executable images of the Management Subsystem</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_187">[<b>assignment</b>: <span class="assignable-content">list of (static images of) Service VMs</span>]</span>
+                                <span class="selectable-content" id="_s_197">[<b>assignment</b>: <span class="assignable-content">list of (static images of) Service VMs</span>]</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_188">[<b>assignment</b>: <span class="assignable-content">list of configuration files</span>]</span>
+                                <span class="selectable-content" id="_s_198">[<b>assignment</b>: <span class="assignable-content">list of configuration files</span>]</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_189">no other components</span>
+                                <span class="selectable-content" id="_s_199">no other components</span>
                             </li>
                         </ul>
                         ] 
@@ -7414,16 +7871,16 @@
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall enforce the following rules when [<b>assignment</b>: <span class="assignable-content">virtual or physical removable media and virtual or physical removable media devices</span>] are switched between information domains, then [<b>selection</b>: 
                         <ul>
                             <li style="">
-                                <span class="selectable-content" id="_s_190">the administrator has granted explicit access for the media or device to be connected to the receiving domain</span>
+                                <span class="selectable-content" id="_s_200">the administrator has granted explicit access for the media or device to be connected to the receiving domain</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_191">the media in a device that is being transferred is ejected prior to the receiving domain being allowed access to the device</span>
+                                <span class="selectable-content" id="_s_201">the media in a device that is being transferred is ejected prior to the receiving domain being allowed access to the device</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_192">the user of the receiving domain expressly authorizes the connection</span>
+                                <span class="selectable-content" id="_s_202">the user of the receiving domain expressly authorizes the connection</span>
                             </li>
                             <li style="">
-                                <span class="selectable-content" id="_s_193">the device or media that is being transferred is prevented from being accessed by the receiving domain</span>
+                                <span class="selectable-content" id="_s_203">the device or media that is being transferred is prevented from being accessed by the receiving domain</span>
                             </li>
                         </ul>
                         ] 
@@ -7480,7 +7937,7 @@
                         <h4 id="ext-comp-FPT_TUD_EXT.1.1">FPT_TUD_EXT.1.1</h4>
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide administrators the ability to query the currently executed version of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> firmware and software as well as the most recently installed version of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> firmware and software. 
                         <h4 id="ext-comp-FPT_TUD_EXT.1.2">FPT_TUD_EXT.1.2</h4>
-                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide administrators the ability to manually initiate updates to <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> firmware and software and [<b>selection</b>: <span class="selectable-content" id="_s_198">automatic updates</span>, <span class="selectable-content" id="_s_199">no other update mechanism</span>]. 
+                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide administrators the ability to manually initiate updates to <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> firmware and software and [<b>selection</b>: <span class="selectable-content" id="_s_208">automatic updates</span>, <span class="selectable-content" id="_s_209">no other update mechanism</span>]. 
                         <h4 id="ext-comp-FPT_TUD_EXT.1.3">FPT_TUD_EXT.1.3</h4>
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide means to authenticate firmware and software updates to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> using a [<b>assignment</b>: <span class="assignable-content">integrity action</span>] prior to installing those updates. 
                     </div>
@@ -7615,7 +8072,46 @@
                             </tr>
                         </table>
                         <h4 id="ext-comp-FMT_SMO_EXT.1.1">FMT_SMO_EXT.1.1</h4>
-                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support the separation of management and operational network traffic through [<b>selection</b>: <span class="selectable-content" id="_s_176">separate physical networks</span>, <span class="selectable-content" id="_s_177">separate logical networks</span>, <span class="selectable-content" id="_s_178">trusted channels as defined in <a href="#FTP_ITC_EXT.1">FTP_ITC_EXT.1</a></span>, <span class="selectable-content" id="_s_179">data encryption using an algorithm specified in FCS_COP.1</span>]. 
+                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support the separation of management and operational network traffic through [<b>selection</b>: <span class="selectable-content" id="_s_186">separate physical networks</span>, <span class="selectable-content" id="_s_187">separate logical networks</span>, <span class="selectable-content" id="_s_188">trusted channels as defined in <a href="#FTP_ITC_EXT.1">FTP_ITC_EXT.1</a></span>, <span class="selectable-content" id="_s_189">data encryption using an algorithm specified in FCS_COP.1</span>]. 
+                    </div>
+                </div>
+                <h3 id="ext-comp-FMT_MOF_EXT" class="indexable" data-level="4">C.2.4.2 FMT_MOF_EXT Management of Security Functions Behavior</h3>
+                <div style="margin-left: 1em;">
+                    <h4>Family Behavior</h4>
+                    <div>
+                        This family defines requirements for administrative management of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. 
+                    </div>
+                    <h4>Component Leveling</h4>
+                    <svg style="max-height: 30px;">
+                        <text x="4" fill="black" font-size="15" y="24">FMT_MOF_EXT</text>
+                        <rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect>
+                        <text x="234" fill="black" font-size="15" y="24">1</text>
+                        <rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect>
+                        <line x1="152" y1="17" x2="231" y2="17" stroke="black"></line>
+                    </svg>
+                    <p>
+                        <a href="#FMT_MOF_EXT.1">FMT_MOF_EXT.1</a>, Management of Security Functions Behavior, defines required management functions and responsibilities.
+                    </p>
+                    <h4>Management: FMT_MOF_EXT.1</h4>
+                    <p>
+                        There are no additional management functions beyond those already described in <a href="#FMT_MOF_EXT.1">FMT_MOF_EXT.1</a>.
+                    </p>
+                    <h4>Audit: FMT_MOF_EXT.1</h4>
+                    <p>Success or failure of management function.</p>
+                    <h4>FMT_MOF_EXT.1 Management of Security Functions Behavior</h4>
+                    <div style="margin-left: 1em;">
+                        <table class="ecd_heir_dep" style="width: 100%">
+                            <tr>
+                                <td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td>
+                            </tr>
+                            <tr style="background-color: inherit">
+                                <td>Dependencies to:</td><td>No other dependencies.</td>
+                            </tr>
+                        </table>
+                        <h4 id="ext-comp-FMT_MOF_EXT.1.1">FMT_MOF_EXT.1.1</h4>
+                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be capable of supporting [<b>selection</b>: <span class="selectable-content" id="_s_172">local</span>, <span class="selectable-content" id="sel-mof-1e1-remote">remote</span>] administration. 
+                        <h4 id="ext-comp-FMT_MOF_EXT.1.2">FMT_MOF_EXT.1.2</h4>
+                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be capable of performing the following management functions [<b>assignment</b>: <span class="assignable-content">description of management functions</span>]. 
                     </div>
                 </div>
             </span><span data-sortkey="Trusted Path/Channel (FTP)">
@@ -8068,10 +8564,10 @@
          Product Model equivalence attempts to determine whether different feature levels of the same product across a product line are equivalent for purposes of <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> testing. For example, if a product has a &ldquo;basic&rdquo; edition and an &ldquo;enterprise&rdquo; edition, is it necessary to test both models? Or does testing one model provide sufficient confidence that both models are compliant? 
         <br>
         <br>
-         <a href="#equiv-prod-model" class="equiv-prod-model-ref">Table <span class="counter">9</span></a>, below, lists the factors for determining Product Model equivalence. 
+         <a href="#equiv-prod-model" class="equiv-prod-model-ref">Table <span class="counter">10</span></a>, below, lists the factors for determining Product Model equivalence. 
         <br>
         <br>
-         <b><span class="ctr" data-myid="equiv-prod-model" data-counter-type="ct-Table" id="equiv-prod-model">Table <span class="counter">9</span>: Factors for Determining Product Model Equivalence</span></b>
+         <b><span class="ctr" data-myid="equiv-prod-model" data-counter-type="ct-Table" id="equiv-prod-model">Table <span class="counter">10</span>: Factors for Determining Product Model Equivalence</span></b>
         <br>
         <table border="1">
             <tr class="header" bgcolor="#cccccc">
@@ -8099,7 +8595,7 @@
          In cases of version equivalence, differences are expressed in terms of changes implemented in revisions of an evaluated Product. In general, versions are equivalent if the changes have no effect on any security-relevant claims about the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> or evaluation evidence. Non-security-relevant changes to <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> functionality or the addition of non-security-relevant functionality does not affect equivalence. 
         <br>
         <br>
-         <b><span class="ctr" data-myid="equiv-version" data-counter-type="ct-Table" id="equiv-version">Table <span class="counter">10</span>: Factors for Determining Product Version Equivalence</span></b>
+         <b><span class="ctr" data-myid="equiv-version" data-counter-type="ct-Table" id="equiv-version">Table <span class="counter">11</span>: Factors for Determining Product Version Equivalence</span></b>
         <br>
         <table border="1">
             <tr class="header" bgcolor="#cccccc">
@@ -8137,7 +8633,7 @@
          The platforms are equivalent with respect to the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> if the platforms are equivalent with respect to all <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-specified security functionality.
         <br>
         <br>
-         <b><span class="ctr" data-myid="equiv-hw-platform" data-counter-type="ct-Table" id="equiv-hw-platform">Table <span class="counter">11</span>: Factors for Determining Hardware Platform Equivalence</span></b>
+         <b><span class="ctr" data-myid="equiv-hw-platform" data-counter-type="ct-Table" id="equiv-hw-platform">Table <span class="counter">12</span>: Factors for Determining Hardware Platform Equivalence</span></b>
         <br>
         <table border="1">
             <tr class="header" bgcolor="#cccccc">
@@ -8162,7 +8658,7 @@
          As a result, Software Platform equivalence is largely concerned with revisions and variations of operating systems that are substantially the same (e.g., different versions and revision levels of Windows or Linux).
         <br>
         <br>
-         <b><span class="ctr" data-myid="equiv-sw-platform" data-counter-type="ct-Table" id="equiv-sw-platform">Table <span class="counter">12</span>: Factors for Determining Software Platform Equivalence</span></b>
+         <b><span class="ctr" data-myid="equiv-sw-platform" data-counter-type="ct-Table" id="equiv-sw-platform">Table <span class="counter">13</span>: Factors for Determining Software Platform Equivalence</span></b>
         <br>
         <table border="1">
             <tr class="header" bgcolor="#cccccc">
@@ -8206,7 +8702,7 @@
         <h1 id="acronyms" class="indexable" data-level="A">Appendix G - Acronyms</h1>
         <table>
             <caption>
-                <span class="ctr" data-myid="t-acronyms" data-counter-type="ct-Table" id="t-acronyms">Table <span class="counter">13</span></span>: Acronyms 
+                <span class="ctr" data-myid="t-acronyms" data-counter-type="ct-Table" id="t-acronyms">Table <span class="counter">14</span></span>: Acronyms 
             </caption>
             <tr class="header">
                 <th>Acronym</th><th>Meaning</th>
@@ -8350,7 +8846,7 @@
         <h1 id="appendix-bibliography" class="indexable" data-level="A">Appendix H - Bibliography</h1>
         <table>
             <caption>
-                <span class="ctr" data-myid="t-biblio" data-counter-type="ct-Table" id="t-biblio">Table <span class="counter">14</span></span>: Bibliography
+                <span class="ctr" data-myid="t-biblio" data-counter-type="ct-Table" id="t-biblio">Table <span class="counter">15</span></span>: Bibliography
             </caption>
             <tr class="header">
                 <th>Identifier</th><th>Title</th>
