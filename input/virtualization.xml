@@ -67,7 +67,7 @@
             <PPTitle>Protection Profile for Virtualization</PPTitle>
             <PPVersion>2.0</PPVersion>
             <PPAuthor>National Information Assurance Partnership</PPAuthor>
-            <PPPubDate>2025-06-06</PPPubDate> 
+            <PPPubDate>2025-06-11</PPPubDate> 
             <Keywords>Virtualization</Keywords>
         </ReferenceTable>
     </PPReference>
@@ -93,8 +93,8 @@
         </entry>
 		<entry>
             <version>2.0</version>
-            <date>2025-06-06</date>
-            <subject>CC:2022 conversion.</subject>
+            <date>2025-06-11</date>
+            <subject>CC:2022 conversion, remove Modules.</subject>
         </entry>
     </RevisionHistory>	
       
@@ -131,27 +131,6 @@
         <depends on="ftp-itc-ext-1e1"/>
     </include-pkg>
     
-    <modules>
-    <module id="client-virt">
-        <git>
-            <url>https://github.com/commoncriteria/clientvirtualization</url>
-            <branch>master</branch>
-        </git>
-        <url>
-            https://www.niap-ccevs.org/protectionprofiles/457
-        </url>
-    </module>
-    
-     <module id="server-virt">
-            <git>
-                <url>https://github.com/commoncriteria/servervirtualization</url>
-                <branch>master</branch>
-            </git>
-            <url>
-                https://www.niap-ccevs.org/protectionprofiles/458
-            </url>
-    </module>
-    </modules>
     
 	<!-- Rules - These are rules where selections in the base require selections in the PP-Modules.
 			So, really these belong in a composition and not here. At worst they should be in the module.
@@ -188,10 +167,9 @@
 	<!-- 1.1 Overview -->
         <section id="s-overview" title="Overview">
             The scope of this Protection Profile (PP) is to describe the security functionality of virtualization technologies in 
-			terms of [CC] and to define security functional and assurance requirements for such products. This PP is not complete 
-			in itself, but rather provides a set of requirements that are common to the PP-Modules for Server
-			Virtualization and for Client Virtualization. These capabilities have been broken out into this generic ‘base’ PP due
-			to the high degree of similarity between the two product types.<h:p/>
+			terms of [CC] and to define security functional and assurance requirements for such products. This PP includes
+			the requirements formerly specified in the PP-Module for Server Virtualization and the PP-Module for Client
+			Virtualization. These two PP-Modules have been incorporated as use cases in this document.<h:p/>
             Due to the increasing prevalence of virtualization technology in enterprise computing environments and the shift
 			to cloud computing, it is essential to ensure that this technology is implemented securely in order to mitigate
 			the risk introduced by sharing multiple computers and their resident data across a single physical system. 
@@ -393,8 +371,54 @@
 
 		<!-- 1.4 Use Cases -->
 		<section id="s-usecases" title="Use Cases">
-            This Base-PP does not define any use cases for virtualization technology. Client Virtualization and Server Virtualization
-			products have different use cases and so these are defined in their respective PP-Modules.
+
+		This Protection Profile supports two use cases: Server Virtualization and Client Virtualization. A product must align with one
+		use case or the other to be evaluated against this PP.<h:p/>
+		This document does not address virtualization on mobile devices (typically devices that use a baseband processor or connect to a cellular
+		network), nor does it address application virtualization or containers.<h:p/>
+		
+		<usecases>
+			<usecase title="Server Virtualization" id="uc-server-virt">
+				<description>
+					Server Virtualization, for the purposes of this PP, refers to a virtualization system that implements virtualized hardware 
+					components on server-class hardware. It creates a virtualized hardware environment for each instance of an operating system 
+					(virtual machines or VMs) permitting these environments to execute concurrently while maintaining isolation and the appearance of 
+					exclusive control over assigned computing resources. Each VM instance supports applications such as file servers, web servers, and 
+					mail servers. Server virtualization may also support client operating systems in a virtual desktop or thin-client environment. 
+					Typically, virtualized servers provide services to remote clients from a data center, and are generally not directly accessible 
+					by non-administrative users.
+				</description>
+<!--				<config>
+					<ref-id>sfr-fau-gen-1</ref-id>
+					<ref-id>sfr-fau-sar-1</ref-id>
+					<ref-id>sfr-fau-stg-1</ref-id>
+					<ref-id>sfr-fau-stg-2</ref-id>
+					<ref-id>sfr-fau-stg-5</ref-id>
+				</config>
+-->
+			</usecase>
+			<usecase title="Client Virtualization" id="uc-client-virt">
+				<description>
+					Client Virtualization, for the purposes of this PP, refers to a Virtualization System that implements virtualized hardware
+					components locally on an endpoint machine. Endpoints are typically client hardware such as desktop or laptop computers that a user
+					interacts with directly, but may also include headless embedded systems without direct human interaction. A Virtualization System 
+					creates a virtualized hardware environment for each instance of a guest operating system (a virtual machine) permitting these 
+					environments to execute concurrently while maintaining isolation and the appearance of exclusive control over assigned computing
+					resources. Client virtualization is generally used on endpoint systems, making use of the local machine's resources (memory, CPU, etc.)
+					to provide isolated user environments.
+				</description>
+<!--				<config>
+					<ref-id>sfr-fau-gen-1</ref-id>
+					<ref-id>sfr-fau-sar-1</ref-id>
+					<ref-id>sfr-fau-stg-1</ref-id>
+					<ref-id>sfr-fau-stg-2</ref-id>
+					<ref-id>sfr-fau-stg-5</ref-id>
+					<ref-id>sfr-fpt-php-2</ref-id> 
+					<ref-id>sfr-fpt-php-3</ref-id> 
+					<ref-id>sfr-fpt-jta-ext-2</ref-id>
+				</config> -->
+			</usecase>
+		</usecases>
         </section>
 	</sec:Introduction>
 <!--    </chapter>  -->
@@ -402,7 +426,6 @@
  <!-- 2. Conformance Claims -->
 <!--	<sec:Conformance_Claims/>   -->
 <section title="Conformance Claims" id="sec-cclaims" boilerplate="no">
-    <comment>Module versions will need to be updated when new versions are published.</comment>
 	<!-- cc-version: cc-2022r1 or cc-31r5   -->
 	<!-- cc-approach: standard or direct-rationale  -->
 	<!-- display: Should this info be displayed in the Conformance -->
@@ -423,25 +446,14 @@
 		<cc-pp-conf/>              		  
 		
 		<!-- Can be in a configuration with these PPs and Modules -->
-		<cc-pp-config-with>             
-	        
-          <Mod-cc-ref>PP-Module for Client Virtualization Systems, Version 1.1</Mod-cc-ref>
-		  <Mod-cc-ref>PP-Module for Server Virtualization Systems, Version 1.1</Mod-cc-ref>
-			
-		</cc-pp-config-with>
+		<cc-pp-config-with/>             
 
 		<!-- Package claims -->
 		<cc-pkg-claim>
 			<FP-cc-ref conf="conformant">Functional Package for Secure Shell Version 2.0</FP-cc-ref>
 			<FP-cc-ref conf="conformant">Functional Package for Transport Layer Security Version 2.1</FP-cc-ref>
-			<FP-cc-ref conf="conformant">Functional Package for X.509 Version 1.0</FP-cc-ref>
-			<AP-cc-ref conf="conformant">Assurance Package for Flaw Remediation Version 1.0</AP-cc-ref>
-			
+			<FP-cc-ref conf="conformant">Functional Package for X.509 Version 1.0</FP-cc-ref>			
 		</cc-pkg-claim>
-
-
-	
-
 
 	</CClaimsInfo>
   </section>  <!-- Conformance Claims -->
@@ -454,12 +466,15 @@
             <threats>
                 <threat name="T.3P_SOFTWARE">
                     <description>
-                        Malicious or poorly-coded third-party software or firmware that supports the functionality of the TOE (e.g. device drivers, operating systems) may be used to compromise the VS or its VMs if they have excessive privileges to interact with the TSF (e.g., physical device drivers that are not encapsulated within a VM could expose entities outside of that VM to compromise).
+                        Malicious or poorly-coded third-party software or firmware that supports the functionality of the TOE (e.g. device
+						drivers, operating systems) may be used to compromise the VS or its VMs if they have excessive privileges to interact
+						with the TSF (e.g., physical device drivers that are not encapsulated within a VM could expose entities outside of
+						that VM to compromise).
                     </description>
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report potential integrity breaches and attempts.</rationale>
                     <addressed-by>FCS_COP.1/Hash</addressed-by><rationale>This threat is mitigated by this SFR by implementing cryptographic integrity verification measures.</rationale>
                     <addressed-by>FCS_COP.1/KeyedHash</addressed-by><rationale>This threat is mitigated by this SFR by implementing cryptographic authenticity verification measures.</rationale>
-                    <addressed-by>FCS_COP.1/Sig</addressed-by><rationale>This threat is mitigated by this SFR by implementing cryptographic authenticity verification measures.</rationale>
+                    <addressed-by>FCS_COP.1/Sig</addressed-by><rationale>This threat is mitigated by this SFR by implementing cryptographic Authenticity verification measures.</rationale>
                     <addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
                     <addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
                     <addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
@@ -474,20 +489,8 @@
                 
                 <threat name="T.DATA_LEAKAGE">
                     <description>
-                    A poorly-implemented mechanism for domain separation could allow data to be maliciously or inadvertently transmitted between two VMs that should not be permitted to share information.<!-- 
-                    
-                    It is a fundamental property of VMs that the domains encapsulated by different VMs remain separate unless 
-					data sharing is permitted by policy. For this reason, all Virtualization Systems shall support a policy
-					that prohibits information transfer between VMs.<h:br/><h:br/>
-                    It shall be possible to configure VMs such that data cannot be moved between domains from VM to VM, or
-					through virtual or physical network components under the control of the VS. When VMs are configured as
-					such, it shall not be possible for data to leak between domains, neither by the express efforts of
-					software or users of a VM, nor because of vulnerabilities or errors in the implementation of the VMM or
-					other VS components.<h:br/><h:br/>
-                    If it is possible for data to leak between domains when prohibited by policy, then an adversary on one domain 
-					or network can obtain data from another domain. Such cross-domain data leakage can, for example, cause
-					classified information, corporate proprietary information, or personally identifiable information to be
-					made accessible to unauthorized entities. -->
+						A poorly-implemented mechanism for domain separation could allow data to be maliciously or inadvertently transmitted between two VMs that should not be permitted 
+						to share information.
                     </description>
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report attempts to breach isolation.</rationale>
 					<addressed-by>FCS_CKM.6</addressed-by><rationale>This threat is mitigated by this SFR by requiring cryptographic key destruction to protect domain data in shared storage.</rationale>
@@ -495,7 +498,6 @@
                     <addressed-by>FCS_COP.1/KeyedHash</addressed-by><rationale>This threat is mitigated by this SFR by implementing cryptographic authenticity verification measures.</rationale>
                     <addressed-by>FCS_COP.1/Sig</addressed-by><rationale>This threat is mitigated by this SFR by implementing cryptographic authenticity verification measures.</rationale>
                     <addressed-by>FCS_ENT_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that domains have access to high-quality entropy for cryptographic purposes.</rationale>
-
                     <addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
 					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that domain data is cleared from memory before memory is re-allocated.</rationale>
 					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that domain data is cleared from physical storage upon re-allocation of the storage.</rationale>
@@ -503,23 +505,20 @@
 					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
 					<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that VMs can access only those virtual devices that they are configured to access.</rationale>
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
-  
                     <addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
                     <addressed-by>FPT_RDM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for rules for switching removable media between domains to reduce the chance of data spillage.</rationale>
-                    
                     <addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                     <addressed-by>FTP_UIF_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that users are able to determine the domain with the current input focus.</rationale>
 					<addressed-by>FTP_UIF_EXT.2</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that users can know the identity of any VM that they can access.</rationale>
                     <addressed-by>FPT_GVI_EXT.1 (optional)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE support guest VM measurements and integrity checks (optional).</rationale>
                     <addressed-by>FPT_INT_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE support introspection into guest VMs (optional).</rationale>
-
 				</threat>
                 
                 <threat name="T.DENIAL_OF_SERVICE">
                     <description>
-                        A maliciously-configured or poorly-implemented VM may block other VMs from accessing system resources (e.g., system memory, persistent storage, and processing time)
-                        via a resource exhaustion attack.
+                        A maliciously-configured or poorly-implemented VM may block other VMs from accessing system resources 
+						(e.g., system memory, persistent storage, and processing time) via a resource exhaustion attack.
                     </description>
                     <addressed-by>FCS_CKM.6</addressed-by><rationale>This threat is mitigated by this SFR by requiring cryptographic key destruction to ensure residual data in shared storage is unrecoverable.</rationale>
                     <addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that domain data is cleared from memory before memory is re-allocated.</rationale>
@@ -528,21 +527,17 @@
                 
                 <threat name="T.MISCONFIGURATION">
                     <description>
-                        A malicious or inattentive administrator may misconfigure the VS, or faulty configuration data my cause the VS to behave in an unintended manner, which could impact its functioning and security.
+                        A malicious or inattentive administrator may misconfigure the VS, or faulty configuration data my cause 
+						the VS to behave in an unintended manner, which could impact its functioning and security.
                     </description>
                     <addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that data sharing between VMs is turned off by default.</rationale>
                 </threat>
                 
                 <threat name="T.PLATFORM_COMPROMISE">
                     <description>
-                        A malicious user or process may operate a VM in a manner that allows it to compromise the behavior of the system on which the VS runs (e.g., through shared access to system-level resources), leading to either unauthorized modification of the system or the behavior of the VS.
-                        <!--
-                        The VS must be capable of protecting the platform from threats that originate within VMs and operational
-                        networks connected to the VS. The hosting of untrusted—even malicious—domains by the VS cannot be 
-                        permitted to compromise the security and integrity of the platform on which the VS executes. If an 
-                        attacker can access the underlying platform in a manner not controlled by the VMM, the attacker might 
-                        be able to modify system firmware or software—compromising both the VS and the 
-                        underlying platform. -->
+                        A malicious user or process may operate a VM in a manner that allows it to compromise the behavior of 
+						the system on which the VS runs (e.g., through shared access to system-level resources), leading to 
+						either unauthorized modification of the system or the behavior of the VS.
                     </description>
                     <addressed-by>FDP_HBI_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported mechanisms for access to physical devices.</rationale>
                     <addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
@@ -559,17 +554,9 @@
                 
                 <threat name="T.UNAUTHORIZED_ACCESS">
                     <description>
-                        A malicious user or outside entity may gain access to the TSF or its data, either through poorly-implemented access control or through insecure communications, allowing for unintended management actions to be performed against the VS without proper authorization. 
-                        <!-- Functions performed by the management layer include VM configuration, virtualized network configuration, 
-                        allocation of physical resources, and reporting. Only certain authorized system users (administrators) 
-                        are allowed to exercise management functions or obtain sensitive information from the TOE.<h:p/>
-                        Virtualization Systems are often managed remotely over communication networks. Members of these networks can
-                        be both geographically and logically separated from each other, and pass through a variety of other 
-                        systems which may be under the control of an adversary, and offer the opportunity for communications to be
-                        compromised. An adversary with access to an open management network could inject commands into the
-                        management infrastructure or extract sensitive information. This would provide an adversary with administrator privilege on the platform,
-                        and administrative control over the VMs and virtual network connections. The adversary could also gain
-                        access to the management network by hijacking the management network channel. -->
+                        A malicious user or outside entity may gain access to the TSF or its data, either through poorly 
+						implemented access control or through insecure communications, allowing for unintended management
+						actions to be performed against the VS without proper authorization. 
                     </description>
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report potential attempts to access the management subsystem.</rationale>
                     <addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring generation of strong asymmetric cryptographic keys.</rationale>
@@ -596,86 +583,74 @@
                     <addressed-by>FIA_PMG_EXT.1 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that password-based administrator login is properly implemented.</rationale>
                     <addressed-by>FIA_X509_EXT.4 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by requiring an exception to be met without the need to validate the revocation of the certificate.</rationale>
                     <addressed-by>FTP_TRP.1 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that certain communications use a trusted path.</rationale>
+					<addressed-by>FMT_MOF_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by limiting the management functions to be limited to authorized administrators as managed through controls required by FMT_MOF_EXT.1.</rationale>
                 </threat>
                 
                 <threat name="T.UNAUTHORIZED_MODIFICATION">
                     <description>
-                         A malicious user or administrator could alter the behavior of the VS by having it execute illicitly modified code, whether as an alteration of the VS itself or as code running within a VM, that causes it to behave in an unintended manner. 
+                         A malicious user or administrator could alter the behavior of the VS by having it execute illicitly 
+						 modified code, whether as an alteration of the VS itself or as code running within a VM, that causes
+						 it to behave in an unintended manner. 
                     </description>
-						<addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report potential integrity breaches and attempts.</rationale>
-						<addressed-by>FAU_SAR.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for administrator review of audit records.</rationale>
-						<addressed-by>FAU_STG.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for protected transmission of audit records off the TOE.</rationale>
-						<addressed-by>FAU_STG.2</addressed-by><rationale>This threat is mitigated by this SFR by requiring protection of stored audit records.</rationale>
-                        <addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
+					<addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report potential integrity breaches and attempts.</rationale>
+					<addressed-by>FAU_SAR.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for administrator review of audit records.</rationale>
+					<addressed-by>FAU_STG.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for protected transmission of audit records off the TOE.</rationale>
+					<addressed-by>FAU_STG.2</addressed-by><rationale>This threat is mitigated by this SFR by requiring protection of stored audit records.</rationale>
+                    <addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
+					<addressed-by>FCS_COP.1/Hash</addressed-by><rationale>This threat is mitigated by this SFR by implementing cryptographic integrity verification measures.</rationale>
+					<addressed-by>FCS_COP.1/KeyedHash</addressed-by><rationale>This threat is mitigated by this SFR by implementing cryptographic authenticity verification measures.</rationale>
+					<addressed-by>FCS_COP.1/Sig</addressed-by><rationale>This threat is mitigated by this SFR by implementing cryptographic authenticity verification measures.</rationale>
+					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
+					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
+					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
+                    <addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
+					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
+					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that hypercall parameters be validated.</rationale>
+                    <addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale> 
+					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
+                    <addressed-by>FAU_ARP.1 (optional)</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for automatic responses to audit events (optional).</rationale>
+					<addressed-by>FAU_SAA.1 (optional)</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for rules for indicating security violations based on audit events (optional).</rationale>
+					<addressed-by>FPT_DDI_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
+					<addressed-by>FPT_ML_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
+				</threat>
+                
+                <threat name="T.UNAUTHORIZED_UPDATE">
+                    <description>
+                         A malicious user or process may attempt to illicitly modify the behavior of the VS by applying a
+						 software update to it that was modified in a manner that will compromise its behavior. 
+                    </description>
+					<addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report potential integrity breaches and attempts.</rationale>
+					<addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
                     <addressed-by>FCS_COP.1/Hash</addressed-by><rationale>This threat is mitigated by this SFR by implementing cryptographic integrity verification measures.</rationale>
                     <addressed-by>FCS_COP.1/KeyedHash</addressed-by><rationale>This threat is mitigated by this SFR by implementing cryptographic authenticity verification measures.</rationale>
                     <addressed-by>FCS_COP.1/Sig</addressed-by><rationale>This threat is mitigated by this SFR by implementing cryptographic authenticity verification measures.</rationale>
-                    
-						<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
-						<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
-						<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
-                                   	
-                        <addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
-						<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
-						<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that hypercall parameters be validated.</rationale>
-						
-                        <addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale> 
-						<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
-                        <addressed-by>FAU_ARP.1 (optional)</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for automatic responses to audit events (optional).</rationale>
-						<addressed-by>FAU_SAA.1 (optional)</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for rules for indicating security violations based on audit events (optional).</rationale>
-						<addressed-by>FPT_DDI_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
-						<addressed-by>FPT_ML_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
-
-					</threat>
-                
-                    <threat name="T.UNAUTHORIZED_UPDATE">
-                    <description>
-                         A malicious user or process may attempt to illicitly modify the behavior of the VS by applying a software update to it that was modified in a manner that will compromise its behavior. <!--
-                         It is common for attackers to target outdated versions of software containing known flaws. This means it is
-			             extremely important to update VS software as soon as possible when updates are
-        			     available. But the source of the updates and the updates themselves must be trusted. If an attacker can
-			             write their own update containing malicious code they can take control of the VS. -->
-                    </description>
-                    <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report potential integrity breaches and attempts.</rationale>
-					<addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
-                        <addressed-by>FCS_COP.1/Hash</addressed-by><rationale>This threat is mitigated by this SFR by implementing cryptographic integrity verification measures.</rationale>
-                        <addressed-by>FCS_COP.1/KeyedHash</addressed-by><rationale>This threat is mitigated by this SFR by implementing cryptographic authenticity verification measures.</rationale>
-                        <addressed-by>FCS_COP.1/Sig</addressed-by><rationale>This threat is mitigated by this SFR by implementing cryptographic authenticity verification measures.</rationale>
-					
 					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
 					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
 					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
-                    
                     <addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
 					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that hypercall parameters be validated.</rationale>
-					
                     <addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                     <addressed-by>FPT_DDI_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another.</rationale>
 					<addressed-by>FPT_ML_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
-
+					<addressed-by>FMT_MOF_EXT.1</addressed-by><rationale>This SFR mitigates this threat by ensuring that the only way to modify the VS is through a trusted update process initiated by an authorized administrator as required by FMT_MOF_EXT.1.</rationale>	
 				</threat>
                 
-               <threat name="T.UNPATCHED_SOFTWARE">
+                <threat name="T.UNPATCHED_SOFTWARE">
                     <description>
                          Vulnerabilities in outdated or unpatched software can be exploited by adversaries to compromise the
 			             VS or platform.
                     </description>
 					<addressed-by>FPT_TUD_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for product updates.</rationale> 
 					<addressed-by>FPT_IDV_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for software identification labels (optional).</rationale>
-                   <addressed-by>FPT_TUD_EXT.2 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by requiring specific requirements for certificate-based code signing for update.</rationale>
+                    <addressed-by>FPT_TUD_EXT.2 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by requiring specific requirements for certificate-based code signing for update.</rationale>
                 </threat> 
                 
                 <threat name="T.USER_ERROR">
                     <description>
-                         A careless user may inadvertently introduce information to a particular VM that is not intended to receive it because the VMs are identified in an ambiguous manner.
-                         <!--
-                         If a Virtualization System is capable of simultaneously displaying VMs of different domains to the same user
-			             at the same time, there is always the chance that the user will become confused and unintentionally leak
-			             information between domains. This is especially likely if VMs belonging to different domains are 
-			             indistinguishable. Malicious code may also attempt to interfere with the user’s ability to distinguish
-			             between domains. The VS must take measures to minimize the likelihood of such confusion. -->
+                         A careless user may inadvertently introduce information to a particular VM that is not intended to 
+						 receive it because the VMs are identified in an ambiguous manner.
                     </description>
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report attempts to breach isolation.</rationale>
 					<addressed-by>FCS_CKM.6</addressed-by><rationale>This threat is mitigated by this SFR by requiring cryptographic key destruction to protect domain data in shared storage.</rationale>
@@ -693,21 +668,14 @@
                 
                 <threat name="T.VMM_COMPROMISE">
                     <description>
-                         A malicious user or process may alter the behavior of the VMM or cause it to fail in a way that eliminates domain separation between multiple VMs that are not intended to be visible to one another.
-                         <!--
-                         The VS is designed to provide the appearance of exclusivity to the VMs and is designed
-			             to separate or isolate their functions except where specifically shared. Failure of security mechanisms
-			             could lead to unauthorized intrusion into or modification of the VMM, or bypass of the VMM altogether,
-			             by non-TOE software, such as that running in Guest or Helper VMs or on the host platform. 
-			             This must be prevented to avoid compromising the VS. -->
+                         A malicious user or process may alter the behavior of the VMM or cause it to fail in a way that
+						 eliminates domain separation between multiple VMs that are not intended to be visible to one another.
                     </description>
                     <addressed-by>FAU_GEN.1</addressed-by><rationale>This threat is mitigated by this SFR because the audit events can report potential integrity breaches and attempts.</rationale>
-					
 					<addressed-by>FCS_CKM.6</addressed-by><rationale>This threat is mitigated by this SFR by requiring cryptographic key destruction to protect domain data in shared storage.</rationale>
                     <addressed-by>FCS_COP.1/Hash</addressed-by><rationale>This threat is mitigated by this SFR by implementing cryptographic integrity verification measures.</rationale>
                     <addressed-by>FCS_COP.1/KeyedHash</addressed-by><rationale>This threat is mitigated by this SFR by implementing cryptographic authenticity verification measures.</rationale>
                     <addressed-by>FCS_COP.1/Sig</addressed-by><rationale>This threat is mitigated by this SFR by implementing cryptographic authenticity verification measures.</rationale>
-					
 					<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
 					<addressed-by>FDP_RIP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that domain data is cleared from memory before memory is re-allocated.</rationale>
 					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that domain data is cleared from physical storage upon re-allocation of the storage.</rationale>
@@ -715,29 +683,19 @@
 					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
 					<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that VMs can access only those virtual devices that they are configured to access.</rationale>
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
-                                        
                     <addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
 					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that hypercall parameters be validated.</rationale>
-					
                     <addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                     <addressed-by>FPT_DDI_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
 					<addressed-by>FPT_ML_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
-
 				</threat>
                 
                 <threat name="T.WEAK_CRYPTO">
                     <description>
-				         A malicious user or process could force the disclosure of sensitive data at rest or in transit because weak cryptographic algorithms were used to protect this data or because implementation flaws in the generation and use of cryptographic data did not maximize the effective strength of the implementation.
-				         <!--
-				         To the extent that VMs appear isolated within the VS, a threat of weak cryptography may 
-			             arise if the VMM does not provide good entropy to support security-related features that depend on
-        			     entropy to implement cryptographic algorithms. For example, a random number generator keeps an estimate
-			             of the number of bits of noise in the entropy pool. From this entropy pool random numbers are created.
-			             Good random numbers are essential to implementing strong cryptography. Cryptography implemented using
-			             poor random numbers can be defeated by a sophisticated adversary. Such defeat can result in the compromise
-			             of guest VM data and credentials, and of VS data and credentials, and can enable unauthorized access 
-			             to the VS or VMs. -->
+				         A malicious user or process could force the disclosure of sensitive data at rest or in transit because 
+						 weak cryptographic algorithms were used to protect this data or because implementation flaws in the 
+						 generation and use of cryptographic data did not maximize the effective strength of the implementation.
                     </description>
                     <addressed-by>FCS_CKM.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring generation of strong asymmetric cryptographic keys.</rationale>
                     <addressed-by>FCS_CKM.2</addressed-by><rationale>This threat is mitigated by this SFR by requiring use of strong cryptographic key establishment algorithms.</rationale>
@@ -745,7 +703,6 @@
                     <addressed-by>FCS_COP.1/KeyedHash</addressed-by><rationale>This threat is mitigated by this SFR by implementing cryptographic authenticity verification measures.</rationale>
                     <addressed-by>FCS_COP.1/Sig</addressed-by><rationale>This threat is mitigated by this SFR by implementing cryptographic authenticity verification measures.</rationale>
                     <addressed-by>FCS_COP.1/UDE</addressed-by><rationale>This threat is mitigated by this SFR by implementing cryptographic confidentiality measures.</rationale>
-                    
                     <addressed-by>FCS_ENT_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that domains have access to high-quality entropy for cryptographic purposes.</rationale>
 					<addressed-by>FCS_RBG.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE has access to high-quality entropy for cryptographic purposes.</rationale>
                     <addressed-by>FPT_FLS.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that the TOE enters a failure state if it is unable to implement its DRBG function to adequately protect data in transit.</rationale>
@@ -758,18 +715,19 @@
              </threats>
 		</sec:Threats>
 
-	    <!--        </section>  -->
         
-	<!-- 3.2 Assumptions -->
+		<!-- 3.2 Assumptions -->
         <section id="s-assumptions" title="Assumptions">
             <assumptions>
                 <assumption name="A.NON_MALICIOUS_USER">
                     <description>
                          The user of the VS is not willfully negligent or hostile, and uses the VS in compliance with the
 			             applied enterprise security policy and guidance. At the same time, malicious applications could act as
-			             the user, so requirements which confine malicious applications are still in scope.</description>
+			             the user, so requirements which confine malicious applications are still in scope.
+					</description>
                     <objective-refer ref="OE.NON_MALICIOUS_USER">
-                        <rationale>If the organization properly vets and trains users, it is expected that they will be non-malicious.</rationale>
+                        <rationale>If the organization properly vets and trains users, it is expected that they will be
+							non-malicious.</rationale>
                     </objective-refer>
                     <objective-refer ref="OE.CONFIG">
                         <rationale>If the TOE is administered by a non-malicious and non-negligent user, the expected result is that the TOE
@@ -802,17 +760,14 @@
             </assumptions>
         </section>
 	    
-	<!-- 3.3 Organizational Security Policies -->
+		<!-- 3.3 Organizational Security Policies -->
         <sec:Organizational_Security_Policies><OSPs/></sec:Organizational_Security_Policies>
 	</sec:spd>
-<!--    </chapter>  -->
     
     <!-- 4. Security Objectives -->
 	<sec:Security_Objectives>
 	    
-	<!-- 4.1 Security Objectives for the TOE -->
-    
-	<!-- 4.2 Security Objectives for the Operational Environment -->
+		<!-- 4.1 Security Objectives for the Operational Environment -->
         <section id="s-secobjoe" title="Security Objectives for the Operational Environment">
             <SOEs>
                 <SOE name="OE.CONFIG">
@@ -833,12 +788,11 @@
                     <description>TOE administrators are trusted to follow and apply all administrator guidance in a trusted manner.
                     </description>
                 </SOE>
-                
             </SOEs>
         </section>
 	    
-	<!-- 4.3 Security Objectives Rationale -->
-	<section title="Security Objectives Rationale" id="secobjrat"/>    
+		<!-- 4.3 Security Objectives Rationale -->
+		<section title="Security Objectives Rationale" id="secobjrat"/>    
 	    <!-- Auto-generated table -->
 	</sec:Security_Objectives>
     
@@ -867,7 +821,8 @@
 							responses to certain security events. An example may include halting a VM which has taken some action
 							to violate a key system security policy. This may be especially useful with headless endpoints when
 							there is no human user in the loop.<h:p/>
-                            The potential security violation mentioned in FAU_ARP.1.1 refers to FAU_SAA.1. </note>
+                            The potential security violation mentioned in FAU_ARP.1.1 refers to FAU_SAA.1. 
+						</note>
                         <aactivity>
 							<TSS/>
 							<Guidance/>
@@ -884,9 +839,8 @@
 					</audit-event>
 				</f-component>
 		    
-
-			<!-- FAU_GEN.1 -->
-			<f-component cc-id="fau_gen.1" name="Audit Data Generation">
+				<!-- FAU_GEN.1 -->
+				<f-component cc-id="fau_gen.1" name="Audit Data Generation">
                     <f-element id="fau-gen-1e1">
                         <title>The TSF shall be able to generate an audit <h:b>data</h:b> of the following auditable events:
                             <h:ol type="a">
@@ -978,7 +932,7 @@
                                 The evaluator shall check the TSS and ensure that it lists all of the auditable events 
                                 and provides a format for audit records. Each audit record format type shall be covered, along with a 
                                 brief description of each field. The evaluator shall check to make sure that every audit event type 
-                                mandated by the PP-Configuration is described in the TSS.<h:p/>
+                                mandated by the PP-Configuration is described in the TSS.
                             </TSS>
                             <Guidance>
                                 The evaluator shall also make a determination of the administrative actions that are relevant in the 
@@ -987,7 +941,7 @@
                                 configuration (including enabling or disabling) of the mechanisms implemented in the TOE 
                                 that are necessary to enforce the requirements specified in the PP and PP-Modules. The evaluator shall document the 
                                 methodology or approach taken while determining which actions in the administrative guide are 
-                                security-relevant with respect to this PP-Configuration.<h:p/>
+                                security-relevant with respect to this PP-Configuration.
                             </Guidance>
                             <Tests>
                                 The evaluator shall test the TOE’s ability to correctly generate audit records by 
@@ -995,14 +949,13 @@
                                 For administrative actions, the evaluator shall test that each action determined by the evaluator above to 
                                 be security relevant in the context of this PP is auditable. When verifying the test results, the 
                                 evaluator shall ensure the audit records generated during testing match the format specified in the 
-                                administrative guide, and that the fields in each audit record have the proper entries.<h:br/>
-                                <h:br/>
+                                administrative guide, and that the fields in each audit record have the proper entries.<h:p/>
                                 Note that the testing here can be accomplished in conjunction with the testing of the security mechanisms 
-                                directly.<h:p/>
+                                directly.
                             </Tests>   
                         </aactivity>
                     </f-element>
-					<audit-event />
+					<audit-event/>
 				</f-component>
 		    
                 
@@ -1017,7 +970,7 @@
                         <title>The TSF shall enforce the following rules for monitoring audited events:
                             <h:ol type="a">
                                 <h:li>Accumulation or combination of <assignable>subset of defined auditable events</assignable> known to indicate a
-					potential security violation;</h:li>
+									potential security violation;</h:li>
                                 <h:li><assignable>any other rules</assignable>.</h:li>
                             </h:ol>
                         </title>
@@ -1126,7 +1079,7 @@
                         </title>
                     </f-element> 
                     <f-element id="fau-stg-2e2">
-			    <title>The TSF shall be able to [<h:i>prevent</h:i>] unauthorized modifications to the stored audit in the audit trail.
+						<title>The TSF shall be able to [<h:i>prevent</h:i>] unauthorized modifications to the stored audit in the audit trail.
                         </title>
                         <note role="application">The evaluation activity for this SFR is not intended to imply that the TOE must
 							support an administrator’s ability to designate individual audit records for deletion. That level 
@@ -1156,8 +1109,9 @@
                     </f-element>
 					<audit-event />
                 </f-component>
+				
 				<f-component cc-id="fau_stg.5" name="Prevention of Audit Data Loss">
-				<f-element id="fau-stg-5e1">
+					<f-element id="fau-stg-5e1">
                         <title>The TSF shall <selectables><selectable>ignore audited events</selectable><selectable>“prevent audited events, except those taken by the authorized user with special rights”</selectable><selectable>overwrite the oldest stored audit records</selectable></selectables>, <assignable>other actions to be taken in case of audit storage failure and conditions for the actions</assignable> if the audit data storage is full.</title>
                         <note role="application">An external log server, if available, might be used as alternative storage space
 							in case the local storage space is full. An ‘other action’ could be defined in this case as ‘send the
@@ -1182,14 +1136,14 @@
                                 defined in the ST for FAU_STG.5
                             </Tests>
                         </aactivity>
-                    </f-element> </f-component>
+                    </f-element> 
+				</f-component>
 			    
             </section>
             
 			<!-- 5.1.3 Cryptographic Support (FCS) -->
             <section id="ss-fcs" title="Cryptographic Support (FCS)">
-			
-			    
+			   
 			    <ext-comp-def title="Entropy for Virtual Machines" fam-id="FCS_ENT_EXT">
 					<fam-behavior>
 						This family defines requirements for availability of entropy data
@@ -1212,8 +1166,8 @@
                 <!-- FCS_CKM.1 -->
                 <f-component cc-id="fcs_ckm.1" name="Cryptographic Key Generation">
                     <f-element id="fcs-ckm-1e1">
-			    <title> The TSF shall generate <refinement>asymmetric</refinement> cryptographic keys in accordance with a
-				    specified cryptographic key generation algorithm
+						<title> The TSF shall generate <refinement>asymmetric</refinement> cryptographic keys in accordance with a
+							specified cryptographic key generation algorithm
                             <selectables linebreak="yes">
                                 <selectable>
                                     RSA schemes using cryptographic key sizes [3072-bit or greater] that meet the following: [FIPS PUB 186-5, “Digital Signature Standard (DSS)”, Appendix B.3]
@@ -1226,13 +1180,12 @@
                                     </selectables>
                                     that meet the following: [<h:i>FIPS PUB 186-5, “Digital Signature Standard (DSS)”, Appendix B.4</h:i>]
                                     </selectable>
-                                
-				<selectable>FFC Schemes using Diffie-Hellman group 14 that meet the following: [RFC 3526] and FFC Schemes using safe primes that meet the following: [‘NIST Special Publication 800-56A Revision 3,
-					“Recommendation for Pair-Wise Key Establishment Schemes"]</selectable>
-                            </selectables>
-			    <h:s>and specified cryptographic key sizes [assignment: cryptographic key sizes] that meet the
-				    following: [assignment: list of standards]</h:s>.
-                        </title>
+									<selectable>FFC Schemes using Diffie-Hellman group 14 that meet the following: [RFC 3526] and FFC Schemes using safe primes that meet the following: [‘NIST Special Publication 800-56A Revision 3,
+										“Recommendation for Pair-Wise Key Establishment Schemes"]</selectable>
+							</selectables>
+							<h:s>and specified cryptographic key sizes [assignment: cryptographic key sizes] that meet the
+							following: [assignment: list of standards]</h:s>.
+						</title>
                         <note role="application">The ST author selects all key generation schemes used for key establishment and
 							device authentication. When key generation is used for key establishment, the schemes in FCS_CKM.2.1
 							and selected cryptographic protocols shall match the selection. When key generation is used for device
@@ -1253,7 +1206,7 @@
                             <Tests>
                                 Note: The following tests require the developer to provide access to a test platform that 
                                 provides the evaluator with tools that are typically not found on factory products.<h:p/>
-                                <h:b>Key Generation for FIPS PUB 186-5 RSA Schemes</h:b><h:br/>
+                                <h:b>Key Generation for FIPS PUB 186-5 RSA Schemes</h:b><h:p/>
                                 The evaluator shall verify the implementation of RSA Key Generation by the TOE using the Key
 								Generation test. This test verifies the ability of the TSF to correctly produce values for the
 								key components including the public verification exponent e, the private prime factors p and q,
@@ -1283,13 +1236,13 @@
 								TSF’s implementation by comparing values generated by the TSF with those generated from a known
 								good implementation.<h:p/>
                                 <h:b>Key Generation for Elliptic Curve Cryptography (ECC)</h:b><h:p/>
-                                <h:p> FIPS 186-5 ECC Key Generation Test</h:p><h:p/>
+                                <h:p>FIPS 186-5 ECC Key Generation Test</h:p><h:p/>
                                 For each supported NIST curve (i.e., P-384 and P-521) the evaluator shall require the
 								implementation under test (IUT) to generate 10 private/public key pairs. The private key shall
 								be generated using an approved random bit generator (RBG). To determine correctness, the evaluator
 								shall submit the generated key pairs to the public key verification (PKV) function of a known
 								good implementation.
-                                <h:br/>
+                                <h:p/>
                                 <h:p>FIPS 186-5 Public Key Verification (PKV) Test</h:p>
                                 For each supported NIST curve (i.e., P-384 and P-521) the evaluator shall generate 10
 								private/public key pairs using the key generation function of a known good implementation and
@@ -2419,7 +2372,7 @@
 				inbound and outbound packets) is sufficient to determine the action that will be applied, especially in the
 				case where two different rules may apply. This description shall cover both the initial packets (that is, no
 				SA is established on the interface or for that particular packet) as well as packets that are part of an
-				established SA. <h:p/>
+				established SA.
                             </TSS>
                             <Guidance>
                                 The evaluator shall examine the operational guidance to verify it instructs the administrator how 
@@ -2429,7 +2382,7 @@
                                 that the description in the operational guidance is consistent with the description in the 
                                 TSS, and that the level of detail in the operational guidance is sufficient to
                                 allow the administrator to set up the SPD in an unambiguous fashion. This includes a discussion 
-                                of how ordering of rules impacts the processing of an IP packet.<h:p/>
+                                of how ordering of rules impacts the processing of an IP packet.
                             </Guidance>
                             <Tests>
                                 The evaluator uses the operational guidance to configure the TOE to carry out the following tests:<h:p/>
@@ -2476,13 +2429,13 @@
                         <aactivity level="element">
                             <TSS>
                                 The evaluator checks the TSS to ensure it states that an IPsec VPN can be 
-                                established to operate in tunnel mode or transport mode (as selected).<h:p/>
+                                established to operate in tunnel mode or transport mode (as selected).
                             </TSS>
                             <Guidance>
                                 The evaluator shall confirm that the operational guidance contains instructions on how to 
                                 configure the connection in each mode selected.<h:p/>
 				If both transport mode and tunnel mode are implemented, the evaluator shall review the operational
-				guidance to determine how the use of a given mode is specified.<h:p/>
+				guidance to determine how the use of a given mode is specified.
                             </Guidance>
                             <Tests>
                                 The evaluator shall perform the following tests based on the selections chosen:
@@ -2555,13 +2508,13 @@
                                 AES-CBC-128 or AES-CBC-256 in the requirement, then the evaluator verifies the
                                 TSS describes these as well. In addition, the evaluator ensures that the 
                                 SHA-based HMAC algorithm conforms to the algorithms specified in FCS_COP.1/KeyedHash Cryptographic 
-                                Operations (Keyed Hash Algorithms).<h:p/>
+                                Operations (Keyed Hash Algorithms).
                             </TSS>
                             <Guidance>
                                 The evaluator checks the operational guidance to ensure it provides instructions on how the TOE is
 				configured to use the algorithms selected in this component and whether this is performed through direct
 				configuration, defined during initial installation, or defined by acquiring configuration settings from an
-				environmental component.<h:p/>
+				environmental component.
                             </Guidance>
                             <Tests>
                                 <testlist>
@@ -2605,7 +2558,7 @@
                                 The evaluator shall examine the TSS to verify that IKEv1 or IKEv2 (as selected) are implemented. If IKEv1 is
 				implemented, the evaluator shall verify that the TSS indicates whether or not XAUTH is supported, and
 				that aggressive mode is not used for IKEv1 Phase 1 exchanges (i.e. only main mode is used). It may be that
-				these are configurable options.<h:p/>
+				these are configurable options.
                             </TSS>
                             <Guidance>
                                 The evaluator shall check the operational guidance to ensure it instructs the administrator how to
@@ -2613,7 +2566,7 @@
 				perform NAT traversal for the test below. If XAUTH is implemented, the evaluator shall verify that the
 				operational guidance provides instructions on how it is enabled or disabled.<h:p/>
 				If the TOE supports IKEv1, the evaluator shall verify that the operational guidance either asserts that only
-				main mode is used for Phase 1 exchanges, or provides instructions for disabling aggressive mode.<h:p/>
+				main mode is used for Phase 1 exchanges, or provides instructions for disabling aggressive mode.
                             </Guidance>
                             <Tests>
                                 Tests are performed in conjunction with the other IPsec evaluation activities with the exception
@@ -2652,13 +2605,13 @@
                             <TSS>
                                 The evaluator shall ensure the TSS identifies the algorithms used for encrypting the IKEv1 or IKEv2
 				payload, and that the algorithms AES-CBC-128, AES-CBC-256 are specified, and if others are chosen in the
-				selection of the requirement, those are included in the TSS discussion.<h:p/>
+				selection of the requirement, those are included in the TSS discussion.
                             </TSS>
                             <Guidance>
                                 The evaluator checks the operational guidance to ensure it provides instructions on how the TOE is
 				configured to use the algorithms selected in this component and whether this is performed through direct
 				configuration, defined during initial installation, or defined by acquiring configuration settings from an
-				environmental component. <h:p/>
+				environmental component.
                             </Guidance>
                             <Tests>
 				The evaluator shall use the operational guidance to configure the TOE (or to configure the Operational
@@ -2732,9 +2685,7 @@
 				by the same key (the total volume of all IPsec traffic protected by that key).
 			</note>
                         <aactivity level="element">
-			     <TSS>
-				     There are no TSS EAs for this requirement.<h:p/>
-			    </TSS>
+			     <TSS/>
                             <Guidance>
                                The evaluator shall check the operational guidance to ensure it provides instructions on how the TOE
 				configures the values for SA lifetimes. In addition, the evaluator shall check that the guidance has the
@@ -2804,9 +2755,7 @@
 					supported in the TSS. If there is more than one DH group supported, the evaluator checks to ensure the
 					TSS describes how a particular DH group is specified/negotiated with a peer.
 				</TSS>
-                            <Guidance>
-                                There are no AGD EAs for this requirement.
-			    </Guidance>
+                            <Guidance/>
                             <Tests>
 				    The evaluator shall perform the following test: <h:p/>
 				    <testlist>
@@ -2830,15 +2779,11 @@
                                 The evaluator shall check to ensure that, for each DH group supported, the TSS describes the process for
 				generating "x" (as defined in FCS_IPSEC_EXT.1.9) and each nonce. The evaluator shall verify that the TSS
 				indicates that the random number generated that meets the requirements in this PP is used, and that the
-				length of "x" and the nonces meet the stipulations in the requirement.<h:p/>
+				length of "x" and the nonces meet the stipulations in the requirement.
                             </TSS>
-			    <Guidance>
-				    There are no AGD EAs for this requirement.<h:p/>
-			    </Guidance>
-			    <Tests>
-				    There are no test EAs for this requirement.<h:p/>
-			    </Tests>
-                        </aactivity>
+			    <Guidance/>
+			    <Tests/>
+                       </aactivity>
                     </f-element>
                     <f-element id="fcs-ipsec-ext-1e10">  
                         <title>The TSF shall generate nonces used in IKE exchanges in a manner such that the
@@ -2887,7 +2832,7 @@
 				compared to the ID payload presented identifier, which fields of the certificate are used as the presented
 				identifier (DN, Common Name, or SAN) and, if multiple fields are supported, the logical order comparison.
 				If the ST author assigned an additional identifier type, the TSS description shall also include a description
-				of that type and the method by which that type is compared to the peer’s presented certificate.<h:p/>
+				of that type and the method by which that type is compared to the peer’s presented certificate.
                             </TSS>
 			    <Guidance>
 				The evaluator shall check that the operational guidance describes how pre-shared keys are to be
@@ -2898,7 +2843,7 @@
 				ensure that the operational guidance also describes how to configure the TOE to connect to a trusted CA,
 				and ensure a valid certificate for that CA is loaded into the TOE as a trusted CA.<h:p/>
 				The evaluator shall also ensure that the operational guidance includes the configuration of the reference
-				identifiers for the peer.<h:p/>
+				identifiers for the peer.
 			</Guidance>
 			<Tests>
 				For efficiency’s sake, the testing that is performed here has been combined with the testing for
@@ -3016,7 +2961,7 @@
 				reference identifier to the presented identifier in the SAN only, ignoring the
 				Common Name.<h:p/>
 				The configuration of the peer reference identifier is addressed by
-				FMT_SMF.1.1/VPN. <h:p/>
+				FMT_SMF.1.1/VPN.
 			</note>
                         <aactivity level="element">
 				<no-tests>
@@ -3060,9 +3005,7 @@
 				that the strength (in terms of the number of bits of key in the symmetric algorithm) of the negotiated
 				algorithm is less than or equal to that of the IKE SA that is protecting the negotiation.
                           </TSS>
-			    <Guidance>
-				    There are no AGD EAs for this requirement.
-				</Guidance>
+			    <Guidance/>
                             <Tests>
                                 The evaluator follows the guidance to configure the TOE to perform the following tests:<h:p/>
                                <testlist>
@@ -3096,11 +3039,6 @@
 				
                 <!-- FCS_RBG.1 -->
                 <f-component cc-id="fcs_rbg.1" name="Cryptographic Operation (Random Bit Generation)" id="fcs-rbg-1">
-					<consistency-rationale/>
-					<comp-lev/>
-					<management/>
-					<audit/>
-					<dependencies/>
 					<f-element id="fcs-rbg-1e1">
                     <title>
 						The TSF shall perform deterministic random bit generation services using 
@@ -3206,13 +3144,6 @@
                 </f-component>		
 				<f-component cc-id="fcs_rbg.2" name="Random Bit Generation (External Seeding)" status="sel-based">
 					<depends on="external-seed"/>
-				    <consistency-rationale/>
-					<comp-lev/>
-					<management/>
-					<audit/>
-					<dependencies/>
-					<description/>
-					
                     <f-element id="fcs-rbg-2e1">
                         <title>The TSF shall be able to accept a minimum input of <assignable>minimum input length greater than zero</assignable> from a TSF interface for the purpose of seeding.
                         </title>
@@ -3225,9 +3156,9 @@
 
                     <audit-event/>
                 </f-component>
+
                 <f-component cc-id="fcs_rbg.3" name="Random Bit Generation (Internal Seeding - Single Source)" status="sel-based">
 					<depends on="internal-seed"/>
-				    <consistency-rationale/>
 					
                     <f-element id="fcs-rbg-3e1">
                         <title>The TSF shall be able to seed the RBG using a <selectables choose-one-of="yes"><selectable>TSF software-based
@@ -3245,12 +3176,6 @@
                 </f-component>
                 <f-component cc-id="fcs_rbg.4" name="Random Bit Generation (Internal Seeding - Multiple Sources)" status="sel-based">
 				    <depends on="internal-seeds"/>
-					<consistency-rationale/>
-					<comp-lev/>
-					<management/>
-					<audit/>
-					<dependencies/>
-					
                     <f-element id="fcs-rbg-4e1" >
                         <title>The TSF shall be able to seed the RBG using <selectables><selectable><assignable>number</assignable> TSF software-based noise source(s)</selectable><selectable><assignable>number</assignable> TSF hardware-based noise source(s)</selectable></selectables>.
                         </title>
@@ -3262,14 +3187,9 @@
                     </f-element>
                     <audit-event/>
                 </f-component>	
+				
                 <f-component cc-id="fcs_rbg.5" name="Random Bit Generation (Combining Noise Sources Sources)" status="sel-based">
 				    <depends on="internal-seeds"/>
-					<consistency-rationale/>
-					<comp-lev/>
-					<management/>
-					<audit/>
-					<dependencies/>
-					
                     <f-element id="fcs-rbg-5e1">
                         <title>The TSF shall <assignable>combining operation</assignable>
                             <selectables><selectable>output from TSF noise source(s)</selectable><selectable>input from TSF interface(s) for seeding</selectable></selectables> to create the entropy input into the derivation function as defined in <assignable>list of standards</assignable>, resulting in a minimum of <assignable>number of bits</assignable> bits of min-entropy.
@@ -3603,7 +3523,7 @@
                             For data transfer mechanisms that use shared physical devices, FDP_VMS_EXT.1.3 is met if the device is 
 							listed in and meets FDP_PPR_EXT.1.1 (VM access to the physical device is configurable).<h:p/>
                             For data transfer mechanisms that use virtual networking, FDP_VMS_EXT.1.3 is met if FDP_VNC_EXT.1.1 
-							is met (VM access to virtual networks is configurable).<h:p/>
+							is met (VM access to virtual networks is configurable).
                         </note>
                         <aactivity>
                             <TSS>
@@ -3683,7 +3603,7 @@
                             Virtual networks must be separated from one another to provide isolation commensurate with that provided by 
 							physically separate networks. It must not be possible for data to cross between properly configured
 							virtual networks regardless of whether the traffic originated from a local guest VM or a remote host.<h:p/>
-                            Unprivileged users must not be able to connect VMs to each other or to external networks.<h:p/>
+                            Unprivileged users must not be able to connect VMs to each other or to external networks.
                         </note>
                         <aactivity>
                             <TSS>
@@ -3949,7 +3869,7 @@
                             X.509, version 1.0 . 
 							<h:br/><h:br/>
 							PINs used to access OE-protected storage are set and managed by the OE-protected storage mechanism. Thus
-							requirements on PIN management are outside the scope of the TOE.<h:p/>
+							requirements on PIN management are outside the scope of the TOE.
                         </note>
                     </f-element>
                     <f-element id="fia-uau-5e2">
@@ -4117,6 +4037,314 @@
 						networks.</fam-behavior>
 				</ext-comp-def>
                 
+				<ext-comp-def fam-id="FMT_MOF_EXT" title="Management of Security Functions Behavior">
+           			<fam-behavior>This family defines requirements for administrative management of the TOE. 
+                    </fam-behavior>		
+				</ext-comp-def>
+			
+				<f-component cc-id="fmt_mof_ext.1" name="Management of Security Functions Behavior">
+					<consistency-rationale/>
+	            	<comp-lev>defines required management functions and responsibilities.</comp-lev>
+					<management>There are no additional management functions beyond those already described in FMT_MOF_EXT.1.</management>
+					<audit>Success or failure of management function.</audit>
+					<dependencies>No other dependencies.</dependencies>
+                    <f-element id="fmt-mof-ext-1e1">
+                       	<title>
+							The TSF shall be capable of supporting 
+                           		<selectables>
+	                               	<selectable>local</selectable>
+        	                       	<selectable id="sel-mof-1e1-remote">remote</selectable>
+                           		</selectables> administration.
+                       	</title>
+                        <note role="application">
+							Selection of “remote” requires the selection-based requirement FTP_TRP.1 to be cleimed in the ST.
+						</note>
+                    </f-element>
+                    <f-element id="fmt-mof-ext-1e2">
+                        <title>
+							The TSF shall be capable of performing the following management functions, [<h:i>controlled by an administrator 
+				            or user as shown in the key in <xref to="manfunc"/>.</h:i>]<h:p/>
+                            <h:center><h:h4><ctr ctr-type="Table" pre="Table " id="manfunc">: Virtualization Management Functions</ctr></h:h4></h:center>
+							<h:div class="table-key" style="border-style: solid; padding: 5px;">
+								X = Mandatory (TOE must provide that function to that role)<h:br/>
+								O = Optional (TOE may or may not provide that function to that role)<h:br/>
+								N = Not Permitted (TOE must not provide that function to that role)<h:br/>
+								S = Selection-Based (TOE must provide that function to that role if the TOE claims a particular selection-based SFR)<h:br/>
+							</h:div>
+                            <h:table>
+                                <h:tr>
+                                    <h:th>Number</h:th> 
+                                    <h:th>Function</h:th> 
+                                    <h:th>Admin</h:th> 
+                                    <h:th>User</h:th> 
+                                    <h:th>Notes</h:th> 
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>1</h:td> 
+                                    <h:td>Ability to update the Virtualization System</h:td> 
+                                    <h:td>X</h:td> 
+                                    <h:td>N</h:td> 
+                                    <h:td>See FPT_TUD_EXT.1</h:td> 
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>2</h:td>
+                                    <h:td><selectables>
+										<selectable id="sel-mf-pwd-policy">Ability to configure administrator password policy as defined in FIA_PMG_EXT.1</selectable>
+										<selectable>Not applicable.</selectable></selectables></h:td>
+                                    <h:td>S</h:td>
+                                    <h:td>N</h:td>
+                                    <h:td>Must be selected if FIA_PMG_EXT.1 is claimed.</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>3</h:td>
+                                    <h:td>Ability to create, configure and delete VMs</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>4</h:td>
+                                    <h:td>Ability to set default initial VM configurations</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>5</h:td>
+                                    <h:td>Ability to configure virtual networks including VM</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>See FDP_VNC_EXT.1</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>6</h:td>
+                                    <h:td>Ability to configure and manage the audit system and audit data</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>N</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>7</h:td>
+                                    <h:td>Ability to configure VM access to physical devices</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>See FDP_PPR_EXT.1</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>8</h:td>
+                                    <h:td>Ability to configure inter-VM data sharing</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>See FDP_VMS_EXT.1</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>9</h:td>
+                                    <h:td><h:s>Ability to enable/disable VM access to Hypercall functions</h:s></h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>Management function 9 is no longer required</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>10</h:td>
+                                    <h:td>Ability to configure removable media policy</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>See FPT_RDM_EXT.1</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>11</h:td>
+                                    <h:td>Ability to configure the cryptographic functionality</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>See FCS_CKM.1, FCS_CKM.2, and FCS_COP.1/HASH. See also, the <xref to="pkg-tls"/> and <xref to="pkg-ssh"/> if 
+										claimed for methods to configure their respective cryptographic functionality.</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>12</h:td>
+                                    <h:td>Ability to change default authorization factors</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>N</h:td>
+                                    <h:td>See FIA_PMG_EXT.1</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>13</h:td>
+                                    <h:td>Ability to enable/disable screen lock</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>14</h:td>
+                                    <h:td>Ability to configure screen lock inactivity timeout</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>15</h:td>
+                                    <h:td>Ability to configure remote connection inactivity timeout</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>N</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>16</h:td>
+                                    <h:td>Ability to configure lockout policy for unsuccessful authentication attempts through 
+                                        <selectables>
+                                            <selectable>timeouts between attempts</selectable>
+                                            <selectable>limiting number of attempts during a time period</selectable>
+                                        </selectables></h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>N</h:td>
+                                    <h:td>See FIA_AFL_EXT.1</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>17</h:td>
+                                    <h:td><selectables>
+										<selectable id="sel-mf-dir-server">Ability to configure name/address of directory server to bind with</selectable>
+										<selectable>Not applicable</selectable></selectables></h:td>
+                                    <h:td>S</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>Must be selected if "directory-based" is selected anywhere in FIA_UAU.5.1.</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>18</h:td>
+                                    <h:td>Ability to configure name/address of audit/logging server to which to send audit/logging records</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>N</h:td>
+                                    <h:td>See FAU_STG_EXT.1.</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>19</h:td>
+                                    <h:td>Ability to configure name/address of network time server</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>20</h:td>
+                                    <h:td>Ability to configure banner</h:td>
+                                    <h:td>X</h:td>
+                                    <h:td>N</h:td>
+                                    <h:td>See FTA_TAB.1</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>21</h:td>
+                                    <h:td>Ability to connect/disconnect removable devices to/from a VM</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>See FPT_RDM_EXT.1</h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>22</h:td>
+                                    <h:td>Ability to start a VM</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>23</h:td>
+                                    <h:td>Ability to stop/halt a VM</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>24</h:td>
+                                    <h:td>Ability to checkpoint a VM</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>25</h:td>
+                                    <h:td>Ability to suspend a VM</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>26</h:td>
+                                    <h:td>Ability to resume a VM</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td>O</h:td>
+                                    <h:td> </h:td>
+                                </h:tr>
+                                <h:tr>
+                                    <h:td>27</h:td>
+                                    <h:td><selectables>
+										<selectable id="sel-mf-cert-no-validity-action">Ability to configure action taken if unable to determine the
+											validity of a certificate</selectable>
+										<selectable>Not applicable</selectable></selectables>
+									</h:td>
+                                    <h:td>S</h:td>
+                                    <h:td>N</h:td>
+                                    <h:td>This function must be selected if "allow the administrator to choose whether to accept the certificate 
+										in these cases" in FIA_X509_EXT.2.2.</h:td>
+                                </h:tr>
+                            </h:table>
+							<h:br/>]
+                        </title>
+                        <ext-comp-def-title>
+                          <title>The TSF shall be capable of performing the following management functions
+                                <assignable>description of management functions</assignable>.
+                          </title>
+                        </ext-comp-def-title>
+                        <note role="application">
+                            The ST author is expected to update <xref to="manfunc"/> with an indication as to 
+							whether any of the ‘optional’ or ‘selection-based’ functions are 
+							included as part of the TOE. The ST author may also omit the ‘Notes’ 
+							column as it is provided in this PP-Module as an aid to the ST author in 
+							constructing the table.<h:p/>
+                            This SFR addresses the roles of the CC Part 2 SFRs FMT_MOF.1, FMT_SMF.1,
+							and FMT_SMR.2.<h:p/>
+                            Administration is considered “local” if the administrator is physically 
+							present at the machine on which the VS is installed.<h:p/>
+                            Administration is considered “remote” if communications between the
+							administrator and the Management Subsystem travel on a network.<h:p/>
+                            There is no requirement to authenticate users of the Virtualization
+							System. Users that have access to VMs but not to the Management
+							Subsystem need not authenticate to the Virtualization System in order 
+							to use Guest VMs. Requirements for authentication of VM users is
+							determined by the policies of the domains running within the Guest VMs.	<h:p/>
+                            For a VS where the OS is part of the platform and not part of the TOE, it 
+							is acceptable for the VS to invoke the Host OS screen lock.
+                        </note>
+                        <aactivity>
+							<TSS>
+                            	The evaluator shall examine the TSS and Operational Guidance to ensure
+								that it describes which security management functions require 
+								administrator privilege and the actions associated with each
+								management function. The evaluator shall verify that for each 
+								management function and role specified in <xref to="manfunc"/>, the defined 
+								role is able to perform all mandatory functions as well as all 
+								optional or selection-based functions claimed in the ST.
+							</TSS>
+							<Guidance>
+                            	The evaluator shall examine the Operational Guidance to ensure that it
+								describes how the administrator and user are able to perform
+								each management function that the ST claims the TOE supports.<h:p/>
+                            	The evaluator shall verify for each claimed management function that 
+								the Operational Guidance is sufficiently detailed to allow the 
+								function to be performed and that the function can be performed.
+							</Guidance>
+							<Tests>
+								The evaluator shall test each management function for each role listed in the FMT_MOF_EXT.1.1
+                                <xref to="manfunc"/> in the ST to demonstrate that the function can be performed by the roles that are
+								authorized to do so and the result of the function is demonstrated. The evaluator shall also verify 
+								for each claimed management function in <xref to="manfunc"/>, 
+                                that if the TOE claims not to provide a particular role with access to the function, then it is not
+								possible to access the TOE as that role and perform that function.
+							</Tests>
+                        </aactivity>
+                    </f-element>
+					<audit-event>
+						<audit-event-descr>Attempts to invoke any of the management functions listed in <xref to="manfunc"/>.</audit-event-descr>
+						<audit-event-info>Success or failure of attempt</audit-event-info>
+						<audit-event-info>Identity of actor</audit-event-info>
+					</audit-event>			
+                </f-component>			
+				
                 <!-- FMT_SMO_EXT.1 -->
                 <f-component cc-id="fmt_smo_ext.1" name="Separation of Management and Operational Networks">
 					<consistency-rationale/>
@@ -4179,7 +4407,7 @@
 				If plaintext Guest network traffic is detected, the requirement is not met.<h:p/>
 				If data encryption is used, then the evaluator shall capture packets on the network over which the data is sent
 					while a VM or other large data structure is being transmitted. If plaintext VM contents are detected, the
-					requirement is not met.<h:p/>
+					requirement is not met.
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -4362,13 +4590,18 @@
                         <title>
                             The TSF shall preserve a secure state when the following types of failures occur: [<h:i>DRBG self-test failure</h:i>].              
                         </title>
-                        <note role="application">The intent of this requirement is to ensure that cryptographic services requiring random bit generation cannot be performed if a failure of a self-test defined in FPT_TST.1 occurs.</note>
+                        <note role="application">The intent of this requirement is to ensure that cryptographic services
+							requiring random bit generation cannot be performed if a failure of a self-test defined in FPT_TST.1 
+							occurs.</note>
                         <aactivity>              
                             <TSS>
-                                The evaluator shall verify that the TSF describes how the TOE enters an error state in the event of a DRBG self-test failure.
+                                The evaluator shall verify that the TSF describes how the TOE enters an error state in the event 
+								of a DRBG self-test failure.
                             </TSS>
                             <Guidance>
-                                The evaluator shall verify that the guidance documentation describes the error state that results from a DRBG self-test failure and the actions that a user or administrator should take in response to attempt to resolve the error state.
+                                The evaluator shall verify that the guidance documentation describes the error state that results 
+								from a DRBG self-test failure and the actions that a user or administrator should take in 
+								response to attempt to resolve the error state.
                             </Guidance>
                             <Tests/>
                         </aactivity>
@@ -4662,11 +4895,13 @@
                                 The evaluator shall verify that the TSS or Operational Guidance describes how 
                                 integrity measurements are performed and made available to the Management Subsystem.
                             </TSS>
-							<Guidance>The evaluator shall examine the operational guidance to verify that it documents how to access the measurements in the Management Subsystem.</Guidance>
+							<Guidance>The evaluator shall examine the operational guidance to verify that it documents how to 
+								access the measurements in the Management Subsystem.</Guidance>
                             <Tests>
                                 The evaluator shall perform the following test:<h:p/>
                                 <testlist>
-                                    <test>The evaluator shall start the VS, login as an administrator, and verify that the measurements for the specified components are viewable in the Management Subsystem.</test>
+                                    <test>The evaluator shall start the VS, login as an administrator, and verify that the
+										measurements for the specified components are viewable in the Management Subsystem.</test>
                               </testlist>
                             </Tests>
                         </aactivity>
@@ -4801,28 +5036,32 @@
                     
                     <f-element id="fel-tsf-ver-int">
                         <title>
-                            The TSF shall provide authorized users with the capability to verify the integrity of [<h:i>[TSF DRBG specified in FCS_RBG.1]</h:i>].
+                            The TSF shall provide authorized users with the capability to verify the integrity
+							of [<h:i>[TSF DRBG specified in FCS_RBG.1]</h:i>].
                         </title>
-                        <note role="application">This SFR is a required dependency of FCS_RBG.1. It is intended to require that any DRBG implemented by the TOE undergo health testing to ensure that the random bit generation functionality has not been degraded. If the TSF supports multiple DRBGs, this SFR should be iterated to describe the self-test behavior for each.</note>
+                        <note role="application">This SFR is a required dependency of FCS_RBG.1. It is intended to require 
+							that any DRBG implemented by the TOE undergo health testing to ensure that the random bit generation
+							functionality has not been degraded. If the TSF supports multiple DRBGs, this SFR should be iterated
+							to describe the self-test behavior for each.</note>
                         <aactivity>
                             <TSS>
-                                <h:p>
-                                    The	evaluator shall examine the TSS to ensure that it details the self-tests that are run by the TSF along with how they are run. This description should include an outline of what the tests are actually doing. The evaluator shall ensure that the TSS makes an argument that the tests are sufficient to demonstrate that the DRBG is operating correctly.
-                                </h:p><h:p>
-                                    Note that this information may also be placed in the entropy documentation specified by <xref to="entropyappendix"/>. 
-                                </h:p>
+                                The	evaluator shall examine the TSS to ensure that it details the self-tests that are run
+								by the TSF along with how they are run. This description should include an outline of what
+								the tests are actually doing. The evaluator shall ensure that the TSS makes an argument that
+								the tests are sufficient to demonstrate that the DRBG is operating correctly.<h:p/>
+                                Note that this information may also be placed in the entropy documentation specified 
+								by <xref to="entropyappendix"/>. 
                             </TSS>
                             <Guidance>
-                                <h:p>
-                                    If a self-test can be executed at the request of an authorized user, the evaluator shall verify that the operational guidance provides instructions on how to execute that self-test.
-                                </h:p>
+                                If a self-test can be executed at the request of an authorized user, the evaluator shall
+								verify that the operational guidance provides instructions on how to execute that self-test.
                             </Guidance>
                             <Tests>
-                                <h:p>
-                                    For each self-test, the evaluator shall verify that evidence is produced that the self-test is executed when specified by FPT_TST.1.1.
-                                </h:p><h:p>
-                                    If a self-test can be executed at the request of an authorized user, the evaluator shall verify that following the steps documented in the operational guidance to perform the self-test will result in execution of the self-test.
-                                </h:p>
+                                For each self-test, the evaluator shall verify that evidence is produced that the self-test is
+								executed when specified by FPT_TST.1.1.<h:p/>
+                                If a self-test can be executed at the request of an authorized user, the evaluator shall verify
+								that following the steps documented in the operational guidance to perform the self-test will
+								result in execution of the self-test.
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -4906,7 +5145,7 @@
 				same manufacturer (e.g., by comparing public keys) or signed by legitimate signing keys (e.g.,
 				successful verification of certificates when using X.509 certificates).<h:p/>
                             The Digital Signature option is the preferred mechanism for authenticating updates. The Published Hash
-				option will be removed from a future version of this PP.<h:p/>
+				option will be removed from a future version of this PP.
                         </note>
                         <aactivity>
                             <TSS>
@@ -5027,7 +5266,7 @@
 				compromise through the processing of malformed data passed to the virtual device interface from a 
 				guest OS. The VMM cannot assume that any data coming from a VM is well-formed—even if the virtual
 				device interface is unique to the VS and the data comes from a virtual device
-				driver supplied by the Virtualization Vendor.<h:br/>
+				driver supplied by the Virtualization Vendor.
                         </note>
                         <aactivity>
                             <TSS>
@@ -5096,7 +5335,7 @@
 							is that a firmware update of a single VM must not affect other VMs. So if multiple VMs share the same
 							firmware image as part of a common hardware abstraction, then the update of a single machine’s BIOS 
 							must not be allowed to change the common abstraction. The virtual hardware abstraction is part of the
-							VMM.<h:br/>
+							VMM.
                         </note>
                         <aactivity>
 							<TSS>
@@ -5221,7 +5460,7 @@
                             X.509, version 1.0 must be included in the ST. "No authentication of the remote peer" should be selected only if the TOE is acting 
 				as a server in a non-mutual authentication configuration.<h:p/>			    
 			    The ST author must include the security functional requirements for the
-                            trusted channel protocol selected in FTP_ITC_EXT.1 in the main body of the ST.<h:p/>
+                            trusted channel protocol selected in FTP_ITC_EXT.1 in the main body of the ST.
                         </note>
                         <aactivity>
                             <TSS>
@@ -5284,8 +5523,7 @@
                 <!-- Included in th ST if "remote" is selected in FMT_MOF_EXT.1.1 in the server or client PP-Module. -->
                 <f-component cc-id="ftp_trp.1" name="Trusted Path" status="sel-based">
                     <depends on-sel="ftp-itc-ext-1e1"/>
-			        <depends on-sel="sel-mof-1e1-remote-client"><external-doc ref="client-virt"/></depends> 
-			        <depends on-sel="sel-mof-1e1-remote-server"><external-doc ref="server-virt"/></depends>
+			        <depends on-sel="sel-mof-1e1-remote"/> 
                     <f-element id="ftp-trp-1e1">
 			    <title>The TSF shall <refinement>use a trusted channel as specified in FTP_ITC_EXT.1 to</refinement> 
 				    provide a <refinement>trusted</refinement> communication path between itself and 
@@ -5724,6 +5962,224 @@
                         </aactivity>
                     </a-element>
                 </a-component>
+				
+			<a-component cc-id="alc_flr.1" name="Basic Flaw Remediation (ALC_FLR.1)" status="optional">
+				<a-element type="D">
+					<title>The developer shall document and provide flaw remediation procedures addressed to TOE
+						developers.</title>
+				</a-element>
+				<a-element type="C">
+					<title>The flaw remediation procedures documentation shall describe the procedures used to
+						track all reported security flaws in each release of the TOE.</title>
+				</a-element>
+				<a-element type="C">
+					<title>The flaw remediation procedures shall require that a description of the nature and effect
+						of each security flaw be provided, as well as the status of finding a correction to that flaw.</title>
+				</a-element>
+				<a-element type="C">
+					<title>The flaw remediation procedures shall require that corrective actions be identified for
+						each of the security flaws.</title>
+				</a-element>
+				<a-element type="C">
+					<title>The flaw remediation procedures documentation shall describe the methods used to
+						provide flaw information, corrections and guidance on corrective actions to TOE users.</title>
+				</a-element>
+				<a-element type="E">
+					<title>The evaluator shall confirm that the information provided meets all requirements for
+						content and presentation of evidence.</title>
+					<aactivity>
+						<!-- <TSS> --> 
+						The evaluator shall inspect the TSS and verify it identifies how to access the flaw remediation procedures.
+						<!--</TSS>
+				<Guidance> 
+					<h:p>
+						None.
+					 </Guidance>--> 
+					</aactivity> 
+				</a-element>  
+			</a-component>	
+			
+			
+			<a-component cc-id="alc_flr.2" name="Flaw Reporting Procedures (ALC_FLR.2)" status="optional">
+				<a-element type="D">
+					<title>
+						The developer shall document and provide flaw remediation procedures addressed to TOE
+						developers.</title>
+				</a-element>
+				<a-element type="D">
+					<title>
+						The developer shall establish a procedure for accepting and acting upon all reports of
+						security flaws and requests for corrections to those flaws.
+					</title>
+				</a-element>
+				<a-element type="D">
+					<title>
+						The developer shall provide flaw remediation guidance addressed to TOE users.
+					</title>
+				</a-element>
+				<a-element type="C">
+					<title>
+						The flaw remediation procedures documentation shall describe the procedures used to track all
+						reported security flaws in each release of the TOE.</title>
+				</a-element>
+				<a-element type="C">
+					<title>
+						The flaw remediation procedures shall require that a description of the nature and effect of each
+						security flaw be provided, as well as the status of finding a correction to that flaw.</title>
+				</a-element>
+				<a-element type="C">
+					<title>
+						The flaw remediation procedures shall require that corrective actions be identified for each of the
+						security flaws.</title>
+				</a-element>
+				<a-element type="C">
+					<title>
+						The flaw remediation procedures documentation shall describe the methods used to provide flaw
+						information, corrections and guidance on corrective actions to TOE users.
+					</title>
+				</a-element>
+				<a-element type="C">
+					<title>
+						The flaw remediation procedures shall describe a means by which the developer receives
+						from TOE users reports and enquiries of suspected security flaws in the TOE.
+					</title>
+				</a-element>
+				<a-element type="C">
+					<title>
+						The procedures for processing reported security flaws shall ensure that any reported
+						flaws are remediated and the remediation procedures issued to TOE users.
+					</title>
+				</a-element>
+				<a-element type="C">
+					<title>
+						The procedures for processing reported security flaws shall provide safeguards that any
+						corrections to these security flaws do not introduce any new flaws.
+					</title>
+				</a-element>
+				<a-element type="C">
+					<title>
+						The flaw remediation guidance shall describe a means by which TOE users report to the
+						developer any suspected security flaws in the TOE.
+					</title>
+				</a-element>
+				<a-element type="E">
+					<title>
+						The evaluator shall confirm that the information provided meets all requirements for content and
+						presentation of evidence.</title>
+					<aactivity>
+						<!-- <TSS> -->
+						The evaluator shall inspect the TSS and verify it identifies how to access the flaw remediation procedures.
+						<!-- </TSS>
+				<Guidance> -->
+						<h:p>
+							The evaluator shall inspect the guidance document and verify it describes how to access the flaw remediation guidance.</h:p>
+						<!-- </Guidance>--> 
+					</aactivity> 
+				</a-element>  
+			</a-component>		
+					
+			<a-component cc-id="alc_flr.3" name="Systematic Flaw Remediation (ALC_FLR.3)" status="optional">
+				<a-element type="D">
+					<title>
+						The developer shall document and provide flaw remediation procedures addressed to TOE
+						developers.
+					</title>
+				</a-element>
+				<a-element type="D">
+					<title>
+						The developer shall establish a procedure for accepting and acting upon all reports of security
+						flaws and requests for corrections to those flaws.
+					</title>
+				</a-element>
+				<a-element type="D">
+					<title>
+						The developer shall provide flaw remediation guidance addressed to TOE users.
+					</title>
+				</a-element>
+				<a-element type="C">
+					<title>
+						The flaw remediation procedures documentation shall describe the procedures used to track all
+						reported security flaws in each release of the TOE.
+					</title>
+				</a-element>
+				<a-element type="C">
+					<title>
+						The flaw remediation procedures shall require that a description of the nature and effect of each
+						security flaw be provided, as well as the status of finding a correction to that flaw.
+					</title>
+				</a-element>
+				<a-element type="C">
+					<title>
+						The flaw remediation procedures shall require that corrective actions be identified for each of the
+						security flaws.
+					</title>
+				</a-element>
+				<a-element type="C">
+					<title>
+						The flaw remediation procedures documentation shall describe the methods used to provide flaw
+						information, corrections and guidance on corrective actions to TOE users.
+					</title>
+				</a-element>
+				<a-element type="C">
+					<title>
+						The flaw remediation procedures shall describe a means by which the developer receives from
+						TOE users reports and enquiries of suspected security flaws in the TOE.
+					</title>
+				</a-element>
+				<a-element type="C">
+					<title>
+						The flaw remediation procedures shall include a procedure requiring timely response and
+						the automatic distribution of security flaw reports and the associated corrections to
+						registered users who might be affected by the security flaw.
+					</title>
+				</a-element>
+				<a-element type="C">
+					<title>
+						The procedures for processing reported security flaws shall ensure that any reported flaws are
+						remediated and the remediation procedures issued to TOE users.
+					</title>
+				</a-element>
+				<a-element type="C">
+					<title>
+						The procedures for processing reported security flaws shall provide safeguards that any
+						corrections to these security flaws do not introduce any new flaws.
+					</title>
+				</a-element>
+				<a-element type="C">
+					<title>
+						The flaw remediation guidance shall describe a means by which TOE users report to the
+						developer any suspected security flaws in the TOE.
+					</title>
+				</a-element>
+				<a-element type="C">
+					<title>
+						The flaw remediation guidance shall describe a means by which TOE users may register
+						with the developer, to be eligible to receive security flaw reports and corrections.
+					</title>
+				</a-element>
+				<a-element type="C">
+					<title>
+						The flaw remediation guidance shall identify the specific points of contact for all reports
+						and enquiries about security issues involving the TOE.
+					</title>
+				</a-element>
+				<a-element type="E">
+					<title>
+						The evaluator shall confirm that the information provided meets all requirements for content and
+						presentation of evidence.</title>
+					<aactivity>
+						<!-- <TSS> -->
+						The evaluator shall inspect the TSS and verify it identifies how to access the flaw remediation procedures.
+						<!--</TSS>
+				<Guidance> -->
+						<h:p>
+							The evaluator shall inspect the guidance document and verify it describes how to access the flaw remediation guidance.
+						</h:p>
+						<!-- </Guidance>--> 
+					</aactivity> 
+				</a-element>  
+			</a-component>	
+				
 
 		<!-- ALC_TSU_EXT -->
                 <a-component cc-id="alc_tsu_ext.1" name="Timely Security Updates">
