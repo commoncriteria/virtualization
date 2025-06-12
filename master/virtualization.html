@@ -864,7 +864,13 @@ The following sections list Common Criteria and technology terms used in this do
 					exclusive control over assigned computing resources. Each <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> instance supports applications such as file servers, web servers, and 
 					mail servers. Server virtualization may also support client operating systems in a virtual desktop or thin-client environment. 
 					Typically, virtualized servers provide services to remote clients from a data center, and are generally not directly accessible 
-					by non-administrative users.
+					by non-administrative users.<p></p>
+					Claiming of the Server Virtualization use case requires that the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> Author:<ul>
+					<li>Not permit Users to invoke management function <a href="#mf-admin-setDefVMConfigs">4</a>,</li>
+					<li>Not permit Users to invoke management function <a href="#mf-admin-mediaPolicy">9</a>,</li>
+					<li>Require that Administrators be able to invoke management function <a href="#mf-admin-configCrypto">10</a>, and</li>
+					<li>Not permit Users to invoke management function <a href="#mf-admin-configCrypto">10</a>.</li>
+					</ul>
 				</span></dd><dt id="uc-client-virt"> [USE CASE 2] Client Virtualization</dt><dd><span class="description">
 					Client Virtualization, for the purposes of this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, refers to a Virtualization System that implements virtualized hardware
 					components locally on an endpoint machine. Endpoints are typically client hardware such as desktop or laptop computers that a user
@@ -872,7 +878,12 @@ The following sections list Common Criteria and technology terms used in this do
 					creates a virtualized hardware environment for each instance of a guest operating system (a virtual machine) permitting these 
 					environments to execute concurrently while maintaining isolation and the appearance of exclusive control over assigned computing
 					resources. Client virtualization is generally used on endpoint systems, making use of the local machine's resources (memory, <abbr class="dyn-abbr"><a href="#abbr_CPU">CPU</a></abbr>, etc.)
-					to provide isolated user environments.
+					to provide isolated user environments.<p></p>
+					Claiming of the Client Virtualization use case requires that the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> Author:<ul>
+					<li>Optionally allow Users to invoke management function <a href="#mf-admin-setDefVMConfigs">4</a>,</li>
+					<li>Optionally allow Users to invoke management function <a href="#mf-admin-mediaPolicy">9</a>, and</li>
+					<li>Optionally allow Administrators and Users to invoke management function <a href="#mf-admin-configCrypto">10</a>.</li>
+					</ul>
 				</span></dd></dl>
         
 	<h1 class="indexable" data-level="1" id="sec-cclaims">2 Conformance Claims</h1>
