@@ -386,14 +386,16 @@
 					exclusive control over assigned computing resources. Each VM instance supports applications such as file servers, web servers, and 
 					mail servers. Server virtualization may also support client operating systems in a virtual desktop or thin-client environment. 
 					Typically, virtualized servers provide services to remote clients from a data center, and are generally not directly accessible 
-					by non-administrative users.
+					by non-administrative users.<h:p/>
+					Claiming of the Server Virtualization use case requires that the ST Author:<h:ul>
+					<h:li>Not permit Users to invoke management function <xref to="mf-admin-setDefVMConfigs"/>,</h:li>
+					<h:li>Not permit Users to invoke management function <xref to="mf-admin-mediaPolicy"/>,</h:li>
+					<h:li>Require that Administrators be able to invoke management function <xref to="mf-admin-configCrypto"/>, and</h:li>
+					<h:li>Not permit Users to invoke management function <xref to="mf-admin-configCrypto"/>.</h:li>
+					</h:ul>
 				</description>
 <!--				<config>
 					<ref-id>sfr-fau-gen-1</ref-id>
-					<ref-id>sfr-fau-sar-1</ref-id>
-					<ref-id>sfr-fau-stg-1</ref-id>
-					<ref-id>sfr-fau-stg-2</ref-id>
-					<ref-id>sfr-fau-stg-5</ref-id>
 				</config>
 -->
 			</usecase>
@@ -405,17 +407,15 @@
 					creates a virtualized hardware environment for each instance of a guest operating system (a virtual machine) permitting these 
 					environments to execute concurrently while maintaining isolation and the appearance of exclusive control over assigned computing
 					resources. Client virtualization is generally used on endpoint systems, making use of the local machine's resources (memory, CPU, etc.)
-					to provide isolated user environments.
+					to provide isolated user environments.<h:p/>
+					Claiming of the Client Virtualization use case requires that the ST Author:<h:ul>
+					<h:li>Optionally allow Users to invoke management function <xref to="mf-admin-setDefVMConfigs"/>,</h:li>
+					<h:li>Optionally allow Users to invoke management function <xref to="mf-admin-mediaPolicy"/>, and</h:li>
+					<h:li>Optionally allow Administrators and Users to invoke management function <xref to="mf-admin-configCrypto"/>.</h:li>
+					</h:ul>
 				</description>
 <!--				<config>
 					<ref-id>sfr-fau-gen-1</ref-id>
-					<ref-id>sfr-fau-sar-1</ref-id>
-					<ref-id>sfr-fau-stg-1</ref-id>
-					<ref-id>sfr-fau-stg-2</ref-id>
-					<ref-id>sfr-fau-stg-5</ref-id>
-					<ref-id>sfr-fpt-php-2</ref-id> 
-					<ref-id>sfr-fpt-php-3</ref-id> 
-					<ref-id>sfr-fpt-jta-ext-2</ref-id>
 				</config> -->
 			</usecase>
 		</usecases>
@@ -4205,7 +4205,7 @@
 									<text>
 										Ability to configure the cryptographic functionality
 									</text>
-									<O ref="A"/>
+									<O ref="A"><depends on-uc="uc-server-virt"/></O>
 									<O ref="U"/>
 									<app-note>Mandatory for Admin role for the Server use case. <h:br/>
 										Forbidden for Users for the Server use case.<h:br/>
