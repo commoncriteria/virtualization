@@ -850,8 +850,6 @@
                         <title>The TSF shall be able to generate an audit <h:b>data</h:b> of the following auditable events:
                             <h:ol type="a">
                                 <h:li>Start-up and shutdown of audit functions</h:li>
-                                <h:li>[<refinement>All administrative actions relevant to claimed SFRs as defined in the 
-									Auditable Events Table from the Client and Server PP-Modules</refinement>]</h:li>		    
 								<h:li>[<refinement>Auditable events defined in <xref g="t-audit-mandatory"/></refinement>]</h:li>
                                 <h:li><refinement><selectables linebreak="yes">
                                     <selectable id="sel-at2">Auditable events defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable>
@@ -944,7 +942,7 @@
                                 context of this PP-Configuration. The evaluator shall examine the administrative guide and make a determination of which 
                                 administrative commands, including subcommands, scripts, and configuration files, are related to the 
                                 configuration (including enabling or disabling) of the mechanisms implemented in the TOE 
-                                that are necessary to enforce the requirements specified in the PP and PP-Modules. The evaluator shall document the 
+                                that are necessary to enforce the requirements specified in the PP. The evaluator shall document the 
                                 methodology or approach taken while determining which actions in the administrative guide are 
                                 security-relevant with respect to this PP-Configuration.
                             </Guidance>
@@ -2764,7 +2762,7 @@
 						</title>
                         <note role="application">
 							At least one public-key-based Peer Authentication method is required in order to
-							conform to this PP-Module; one or more of the public key schemes is chosen by
+							conform to this PP; one or more of the public key schemes is chosen by
 							the ST author to reflect what is implemented. The ST author also ensures that
 							appropriate FCS requirements reflecting the algorithms used (and key
 							generation capabilities, if provided) are listed to support those methods. Note
@@ -2816,7 +2814,7 @@
 										trusted CA and shall establish an IPsec connection with the peer.</test>
 									<test>The evaluator shall test that the TOE can properly handle revoked certificates – conditional on
 										whether CRL or OCSP is selected; if both are selected, and then a test is performed for each method. For
-										this current version of the PP-Module, the evaluator has to only test one up in the trust chain (future
+										this current version of the PP, the evaluator has to only test one up in the trust chain (future
 										drafts may require to ensure the validation is done up the entire chain). The evaluator shall ensure that a
 										valid certificate is used, and that the SA is established. The evaluator then attempts the test with a
 										certificate that will be revoked (for each method chosen in the selection) to ensure when the certificate
@@ -4344,7 +4342,7 @@
                             The ST author is expected to update <xref to="manfunc"/> with an indication as to 
 							whether any of the optional functions are 
 							included as part of the TOE. The ST author may also omit the ‘Notes’ 
-							column as it is provided in this PP-Module as an aid to the ST author in 
+							column as it is provided in this PP as an aid to the ST author in 
 							constructing the table.<h:p/>
                             This SFR addresses the roles of the CC Part 2 SFRs FMT_MOF.1, FMT_SMF.1,
 							and FMT_SMR.2.<h:p/>
@@ -5476,7 +5474,7 @@
                             to provide a trusted communication channel between itself and <h:ul>
                                 <h:li>audit servers (as required by FAU_STG.1) and</h:li></h:ul>
                             <selectables linebreak="yes">
-                                <selectable>remote administrators (as required by FTP_TRP.1.1 if selected in FMT_MOF_EXT.1.1 in the Client or Server PP-Module)</selectable>
+                                <selectable>remote administrators (as required by FTP_TRP.1.1 if selected in FMT_MOF_EXT.1.1</selectable>
                                 <selectable>separation of management and operational networks (if selected in FMT_SMO_EXT.1)</selectable>
 								<selectable><assignable>other capabilities</assignable></selectable>
                                 <selectable exclusive="yes">no other capabilities</selectable>
@@ -5564,7 +5562,7 @@
                 </f-component>
 		    
                 <!-- FTP_TRP.1 -->
-                <!-- Included in th ST if "remote" is selected in FMT_MOF_EXT.1.1 in the server or client PP-Module. -->
+                <!-- Included in th ST if "remote" is selected in FMT_MOF_EXT.1.1 -->
                 <f-component cc-id="ftp_trp.1" name="Trusted Path" status="sel-based">
                     <depends on-sel="ftp-itc-ext-1e1"/>
 			        <depends on-sel="sel-mof-1e1-remote"/> 
@@ -5584,7 +5582,7 @@
                         <title>The TSF shall require the use of the trusted path for [<h:i>[all remote administration actions]</h:i>].
                         </title>
                         <note role="application">
-							This SFR is included in the ST if "remote" is selected in FMT_MOF_EXT.1.1 of the client or server PP-Module.<h:p/>
+							This SFR is included in the ST if "remote" is selected in FMT_MOF_EXT.1.1.<h:p/>
 							Protocols used to implement the remote administration trusted channel must be
 							selected in FTP_ITC_EXT.1.<h:p/>
                             This requirement ensures that authorized remote administrators initiate all communication with the
@@ -6502,8 +6500,7 @@
 			These equivalency guidelines do not replace Assurance Maintenance requirements or NIAP Policy #5 requirements for CAVP
             certificates. Nor may equivalency be used to leverage evaluations with expired certifications.<h:p/>
 			This document provides guidance for determining whether Products and Platforms are equivalent for purposes of
-            evaluation against the Protection Profile for Virtualization (VPP) when instantiated with either the Client or Server
-            PP-Module.<h:p/>
+            evaluation against the Protection Profile for Virtualization (VPP).<h:p/>
 			Equivalence has two aspects:<h:p/>
 			<h:ol>
 				<h:li><h:b><h:i>Product Equivalence:</h:i></h:b> Products may be considered equivalent if there are no
