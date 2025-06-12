@@ -1266,7 +1266,7 @@
                     <a href="#FAU_STG.5.1" class="abbr">FAU_STG.5.1</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>selection</b>: <span class="selectable-content" id="_s_13">ignore audited events</span>, <span class="selectable-content" id="_s_14">&ldquo;prevent audited events, except those taken by the authorized user with special rights&rdquo;</span>, <span class="selectable-content" id="_s_15">overwrite the oldest stored audit records</span>], [<b>assignment</b>: <span class="assignable-content">other actions to be taken in case of audit storage failure and conditions for the actions</span>] if the audit data storage is full.
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>selection</b>: <span class="selectable-content" id="_s_13">ignore audited events</span>, <span class="selectable-content" id="_s_14">&ldquo;prevent audited `` events, except those taken by the authorized user with special rights&rdquo;</span>, <span class="selectable-content" id="_s_15">overwrite the oldest stored audit records</span>], [<b>assignment</b>: <span class="assignable-content">other actions to be taken in case of audit storage failure and conditions for the actions</span>] if the audit data storage is full.
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note">An external log server, if available, might be used as alternative storage space in case the local storage space is full. An &lsquo;other action&rsquo; could be defined in this case as &lsquo;send the new audit data to an external <abbr class="dyn-abbr"><a href="#abbr_IT">IT</a></abbr> entity&rsquo;. </span>
                     </div>
@@ -1432,8 +1432,7 @@
                             <p></p>
                              <b>Diffie-Hellman Group 14 and <abbr class="dyn-abbr"><a href="#abbr_FFC">FFC</a></abbr> Schemes using "safe-prime" groups</b>
                             <br>
-                             Testing for <abbr class="dyn-abbr"><a href="#abbr_FFC">FFC</a></abbr> Schemes using Diffie-Hellman group 14 and "safe-prime" groups is done as part of testing in <a href="#FCS_CKM.2.1">FCS_CKM.2.1</a>.
-                            <p></p>
+                             Testing for <abbr class="dyn-abbr"><a href="#abbr_FFC">FFC</a></abbr> Schemes using Diffie-Hellman group 14 and "safe-prime" groups is done as part of testing in <a href="#FCS_CKM.2.1">FCS_CKM.2.1</a>. 
                         </div>
                     </div>
                 </div>
@@ -1477,15 +1476,13 @@
                     </div>
                     <div class="ea">
                         <div class="ea">
-                             The evaluator shall ensure that the supported key establishment schemes correspond to the key generation schemes identified in <a href="#FCS_CKM.1.1">FCS_CKM.1.1</a>. If the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> specifies more than one scheme, the evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to verify that it identifies the usage for each scheme.
-                            <p></p>
+                             The evaluator shall ensure that the supported key establishment schemes correspond to the key generation schemes identified in <a href="#FCS_CKM.1.1">FCS_CKM.1.1</a>. If the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> specifies more than one scheme, the evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to verify that it identifies the usage for each scheme. 
                         </div>
                     </div>
                     <div class="eacategory">Guidance</div>
                     <div class="ea">
                         <div class="ea">
-                             The evaluator shall verify that the AGD guidance instructs the administrator how to configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to use the selected key establishment schemes.
-                            <p></p>
+                             The evaluator shall verify that the AGD guidance instructs the administrator how to configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to use the selected key establishment schemes. 
                         </div>
                     </div>
                     <div class="eacategory">Tests</div>
@@ -1530,8 +1527,7 @@
                             <p></p>
                              <b><abbr class="dyn-abbr"><a href="#abbr_FFC">FFC</a></abbr> Schemes using "safe-prime" groups (identified in Appendix D of <abbr class="dyn-abbr"><a href="#abbr_SP">SP</a></abbr> 800-56A Revision 3)</b>
                             <p></p>
-                             The evaluator shall verify the correctness of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>'s implementation of "safe-prime" groups by using a known good implementation for each protocol selected in <a href="#FTP_ITC_EXT.1">FTP_ITC_EXT.1</a> that uses "safe-prime" groups. This test must be performed for each "safe-prime" group that each protocol uses.
-                            <p></p>
+                             The evaluator shall verify the correctness of the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>'s implementation of "safe-prime" groups by using a known good implementation for each protocol selected in <a href="#FTP_ITC_EXT.1">FTP_ITC_EXT.1</a> that uses "safe-prime" groups. This test must be performed for each "safe-prime" group that each protocol uses. 
                         </div>
                     </div>
                 </div>
@@ -1637,9 +1633,7 @@
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note"> Per <abbr class="dyn-abbr"><a href="#abbr_NIST">NIST</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_SP">SP</a></abbr> 800-131A, SHA-1 for generating digital signatures is no longer allowed, and SHA-1 for verification of digital signatures is strongly discouraged as there may be risk in accepting these signatures. It is expected that vendors will implement SHA-2 algorithms in accordance with <abbr class="dyn-abbr"><a href="#abbr_SP">SP</a></abbr> 800-131A. 
                             <p></p>
-                             The intent of this requirement is to specify the hashing function. The hash selection shall support the message digest size selection. The hash selection should be consistent with the overall strength of the algorithm used (for example, SHA 256 for 128-bit keys). 
-                            <p></p>
-                        </span>
+                             The intent of this requirement is to specify the hashing function. The hash selection shall support the message digest size selection. The hash selection should be consistent with the overall strength of the algorithm used (for example, SHA 256 for 128-bit keys). </span>
                     </div>
                 </div>
             </div>
@@ -1666,10 +1660,9 @@
                     <div class="eacategory">Tests</div>
                     <div class="ea">
                         <div class="ea">
-                             <b><u>SHA-1 and SHA-2 Tests</u></b> The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> hashing functions can be implemented in one of two modes. The first mode is the byte-oriented mode. In this mode the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> only hashes messages that are an integral number of bytes in length; i.e., the length (in bits) of the message to be hashed is divisible by 8. The second mode is the bit-oriented mode. In this mode the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> hashes messages of arbitrary length. As there are different tests for each mode, an indication is given in the following sections for the bit-oriented vs. the byte-oriented test MACs. 
+                             <b><u>SHA-1 and SHA-2 Tests</u></b> The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> hashing functions can be implemented in one of two modes. The first mode is the byte-oriented mode. In this mode the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> only hashes messages that are an integral number of bytes in length; i.e., the length (in bits) of the message to be hashed is divisible by 8. The second mode is the bit-oriented mode. In this mode the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> hashes messages of arbitrary length. As there are different tests for each mode, an indication is given in the following sections for the bit-oriented vs. the byte-oriented test MACs.
                             <p></p>
-                            <p></p>
-                             The evaluator shall perform all of the following tests for each hash algorithm implemented by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and used to satisfy the requirements of this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>. 
+                             The evaluator shall perform all of the following tests for each hash algorithm implemented by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and used to satisfy the requirements of this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>.
                             <p></p>
                              The following tests require the developer to provide access to a test platform that provides the evaluator with tools that are typically not found on factory products. 
                             <p></p>
@@ -1679,68 +1672,47 @@
                             <p></p>
                              <b>Short Messages Test Byte-oriented Mode</b>
                             <p></p>
-                             The evaluators devise an input set consisting of m/8+1 messages, where m is the block length of the hash algorithm. The length of the messages range sequentially from 0 to m/8 bytes, with each message being an integral number of bytes. The message text shall be pseudorandomly generated. The evaluators compute the message digest for each of the messages and ensure that the correct result is produced when the messages are provided to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>. 
+                             The evaluators devise an input set consisting of m/8+1 messages, where m is the block length of the hash algorithm. The length of the messages range sequentially from 0 to m/8 bytes, with each message being an integral number of bytes. The message text shall be pseudorandomly generated. The evaluators compute the message digest for each of the messages and ensure that the correct result is produced when the messages are provided to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>.
                             <p></p>
                              <b>Selected Long Messages Test Bit-oriented Mode</b>
                             <p></p>
-                             The evaluators devise an input set consisting of m messages, where m is the block length of the hash algorithm. The length of the ith message is 512 + 99*i, where 1 &lt;= i &lt;= m . The message text shall be pseudorandomly generated. The evaluators compute the message digest for each of the messages and ensure that the correct result is produced when the messages are provided to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>. 
+                             The evaluators devise an input set consisting of m messages, where m is the block length of the hash algorithm. The length of the ith message is 512 + 99*i, where 1 &lt;= i &lt;= m . The message text shall be pseudorandomly generated. The evaluators compute the message digest for each of the messages and ensure that the correct result is produced when the messages are provided to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>.
                             <p></p>
                              <b>Selected Long Messages Test Byte-oriented Mode</b>
                             <p></p>
-                             The evaluators devise an input set consisting of m/8 messages, where m is the block length of the hash algorithm. The length of the ith message is 512 + 8*99*i, where 1 &lt;= i &lt;= m/8 . The message text shall be pseudorandomly generated. The evaluators compute the message digest for each of the messages and ensure that the correct result is produced when the messages are provided to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>. 
+                             The evaluators devise an input set consisting of m/8 messages, where m is the block length of the hash algorithm. The length of the ith message is 512 + 8*99*i, where 1 &lt;= i &lt;= m/8 . The message text shall be pseudorandomly generated. The evaluators compute the message digest for each of the messages and ensure that the correct result is produced when the messages are provided to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>.
                             <p></p>
                              <b>Pseudorandomly Generated Messages Test</b>
                             <p></p>
                              This test is for byte-oriented implementations only. The evaluators randomly generate a seed that is n bits long, where n is the length of the message digest produced by the hash function to be tested. The evaluators then formulate a set of 100 messages and associated digests by following the algorithm provided in Figure 1 of [SHAVS]. The evaluators then ensure that the correct result is produced when the messages are provided to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>.
                             <p></p>
                              <b><u>SHA-3 Tests</u></b> The tests below are derived from the The Secure Hash Algorithm-3 Validation System (SHA3VS), Updated: April 7, 2016, from the National Institute of Standards and Technology.
-                            <br>
-                            <br>
+                            <p></p>
                              For each SHA-3-XXX implementation, XXX represents d, the digest length in bits. The capacity, c, is equal to 2d bits. The rate is equal to 1600-c bits. 
-                            <br>
-                            <br>
+                            <p></p>
                              The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> hashing functions can be implemented with one of two orientations. The first is a bit-oriented mode that hashes messages of arbitrary length. The second is a byte-oriented mode that hashes messages that are an integral number of bytes in length (i.e., the length (in bits) of the message to be hashed is divisible by 8). Separate tests for each orientation are given below. 
-                            <br>
-                            <br>
+                            <p></p>
                              The evaluator shall perform all of the following tests for each hash algorithm and orientation implemented by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and used to satisfy the requirements of this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>. The evaluator shall compare digest values produced by a known-good SHA-3 implementation against those generated by running the same values through the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>.
-                            <br>
-                            <br>
-                            <br>
-                            <br>
+                            <p></p>
                              <b>Short Messages Test, Bit-oriented Mode</b>
-                            <br>
-                            <br>
+                            <p></p>
                              The evaluators devise an input set consisting of rate+1 short messages. The length of the messages ranges sequentially from 0 to rate bits. The message text shall be pseudorandomly generated. The evaluators compute the message digest for each of the messages and ensure that the correct result is produced when the messages are provided to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>. The message of length 0 is omitted if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> does not support zero-length messages.
-                            <br>
-                            <br>
-                            <br>
+                            <p></p>
                              <b>Short Messages Test, Byte-oriented Mode</b>
-                            <br>
-                            <br>
-                             The evaluators devise an input set consisting of rate/8+1 short messages. The length of the messages ranges sequentially from 0 to rate/8 bytes, with each message being an integral number of bytes. The message text shall be pseudorandomly generated. The evaluators compute the message digest for each of the messages and ensure that the correct result is produced when the messages are provided to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>. The message of length 0 is omitted if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> does not support zero-length messages.
-                            <br>
-                            <br>
-                            <br>
+                            <p></p>
+                            &gt; The evaluators devise an input set consisting of rate/8+1 short messages. The length of the messages ranges sequentially from 0 to rate/8 bytes, with each message being an integral number of bytes. The message text shall be pseudorandomly generated. The evaluators compute the message digest for each of the messages and ensure that the correct result is produced when the messages are provided to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>. The message of length 0 is omitted if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> does not support zero-length messages.
+                            <p></p>
                              <b>Selected Long Messages Test, Bit-oriented Mode</b>
-                            <br>
-                            <br>
+                            <p></p>
                              The evaluators devise an input set consisting of 100 long messages ranging in size from rate+(rate+1) to rate+(100*(rate+1)), incrementing by rate+1. (For example, SHA-3-256 has a rate of 1088 bits. Therefore, 100 messages will be generated with lengths 2177, 3266, &hellip;, 109988 bits.) The message text shall be pseudorandomly generated. The evaluators compute the message digest for each of the messages and ensure that the correct result is produced when the messages are provided to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>.
-                            <br>
-                            <br>
-                            <br>
+                            <p></p>
                              <b>Selected Long Messages Test, Byte-oriented Mode</b>
-                            <br>
-                            <br>
+                            <p></p>
                              The evaluators devise an input set consisting of 100 messages ranging in size from (rate+(rate+8)) to (rate+100*(rate+8)), incrementing by rate+8. (For example, SHA-3-256 has a rate of 1088 bits. Therefore 100 messages will be generated of lengths 2184, 3280, 4376, &hellip;, 110688 bits.) The message text shall be pseudorandomly generated. The evaluators compute the message digest for each of the messages and ensure that the correct result is produced when the messages are provided to the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>.
-                            <br>
-                            <br>
-                            <br>
+                            <p></p>
                              <b>Pseudorandomly Generated Messages Monte Carlo) Test, Byte-oriented Mode</b>
-                            <br>
-                            <br>
-                             The evaluators supply a seed of d bits (where d is the length of the message digest produced by the hash function to be tested. This seed is used by a pseudorandom function to generate 100,000 message digests. One hundred of the digests (every 1000th digest) are recorded as checkpoints. The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> then uses the same procedure to generate the same 100,000 message digests and 100 checkpoint values. The evaluators then compare the results generated to ensure that the correct result is produced when the messages are generated by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>.
-                            <br>
-                            <br>
+                            <p></p>
+                             The evaluators supply a seed of d bits (where d is the length of the message digest produced by the hash function to be tested. This seed is used by a pseudorandom function to generate 100,000 message digests. One hundred of the digests (every 1000th digest) are recorded as checkpoints. The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> then uses the same procedure to generate the same 100,000 message digests and 100 checkpoint values. The evaluators then compare the results generated to ensure that the correct result is produced when the messages are generated by the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>. 
                         </div>
                     </div>
                 </div>
@@ -1755,9 +1727,7 @@
                 <div class="reqdesc">
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform [<i>keyed-hash message authentication</i>] in accordance with a specified cryptographic algorithm [<b>selection</b>: <span class="selectable-content" id="sel-hmac-sha-384">HMAC-SHA-384</span>, <span class="selectable-content" id="sel-hmac-sha-512">HMAC-SHA-512</span>, <span class="selectable-content" id="sel-hmac-sha-3-384">SHA-3-384</span>, <span class="selectable-content" id="sel-hmac-sha-3-512">SHA-3-512</span>] and cryptographic key sizes [<b>assignment</b>: <span class="assignable-content">key size (in bits) used in HMAC</span>] <b>and message digest sizes [<b>selection</b>: <span class="selectable-content" id="_s_42">384 bits</span>, <span class="selectable-content" id="_s_43">512 bits</span>]</b> that meet the following: [<i><abbr class="dyn-abbr"><a href="#abbr_FIPS">FIPS</a></abbr> Pub 198-1, "The Keyed-Hash Message Authentication Code," and <abbr class="dyn-abbr"><a href="#abbr_FIPS">FIPS</a></abbr> Pub 180-4, &ldquo;Secure Hash Standard"</i>]. 
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note">The selection in this requirement must be consistent with the key size specified for the size of the keys used in conjunction with the keyed-hash message authentication.
-                            <p></p>
-                        </span>
+                        <span class="note-header">Application Note: </span><span class="note">The selection in this requirement must be consistent with the key size specified for the size of the keys used in conjunction with the keyed-hash message authentication.</span>
                     </div>
                 </div>
             </div>
@@ -1838,17 +1808,17 @@
                     <div class="eacategory">Tests</div>
                     <div class="ea">
                         <div class="ea">
-                             The following tests require the developer to provide access to a test platform that provides the evaluator with tools that are typically not found on factory products. 
+                             The following tests require the developer to provide access to a test platform that provides the evaluator with tools that are typically not found on factory products.
                             <p></p>
                              <b>ECDSA Algorithm Tests</b>
                             <p></p>
                              <b><i>ECDSA <abbr class="dyn-abbr"><a href="#abbr_FIPS">FIPS</a></abbr> 186-5 Signature Generation Test</i></b>
                             <p></p>
-                             For each supported <abbr class="dyn-abbr"><a href="#abbr_NIST">NIST</a></abbr> curve (i.e., P-384 and P-521) and SHA function pair, the evaluator shall generate 10 1024-bit long messages and obtain for each message a public key and the resulting signature values R and S. To determine correctness, the evaluator shall use the signature verification function of a known good implementation. 
+                             For each supported <abbr class="dyn-abbr"><a href="#abbr_NIST">NIST</a></abbr> curve (i.e., P-384 and P-521) and SHA function pair, the evaluator shall generate 10 1024-bit long messages and obtain for each message a public key and the resulting signature values R and S. To determine correctness, the evaluator shall use the signature verification function of a known good implementation.
                             <p></p>
                              <b><i>ECDSA <abbr class="dyn-abbr"><a href="#abbr_FIPS">FIPS</a></abbr> 186-5 Signature Verification Test</i></b>
                             <p></p>
-                             For each supported <abbr class="dyn-abbr"><a href="#abbr_NIST">NIST</a></abbr> curve (i.e., P-384 and P-521) and SHA function pair, the evaluator shall generate a set of 10 1024-bit message, public key and signature tuples and modify one of the values (message, public key or signature) in five of the 10 tuples. The evaluator shall obtain in response a set of 10 PASS/FAIL values. 
+                             For each supported <abbr class="dyn-abbr"><a href="#abbr_NIST">NIST</a></abbr> curve (i.e., P-384 and P-521) and SHA function pair, the evaluator shall generate a set of 10 1024-bit message, public key and signature tuples and modify one of the values (message, public key or signature) in five of the 10 tuples. The evaluator shall obtain in response a set of 10 PASS/FAIL values.
                             <p></p>
                              <b><abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr> Signature Algorithm Tests</b>
                             <p></p>
@@ -1860,7 +1830,7 @@
                             <p></p>
                              <b><i>Signature Verification Test</i></b>
                             <p></p>
-                             The evaluator shall perform the Signature Verification test to verify the ability of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to recognize another party&rsquo;s valid and invalid signatures. The evaluator shall inject errors into the test vectors produced during the Signature Verification Test by introducing errors in some of the public keys e, messages, IR format, or signatures. The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> attempts to verify the signatures and returns success or failure. 
+                             The evaluator shall perform the Signature Verification test to verify the ability of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to recognize another party&rsquo;s valid and invalid signatures. The evaluator shall inject errors into the test vectors produced during the Signature Verification Test by introducing errors in some of the public keys e, messages, IR format, or signatures. The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> attempts to verify the signatures and returns success or failure.
                             <p></p>
                              The evaluator shall use these test vectors to emulate the signature verification test using the corresponding parameters and verify that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> detects these errors. 
                         </div>
@@ -1912,9 +1882,7 @@
                     </ul>
                     ] and cryptographic key sizes [<i>384-bit key sizes</i>]. <s>that meet the following [<b>assignment</b>: <span class="assignable-content">list of standards</span>]</s> 
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note">For the first selection of <a href="#FCS_COP.1.1/UDE">FCS_COP.1.1/UDE</a>, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should choose the mode or modes in which <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr> operates. For the second selection, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should choose the key sizes that are supported by this functionality.
-                            <p></p>
-                        </span>
+                        <span class="note-header">Application Note: </span><span class="note">For the first selection of <a href="#FCS_COP.1.1/UDE">FCS_COP.1.1/UDE</a>, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should choose the mode or modes in which <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr> operates. For the second selection, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should choose the key sizes that are supported by this functionality.</span>
                     </div>
                 </div>
             </div>
@@ -1946,11 +1914,11 @@
                             <p></p>
                              <b><abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC Known Answer Tests</b>
                             <p></p>
-                             There are four Known Answer Tests (KATs), described below. In all KATs, the plaintext, ciphertext, and IV values shall be 128-bit blocks. The results from each test may either be obtained by the evaluator directly or by supplying the inputs to the implementer and receiving the results in response. To determine correctness, the evaluator shall compare the resulting values to those obtained by submitting the same inputs to a known good implementation. 
+                             There are four Known Answer Tests (KATs), described below. In all KATs, the plaintext, ciphertext, and IV values shall be 128-bit blocks. The results from each test may either be obtained by the evaluator directly or by supplying the inputs to the implementer and receiving the results in response. To determine correctness, the evaluator shall compare the resulting values to those obtained by submitting the same inputs to a known good implementation.
                             <p></p>
-                             <b>KAT-1.</b>To test the encrypt functionality of <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC, the evaluator shall supply a set of 10 plaintext values and obtain the ciphertext value that results from <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC encryption of the given plaintext using a key value of all zeros and an IV of all zeros. Five plaintext values shall be encrypted with a 128-bit all-zeros key, and the other five shall be encrypted with a 256-bit all-zeros key. 
+                             <b>KAT-1.</b>To test the encrypt functionality of <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC, the evaluator shall supply a set of 10 plaintext values and obtain the ciphertext value that results from <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC encryption of the given plaintext using a key value of all zeros and an IV of all zeros. Five plaintext values shall be encrypted with a 128-bit all-zeros key, and the other five shall be encrypted with a 256-bit all-zeros key.
                             <p></p>
-                             To test the decrypt functionality of <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC, the evaluator shall perform the same test as for encrypt, using 10 ciphertext values as input and <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC decryption. 
+                             To test the decrypt functionality of <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC, the evaluator shall perform the same test as for encrypt, using 10 ciphertext values as input and <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC decryption.
                             <p></p>
                              <b>KAT-2.</b>To test the encrypt functionality of <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC, the evaluator shall supply a set of 10 key values and obtain the ciphertext value that results from <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CBC encryption of an all-zeros plaintext using the given key value and an IV of all zeros. Five of the keys shall be 128-bit keys, and the other five shall be 256-bit keys.
                             <p></p>
@@ -2032,7 +2000,7 @@
                             <p></p>
                              <b>128 bit and 256 bit keys</b>
                             <p></p>
-                             <b>Two plaintext lengths.</b>One of the plaintext lengths shall be a non-zero integer multiple of 128 bits, if supported. The other plaintext length shall not be an integer multiple of 128 bits, if supported. 
+                             <b>Two plaintext lengths.</b>One of the plaintext lengths shall be a non-zero integer multiple of 128 bits, if supported. The other plaintext length shall not be an integer multiple of 128 bits, if supported.
                             <p></p>
                              <b>Three AAD lengths.</b>One AAD length shall be 0, if supported. One AAD length shall be a non-zero integer multiple of 128 bits, if supported. One AAD length shall not be an integer multiple of 128 bits, if supported.
                             <p></p>
@@ -2061,12 +2029,11 @@
                             <p></p>
                              The evaluator may supply a data unit sequence number instead of the tweak value if the implementation supports it. The data unit sequence number is a base-10 number ranging between 0 and 255 that implementations convert to a tweak value internally.
                             <p></p>
-                             The evaluator shall test the decrypt functionality of XTS-AES using the same test as for encrypt, replacing plaintext values with ciphertext values and XTS-AES encrypt with XTS-AES decrypt. 
+                             The evaluator shall test the decrypt functionality of XTS-AES using the same test as for encrypt, replacing plaintext values with ciphertext values and XTS-AES encrypt with XTS-AES decrypt.
                             <p></p>
-                             <b><u><abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr> Key Wrap (<abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KW) and Key Wrap with Padding (<abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KWP) Test</u></b> 
+                             <b><u><abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr> Key Wrap (<abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KW) and Key Wrap with Padding (<abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KWP) Test</u></b>
                             <p></p>
                              The evaluator shall test the authenticated encryption functionality of <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KW for EACH combination of the following input parameter lengths: 
-                            <p></p>
                             <ul>
                                 <li>128 and 256 bit key encryption keys (KEKs)</li>
                                 <li>
@@ -2075,24 +2042,22 @@
                             </ul>
                              using a set of 100 key and plaintext pairs and obtain the ciphertext that results from <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KW authenticated encryption. To determine correctness, the evaluator shall use the <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KW authenticated-encryption function of a known good implementation.
                             <p></p>
-                             The evaluator shall test the authenticated-decryption functionality of <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KW using the same test as for authenticated-encryption, replacing plaintext values with ciphertext values and <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KW authenticated-encryption with <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KW authenticated-decryption. 
+                             The evaluator shall test the authenticated-decryption functionality of <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KW using the same test as for authenticated-encryption, replacing plaintext values with ciphertext values and <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KW authenticated-encryption with <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KW authenticated-decryption.
                             <p></p>
-                             The evaluator shall test the authenticated-encryption functionality of <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KWP using the same test as for <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KW authenticated-encryption with the following change in the three plaintext lengths: 
+                             The evaluator shall test the authenticated-encryption functionality of <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KWP using the same test as for <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KW authenticated-encryption with the following change in the three plaintext lengths:
                             <p></p>
-                             One plaintext length shall be one octet. One plaintext length shall be 20 octets (160 bits). 
+                             One plaintext length shall be one octet. One plaintext length shall be 20 octets (160 bits).
                             <p></p>
-                             One plaintext length shall be the longest supported plaintext length less than or equal to 512 octets (4096 bits). 
+                             One plaintext length shall be the longest supported plaintext length less than or equal to 512 octets (4096 bits).
                             <p></p>
-                             The evaluator shall test the authenticated-decryption functionality of <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KWP using the same test as for <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KWP authenticated-encryption, replacing plaintext values with ciphertext values and <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KWP authenticated-encryption with <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KWP authenticated-decryption. 
+                             The evaluator shall test the authenticated-decryption functionality of <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KWP using the same test as for <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KWP authenticated-encryption, replacing plaintext values with ciphertext values and <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KWP authenticated-encryption with <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-KWP authenticated-decryption.
                             <p></p>
-                             <b><u><abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CTR Test</u></b>
-                            <p></p>
-                             <span class="testlist-">
+                             <b><u><abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CTR Test</u></b> <span class="testlist-">
                                 <ul>
                                     <li class="test-">
                                         <a id="_t_8" class="defined" href="#_t_8">Test FCS_COP.1/UDE:5</a>: Known Answer Tests (KATs) 
                                         <p></p>
-                                         There are four Known Answer Tests (KATs) described below. For all KATs, the plaintext, initialization vector (IV), and ciphertext values shall be 128-bit blocks. The results from each test may either be obtained by the validator directly or by supplying the inputs to the implementer and receiving the results in response. To determine correctness, the evaluator shall compare the resulting values to those obtained by submitting the same inputs to a known good implementation. 
+                                         There are four Known Answer Tests (KATs) described below. For all KATs, the plaintext, initialization vector (IV), and ciphertext values shall be 128-bit blocks. The results from each test may either be obtained by the validator directly or by supplying the inputs to the implementer and receiving the results in response. To determine correctness, the evaluator shall compare the resulting values to those obtained by submitting the same inputs to a known good implementation.
                                         <p></p>
                                          <b>Test 1a:</b> To test the encrypt functionality, the evaluator shall supply a set of 10 plaintext values and obtain the ciphertext value that results from encryption of the given plaintext using a key value of all zeros and an IV of all zeros. Five plaintext values shall be encrypted with a 128-bit all zeros key, and the other five shall be encrypted with a 256-bit all zeros key. To test the decrypt functionality, the evaluator shall perform the same test as for encrypt, using 10 ciphertext values as input. 
                                         <p></p>
@@ -2101,20 +2066,18 @@
                                          <b>Test 1c:</b> To test the encrypt functionality, the evaluator shall supply the two sets of key values described below and obtain the ciphertext values that result from <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr> encryption of an all zeros plaintext using the given key values and an IV of all zeros. The first set of keys shall have 128 128-bit keys, and the second shall have 256 256-bit keys. Key_i in each set shall have the leftmost i bits be ones and the rightmost N-i bits be zeros, for i in [1, N]. To test the decrypt functionality, the evaluator shall supply the two sets of key and ciphertext value pairs described below and obtain the plaintext value that results from decryption of the given ciphertext using the given key values and an IV of all zeros. The first set of key/ciphertext pairs shall have 128 128-bit key/ciphertext pairs, and the second set of key/ciphertext pairs shall have 256 256-bit pairs. Key_i in each set shall have the leftmost i bits be ones and the rightmost N-i bits be zeros for i in [1, N]. The ciphertext value in each pair shall be the value that results in an all zeros plaintext when decrypted with its corresponding key. 
                                         <p></p>
                                          <b>Test 1d:</b> To test the encrypt functionality, the evaluator shall supply the set of 128 plaintext values described below and obtain the two ciphertext values that result from encryption of the given plaintext using a 128-bit key value of all zeros and using a 256 bit key value of all zeros, respectively, and an IV of all zeros. Plaintext value i in each set shall have the leftmost bits be ones and the rightmost 128-i bits be zeros, for i in [1, 128]. To test the decrypt functionality, the evaluator shall perform the same test as for encrypt, using ciphertext values of the same form as the plaintext in the encrypt test as input. 
-                                        <p></p>
                                     </li>
                                     <li class="test-">
                                         <a id="_t_9" class="defined" href="#_t_9">Test FCS_COP.1/UDE:6</a>: Multi-Block Message Test 
                                         <p></p>
                                          The evaluator shall test the encrypt functionality by encrypting an i-block message where 1 less-than i less-than-or-equal to 10. For each i the evaluator shall choose a key, IV, and plaintext message of length i blocks and encrypt the message, using the mode to be tested, with the chosen key. The ciphertext shall be compared to the result of encrypting the same plaintext message with the same key and IV using a known good implementation. The evaluator shall also test the decrypt functionality by decrypting an i-block message where 1 less-than i less-than-or-equal to 10. For each i the evaluator shall choose a key and a ciphertext message of length i blocks and decrypt the message, using the mode to be tested, with the chosen key. The plaintext shall be compared to the result of decrypting the same ciphertext message with the same key using a known good implementation. 
-                                        <p></p>
                                     </li>
                                     <li class="test-">
-                                        <a id="_t_10" class="defined" href="#_t_10">Test FCS_COP.1/UDE:7</a>: Monte-Carlo Test 
+                                        <a id="_t_10" class="defined" href="#_t_10">Test FCS_COP.1/UDE:7</a>: Monte-Carlo Test
                                         <p></p>
-                                         For <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CTR mode perform the Monte Carlo Test for ECB Mode on the encryption engine of the counter mode implementation. There is no need to test the decryption engine. 
+                                         For <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CTR mode perform the Monte Carlo Test for ECB Mode on the encryption engine of the counter mode implementation. There is no need to test the decryption engine.
                                         <p></p>
-                                         The evaluator shall test the encrypt functionality using 200 plaintext/key pairs. 100 of these shall use 128 bit keys, and 100 of these shall use 256 bit keys. The plaintext values shall be 128-bit blocks. For each pair, 1000 iterations shall be run as follows: 
+                                         The evaluator shall test the encrypt functionality using 200 plaintext/key pairs. 100 of these shall use 128 bit keys, and 100 of these shall use 256 bit keys. The plaintext values shall be 128-bit blocks. For each pair, 1000 iterations shall be run as follows:
                                         <p></p>
                                          For <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-ECB mode
                                         <br>
@@ -2239,20 +2202,13 @@
                 <div class="reqdesc">
                      The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall use a [<b>selection</b>: <span class="selectable-content" id="internal-seed"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise source [<b>assignment</b>: <span class="assignable-content">name of noise source</span>]</span>, <span class="selectable-content" id="internal-seeds"><b>multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise sources [<b>assignment</b>: <span class="assignable-content">names of noise sources</span>]</b></span>, <span class="selectable-content" id="external-seed"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for seeding</span>] for initialized seeding. 
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note">
-                            <p>
-                                 For the selection in this requirement, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise source" if a single noise source is used as input to the DRBG. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects "multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise sources" if a seed is formed from a combination of two or more noise sources within the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> implements two or more separate DRBGs that are seeded in separate manners, this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> should be iterated for each DRBG. If multiple distinct noise sources exist such that each DRBG only uses one of them, then each iteration would select "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise source"; "multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise sources" is only selected if a single DRBG uses multiple noise sources for its seed. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for seeding" if noise source data is generated outside the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary. 
-                            </p>
-                            <p>
-                                 If "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise source" is selected, <a href="#FCS_RBG.3">FCS_RBG.3</a> must be claimed. 
-                            </p>
-                            <p>
-                                 If "multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise sources" is selected, <a href="#FCS_RBG.4">FCS_RBG.4</a> and <a href="#FCS_RBG.5">FCS_RBG.5</a> must be claimed. 
-                            </p>
-                            <p>
-                                 If "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for seeding" is selected, <a href="#FCS_RBG.2">FCS_RBG.2</a> must be claimed. 
-                            </p>
-                        </span>
+                        <span class="note-header">Application Note: </span><span class="note"> For the selection in this requirement, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise source" if a single noise source is used as input to the DRBG. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects "multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise sources" if a seed is formed from a combination of two or more noise sources within the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> implements two or more separate DRBGs that are seeded in separate manners, this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> should be iterated for each DRBG. If multiple distinct noise sources exist such that each DRBG only uses one of them, then each iteration would select "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise source"; "multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise sources" is only selected if a single DRBG uses multiple noise sources for its seed. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for seeding" if noise source data is generated outside the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary.
+                            <p></p>
+                             If "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise source" is selected, <a href="#FCS_RBG.3">FCS_RBG.3</a> must be claimed.
+                            <p></p>
+                             If "multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise sources" is selected, <a href="#FCS_RBG.4">FCS_RBG.4</a> and <a href="#FCS_RBG.5">FCS_RBG.5</a> must be claimed. 
+                            <p></p>
+                             If "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for seeding" is selected, <a href="#FCS_RBG.2">FCS_RBG.2</a> must be claimed. </span>
                     </div>
                 </div>
             </div>
@@ -2302,8 +2258,7 @@
                     <div class="eacategory">Tests</div>
                     <div class="ea">
                         <div class="ea">
-                            <p> Documentation shall be produced&mdash;and the evaluator shall perform the activities&mdash;in accordance with </p>
-                            The evaluator shall also perform the following tests, depending on the standard to which the RBG conforms.
+                             The evaluator shall perform the following tests, depending on the standard to which the RBG conforms.
                             <p></p>
                              The evaluator shall perform 15 trials for the RBG implementation. If the RBG is configurable, the evaluator shall perform 15 trials for each configuration. The evaluator shall also confirm that the operational guidance contains appropriate instructions for configuring the RBG functionality.
                             <p></p>
@@ -2674,7 +2629,7 @@
                                             <li>As an administrator again, disable inter-VM communications between the two VMs.</li>
                                             <li>Test that communications can no longer be passed through the channel.</li>
                                         </ol>
-                                         <a href="#FDP_VMS_EXT.1.2">FDP_VMS_EXT.1.2</a> is met if communication is unsuccessful in step (b). <a href="#FDP_VMS_EXT.1.3">FDP_VMS_EXT.1.3</a> is met if communication is successful in step (d) and unsuccessful in step (f). 
+                                         <a href="#FDP_VMS_EXT.1.2">FDP_VMS_EXT.1.2</a> is met if communication is unsuccessful in step (b). <a href="#FDP_VMS_EXT.1.3">FDP_VMS_EXT.1.3</a> is met if communication is successful in step (d) and unsuccessful in step (f).
                                         <p></p>
                                     </li>
                                 </ul>
@@ -6258,8 +6213,7 @@
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement the HTTPS protocol that complies with RFC 2818. 
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note">This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects "TLS/HTTPS" in <a href="#FTP_ITC_EXT.1.1">FTP_ITC_EXT.1.1</a>.
-                            <br>
-                            <br>
+                            <p></p>
                              The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author must provide enough detail to determine how the implementation is complying with the standards identified; this can be done either by adding elements to this component, or by additional detail in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr>.</span>
                     </div>
                 </div>
@@ -6313,15 +6267,10 @@
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement the IPsec architecture as specified in RFC 4301. 
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note"> This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selected "IPsec" in <a href="#FTP_ITC_EXT.1.1">FTP_ITC_EXT.1.1</a>.
-                            <br>
-                            <br>
+                            <p></p>
                              RFC 4301 calls for an IPsec implementation to protect <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> traffic through the use of a Security Policy Database (<abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr>). The <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr> is used to define how <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> packets are to be handled: PROTECT the packet (e.g., encrypt the packet), BYPASS the IPsec services (e.g., no encryption), or DISCARD the packet (e.g., drop the packet). The <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr> can be implemented in various ways, including router access control lists, firewall rule-sets, a "traditional" <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr>, etc. Regardless of the implementation details, there is a notion of a "rule" that a packet is "matched" against and a resulting action that takes place. 
-                            <br>
-                            <br>
-                             While there must be a means to order the rules, a general approach to ordering is not mandated, as long as the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> can distinguish the <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> packets and apply the rules accordingly. There may be multiple SPDs (one for each network interface), but this is not required. 
-                            <br>
-                            <br>
-                        </span>
+                            <p></p>
+                             While there must be a means to order the rules, a general approach to ordering is not mandated, as long as the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> can distinguish the <abbr class="dyn-abbr"><a href="#abbr_IP">IP</a></abbr> packets and apply the rules accordingly. There may be multiple SPDs (one for each network interface), but this is not required. </span>
                     </div>
                 </div>
             </div>
@@ -6332,9 +6281,7 @@
                 <div class="reqdesc">
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall implement [<b>selection</b>: <span class="selectable-content" id="_s_61">transport mode</span>, <span class="selectable-content" id="_s_62">tunnel mode</span>]. 
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note"> If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is used to connect to a VPN gateway for the purposes of establishing a secure connection to a private network, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author shall select tunnel mode. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> uses IPsec to establish an end-to-end connection to another IPsec VPN Client, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author shall select transport mode. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> uses IPsec to establish a connection to a specific endpoint device for the purpose of secure remote administration, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author shall select transport mode.
-                            <p></p>
-                        </span>
+                        <span class="note-header">Application Note: </span><span class="note"> If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is used to connect to a VPN gateway for the purposes of establishing a secure connection to a private network, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author shall select tunnel mode. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> uses IPsec to establish an end-to-end connection to another IPsec VPN Client, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author shall select transport mode. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> uses IPsec to establish a connection to a specific endpoint device for the purpose of secure remote administration, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author shall select transport mode. </span>
                     </div>
                 </div>
             </div>
@@ -6507,8 +6454,7 @@
                         <div class="ea">
                              In addition to the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> EAs for the individual <a href="#FCS_IPSEC_EXT.1">FCS_IPSEC_EXT.1</a> elements below, the evaluator shall perform the following:
                             <p></p>
-                             If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary includes a general-purpose operating system or mobile device, the evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to ensure that it describes whether the VPN client capability is architecturally integrated with the platform itself or whether it is a separate executable that is bundled with the platform.
-                            <p></p>
+                             If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary includes a general-purpose operating system or mobile device, the evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to ensure that it describes whether the VPN client capability is architecturally integrated with the platform itself or whether it is a separate executable that is bundled with the platform. 
                         </div>
                     </div>
                     <div class="eacategory">Guidance</div>
@@ -6518,8 +6464,7 @@
                             <p></p>
                              If the configuration of the IPsec behavior is from an environmental source, most notably a VPN gateway (e.g. through receipt of required connection parameters from a VPN gateway), the evaluator shall ensure that the operational guidance contains any appropriate information for ensuring that this configuration can be properly applied.
                             <p></p>
-                             Note in this case that the implementation of the IPsec protocol must be enforced entirely within the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary; i.e. it is not permissible for a software application <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to be a graphical front-end for IPsec functionality implemented totally or in part by the underlying <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> platform. The behavior referenced here is for the possibility that the configuration of the IPsec connection is initiated from outside the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, which is permissible so long as the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> is solely responsible for enforcing the configured behavior. However, it is allowable for the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to rely on low-level platform-provided networking functions to implement the <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr> from the client (e.g., enforcement of packet routing decisions).
-                            <p></p>
+                             Note in this case that the implementation of the IPsec protocol must be enforced entirely within the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary; i.e. it is not permissible for a software application <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to be a graphical front-end for IPsec functionality implemented totally or in part by the underlying <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> platform. The behavior referenced here is for the possibility that the configuration of the IPsec connection is initiated from outside the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, which is permissible so long as the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> is solely responsible for enforcing the configured behavior. However, it is allowable for the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to rely on low-level platform-provided networking functions to implement the <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr> from the client (e.g., enforcement of packet routing decisions). 
                         </div>
                     </div>
                     <div class="eacategory">Tests</div>
@@ -6535,8 +6480,7 @@
                                 <span class="ctr" data-myid="fig-ipsectest" data-counter-type="ct-figure">Figure <span class="counter">2</span></span>: IPsec Test Environment
                             </div>
                             <p></p>
-                             Note that the evaluator shall perform all tests using the Virtualization System and a representative sample of platforms listed in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> (for <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr> that claim to support multiple platforms).
-                            <p></p>
+                             Note that the evaluator shall perform all tests using the Virtualization System and a representative sample of platforms listed in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> (for <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr> that claim to support multiple platforms). 
                         </div>
                     </div>
                     <div class="element-activity-header">
@@ -6550,7 +6494,7 @@
                         <p></p>
                          The evaluator shall ensure that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes at a high level the architectural relationship between the IPsec implementation and the rest of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> (e.g., is the IPsec implementation an integrated part of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> or is it a standalone executable that is bundled into the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr>).
                         <p></p>
-                         The evaluator shall ensure that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes how the <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr> is implemented and the rules for processing both inbound and outbound packets in terms of the IPsec policy. The <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes the rules that are available and the resulting actions available after matching a rule. The <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes how the available rules and actions form the <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr> using terms defined in RFC 4301 such as BYPASS (e.g., no encryption), DISCARD (e.g., drop the packet), and PROTECT (e.g., encrypt the packet) actions defined in RFC 4301. 
+                         The evaluator shall ensure that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes how the <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr> is implemented and the rules for processing both inbound and outbound packets in terms of the IPsec policy. The <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes the rules that are available and the resulting actions available after matching a rule. The <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes how the available rules and actions form the <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr> using terms defined in RFC 4301 such as BYPASS (e.g., no encryption), DISCARD (e.g., drop the packet), and PROTECT (e.g., encrypt the packet) actions defined in RFC 4301.
                         <p></p>
                          As noted in section 4.4.1 of RFC 4301, the processing of entries in the <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr> is non-trivial and the evaluator shall determine that the description in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> is sufficient to determine which rules will be applied given the rule structure implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. For example, if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> allows specification of ranges, conditional rules, etc., the evaluator shall determine that the description of rule processing (for both inbound and outbound packets) is sufficient to determine the action that will be applied, especially in the case where two different rules may apply. This description shall cover both the initial packets (that is, no SA is established on the interface or for that particular packet) as well as packets that are part of an established SA. 
                     </div>
@@ -6612,8 +6556,7 @@
                     </div>
                     <div class="eacategory">Guidance</div>
                     <div class="ea">
-                         The evaluator shall check that the operational guidance provides instructions on how to construct or acquire the <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr> and uses the guidance to configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> for the following test.
-                        <p></p>
+                         The evaluator shall check that the operational guidance provides instructions on how to construct or acquire the <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr> and uses the guidance to configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> for the following test. 
                     </div>
                     <div class="eacategory">Tests</div>
                     <div class="ea">
@@ -7253,8 +7196,7 @@
                         <span class="note-header">Application Note: </span><span class="note"> This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if "remote" is selected in <a href="#FMT_MOF_EXT.1.1">FMT_MOF_EXT.1.1</a> of the client or server <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>.
                             <p></p>
                              Protocols used to implement the remote administration trusted channel must be selected in <a href="#FTP_ITC_EXT.1">FTP_ITC_EXT.1</a>.
-                            <br>
-                            <br>
+                            <p></p>
                              This requirement ensures that authorized remote administrators initiate all communication with the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> via a trusted path, and that all communications with the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> by remote administrators is performed over this path. The data passed in this trusted communication channel are encrypted as defined the protocol chosen in the first selection in <a href="#FTP_ITC_EXT.1">FTP_ITC_EXT.1</a>. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author chooses the mechanism or mechanisms supported by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, and then ensures that the detailed requirements in Appendix B corresponding to their selection are copied to the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> if not already present.</span>
                     </div>
                 </div>
@@ -8824,20 +8766,16 @@
          More specifically, all entropy source health tests and their rationale will be documented. This will include a description of the health tests, the rate and conditions under which each health test is performed (e.g., at startup, continuously, or on-demand), the expected results for each health test, and rationale indicating why each test is believed to be appropriate for detecting one or more failures in the entropy source. 
         <h1 id="appendix-equiv" class="indexable" data-level="A">Appendix F - Equivalency Guidelines</h1>
         <h2 class="indexable" data-level="2" id="s-vm-intro">F.1 Introduction</h2>
-         The purpose of equivalence in <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-based evaluations is to find a balance between evaluation rigor and commercial practicability--to ensure that evaluations meet customer expectations while recognizing that there is little to be gained from requiring that every variation in a product or platform be fully tested. If a product is found to be compliant with a <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> on one platform, then all equivalent products on equivalent platforms are also considered to be compliant with the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>. 
-        <br>
-        <br>
-         A Vendor can make a claim of equivalence if the Vendor believes that a particular instance of their Product implements <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-specified security functionality in a way equivalent to the implementation of the same functionality on another instance of their Product on which the functionality was tested. The Product instances can differ in version number or feature level (model), or the instances may run on different platforms. Equivalency can be used to reduce the testing required across claimed evaluated configurations. It can also be used during Assurance Maintenance to reduce testing needed to add more evaluated configurations to a certification. 
-        <br>
-        <br>
-         These equivalency guidelines do not replace Assurance Maintenance requirements or NIAP Policy #5 requirements for CAVP certificates. Nor may equivalency be used to leverage evaluations with expired certifications. 
-        <br>
-        <br>
-         This document provides guidance for determining whether Products and Platforms are equivalent for purposes of evaluation against the Protection Profile for Virtualization (VPP) when instantiated with either the Client or Server <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>. 
-        <br>
-        <br>
-         Equivalence has two aspects: 
-        <br>
+         The purpose of equivalence in <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-based evaluations is to find a balance between evaluation rigor and commercial practicability--to ensure that evaluations meet customer expectations while recognizing that there is little to be gained from requiring that every variation in a product or platform be fully tested. If a product is found to be compliant with a <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> on one platform, then all equivalent products on equivalent platforms are also considered to be compliant with the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>.
+        <p></p>
+         A Vendor can make a claim of equivalence if the Vendor believes that a particular instance of their Product implements <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-specified security functionality in a way equivalent to the implementation of the same functionality on another instance of their Product on which the functionality was tested. The Product instances can differ in version number or feature level (model), or the instances may run on different platforms. Equivalency can be used to reduce the testing required across claimed evaluated configurations. It can also be used during Assurance Maintenance to reduce testing needed to add more evaluated configurations to a certification.
+        <p></p>
+         These equivalency guidelines do not replace Assurance Maintenance requirements or NIAP Policy #5 requirements for CAVP certificates. Nor may equivalency be used to leverage evaluations with expired certifications.
+        <p></p>
+         This document provides guidance for determining whether Products and Platforms are equivalent for purposes of evaluation against the Protection Profile for Virtualization (VPP) when instantiated with either the Client or Server <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr>.
+        <p></p>
+         Equivalence has two aspects:
+        <p></p>
         <ol>
             <li>
                 <b><i>Product Equivalence:</i></b> Products may be considered equivalent if there are no differences between Product Models and Product Versions with respect to <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-specified security functionality.
@@ -8848,34 +8786,26 @@
         </ol>
          The equivalency determination is made in accordance with these guidelines by the Validator and Scheme using information provided by the Evaluator/Vendor. 
         <h2 class="indexable" data-level="2" id="s-approach">F.2 Approach to Equivalency Analysis</h2>
-         There are two scenarios for performing equivalency analysis. One is when a product has been certified and the vendor wants to show that a later product should be considered certified due to equivalence with the earlier product. The other is when multiple product variants are going though evaluation together and the vendor would like to reduce the amount of testing that must be done. The basic rules for determining equivalence are the same in both cases. But there is one additional consideration that applies to equivalence with previously certified products. That is, the product with which equivalence is being claimed must have a valid certification in accordance with scheme rules and the Assurance Maintenance process must be followed. If a product&rsquo;s certification has expired, then equivalence cannot be claimed with that product. 
-        <br>
-        <br>
-         When performing equivalency analysis, the Evaluator/Vendor should first use the factors and guidelines for Product Model equivalence to determine the set of Product Models to be evaluated. In general, Product Models that do not differ in <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-specified security functionality are considered equivalent for purposes of evaluation against the VPP. 
-        <br>
-        <br>
-         If multiple revision levels of Product Models are to be evaluated--or to determine whether a revision of an evaluated product needs re-evaluation--the Evaluator/Vendor and Validator should use the factors and guidelines for Product Version equivalence to determine whether Product Versions are equivalent. 
-        <br>
-        <br>
-         Having determined the set of Product Models and Versions to be evaluated, the next step is to determine the set of Platforms that the Products must be tested on. 
-        <br>
-        <br>
-         Each non-equivalent Product for which compliance is claimed must be fully tested on each non-equivalent platform for which compliance is claimed. For non-equivalent Products on equivalent platforms, only the differences that affect <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-specified security functionality must be tested for each product. 
-        <br>
-        <br>
+         There are two scenarios for performing equivalency analysis. One is when a product has been certified and the vendor wants to show that a later product should be considered certified due to equivalence with the earlier product. The other is when multiple product variants are going though evaluation together and the vendor would like to reduce the amount of testing that must be done. The basic rules for determining equivalence are the same in both cases. But there is one additional consideration that applies to equivalence with previously certified products. That is, the product with which equivalence is being claimed must have a valid certification in accordance with scheme rules and the Assurance Maintenance process must be followed. If a product&rsquo;s certification has expired, then equivalence cannot be claimed with that product.
+        <p></p>
+         When performing equivalency analysis, the Evaluator/Vendor should first use the factors and guidelines for Product Model equivalence to determine the set of Product Models to be evaluated. In general, Product Models that do not differ in <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-specified security functionality are considered equivalent for purposes of evaluation against the VPP.
+        <p></p>
+         If multiple revision levels of Product Models are to be evaluated--or to determine whether a revision of an evaluated product needs re-evaluation--the Evaluator/Vendor and Validator should use the factors and guidelines for Product Version equivalence to determine whether Product Versions are equivalent.
+        <p></p>
+         Having determined the set of Product Models and Versions to be evaluated, the next step is to determine the set of Platforms that the Products must be tested on.
+        <p></p>
+         Each non-equivalent Product for which compliance is claimed must be fully tested on each non-equivalent platform for which compliance is claimed. For non-equivalent Products on equivalent platforms, only the differences that affect <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-specified security functionality must be tested for each product.
+        <p></p>
          If the set of equivalent Products includes only bare-metal installations, then the equivalency analysis is complete. But if any members of the set include hosted installations or installations that integrate with an existing host operating system or control domain, then software platform equivalence must be taken into consideration. The Evaluator/Vendor and Validator should use the factors and guidance for software platform equivalence to determine whether different models or versions of host or control domain operating systems require separate testing.
-        <br>
-        <br>
+        <p></p>
          <b><i>&ldquo;Differences in <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-Specified Security Functionality&rdquo; Defined</i></b> 
         <br>
          If <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-specified security functionality is implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, then differences in the actual implementation between versions or product models break equivalence for that feature. Likewise, if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> implements the functionality in one version or model and the functionality is implemented by the platform in another version or model, then equivalence is broken. If the functionality is implemented by the platform in multiple models or versions on equivalent platforms, then the functionality is considered different if the product invokes the platform differently to perform the function. 
         <h2 class="indexable" data-level="2" id="s-modelequiv">F.3 Specific Guidance for Determining Product Model Equivalence</h2>
-         Product Model equivalence attempts to determine whether different feature levels of the same product across a product line are equivalent for purposes of <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> testing. For example, if a product has a &ldquo;basic&rdquo; edition and an &ldquo;enterprise&rdquo; edition, is it necessary to test both models? Or does testing one model provide sufficient confidence that both models are compliant? 
-        <br>
-        <br>
-         <a href="#equiv-prod-model" class="equiv-prod-model-ref">Table <span class="counter">10</span></a>, below, lists the factors for determining Product Model equivalence. 
-        <br>
-        <br>
+         Product Model equivalence attempts to determine whether different feature levels of the same product across a product line are equivalent for purposes of <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> testing. For example, if a product has a &ldquo;basic&rdquo; edition and an &ldquo;enterprise&rdquo; edition, is it necessary to test both models? Or does testing one model provide sufficient confidence that both models are compliant?
+        <p></p>
+         <a href="#equiv-prod-model" class="equiv-prod-model-ref">Table <span class="counter">10</span></a>, below, lists the factors for determining Product Model equivalence.
+        <p></p>
          <b><span class="ctr" data-myid="equiv-prod-model" data-counter-type="ct-Table" id="equiv-prod-model">Table <span class="counter">10</span>: Factors for Determining Product Model Equivalence</span></b>
         <br>
         <table border="1">
@@ -8901,9 +8831,8 @@
         <br>
         <br>
         <h2 class="indexable" data-level="2" id="s-versionequiv">F.4 Specific Guidance for Determining Product Version Equivalence</h2>
-         In cases of version equivalence, differences are expressed in terms of changes implemented in revisions of an evaluated Product. In general, versions are equivalent if the changes have no effect on any security-relevant claims about the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> or evaluation evidence. Non-security-relevant changes to <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> functionality or the addition of non-security-relevant functionality does not affect equivalence. 
-        <br>
-        <br>
+         In cases of version equivalence, differences are expressed in terms of changes implemented in revisions of an evaluated Product. In general, versions are equivalent if the changes have no effect on any security-relevant claims about the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> or evaluation evidence. Non-security-relevant changes to <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> functionality or the addition of non-security-relevant functionality does not affect equivalence.
+        <p></p>
          <b><span class="ctr" data-myid="equiv-version" data-counter-type="ct-Table" id="equiv-version">Table <span class="counter">11</span>: Factors for Determining Product Version Equivalence</span></b>
         <br>
         <table border="1">
@@ -8923,25 +8852,19 @@
         <br>
         <br>
         <h2 class="indexable" data-level="2" id="s-platformequiv">F.5 Specific Guidance for Determining Platform Equivalence</h2>
-         Platform equivalence is used to determine the platforms that a product must be tested on. These guidelines are divided into sections for determining hardware equivalence and software (host <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr>/control domain) equivalence. If the Product is installed onto bare metal, then only hardware equivalence is relevant. If the Product is installed onto an <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr>&mdash;or is integrated into an <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr>&mdash;then both hardware and software equivalence are required. Likewise, if the Product can be installed either on bare metal or on an operating system, both hardware and software equivalence are relevant. 
-        <br>
-        <br>
+         Platform equivalence is used to determine the platforms that a product must be tested on. These guidelines are divided into sections for determining hardware equivalence and software (host <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr>/control domain) equivalence. If the Product is installed onto bare metal, then only hardware equivalence is relevant. If the Product is installed onto an <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr>&mdash;or is integrated into an <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr>&mdash;then both hardware and software equivalence are required. Likewise, if the Product can be installed either on bare metal or on an operating system, both hardware and software equivalence are relevant.
+        <p></p>
         <h3 class="indexable" data-level="3" id="ss-hardware-equiv">F.5.1 Hardware Platform Equivalence</h3>
-         If a Virtualization Solution runs directly on hardware without an operating system, then platform equivalence is based primarily on processor architecture and instruction sets. 
-        <br>
-        <br>
-         Platforms with different processor architectures and instruction sets are not equivalent. This is probably not an issue because there is likely to be a different product model for different hardware environments. 
-        <br>
-        <br>
-         Equivalency analysis becomes important when comparing platforms with the same processor architecture. Processors with the same architecture that have instruction sets that are subsets or supersets of each other are not disqualified from being equivalent for purposes of a VPP evaluation. If the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> takes the same code paths when executing <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-specified security functionality on different processors of the same family, then the processors can be considered equivalent with respect to that application. 
-        <br>
-        <br>
-         For example, if a <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> follows one code path on platforms that support the <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-NI instruction and another on platforms that do not, then those two platforms are not equivalent with respect to that <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> functionality. But if the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> follows the same code path whether or not the platform supports <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-NI, then the platforms are equivalent with respect to that functionality. 
-        <br>
-        <br>
+         If a Virtualization Solution runs directly on hardware without an operating system, then platform equivalence is based primarily on processor architecture and instruction sets.
+        <p></p>
+         Platforms with different processor architectures and instruction sets are not equivalent. This is probably not an issue because there is likely to be a different product model for different hardware environments.
+        <p></p>
+         Equivalency analysis becomes important when comparing platforms with the same processor architecture. Processors with the same architecture that have instruction sets that are subsets or supersets of each other are not disqualified from being equivalent for purposes of a VPP evaluation. If the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> takes the same code paths when executing <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-specified security functionality on different processors of the same family, then the processors can be considered equivalent with respect to that application.
+        <p></p>
+         For example, if a <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> follows one code path on platforms that support the <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-NI instruction and another on platforms that do not, then those two platforms are not equivalent with respect to that <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> functionality. But if the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> follows the same code path whether or not the platform supports <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-NI, then the platforms are equivalent with respect to that functionality.
+        <p></p>
          The platforms are equivalent with respect to the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> if the platforms are equivalent with respect to all <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-specified security functionality.
-        <br>
-        <br>
+        <p></p>
          <b><span class="ctr" data-myid="equiv-hw-platform" data-counter-type="ct-Table" id="equiv-hw-platform">Table <span class="counter">12</span>: Factors for Determining Hardware Platform Equivalence</span></b>
         <br>
         <table border="1">
@@ -8958,15 +8881,12 @@
         <br>
         <br>
         <h3 class="indexable" data-level="3" id="ss-os-equiv">F.5.2 Software Platform Equivalence</h3>
-         If the Product installs onto or integrates with an operating system that is not installed with the product--and thus is not part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>--then the Product must be tested on all non-equivalent Software Platforms. 
-        <br>
-        <br>
-         The guidance for Product Model (Section 3) specifies that Products intended for use on substantially different operating systems (e.g., Windows vs. Linux vs. SunOS) are different Models. Therefore, platforms running substantially different operating systems are not equivalent. Likewise, operating systems with different major version numbers are not equivalent for purposes of this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>. 
-        <br>
-        <br>
+         If the Product installs onto or integrates with an operating system that is not installed with the product--and thus is not part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>--then the Product must be tested on all non-equivalent Software Platforms.
+        <p></p>
+         The guidance for Product Model (Section 3) specifies that Products intended for use on substantially different operating systems (e.g., Windows vs. Linux vs. SunOS) are different Models. Therefore, platforms running substantially different operating systems are not equivalent. Likewise, operating systems with different major version numbers are not equivalent for purposes of this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>.
+        <p></p>
          As a result, Software Platform equivalence is largely concerned with revisions and variations of operating systems that are substantially the same (e.g., different versions and revision levels of Windows or Linux).
-        <br>
-        <br>
+        <p></p>
          <b><span class="ctr" data-myid="equiv-sw-platform" data-counter-type="ct-Table" id="equiv-sw-platform">Table <span class="counter">13</span>: Factors for Determining Software Platform Equivalence</span></b>
         <br>
         <table border="1">
@@ -8989,24 +8909,18 @@
         <br>
         <br>
         <h2 class="indexable" data-level="2" id="s-specificity">F.6 Level of Specificity for Tested and Claimed Equivalent Configurations</h2>
-         In order to make equivalency determinations, the vendor and evaluator must agree on the equivalency claims. They must then provide the scheme with sufficient information about the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> instances and platforms that were evaluated, and the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> instances and platforms that are claimed to be equivalent. 
-        <br>
-        <br>
-         The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must describe all configurations evaluated down to processor manufacturer, model number, and microarchitecture version. 
-        <br>
-        <br>
-         The information regarding claimed equivalent configurations depends on the platform that the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> was developed for and runs on. 
-        <br>
-        <br>
-         <b>Bare-Metal <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr></b> 
-        <br>
-        <br>
-         For VSes that run without an operating system on bare-metal or virtual bare-metal, the claimed configuration must describe the platform down to the specific processor manufacturer, model number, and microarchitecture version. The Vendor must describe the differences in the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> with respect to <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-specified security functionality and how the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> operates differently to leverage platform differences (e.g., instruction set extensions) in the tested configuration versus the claimed equivalent configuration. 
-        <br>
-        <br>
-         <b><abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> with <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> Support</b> 
-        <br>
-        <br>
+         In order to make equivalency determinations, the vendor and evaluator must agree on the equivalency claims. They must then provide the scheme with sufficient information about the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> instances and platforms that were evaluated, and the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> instances and platforms that are claimed to be equivalent.
+        <p></p>
+         The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must describe all configurations evaluated down to processor manufacturer, model number, and microarchitecture version.
+        <p></p>
+         The information regarding claimed equivalent configurations depends on the platform that the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> was developed for and runs on.
+        <p></p>
+         <b>Bare-Metal <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr></b>
+        <p></p>
+         For VSes that run without an operating system on bare-metal or virtual bare-metal, the claimed configuration must describe the platform down to the specific processor manufacturer, model number, and microarchitecture version. The Vendor must describe the differences in the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> with respect to <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-specified security functionality and how the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> operates differently to leverage platform differences (e.g., instruction set extensions) in the tested configuration versus the claimed equivalent configuration.
+        <p></p>
+         <b><abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> with <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> Support</b>
+        <p></p>
          For VSes that run on an <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> host or with the assistance of an <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr>, then the claimed configuration must describe the <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> down to its specific model and version number. The Vendor must describe the differences in the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> with respect to <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>-specified security functionality and how the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> functions differently to leverage platform differences in the tested configuration versus the claimed equivalent configuration. 
         <h1 id="acronyms" class="indexable" data-level="A">Appendix G - Acronyms</h1>
         <table>
