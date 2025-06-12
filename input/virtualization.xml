@@ -1393,9 +1393,8 @@
 					<comp-lev>requires the TSF to destroy or make unrecoverable empty keys in volatile and 
 						non-volatile memory. Note that component level 4 is used here because of this
 						component’s similarity to the CC Part 2 component FCS_CKM.6.</comp-lev>
-					<management>No specific management functions are identified.
-					</management>
-					<audit>There are no auditable events foreseen.</audit>
+					<management/>
+					<audit/>
 					<dependencies>[FCS_CKM.1 Cryptographic Key Generation, or<h:p/>
 								FCS_CKM.2 Cryptographic Key Distribution]</dependencies>
                     <f-element id="fcs-ckm-6e1">
@@ -2153,8 +2152,8 @@
                 <f-component cc-id="fcs_ent_ext.1" name="Entropy for Virtual Machines">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to provide entropy data to VMs in a specified manner.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>There are no auditable events foreseen.</audit>
+					<management/>
+					<audit/>
 					<dependencies>FCS_RBG.1 Cryptographic Operation (Random Bit Generation)</dependencies>
                     <f-element id="fcs-ent-ext-1e1">
                         <title>The TSF shall provide a mechanism to make available to VMs entropy that meets FCS_RBG.1 through
@@ -2228,7 +2227,7 @@
 					<depends on-sel="sel-x509-2-https"/>
 					<consistency-rationale/>
 					<comp-lev>defines requirements for the implementation of the HTTPS protocol.</comp-lev>
-					<management>No specific management functions are identified.</management>
+					<management/>
 					<audit>The following actions should be auditable if FAU_GEN Security audit data 
 						generation is included in the PP/ST:
 						<h:ol type="a">
@@ -2284,8 +2283,7 @@
 					<depends on-sel="sel-x509-2-ipsec"/>
 					<consistency-rationale/>
 					<comp-lev>requires that IPsec be implemented as specified.</comp-lev>
-					<management>No specific management functions are identified.
-					</management>
+					<management/>
 					<audit>The following actions should be auditable if FAU_GEN Security audit data 
 						generation is included in the PP/ST:
 						<h:ol type="a">
@@ -3145,7 +3143,8 @@
 				<f-component cc-id="fcs_rbg.2" name="Random Bit Generation (External Seeding)" status="sel-based">
 					<depends on="external-seed"/>
                     <f-element id="fcs-rbg-2e1">
-                        <title>The TSF shall be able to accept a minimum input of <assignable>minimum input length greater than zero</assignable> from a TSF interface for the purpose of seeding.
+                        <title>The TSF shall be able to accept a minimum input of <assignable>minimum input length greater
+							than zero</assignable> from a TSF interface for the purpose of seeding.
                         </title>
 						<aactivity>
 							<TSS/>
@@ -3161,9 +3160,12 @@
 					<depends on="internal-seed"/>
 					
                     <f-element id="fcs-rbg-3e1">
-                        <title>The TSF shall be able to seed the RBG using a <selectables choose-one-of="yes"><selectable>TSF software-based
-							noise source</selectable><selectable>TSF hardware-based noise
-							    source</selectable></selectables> <assignable>name of noise source</assignable> with a minimum of <assignable>number of bits</assignable> bits of min-entropy.
+                        <title>The TSF shall be able to seed the RBG using a 
+							<selectables choose-one-of="yes">
+								<selectable>TSF software-based noise source</selectable>
+								<selectable>TSF hardware-based noise source</selectable></selectables> 
+							<assignable>name of noise source</assignable> with a minimum of 
+							<assignable>number of bits</assignable> bits of min-entropy.
                         </title>
 						<aactivity>
 							<TSS/>
@@ -3177,7 +3179,10 @@
                 <f-component cc-id="fcs_rbg.4" name="Random Bit Generation (Internal Seeding - Multiple Sources)" status="sel-based">
 				    <depends on="internal-seeds"/>
                     <f-element id="fcs-rbg-4e1" >
-                        <title>The TSF shall be able to seed the RBG using <selectables><selectable><assignable>number</assignable> TSF software-based noise source(s)</selectable><selectable><assignable>number</assignable> TSF hardware-based noise source(s)</selectable></selectables>.
+                        <title>The TSF shall be able to seed the RBG using <selectables>
+							<selectable><assignable>number</assignable> TSF software-based noise source(s)</selectable>
+							<selectable><assignable>number</assignable> TSF hardware-based noise source(s)</selectable>
+							</selectables>.
                         </title>
 						<aactivity>
 							<TSS/>
@@ -3192,7 +3197,12 @@
 				    <depends on="internal-seeds"/>
                     <f-element id="fcs-rbg-5e1">
                         <title>The TSF shall <assignable>combining operation</assignable>
-                            <selectables><selectable>output from TSF noise source(s)</selectable><selectable>input from TSF interface(s) for seeding</selectable></selectables> to create the entropy input into the derivation function as defined in <assignable>list of standards</assignable>, resulting in a minimum of <assignable>number of bits</assignable> bits of min-entropy.
+                            <selectables><selectable>output from TSF noise source(s)</selectable>
+							<selectable>input from TSF interface(s) for seeding</selectable>
+							</selectables> 
+							to create the entropy input into the derivation function as defined in 
+							<assignable>list of standards</assignable>, resulting in a minimum of 
+							<assignable>number of bits</assignable> bits of min-entropy.
                         </title>
 						<aactivity>
 							<TSS/>
@@ -3233,8 +3243,8 @@
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to identify the mechanisms used to isolate guest VMs from platform
 						hardware resources.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>There are no auditable events foreseen.</audit>
+					<management/>
+					<audit/>
 					<dependencies>FDP_VMS_EXT.1 VM Separation</dependencies>
                     <f-element id="fdp-hbi-ext-1e1">
                         <title>The TSF shall use
@@ -3393,9 +3403,9 @@
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to ensure that physical memory is cleared to zeros prior to its allocation to a
 						guest VM.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>There are no auditable events foreseen.</audit>
-					<dependencies>No dependencies.</dependencies>
+					<management/>
+					<audit/>
+					<dependencies/>
                     <f-element id="fdp-rip-ext-1e1">
                         <title>The TSF shall ensure that any previous information content of physical memory is cleared prior to 
 							allocation to a guest VM.
@@ -3429,9 +3439,9 @@
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to ensure that physical disk storage is cleared upon 
 						allocation to a guest VM.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>There are no auditable events foreseen.</audit>
-					<dependencies>No dependencies.</dependencies>
+					<management/>
+					<audit/>
+					<dependencies/>
                     <f-element id="fdp-rip-ext-2e1">
                         <title>The TSF shall ensure that any previous information content of physical disk storage is cleared to zeros upon
 							allocation to a guest VM.
@@ -3481,8 +3491,8 @@
 							<h:li>Ability to configure inter-VM data sharing.</h:li>
 						</h:ol>
 					</management>
-					<audit>There are no auditable events foreseen.</audit>
-					<dependencies>No dependencies.</dependencies>
+					<audit/>
+					<dependencies/>
                     <f-element id="fdp-vms-ext-1e1">
                         <title>The VS shall provide the following mechanisms for transferring data between guest VMs:
                             <selectables linebreak="yes">
@@ -3773,7 +3783,7 @@
 								the ability to change default authorization factors.</h:li>
 						</h:ol>
 					</management>
-					<audit>There are no auditable events foreseen.</audit>
+					<audit/>
 					<dependencies>FIA_UIA_EXT.1 Administrator Identification and Authentication</dependencies>
                     <f-element id="fia-pmg-ext-1e1">
                         <title>The TSF shall provide the following password management capabilities for administrative passwords:
@@ -3859,15 +3869,12 @@
                             to support user authentication.
                         </title>
                         <note role="application">Selection of ‘authentication based on username and password’ requires that 
-							FIA_PMG_EXT.1 be included in the ST. This also requires that the ST include a management function for
-							password management. If the ST author selects ‘authentication based on an SSH public-key credential’,
+							FIA_PMG_EXT.1 be included in the ST. This also requires that the ST include a management function 
+							<xref to="mf-admin-pwd-policy"/> for password management. 
+							If the ST author selects ‘authentication based on an SSH public-key credential’,
 							the TSF shall be validated against the <xref to="pkg-ssh"/>. The ST must include 
-                            FIA_X509_EXT.1 and FIA_X509_EXT.2  <!-- <xref to="pkg-509"/> --> Functional Package for
-                            X.509, version 1.0, if
-                            'authentication based on X.509 certificates' is selected, as defined in
-                            the <!-- <xref to="pkg-509"/> --> Functional Package for
-                            X.509, version 1.0 . 
-							<h:br/><h:br/>
+                            FIA_X509_EXT.1 and FIA_X509_EXT.2 from the <!-- <xref to="pkg-509"/> --> Functional Package for
+                            X.509, version 1.0, if 'authentication based on X.509 certificates' is selected. <h:p/>
 							PINs used to access OE-protected storage are set and managed by the OE-protected storage mechanism. Thus
 							requirements on PIN management are outside the scope of the TOE.
                         </note>
@@ -3903,8 +3910,7 @@
 								an administrator user with the Client Authentication Enhanced Key Usage field set. The evaluator
 								will provision the VS for authentication with the X.509v3 certificate. The evaluator shall ensure
 								that the certificates are validated by the VS as per FIA_X509_EXT.1.1 in the <!-- <xref to="pkg-509"/> --> Functional Package for
-                                X.509, version 1.0 and then conduct the
-								following tests:
+                                X.509, version 1.0 and then conduct the following tests:
 								<testlist>
 									<test>The evaluator will attempt to authenticate to the VS using the X.509v3 certificate. The 
 										evaluator will ensure that the authentication attempt is successful.</test>
@@ -3955,7 +3961,7 @@
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to ensure that all subjects attempting to perform TSF-mediated actions
 						are identified and authenticated prior to authorizing these actions to be performed.</comp-lev>
-					<management>No specific management functions are identified.</management>
+					<management/>
 					<audit>The following actions should be auditable if FAU_GEN Security audit data 
 						generation is included in the PP/ST:
 						<h:ol type="a">
@@ -4015,13 +4021,26 @@
 					
 					<f-element id="fia-x509-ext-4-1">
 					
-						<title>The TSF shall provide alternate functionality to standard X.509 certificate revocation checking for the following exceptions: <selectables><selectable>firmware checking of updates: invalidate automatic updates if the firmware certificate is compromised</selectable><selectable><assignable>other exceptions and corresponding functionality</assignable></selectable></selectables>.</title>
+						<title>The TSF shall provide alternate functionality to standard X.509 certificate revocation
+							checking for the following exceptions: <selectables><selectable>firmware checking of updates: 
+							invalidate automatic updates if the firmware certificate is compromised</selectable>
+							<selectable><assignable>other exceptions and corresponding functionality</assignable></selectable>
+							</selectables>.
+						</title>
 						<aactivity>
-							<TSS>The evaluator shall ensure the TSS describes, for each exception, the alternate functionality the TOE implements to handle the lack of certificate revocation. The description must be consistent with the selection in the requirement.</TSS>
+							<TSS>The evaluator shall ensure the TSS describes, for each exception, the alternate functionality 
+								the TOE implements to handle the lack of certificate revocation. The description must be 
+								consistent with the selection in the requirement.</TSS>
 							<Guidance/>
 							<Tests>
 							<testlist>
-								<test>For each exception, the evaluator shall configure the TSF as necessary to meet the exceptional condition described, and exercise the function using a certificate chain without revocation information. The evaluator shall attempt to examine TSF logging or behavior as described in the TSS to confirm the alternative action described is performed. For example, in the case of firmware updates that invalidate automatic updates, the evaluator shall invoke an automatic update and observe that the update is not performed. In other cases, the TSS describes the alternative action.</test>
+								<test>For each exception, the evaluator shall configure the TSF as necessary to meet the 
+									exceptional condition described, and exercise the function using a certificate chain
+									without revocation information. The evaluator shall attempt to examine TSF logging or
+									behavior as described in the TSS to confirm the alternative action described is performed.
+									For example, in the case of firmware updates that invalidate automatic updates, the
+									evaluator shall invoke an automatic update and observe that the update is not performed. 
+									In other cases, the TSS describes the alternative action.</test>
 							</testlist></Tests>
 						</aactivity>
 					</f-element>
@@ -4062,228 +4081,309 @@
                     </f-element>
                     <f-element id="fmt-mof-ext-1e2">
                         <title>
-							The TSF shall be capable of performing the following management functions, [<h:i>controlled by an administrator 
-				            or user as shown in the key in <xref to="manfunc"/>.</h:i>]<h:p/>
-                            <h:center><h:h4><ctr ctr-type="Table" pre="Table " id="manfunc">: Virtualization Management Functions</ctr></h:h4></h:center>
-							<h:div class="table-key" style="border-style: solid; padding: 5px;">
-								X = Mandatory (TOE must provide that function to that role)<h:br/>
-								O = Optional (TOE may or may not provide that function to that role)<h:br/>
-								N = Not Permitted (TOE must not provide that function to that role)<h:br/>
-								S = Selection-Based (TOE must provide that function to that role if the TOE claims a particular selection-based SFR)<h:br/>
-							</h:div>
-                            <h:table>
-                                <h:tr>
-                                    <h:th>Number</h:th> 
-                                    <h:th>Function</h:th> 
-                                    <h:th>Admin</h:th> 
-                                    <h:th>User</h:th> 
-                                    <h:th>Notes</h:th> 
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>1</h:td> 
-                                    <h:td>Ability to update the Virtualization System</h:td> 
-                                    <h:td>X</h:td> 
-                                    <h:td>N</h:td> 
-                                    <h:td>See FPT_TUD_EXT.1</h:td> 
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>2</h:td>
-                                    <h:td><selectables>
-										<selectable id="sel-mf-pwd-policy">Ability to configure administrator password policy as defined in FIA_PMG_EXT.1</selectable>
-										<selectable>Not applicable.</selectable></selectables></h:td>
-                                    <h:td>S</h:td>
-                                    <h:td>N</h:td>
-                                    <h:td>Must be selected if FIA_PMG_EXT.1 is claimed.</h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>3</h:td>
-                                    <h:td>Ability to create, configure and delete VMs</h:td>
-                                    <h:td>X</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td> </h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>4</h:td>
-                                    <h:td>Ability to set default initial VM configurations</h:td>
-                                    <h:td>X</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td> </h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>5</h:td>
-                                    <h:td>Ability to configure virtual networks including VM</h:td>
-                                    <h:td>X</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td>See FDP_VNC_EXT.1</h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>6</h:td>
-                                    <h:td>Ability to configure and manage the audit system and audit data</h:td>
-                                    <h:td>X</h:td>
-                                    <h:td>N</h:td>
-                                    <h:td> </h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>7</h:td>
-                                    <h:td>Ability to configure VM access to physical devices</h:td>
-                                    <h:td>X</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td>See FDP_PPR_EXT.1</h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>8</h:td>
-                                    <h:td>Ability to configure inter-VM data sharing</h:td>
-                                    <h:td>X</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td>See FDP_VMS_EXT.1</h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>9</h:td>
-                                    <h:td><h:s>Ability to enable/disable VM access to Hypercall functions</h:s></h:td>
-                                    <h:td>O</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td>Management function 9 is no longer required</h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>10</h:td>
-                                    <h:td>Ability to configure removable media policy</h:td>
-                                    <h:td>X</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td>See FPT_RDM_EXT.1</h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>11</h:td>
-                                    <h:td>Ability to configure the cryptographic functionality</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td>See FCS_CKM.1, FCS_CKM.2, and FCS_COP.1/HASH. See also, the <xref to="pkg-tls"/> and <xref to="pkg-ssh"/> if 
-										claimed for methods to configure their respective cryptographic functionality.</h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>12</h:td>
-                                    <h:td>Ability to change default authorization factors</h:td>
-                                    <h:td>X</h:td>
-                                    <h:td>N</h:td>
-                                    <h:td>See FIA_PMG_EXT.1</h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>13</h:td>
-                                    <h:td>Ability to enable/disable screen lock</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td> </h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>14</h:td>
-                                    <h:td>Ability to configure screen lock inactivity timeout</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td> </h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>15</h:td>
-                                    <h:td>Ability to configure remote connection inactivity timeout</h:td>
-                                    <h:td>X</h:td>
-                                    <h:td>N</h:td>
-                                    <h:td> </h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>16</h:td>
-                                    <h:td>Ability to configure lockout policy for unsuccessful authentication attempts through 
+							The TSF shall be capable of performing the following management functions: [<h:p/>
+
+                            <h:b><ctr id="manfunc" ctr-type="Table">: Management Functions</ctr></h:b><h:p/>
+							Status Markers:<h:br/>
+								M = Mandatory (TOE must provide that function to that role)<h:br/>
+								O = Optional/Selectable/Conditional (TOE may provide the function to that role)<h:br/>
+								X = Not Permitted (TOE must not provide that function to that role)<h:br/>
+
+							<management-function-set default="O" notes-in-table="yes">
+								<manager cid="A">Admin</manager>
+								<manager cid="U">User</manager>
+
+								<!-- 1 -->
+								<management-function id="mf-admin-platform">	
+									<text>
+										Ability to update the Virtualization System.
+									</text>
+									<M ref="A"/>
+									<X ref="U"/>
+									<app-note>
+										See FPT_TUD_EXT.1.
+									</app-note>
+								</management-function>
+
+								<!-- 2 -->
+								<management-function id="mf-admin-pwd-policy">	
+									<text>
+										<selectables>
+											<selectable id="sel-mf-pwd-policy">Ability to configure administrator password policy as defined in FIA_PMG_EXT.1</selectable>
+											<selectable>Not applicable</selectable>
+										</selectables>
+									</text>
+									<O ref="A"/>
+									<X ref="U"/>
+									<app-note>
+										Must be selected if FIA_PMG_EXT.1 is claimed.
+									</app-note>
+								</management-function>
+
+								<!-- 3 -->
+								<management-function id="mf-admin-createVMs">	
+									<text>
+										Ability to create, configure and delete VMs
+									</text>
+									<M ref="A"/>
+									<O ref="U"/>
+									<app-note>
+									</app-note>
+								</management-function>
+
+								<!-- 4 -->
+								<management-function id="mf-admin-setDefVMConfigs">	
+									<text>
+										Ability to set default initial VM configurations
+									</text>
+									<M ref="A"/>
+									<O ref="U"/>
+									<app-note>
+										Optional for Users in the Client use case. Forbidden for 
+										Users in the Server use case.
+									</app-note>
+								</management-function>
+
+								<!-- 5 -->
+								<management-function id="mf-admin-configVirtNW">	
+									<text>
+										Ability to configure virtual networks including VM
+									</text>
+									<M ref="A"/>
+									<O ref="U"/>
+									<app-note>
+										See FDP_VNC_EXT.1.
+									</app-note>
+								</management-function>
+
+								<!-- 6 -->
+								<management-function id="mf-admin-configAudit">	
+									<text>
+										Ability to configure and manage the audit system and audit data
+									</text>
+									<M ref="A"/>
+									<X ref="U"/>
+									<app-note>
+									</app-note>
+								</management-function>
+
+								<!-- 7 -->
+								<management-function id="mf-admin-configPhyDevAccess">	
+									<text>
+										Ability to configure VM access to physical devices
+									</text>
+									<M ref="A"/>
+									<O ref="U"/>
+									<app-note>See FDP_PPR_EXT.1</app-note>
+								</management-function>
+
+								<!-- 8 -->
+								<management-function id="mf-admin-configVMSharing">	
+									<text>
+										Ability to configure inter-VM data sharing
+									</text>
+									<M ref="A"/>
+									<O ref="U"/>
+									<app-note>See FDP_VMS_EXT.1</app-note>
+								</management-function>
+
+								<!-- 9 (was 10) -->
+								<management-function id="mf-admin-mediaPolicy">	
+									<text>
+										Ability to configure removable media policy
+									</text>
+									<M ref="A"/>
+									<O ref="U"/>
+									<app-note>See FPT_RDM_EXT.1<h:br/>
+										Optional for Users in the Client use case. Forbidden for 
+										Users in the Server use case.
+									</app-note>
+								</management-function>
+
+								<!-- 10 (was 11) -->
+								<management-function id="mf-admin-configCrypto">	
+									<text>
+										Ability to configure the cryptographic functionality
+									</text>
+									<O ref="A"/>
+									<O ref="U"/>
+									<app-note>Mandatory for Admin role for the Server use case. <h:br/>
+										Forbidden for Users for the Server use case.<h:br/>
+										Optional for all roles for the Client use case.
+									</app-note>
+								</management-function>
+
+								<!-- 11 (was 12) -->
+								<management-function id="mf-admin-changeDefAuth">	
+									<text>
+										Ability to change default authorization factors
+									</text>
+									<M ref="A"/>
+									<X ref="U"/>
+									<app-note>See FIA_PMG_EXT.1</app-note>
+								</management-function>
+
+								<!-- 12 (was 13) -->
+								<management-function id="mf-admin-configScrLock">	
+									<text>
+										Ability to enable/disable screen lock
+									</text>
+									<O ref="A"/>
+									<O ref="U"/>
+									<app-note></app-note>
+								</management-function>
+
+								<!-- 13 (was 14) -->
+								<management-function id="mf-admin-configScrLockTimeout">	
+									<text>
+										Ability to configure screen lock inactivity timeout
+									</text>
+									<O ref="A"/>
+									<O ref="U"/>
+									<app-note></app-note>
+								</management-function>
+
+								<!-- 14 (was 15) -->
+								<management-function id="mf-admin-configRemoteCnxTimeout">	
+									<text>
+										Ability to configure remote connection inactivity timeout
+									</text>
+									<M ref="A"/>
+									<X ref="U"/>
+									<app-note></app-note>
+								</management-function>
+
+								<!-- 15 (was 16) -->
+								<management-function id="mf-admin-configLockoutPolicy">	
+									<text>
+										Ability to configure lockout policy for unsuccessful authentication attempts through 
                                         <selectables>
                                             <selectable>timeouts between attempts</selectable>
                                             <selectable>limiting number of attempts during a time period</selectable>
-                                        </selectables></h:td>
-                                    <h:td>X</h:td>
-                                    <h:td>N</h:td>
-                                    <h:td>See FIA_AFL_EXT.1</h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>17</h:td>
-                                    <h:td><selectables>
-										<selectable id="sel-mf-dir-server">Ability to configure name/address of directory server to bind with</selectable>
-										<selectable>Not applicable</selectable></selectables></h:td>
-                                    <h:td>S</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td>Must be selected if "directory-based" is selected anywhere in FIA_UAU.5.1.</h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>18</h:td>
-                                    <h:td>Ability to configure name/address of audit/logging server to which to send audit/logging records</h:td>
-                                    <h:td>X</h:td>
-                                    <h:td>N</h:td>
-                                    <h:td>See FAU_STG_EXT.1.</h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>19</h:td>
-                                    <h:td>Ability to configure name/address of network time server</h:td>
-                                    <h:td>X</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td> </h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>20</h:td>
-                                    <h:td>Ability to configure banner</h:td>
-                                    <h:td>X</h:td>
-                                    <h:td>N</h:td>
-                                    <h:td>See FTA_TAB.1</h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>21</h:td>
-                                    <h:td>Ability to connect/disconnect removable devices to/from a VM</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td>See FPT_RDM_EXT.1</h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>22</h:td>
-                                    <h:td>Ability to start a VM</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td> </h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>23</h:td>
-                                    <h:td>Ability to stop/halt a VM</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td> </h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>24</h:td>
-                                    <h:td>Ability to checkpoint a VM</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td> </h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>25</h:td>
-                                    <h:td>Ability to suspend a VM</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td> </h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>26</h:td>
-                                    <h:td>Ability to resume a VM</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td>O</h:td>
-                                    <h:td> </h:td>
-                                </h:tr>
-                                <h:tr>
-                                    <h:td>27</h:td>
-                                    <h:td><selectables>
-										<selectable id="sel-mf-cert-no-validity-action">Ability to configure action taken if unable to determine the
-											validity of a certificate</selectable>
-										<selectable>Not applicable</selectable></selectables>
-									</h:td>
-                                    <h:td>S</h:td>
-                                    <h:td>N</h:td>
-                                    <h:td>This function must be selected if "allow the administrator to choose whether to accept the certificate 
-										in these cases" in FIA_X509_EXT.2.2.</h:td>
-                                </h:tr>
-                            </h:table>
-							<h:br/>]
+                                        </selectables>
+									</text>
+									<M ref="A"/>
+									<X ref="U"/>
+									<app-note>See FIA_AFL_EXT.1</app-note>
+								</management-function>
+
+								<!-- 16 (was 17) -->
+								<management-function id="mf-admin-configDirServer">	
+									<text>
+										<selectables>
+											<selectable id="sel-mf-dir-server">Ability to configure name/address of directory server to bind with</selectable>
+											<selectable>Not applicable</selectable></selectables>
+									</text>
+									<O ref="A"/>
+									<X ref="U"/>
+									<app-note>Must be selected if "directory-based" is selected anywhere in FIA_UAU.5.1.</app-note>
+								</management-function>
+
+								<!-- 17 (was 18) -->
+								<management-function id="mf-admin-configAuditServer">	
+									<text>
+										Ability to configure name/address of audit/logging server to which to send audit/logging records
+									</text>
+									<M ref="A"/>
+									<X ref="U"/>
+									<app-note>See FAU_STG_EXT.1</app-note>
+								</management-function>
+
+								<!-- 18 (was 19) -->
+								<management-function id="mf-admin-configTimeServer">	
+									<text>
+										Ability to configure name/address of network time server
+									</text>
+									<M ref="A"/>
+									<O ref="U"/>
+									<app-note></app-note>
+								</management-function>
+
+								<!-- 19 (was 20) -->
+								<management-function id="mf-admin-configBanner">	
+									<text>
+										Ability to configure banner
+									</text>
+									<M ref="A"/>
+									<X ref="U"/>
+									<app-note>See FTA_TAB.1</app-note>
+								</management-function>
+
+								<!-- 20 (was 21) -->
+								<management-function id="mf-admin-connectRemDev">	
+									<text>
+										Ability to connect/disconnect removable devices to/from a VM
+									</text>
+									<O ref="A"/>
+									<O ref="U"/>
+									<app-note>See FPT_RDM_EXT.1</app-note>
+								</management-function>
+
+								<!-- 21 (was 22) -->
+								<management-function id="mf-admin-startVM">	
+									<text>
+										Ability to start a VM
+									</text>
+									<O ref="A"/>
+									<O ref="U"/>
+									<app-note></app-note>
+								</management-function>
+
+								<!-- 22 (was 23) -->
+								<management-function id="mf-admin-stopVM">	
+									<text>
+										Ability to stop/halt a VM
+									</text>
+									<O ref="A"/>
+									<O ref="U"/>
+									<app-note></app-note>
+								</management-function>
+
+								<!-- 23 (was 24) -->
+								<management-function id="mf-admin-checkpointVM">	
+									<text>
+										Ability to checkpoint a VM
+									</text>
+									<O ref="A"/>
+									<O ref="U"/>
+									<app-note></app-note>
+								</management-function>
+
+								<!-- 24 (was 25) -->
+								<management-function id="mf-admin-suspendVM">	
+									<text>
+										Ability to suspend a VM
+									</text>
+									<O ref="A"/>
+									<O ref="U"/>
+									<app-note></app-note>
+								</management-function>
+
+								<!-- 25 (was 26) -->
+								<management-function id="mf-admin-resumeVM">	
+									<text>
+										Ability to resume a VM
+									</text>
+									<O ref="A"/>
+									<O ref="U"/>
+									<app-note></app-note>
+								</management-function>
+
+								<!-- 26 (was 27) -->
+								<management-function id="mf-admin-configCertAction">	
+									<text>
+										<selectables>
+											<selectable id="sel-mf-cert-no-validity-action">Ability to configure action taken
+												if unable to determine the validity of a certificate</selectable>
+											<selectable>Not applicable</selectable>
+										</selectables>
+									</text>
+									<O ref="A"/>
+									<X ref="U"/>
+									<app-note>This function must be selected if "allow the administrator to choose whether to accept the certificate 
+										in these cases" in FIA_X509_EXT.2.2</app-note>
+								</management-function>
+							</management-function-set>
                         </title>
                         <ext-comp-def-title>
                           <title>The TSF shall be capable of performing the following management functions
@@ -4292,7 +4392,7 @@
                         </ext-comp-def-title>
                         <note role="application">
                             The ST author is expected to update <xref to="manfunc"/> with an indication as to 
-							whether any of the ‘optional’ or ‘selection-based’ functions are 
+							whether any of the optional functions are 
 							included as part of the TOE. The ST author may also omit the ‘Notes’ 
 							column as it is provided in this PP-Module as an aid to the ST author in 
 							constructing the table.<h:p/>
@@ -4350,9 +4450,9 @@
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to separate its management and operational networks through a defined 
 						mechanism.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>There are no auditable events foreseen.</audit>
-					<dependencies>No dependencies.</dependencies>
+					<management/>
+					<audit/>
+					<dependencies/>
                     <f-element id="fmt-smo-ext-1e1">
                         <title>The TSF shall support the separation of management and operational network traffic through
                             <selectables>
@@ -4471,12 +4571,12 @@
                 <f-component cc-id="fpt_ddi_ext.1" name="Device Driver Isolation"  status="objective">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to isolate device drivers for physical devices from all virtual domains.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>There are no auditable events foreseen.</audit>
-					<dependencies>No dependencies.</dependencies>
+					<management/>
+					<audit/>
+					<dependencies/>
                     <f-element id="fpt-ddi-ext-1e1">
-                        <title>The TSF shall ensure that device drivers for physical devices are isolated from the VMM and all other
-							domains.
+                        <title>The TSF shall ensure that device drivers for physical devices are isolated from the VMM and 
+							all other domains.
                         </title>
                     <note role="application">In order to function on physical hardware, the VMM must have access to the device
 						drivers for the physical platform on which it runs. These drivers are often written by third parties, 
@@ -4511,8 +4611,8 @@
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to prevent guest VMs from accessing virtual devices
 						that it is not configured to have access to.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>There are no auditable events foreseen.</audit>
+					<management/>
+					<audit/>
 					<dependencies>FPT_VDP_EXT.1 Virtual Device Parameters</dependencies>
                     <f-element id="fpt-dvd-ext-1e1">
                         <title>The TSF shall prevent guest VMs from accessing virtual device interfaces that are not present in the VM’s current
@@ -4546,9 +4646,9 @@
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to identify the execution environment-based
 						protection mechanisms that it can use for self-protection.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>There are no auditable events foreseen.</audit>
-					<dependencies>No dependencies.</dependencies>
+					<management/>
+					<audit/>
+					<dependencies/>
                     <f-element id="fpt-eem-ext-1e1">
                         <title>The TSF shall take advantage of execution environment-based vulnerability mitigation mechanisms 
 							supported by the Platform such as:
@@ -4616,14 +4716,14 @@
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to specify the mechanisms it uses to verify the
 						integrity of guest VMs.</comp-lev>
-					<management>No specific management functions are identified.</management>
+					<management/>
 					<audit>The following actions should be auditable if FAU_GEN Security 
 						audit data generation is included in the PP/ST:
 						<h:ol type="a">
 							<h:li>Actions taken due to failed integrity check.</h:li>
 						</h:ol>
 					</audit>
-					<dependencies>No dependencies.</dependencies>
+					<dependencies/>
                     <f-element id="fpt-gvi-ext-1e1">
                         <title>The TSF shall verify the integrity of guest VMs through the following mechanisms: 
 				<assignable>list of guest VM integrity mechanisms</assignable>.
@@ -4661,9 +4761,9 @@
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to identify the hardware assists it uses to reduce
 						TOE complexity.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>There are no auditable events foreseen.</audit>
-					<dependencies>No dependencies.</dependencies>
+					<management/>
+					<audit/>
+					<dependencies/>
                     <f-element id="fpt-has-ext-1e1">
                         <title>The VMM shall use <assignable>list of hardware-based virtualization assists</assignable> to reduce or 
 				eliminate the need for binary translation.
@@ -4707,7 +4807,7 @@
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to implement appropriate parameter validation
 						to protect the VMM from unauthorized access through a hypercall interface.</comp-lev>
-						<management>No specific management functions are identified.</management>
+						<management/>
 					<audit>The following actions should be auditable if FAU_GEN Security
 						audit data generation is included in the PP/ST:
 						<h:ol type="a">
@@ -4738,9 +4838,7 @@
 								and any conditions under which the interface can be invoked (e.g., from guest user mode, guest privileged mode,
 								during guest boot only). 
                             </TSS>
-                            <Guidance>
-								There is no operational guidance for this component.
-                            </Guidance>
+                            <Guidance/>
                             <Tests>
                                 The evaluator shall perform the following test:<h:p/>
                                 For each hypercall interface documented in the TSS or proprietary TSS Annex, the evaluator shall attempt to  
@@ -4763,9 +4861,9 @@
                 <f-component cc-id="fpt_idv_ext.1" name="Software Identification and Versions"  status="objective">
  					<consistency-rationale/>
 					<comp-lev>requires the TSF to identify itself using SWID tags.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>There are no auditable events foreseen.</audit>
-					<dependencies>No dependencies.</dependencies>
+					<management/>
+					<audit/>
+					<dependencies/>
                    <f-element id="fpt-idv-ext-1e1">
                         <title>The TSF shall include software identification (SWID) tags that contain a SoftwareIdentity element and 
 				an Entity element as defined in ISO/IEC 19770-2:2009.
@@ -4802,14 +4900,14 @@
                 <f-component cc-id="fpt_int_ext.1" name="Support for Introspection"  status="objective">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to support introspection.</comp-lev>
-					<management>No specific management functions are identified.</management>
+					<management/>
 					<audit>The following actions should be auditable if FAU_GEN Security 
 						audit data generation is included in the PP/ST:
 						<h:ol type="a">
 							<h:li>Introspection initiated/enabled.</h:li>
 						</h:ol>
 					</audit>
-					<dependencies>No dependencies.</dependencies>
+					<dependencies/>
                     <f-element id="fpt-int-ext-1e1">
                         <title>The TSF shall support a mechanism for permitting the VMM or privileged VMs to access the internals of
 				another VM for purposes of introspection.
@@ -4845,14 +4943,14 @@
                 <f-component cc-id="fpt_ml_ext.1" name="Measured Launch of Platform and VMM"  status="objective">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to support a measured launch of itself.</comp-lev>
-					<management>No specific management functions are identified.</management>
+					<management/>
 					<audit>The following actions should be auditable if FAU_GEN Security 
 						audit data generation is included in the PP/ST:
 						<h:ol type="a">
 							<h:li>Integrity measurements collected.</h:li>
 						</h:ol>
 					</audit>
-					<dependencies>No dependencies.</dependencies>
+					<dependencies/>
                     <f-element id="fpt-ml-ext-1e1">
                         <title>The TSF shall support a measured launch of the Virtualization System. Measured 
 				components of the VS shall include the static executable image of the hypervisor
@@ -5215,8 +5313,8 @@
 					<depends on-sel="sel-x5092-signed-updates"/>
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to validate updates using a code signing certificate.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>There are no auditable events foreseen.</audit>
+					<management/>
+					<audit/>
 					<dependencies>FPT_TUD_EXT.1 Trusted Updates to the Virtualization System<h:p/>
 							FIA_X509_EXT.1 X.509 Validation<h:p/>
 							FIA_X509_EXT.2 X.509 Authentication</dependencies>
@@ -5250,8 +5348,8 @@
 					<comp-lev>requires the TSF to interface with guest VMs through virtual hardware abstractions
 						so that any data transmitted to the TOE from a guest VM can be validated 
 						as well-formed.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>There are no auditable events foreseen.</audit>
+					<management/>
+					<audit/>
 					<dependencies>FPT_VIV_EXT.1 VMM Isolation from VMs</dependencies>
                     <f-element id="fpt-vdp-ext-1e1">
                         <title>The TSF shall provide interfaces for virtual devices implemented by the VMM as part of the virtual
@@ -5301,8 +5399,8 @@
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to ensure that there is no mechanism by which a guest VM can interface
 						with the TOE, other VMs, or the hardware platform without authorization.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>There are no auditable events foreseen.</audit>
+					<management/>
+					<audit/>
 					<dependencies>FDP_PPR_EXT.1 Physical Platform Resource Controls<h:p/>
 						FDP_VMS_EXT.1 VM Separation</dependencies>
                     <f-element id="fpt-viv-ext-1e1">
@@ -5399,8 +5497,7 @@
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to implement one or more cryptographic protocols
 						to secure connectivity between the TSF and various external entities.</comp-lev>
-					<management>No specific management functions are identified.
-					</management>
+					<management/>
 					<audit>The following actions should be auditable if FAU_GEN Security audit data
 						generation is included in the PP/ST:
 						<h:ol type="a">
@@ -5604,9 +5701,9 @@
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to unambiguously identify the guest VM that has
 						the current input focus for input peripherals.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>There are no auditable events foreseen.</audit>
-					<dependencies>No dependencies</dependencies>
+					<management/>
+					<audit/>
+					<dependencies/>
                     <f-element id="ftp-uif-ext-1e1">
                         <title>The TSF shall indicate to users which VM, if any, has the current input focus.
                         </title>
@@ -5640,9 +5737,9 @@
 					<consistency-rationale/>
 					<comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
 						the integrity of its stored executable code.</comp-lev>
-					<management>No specific management functions are identified.</management>
-					<audit>There are no auditable events foreseen.</audit>
-					<dependencies>No dependencies</dependencies>
+					<management/>
+					<audit/>
+					<dependencies/>
                     <f-element id="ftp-uif-ext-2e1">
                         <title>The TSF shall support the unique identification of a VM’s output display to users.
                         </title>
@@ -5759,11 +5856,11 @@
 		
 	    <!-- 5.2.3 Class AGD: Guidance Document  -->
             <section id="ss-agd" title="Class AGD: Guidance Documents">
-                The guidance documents will be provided with the developer’s security target. Guidance must include a description of
-		    how the authorized user verifies that the Operational Environment can fulfill its role for the security
-		    functionality. The documentation should be in an informal style and readable by an authorized user.<h:p/>
+                The guidance documents will be provided with the developer’s security target. Guidance must include a
+				description of how the authorized user verifies that the Operational Environment can fulfill its role for the security
+				functionality. The documentation should be in an informal style and readable by an authorized user.<h:p/>
                 Guidance must be provided for every operational environment that the product supports as claimed in the ST. This
-		    guidance includes
+				guidance includes
                 <h:ul>
                     <h:li>instructions to successfully install the TOE in that environment; and</h:li>
                     <h:li>instructions to manage the security of the TOE as a product and as a component of the larger operational
@@ -5785,9 +5882,10 @@
                     </a-element>
                     
                     <a-element type="C">
-                        <title>The operational user guidance shall describe what <h:s>for each user role </h:s><refinement>the authorized user-</refinement>accessible functions and
-				privileges that should be controlled in a secure processing environment, including appropriate
-				warnings.</title>
+                        <title>The operational user guidance shall describe what <h:s>for each user role </h:s>
+							<refinement>the authorized user-</refinement>accessible functions and
+							privileges that should be controlled in a secure processing environment, including appropriate
+							warnings.</title>
                     </a-element>
                     <a-element type="C">
                         <title>The operational user guidance shall describe, for <h:s>each user role </h:s><refinement>the authorized user</refinement>, how to use the available
