@@ -2822,9 +2822,8 @@
                     </ul>
                     ] to support user authentication. 
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note">Selection of &lsquo;authentication based on username and password&rsquo; requires that <a href="#FIA_PMG_EXT.1">FIA_PMG_EXT.1</a> be included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. This also requires that the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> include a management function for password management. If the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects &lsquo;authentication based on an SSH public-key credential&rsquo;, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be validated against the <a href="https://commoncriteria.github.io/ssh/release-2.0/ssh-release.html">Functional Package for Secure Shell (SSH), version 2.0</a>. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must include FIA_X509_EXT.1 and FIA_X509_EXT.2 Functional Package for X.509, version 1.0, if 'authentication based on X.509 certificates' is selected, as defined in the Functional Package for X.509, version 1.0 . 
-                            <br>
-                            <br>
+                        <span class="note-header">Application Note: </span><span class="note">Selection of &lsquo;authentication based on username and password&rsquo; requires that <a href="#FIA_PMG_EXT.1">FIA_PMG_EXT.1</a> be included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. This also requires that the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> include a management function <a href="#mf-admin-pwd-policy">2</a> for password management. If the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects &lsquo;authentication based on an SSH public-key credential&rsquo;, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be validated against the <a href="https://commoncriteria.github.io/ssh/release-2.0/ssh-release.html">Functional Package for Secure Shell (SSH), version 2.0</a>. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> must include FIA_X509_EXT.1 and FIA_X509_EXT.2 from the Functional Package for X.509, version 1.0, if 'authentication based on X.509 certificates' is selected. 
+                            <p></p>
                              PINs used to access <abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr>-protected storage are set and managed by the <abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr>-protected storage mechanism. Thus requirements on PIN management are outside the scope of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. </span>
                     </div>
                 </div>
@@ -2963,115 +2962,393 @@
                     <a href="#FMT_MOF_EXT.1.2" class="abbr">FMT_MOF_EXT.1.2</a>
                 </div>
                 <div class="reqdesc">
-                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be capable of performing the following management functions, [<i>controlled by an administrator or user as shown in the key in <a href="#manfunc" class="manfunc-ref">Table <span class="counter">4</span></a>.</i>]
+                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be capable of performing the following management functions: [
                     <p></p>
-                     
-                    <center>
-                        <h4>
-                            <span class="ctr" data-myid="manfunc" data-counter-type="ct-Table" id="manfunc">Table <span class="counter">4</span>: Virtualization Management Functions</span>
-                        </h4>
-                    </center>
-                     
-                    <div class="table-key" style="border-style: solid; padding: 5px;">
-                         X = Mandatory (<abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must provide that function to that role)
-                        <br>
-                         O = Optional (<abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> may or may not provide that function to that role)
-                        <br>
-                         N = Not Permitted (<abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must not provide that function to that role)
-                        <br>
-                         S = Selection-Based (<abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must provide that function to that role if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> claims a particular selection-based <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>)
-                        <br>
-                    </div>
-                    <table>
-                        <tr>
-                            <th>Number</th><th>Function</th><th>Admin</th><th>User</th><th>Notes</th>
+                     <b><span class="ctr" data-myid="manfunc" data-counter-type="ct-Table" id="manfunc">Table <span class="counter">4</span>: Management Functions</span></b>
+                    <p></p>
+                     Status Markers:
+                    <br>
+                     M = Mandatory (<abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must provide that function to that role)
+                    <br>
+                     O = Optional/Selectable/Conditional (<abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> may provide the function to that role)
+                    <br>
+                     X = Not Permitted (<abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must not provide that function to that role)
+                    <br>
+                    <table class="mfs" style="width: 100%;">
+                        <tr class="header">
+                            <td>#</td><td>Management Function</td><td>Admin</td><td>User</td><td>Application Notes</td>
                         </tr>
-                        <tr>
-                            <td>1</td><td>Ability to update the Virtualization System</td><td>X</td><td>N</td><td>See <a href="#FPT_TUD_EXT.1">FPT_TUD_EXT.1</a></td>
+                        <tr id="mf-admin-platform">
+                            <td>1</td><td style="text-align:left"> Ability to update the Virtualization System. </td><td>
+                                <div class="tooltipped">
+                                    M<span class="tooltiptext">Mandatory</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    X<span class="tooltiptext">Not permitted</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p>
+                                     See <a href="#FPT_TUD_EXT.1">FPT_TUD_EXT.1</a>. 
+                                </p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>2</td><td>[<b>selection</b>: <span class="selectable-content" id="sel-mf-pwd-policy">Ability to configure administrator password policy as defined in <a href="#FIA_PMG_EXT.1">FIA_PMG_EXT.1</a></span>, <span class="selectable-content" id="_s_175">Not applicable.</span>]</td><td>S</td><td>N</td><td>Must be selected if <a href="#FIA_PMG_EXT.1">FIA_PMG_EXT.1</a> is claimed.</td>
+                        <tr id="mf-admin-pwd-policy">
+                            <td>2</td><td style="text-align:left"> [<b>selection</b>: <span class="selectable-content" id="sel-mf-pwd-policy">Ability to configure administrator password policy as defined in <a href="#FIA_PMG_EXT.1">FIA_PMG_EXT.1</a></span>, <span class="selectable-content" id="_s_175">Not applicable</span>] </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    X<span class="tooltiptext">Not permitted</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p>
+                                     Must be selected if <a href="#FIA_PMG_EXT.1">FIA_PMG_EXT.1</a> is claimed. 
+                                </p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>3</td><td>Ability to create, configure and delete VMs</td><td>X</td><td>O</td><td></td>
+                        <tr id="mf-admin-createVMs">
+                            <td>3</td><td style="text-align:left"> Ability to create, configure and delete VMs </td><td>
+                                <div class="tooltipped">
+                                    M<span class="tooltiptext">Mandatory</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p></p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>4</td><td>Ability to set default initial <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> configurations</td><td>X</td><td>O</td><td></td>
+                        <tr id="mf-admin-setDefVMConfigs">
+                            <td>4</td><td style="text-align:left"> Ability to set default initial <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> configurations </td><td>
+                                <div class="tooltipped">
+                                    M<span class="tooltiptext">Mandatory</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p> Optional for Users in the Client use case. Forbidden for Users in the Server use case. </p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>5</td><td>Ability to configure virtual networks including <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr></td><td>X</td><td>O</td><td>See <a href="#FDP_VNC_EXT.1">FDP_VNC_EXT.1</a></td>
+                        <tr id="mf-admin-configVirtNW">
+                            <td>5</td><td style="text-align:left"> Ability to configure virtual networks including <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> </td><td>
+                                <div class="tooltipped">
+                                    M<span class="tooltiptext">Mandatory</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p>
+                                     See <a href="#FDP_VNC_EXT.1">FDP_VNC_EXT.1</a>. 
+                                </p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>6</td><td>Ability to configure and manage the audit system and audit data</td><td>X</td><td>N</td><td></td>
+                        <tr id="mf-admin-configAudit">
+                            <td>6</td><td style="text-align:left"> Ability to configure and manage the audit system and audit data </td><td>
+                                <div class="tooltipped">
+                                    M<span class="tooltiptext">Mandatory</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    X<span class="tooltiptext">Not permitted</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p></p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>7</td><td>Ability to configure <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> access to physical devices</td><td>X</td><td>O</td><td>See <a href="#FDP_PPR_EXT.1">FDP_PPR_EXT.1</a></td>
+                        <tr id="mf-admin-configPhyDevAccess">
+                            <td>7</td><td style="text-align:left"> Ability to configure <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> access to physical devices </td><td>
+                                <div class="tooltipped">
+                                    M<span class="tooltiptext">Mandatory</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p>
+                                    See <a href="#FDP_PPR_EXT.1">FDP_PPR_EXT.1</a>
+                                </p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>8</td><td>Ability to configure inter-VM data sharing</td><td>X</td><td>O</td><td>See <a href="#FDP_VMS_EXT.1">FDP_VMS_EXT.1</a></td>
+                        <tr id="mf-admin-configVMSharing">
+                            <td>8</td><td style="text-align:left"> Ability to configure inter-VM data sharing </td><td>
+                                <div class="tooltipped">
+                                    M<span class="tooltiptext">Mandatory</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p>
+                                    See <a href="#FDP_VMS_EXT.1">FDP_VMS_EXT.1</a>
+                                </p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>9</td><td><s>Ability to enable/disable <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> access to Hypercall functions</s></td><td>O</td><td>O</td><td>Management function 9 is no longer required</td>
+                        <tr id="mf-admin-mediaPolicy">
+                            <td>9</td><td style="text-align:left"> Ability to configure removable media policy </td><td>
+                                <div class="tooltipped">
+                                    M<span class="tooltiptext">Mandatory</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p>
+                                    See <a href="#FPT_RDM_EXT.1">FPT_RDM_EXT.1</a>
+                                    <br>
+                                     Optional for Users in the Client use case. Forbidden for Users in the Server use case. 
+                                </p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>10</td><td>Ability to configure removable media policy</td><td>X</td><td>O</td><td>See <a href="#FPT_RDM_EXT.1">FPT_RDM_EXT.1</a></td>
+                        <tr id="mf-admin-configCrypto">
+                            <td>10</td><td style="text-align:left"> Ability to configure the cryptographic functionality </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p>
+                                    Mandatory for Admin role for the Server use case. 
+                                    <br>
+                                     Forbidden for Users for the Server use case.
+                                    <br>
+                                     Optional for all roles for the Client use case. 
+                                </p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>11</td><td>Ability to configure the cryptographic functionality</td><td>O</td><td>O</td><td>See <a href="#FCS_CKM.1">FCS_CKM.1</a>, <a href="#FCS_CKM.2">FCS_CKM.2</a>, and FCS_COP.1/HASH. See also, the <a href="https://commoncriteria.github.io/tls/release-2.0/tls-release.html">Functional Package for Transport Layer Security (TLS), version 1.1</a> and <a href="https://commoncriteria.github.io/ssh/release-2.0/ssh-release.html">Functional Package for Secure Shell (SSH), version 2.0</a> if claimed for methods to configure their respective cryptographic functionality.</td>
+                        <tr id="mf-admin-changeDefAuth">
+                            <td>11</td><td style="text-align:left"> Ability to change default authorization factors </td><td>
+                                <div class="tooltipped">
+                                    M<span class="tooltiptext">Mandatory</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    X<span class="tooltiptext">Not permitted</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p>
+                                    See <a href="#FIA_PMG_EXT.1">FIA_PMG_EXT.1</a>
+                                </p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>12</td><td>Ability to change default authorization factors</td><td>X</td><td>N</td><td>See <a href="#FIA_PMG_EXT.1">FIA_PMG_EXT.1</a></td>
+                        <tr id="mf-admin-configScrLock">
+                            <td>12</td><td style="text-align:left"> Ability to enable/disable screen lock </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p></p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>13</td><td>Ability to enable/disable screen lock</td><td>O</td><td>O</td><td></td>
+                        <tr id="mf-admin-configScrLockTimeout">
+                            <td>13</td><td style="text-align:left"> Ability to configure screen lock inactivity timeout </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p></p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>14</td><td>Ability to configure screen lock inactivity timeout</td><td>O</td><td>O</td><td></td>
+                        <tr id="mf-admin-configRemoteCnxTimeout">
+                            <td>14</td><td style="text-align:left"> Ability to configure remote connection inactivity timeout </td><td>
+                                <div class="tooltipped">
+                                    M<span class="tooltiptext">Mandatory</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    X<span class="tooltiptext">Not permitted</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p></p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>15</td><td>Ability to configure remote connection inactivity timeout</td><td>X</td><td>N</td><td></td>
+                        <tr id="mf-admin-configLockoutPolicy">
+                            <td>15</td><td style="text-align:left"> Ability to configure lockout policy for unsuccessful authentication attempts through [<b>selection</b>: <span class="selectable-content" id="_s_176">timeouts between attempts</span>, <span class="selectable-content" id="_s_177">limiting number of attempts during a time period</span>] </td><td>
+                                <div class="tooltipped">
+                                    M<span class="tooltiptext">Mandatory</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    X<span class="tooltiptext">Not permitted</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p>
+                                    See <a href="#FIA_AFL_EXT.1">FIA_AFL_EXT.1</a>
+                                </p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>16</td><td>Ability to configure lockout policy for unsuccessful authentication attempts through [<b>selection</b>: <span class="selectable-content" id="_s_176">timeouts between attempts</span>, <span class="selectable-content" id="_s_177">limiting number of attempts during a time period</span>]</td><td>X</td><td>N</td><td>See <a href="#FIA_AFL_EXT.1">FIA_AFL_EXT.1</a></td>
+                        <tr id="mf-admin-configDirServer">
+                            <td>16</td><td style="text-align:left"> [<b>selection</b>: <span class="selectable-content" id="sel-mf-dir-server">Ability to configure name/address of directory server to bind with</span>, <span class="selectable-content" id="_s_179">Not applicable</span>] </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    X<span class="tooltiptext">Not permitted</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p>
+                                    Must be selected if "directory-based" is selected anywhere in <a href="#FIA_UAU.5.1">FIA_UAU.5.1</a>.
+                                </p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>17</td><td>[<b>selection</b>: <span class="selectable-content" id="sel-mf-dir-server">Ability to configure name/address of directory server to bind with</span>, <span class="selectable-content" id="_s_179">Not applicable</span>]</td><td>S</td><td>O</td><td>Must be selected if "directory-based" is selected anywhere in <a href="#FIA_UAU.5.1">FIA_UAU.5.1</a>.</td>
+                        <tr id="mf-admin-configAuditServer">
+                            <td>17</td><td style="text-align:left"> Ability to configure name/address of audit/logging server to which to send audit/logging records </td><td>
+                                <div class="tooltipped">
+                                    M<span class="tooltiptext">Mandatory</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    X<span class="tooltiptext">Not permitted</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p>See FAU_STG_EXT.1</p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>18</td><td>Ability to configure name/address of audit/logging server to which to send audit/logging records</td><td>X</td><td>N</td><td>See FAU_STG_EXT.1.</td>
+                        <tr id="mf-admin-configTimeServer">
+                            <td>18</td><td style="text-align:left"> Ability to configure name/address of network time server </td><td>
+                                <div class="tooltipped">
+                                    M<span class="tooltiptext">Mandatory</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p></p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>19</td><td>Ability to configure name/address of network time server</td><td>X</td><td>O</td><td></td>
+                        <tr id="mf-admin-configBanner">
+                            <td>19</td><td style="text-align:left"> Ability to configure banner </td><td>
+                                <div class="tooltipped">
+                                    M<span class="tooltiptext">Mandatory</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    X<span class="tooltiptext">Not permitted</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p>
+                                    See <a href="#FTA_TAB.1">FTA_TAB.1</a>
+                                </p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>20</td><td>Ability to configure banner</td><td>X</td><td>N</td><td>See <a href="#FTA_TAB.1">FTA_TAB.1</a></td>
+                        <tr id="mf-admin-connectRemDev">
+                            <td>20</td><td style="text-align:left"> Ability to connect/disconnect removable devices to/from a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p>
+                                    See <a href="#FPT_RDM_EXT.1">FPT_RDM_EXT.1</a>
+                                </p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>21</td><td>Ability to connect/disconnect removable devices to/from a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr></td><td>O</td><td>O</td><td>See <a href="#FPT_RDM_EXT.1">FPT_RDM_EXT.1</a></td>
+                        <tr id="mf-admin-startVM">
+                            <td>21</td><td style="text-align:left"> Ability to start a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p></p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>22</td><td>Ability to start a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr></td><td>O</td><td>O</td><td></td>
+                        <tr id="mf-admin-stopVM">
+                            <td>22</td><td style="text-align:left"> Ability to stop/halt a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p></p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>23</td><td>Ability to stop/halt a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr></td><td>O</td><td>O</td><td></td>
+                        <tr id="mf-admin-checkpointVM">
+                            <td>23</td><td style="text-align:left"> Ability to checkpoint a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p></p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>24</td><td>Ability to checkpoint a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr></td><td>O</td><td>O</td><td></td>
+                        <tr id="mf-admin-suspendVM">
+                            <td>24</td><td style="text-align:left"> Ability to suspend a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p></p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>25</td><td>Ability to suspend a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr></td><td>O</td><td>O</td><td></td>
+                        <tr id="mf-admin-resumeVM">
+                            <td>25</td><td style="text-align:left"> Ability to resume a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p></p>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>26</td><td>Ability to resume a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr></td><td>O</td><td>O</td><td></td>
-                        </tr>
-                        <tr>
-                            <td>27</td><td>[<b>selection</b>: <span class="selectable-content" id="sel-mf-cert-no-validity-action">Ability to configure action taken if unable to determine the validity of a certificate</span>, <span class="selectable-content" id="_s_181">Not applicable</span>] </td><td>S</td><td>N</td><td>This function must be selected if "allow the administrator to choose whether to accept the certificate in these cases" in FIA_X509_EXT.2.2.</td>
+                        <tr id="mf-admin-configCertAction">
+                            <td>26</td><td style="text-align:left"> [<b>selection</b>: <span class="selectable-content" id="sel-mf-cert-no-validity-action">Ability to configure action taken if unable to determine the validity of a certificate</span>, <span class="selectable-content" id="_s_181">Not applicable</span>] </td><td>
+                                <div class="tooltipped">
+                                    O<span class="tooltiptext">Optional/Conditional</span>
+                                </div>
+                            </td><td>
+                                <div class="tooltipped">
+                                    X<span class="tooltiptext">Not permitted</span>
+                                </div>
+                            </td><td style="text-align:left">
+                                <p>This function must be selected if "allow the administrator to choose whether to accept the certificate in these cases" in FIA_X509_EXT.2.2</p>
+                            </td>
                         </tr>
                     </table>
-                    <br>
-                    ] 
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note"> The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author is expected to update <a href="#manfunc" class="manfunc-ref">Table <span class="counter">4</span></a> with an indication as to whether any of the &lsquo;optional&rsquo; or &lsquo;selection-based&rsquo; functions are included as part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author may also omit the &lsquo;Notes&rsquo; column as it is provided in this <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> as an aid to the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author in constructing the table.
+                        <span class="note-header">Application Note: </span><span class="note"> The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author is expected to update <a href="#manfunc" class="manfunc-ref">Table <span class="counter">4</span></a> with an indication as to whether any of the optional functions are included as part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author may also omit the &lsquo;Notes&rsquo; column as it is provided in this <abbr class="dyn-abbr"><a href="#abbr_PP-Module">PP-Module</a></abbr> as an aid to the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author in constructing the table.
                             <p></p>
                              This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> addresses the roles of the <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr> Part 2 <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> FMT_MOF.1, FMT_SMF.1, and FMT_SMR.2.
                             <p></p>
@@ -3420,7 +3697,8 @@
                     </div>
                     <div class="eacategory">Guidance</div>
                     <div class="ea">
-                        <div class="ea"> There is no operational guidance for this component. </div>
+                         There are no additional Guidance evaluation activities for this component.
+                        <br>
                     </div>
                     <div class="eacategory">Tests</div>
                     <div class="ea">
@@ -4637,7 +4915,7 @@
                     <a href="#AGD_OPE.1.1C" class="abbr">AGD_OPE.1.1C</a>
                 </div>
                 <div class="reqdesc">
-                    The operational user guidance shall describe what <s>for each user role </s><span class="refinement">the authorized user-</span>accessible functions and privileges that should be controlled in a secure processing environment, including appropriate warnings.
+                    The operational user guidance shall describe what <s>for each user role </s> <span class="refinement">the authorized user-</span>accessible functions and privileges that should be controlled in a secure processing environment, including appropriate warnings.
                 </div>
             </div>
             <div class="element">
@@ -6827,7 +7105,7 @@
                     <a href="#FIA_X509_EXT.4.1" class="abbr">FIA_X509_EXT.4.1</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide alternate functionality to standard X.509 certificate revocation checking for the following exceptions: [<b>selection</b>: <span class="selectable-content" id="_s_170">firmware checking of updates: invalidate automatic updates if the firmware certificate is compromised</span>, <span class="selectable-content" id="_s_171">[<b>assignment</b>: <span class="assignable-content">other exceptions and corresponding functionality</span>]</span>].
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide alternate functionality to standard X.509 certificate revocation checking for the following exceptions: [<b>selection</b>: <span class="selectable-content" id="_s_170">firmware checking of updates: invalidate automatic updates if the firmware certificate is compromised</span>, <span class="selectable-content" id="_s_171">[<b>assignment</b>: <span class="assignable-content">other exceptions and corresponding functionality</span>]</span>]. 
                 </div>
             </div>
             <div class="activity_pane hide">
@@ -7104,9 +7382,9 @@
                         <a href="#FCS_ENT_EXT.1">FCS_ENT_EXT.1</a>, Entropy for Virtual Machines, requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to provide entropy data to VMs in a specified manner.
                     </p>
                     <h4>Management: FCS_ENT_EXT.1</h4>
-                    <p>No specific management functions are identified.</p>
+                    <p>There are no management functions foreseen.</p>
                     <h4>Audit: FCS_ENT_EXT.1</h4>
-                    <p>There are no auditable events foreseen.</p>
+                    <p>There are no audit events foreseen.</p>
                     <h4>FCS_ENT_EXT.1 Entropy for Virtual Machines</h4>
                     <div style="margin-left: 1em;">
                         <table class="ecd_heir_dep" style="width: 100%">
@@ -7141,7 +7419,7 @@
                         <a href="#FCS_HTTPS_EXT.1">FCS_HTTPS_EXT.1</a>, HTTPS Protocol, defines requirements for the implementation of the HTTPS protocol.
                     </p>
                     <h4>Management: FCS_HTTPS_EXT.1</h4>
-                    <p>No specific management functions are identified.</p>
+                    <p>There are no management functions foreseen.</p>
                     <h4>Audit: FCS_HTTPS_EXT.1</h4>
                     <p>
                         The following actions should be auditable if FAU_GEN Security audit data generation is included in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>/<abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>: 
@@ -7188,7 +7466,7 @@
                         <a href="#FCS_IPSEC_EXT.1">FCS_IPSEC_EXT.1</a>, IPsec Protocol, requires that IPsec be implemented as specified.
                     </p>
                     <h4>Management: FCS_IPSEC_EXT.1</h4>
-                    <p>No specific management functions are identified. </p>
+                    <p>There are no management functions foreseen.</p>
                     <h4>Audit: FCS_IPSEC_EXT.1</h4>
                     <p>
                         The following actions should be auditable if FAU_GEN Security audit data generation is included in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>/<abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>: 
@@ -7350,7 +7628,7 @@
                         </ol>
                     </p>
                     <h4>Audit: FIA_PMG_EXT.1</h4>
-                    <p>There are no auditable events foreseen.</p>
+                    <p>There are no audit events foreseen.</p>
                     <h4>FIA_PMG_EXT.1 Password Management</h4>
                     <div style="margin-left: 1em;">
                         <table class="ecd_heir_dep" style="width: 100%">
@@ -7390,7 +7668,7 @@
                         <a href="#FIA_UIA_EXT.1">FIA_UIA_EXT.1</a>, Administrator Identification and Authentication, requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to ensure that all subjects attempting to perform <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>-mediated actions are identified and authenticated prior to authorizing these actions to be performed.
                     </p>
                     <h4>Management: FIA_UIA_EXT.1</h4>
-                    <p>No specific management functions are identified.</p>
+                    <p>There are no management functions foreseen.</p>
                     <h4>Audit: FIA_UIA_EXT.1</h4>
                     <p>
                         The following actions should be auditable if FAU_GEN Security audit data generation is included in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>/<abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>: 
@@ -7444,7 +7722,7 @@
                             </tr>
                         </table>
                         <h4 id="ext-comp-FIA_X509_EXT.4.1">FIA_X509_EXT.4.1</h4>
-                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide alternate functionality to standard X.509 certificate revocation checking for the following exceptions: [<b>selection</b>: <span class="selectable-content" id="_s_170">firmware checking of updates: invalidate automatic updates if the firmware certificate is compromised</span>, <span class="selectable-content" id="_s_171">[<b>assignment</b>: <span class="assignable-content">other exceptions and corresponding functionality</span>]</span>].
+                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide alternate functionality to standard X.509 certificate revocation checking for the following exceptions: [<b>selection</b>: <span class="selectable-content" id="_s_170">firmware checking of updates: invalidate automatic updates if the firmware certificate is compromised</span>, <span class="selectable-content" id="_s_171">[<b>assignment</b>: <span class="assignable-content">other exceptions and corresponding functionality</span>]</span>]. 
                     </div>
                 </div>
             </span><span data-sortkey="Protection of the TSF (FPT)">
@@ -7466,9 +7744,9 @@
                         <a href="#FPT_DDI_EXT.1">FPT_DDI_EXT.1</a>, Device Driver Isolation, requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to isolate device drivers for physical devices from all virtual domains.
                     </p>
                     <h4>Management: FPT_DDI_EXT.1</h4>
-                    <p>No specific management functions are identified.</p>
+                    <p>There are no management functions foreseen.</p>
                     <h4>Audit: FPT_DDI_EXT.1</h4>
-                    <p>There are no auditable events foreseen.</p>
+                    <p>There are no audit events foreseen.</p>
                     <h4>FPT_DDI_EXT.1 Device Driver Isolation</h4>
                     <div style="margin-left: 1em;">
                         <table class="ecd_heir_dep" style="width: 100%">
@@ -7476,7 +7754,7 @@
                                 <td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td>
                             </tr>
                             <tr style="background-color: inherit">
-                                <td>Dependencies to:</td><td>No dependencies.</td>
+                                <td>Dependencies to:</td><td></td>
                             </tr>
                         </table>
                         <h4 id="ext-comp-FPT_DDI_EXT.1.1">FPT_DDI_EXT.1.1</h4>
@@ -7499,9 +7777,9 @@
                         <a href="#FPT_DVD_EXT.1">FPT_DVD_EXT.1</a>, Non-Existence of Disconnected Virtual Devices, requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to prevent guest VMs from accessing virtual devices that it is not configured to have access to.
                     </p>
                     <h4>Management: FPT_DVD_EXT.1</h4>
-                    <p>No specific management functions are identified.</p>
+                    <p>There are no management functions foreseen.</p>
                     <h4>Audit: FPT_DVD_EXT.1</h4>
-                    <p>There are no auditable events foreseen.</p>
+                    <p>There are no audit events foreseen.</p>
                     <h4>FPT_DVD_EXT.1 Non-Existence of Disconnected Virtual Devices</h4>
                     <div style="margin-left: 1em;">
                         <table class="ecd_heir_dep" style="width: 100%">
@@ -7534,9 +7812,9 @@
                         <a href="#FPT_EEM_EXT.1">FPT_EEM_EXT.1</a>, Execution Environment Mitigations, requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to identify the execution environment-based protection mechanisms that it can use for self-protection.
                     </p>
                     <h4>Management: FPT_EEM_EXT.1</h4>
-                    <p>No specific management functions are identified.</p>
+                    <p>There are no management functions foreseen.</p>
                     <h4>Audit: FPT_EEM_EXT.1</h4>
-                    <p>There are no auditable events foreseen.</p>
+                    <p>There are no audit events foreseen.</p>
                     <h4>FPT_EEM_EXT.1 Execution Environment Mitigations</h4>
                     <div style="margin-left: 1em;">
                         <table class="ecd_heir_dep" style="width: 100%">
@@ -7544,7 +7822,7 @@
                                 <td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td>
                             </tr>
                             <tr style="background-color: inherit">
-                                <td>Dependencies to:</td><td>No dependencies.</td>
+                                <td>Dependencies to:</td><td></td>
                             </tr>
                         </table>
                         <h4 id="ext-comp-FPT_EEM_EXT.1.1">FPT_EEM_EXT.1.1</h4>
@@ -7590,7 +7868,7 @@
                         <a href="#FPT_GVI_EXT.1">FPT_GVI_EXT.1</a>, guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> Integrity, requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to specify the mechanisms it uses to verify the integrity of guest VMs.
                     </p>
                     <h4>Management: FPT_GVI_EXT.1</h4>
-                    <p>No specific management functions are identified.</p>
+                    <p>There are no management functions foreseen.</p>
                     <h4>Audit: FPT_GVI_EXT.1</h4>
                     <p>
                         The following actions should be auditable if FAU_GEN Security audit data generation is included in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>/<abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>: 
@@ -7605,7 +7883,7 @@
                                 <td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td>
                             </tr>
                             <tr style="background-color: inherit">
-                                <td>Dependencies to:</td><td>No dependencies.</td>
+                                <td>Dependencies to:</td><td></td>
                             </tr>
                         </table>
                         <h4 id="ext-comp-FPT_GVI_EXT.1.1">FPT_GVI_EXT.1.1</h4>
@@ -7628,9 +7906,9 @@
                         <a href="#FPT_HAS_EXT.1">FPT_HAS_EXT.1</a>, Hardware Assists, requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to identify the hardware assists it uses to reduce <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> complexity.
                     </p>
                     <h4>Management: FPT_HAS_EXT.1</h4>
-                    <p>No specific management functions are identified.</p>
+                    <p>There are no management functions foreseen.</p>
                     <h4>Audit: FPT_HAS_EXT.1</h4>
-                    <p>There are no auditable events foreseen.</p>
+                    <p>There are no audit events foreseen.</p>
                     <h4>FPT_HAS_EXT.1 Hardware Assists</h4>
                     <div style="margin-left: 1em;">
                         <table class="ecd_heir_dep" style="width: 100%">
@@ -7638,7 +7916,7 @@
                                 <td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td>
                             </tr>
                             <tr style="background-color: inherit">
-                                <td>Dependencies to:</td><td>No dependencies.</td>
+                                <td>Dependencies to:</td><td></td>
                             </tr>
                         </table>
                         <h4 id="ext-comp-FPT_HAS_EXT.1.1">FPT_HAS_EXT.1.1</h4>
@@ -7663,7 +7941,7 @@
                         <a href="#FPT_HCL_EXT.1">FPT_HCL_EXT.1</a>, Hypercall Controls, requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to implement appropriate parameter validation to protect the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> from unauthorized access through a hypercall interface.
                     </p>
                     <h4>Management: FPT_HCL_EXT.1</h4>
-                    <p>No specific management functions are identified.</p>
+                    <p>There are no management functions foreseen.</p>
                     <h4>Audit: FPT_HCL_EXT.1</h4>
                     <p>
                         The following actions should be auditable if FAU_GEN Security audit data generation is included in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>/<abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>: 
@@ -7704,9 +7982,9 @@
                         <a href="#FPT_IDV_EXT.1">FPT_IDV_EXT.1</a>, Software Identification and Versions, requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to identify itself using <abbr class="dyn-abbr"><a href="#abbr_SWID">SWID</a></abbr> tags.
                     </p>
                     <h4>Management: FPT_IDV_EXT.1</h4>
-                    <p>No specific management functions are identified.</p>
+                    <p>There are no management functions foreseen.</p>
                     <h4>Audit: FPT_IDV_EXT.1</h4>
-                    <p>There are no auditable events foreseen.</p>
+                    <p>There are no audit events foreseen.</p>
                     <h4>FPT_IDV_EXT.1 Software Identification and Versions</h4>
                     <div style="margin-left: 1em;">
                         <table class="ecd_heir_dep" style="width: 100%">
@@ -7714,7 +7992,7 @@
                                 <td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td>
                             </tr>
                             <tr style="background-color: inherit">
-                                <td>Dependencies to:</td><td>No dependencies.</td>
+                                <td>Dependencies to:</td><td></td>
                             </tr>
                         </table>
                         <h4 id="ext-comp-FPT_IDV_EXT.1.1">FPT_IDV_EXT.1.1</h4>
@@ -7741,7 +8019,7 @@
                         <a href="#FPT_INT_EXT.1">FPT_INT_EXT.1</a>, Support for Introspection, requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support introspection.
                     </p>
                     <h4>Management: FPT_INT_EXT.1</h4>
-                    <p>No specific management functions are identified.</p>
+                    <p>There are no management functions foreseen.</p>
                     <h4>Audit: FPT_INT_EXT.1</h4>
                     <p>
                         The following actions should be auditable if FAU_GEN Security audit data generation is included in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>/<abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>: 
@@ -7756,7 +8034,7 @@
                                 <td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td>
                             </tr>
                             <tr style="background-color: inherit">
-                                <td>Dependencies to:</td><td>No dependencies.</td>
+                                <td>Dependencies to:</td><td></td>
                             </tr>
                         </table>
                         <h4 id="ext-comp-FPT_INT_EXT.1.1">FPT_INT_EXT.1.1</h4>
@@ -7779,7 +8057,7 @@
                         <a href="#FPT_ML_EXT.1">FPT_ML_EXT.1</a>, Measured Launch of Platform and <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>, requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support a measured launch of itself.
                     </p>
                     <h4>Management: FPT_ML_EXT.1</h4>
-                    <p>No specific management functions are identified.</p>
+                    <p>There are no management functions foreseen.</p>
                     <h4>Audit: FPT_ML_EXT.1</h4>
                     <p>
                         The following actions should be auditable if FAU_GEN Security audit data generation is included in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>/<abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>: 
@@ -7794,7 +8072,7 @@
                                 <td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td>
                             </tr>
                             <tr style="background-color: inherit">
-                                <td>Dependencies to:</td><td>No dependencies.</td>
+                                <td>Dependencies to:</td><td></td>
                             </tr>
                         </table>
                         <h4 id="ext-comp-FPT_ML_EXT.1.1">FPT_ML_EXT.1.1</h4>
@@ -7942,9 +8220,9 @@
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide means to authenticate firmware and software updates to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> using a [<b>assignment</b>: <span class="assignable-content">integrity action</span>] prior to installing those updates. 
                     </div>
                     <h4>Management: FPT_TUD_EXT.2</h4>
-                    <p>No specific management functions are identified.</p>
+                    <p>There are no management functions foreseen.</p>
                     <h4>Audit: FPT_TUD_EXT.2</h4>
-                    <p>There are no auditable events foreseen.</p>
+                    <p>There are no audit events foreseen.</p>
                     <h4>FPT_TUD_EXT.2 Trusted Update Based on Certificates</h4>
                     <div style="margin-left: 1em;">
                         <table class="ecd_heir_dep" style="width: 100%">
@@ -7981,9 +8259,9 @@
                         <a href="#FPT_VDP_EXT.1">FPT_VDP_EXT.1</a>, Virtual Device Parameters, requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to interface with guest VMs through virtual hardware abstractions so that any data transmitted to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> from a guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> can be validated as well-formed.
                     </p>
                     <h4>Management: FPT_VDP_EXT.1</h4>
-                    <p>No specific management functions are identified.</p>
+                    <p>There are no management functions foreseen.</p>
                     <h4>Audit: FPT_VDP_EXT.1</h4>
-                    <p>There are no auditable events foreseen.</p>
+                    <p>There are no audit events foreseen.</p>
                     <h4>FPT_VDP_EXT.1 Virtual Device Parameters</h4>
                     <div style="margin-left: 1em;">
                         <table class="ecd_heir_dep" style="width: 100%">
@@ -8018,9 +8296,9 @@
                         <a href="#FPT_VIV_EXT.1">FPT_VIV_EXT.1</a>, <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> Isolation from VMs, requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to ensure that there is no mechanism by which a guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> can interface with the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, other VMs, or the hardware platform without authorization.
                     </p>
                     <h4>Management: FPT_VIV_EXT.1</h4>
-                    <p>No specific management functions are identified.</p>
+                    <p>There are no management functions foreseen.</p>
                     <h4>Audit: FPT_VIV_EXT.1</h4>
-                    <p>There are no auditable events foreseen.</p>
+                    <p>There are no audit events foreseen.</p>
                     <h4>FPT_VIV_EXT.1 VMM Isolation from VMs</h4>
                     <div style="margin-left: 1em;">
                         <table class="ecd_heir_dep" style="width: 100%">
@@ -8058,9 +8336,9 @@
                         <a href="#FMT_SMO_EXT.1">FMT_SMO_EXT.1</a>, Separation of Management and Operational Networks, requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to separate its management and operational networks through a defined mechanism.
                     </p>
                     <h4>Management: FMT_SMO_EXT.1</h4>
-                    <p>No specific management functions are identified.</p>
+                    <p>There are no management functions foreseen.</p>
                     <h4>Audit: FMT_SMO_EXT.1</h4>
-                    <p>There are no auditable events foreseen.</p>
+                    <p>There are no audit events foreseen.</p>
                     <h4>FMT_SMO_EXT.1 Separation of Management and Operational Networks</h4>
                     <div style="margin-left: 1em;">
                         <table class="ecd_heir_dep" style="width: 100%">
@@ -8068,7 +8346,7 @@
                                 <td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td>
                             </tr>
                             <tr style="background-color: inherit">
-                                <td>Dependencies to:</td><td>No dependencies.</td>
+                                <td>Dependencies to:</td><td></td>
                             </tr>
                         </table>
                         <h4 id="ext-comp-FMT_SMO_EXT.1.1">FMT_SMO_EXT.1.1</h4>
@@ -8135,7 +8413,7 @@
                         <a href="#FTP_ITC_EXT.1">FTP_ITC_EXT.1</a>, Trusted Channel Communications, requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to implement one or more cryptographic protocols to secure connectivity between the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> and various external entities.
                     </p>
                     <h4>Management: FTP_ITC_EXT.1</h4>
-                    <p>No specific management functions are identified. </p>
+                    <p>There are no management functions foreseen.</p>
                     <h4>Audit: FTP_ITC_EXT.1</h4>
                     <p>
                         The following actions should be auditable if FAU_GEN Security audit data generation is included in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>/<abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>: 
@@ -8189,9 +8467,9 @@
                         <a href="#FTP_UIF_EXT.2">FTP_UIF_EXT.2</a>, User Interface: Identification of <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>, requires the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to perform power on self-tests to verify its functionality and the integrity of its stored executable code.
                     </p>
                     <h4>Management: FTP_UIF_EXT.1</h4>
-                    <p>No specific management functions are identified.</p>
+                    <p>There are no management functions foreseen.</p>
                     <h4>Audit: FTP_UIF_EXT.1</h4>
-                    <p>There are no auditable events foreseen.</p>
+                    <p>There are no audit events foreseen.</p>
                     <h4>FTP_UIF_EXT.1 User Interface: I/O Focus</h4>
                     <div style="margin-left: 1em;">
                         <table class="ecd_heir_dep" style="width: 100%">
@@ -8199,16 +8477,16 @@
                                 <td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td>
                             </tr>
                             <tr style="background-color: inherit">
-                                <td>Dependencies to:</td><td>No dependencies</td>
+                                <td>Dependencies to:</td><td></td>
                             </tr>
                         </table>
                         <h4 id="ext-comp-FTP_UIF_EXT.1.1">FTP_UIF_EXT.1.1</h4>
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall indicate to users which <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>, if any, has the current input focus. 
                     </div>
                     <h4>Management: FTP_UIF_EXT.2</h4>
-                    <p>No specific management functions are identified.</p>
+                    <p>There are no management functions foreseen.</p>
                     <h4>Audit: FTP_UIF_EXT.2</h4>
-                    <p>There are no auditable events foreseen.</p>
+                    <p>There are no audit events foreseen.</p>
                     <h4>FTP_UIF_EXT.2 User Interface: Identification of VM</h4>
                     <div style="margin-left: 1em;">
                         <table class="ecd_heir_dep" style="width: 100%">
@@ -8216,7 +8494,7 @@
                                 <td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td>
                             </tr>
                             <tr style="background-color: inherit">
-                                <td>Dependencies to:</td><td>No dependencies</td>
+                                <td>Dependencies to:</td><td></td>
                             </tr>
                         </table>
                         <h4 id="ext-comp-FTP_UIF_EXT.2.1">FTP_UIF_EXT.2.1</h4>
@@ -8242,9 +8520,9 @@
                         <a href="#FDP_HBI_EXT.1">FDP_HBI_EXT.1</a>, Hardware-Based Isolation Mechanisms, requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to identify the mechanisms used to isolate guest VMs from platform hardware resources.
                     </p>
                     <h4>Management: FDP_HBI_EXT.1</h4>
-                    <p>No specific management functions are identified.</p>
+                    <p>There are no management functions foreseen.</p>
                     <h4>Audit: FDP_HBI_EXT.1</h4>
-                    <p>There are no auditable events foreseen.</p>
+                    <p>There are no audit events foreseen.</p>
                     <h4>FDP_HBI_EXT.1 Hardware-Based Isolation Mechanisms</h4>
                     <div style="margin-left: 1em;">
                         <table class="ecd_heir_dep" style="width: 100%">
@@ -8339,9 +8617,9 @@
                         <a href="#FDP_RIP_EXT.2">FDP_RIP_EXT.2</a>, Residual Information on Disk, requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to ensure that physical disk storage is cleared upon allocation to a guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>.
                     </p>
                     <h4>Management: FDP_RIP_EXT.1</h4>
-                    <p>No specific management functions are identified.</p>
+                    <p>There are no management functions foreseen.</p>
                     <h4>Audit: FDP_RIP_EXT.1</h4>
-                    <p>There are no auditable events foreseen.</p>
+                    <p>There are no audit events foreseen.</p>
                     <h4>FDP_RIP_EXT.1 Residual Information in Memory</h4>
                     <div style="margin-left: 1em;">
                         <table class="ecd_heir_dep" style="width: 100%">
@@ -8349,16 +8627,16 @@
                                 <td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td>
                             </tr>
                             <tr style="background-color: inherit">
-                                <td>Dependencies to:</td><td>No dependencies.</td>
+                                <td>Dependencies to:</td><td></td>
                             </tr>
                         </table>
                         <h4 id="ext-comp-FDP_RIP_EXT.1.1">FDP_RIP_EXT.1.1</h4>
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall ensure that any previous information content of physical memory is cleared prior to allocation to a guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>. 
                     </div>
                     <h4>Management: FDP_RIP_EXT.2</h4>
-                    <p>No specific management functions are identified.</p>
+                    <p>There are no management functions foreseen.</p>
                     <h4>Audit: FDP_RIP_EXT.2</h4>
-                    <p>There are no auditable events foreseen.</p>
+                    <p>There are no audit events foreseen.</p>
                     <h4>FDP_RIP_EXT.2 Residual Information on Disk</h4>
                     <div style="margin-left: 1em;">
                         <table class="ecd_heir_dep" style="width: 100%">
@@ -8366,7 +8644,7 @@
                                 <td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td>
                             </tr>
                             <tr style="background-color: inherit">
-                                <td>Dependencies to:</td><td>No dependencies.</td>
+                                <td>Dependencies to:</td><td></td>
                             </tr>
                         </table>
                         <h4 id="ext-comp-FDP_RIP_EXT.2.1">FDP_RIP_EXT.2.1</h4>
@@ -8396,7 +8674,7 @@
                         </ol>
                     </p>
                     <h4>Audit: FDP_VMS_EXT.1</h4>
-                    <p>There are no auditable events foreseen.</p>
+                    <p>There are no audit events foreseen.</p>
                     <h4>FDP_VMS_EXT.1 VM Separation</h4>
                     <div style="margin-left: 1em;">
                         <table class="ecd_heir_dep" style="width: 100%">
@@ -8404,7 +8682,7 @@
                                 <td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td>
                             </tr>
                             <tr style="background-color: inherit">
-                                <td>Dependencies to:</td><td>No dependencies.</td>
+                                <td>Dependencies to:</td><td></td>
                             </tr>
                         </table>
                         <h4 id="ext-comp-FDP_VMS_EXT.1.1">FDP_VMS_EXT.1.1</h4>
