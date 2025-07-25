@@ -2442,12 +2442,7 @@
                     </f-element>
                     <f-element id="fcs-ipsec-ext-1e4">
                         <title>The TSF shall implement the IPsec protocol ESP as defined by RFC 4303 using the cryptographic 
-							algorithms [<h:i>AES-GCM-128, AES-GCM-256 (as specified in RFC 4106),
-                            <selectables>
-                                <selectable>AES-CBC-128 (specified in RFC 3602)</selectable>
-                                <selectable>AES-CBC-256 (specified in RFC 3602)</selectable>
-                                <selectable exclusive="yes">no other algorithms</selectable>
-                            </selectables></h:i>] together with a Secure Hash Algorithm (SHA)-based HMAC.
+							algorithms [<h:i> AES-GCM-256 (as specified in RFC 4106)</h:i>] together with a Secure Hash Algorithm (SHA)-based HMAC.
                         </title>
                         <ext-comp-def-title><title>
                             The TSF shall implement the IPsec protocol ESP as defined by RFC 4303 using the cryptographic 
@@ -2481,6 +2476,15 @@
                     </f-element>
                     <f-element id="fcs-ipsec-ext-1e5">
                         <title>The TSF shall implement the protocol: <h:p/>
+                            [<h:i>IKEv2 as defined in RFC 7296 (with mandatory support for NAT traversal 
+									as specified in section 2.23), RFC 8784, RFC 8247, and 
+                                    <selectables>
+                                        <selectable exclusive="yes">no other RFCs for hash functions</selectable>
+                                        <selectable>RFC 4868 for hash functions</selectable>
+                                    </selectables>.</h:i>]
+                        </title>
+						<ext-comp-def>
+							<title>The TSF shall implement the protocol: <h:p/>
                             <selectables linebreak="yes">
                                 <selectable>IKEv1, using Main Mode for Phase 1 exchanges, as defined in RFC 2407, RFC 2408, RFC 2409, RFC 4109, 
 									<selectables>
@@ -2503,23 +2507,18 @@
                                         <selectable>RFC 4868 for hash functions</selectable>
                                     </selectables>.</selectable>
                             </selectables>
-                        </title>
-                        <note role="application">If the TOE implements SHA-2 hash algorithms for IKEv1 or IKEv2, the ST author shall
+                        	</title>
+						</ext-comp-def>
+                        <note role="application">If the TOE implements SHA-2 hash algorithms for IKEv2, the ST author shall
 							select RFC 4868. </note>
                         <aactivity level="element">
                             <TSS>
-                                The evaluator shall examine the TSS to verify that IKEv1 or IKEv2 (as selected) are implemented. If IKEv1 is
-								implemented, the evaluator shall verify that the TSS indicates whether or not XAUTH is supported, and
-								that aggressive mode is not used for IKEv1 Phase 1 exchanges (i.e. only main mode is used). It may be that
-								these are configurable options.
+                                The evaluator shall examine the TSS to verify that IKEv2 is implemented.
                             </TSS>
                             <Guidance>
                                 The evaluator shall check the operational guidance to ensure it instructs the administrator how to
-								configure the TOE to use IKEv1 or IKEv2 (as selected), and uses the guidance to configure the TOE to
-								perform NAT traversal for the test below. If XAUTH is implemented, the evaluator shall verify that the
-								operational guidance provides instructions on how it is enabled or disabled.<h:p/>
-								If the TOE supports IKEv1, the evaluator shall verify that the operational guidance either asserts that only
-								main mode is used for Phase 1 exchanges, or provides instructions for disabling aggressive mode.
+								configure the TOE to use IKEv2 (as necessary), and uses the guidance to configure the TOE to
+								perform NAT traversal for the test below.
                             </Guidance>
                             <Tests>
                                 Tests are performed in conjunction with the other IPsec evaluation activities with the exception
@@ -2527,38 +2526,31 @@
                                 <testlist>
                                     <test>The evaluator shall configure the TOE so that it will perform NAT traversal processing as described
 										in the TSS and RFC 7296, section 2.23. The evaluator shall initiate an IPsec connection and determine that
-										the NAT is successfully traversed. If the TOE supports IKEv1 with or without XAUTH, the evaluator shall
-										verify that this test can be successfully repeated with XAUTH enabled and disabled in the manner specified
-										by the operational guidance. If the TOE only supports IKEv1 with XAUTH, the evaluator shall verify that
-										connections not using XAUTH are unsuccessful. If the TOE only supports IKEv1 without XAUTH, the
-										evaluator shall verify that connections using XAUTH are unsuccessful.</test>
-                                    <test>(conditional) If the TOE supports IKEv1, the evaluator shall perform any applicable operational
-										guidance steps to disable the use of aggressive mode and then attempt to establish a connection using an
-										IKEv1 Phase 1 connection in aggressive mode. This attempt should fail. The evaluator shall show that the
-										TOE will reject a VPN gateway from initiating an IKEv1 Phase 1 connection in aggressive mode. The
-										evaluator should then show that main mode exchanges are supported.</test>
+										the NAT is successfully traversed. </test>
+									<test>The evaluator shall configure a remote peer to support IKEv1 only. The evaluator shall attempt to establish 
+										a connection between the TOE and that peer and verify the TSF rejects the connection attempt based on its lack 
+										of support for IKEv1.</test>
                                 </testlist>
                             </Tests>
                         </aactivity>
                     </f-element>
                     <f-element id="fcs-ipsec-ext-1e6">
-                        <title>The TSF shall ensure the encrypted payload in the
+                        <title>The TSF shall ensure the encrypted payload in the [<h:i>IKEv2</h:i>] 
+							protocol uses the cryptographic algorithms [<h:i>AES-GCM-256 as specified in RFC 5282</h:i>].
+                        </title>
+						<ext-comp-def-title>
+							<title>The TSF shall ensure the encrypted payload in the
                             <selectables>
                                 <selectable>IKEv1</selectable>
                                 <selectable>IKEv2</selectable>
-                            </selectables> protocol uses the cryptographic algorithms AES-CBC-128, AES-CBC-256 as specified in 
-							RFC 6379 and
-                            <selectables>
-                                <selectable>AES-GCM-128 as specified in RFC 5282</selectable>
-                                <selectable>AES-GCM-256 as specified in RFC 5282</selectable>
-                                <selectable exclusive="yes">no other algorithm</selectable>
-                            </selectables>.
-                        </title>
+                            </selectables> protocol uses the cryptographic algorithms <assignable>acceptable cryptographic algorithms</assignable> 
+							and no other algorithm
+                        	</title>
+						</ext-comp-def-title>
                         <aactivity level="element">
                             <TSS>
-                                The evaluator shall ensure the TSS identifies the algorithms used for encrypting the IKEv1 or IKEv2
-								payload, and that the algorithms AES-CBC-128, AES-CBC-256 are specified, and if others are chosen in the
-								selection of the requirement, those are included in the TSS discussion.
+                                The evaluator shall ensure the TSS identifies the algorithm used for encrypting the IKEv2
+								payload, and that the algorithm AES-GCM-256 IS specified.
                             </TSS>
                             <Guidance>
                                 The evaluator checks the operational guidance to ensure it provides instructions on how the TOE is
@@ -2571,7 +2563,7 @@
 								Environment to have the TOE receive configuration) to perform the following test for each ciphersuite
 								selected:<h:p/>
 								<testlist>
-									<test>The evaluator shall configure the TOE to use the ciphersuite under test to encrypt the IKEv1 or
+									<test>The evaluator shall configure the TOE to use the ciphersuite under test to encrypt the 
 									IKEv2 payload and establish a connection with a peer device, which is configured to only accept the
 									payload encrypted using the indicated ciphersuite. The evaluator will confirm the algorithm was that used
 									in the negotiation. The evaluator will confirm that the connection is successful by confirming that data
@@ -2582,9 +2574,8 @@
                         </aactivity>
                     </f-element>
                     <f-element id="fcs-ipsec-ext-1e7">
-                        <title>The TSF shall ensure that 
-							<selectables>
-								<selectable>IKEv2 SA lifetimes can be configured by
+                        <title>The TSF shall ensure that [<h:i>
+								IKEv2 SA lifetimes can be configured by
 									<selectables>
 										<selectable>an administrator</selectable>
 										<selectable>a VPN Gateway</selectable>
@@ -2593,43 +2584,24 @@
 										<selectable>number of packets/number of bytes</selectable>
 										<selectable>length of time</selectable>
 									</selectables>
-								</selectable>
-								<selectable>IKEv1 SA lifetimes can be configured by 
-									<selectables>
-										<selectable>an administrator</selectable>
-										<selectable>a VPN Gateway</selectable>
-									</selectables> based on 
-									<selectables>
-										<selectable>number of packets/number of bytes</selectable>
-										<selectable>length of time</selectable>
-									</selectables>
-								</selectable>
-								<selectable>IKEv1 SA lifetimes are fixed based on 
-									<selectables>
-										<selectable>number of packets/number of bytes</selectable>
-										<selectable>length of time</selectable>
-									</selectables>. If length of time is used, it must include at least 
-									one option that is 24 hours or less for Phase 1 SAs and 8 hours or
-									less for Phase 2 SAs.
-								</selectable>
-							</selectables>
+									</h:i>].
                         </title>
+						<ext-comp-def-title>
+							<title>
+								The TSF shall ensure that <assignable>version(s) of IKE SA supported and the acceptable method(s) 
+									through which their lifetimes can be configured</assignable>.
+							</title>
+						</ext-comp-def-title>
                         <note role="application">
-							The ST author is afforded a selection based on the version of IKE in their
-							implementation. There is a further selection within this selection that allows the
-							ST author to specify which entity is responsible for “configuring” the life of the
+							The ST author is afforded a selection based on which entity is responsible for “configuring” the life of the
 							SA. An implementation that allows an administrator to configure the client or a
 							VPN gateway that pushes the SA lifetime down to the client are both acceptable.<h:p/>
 							As far as SA lifetimes are concerned, the TOE can limit the lifetime based on the
 							number of bytes transmitted, or the number of packets transmitted. Either
 							packet-based or volume-based SA lifetimes are acceptable; the ST author makes
 							the appropriate selection to indicate which type of lifetime limits are supported.<h:p/>
-							The ST author chooses either the IKEv1 requirements or IKEv2 requirements (or
-							both, depending on the selection in FCS_IPSEC_EXT.1.5. The IKEv1 requirement
-							can be accomplished either by providing authorized administrator-configurable
-							lifetimes (with appropriate instructions in documents mandated by AGD_OPE),
-							or by “hard coding” the limits in the implementation. For IKEv2, there are no
-							hard-coded limits, but in this case it is required that an administrator be able to
+							For IKEv2, there are no hard-coded limits on SA lifetime, but in this case it is required 
+							that an administrator be able to
 							configure the values. In general, instructions for setting the parameters of the
 							implementation, including lifetime of the SAs, should be included in the 
 							operational guidance generated for AGD_OPE. It is appropriate to refine the
@@ -2649,14 +2621,12 @@
                             </Guidance>
                             <Tests>
                                 When testing this functionality, the evaluator needs to ensure that both sides are configured
-								appropriately. From the RFC “A difference between IKEv1 and IKEv2 is that in IKEv1 SA lifetimes were
-								negotiated. In IKEv2, each end of the SA is responsible for enforcing its own lifetime policy on the SA and
+								appropriately. From the RFC “In IKEv2, each end of the SA is responsible for enforcing its own lifetime policy on the SA and
 								rekeying the SA when necessary. If the two ends have different lifetime policies, the end with the shorter
 								lifetime will end up always being the one to request the rekeying. If the two ends have the same lifetime
 								policies, it is possible that both will initiate a rekeying at the same time (which will result in redundant
 								SAs). To reduce the probability of this happening, the timing of rekeying requests SHOULD be jittered.”<h:p/>
-								Each of the following tests shall be performed for each version of IKE selected in the
-								FCS_IPSEC_EXT.1.5 protocol selection:
+								Each of the following tests shall be performed:
                                 <testlist>
                                     <test>(conditional) The evaluator shall configure a maximum lifetime in terms of the # of packets (or
 										bytes) allowed following the operational guidance. The evaluator shall establish an SA and determine that
@@ -2668,9 +2638,6 @@
 										TOE works as documented in the operational guidance.</test>
 									<test>(conditional) The evaluator shall perform a test similar to Test 2 
 										for Phase 2 SAs, except that the lifetime will be 8 hours or less instead of 24 hours or less.</test>
-									<test>(conditional) If a fixed limit for IKEv1 SAs is supported, the evaluator
-										shall establish an SA and observe that the connection is closed after
-										the fixed traffic or time value is reached.</test>
 								</testlist>				    
                             </Tests>
                         </aactivity>
@@ -2688,7 +2655,7 @@
                         </title></ext-comp-def-title>
                         <note role="application">
 							The selection is used to specify additional DH groups supported. This applies to
-							IKEv1 and IKEv2 exchanges. It should be noted that if any additional DH groups
+							all IKE exchanges. It should be noted that if any additional DH groups
 							are specified, they must comply with the requirements (in terms of the
 							ephemeral keys that are established) listed in FCS_CKM.1.<h:p/>
 							Since the implementation may allow different Diffie-Hellman groups to be
@@ -2712,7 +2679,7 @@
                             <Tests>
 								The evaluator shall perform the following test: <h:p/>
 								<testlist>
-									<test>For each supported DH group, the evaluator shall test to ensure that all supported IKE protocols
+									<test>For each supported DH group, the evaluator shall test to ensure that the IKE protocol
 										can be successfully completed using that particular DH group.</test>
 								</testlist>
                             </Tests>
@@ -2750,7 +2717,7 @@
                         </aactivity>
                     </f-element>
                     <f-element id="fcs-ipsec-ext-1e11">
-                        <title>The TSF shall ensure that all IKE protocols perform peer authentication using a
+                        <title>The TSF shall ensure that the IKE protocol performs peer authentication using a
 							<selectables>
 								<selectable>RSA</selectable>
 								<selectable>ECDSA</selectable>
@@ -2930,22 +2897,22 @@
 							</selectables> shall be able to ensure by default that the
 							strength of the symmetric algorithm (in terms of the number of bits in the key)
 							negotiated to protect the 
-							<selectables>
-								<selectable>IKEv1 Phase 1</selectable>
-								<selectable>IKEv2 IKE_SA</selectable>
-							</selectables> connection is greater than or equal to the strength of the symmetric algorithm (in terms of
-							the number of bits in the key) negotiated to protect the <selectables>
-								<selectable>IKEv1 Phase 2</selectable>
-								<selectable>IKEv2 CHILD_SA</selectable>
-							</selectables> connection.
+							[<h:i>IKEv2 IKE_SA</h:i>] connection is greater than or equal to the strength 
+							of the symmetric algorithm (in terms of the number of bits in the key) negotiated 
+							to protect the [<h:i>IKEv2 CHILD_SA</h:i>] connection.
 						</title>
+						<ext-comp-def-title>
+							<title>The <assignable>enforcing party</assignable> shall be able to ensure by default that the
+							strength of the symmetric algorithm (in terms of the number of bits in the key)
+							negotiated to protect the <assignable>version-specific term for initial SAs which protect protocol negotiation traffic</assignable> connection 
+							is greater than or equal to the strength of the symmetric algorithm (in terms of
+							the number of bits in the key) negotiated to protect the <assignable>version-specific term for subsequent SAs which protect data traffic</assignable> connection.
+						</title>
+						</ext-comp-def-title>
                         <note role="application">
 							If this functionality is configurable, the TSF may be configured by a VPN Gateway
 							or by an administrator of the TOE itself.<h:p/>
-							The ST author chooses either or both of the IKE selections based on what is
-							implemented by the TOE. Obviously, the IKE versions chosen should be
-							consistent not only in this element, but with other choices for other elements in
-							this component. While it is acceptable for this capability to be configurable, the
+							While it is acceptable for this capability to be configurable, the
 							default configuration in the evaluated configuration (either "out of the box" or
 							by configuration guidance in the AGD documentation) must enable this
 							functionality.
@@ -2954,7 +2921,7 @@
                             <TSS>
                                 The evaluator shall check that the TSS describes the potential strengths (in terms of the number of bits in
 								the symmetric key) of the algorithms that are allowed for the IKE and ESP exchanges. The TSS shall also
-								describe the checks that are done when negotiating IKEv1 Phase 2 and IKEv2 CHILD_SA suites to ensure
+								describe the checks that are done when negotiating IKEv2 CHILD_SA suites to ensure
 								that the strength (in terms of the number of bits of key in the symmetric algorithm) of the negotiated
 								algorithm is less than or equal to that of the IKE SA that is protecting the negotiation.
 							</TSS>
@@ -2962,17 +2929,17 @@
                             <Tests>
                                 The evaluator follows the guidance to configure the TOE to perform the following tests:<h:p/>
 								<testlist>
-                                    <test>This test shall be performed for each version of IKE supported. The evaluator shall successfully
+                                    <test>The evaluator shall successfully
 										negotiate an IPsec connection using each of the supported algorithms and hash functions identified in the
 										requirements.</test>         
-									<test>(conditional) This test shall be performed for each version of IKE supported. The evaluator shall
+									<test>(conditional) The evaluator shall
 										attempt to establish an SA for ESP that selects an encryption algorithm with more strength than that being
 										used for the IKE SA (i.e., symmetric algorithm with a key size larger than that being used for the IKE SA).
 										Such attempts should fail.</test>
-                                    <test>This test shall be performed for each version of IKE supported. The evaluator shall attempt to
+                                    <test>The evaluator shall attempt to
 										establish an IKE SA using an algorithm that is not one of the supported algorithms and hash functions
 										identified in the requirements. Such an attempt should fail.</test>
-                                    <test>This test shall be performed for each version of IKE supported. The evaluator shall attempt to
+                                    <test>The evaluator shall attempt to
 										establish an SA for ESP (assumes the proper parameters where used to establish the IKE SA) that selects
 										an encryption algorithm that is not identified in FCS_IPSEC_EXT.1.4. Such an attempt should fail.</test>
                                 </testlist>
@@ -2985,7 +2952,7 @@
 						<audit-event-info>Non-TOE endpoint of connection (IP address).</audit-event-info>	
 					</audit-event>
 					<audit-event>
-						<audit-event-descr>Establishment/Termination of an IPsec SAA.</audit-event-descr>
+						<audit-event-descr>Establishment/Termination of an IPsec SA.</audit-event-descr>
 						<audit-event-info>Non-TOE endpoint of connection (IP address).</audit-event-info>	
 					</audit-event>
                 </f-component>
