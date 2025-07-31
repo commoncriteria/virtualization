@@ -2375,7 +2375,7 @@
                     </f-element>
                     <f-element id="fcs-ipsec-ext-1e4">
                         <title>The TSF shall implement the IPsec protocol ESP as defined by RFC 4303 using the cryptographic 
-							algorithms [<h:i> AES-GCM-256 (as specified in RFC 4106)</h:i>] together with a Secure Hash Algorithm (SHA)-based HMAC.
+							algorithms [<h:i>AES-GCM-256 (as specified in RFC 4106)</h:i>] together with a Secure Hash Algorithm (SHA)-based HMAC.
                         </title>
                         <ext-comp-def-title><title>
                             The TSF shall implement the IPsec protocol ESP as defined by RFC 4303 using the cryptographic 
@@ -2388,7 +2388,7 @@
                             </TSS>
                             <Guidance>
                                 The evaluator checks the operational guidance to ensure it provides instructions on how the TOE is
-								configured to use the algorithms selected in this component and whether this is performed through the TOE's default configuration 
+								configured to use the algorithm selected in this component and whether this is performed through the TOE's default configuration 
 								(i.e., no configuration is necessary), direct configuration of the TOE, configuration defined during initial installation 
 								of the TOE, or defined by acquiring configuration settings from an environmental component.
                             </Guidance>
@@ -2461,7 +2461,7 @@
                     </f-element>
                     <f-element id="fcs-ipsec-ext-1e6">
                         <title>The TSF shall ensure the encrypted payload in the [<h:i>IKEv2</h:i>] 
-							protocol uses the cryptographic algorithms [<h:i>AES-GCM-256 as specified in RFC 5282</h:i>].
+							protocol uses the cryptographic algorithms [<h:i>AES-GCM-256 as specified in RFC 5282</h:i>] and no other algorithm.
                         </title>
 						<ext-comp-def-title>
 							<title>The TSF shall ensure the encrypted payload in the
@@ -2499,8 +2499,7 @@
                         </aactivity>
                     </f-element>
                     <f-element id="fcs-ipsec-ext-1e7">
-                        <title>The TSF shall ensure that [<h:i>
-								IKEv2 SA lifetimes can be configured by
+                        <title>The TSF shall ensure that [<h:i>IKEv2 SA lifetimes can be configured by
 									<selectables>
 										<selectable>an administrator</selectable>
 										<selectable>a VPN Gateway</selectable>
@@ -2847,7 +2846,7 @@
 								the symmetric key) of the algorithms that are allowed for the IKE and ESP exchanges. The TSS shall also
 								describe the checks that are done when negotiating IKEv2 CHILD_SA suites to ensure
 								that the strength (in terms of the number of bits of key in the symmetric algorithm) of the negotiated
-								algorithm is less than or equal to that of the IKE SA that is protecting the negotiation.
+								algorithm is less than or equal to that of the IKEv2 IKE_SA that is protecting the negotiation.
 							</TSS>
 							<Guidance/>
                             <Tests>
