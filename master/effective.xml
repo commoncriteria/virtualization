@@ -2395,8 +2395,8 @@
                             <Tests>
                                 <testlist>
 									<test>The evaluator shall configure the TOE/platform as indicated in the 
-                                   	 	operational guidance configuring the TOE/platform to use each of the supported
-                                   	 	algorithms, attempt to establish a connection using ESP, and verify that the attempt succeeds.
+                                   	 	operational guidance configuring the TOE/platform to use the supported
+                                   	 	algorithm, attempt to establish a connection using ESP, and verify that the attempt succeeds.
 									</test>
 								</testlist>
                             </Tests>
@@ -2451,7 +2451,7 @@
                                     <test>The evaluator shall configure the TOE so that it will perform NAT traversal processing as described
 										in the TSS and RFC 7296, section 2.23. The evaluator shall initiate an IPsec connection and determine that
 										the NAT is successfully traversed. </test>
-									<test>The evaluator fshall configure a remote peer to support IKEv1 only. If the TOE's supported versions of IKE is 
+									<test>The evaluator shall configure a remote peer to support IKEv1 only. If the TOE's supported versions of IKE is 
 										configurable, the evaluator shall follow the instructions specified in the operational guidance to ensure that only 
 										IKEv2 is supported. The evaluator shall then attempt to establish a connection between the TOE and that peer and 
 										verify the TSF rejects the connection attempt based on its lack of support for IKEv1.</test>
@@ -2479,9 +2479,9 @@
                             </TSS>
                             <Guidance>
                                 The evaluator checks the operational guidance to ensure it provides instructions on how the TOE is
-								configured to use the algorithms selected in this component and whether this is performed through direct
-								configuration, defined during initial installation, or defined by acquiring configuration settings from an
-								environmental component.
+								configured to use the algorithm selected in this component and whether this is performed through the TOE's default configuration 
+								(i.e., no configuration is necessary), direct configuration of the TOE, configuration defined during initial installation 
+								of the TOE, or defined by acquiring configuration settings from an environmental component.
                             </Guidance>
                             <Tests>
 								The evaluator shall use the operational guidance to configure the TOE (or to configure the Operational
@@ -2554,13 +2554,13 @@
                                     <test>(conditional) The evaluator shall configure a maximum lifetime in terms of the # of packets (or
 										bytes) allowed following the operational guidance. The evaluator shall establish an SA and determine that
 										once the allowed # of packets (or bytes) through this SA is exceeded, the connection is closed.</test>
-                                    <test>(conditional) The evaluator shall construct a test where a Phase 1 SA is established and attempted
+                                    <test>(conditional) The evaluator shall construct a test where an IKEv2 IKE_SA is established and attempted
 										to be maintained for more than 24 hours before it is renegotiated. The evaluator shall observe that this
 										SA is closed or renegotiated in 24 hours or less. If such an action requires that the TOE be configured in a
 										specific way, the evaluator shall implement tests demonstrating that the configuration capability of the
 										TOE works as documented in the operational guidance.</test>
 									<test>(conditional) The evaluator shall perform a test similar to Test 2 
-										for Phase 2 SAs, except that the lifetime will be 8 hours or less instead of 24 hours or less.</test>
+										for Child SAs, except that the lifetime will be 8 hours or less instead of 24 hours or less.</test>
 								</testlist>				    
                             </Tests>
                         </aactivity>

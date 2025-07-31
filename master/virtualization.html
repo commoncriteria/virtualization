@@ -2691,8 +2691,8 @@ The following sections list Common Criteria and technology terms used in this do
                                 <span class="testlist-"><ul>
 									<li class="test-"><a id="_t_20" class="defined" href="#_t_20">Test FCS_IPSEC_EXT.1.4:1</a>:
       The evaluator shall configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>/platform as indicated in the 
-                                   	 	operational guidance configuring the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>/platform to use each of the supported
-                                   	 	algorithms, attempt to establish a connection using ESP, and verify that the attempt succeeds.
+                                   	 	operational guidance configuring the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>/platform to use the supported
+                                   	 	algorithm, attempt to establish a connection using ESP, and verify that the attempt succeeds.
 									</li>
 								</ul></span>
                             </div>
@@ -2714,7 +2714,7 @@ The following sections list Common Criteria and technology terms used in this do
 										in the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> and RFC 7296, section 2.23. The evaluator shall initiate an IPsec connection and determine that
 										the NAT is successfully traversed. </li>
 									<li class="test-"><a id="_t_22" class="defined" href="#_t_22">Test FCS_IPSEC_EXT.1.5:2</a>:
-      The evaluator fshall configure a remote peer to support IKEv1 only. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s supported versions of IKE is 
+      The evaluator shall configure a remote peer to support IKEv1 only. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s supported versions of IKE is 
 										configurable, the evaluator shall follow the instructions specified in the operational guidance to ensure that only 
 										IKEv2 is supported. The evaluator shall then attempt to establish a connection between the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and that peer and 
 										verify the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> rejects the connection attempt based on its lack of support for IKEv1.</li>
@@ -2727,9 +2727,9 @@ The following sections list Common Criteria and technology terms used in this do
                             </div>
                             <div class="eacategory">Guidance</div><div class="ea">
                                 The evaluator checks the operational guidance to ensure it provides instructions on how the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is
-								configured to use the algorithms selected in this component and whether this is performed through direct
-								configuration, defined during initial installation, or defined by acquiring configuration settings from an
-								environmental component.
+								configured to use the algorithm selected in this component and whether this is performed through the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s default configuration 
+								(i.e., no configuration is necessary), direct configuration of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, configuration defined during initial installation 
+								of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, or defined by acquiring configuration settings from an environmental component.
                             </div>
                             <div class="eacategory">Tests</div><div class="ea">
 								The evaluator shall use the operational guidance to configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> (or to configure the Operational
@@ -2770,14 +2770,14 @@ The following sections list Common Criteria and technology terms used in this do
 										bytes) allowed following the operational guidance. The evaluator shall establish an SA and determine that
 										once the allowed # of packets (or bytes) through this SA is exceeded, the connection is closed.</li>
                                     <li class="test-"><a id="_t_25" class="defined" href="#_t_25">Test FCS_IPSEC_EXT.1.7:2</a>:
-      (conditional) The evaluator shall construct a test where a Phase 1 SA is established and attempted
+      (conditional) The evaluator shall construct a test where an IKEv2 IKE_SA is established and attempted
 										to be maintained for more than 24 hours before it is renegotiated. The evaluator shall observe that this
 										SA is closed or renegotiated in 24 hours or less. If such an action requires that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> be configured in a
 										specific way, the evaluator shall implement tests demonstrating that the configuration capability of the
 										<abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> works as documented in the operational guidance.</li>
 									<li class="test-"><a id="_t_26" class="defined" href="#_t_26">Test FCS_IPSEC_EXT.1.7:3</a>:
       (conditional) The evaluator shall perform a test similar to Test 2 
-										for Phase 2 SAs, except that the lifetime will be 8 hours or less instead of 24 hours or less.</li>
+										for Child SAs, except that the lifetime will be 8 hours or less instead of 24 hours or less.</li>
 								</ul></span>				    
                             </div>
                         <div class="element-activity-header"><a href="#FCS_IPSEC_EXT.1.8">FCS_IPSEC_EXT.1.8</a></div>
