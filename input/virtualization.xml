@@ -112,9 +112,9 @@
   <include-pkg id="pkg-tls">
     <git>
       <url>https://github.com/commoncriteria/tls</url>
-      <branch>release-1.1</branch>
+      <branch>release-2.1</branch>
     </git>
-    <url>https://commoncriteria.github.io/tls/release-2.0/tls-release.html</url>
+    <url>https://commoncriteria.github.io/tls/release-2.1/tls-release.html</url>
     <depends on-sel="sel-itc-tls"/>
 	<depends on-sel="sel-itc-https"/>
     </include-pkg>    
@@ -320,7 +320,7 @@
 			
 			<!-- 1.3.1 TOE Boundary -->
 			<section id="ss-toeboundary" title="TOE Boundary">
-				Figure 1 shows a greatly simplified view of a generic Virtualization System and Platform. TOE components are displayed
+				Figure 1 shows a greatly simplified view of a generic virtualization system and platform. TOE components are displayed
 				in Red. Non-TOE components are in Blue. The Platform is the hardware, firmware, and software onto which the VS is 
 				installed. The VMM includes the hypervisor, Service VMs, and VM containers, but not the software that runs inside
 				guest VMs or Helper VMs. The Management Subsystem is part of the TOE, but may or may not be part of the VMM. 
@@ -328,7 +328,7 @@
 
 				<figure entity="images/figure1.png" title="Virtualization System and Platform " id="vsplatform"/><h:br/><h:br/>
     
-				For purposes of this Protection Profile, the Virtualization System is the TOE, subject to some caveats. The Platform
+				For purposes of this Protection Profile, the virtualization system is the TOE, subject to some caveats. The Platform
 				onto which the VS is installed (which includes hardware, platform firmware, and Host Operating System) is not
 				part of the TOE. Software installed with the VS on the Host OS specifically to support the VS
 				or implement VS functionality is part of the TOE. General purpose software—such as device drivers for physical 
@@ -402,9 +402,9 @@
 			</usecase>
 			<usecase title="Client Virtualization" id="uc-client-virt">
 				<description>
-					Client Virtualization, for the purposes of this PP, refers to a Virtualization System that implements virtualized hardware
+					Client Virtualization, for the purposes of this PP, refers to a virtualization system that implements virtualized hardware
 					components locally on an endpoint machine. Endpoints are typically client hardware such as desktop or laptop computers that a user
-					interacts with directly, but may also include headless embedded systems without direct human interaction. A Virtualization System 
+					interacts with directly, but may also include headless embedded systems without direct human interaction. A virtualization system 
 					creates a virtualized hardware environment for each instance of a guest operating system (a virtual machine) permitting these 
 					environments to execute concurrently while maintaining isolation and the appearance of exclusive control over assigned computing
 					resources. Client virtualization is generally used on endpoint systems, making use of the local machine's resources (memory, CPU, etc.)
@@ -467,7 +467,8 @@
             <threats>
                 <threat name="T.3P_SOFTWARE">
                     <description>
-                        Malicious or poorly-coded third-party software or firmware that supports the functionality of the TOE (e.g. device
+                        Malicious or poorly-coded third-party software or firmware that supports the
+                        functionality of the TOE (e.g., device
 						drivers, operating systems) may be used to compromise the VS or its VMs if they have excessive privileges to interact
 						with the TSF (e.g., physical device drivers that are not encapsulated within a VM could expose entities outside of
 						that VM to compromise).
@@ -822,7 +823,7 @@
                         <title>The TSF shall take <assignable>list of actions</assignable> upon detection of a potential security 
 							violation.
                         </title>
-                        <note role="application">In certain cases, it may be useful for Virtualization Systems to perform automated
+                        <note role="application">In certain cases, it may be useful for virtualization systems to perform automated
 							responses to certain security events. An example may include halting a VM which has taken some action
 							to violate a key system security policy. This may be especially useful with headless endpoints when
 							there is no human user in the loop.<h:p/>
@@ -2281,7 +2282,7 @@
 								In addition to the Operational Guidance EAs for the individual FCS_IPSEC_EXT.1 elements below, the
 								evaluator shall perform the following:<h:p/>
 								If the configuration of the IPsec behavior is from an environmental source, most notably a VPN gateway
-								(e.g. through receipt of required connection parameters from a VPN gateway), the evaluator shall ensure
+								(e.g., through receipt of required connection parameters from a VPN gateway), the evaluator shall ensure
 								that the operational guidance contains any appropriate information for ensuring that this configuration
 								can be properly applied.<h:p/>
 								Note in this case that the implementation of the IPsec protocol must be enforced entirely within the TOE
@@ -2300,7 +2301,7 @@
 								evaluator with the ability manipulate fields in the ICMP, IPv4, IPv6, UDP, and TCP packet headers. The
 								evaluator shall provide justification for any differences in the test environment.<h:p/>
 								<figure entity="images/network.png" title="IPsec Test Environment" id="fig-ipsectest"/><h:p/>
-								Note that the evaluator shall perform all tests using the Virtualization System and a representative sample of
+								Note that the evaluator shall perform all tests using the virtualization system and a representative sample of
 								platforms listed in the ST (for TOEs that claim to support multiple platforms).
 							</Tests>
 						</aactivity>							
@@ -2508,7 +2509,7 @@
                             </TSS>
                             <Guidance>
                                 The evaluator shall check the operational guidance to ensure it instructs the administrator on how to
-								configure the TOE to support only IKEv2 (if necessary), and how to to configure the TOE to
+								configure the TOE to support only IKEv2 (if necessary), and how to configure the TOE to
 								perform NAT traversal for the test below.
                             </Guidance>
                             <Tests>
@@ -3135,11 +3136,11 @@
 				</ext-comp-def>
 			    <ext-comp-def title="VM Separation" fam-id="FDP_VMS_EXT">
 					<fam-behavior>This family defines requirements for the logical separation of multiple guest VMs
-						that are managed by the same Virtualization System.</fam-behavior>
+						that are managed by the same virtualization system.</fam-behavior>
 				</ext-comp-def>
 			    <ext-comp-def title="Virtual Networking Components" fam-id="FDP_VNC_EXT">
 					<fam-behavior>This family defines requirements for configuration of virtual networking
-						between guest VMs that are managed by the Virtualization System.</fam-behavior>
+						between guest VMs that are managed by the virtualization system.</fam-behavior>
 				</ext-comp-def>
 
                 <!-- FDP_HBI_EXT.1 -->
@@ -3421,7 +3422,7 @@
 							through the mechanisms listed in FDP_VMS_EXT.1.1.
                         </title>
                         <note role="application">
-                            The fundamental requirement of a Virtualization System is the ability to enforce separation between
+                            The fundamental requirement of a virtualization system is the ability to enforce separation between
 							information domains implemented as Virtual Machines and Virtual Networks. The intent of this
 							requirement is to ensure that VMs, VMMs, and the VS as a whole is implemented with 
 							this fundamental requirement in mind.<h:p/>
@@ -3981,7 +3982,7 @@
                            		</selectables> administration.
                        	</title>
                         <note role="application">
-							Selection of “remote” requires the selection-based requirement FTP_TRP.1 to be cleimed in the ST.
+							Selection of “remote” requires the selection-based requirement FTP_TRP.1 to be claimed in the ST.
 						</note>
                     </f-element>
                     <f-element id="fmt-mof-ext-1e2">
@@ -4001,7 +4002,7 @@
 								<!-- 1 -->
 								<management-function id="mf-admin-platform">	
 									<text>
-										Ability to update the Virtualization System.
+										Ability to update the virtualization system.
 									</text>
 									<M ref="A"/>
 									<X ref="U"/>
@@ -4307,9 +4308,8 @@
 							present at the machine on which the VS is installed.<h:p/>
                             Administration is considered “remote” if communications between the
 							administrator and the Management Subsystem travel on a network.<h:p/>
-                            There is no requirement to authenticate users of the Virtualization
-							System. Users that have access to VMs but not to the Management
-							Subsystem need not authenticate to the Virtualization System in order 
+                            There is no requirement to authenticate users of the virtualization system. Users that have access to VMs but not to the Management
+							Subsystem need not authenticate to the virtualization system in order 
 							to use Guest VMs. Requirements for authentication of VM users is
 							determined by the policies of the domains running within the Guest VMs.	<h:p/>
                             For a VS where the OS is part of the platform and not part of the TOE, it 
@@ -4571,8 +4571,7 @@
 							complexity to the task of compromising systems. Software can often take advantage of these mechanisms
 							by using APIs provided by the operating system or by enabling the mechanism through compiler or linker
 							options.<h:p/>
-							This requirement does not mandate that these protections be enabled throughout the Virtualization 
-							System—only that they be enabled where they have likely impact. For example, code that receives and 
+							This requirement does not mandate that these protections be enabled throughout the virtualization system—only that they be enabled where they have likely impact. For example, code that receives and 
 							processes user input should take advantage of these mechanisms.<h:p/>
 							For the selection, the ST author selects the supported mechanisms and uses the assignment to include 
 							mechanisms not listed in the selection, if any.</note>
@@ -4858,7 +4857,7 @@
 					</audit>
 					<dependencies/>
                     <f-element id="fpt-ml-ext-1e1">
-                        <title>The TSF shall support a measured launch of the Virtualization System. Measured 
+                        <title>The TSF shall support a measured launch of the virtualization system. Measured 
 							components of the VS shall include the static executable image of the hypervisor and:
                             <selectables linebreak="yes">
                                 <selectable>Static executable images of the Management Subsystem</selectable>
@@ -4967,7 +4966,7 @@
                             For purposes of this requirement, an Information Domain is:
                             <h:ol type="a">
                                 <h:li>A VM or collection of VMs</h:li>
-                                <h:li>The Virtualization System</h:li>
+                                <h:li>The virtualization system</h:li>
                                 <h:li>Host OS</h:li>
                                 <h:li>Management Subsystem</h:li>
                             </h:ol>
@@ -5081,7 +5080,7 @@
 					<management>The following actions could be considered for the 
 						management functions in FMT:
 						<h:ol type="a">
-							<h:li>Ability to update the Virtualization System.</h:li>
+							<h:li>Ability to update the virtualization system.</h:li>
 						</h:ol>
 					</management>
 					<audit>The following actions should be auditable if FAU_GEN Security
