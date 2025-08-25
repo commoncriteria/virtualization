@@ -808,7 +808,7 @@ The following sections list Common Criteria and technology terms used in this do
 			
 			
 			<h3 class="indexable" data-level="3" id="ss-toeboundary">1.3.1 TOE Boundary</h3>
-				Figure 1 shows a greatly simplified view of a generic Virtualization System and Platform. <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components are displayed
+				Figure 1 shows a greatly simplified view of a generic virtualization system and platform. <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components are displayed
 				in Red. Non-TOE components are in Blue. The Platform is the hardware, firmware, and software onto which the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> is 
 				installed. The <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> includes the hypervisor, Service VMs, and <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> containers, but not the software that runs inside
 				guest VMs or Helper VMs. The Management Subsystem is part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, but may or may not be part of the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>. 
@@ -817,7 +817,7 @@ The following sections list Common Criteria and technology terms used in this do
 				<div class="figure" id="figure-vsplatform"><img id="vsplatform" src="images/figure1.png" width="" height=""></img><br/><span class="ctr" data-myid="vsplatform" data-counter-type="ct-figure">Figure <span class="counter">1</span></span>:
       Virtualization System and Platform </div><br/><br/>
     
-				For purposes of this Protection Profile, the Virtualization System is the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, subject to some caveats. The Platform
+				For purposes of this Protection Profile, the virtualization system is the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, subject to some caveats. The Platform
 				onto which the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> is installed (which includes hardware, platform firmware, and Host Operating System) is not
 				part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. Software installed with the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> on the Host <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> specifically to support the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr>
 				or implement <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> functionality is part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. General purpose software—such as device drivers for physical 
@@ -882,9 +882,9 @@ The following sections list Common Criteria and technology terms used in this do
 					<li>Not permit Users to invoke management function <a href="#mf-admin-configCrypto">10</a>.</li>
 					</ul>
 				</span></dd><dt id="uc-client-virt"> [USE CASE 2] Client Virtualization</dt><dd><span class="description">
-					Client Virtualization, for the purposes of this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, refers to a Virtualization System that implements virtualized hardware
+					Client Virtualization, for the purposes of this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, refers to a virtualization system that implements virtualized hardware
 					components locally on an endpoint machine. Endpoints are typically client hardware such as desktop or laptop computers that a user
-					interacts with directly, but may also include headless embedded systems without direct human interaction. A Virtualization System 
+					interacts with directly, but may also include headless embedded systems without direct human interaction. A virtualization system 
 					creates a virtualized hardware environment for each instance of a guest operating system (a virtual machine) permitting these 
 					environments to execute concurrently while maintaining isolation and the appearance of exclusive control over assigned computing
 					resources. Client virtualization is generally used on endpoint systems, making use of the local machine's resources (memory, <abbr class="dyn-abbr"><a href="#abbr_CPU">CPU</a></abbr>, etc.)
@@ -935,7 +935,8 @@ The following sections list Common Criteria and technology terms used in this do
 		
 		<h2 class="indexable" data-level="2" id="Threats">3.1 Threats</h2>
             <dl><dt class="threat defined" id="T.3P_SOFTWARE">T.3P_SOFTWARE</dt><dd><span class="description">
-                        Malicious or poorly-coded third-party software or firmware that supports the functionality of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> (e.g. device
+                        Malicious or poorly-coded third-party software or firmware that supports the
+                        functionality of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> (e.g., device
 						drivers, operating systems) may be used to compromise the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> or its VMs if they have excessive privileges to interact
 						with the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> (e.g., physical device drivers that are not encapsulated within a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> could expose entities outside of
 						that <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> to compromise).
@@ -1093,9 +1094,9 @@ The following sections list Common Criteria and technology terms used in this do
                             <ol type="a">
                                 <li>Start-up and shutdown of audit functions</li>
 								<li>[<span class="refinement">Auditable events defined in <a onclick="showTarget('t-audit-mandatory')" href="#t-audit-mandatory" class="t-audit-mandatory-ref">Table  <span class="counter">2</span></a></span>]</li>
-                                <li><span class="refinement">[<b>selection</b>: <ul><li style=""><span class="selectable-content" id="sel-at2">Auditable events defined in <a onclick="showTarget('t-audit-optional')" href="#t-audit-optional" class="t-audit-optional-ref">Table  <span class="counter">6</span></a> for Strictly Optional <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span></li><li style=""><span class="selectable-content" id="sel-at3">Auditable events defined in <a onclick="showTarget('t-audit-objective')" href="#t-audit-objective" class="t-audit-objective-ref">Table  <span class="counter">7</span></a> for Objective <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span></li><li style=""><span class="selectable-content" id="sel-at4">Auditable events defined in <a onclick="showTarget('t-audit-sel-based')" href="#t-audit-sel-based" class="t-audit-sel-based-ref">Table  <span class="counter">8</span></a> for Selection-Based <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span></li><li style=""><span class="selectable-content" id="sel-attls">Auditable events for the <a href="https://commoncriteria.github.io/tls/release-2.0/tls-release.html">Functional Package for Transport Layer Security (TLS),
+                                <li><span class="refinement">[<b>selection</b>: <ul><li style=""><span class="selectable-content" id="sel-at2">Auditable events defined in <a onclick="showTarget('t-audit-optional')" href="#t-audit-optional" class="t-audit-optional-ref">Table  <span class="counter">6</span></a> for Strictly Optional <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span></li><li style=""><span class="selectable-content" id="sel-at3">Auditable events defined in <a onclick="showTarget('t-audit-objective')" href="#t-audit-objective" class="t-audit-objective-ref">Table  <span class="counter">7</span></a> for Objective <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span></li><li style=""><span class="selectable-content" id="sel-at4">Auditable events defined in <a onclick="showTarget('t-audit-sel-based')" href="#t-audit-sel-based" class="t-audit-sel-based-ref">Table  <span class="counter">8</span></a> for Selection-Based <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span></li><li style=""><span class="selectable-content" id="sel-attls">Auditable events for the <a href="https://commoncriteria.github.io/tls/release-2.1/tls-release.html">Functional Package for Transport Layer Security (TLS),
         version 
-        1.1</a> listed in <a onclick="showTarget('atref-pkgs')" href="#atref-pkgs" class="atref-pkgs-ref">Table <span class="counter">3</span></a></span></li><li style=""><span class="selectable-content" id="sel-atssh">Auditable events defined in the audit table for the <a href="https://commoncriteria.github.io/ssh/release-2.0/ssh-release.html">Functional Package for Secure Shell (SSH),
+        2.1</a> listed in <a onclick="showTarget('atref-pkgs')" href="#atref-pkgs" class="atref-pkgs-ref">Table <span class="counter">3</span></a></span></li><li style=""><span class="selectable-content" id="sel-atssh">Auditable events defined in the audit table for the <a href="https://commoncriteria.github.io/ssh/release-2.0/ssh-release.html">Functional Package for Secure Shell (SSH),
         version 
         2.0</a></span></li><li style=""><span class="selectable-content" id="_s_6">no other auditable events</span></li></ul>]</span></li>
                             </ol>
@@ -1107,9 +1108,9 @@ The following sections list Common Criteria and technology terms used in this do
                                 <li>Subject and object identity (if applicable)</li>
                                 <li>The outcome (success or failure) of the event</li>
                                 <li>[<span class="refinement">Additional information defined in <a onclick="showTarget('t-audit-mandatory')" href="#t-audit-mandatory" class="t-audit-mandatory-ref">Table  <span class="counter">2</span></a></span>]</li>
-                                <li><span class="refinement">[<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_7">Additional information defined in <a onclick="showTarget('t-audit-optional')" href="#t-audit-optional" class="t-audit-optional-ref">Table  <span class="counter">6</span></a> for Strictly Optional <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span></li><li style=""><span class="selectable-content" id="_s_8">Additional information defined in <a onclick="showTarget('t-audit-objective')" href="#t-audit-objective" class="t-audit-objective-ref">Table  <span class="counter">7</span></a> for Objective <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span></li><li style=""><span class="selectable-content" id="_s_9">Additional information defined in <a onclick="showTarget('t-audit-sel-based')" href="#t-audit-sel-based" class="t-audit-sel-based-ref">Table  <span class="counter">8</span></a> for Selection-Based <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span></li><li style=""><span class="selectable-content" id="_s_10">Additional information for the <a href="https://commoncriteria.github.io/tls/release-2.0/tls-release.html">Functional Package for Transport Layer Security (TLS),
+                                <li><span class="refinement">[<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_7">Additional information defined in <a onclick="showTarget('t-audit-optional')" href="#t-audit-optional" class="t-audit-optional-ref">Table  <span class="counter">6</span></a> for Strictly Optional <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span></li><li style=""><span class="selectable-content" id="_s_8">Additional information defined in <a onclick="showTarget('t-audit-objective')" href="#t-audit-objective" class="t-audit-objective-ref">Table  <span class="counter">7</span></a> for Objective <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span></li><li style=""><span class="selectable-content" id="_s_9">Additional information defined in <a onclick="showTarget('t-audit-sel-based')" href="#t-audit-sel-based" class="t-audit-sel-based-ref">Table  <span class="counter">8</span></a> for Selection-Based <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span></li><li style=""><span class="selectable-content" id="_s_10">Additional information for the <a href="https://commoncriteria.github.io/tls/release-2.1/tls-release.html">Functional Package for Transport Layer Security (TLS),
         version 
-        1.1</a> listed in <a onclick="showTarget('atref-pkgs')" href="#atref-pkgs" class="atref-pkgs-ref">Table <span class="counter">3</span></a></span></li><li style=""><span class="selectable-content" id="_s_11">Additional information defined in the audit table for the <a href="https://commoncriteria.github.io/ssh/release-2.0/ssh-release.html">Functional Package for Secure Shell (SSH),
+        2.1</a> listed in <a onclick="showTarget('atref-pkgs')" href="#atref-pkgs" class="atref-pkgs-ref">Table <span class="counter">3</span></a></span></li><li style=""><span class="selectable-content" id="_s_11">Additional information defined in the audit table for the <a href="https://commoncriteria.github.io/ssh/release-2.0/ssh-release.html">Functional Package for Secure Shell (SSH),
         version 
         2.0</a></span></li><li style=""><span class="selectable-content" id="_s_12">no other information</span></li></ul>]</span></li>
                             </ol>
@@ -1134,14 +1135,14 @@ The following sections list Common Criteria and technology terms used in this do
 							devices such as CD-ROMs). All such connection/disconnection events must be logged.<p></p>
 							
 							The following table contains the events enumerated in the auditable events table for 
-							the <a href="https://commoncriteria.github.io/tls/release-2.0/tls-release.html">Functional Package for Transport Layer Security (TLS),
+							the <a href="https://commoncriteria.github.io/tls/release-2.1/tls-release.html">Functional Package for Transport Layer Security (TLS),
         version 
-        1.1</a>. Inclusion of these events in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> is subject to selection above,
+        2.1</a>. Inclusion of these events in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> is subject to selection above,
 							inclusion of the corresponding <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>, and support in the <abbr class="dyn-abbr"><a href="#abbr_FP">FP</a></abbr> as represented by a selection in the 
 							table below.<p></p>
-							<b><span class="ctr" data-myid="atref-pkgs" data-counter-type="ct-Table" id="atref-pkgs">Table <span class="counter">3</span>: Auditable Events for the <a href="https://commoncriteria.github.io/tls/release-2.0/tls-release.html">Functional Package for Transport Layer Security (TLS),
+							<b><span class="ctr" data-myid="atref-pkgs" data-counter-type="ct-Table" id="atref-pkgs">Table <span class="counter">3</span>: Auditable Events for the <a href="https://commoncriteria.github.io/tls/release-2.1/tls-release.html">Functional Package for Transport Layer Security (TLS),
         version 
-        1.1</a></span></b><br/>							
+        2.1</a></span></b><br/>							
 							<table>
 								<tr><td>FCS_TLSC_EXT.1</td>
 								<td>Failure to establish a session.</td>
@@ -2589,7 +2590,7 @@ The following sections list Common Criteria and technology terms used in this do
                         <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
-                            The fundamental requirement of a Virtualization System is the ability to enforce separation between
+                            The fundamental requirement of a virtualization system is the ability to enforce separation between
 							information domains implemented as Virtual Machines and Virtual Networks. The intent of this
 							requirement is to ensure that VMs, VMMs, and the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> as a whole is implemented with 
 							this fundamental requirement in mind.<p></p>
@@ -2940,7 +2941,7 @@ The following sections list Common Criteria and technology terms used in this do
                        	<div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
-							Selection of “remote” requires the selection-based requirement <a href="#FTP_TRP.1">FTP_TRP.1</a> to be cleimed in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>.
+							Selection of “remote” requires the selection-based requirement <a href="#FTP_TRP.1">FTP_TRP.1</a> to be claimed in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>.
 						</span></div></div></div>
                     <div class="element"><div class="reqid" id="FMT_MOF_EXT.1.2"><a href="#FMT_MOF_EXT.1.2" class="abbr">FMT_MOF_EXT.1.2</a></div><div class="reqdesc">
 							The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be capable of performing the following management functions: [<p></p>
@@ -2953,7 +2954,7 @@ The following sections list Common Criteria and technology terms used in this do
 
 							<table class="mfs" style="width: 100%;"><tr class="header"><td>#</td><td>Management Function</td><td>Admin</td><td>User</td><td>Application Notes</td></tr>
 <tr id="mf-admin-platform"><td>1</td><td style="text-align:left">
-										Ability to update the Virtualization System.
+										Ability to update the virtualization system.
 									</td><td><div class="tooltipped">M<span class="tooltiptext">Mandatory</span></div></td><td><div class="tooltipped">X<span class="tooltiptext">Not permitted</span></div></td><td style="text-align:left"><p>
 										See <a href="#FPT_TUD_EXT.1">FPT_TUD_EXT.1</a>.
 									</p></td></tr>
@@ -3065,9 +3066,8 @@ The following sections list Common Criteria and technology terms used in this do
 							present at the machine on which the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> is installed.<p></p>
                             Administration is considered “remote” if communications between the
 							administrator and the Management Subsystem travel on a network.<p></p>
-                            There is no requirement to authenticate users of the Virtualization
-							System. Users that have access to VMs but not to the Management
-							Subsystem need not authenticate to the Virtualization System in order 
+                            There is no requirement to authenticate users of the virtualization system. Users that have access to VMs but not to the Management
+							Subsystem need not authenticate to the virtualization system in order 
 							to use Guest VMs. Requirements for authentication of <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> users is
 							determined by the policies of the domains running within the Guest VMs.	<p></p>
                             For a <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> where the <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> is part of the platform and not part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, it 
@@ -3226,8 +3226,7 @@ The following sections list Common Criteria and technology terms used in this do
 							complexity to the task of compromising systems. Software can often take advantage of these mechanisms
 							by using APIs provided by the operating system or by enabling the mechanism through compiler or linker
 							options.<p></p>
-							This requirement does not mandate that these protections be enabled throughout the Virtualization 
-							System—only that they be enabled where they have likely impact. For example, code that receives and 
+							This requirement does not mandate that these protections be enabled throughout the virtualization system—only that they be enabled where they have likely impact. For example, code that receives and 
 							processes user input should take advantage of these mechanisms.<p></p>
 							For the selection, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects the supported mechanisms and uses the assignment to include 
 							mechanisms not listed in the selection, if any.</span></div></div></div>
@@ -3398,7 +3397,7 @@ The following sections list Common Criteria and technology terms used in this do
                             For purposes of this requirement, an Information Domain is:
                             <ol type="a">
                                 <li>A <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> or collection of VMs</li>
-                                <li>The Virtualization System</li>
+                                <li>The virtualization system</li>
                                 <li>Host <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr></li>
                                 <li>Management Subsystem</li>
                             </ol>
@@ -3728,9 +3727,9 @@ The following sections list Common Criteria and technology terms used in this do
 					
                     <div class="element"><div class="reqid" id="FTP_ITC_EXT.1.1"><a href="#FTP_ITC_EXT.1.1" class="abbr">FTP_ITC_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall use
                             [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="sel-itc-tls">TLS as conforming to the <a href="https://www.niap-ccevs.org/protectionprofiles/465">
-									<i><a href="https://commoncriteria.github.io/tls/release-2.0/tls-release.html">Functional Package for Transport Layer Security (TLS),
+									<i><a href="https://commoncriteria.github.io/tls/release-2.1/tls-release.html">Functional Package for Transport Layer Security (TLS),
         version 
-        1.1</a></i></a></span></li><li style=""><span class="selectable-content" id="sel-itc-https">TLS/HTTPS as conforming to <a href="#FCS_HTTPS_EXT.1">FCS_HTTPS_EXT.1</a></span></li><li style=""><span class="selectable-content" id="sel-itc-ipsec">IPsec as conforming to <a href="#FCS_IPSEC_EXT.1">FCS_IPSEC_EXT.1</a></span></li><li style=""><span class="selectable-content" id="sel-itc-ssh">SSH as conforming to the
+        2.1</a></i></a></span></li><li style=""><span class="selectable-content" id="sel-itc-https">TLS/HTTPS as conforming to <a href="#FCS_HTTPS_EXT.1">FCS_HTTPS_EXT.1</a></span></li><li style=""><span class="selectable-content" id="sel-itc-ipsec">IPsec as conforming to <a href="#FCS_IPSEC_EXT.1">FCS_IPSEC_EXT.1</a></span></li><li style=""><span class="selectable-content" id="sel-itc-ssh">SSH as conforming to the
                                     <a href="https://www.niap-ccevs.org/protectionprofiles/515"><i>Functional Package
 									for Secure Shell</i></a></span></li></ul>]
 							and
@@ -3744,9 +3743,9 @@ The following sections list Common Criteria and technology terms used in this do
                         <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">If the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects either TLS or HTTPS, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be validated against the 
-                            <a href="https://commoncriteria.github.io/tls/release-2.0/tls-release.html">Functional Package for Transport Layer Security (TLS),
+                            <a href="https://commoncriteria.github.io/tls/release-2.1/tls-release.html">Functional Package for Transport Layer Security (TLS),
         version 
-        1.1</a>. This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> does not mandate that a product implement TLS with mutual authentication,
+        2.1</a>. This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> does not mandate that a product implement TLS with mutual authentication,
 							but if the product includes the capability to perform TLS with mutual authentication, then
 							mutual authentication must be included within the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary. The TLS Package requires that
 							the X.509 requirements be included by the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, so selection of TLS or HTTPS causes FIA_X509_EXT.* to be selected.<p></p>
@@ -4555,7 +4554,7 @@ The following sections list Common Criteria and technology terms used in this do
 							violation.
                         <div class="appnote"><span class="note-header">Application
       Note:
-    </span><span class="note">In certain cases, it may be useful for Virtualization Systems to perform automated
+    </span><span class="note">In certain cases, it may be useful for virtualization systems to perform automated
 							responses to certain security events. An example may include halting a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> which has taken some action
 							to violate a key system security policy. This may be especially useful with headless endpoints when
 							there is no human user in the loop.<p></p>
@@ -4745,7 +4744,7 @@ The following sections list Common Criteria and technology terms used in this do
 					
 					
 					
-                    <div class="element"><div class="reqid" id="FPT_ML_EXT.1.1"><a href="#FPT_ML_EXT.1.1" class="abbr">FPT_ML_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support a measured launch of the Virtualization System. Measured 
+                    <div class="element"><div class="reqid" id="FPT_ML_EXT.1.1"><a href="#FPT_ML_EXT.1.1" class="abbr">FPT_ML_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support a measured launch of the virtualization system. Measured 
 							components of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> shall include the static executable image of the hypervisor and:
                             [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_177">Static executable images of the Management Subsystem</span></li><li style=""><span class="selectable-content" id="_s_178">[<b>assignment</b>: 
      <span class="assignable-content">list of (static images of) Service VMs</span>]</span></li><li style=""><span class="selectable-content" id="_s_179">[<b>assignment</b>: 
@@ -5047,7 +5046,7 @@ The following sections list Common Criteria and technology terms used in this do
 								In addition to the Operational Guidance EAs for the individual <a href="#FCS_IPSEC_EXT.1">FCS_IPSEC_EXT.1</a> elements below, the
 								evaluator shall perform the following:<p></p>
 								If the configuration of the IPsec behavior is from an environmental source, most notably a VPN gateway
-								(e.g. through receipt of required connection parameters from a VPN gateway), the evaluator shall ensure
+								(e.g., through receipt of required connection parameters from a VPN gateway), the evaluator shall ensure
 								that the operational guidance contains any appropriate information for ensuring that this configuration
 								can be properly applied.<p></p>
 								Note in this case that the implementation of the IPsec protocol must be enforced entirely within the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>
@@ -5066,7 +5065,7 @@ The following sections list Common Criteria and technology terms used in this do
 								evaluator shall provide justification for any differences in the test environment.<p></p>
 								<div class="figure" id="figure-fig-ipsectest"><img id="fig-ipsectest" src="images/network.png" width="" height=""></img><br/><span class="ctr" data-myid="fig-ipsectest" data-counter-type="ct-figure">Figure <span class="counter">2</span></span>:
       IPsec Test Environment</div><p></p>
-								Note that the evaluator shall perform all tests using the Virtualization System and a representative sample of
+								Note that the evaluator shall perform all tests using the virtualization system and a representative sample of
 								platforms listed in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> (for <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr> that claim to support multiple platforms).
 							</div></div><div class="element-activity-header"><a href="#FCS_IPSEC_EXT.1.1">FCS_IPSEC_EXT.1.1</a></div>
                             <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea">
@@ -5208,7 +5207,7 @@ The following sections list Common Criteria and technology terms used in this do
                             </div>
                             <div class="eacategory">Guidance</div><div class="ea">
                                 The evaluator shall check the operational guidance to ensure it instructs the administrator on how to
-								configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to support only IKEv2 (if necessary), and how to to configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to
+								configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to support only IKEv2 (if necessary), and how to configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to
 								perform NAT traversal for the test below.
                             </div>
                             <div class="eacategory">Tests</div><div class="ea">
@@ -5954,7 +5953,7 @@ The following sections list Common Criteria and technology terms used in this do
 						<ol type="a">
 							<li>Integrity measurements collected.</li>
 						</ol>
-					</p><h4>FPT_ML_EXT.1 Measured Launch of Platform and VMM</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td></td></tr></table><h4 id="ext-comp-FPT_ML_EXT.1.1">FPT_ML_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support a measured launch of the Virtualization System. Measured 
+					</p><h4>FPT_ML_EXT.1 Measured Launch of Platform and VMM</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td></td></tr></table><h4 id="ext-comp-FPT_ML_EXT.1.1">FPT_ML_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support a measured launch of the virtualization system. Measured 
 							components of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> shall include the static executable image of the hypervisor and:
                             [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_177">Static executable images of the Management Subsystem</span></li><li style=""><span class="selectable-content" id="_s_178">[<b>assignment</b>: 
      <span class="assignable-content">list of (static images of) Service VMs</span>]</span></li><li style=""><span class="selectable-content" id="_s_179">[<b>assignment</b>: 
@@ -5997,7 +5996,7 @@ The following sections list Common Criteria and technology terms used in this do
              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to validate updates using a code signing certificate.</p><h4>Management: FPT_TUD_EXT.1</h4><p>The following actions could be considered for the 
 						management functions in FMT:
 						<ol type="a">
-							<li>Ability to update the Virtualization System.</li>
+							<li>Ability to update the virtualization system.</li>
 						</ol>
 					</p><h4>Audit: FPT_TUD_EXT.1</h4><p>The following actions should be auditable if FAU_GEN Security
 						audit data generation is included in the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>/<abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>:
@@ -6131,7 +6130,7 @@ The following sections list Common Criteria and technology terms used in this do
                         </div><h4>Management: FDP_RIP_EXT.2</h4><p>There are no management functions foreseen.</p><h4>Audit: FDP_RIP_EXT.2</h4><p>There are no audit events foreseen.</p><h4>FDP_RIP_EXT.2 Residual Information on Disk</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td></td></tr></table><h4 id="ext-comp-FDP_RIP_EXT.2.1">FDP_RIP_EXT.2.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall ensure that any previous information content of physical disk storage is cleared to zeros upon
 							allocation to a guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>.
                         </div></div><h3 id="ext-comp-FDP_VMS_EXT" class="indexable" data-level="4">C.2.6.4 FDP_VMS_EXT VM Separation</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines requirements for the logical separation of multiple guest VMs
-						that are managed by the same Virtualization System.</div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FDP_VMS_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FDP_VMS_EXT.1">FDP_VMS_EXT.1</a>,
+						that are managed by the same virtualization system.</div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FDP_VMS_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FDP_VMS_EXT.1">FDP_VMS_EXT.1</a>,
              <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> Separation,
              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to maintain logical separation between guest VMs
 						except through the use of specific configurable methods.</p><h4>Management: FDP_VMS_EXT.1</h4><p>The following actions could be considered for the management 
@@ -6147,7 +6146,7 @@ The following sections list Common Criteria and technology terms used in this do
                         <h4 id="ext-comp-FDP_VMS_EXT.1.4">FDP_VMS_EXT.1.4</h4>The <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> shall ensure that no guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> is able to read or transfer data to or from another guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> except
 							through the mechanisms listed in <a href="#FDP_VMS_EXT.1.1">FDP_VMS_EXT.1.1</a>.
                         </div></div><h3 id="ext-comp-FDP_VNC_EXT" class="indexable" data-level="4">C.2.6.5 FDP_VNC_EXT Virtual Networking Components</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines requirements for configuration of virtual networking
-						between guest VMs that are managed by the Virtualization System.</div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FDP_VNC_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FDP_VNC_EXT.1">FDP_VNC_EXT.1</a>,
+						between guest VMs that are managed by the virtualization system.</div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FDP_VNC_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FDP_VNC_EXT.1">FDP_VNC_EXT.1</a>,
              Virtual Networking Components,
              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to support the configuration of virtual networking between guest VMs.</p><h4>Management: FDP_VNC_EXT.1</h4><p>The following actions could be considered for the management
 						functions in FMT:

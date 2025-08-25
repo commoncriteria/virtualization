@@ -292,7 +292,7 @@
          A guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> is a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> that contains a virtual environment for the execution of an independent computing system. Virtual environments execute mission workloads and implement customer-specific client or server functionality in guest VMs, such as a web server or desktop productivity applications. A Helper <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> is a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> that performs services on behalf of one or more guest VMs, but does not qualify as a Service <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>&mdash;and therefore is not part of the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>. Helper VMs implement functions or services that are particular to the workloads of guest VMs. For example, a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> that provides a virus scanning service for a guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> would be considered a Helper <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>. The line between Helper and Service VMs can easily be blurred. For instance, a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> that implements a cryptographic function&mdash;such as an in-line encryption <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>&mdash;could be identified as either a Service or Helper <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> depending on the particular virtualization solution. If the cryptographic functions are necessary only for the privacy of guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> data in support of the Guest&rsquo;s mission applications, it would be proper to classify the encryption <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> as a Helper. But if the encryption <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> is necessary for the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> to isolate guest VMs, it would be proper to classify the encryption <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> as a Service <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>. For the purposes of this document, Helper VMs are subject to all requirements that apply to guest VMs, unless specifically stated otherwise.
         <p></p>
         <h3 class="indexable" data-level="3" id="ss-toeboundary">1.3.1 TOE Boundary</h3>
-         Figure 1 shows a greatly simplified view of a generic Virtualization System and Platform. <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components are displayed in Red. Non-TOE components are in Blue. The Platform is the hardware, firmware, and software onto which the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> is installed. The <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> includes the hypervisor, Service VMs, and <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> containers, but not the software that runs inside guest VMs or Helper VMs. The Management Subsystem is part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, but may or may not be part of the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>. 
+         Figure 1 shows a greatly simplified view of a generic virtualization system and platform. <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> components are displayed in Red. Non-TOE components are in Blue. The Platform is the hardware, firmware, and software onto which the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> is installed. The <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> includes the hypervisor, Service VMs, and <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> containers, but not the software that runs inside guest VMs or Helper VMs. The Management Subsystem is part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, but may or may not be part of the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr>. 
         <p></p>
         <div class="figure" id="figure-vsplatform">
             <img id="vsplatform" src="images/figure1.png" width="" height="">
@@ -301,7 +301,7 @@
         </div>
         <br>
         <br>
-         For purposes of this Protection Profile, the Virtualization System is the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, subject to some caveats. The Platform onto which the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> is installed (which includes hardware, platform firmware, and Host Operating System) is not part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. Software installed with the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> on the Host <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> specifically to support the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> or implement <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> functionality is part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. General purpose software&mdash;such as device drivers for physical devices and the Host <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> itself&mdash;is not part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, regardless of whether it supports <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> functionality or runs inside a Service <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> or control domain. Software that runs within Guest and Helper VMs is not part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.
+         For purposes of this Protection Profile, the virtualization system is the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, subject to some caveats. The Platform onto which the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> is installed (which includes hardware, platform firmware, and Host Operating System) is not part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. Software installed with the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> on the Host <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> specifically to support the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> or implement <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> functionality is part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. General purpose software&mdash;such as device drivers for physical devices and the Host <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> itself&mdash;is not part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, regardless of whether it supports <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> functionality or runs inside a Service <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> or control domain. Software that runs within Guest and Helper VMs is not part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>.
         <p></p>
          In general, for virtualization products that are installed onto &ldquo;bare metal,&rdquo; the entire set of installed components constitute the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, and the hardware constitutes the Platform. Also in general, for products that are hosted by or integrated into a commodity operating system, the components installed expressly for implementing and supporting virtualization are in the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, and the Platform comprises the hardware and Host <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr>. 
         <h3 class="indexable" data-level="3" id="ss-platformreqs">1.3.2 Requirements Met by the Platform</h3>
@@ -340,7 +340,7 @@
             </dd>
             <dt id="uc-client-virt"> [USE CASE 2] Client Virtualization</dt>
             <dd>
-                <span class="description"> Client Virtualization, for the purposes of this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, refers to a Virtualization System that implements virtualized hardware components locally on an endpoint machine. Endpoints are typically client hardware such as desktop or laptop computers that a user interacts with directly, but may also include headless embedded systems without direct human interaction. A Virtualization System creates a virtualized hardware environment for each instance of a guest operating system (a virtual machine) permitting these environments to execute concurrently while maintaining isolation and the appearance of exclusive control over assigned computing resources. Client virtualization is generally used on endpoint systems, making use of the local machine's resources (memory, <abbr class="dyn-abbr"><a href="#abbr_CPU">CPU</a></abbr>, etc.) to provide isolated user environments.
+                <span class="description"> Client Virtualization, for the purposes of this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, refers to a virtualization system that implements virtualized hardware components locally on an endpoint machine. Endpoints are typically client hardware such as desktop or laptop computers that a user interacts with directly, but may also include headless embedded systems without direct human interaction. A virtualization system creates a virtualized hardware environment for each instance of a guest operating system (a virtual machine) permitting these environments to execute concurrently while maintaining isolation and the appearance of exclusive control over assigned computing resources. Client virtualization is generally used on endpoint systems, making use of the local machine's resources (memory, <abbr class="dyn-abbr"><a href="#abbr_CPU">CPU</a></abbr>, etc.) to provide isolated user environments.
                     <p></p>
                      Claiming of the Client Virtualization use case requires that the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> Author:
                     <ul>
@@ -414,7 +414,7 @@
         <dl>
             <dt class="threat defined" id="T.3P_SOFTWARE">T.3P_SOFTWARE</dt>
             <dd>
-                <span class="description"> Malicious or poorly-coded third-party software or firmware that supports the functionality of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> (e.g. device drivers, operating systems) may be used to compromise the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> or its VMs if they have excessive privileges to interact with the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> (e.g., physical device drivers that are not encapsulated within a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> could expose entities outside of that <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> to compromise). </span>
+                <span class="description"> Malicious or poorly-coded third-party software or firmware that supports the functionality of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> (e.g., device drivers, operating systems) may be used to compromise the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> or its VMs if they have excessive privileges to interact with the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> (e.g., physical device drivers that are not encapsulated within a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> could expose entities outside of that <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> to compromise). </span>
             </dd>
             <dt class="threat defined" id="T.DATA_LEAKAGE">T.DATA_LEAKAGE</dt>
             <dd>
@@ -975,7 +975,7 @@
                                         <span class="selectable-content" id="sel-at4">Auditable events defined in <a href="#t-audit-sel-based" class="t-audit-sel-based-ref">Table <span class="counter">8</span></a> for Selection-Based <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="sel-attls">Auditable events for the <a href="https://commoncriteria.github.io/tls/release-2.0/tls-release.html">Functional Package for Transport Layer Security (TLS), version 1.1</a> listed in <a href="#atref-pkgs" class="atref-pkgs-ref">Table <span class="counter">3</span></a></span>
+                                        <span class="selectable-content" id="sel-attls">Auditable events for the <a href="https://commoncriteria.github.io/tls/release-2.1/tls-release.html">Functional Package for Transport Layer Security (TLS), version 2.1</a> listed in <a href="#atref-pkgs" class="atref-pkgs-ref">Table <span class="counter">3</span></a></span>
                                     </li>
                                     <li style="">
                                         <span class="selectable-content" id="sel-atssh">Auditable events defined in the audit table for the <a href="https://commoncriteria.github.io/ssh/release-2.0/ssh-release.html">Functional Package for Secure Shell (SSH), version 2.0</a></span>
@@ -1016,7 +1016,7 @@
                                         <span class="selectable-content" id="_s_9">Additional information defined in <a href="#t-audit-sel-based" class="t-audit-sel-based-ref">Table <span class="counter">8</span></a> for Selection-Based <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr></span>
                                     </li>
                                     <li style="">
-                                        <span class="selectable-content" id="_s_10">Additional information for the <a href="https://commoncriteria.github.io/tls/release-2.0/tls-release.html">Functional Package for Transport Layer Security (TLS), version 1.1</a> listed in <a href="#atref-pkgs" class="atref-pkgs-ref">Table <span class="counter">3</span></a></span>
+                                        <span class="selectable-content" id="_s_10">Additional information for the <a href="https://commoncriteria.github.io/tls/release-2.1/tls-release.html">Functional Package for Transport Layer Security (TLS), version 2.1</a> listed in <a href="#atref-pkgs" class="atref-pkgs-ref">Table <span class="counter">3</span></a></span>
                                     </li>
                                     <li style="">
                                         <span class="selectable-content" id="_s_11">Additional information defined in the audit table for the <a href="https://commoncriteria.github.io/ssh/release-2.0/ssh-release.html">Functional Package for Secure Shell (SSH), version 2.0</a></span>
@@ -1037,9 +1037,9 @@
                             <p></p>
                              The intent of the audit requirement for <a href="#FDP_PPR_EXT.1">FDP_PPR_EXT.1</a> is to log that the <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> is connected to a physical device (when the device becomes part of the <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>'s hardware view), not to log every time that the device is accessed. Generally, this is only once at <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> startup. However, some devices can be connected and disconnected during operation (e.g., virtual USB devices such as CD-ROMs). All such connection/disconnection events must be logged.
                             <p></p>
-                             The following table contains the events enumerated in the auditable events table for the <a href="https://commoncriteria.github.io/tls/release-2.0/tls-release.html">Functional Package for Transport Layer Security (TLS), version 1.1</a>. Inclusion of these events in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> is subject to selection above, inclusion of the corresponding <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>, and support in the <abbr class="dyn-abbr"><a href="#abbr_FP">FP</a></abbr> as represented by a selection in the table below.
+                             The following table contains the events enumerated in the auditable events table for the <a href="https://commoncriteria.github.io/tls/release-2.1/tls-release.html">Functional Package for Transport Layer Security (TLS), version 2.1</a>. Inclusion of these events in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> is subject to selection above, inclusion of the corresponding <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>, and support in the <abbr class="dyn-abbr"><a href="#abbr_FP">FP</a></abbr> as represented by a selection in the table below.
                             <p></p>
-                             <b><span class="ctr" data-myid="atref-pkgs" data-counter-type="ct-Table" id="atref-pkgs">Table <span class="counter">3</span>: Auditable Events for the <a href="https://commoncriteria.github.io/tls/release-2.0/tls-release.html">Functional Package for Transport Layer Security (TLS), version 1.1</a></span></b>
+                             <b><span class="ctr" data-myid="atref-pkgs" data-counter-type="ct-Table" id="atref-pkgs">Table <span class="counter">3</span>: Auditable Events for the <a href="https://commoncriteria.github.io/tls/release-2.1/tls-release.html">Functional Package for Transport Layer Security (TLS), version 2.1</a></span></b>
                             <br>
                             <table>
                                 <tr>
@@ -2562,7 +2562,7 @@
                 <div class="reqdesc">
                     The <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> shall ensure that no guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> is able to read or transfer data to or from another guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> except through the mechanisms listed in <a href="#FDP_VMS_EXT.1.1">FDP_VMS_EXT.1.1</a>. 
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note"> The fundamental requirement of a Virtualization System is the ability to enforce separation between information domains implemented as Virtual Machines and Virtual Networks. The intent of this requirement is to ensure that VMs, VMMs, and the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> as a whole is implemented with this fundamental requirement in mind.
+                        <span class="note-header">Application Note: </span><span class="note"> The fundamental requirement of a virtualization system is the ability to enforce separation between information domains implemented as Virtual Machines and Virtual Networks. The intent of this requirement is to ensure that VMs, VMMs, and the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> as a whole is implemented with this fundamental requirement in mind.
                             <p></p>
                              The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should select &ldquo;no mechanism&rdquo; in the unlikely event that the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> implements no mechanisms for transferring data between guest VMs. Otherwise, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author should select &ldquo;virtual networking&rdquo; and identify all other mechanisms through which data can be transferred between guest VMs. 
                             <p></p>
@@ -2936,7 +2936,7 @@
                 <div class="reqdesc">
                      The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be capable of supporting [<b>selection</b>: <span class="selectable-content" id="_s_153">local</span>, <span class="selectable-content" id="sel-mof-1e1-remote">remote</span>] administration. 
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note"> Selection of &ldquo;remote&rdquo; requires the selection-based requirement <a href="#FTP_TRP.1">FTP_TRP.1</a> to be cleimed in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. </span>
+                        <span class="note-header">Application Note: </span><span class="note"> Selection of &ldquo;remote&rdquo; requires the selection-based requirement <a href="#FTP_TRP.1">FTP_TRP.1</a> to be claimed in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. </span>
                     </div>
                 </div>
             </div>
@@ -2962,7 +2962,7 @@
                             <td>#</td><td>Management Function</td><td>Admin</td><td>User</td><td>Application Notes</td>
                         </tr>
                         <tr id="mf-admin-platform">
-                            <td>1</td><td style="text-align:left"> Ability to update the Virtualization System. </td><td>
+                            <td>1</td><td style="text-align:left"> Ability to update the virtualization system. </td><td>
                                 <div class="tooltipped">
                                     M<span class="tooltiptext">Mandatory</span>
                                 </div>
@@ -3339,7 +3339,7 @@
                             <p></p>
                              Administration is considered &ldquo;remote&rdquo; if communications between the administrator and the Management Subsystem travel on a network.
                             <p></p>
-                             There is no requirement to authenticate users of the Virtualization System. Users that have access to VMs but not to the Management Subsystem need not authenticate to the Virtualization System in order to use Guest VMs. Requirements for authentication of <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> users is determined by the policies of the domains running within the Guest VMs. 
+                             There is no requirement to authenticate users of the virtualization system. Users that have access to VMs but not to the Management Subsystem need not authenticate to the virtualization system in order to use Guest VMs. Requirements for authentication of <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> users is determined by the policies of the domains running within the Guest VMs. 
                             <p></p>
                              For a <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> where the <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> is part of the platform and not part of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, it is acceptable for the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> to invoke the Host <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> screen lock. </span>
                     </div>
@@ -3515,7 +3515,7 @@
                     <div class="appnote">
                         <span class="note-header">Application Note: </span><span class="note">Processor manufacturers, compiler developers, and operating system vendors have developed execution environment-based mitigations that increase the cost to attackers by adding complexity to the task of compromising systems. Software can often take advantage of these mechanisms by using APIs provided by the operating system or by enabling the mechanism through compiler or linker options.
                             <p></p>
-                             This requirement does not mandate that these protections be enabled throughout the Virtualization System&mdash;only that they be enabled where they have likely impact. For example, code that receives and processes user input should take advantage of these mechanisms.
+                             This requirement does not mandate that these protections be enabled throughout the virtualization system&mdash;only that they be enabled where they have likely impact. For example, code that receives and processes user input should take advantage of these mechanisms.
                             <p></p>
                              For the selection, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects the supported mechanisms and uses the assignment to include mechanisms not listed in the selection, if any.</span>
                     </div>
@@ -3737,7 +3737,7 @@
                                 <li>
                                     A <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> or collection of VMs
                                 </li>
-                                <li>The Virtualization System</li>
+                                <li>The virtualization system</li>
                                 <li>
                                     Host <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr>
                                 </li>
@@ -4114,7 +4114,7 @@
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall use [<b>selection</b>: 
                     <ul>
                         <li style="">
-                            <span class="selectable-content" id="sel-itc-tls">TLS as conforming to the <a href="https://www.niap-ccevs.org/protectionprofiles/465"> <i><a href="https://commoncriteria.github.io/tls/release-2.0/tls-release.html">Functional Package for Transport Layer Security (TLS), version 1.1</a></i></a></span>
+                            <span class="selectable-content" id="sel-itc-tls">TLS as conforming to the <a href="https://www.niap-ccevs.org/protectionprofiles/465"> <i><a href="https://commoncriteria.github.io/tls/release-2.1/tls-release.html">Functional Package for Transport Layer Security (TLS), version 2.1</a></i></a></span>
                         </li>
                         <li style="">
                             <span class="selectable-content" id="sel-itc-https">TLS/HTTPS as conforming to <a href="#FCS_HTTPS_EXT.1">FCS_HTTPS_EXT.1</a></span>
@@ -4161,7 +4161,7 @@
                     </ul>
                     ] that is logically distinct from other communication paths and provides assured identification of its endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data. 
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note">If the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects either TLS or HTTPS, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be validated against the <a href="https://commoncriteria.github.io/tls/release-2.0/tls-release.html">Functional Package for Transport Layer Security (TLS), version 1.1</a>. This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> does not mandate that a product implement TLS with mutual authentication, but if the product includes the capability to perform TLS with mutual authentication, then mutual authentication must be included within the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary. The TLS Package requires that the X.509 requirements be included by the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, so selection of TLS or HTTPS causes FIA_X509_EXT.* to be selected.
+                        <span class="note-header">Application Note: </span><span class="note">If the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects either TLS or HTTPS, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be validated against the <a href="https://commoncriteria.github.io/tls/release-2.1/tls-release.html">Functional Package for Transport Layer Security (TLS), version 2.1</a>. This <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> does not mandate that a product implement TLS with mutual authentication, but if the product includes the capability to perform TLS with mutual authentication, then mutual authentication must be included within the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary. The TLS Package requires that the X.509 requirements be included by the <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>, so selection of TLS or HTTPS causes FIA_X509_EXT.* to be selected.
                             <p></p>
                              If the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects SSH, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be validated against the <a href="https://commoncriteria.github.io/ssh/release-2.0/ssh-release.html">Functional Package for Secure Shell (SSH), version 2.0</a>.
                             <br>
@@ -5657,7 +5657,7 @@
                 <div class="reqdesc">
                     The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall take [<b>assignment</b>: <span class="assignable-content">list of actions</span>] upon detection of a potential security violation. 
                     <div class="appnote">
-                        <span class="note-header">Application Note: </span><span class="note">In certain cases, it may be useful for Virtualization Systems to perform automated responses to certain security events. An example may include halting a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> which has taken some action to violate a key system security policy. This may be especially useful with headless endpoints when there is no human user in the loop.
+                        <span class="note-header">Application Note: </span><span class="note">In certain cases, it may be useful for virtualization systems to perform automated responses to certain security events. An example may include halting a <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> which has taken some action to violate a key system security policy. This may be especially useful with headless endpoints when there is no human user in the loop.
                             <p></p>
                              The potential security violation mentioned in <a href="#FAU_ARP.1.1">FAU_ARP.1.1</a> refers to <a href="#FAU_SAA.1">FAU_SAA.1</a>. </span>
                     </div>
@@ -5989,7 +5989,7 @@
                     <a href="#FPT_ML_EXT.1.1" class="abbr">FPT_ML_EXT.1.1</a>
                 </div>
                 <div class="reqdesc">
-                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support a measured launch of the Virtualization System. Measured components of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> shall include the static executable image of the hypervisor and: [<b>selection</b>: 
+                    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support a measured launch of the virtualization system. Measured components of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> shall include the static executable image of the hypervisor and: [<b>selection</b>: 
                     <ul>
                         <li style="">
                             <span class="selectable-content" id="_s_177">Static executable images of the Management Subsystem</span>
@@ -6435,7 +6435,7 @@
                         <div class="ea">
                              In addition to the Operational Guidance EAs for the individual <a href="#FCS_IPSEC_EXT.1">FCS_IPSEC_EXT.1</a> elements below, the evaluator shall perform the following:
                             <p></p>
-                             If the configuration of the IPsec behavior is from an environmental source, most notably a VPN gateway (e.g. through receipt of required connection parameters from a VPN gateway), the evaluator shall ensure that the operational guidance contains any appropriate information for ensuring that this configuration can be properly applied.
+                             If the configuration of the IPsec behavior is from an environmental source, most notably a VPN gateway (e.g., through receipt of required connection parameters from a VPN gateway), the evaluator shall ensure that the operational guidance contains any appropriate information for ensuring that this configuration can be properly applied.
                             <p></p>
                              Note in this case that the implementation of the IPsec protocol must be enforced entirely within the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary; i.e. it is not permissible for a software application <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to be a graphical front-end for IPsec functionality implemented totally or in part by the underlying <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> platform. The behavior referenced here is for the possibility that the configuration of the IPsec connection is initiated from outside the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, which is permissible so long as the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> is solely responsible for enforcing the configured behavior. However, it is allowable for the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to rely on low-level platform-provided networking functions to implement the <abbr class="dyn-abbr"><a href="#abbr_SPD">SPD</a></abbr> from the client (e.g., enforcement of packet routing decisions). 
                         </div>
@@ -6453,7 +6453,7 @@
                                 <span class="ctr" data-myid="fig-ipsectest" data-counter-type="ct-figure">Figure <span class="counter">2</span></span>: IPsec Test Environment
                             </div>
                             <p></p>
-                             Note that the evaluator shall perform all tests using the Virtualization System and a representative sample of platforms listed in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> (for <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr> that claim to support multiple platforms). 
+                             Note that the evaluator shall perform all tests using the virtualization system and a representative sample of platforms listed in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> (for <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr> that claim to support multiple platforms). 
                         </div>
                     </div>
                     <div class="element-activity-header">
@@ -6575,7 +6575,7 @@
                     </div>
                     <div class="eacategory">Guidance</div>
                     <div class="ea">
-                         The evaluator shall check the operational guidance to ensure it instructs the administrator on how to configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to support only IKEv2 (if necessary), and how to to configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to perform NAT traversal for the test below. 
+                         The evaluator shall check the operational guidance to ensure it instructs the administrator on how to configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to support only IKEv2 (if necessary), and how to configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to perform NAT traversal for the test below. 
                     </div>
                     <div class="eacategory">Tests</div>
                     <div class="ea">
@@ -8005,7 +8005,7 @@
                             </tr>
                         </table>
                         <h4 id="ext-comp-FPT_ML_EXT.1.1">FPT_ML_EXT.1.1</h4>
-                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support a measured launch of the Virtualization System. Measured components of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> shall include the static executable image of the hypervisor and: [<b>selection</b>: 
+                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support a measured launch of the virtualization system. Measured components of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> shall include the static executable image of the hypervisor and: [<b>selection</b>: 
                         <ul>
                             <li style="">
                                 <span class="selectable-content" id="_s_177">Static executable images of the Management Subsystem</span>
@@ -8120,7 +8120,7 @@
                     <p>
                         The following actions could be considered for the management functions in FMT: 
                         <ol type="a">
-                            <li>Ability to update the Virtualization System.</li>
+                            <li>Ability to update the virtualization system.</li>
                         </ol>
                     </p>
                     <h4>Audit: FPT_TUD_EXT.1</h4>
@@ -8583,7 +8583,7 @@
                 <h3 id="ext-comp-FDP_VMS_EXT" class="indexable" data-level="4">C.2.6.4 FDP_VMS_EXT VM Separation</h3>
                 <div style="margin-left: 1em;">
                     <h4>Family Behavior</h4>
-                    <div>This family defines requirements for the logical separation of multiple guest VMs that are managed by the same Virtualization System.</div>
+                    <div>This family defines requirements for the logical separation of multiple guest VMs that are managed by the same virtualization system.</div>
                     <h4>Component Leveling</h4>
                     <svg style="max-height: 30px;">
                         <text x="4" fill="black" font-size="15" y="24">FDP_VMS_EXT</text>
@@ -8639,7 +8639,7 @@
                 <h3 id="ext-comp-FDP_VNC_EXT" class="indexable" data-level="4">C.2.6.5 FDP_VNC_EXT Virtual Networking Components</h3>
                 <div style="margin-left: 1em;">
                     <h4>Family Behavior</h4>
-                    <div>This family defines requirements for configuration of virtual networking between guest VMs that are managed by the Virtualization System.</div>
+                    <div>This family defines requirements for configuration of virtual networking between guest VMs that are managed by the virtualization system.</div>
                     <h4>Component Leveling</h4>
                     <svg style="max-height: 30px;">
                         <text x="4" fill="black" font-size="15" y="24">FDP_VNC_EXT</text>
