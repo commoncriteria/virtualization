@@ -1,5 +1,63 @@
 * Error: Found a "assignable" element that is buried under stricken text:
         /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[3]""/f-component[7]""/f-element[1]""/title[1]"The TSF s"/h:s[1]"that meet"/assignable[1]"list of s"
+* Error: f-element FAU_GEN.1.2  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[2]""/f-component[2]""/f-element[2]""
+* Error: f-element FAU_SAA.1.2  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[2]""/f-component[3]""/f-element[2]""
+* Error: f-element FAU_SAR.1.2  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[2]""/f-component[4]""/f-element[2]""
+* Error: f-element FAU_STG.2.2  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[2]""/f-component[6]""/f-element[2]""
+* Error: f-element FCS_CKM.6.2  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[3]""/f-component[3]""/f-element[2]""
+* Error: f-element FCS_ENT_EXT.1.2  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[3]""/f-component[8]""/f-element[2]""
+* Error: f-element FCS_HTTPS_EXT.1.2  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[3]""/f-component[9]""/f-element[2]""
+* Error: f-element FCS_RBG.1.2  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[3]""/f-component[11]""/f-element[2]""
+* Error: f-element FCS_RBG.1.3  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[3]""/f-component[11]""/f-element[3]""
+* Error: f-element FDP_PPR_EXT.1.2  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[2]""/f-element[2]""
+* Error: f-element FDP_PPR_EXT.1.3  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[2]""/f-element[3]""
+* Error: f-element FDP_VMS_EXT.1.2  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[5]""/f-element[2]""
+* Error: f-element FDP_VMS_EXT.1.3  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[5]""/f-element[3]""
+* Error: f-element FDP_VMS_EXT.1.4  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[5]""/f-element[4]""
+* Error: f-element FDP_VNC_EXT.1.2  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[6]""/f-element[2]""
+* Error: f-element FIA_AFL_EXT.1.2  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[5]""/f-component[1]""/f-element[2]""
+* Error: f-element FIA_UAU.5.2  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[5]""/f-component[3]""/f-element[2]""
+* Error: f-element FPT_HAS_EXT.1.2  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[6]""/f-element[2]""
+* Error: f-element FPT_IDV_EXT.1.2  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[8]""/f-element[2]""
+* Error: f-element FPT_ML_EXT.1.2  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[10]""/f-element[2]""
+* Error: f-element FPT_RDM_EXT.1.2  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[11]""/f-element[2]""
+* Error: f-element FPT_TST.1.2  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[12]""/f-element[2]""
+* Error: f-element FPT_TST.1.3  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[12]""/f-element[3]""
+* Error: f-element FPT_TUD_EXT.1.2  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[13]""/f-element[2]""
+* Error: f-element FPT_TUD_EXT.1.3  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[13]""/f-element[3]""
+* Error: f-element FPT_VDP_EXT.1.2  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[15]""/f-element[2]""
+* Error: f-element FPT_VIV_EXT.1.2  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[16]""/f-element[2]""
+* Error: f-element FTP_TRP.1.2  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[9]""/f-component[2]""/f-element[2]""
+* Error: f-element FTP_TRP.1.3  appears not to have an associated evaluation activity.:
+        /PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[9]""/f-component[2]""/f-element[3]""
 * Error: Detected dangling id-reference to s-ftp_ssh from attribute
         on/PP[1]""/include-pkg[1]""/depends[1]""/on[1]""
 * Error: Detected dangling id-reference to s-uau-ssh from attribute
@@ -12,13 +70,14 @@
         on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[5]""/f-component[5]""/depends[1]""/on-sel[1]""
 * Error: Detected dangling id-reference to sel-x5092-signed-updates from attribute
         on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[14]""/depends[2]""/on-sel[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"A Virtual"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"A Virtual"/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"A Virtual"/h:p[3]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"A Virtual"/h:p[4]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"A Virtual"/h:p[5]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"A Virtual"/sec:TOE_Boundary[1]"Figure 1 "/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"A Virtual"/sec:TOE_Boundary[1]"Figure 1 "/h:p[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"The scope"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[3]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[4]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[5]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/sec:TOE_Boundary[1]"Figure 1 "/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/sec:TOE_Boundary[1]"Figure 1 "/h:p[2]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/sec:Use_Cases[1]"This Prot"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/sec:Use_Cases[1]"This Prot"/h:p[2]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/sec:Use_Cases[1]"This Prot"/usecases[1]""/usecase[1]""/description[1]"Server Vi"/h:p[1]""
