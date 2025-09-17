@@ -1,5 +1,3 @@
-compilation error: file transforms/xsl/use-case.xsl line 351 element apply-template
-xsltStylePreCompute: unknown xsl:apply-template
 * Error: Found a "assignable" element that is buried under stricken text:
         /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[7]""/f-element[1]""/title[1]"The TSF s"/h:s[1]"that meet"/assignable[1]"list of s"
 * Error: Detected dangling id-reference to s-ftp_ssh from attribute
@@ -367,9 +365,6 @@ xsltStylePreCompute: unknown xsl:apply-template
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[4]""
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[5]""
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[6]""
-xsltApplySequenceConstructor: apply-template was not compiled
-xsltApplySequenceConstructor: apply-template was not compiled
-xsltApplySequenceConstructor: apply-template was not compiled
  Failed to find a reference to entropyappendix.
 * Warning: Since FMT_MOF_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
