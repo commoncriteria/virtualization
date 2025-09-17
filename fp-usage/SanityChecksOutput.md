@@ -370,16 +370,6 @@ xsltStylePreCompute: unknown xsl:apply-template
 xsltApplySequenceConstructor: apply-template was not compiled
 xsltApplySequenceConstructor: apply-template was not compiled
 xsltApplySequenceConstructor: apply-template was not compiled
- Failed to find a reference to pkg-tls.
- Failed to find a reference to pkg-ssh.
- Failed to find a reference to pkg-tls.
- Failed to find a reference to pkg-ssh.
- Failed to find a reference to pkg-tls.
- Failed to find a reference to pkg-tls.
- Failed to find a reference to pkg-ssh.
  Failed to find a reference to entropyappendix.
- Failed to find a reference to pkg-tls.
- Failed to find a reference to pkg-tls.
- Failed to find a reference to pkg-ssh.
 * Warning: Since FMT_MOF_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
