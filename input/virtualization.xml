@@ -923,8 +923,8 @@
                                     <selectable id="sel-at2">Auditable events defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable>
 									<selectable id="sel-at3">Auditable events defined in <xref g="t-audit-objective"/> for Objective SFRs</selectable>
                                     <selectable id="sel-at4">Auditable events defined in <xref g="t-audit-sel-based"/> for Selection-Based SFRs</selectable>
-									<selectable id="sel-attls">Auditable events for the <xref to="pkg-tls"/> listed in <xref to="atref-pkgs"/></selectable>
-									<selectable id="sel-atssh">Auditable events defined in the audit table for the <xref to="pkg-ssh"/></selectable>
+									<selectable id="sel-attls">Auditable events for the <xref to="tls"/> listed in <xref to="atref-pkgs"/></selectable>
+									<selectable id="sel-atssh">Auditable events defined in the audit table for the <xref to="ssh"/></selectable>
                                     <selectable exclusive="yes">no other auditable events</selectable>
 								</selectables></refinement></h:li>
                             </h:ol>
@@ -942,8 +942,8 @@
                                     <selectable>Additional information defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable>
                                     <selectable>Additional information defined in <xref g="t-audit-objective"/> for Objective SFRs</selectable>
                                     <selectable>Additional information defined in <xref g="t-audit-sel-based"/> for Selection-Based SFRs</selectable>
-									<selectable >Additional information for the <xref to="pkg-tls"/> listed in <xref to="atref-pkgs"/></selectable>
-									<selectable>Additional information defined in the audit table for the <xref to="pkg-ssh"/></selectable>
+									<selectable >Additional information for the <xref to="tls"/> listed in <xref to="atref-pkgs"/></selectable>
+									<selectable>Additional information defined in the audit table for the <xref to="ssh"/></selectable>
                                     <selectable exclusive="yes">no other information</selectable>
 								</selectables></refinement></h:li>
                             </h:ol>
@@ -967,10 +967,10 @@
 							devices such as CD-ROMs). All such connection/disconnection events must be logged.<h:p/>
 							
 							The following table contains the events enumerated in the auditable events table for 
-							the <xref to="pkg-tls"/>. Inclusion of these events in the ST is subject to selection above,
+							the <xref to="tls"/>. Inclusion of these events in the ST is subject to selection above,
 							inclusion of the corresponding SFRs in the ST, and support in the FP as represented by a selection in the 
 							table below.<h:p/>
-							<h:b><ctr ctr-type='Table' id="atref-pkgs">: Auditable Events for the <xref to="pkg-tls"/></ctr></h:b><h:br/>							
+							<h:b><ctr ctr-type='Table' id="atref-pkgs">: Auditable Events for the <xref to="tls"/></ctr></h:b><h:br/>							
 							<h:table>
 								<h:tr><h:td>FCS_TLSC_EXT.1</h:td>
 								<h:td>Failure to establish a session.</h:td>
@@ -2825,7 +2825,7 @@
 							</Guidance>
 							<Tests>
 								For efficiency’s sake, the testing that is performed here has been combined with the testing for
-								FIA_X509_EXT.2 and FIA_X509_EXT.3 in the <!-- <xref to="pkg-509"/> --> Functional Package for
+								FIA_X509_EXT.2 and FIA_X509_EXT.3 in the <!-- <xref to="X509"/> --> Functional Package for
 								X.509, version 1.0 (for IPsec connections and depending on the Base-PP),
 								FCS_IPSEC_EXT.1.12, and FCS_IPSEC_EXT.1.13. The following tests shall be repeated for each peer
 								authentication protocol selected in the FCS_IPSEC_EXT.1.11 selection above:<h:p/>
@@ -3845,8 +3845,8 @@
 							FIA_PMG_EXT.1 be included in the ST. This also requires that the ST claim management function 
 							<xref to="mf-admin-pwd-policy"/> for password management. 
 							If the ST author selects ‘authentication based on an SSH public-key credential’,
-							the TSF shall be validated against the <xref to="pkg-ssh"/>. The ST must include 
-                            FIA_X509_EXT.1 and FIA_X509_EXT.2 from the <!-- <xref to="pkg-509"/> --> Functional Package for
+							the TSF shall be validated against the <xref to="ssh"/>. The ST must include 
+                            FIA_X509_EXT.1 and FIA_X509_EXT.2 from the <!-- <xref to="X509"/> --> Functional Package for
                             X.509, version 1.0, if 'authentication based on X.509 certificates' is selected. <h:p/>
 							PINs used to access OE-protected storage are set and managed by the OE-protected storage mechanism. Thus
 							requirements on PIN management are outside the scope of the TOE.
@@ -3882,7 +3882,7 @@
 								If ‘X.509 certificate authentication‘ is selected, the evaluator will generate an X.509v3 certificate for 
 								an administrator user with the Client Authentication Enhanced Key Usage field set. The evaluator
 								will provision the VS for authentication with the X.509v3 certificate. The evaluator shall ensure
-								that the certificates are validated by the VS as per FIA_X509_EXT.1.1 in the <!-- <xref to="pkg-509"/> --> Functional Package for
+								that the certificates are validated by the VS as per FIA_X509_EXT.1.1 in the <!-- <xref to="X509"/> --> Functional Package for
                                 X.509, version 1.0 and then conduct the following tests:
 								<testlist>
 									<test>The evaluator will attempt to authenticate to the VS using the X.509v3 certificate. The 
@@ -3985,7 +3985,7 @@
                 </f-component>		    
 
 				<f-component cc-id="fia_x509_ext.4" name="Exceptions to X.509 Certificate Revocation Checking"  status="sel-based" id="fia-x509-ext-4">
-				    <depends on-sel="fia-x509-ext-1e1"><external-doc ref="pkg-x509"/></depends>
+				    <depends on-sel="fia-x509-ext-1e1"><external-doc ref="X509"/></depends>
 					<consistency-rationale/>
 					<comp-lev/>
 					<management/>
@@ -5192,11 +5192,11 @@
                         <note role="application">The digital signature mechanism referenced in FPT_TUD_EXT.1.3 is one of the 
 							algorithms specified in FCS_COP.1/SIG.<h:p/>
                             If certificates are used by the update verification mechanism, then
-                            FIA_X509_EXT.1 and FIA_X509_EXT.2 in the  <!-- <xref to="pkg-509"/> --> Functional Package for
+                            FIA_X509_EXT.1 and FIA_X509_EXT.2 in the  <!-- <xref to="X509"/> --> Functional Package for
                             X.509, version 1.0  must be included in the ST. Certificates are validated in accordance
-                            with FIA_X509_EXT.1 in the  <!-- <xref to="pkg-509"/> --> Functional Package for
+                            with FIA_X509_EXT.1 in the  <!-- <xref to="X509"/> --> Functional Package for
                             X.509, version 1.0 and 
-                            the appropriate selections should be made in FIA_X509_EXT.2.1 in the  <!-- <xref to="pkg-509"/> --> Functional Package for
+                            the appropriate selections should be made in FIA_X509_EXT.2.1 in the  <!-- <xref to="X509"/> --> Functional Package for
                             X.509, version 1.0. Additionally, FPT_TUD_EXT.2 must be
 							included in the ST.<h:p/>
                             “Update” in the context of this SFR refers to the process of replacing a non-volatile, system resident
@@ -5262,7 +5262,7 @@
                         <!--
 						<rule id="rule-certs-for-update">
 							<description>If <xref to="sel-tud-digsign-cert"/> is selected in FPT_TUD_EXT.1.3 
-							    then <xref to="sel-x5092-signed-updates"/> must be selected in FIA_X509_EXT.2.1 in the --><!-- <xref to="pkg-509"/> --> 
+							    then <xref to="sel-x5092-signed-updates"/> must be selected in FIA_X509_EXT.2.1 in the --><!-- <xref to="X509"/> --> 
                         <!-- Functional Package for
 							    X.509, version 1.0.</description>
 							<if><ref-id>sel-tud-digsign-cert</ref-id></if><then><ref-id>sel-x5092-signed-updates</ref-id></then></rule>
@@ -5293,18 +5293,18 @@
                         </title>
                         <note role="application">Certificates may optionally be used for code signing of system software updates
 							(FPT_TUD_EXT.1.3). This element must be included in the ST if certificates are used for validating 
-							updates. If “code signing for system software updates” is selected in FIA_X509_EXT.2.1 from the <!-- <xref to="pkg-509"/> --> 
+							updates. If “code signing for system software updates” is selected in FIA_X509_EXT.2.1 from the <!-- <xref to="X509"/> --> 
 							Functional Package for X.509, version 1.0, FPT_TUD_EXT.2 
 							must be included in the ST.<h:p/>
                             Validity is determined by the certificate path, the expiration date, and the revocation status in 
-                            accordance with FIA_X509_EXT.1 in the <!-- <xref to="pkg-509"/> --> Functional Package for
+                            accordance with FIA_X509_EXT.1 in the <!-- <xref to="X509"/> --> Functional Package for
                             X.509, version 1.0.</note>
                         <aactivity>
 							<TSS/>
 							<Guidance/>
                             <Tests>
                                 The evaluation activity for this requirement is performed in conjunction with the evaluation activity
-                                for FIA_X509_EXT.1  and FIA_X509_EXT.2 in the <!-- <xref to="pkg-509"/> --> Functional Package for
+                                for FIA_X509_EXT.1  and FIA_X509_EXT.2 in the <!-- <xref to="X509"/> --> Functional Package for
                                 X.509, version 1.0.
                             </Tests>
                         </aactivity>
@@ -5481,7 +5481,7 @@
                         <title>The TSF shall use
                             <selectables linebreak="yes">
                                 <selectable id="sel-itc-tls">TLS as conforming to the <h:a href="https://www.niap-ccevs.org/protectionprofiles/465">
-									<h:i><xref to="pkg-tls"/></h:i></h:a></selectable>
+									<h:i><xref to="tls"/></h:i></h:a></selectable>
                                 <selectable id="sel-itc-https">TLS/HTTPS as conforming to FCS_HTTPS_EXT.1</selectable>
                                 <selectable id="sel-itc-ipsec">IPsec as conforming to FCS_IPSEC_EXT.1</selectable>
                                 <selectable id="sel-itc-ssh">SSH as conforming to the
@@ -5515,13 +5515,13 @@
 								endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.
 							</title></ext-comp-def-title>
                         <note role="application">If the ST author selects either TLS or HTTPS, the TSF shall be validated against the 
-                            <xref to="pkg-tls"/>. This PP does not mandate that a product implement TLS with mutual authentication,
+                            <xref to="tls"/>. This PP does not mandate that a product implement TLS with mutual authentication,
 							but if the product includes the capability to perform TLS with mutual authentication, then
 							mutual authentication must be included within the TOE boundary. The TLS Package requires that
 							the X.509 requirements be included by the PP, so selection of TLS or HTTPS causes FIA_X509_EXT.* to be selected.<h:p/>
-							If the ST author selects SSH, the TSF shall be validated against the <xref to="pkg-ssh"/>.<h:br/> <h:br/>
+							If the ST author selects SSH, the TSF shall be validated against the <xref to="ssh"/>.<h:br/> <h:br/>
 							If the ST author selects "certificate-based authentication of the remote peer," then FIA_X509_EXT.1 and FIA_X509_EXT.2
-							in the <!-- <xref to="pkg-509"/> --> Functional Package for
+							in the <!-- <xref to="X509"/> --> Functional Package for
 							X.509, version 1.0 must be included in the ST. "No authentication of the remote peer" should be selected only if 
 							the TOE is acting as a server in a non-mutual authentication configuration.<h:p/>			    
 							The ST author must include the security functional requirements for the
@@ -5551,20 +5551,20 @@
 								<then><ref-id>sel-x509-2-tls</ref-id></then></rule>
 						<rule id="rule-cert-based-https">
 							<description>If "<h:i><xref to="sel-itc-certauth"/></h:i>" and "<h:i><xref to="sel-itc-https"/></h:i>" are selected in FTP_ITC_EXT.1.1
-							    then "<h:i><xref to="sel-x509-2-https"/></h:i>" must be selected in FIA_X509_EXT.2.1 in the --><!-- <xref to="pkg-509"/> -->
+							    then "<h:i><xref to="sel-x509-2-https"/></h:i>" must be selected in FIA_X509_EXT.2.1 in the --><!-- <xref to="X509"/> -->
                         <!-- Functional Package for
 							    X.509, version 1.0.</description>
 							<if><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-https</ref-id></and></if>
 								<then><ref-id>sel-x509-2-https</ref-id></then></rule>
 						<rule id="rule-cert-based-ipsec">
 							<description>If "<h:i><xref to="sel-itc-certauth"/></h:i>" and "<h:i><xref to="sel-itc-ipsec"/></h:i>" are selected in FTP_ITC_EXT.1.1
-							    then "<h:i><xref to="sel-x509-2-ipsec"/></h:i>" must be selected in FIA_X509_EXT.2.1 in the --><!-- <xref to="pkg-509"/> --> <!-- Functional Package for
+							    then "<h:i><xref to="sel-x509-2-ipsec"/></h:i>" must be selected in FIA_X509_EXT.2.1 in the --><!-- <xref to="X509"/> --> <!-- Functional Package for
 							    X.509, version 1.0.</description>
 							<if><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-ipsec</ref-id></and></if>
 								<then><ref-id>sel-x509-2-ipsec</ref-id></then></rule>
 						<rule id="rule-cert-based-ssh">
 							<description>If "<h:i><xref to="sel-itc-certauth"/></h:i>" and "<h:i><xref to="sel-itc-ssh"/></h:i>" are selected in FTP_ITC_EXT.1.1
-							    then "<h:i><xref to="sel-x509-2-ssh"/></h:i>" must be selected in FIA_X509_EXT.2.1 in the --><!-- <xref to="pkg-509"/> --> 
+							    then "<h:i><xref to="sel-x509-2-ssh"/></h:i>" must be selected in FIA_X509_EXT.2.1 in the --><!-- <xref to="X509"/> --> 
                         <!-- Functional Package for
 							    X.509, version 1.0.</description>
 							<if><and><ref-id>sel-itc-certauth</ref-id><ref-id>sel-itc-ssh</ref-id></and></if>
@@ -6459,7 +6459,7 @@
             <h:tr>
                 <h:td>FPT_STM.1 - Reliable Time Stamps</h:td>
                 <h:td>
-                    FIA_X509_EXT.1 in the <!-- <xref to="pkg-509"/> --> Functional Package for
+                    FIA_X509_EXT.1 in the <!-- <xref to="X509"/> --> Functional Package for
                     X.509, version 1.0 has a dependency on FPT_STM.1. While not explicitly stated in the PP, it is
                     assumed that this will be provided by the underlying hardware platform on which the TOE
                     is installed. This is because the TOE is installed as a software or firmware product that runs
