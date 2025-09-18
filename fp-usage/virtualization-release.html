@@ -906,40 +906,13 @@ The following sections list Common Criteria and technology terms used in this do
 			This section contains selections and assignments that are required when the listed
 			Functional Packages are claimed by this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>. 
 			
-			<dt><b>Functional Package for Secure Shell (SSH), Version 2.0</b><p></p></dt><dd><b>Peer Certificate Validation Required in FIA_XCU.1.1</b><p></p><span class="description">
+			<dt><b>Functional Package for X.509, Version 1.0</b><p></p></dt><dd><b>Peer Certificate Validation Required in FIA_XCU.1.1</b><p></p><span class="description">
 						 In FIA_XCU_EXT.1.1, both “verify” and “assert” must be selected because the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is required to implement cryptographic
 						 protocols that validate peer certificates, and because it is required to support TLS mutual auth as a client it must also
 						 be able to assert its identity to a peer.
 					  </span><p></p>
 				
-				This doctype modifies selections and assignments within this Functional Package as follows:<p></p><dd>sel-fia-xcu-1-verifysel-fia-xcu-1-assert</dd></dd><dt><b>Functional Package for Transport Layer Security (TLS), Version 2.1</b><p></p></dt><dd><b>Peer Certificate Validation Required in FIA_XCU.1.1</b><p></p><span class="description">
-						 In FIA_XCU_EXT.1.1, both “verify” and “assert” must be selected because the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is required to implement cryptographic
-						 protocols that validate peer certificates, and because it is required to support TLS mutual auth as a client it must also
-						 be able to assert its identity to a peer.
-					  </span><p></p>
-				
-				This doctype modifies selections and assignments within this Functional Package as follows:<p></p><dd>sel-fia-xcu-1-verifysel-fia-xcu-1-assert</dd></dd><dt><b>Functional Package for X.509, Version 1.0</b><p></p></dt><dd><b>Peer Certificate Validation Required in FIA_XCU.1.1</b><p></p><span class="description">
-						 In FIA_XCU_EXT.1.1, both “verify” and “assert” must be selected because the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is required to implement cryptographic
-						 protocols that validate peer certificates, and because it is required to support TLS mutual auth as a client it must also
-						 be able to assert its identity to a peer.
-					  </span><p></p>
-				
-				This doctype modifies selections and assignments within this Functional Package as follows:<p></p><dd>sel-fia-xcu-1-verifysel-fia-xcu-1-assert</dd></dd><dd><b>Limitations on Revocation Methods in FIA_X509_EXT.1.3</b><p></p><span class="description">
-							 In, FIA_X509_EXT.1.3, the “invoke platform-provided functionality” selection should not be chosen because the entire mobile
-							 device is the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and there is no ‘platform’ in the <abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr>. Additionally, there are several revocation methods that are permitted 
-							 by the <abbr class="dyn-abbr"><a href="#abbr_FP">FP</a></abbr> that we want to prohibit the selection of, and only limit the allowable selections to OCSP and CNSA CRL.
-						  </span><p></p>
-				
-				This doctype modifies selections and assignments within this Functional Package as follows:<p></p><dd>sel-fia-x509-ext-1-3-implfuncsel-fia-x509-ext-1-3-platfuncsel-fia-x509-ext-1-3-revocRFCsel-fia-x509-ext-1-3-valpersel-fia-x509-ext-1-3-adminnotesel-fia-x509-ext-1-3-dirassoc</dd></dd><dd><b>Limitations on Revocation Status in FIA_X509_EXT.1.4</b><p></p><span class="description">
-						In FIA_X509_EXT.1.4, the “invoke platform-provided functionality” selection should not be chosen for the same reason as above,
-						and the “not obtain revocation status information…” should also not be chosen because the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> is expected to always support revocation 
-						checking. For the second selection, if a network connection is used, we want to prohibit the “assignment: other” selection because 
-						only CRL/OCSP should be used (not sure if “CA” should be left in if that is ever considered to have a CRL distribution point or OCSP
-						responder as part of it), and I believe we want to prohibit the use of a local source for revocation checking (unless cached CRLs
-						are to be permitted, but I didn’t see that explicitly called out in the previous MDF <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>).      
-					  </span><p></p>
-				
-				This doctype modifies selections and assignments within this Functional Package as follows:<p></p><dd>sel-fia-x509-ext-1-4-implfuncsel-fia-x509-ext-1-4-platfuncsel-fia-x509-ext-1-4-notobtainsel-fia-x509-ext-1-4-altsrcssel-fia-x509-ext-1-4-local</dd></dd>
+				This doctype modifies selections and assignments within this Functional Package as follows:<p></p><dd>toe-verifies-certstoe-asserts-certs</dd></dd>
 		
           
 	<h1 class="indexable" data-level="1" id="sec-cclaims">2 Conformance Claims</h1>
