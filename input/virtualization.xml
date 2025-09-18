@@ -434,35 +434,6 @@
 			Functional Packages are claimed by this PP. 
 			
 			<package-usage-list>
-				<package-usage ref="ssh">
-
-					<usage id="usage-x509-peercertval" title="Peer Certificate Validation Required in FIA_XCU.1.1">  
-					  <description>
-						 In FIA_XCU_EXT.1.1, both “verify” and “assert” must be selected because the TOE is required to implement cryptographic
-						 protocols that validate peer certificates, and because it is required to support TLS mutual auth as a client it must also
-						 be able to assert its identity to a peer.
-					  </description>
-					  <config>
-						  <ref-id>sel-fia-xcu-1-verify</ref-id>   
-						  <ref-id>sel-fia-xcu-1-assert</ref-id>   
-					  </config>
-					</usage>				
-
-				</package-usage>
-
-				<package-usage ref="tls">
-					<usage id="usage-x509-peercertval" title="Peer Certificate Validation Required in FIA_XCU.1.1">  
-					  <description>
-						 In FIA_XCU_EXT.1.1, both “verify” and “assert” must be selected because the TOE is required to implement cryptographic
-						 protocols that validate peer certificates, and because it is required to support TLS mutual auth as a client it must also
-						 be able to assert its identity to a peer.
-					  </description>
-					  <config>
-						  <ref-id>sel-fia-xcu-1-verify</ref-id>   
-						  <ref-id>sel-fia-xcu-1-assert</ref-id>   
-					  </config>
-					</usage>				
-				</package-usage>
 
 				<package-usage ref="X509">
 
@@ -473,13 +444,13 @@
 						 be able to assert its identity to a peer.
 					  </description>
 					  <config>
-						  <ref-id>sel-fia-xcu-1-verify</ref-id>   
-						  <ref-id>sel-fia-xcu-1-assert</ref-id>   
+						  <ref-id>toe-verifies-certs</ref-id>   
+						  <ref-id>toe-asserts-certs</ref-id>   
 					  </config>
 					</usage>				
 
-
-					<usage id="usage-x509-revocation" title="Limitations on Revocation Methods in FIA_X509_EXT.1.3">    <!-- One or more usages -->
+<!--
+					<usage id="usage-x509-revocation" title="Limitations on Revocation Methods in FIA_X509_EXT.1.3">   
 						  <description>
 							 In, FIA_X509_EXT.1.3, the “invoke platform-provided functionality” selection should not be chosen because the entire mobile
 							 device is the TOE and there is no ‘platform’ in the OE. Additionally, there are several revocation methods that are permitted 
@@ -487,7 +458,7 @@
 						  </description>
 						  <config>
 							  <ref-id>sel-fia-x509-ext-1-3-implfunc</ref-id> 
-							  <not><ref-id>sel-fia-x509-ext-1-3-platfunc</ref-id></not> 
+							  <not><ref-id>sel-fia-x509-ext-1-3-platfunc</ref-id></not>  
 							  <not><ref-id>sel-fia-x509-ext-1-3-revocRFC</ref-id></not>
 							  <not><ref-id>sel-fia-x509-ext-1-3-valper</ref-id></not>
 							  <not><ref-id>sel-fia-x509-ext-1-3-adminnote</ref-id></not>
@@ -495,7 +466,7 @@
 						  </config>
 					</usage>
 
-					<usage id="usage-x509-revocationstatus" title="Limitations on Revocation Status in FIA_X509_EXT.1.4">    <!-- One or more usages -->
+					<usage id="usage-x509-revocationstatus" title="Limitations on Revocation Status in FIA_X509_EXT.1.4">  
 					  <description>
 						In FIA_X509_EXT.1.4, the “invoke platform-provided functionality” selection should not be chosen for the same reason as above,
 						and the “not obtain revocation status information…” should also not be chosen because the TSF is expected to always support revocation 
@@ -512,7 +483,7 @@
 						  <not><ref-id>sel-fia-x509-ext-1-4-local</ref-id></not>
 					  </config>
 					</usage>
-
+-->
 				</package-usage>
 
 			</package-usage-list>
