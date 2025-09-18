@@ -12,6 +12,18 @@
         on-sel/PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[14]""/depends[2]""/on-sel[1]""
 * Warning: Potentially illegal 'depends' element.
           /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[5]""/f-component[1]""/f-element[2]""/title[1]"The TSF s"/management-function-set[1]""/management-function[10]""/O[1]""/depends[1]""
+* Error: Detected dangling ref-id to 'sel-fia-xcu-1-verify'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[1]""/config[1]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-xcu-1-assert'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[1]""/config[1]""/ref-id[2]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-xcu-1-verify'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[2]""/usage[1]""/config[1]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-xcu-1-assert'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[2]""/usage[1]""/config[1]""/ref-id[2]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-xcu-1-verify'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[3]""/usage[1]""/config[1]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-xcu-1-assert'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[3]""/usage[1]""/config[1]""/ref-id[2]"sel-fia-x"
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"The scope"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[2]""
