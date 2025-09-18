@@ -401,6 +401,14 @@
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[4]""
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[5]""
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[6]""
+ Failed to find sel-fia-xcu-1-verify in /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[1]""/config[1]""/ref-id[1]"sel-fia-x" (use case or rule)
+ Failed to find sel-fia-xcu-1-assert in /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[1]""/config[1]""/ref-id[2]"sel-fia-x" (use case or rule)
+ Failed to find sel-fia-xcu-1-verify in /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[2]""/usage[1]""/config[1]""/ref-id[1]"sel-fia-x" (use case or rule)
+ Failed to find sel-fia-xcu-1-assert in /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[2]""/usage[1]""/config[1]""/ref-id[2]"sel-fia-x" (use case or rule)
+ Failed to find sel-fia-xcu-1-verify in /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[3]""/usage[1]""/config[1]""/ref-id[1]"sel-fia-x" (use case or rule)
+ Failed to find sel-fia-xcu-1-assert in /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[3]""/usage[1]""/config[1]""/ref-id[2]"sel-fia-x" (use case or rule)
+ Failed to find sel-fia-x509-ext-1-3-implfunc in /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[3]""/usage[2]""/config[1]""/ref-id[1]"sel-fia-x" (use case or rule)
+ Failed to find sel-fia-x509-ext-1-4-implfunc in /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[3]""/usage[3]""/config[1]""/ref-id[1]"sel-fia-x" (use case or rule)
  Failed to find a reference to entropyappendix.
 * Warning: Since FMT_MOF_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
