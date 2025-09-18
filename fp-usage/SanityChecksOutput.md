@@ -1,3 +1,5 @@
+compilation error: file transforms/xsl/use-case.xsl line 353 element apply-template
+xsltStylePreCompute: unknown xsl:apply-template
 * Error: Found a "assignable" element that is buried under stricken text:
         /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[7]""/f-element[1]""/title[1]"The TSF s"/h:s[1]"that meet"/assignable[1]"list of s"
 * Error: Detected dangling id-reference to s-ftp_ssh from attribute
@@ -12,6 +14,8 @@
         on-sel/PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[14]""/depends[2]""/on-sel[1]""
 * Warning: Potentially illegal 'depends' element.
           /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[5]""/f-component[1]""/f-element[2]""/title[1]"The TSF s"/management-function-set[1]""/management-function[10]""/O[1]""/depends[1]""
+* Error: Detected multiple elements with an id of 'usage-x509-peercertval'.
+* Error: Detected multiple elements with an id of 'usage-x509-peercertval'.
 * Error: Detected dangling ref-id to 'sel-fia-xcu-1-verify'.
 	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[1]""/config[1]""/ref-id[1]"sel-fia-x"
 * Error: Detected dangling ref-id to 'sel-fia-xcu-1-assert'.
@@ -24,6 +28,28 @@
 	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[3]""/usage[1]""/config[1]""/ref-id[1]"sel-fia-x"
 * Error: Detected dangling ref-id to 'sel-fia-xcu-1-assert'.
 	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[3]""/usage[1]""/config[1]""/ref-id[2]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-3-implfunc'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[3]""/usage[2]""/config[1]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-3-platfunc'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[3]""/usage[2]""/config[1]""/not[1]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-3-revocRFC'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[3]""/usage[2]""/config[1]""/not[2]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-3-valper'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[3]""/usage[2]""/config[1]""/not[3]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-3-adminnote'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[3]""/usage[2]""/config[1]""/not[4]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-3-dirassoc'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[3]""/usage[2]""/config[1]""/not[5]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-4-implfunc'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[3]""/usage[3]""/config[1]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-4-platfunc'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[3]""/usage[3]""/config[1]""/not[1]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-4-notobtain'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[3]""/usage[3]""/config[1]""/not[2]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-4-altsrcs'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[3]""/usage[3]""/config[1]""/not[3]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-4-local'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[3]""/usage[3]""/config[1]""/not[4]""/ref-id[1]"sel-fia-x"
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"The scope"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[2]""
@@ -377,6 +403,11 @@
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[4]""
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[5]""
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[6]""
+xsltApplySequenceConstructor: apply-template was not compiled
+xsltApplySequenceConstructor: apply-template was not compiled
+xsltApplySequenceConstructor: apply-template was not compiled
+xsltApplySequenceConstructor: apply-template was not compiled
+xsltApplySequenceConstructor: apply-template was not compiled
  Failed to find a reference to entropyappendix.
 * Warning: Since FMT_MOF_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
