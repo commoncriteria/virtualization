@@ -16,6 +16,28 @@
 	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[1]""/config[1]""/ref-id[1]"toe-verif"
 * Error: Detected dangling ref-id to 'toe-asserts-certs'.
 	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[1]""/config[1]""/ref-id[2]"toe-asser"
+* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-3-implfunc'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[2]""/config[1]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-3-platfunc'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[2]""/config[1]""/not[1]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-3-revocRFC'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[2]""/config[1]""/not[2]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-3-valper'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[2]""/config[1]""/not[3]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-3-adminnote'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[2]""/config[1]""/not[4]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-3-dirassoc'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[2]""/config[1]""/not[5]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-4-implfunc'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[3]""/config[1]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-4-platfunc'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[3]""/config[1]""/not[1]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-4-notobtain'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[3]""/config[1]""/not[2]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-4-altsrcs'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[3]""/config[1]""/not[3]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-4-local'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[3]""/config[1]""/not[4]""/ref-id[1]"sel-fia-x"
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"The scope"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[2]""
