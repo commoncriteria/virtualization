@@ -472,12 +472,12 @@
 							 by the FP that we want to prohibit the selection of, and only limit the allowable selections to OCSP and CNSA CRL.
 						</description>
 						<config>
-							  <ref-id>sel-fia-x509-ext-1-3-implfunc</ref-id> 
-							  <not><ref-id>sel-fia-x509-ext-1-3-platfunc</ref-id></not>  
-							  <not><ref-id>sel-fia-x509-ext-1-3-revocRFC</ref-id></not>
-							  <not><ref-id>sel-fia-x509-ext-1-3-valper</ref-id></not>
-							  <not><ref-id>sel-fia-x509-ext-1-3-adminnote</ref-id></not>
-							  <not><ref-id>sel-fia-x509-ext-1-3-dirassoc</ref-id></not>
+							  <not><ref-id>sel-fia-x509-1e3-platfunc</ref-id></not>  
+							  <ref-id>sel-fia-x509-1e3-implfunc</ref-id> 
+							  <not><ref-id>sel-fia-x509-1e3-cr5280</ref-id></not>
+							  <not><ref-id>sel-fia-x509-1e3-valperiod</ref-id></not>
+							  <not><ref-id>sel-fia-x509-1e3-adminnotity</ref-id></not>
+							  <not><ref-id>sel-fia-x509-1e3-directassoc</ref-id></not>
 						</config>
 					</usage>
 
@@ -491,13 +491,45 @@
 						are to be permitted, but I didn’t see that explicitly called out in the previous MDF PP).      
 					  </description>
 					  <config>
-						  <ref-id>sel-fia-x509-ext-1-4-implfunc</ref-id> 
-						  <not><ref-id>sel-fia-x509-ext-1-4-platfunc</ref-id></not>
-						  <not><ref-id>sel-fia-x509-ext-1-4-notobtain</ref-id></not>
-						  <not><ref-id>sel-fia-x509-ext-1-4-altsrcs</ref-id></not>
-						  <not><ref-id>sel-fia-x509-ext-1-4-local</ref-id></not>
+						  <not><ref-id>sel-fia-x509-1e4-notobtain</ref-id></not>
+						  <not><ref-id>sel-fia-x509-1e4-platfunc</ref-id></not>
+						  <ref-id>sel-fia-x509-1e4-implfunc</ref-id> 
+						  <not><ref-id>sel-fia-x509-1e4-altsrc</ref-id></not>
+						  <not><ref-id>sel-fia-x509-1e4-localrevinfo</ref-id></not>
 					  </config>
 					</usage>
+
+					<usage id="usage-x509-fia-xcu-2" title="Limitations on Certicate Aquisition in FIA_XCU_EXT.2">  
+					  <description>
+						In FIA_XCU_EXT.2.1, for the first selection, the TSF presumably obtains certificates for its own use
+						by requesting them from an external CA, as the TOE itself does not have an embedded CA that it would
+						either request or allow itself to obtain. For the selection involving supported protocols, we expect
+						to make TLS mandatory, and we expect to mandate completing the assignment with HTTPS (at minimum); 
+						DTLS and IPsec/IKE remain optionally selectable, and SMIME and SSH are not claimed. And then in the
+						second selection, we would eliminate selections for administrator and user authentication but add a 
+						selection for “code signing for mobile applications” which we could fill the assignment out with
+						(but at least in the current version of the MDF PP this is still selectable and not mandated, but we
+						need a way to communicate to the reader that filling out the assignment with this is an option, 
+						especially because this being chosen is a trigger for a sel-based SFR, which adds a whole other 
+						complication).      
+					  </description>
+					  <config>
+							<not><ref-id>toe-requests-certs-from-embedded-ca</ref-id></not>
+							<ref-id>toe-requests-certs-from-external-ca</ref-id>
+							<not><ref-id>toe-obtains-certs</ref-id></not>
+							<ref-id>sel-fia-xcu-2e1-tls</ref-id> 
+						    <not><ref-id>sel-fia-xcu-2e1-smime</ref-id></not>
+							<not><ref-id>sel-fia-xcu-2e1-ssh</ref-id></not>
+							<ref-id>sel-fia-xcu-2e1-other</ref-id>
+<!--						<set><ref-id>asn-fia-xcu-2e1-other</ref-id><value>HTTPS</value></set>  -->.
+							<not><ref-id>sel-fia-xcu-2e1-adminauth</ref-id></not>
+							<not><ref-id>sel-fia-xcu-2e1-userauth</ref-id></not>
+							<ref-id>sel-fia-xcu-2e1-otheruses</ref-id>
+<!--						<set><ref-id>asn-fia-xcu-2e1-otheruses</ref-id><value>Code signing for mobile applicatons</value></set>  -->
+					  </config>
+					</usage>
+
+
 
 				</package-usage>
 
