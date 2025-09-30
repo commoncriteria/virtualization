@@ -923,6 +923,18 @@ The following sections list Common Criteria and technology terms used in this do
 						only CRL/OCSP should be used (not sure if “CA” should be left in if that is ever considered to have a CRL distribution point or OCSP
 						responder as part of it), and I believe we want to prohibit the use of a local source for revocation checking (unless cached CRLs
 						are to be permitted, but I didn’t see that explicitly called out in the previous MDF <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr>).      
+					  </span><p></p></dd><dd><b>Limitations on Certicate Aquisition in FIA_XCU_EXT.2</b><p></p><span class="description">
+						In FIA_XCU_EXT.2.1, for the first selection, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> presumably obtains certificates for its own use
+						by requesting them from an external CA, as the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> itself does not have an embedded CA that it would
+						either request or allow itself to obtain. For the selection involving supported protocols, we expect
+						to make TLS mandatory, and we expect to mandate completing the assignment with HTTPS (at minimum); 
+						DTLS and IPsec/IKE remain optionally selectable, and SMIME and SSH are not claimed. And then in the
+						second selection, we would eliminate selections for administrator and user authentication but add a 
+						selection for “code signing for mobile applications” which we could fill the assignment out with
+						(but at least in the current version of the MDF <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> this is still selectable and not mandated, but we
+						need a way to communicate to the reader that filling out the assignment with this is an option, 
+						especially because this being chosen is a trigger for a sel-based <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>, which adds a whole other 
+						complication).      
 					  </span><p></p></dd>
 		
           

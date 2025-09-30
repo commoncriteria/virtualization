@@ -16,28 +16,48 @@
 	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[1]""/config[1]""/ref-id[1]"toe-verif"
 * Error: Detected dangling ref-id to 'toe-asserts-certs'.
 	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[1]""/config[1]""/ref-id[2]"toe-asser"
-* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-3-implfunc'.
-	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[2]""/config[1]""/ref-id[1]"sel-fia-x"
-* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-3-platfunc'.
+* Error: Detected dangling ref-id to 'sel-fia-x509-1e3-platfunc'.
 	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[2]""/config[1]""/not[1]""/ref-id[1]"sel-fia-x"
-* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-3-revocRFC'.
+* Error: Detected dangling ref-id to 'sel-fia-x509-1e3-implfunc'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[2]""/config[1]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-x509-1e3-cr5280'.
 	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[2]""/config[1]""/not[2]""/ref-id[1]"sel-fia-x"
-* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-3-valper'.
+* Error: Detected dangling ref-id to 'sel-fia-x509-1e3-valperiod'.
 	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[2]""/config[1]""/not[3]""/ref-id[1]"sel-fia-x"
-* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-3-adminnote'.
+* Error: Detected dangling ref-id to 'sel-fia-x509-1e3-adminnotity'.
 	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[2]""/config[1]""/not[4]""/ref-id[1]"sel-fia-x"
-* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-3-dirassoc'.
+* Error: Detected dangling ref-id to 'sel-fia-x509-1e3-directassoc'.
 	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[2]""/config[1]""/not[5]""/ref-id[1]"sel-fia-x"
-* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-4-implfunc'.
-	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[3]""/config[1]""/ref-id[1]"sel-fia-x"
-* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-4-platfunc'.
+* Error: Detected dangling ref-id to 'sel-fia-x509-1e4-notobtain'.
 	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[3]""/config[1]""/not[1]""/ref-id[1]"sel-fia-x"
-* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-4-notobtain'.
+* Error: Detected dangling ref-id to 'sel-fia-x509-1e4-platfunc'.
 	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[3]""/config[1]""/not[2]""/ref-id[1]"sel-fia-x"
-* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-4-altsrcs'.
+* Error: Detected dangling ref-id to 'sel-fia-x509-1e4-implfunc'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[3]""/config[1]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-x509-1e4-altsrc'.
 	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[3]""/config[1]""/not[3]""/ref-id[1]"sel-fia-x"
-* Error: Detected dangling ref-id to 'sel-fia-x509-ext-1-4-local'.
+* Error: Detected dangling ref-id to 'sel-fia-x509-1e4-localrevinfo'.
 	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[3]""/config[1]""/not[4]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'toe-requests-certs-from-embedded-ca'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[4]""/config[1]""/not[1]""/ref-id[1]"toe-reque"
+* Error: Detected dangling ref-id to 'toe-requests-certs-from-external-ca'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[4]""/config[1]""/ref-id[1]"toe-reque"
+* Error: Detected dangling ref-id to 'toe-obtains-certs'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[4]""/config[1]""/not[2]""/ref-id[1]"toe-obtai"
+* Error: Detected dangling ref-id to 'sel-fia-xcu-2e1-tls'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[4]""/config[1]""/ref-id[2]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-xcu-2e1-smime'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[4]""/config[1]""/not[3]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-xcu-2e1-ssh'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[4]""/config[1]""/not[4]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-xcu-2e1-other'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[4]""/config[1]""/ref-id[3]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-xcu-2e1-adminauth'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[4]""/config[1]""/not[5]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-xcu-2e1-userauth'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[4]""/config[1]""/not[6]""/ref-id[1]"sel-fia-x"
+* Error: Detected dangling ref-id to 'sel-fia-xcu-2e1-otheruses'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[4]""/config[1]""/ref-id[4]"sel-fia-x"
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"The scope"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[2]""
