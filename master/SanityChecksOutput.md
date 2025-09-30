@@ -421,12 +421,16 @@
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[4]""
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[5]""
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[6]""
-warning: failed to load external entity "output/.xml"
-warning: failed to load external entity "output/.xml"
-warning: failed to load external entity "output/.xml"
-warning: failed to load external entity "output/.xml"
-warning: failed to load external entity "output/.xml"
-warning: failed to load external entity "output/.xml"
+ Failed to find a reference to pkg-tls.
+ Failed to find a reference to pkg-ssh.
+ Failed to find a reference to pkg-tls.
+ Failed to find a reference to pkg-ssh.
+ Failed to find a reference to pkg-tls.
+ Failed to find a reference to pkg-tls.
+ Failed to find a reference to pkg-ssh.
  Failed to find a reference to entropyappendix.
+ Failed to find a reference to pkg-tls.
+ Failed to find a reference to pkg-tls.
+ Failed to find a reference to pkg-ssh.
 * Warning: Since FMT_MOF_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
