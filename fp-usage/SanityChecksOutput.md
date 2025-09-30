@@ -58,6 +58,14 @@
 	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[4]""/config[1]""/not[6]""/ref-id[1]"sel-fia-x"
 * Error: Detected dangling ref-id to 'sel-fia-xcu-2e1-otheruses'.
 	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[4]""/config[1]""/ref-id[4]"sel-fia-x"
+* Error: Detected dangling ref-id to 'toe-verifies-certs'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[2]""/usage[1]""/config[1]""/ref-id[1]"toe-verif"
+* Error: Detected dangling ref-id to 'toe-asserts-certs'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[2]""/usage[1]""/config[1]""/ref-id[2]"toe-asser"
+* Error: Detected dangling ref-id to 'toe-verifies-certs'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[3]""/usage[1]""/config[1]""/ref-id[1]"toe-verif"
+* Error: Detected dangling ref-id to 'toe-asserts-certs'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[3]""/usage[1]""/config[1]""/ref-id[2]"toe-asser"
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"The scope"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[2]""
@@ -411,6 +419,8 @@
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[4]""
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[5]""
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[6]""
+warning: failed to load external entity "output/.xml"
+warning: failed to load external entity "output/.xml"
  Failed to find a reference to entropyappendix.
 * Warning: Since FMT_MOF_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
