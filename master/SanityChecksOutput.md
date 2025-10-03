@@ -12,6 +12,22 @@
         on-sel/PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[14]""/depends[2]""/on-sel[1]""
 * Warning: Potentially illegal 'depends' element.
           /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[5]""/f-component[1]""/f-element[2]""/title[1]"The TSF s"/management-function-set[1]""/management-function[10]""/O[1]""/depends[1]""
+* Error: Detected dangling ref-id to 'dummy-ref-id'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[1]""/config[1]""/ref-id[1]"dummy-ref"
+* Error: Detected dangling ref-id to 'dummy-ref-id'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[2]""/config[1]""/ref-id[1]"dummy-ref"
+* Error: Detected dangling ref-id to 'dummy-ref-id'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[3]""/config[1]""/ref-id[1]"dummy-ref"
+* Error: Detected dangling ref-id to 'dummy-ref-id'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[4]""/config[1]""/ref-id[1]"dummy-ref"
+* Error: Detected dangling ref-id to 'dummy-ref-id'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[5]""/config[1]""/ref-id[1]"dummy-ref"
+* Error: Detected dangling ref-id to 'dummy-ref-id'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[6]""/config[1]""/ref-id[1]"dummy-ref"
+* Error: Detected dangling ref-id to 'dummy-ref-id'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[7]""/config[1]""/ref-id[1]"dummy-ref"
+* Error: Detected dangling ref-id to 'dummy-ref-id'.
+	  /PP[1]""/sec:Introduction[1]""/section[4]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[8]""/config[1]""/ref-id[1]"dummy-ref"
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[1]"The scope"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[2]"A Virtual"/h:p[2]""
