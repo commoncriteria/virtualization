@@ -1264,7 +1264,7 @@
                     <f-element id="fcs-ckm-1e1-akg">
                     	<title> The TSF shall generate <h:b>asymmetric</h:b> cryptographic keys in accordance with
                     		a specified cryptographic key generation algorithm<selectables>
-                    			<tabularize id="fcs-ckm-1-ak-sels" title="Allowable choices for FCS_CKM.1/AKG">
+                    			<tabularize id="fcs-ckm-1-ak-sels" title="Allowable Choices for FCS_CKM.1/AKG">
                     				<textcol>Identifier</textcol>
                     				<selectcol>Cryptographic Key Generation Algorithm</selectcol>
                     				<reqtext>and specified cryptographic <h:b>algorithm parameters</h:b> <h:s>key sizes</h:s></reqtext>
@@ -1444,19 +1444,19 @@
 						</title>
                     	<note role="application">For RSA the choice of the modulus implies the resulting key sizes of the public and private keys
                     		generated using the specified standard methods. RSA key generation with modulus size 2048 bits is no longer permitted
-                    		by CNSA.<h:br/>
+                    		by CNSA.<h:br/><h:br/>
                     	
                     	For Finite Field Cryptography (FFC) DSA, ST authors should consult schemes for guidelines on use. FIPS PUB 186-5 does not
                     	approve DSA for digital signature generation but allows DSA for digital signature verification for legacy purposes. “FFC-ERB”
-                    	or “FFC–RS” may be claimed only for generating private and public keys when “DH” is claimed in FCS_CKM_EXT.7.<h:br/>
+                    	or “FFC–RS” may be claimed only for generating private and public keys when “DH” is claimed in FCS_CKM_EXT.7.<h:br/><h:br/>
                     	
                     	When generating ECC keys pairs for key agreement and if “ECDH” is claimed in FCS_CKM_EXT.7, then “ECC–ERB” or “ECC–RS” must 
                     	be claimed. The sizes of the private key, which is a scalar, and the public key, which is a point on the elliptic curve, are
-                    	determined by the choice of the curve.<h:br/>
-                    	
+                    	determined by the choice of the curve.<h:br/><h:br/>
+                    		
                     	When generating ECC key pairs for digital signature generation and if “ECDSA” is claimed in FCS_COP.1/SigGen, then “ECC–ERB”
                     	or “ECC–RS” must be claimed. The sizes of the private key, which is a scalar, and the public key, which is a point on the 
-                    	elliptic curve, are determined by the choice of the curve.<h:br/>
+                    	elliptic curve, are determined by the choice of the curve.<h:br/><h:br/>
                     	
                     	If the TSF acts only as a receiver in the RSA key establishment scheme, the ST does not need to implement RSA key generation.                    	
                         </note>
@@ -1854,7 +1854,7 @@
             			<title>
             				The TSF shall generate <h:b>symmetric</h:b> cryptographic keys in accordance with
             				a specified cryptographic key generation algorithm<selectables>
-            					<tabularize id="fcs-ckm-1-skg-sels" title="Allowable choices for FCS_CKM.1/SKG">
+            					<tabularize id="fcs-ckm-1-skg-sels" title="Allowable Choices for FCS_CKM.1/SKG">
             						<textcol>Identifier</textcol>
             						<selectcol>Cryptographic Key Generation Algorithm</selectcol>
             						<reqtext>and specified cryptographic key sizes</reqtext>
@@ -2102,7 +2102,7 @@
             				with specified cryptographic key agreement algorithms  
             				<selectables>
             					<tabularize id="fcs-ckm-ext-7-sels" 
-            						title="Allowable choices for FCS_CKM_EXT.7">
+            						title="Allowable Choices for FCS_CKM_EXT.7">
             						<textcol>Identifier</textcol>
             						<selectcol>Cryptographic Algorithm</selectcol>
             						<reqtext>and specified cryptographic parameters</reqtext>
@@ -2472,7 +2472,7 @@
                     	<title>The TSF shall perform [<h:i>keyed hash message authentication</h:i>] in accordance
                     		with a specified cryptographic algorithm 
                     		<selectables>
-                    			<tabularize id="tab-fcs-cop-keyedhash-sels" title="Allowable choices for FCS_COP.1/KeyedHash">
+                    			<tabularize id="tab-fcs-cop-keyedhash-sels" title="Allowable Choices for FCS_COP.1/KeyedHash">
                     				<selectcol>Keyed Hash Algorithm</selectcol>
                     				<reqtext>and cryptographic key sizes</reqtext>
                     				<selectcol>Cryptographic Key Sizes</selectcol>
@@ -2609,7 +2609,7 @@
             		<f-element id="fcs-cop-1e1-keyencap">
             			<title> The TSF shall perform [key encapsulation] in accordance with a specified cryptographic algorithm 
             				<selectables>
-            					<tabularize id="tab-fcs-cop-keyencap-sels" title="Allowable choices for FCS_COP.1/KeyEncap">
+            					<tabularize id="tab-fcs-cop-keyencap-sels" title="Allowable Choices for FCS_COP.1/KeyEncap">
             						<textcol>Identifier</textcol>
             						<reqtext></reqtext>
             						<selectcol>Cryptographic Algorithm</selectcol>
@@ -2722,7 +2722,7 @@
                     	<title> The TSF shall perform [<h:i>digital signature generation</h:i>] in accordance with a specified 
                     		cryptographic algorithm 
                     		<selectables>
-                    			<tabularize id="tab-fcs-cop-siggen-sels" title="Allowable choices for FCS_COP.1/SigGen">
+                    			<tabularize id="tab-fcs-cop-siggen-sels" title="Allowable Choices for FCS_COP.1/SigGen">
                     				<textcol>Identifier</textcol>
                     				<reqtext></reqtext>
                     				<selectcol>Cryptographic Algorithm</selectcol>
@@ -3104,7 +3104,7 @@
               The TSF shall perform [<h:i>digital signature verification</h:i>] in accordance with a specified 
               cryptographic algorithm  
               <selectables>
-              	<tabularize id="tab-fcs-cop-sigver-sels" title="Allowable choices for FCS_COP.1/SigVer">
+              	<tabularize id="tab-fcs-cop-sigver-sels" title="Allowable Choices for FCS_COP.1/SigVer">
                   <textcol>Identifier</textcol>
                   <reqtext></reqtext>
                   <selectcol>Cryptographic Algorithm</selectcol>
@@ -3327,39 +3327,8 @@
              <h:li>For one test case the IR is moved</h:li>
              <h:li>For one test case the Trailer is moved</h:li></h:ul><h:p/>
            The TOE must correctly verify the unmodified signatures and fail to verify the modified
-           signatures.<h:p/>
+           signatures.<h:p/>          
            
-           <!-- DSA Signature Verification    -->
-           <h:br/><h:b>DSA Signature Verification </h:b><h:p/>
-           <h:table border="1">
-             <h:tr class="header" bgcolor="#cccccc">
-               <h:td valign="top">Identifier</h:td>
-               <h:td valign="top">Cryptographic Algorithm Parameters</h:td>
-               <h:td valign="top">Cryptographic Key Sizes</h:td>
-               <h:td valign="top">List of Standards</h:td>
-             </h:tr>
-             <h:tr>
-               <h:td valign="top">DSA</h:td>
-               <h:td valign="top">DSA</h:td>
-               <h:td valign="top">Domain parameters for (L, N) = [(3072, 256)] bits</h:td>
-               <h:td valign="top">FIPS PUB 186-4 (Section 4.7) [DSA Signature Verification]</h:td>
-             </h:tr>
-           </h:table><h:p/>	
-           To test the TOE’s ability to perform DSA Digital Signature Verification, the evaluator shall
-           perform the Algorithm Functional Test using the following input parameters:<h:ul>
-             <h:li>(L, N) = (3072, 256)</h:li>
-             <h:li>Hash algorithm [SHA-384, SHA-512]</h:li></h:ul><h:p/>
-           <h:br/><h:b>Algorithm Functional Test</h:b><h:p/>
-           For each supported combination of the above parameters, the evaluator shall cause the TOE to
-           generate 15 test cases consisting of messages and signatures such that the 15 test cases are
-           modified as follows:<h:p/><h:ul>
-             <h:li>Three test cases are left unmodified</h:li>
-             <h:li>For three test cases the Message is modified</h:li>
-             <h:li>For three test cases the key is modified</h:li>
-             <h:li>For three test cases the <h:i>r</h:i> value is modified</h:li>
-             <h:li>For three test cases the <h:i>s</h:i> value is modified</h:li></h:ul><h:p/>
-           The TOE must correctly verify the unmodified signatures and fail to verify the modified
-           signatures.<h:p/>
            
            <!-- ECDSA Signature Verification  -->
            <h:br/><h:b>ECDSA Signature Verification </h:b><h:p/>
@@ -3519,7 +3488,7 @@
                     		The TSF shall perform [<h:i>symmetric-key encryption and decryption</h:i>] in accordance with a 
                     		specified cryptographic algorithm   
                     		<selectables>
-                    			<tabularize id="fcs-cop-skc-sels" title="Allowable choices for FCS_COP.1/SKC">
+                    			<tabularize id="fcs-cop-skc-sels" title="Allowable Choices for FCS_COP.1/SKC">
                     				<textcol>Identifier</textcol>
                     				<reqtext></reqtext>
                     				<selectcol>Cryptographic Algorithm</selectcol>
@@ -3804,7 +3773,7 @@
             			<title>
             				The TSF shall perform [<h:i>extendable-output function</h:i>] in accordance with a specified cryptographic algorithm  
             				<selectables>
-            					<tabularize id="fcs-cop-xof-sels" title="Allowable choices for FCS_COP.1/XOF">
+            					<tabularize id="fcs-cop-xof-sels" title="Allowable Choices for FCS_COP.1/XOF">
             						<selectcol>Cryptographic Algorithm</selectcol>
             						<reqtext>and parameters</reqtext>
             						<selectcol>Parameters</selectcol>
