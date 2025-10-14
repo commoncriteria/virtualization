@@ -1936,9 +1936,9 @@
 
             	<f-component cc-id="fcs_ckm.2" name="Cryptographic Key Distribution" status="feat-based">
             		<depends on="key-encap-support"/>            		
-            		<f-element>
+            		<f-element id="fel-crypt-key-estab">
             			<title>The TSF shall distribute cryptographic keys in accordance with a specified cryptographic 
-            				key distribution method [<h:i id="fel-crypt-key-estab">key encapsulation</h:i>] that meets the following:
+            				key distribution method [<h:i>key encapsulation</h:i>] that meets the following:
             				[<h:i>none</h:i>].
             			</title>            				
             			<aactivity>
@@ -2624,7 +2624,7 @@
  		    
             	<f-component id="sfr-fcs-cop-1-keyencap" cc-id="fcs_cop.1" iteration="KeyEncap" 
             		name="Cryptographic Operation - Key Encapsulation" status="sel-based">
-            		<depends on-sel="fel-crypt-key-estab"/>
+            		<depends on-incl="fel-crypt-key-estab"/>
             		<f-element id="fcs-cop-1e1-keyencap">
             			<title> The TSF shall perform [key encapsulation] in accordance with a specified cryptographic algorithm 
             				<selectables>
