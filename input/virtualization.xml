@@ -580,7 +580,7 @@
                     <addressed-by>FPT_DDI_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
                     <addressed-by>FPT_ML_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
                 	<addressed-by>FCS_CKM.2 (implementation-dependent)</addressed-by><rationale>This threat is mitigated by this SFR by using key encapsulation to distribute cryptographic keys.</rationale>
-                	<addressed-by>FCS_COP.1/KeyEncap (selection-based)</addressed-by> <rationale>This threat is mitigated by this SFR by using a secure key encapsulation method to transmit a symmetric key to a third party as part of key establishment for trusted communications.</rationale>
+                	<addressed-by>FCS_COP.1/KeyEncap (implementation-dependent)</addressed-by> <rationale>This threat is mitigated by this SFR by using a secure key encapsulation method to transmit a symmetric key to a third party as part of key establishment for trusted communications.</rationale>
                 	<addressed-by>FCS_COP.1/XOF (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by supporting extendable output function implementations that are dependencies of some secure key generation and signature verification algorithms.</rationale>
                 </threat>
                 
@@ -2623,8 +2623,8 @@
                 </f-component>
  		    
             	<f-component id="sfr-fcs-cop-1-keyencap" cc-id="fcs_cop.1" iteration="KeyEncap" 
-            		name="Cryptographic Operation - Key Encapsulation" status="sel-based">
-            		<depends on-incl="fel-crypt-key-estab"/>
+            		name="Cryptographic Operation - Key Encapsulation" status="feat-based">
+            		<depends on="key-encap-support"/>    
             		<f-element id="fcs-cop-1e1-keyencap">
             			<title> The TSF shall perform [key encapsulation] in accordance with a specified cryptographic algorithm 
             				<selectables>
