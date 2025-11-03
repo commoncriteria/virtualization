@@ -10,6 +10,12 @@
         on-sel/PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[14]""/depends[2]""/on-sel[1]""
 * Warning: Potentially illegal 'depends' element.
           /PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[5]""/f-component[1]""/f-element[2]""/title[1]"The TSF s"/management-function-set[1]""/management-function[10]""/O[1]""/depends[1]""
+* Error: Detected multiple elements with an id of 'sel-atssh'.
+* Error: Detected multiple elements with an id of 'sel-attls'.
+* Error: Detected multiple elements with an id of 'sel-atssh'.
+* Error: Detected multiple elements with an id of 'sel-atssh'.
+* Error: Detected multiple elements with an id of 'sel-attls'.
+* Error: Detected multiple elements with an id of 'sel-atssh'.
 * Error: Detected multiple elements with an id of 'sel-exp-skg-256'.
 * Error: Detected multiple elements with an id of 'sel-exp-skg-256'.
 * Error: Detected dangling ref-id to 'dummy-ref-id'.
@@ -41,11 +47,10 @@
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[3]"This Prot"/usecases[1]""/usecase[1]""/description[1]"Server Vi"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Introduction[1]""/section[3]"This Prot"/usecases[1]""/usecase[2]""/description[1]"Client Vi"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[2]""/f-component[1]""/f-element[1]""/note[1]"In certai"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[2]""/f-component[2]""/f-element[2]""/note[1]"The ST au"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[2]""/f-component[2]""/f-element[2]""/note[1]"The ST au"/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[2]""/f-component[2]""/f-element[2]""/note[1]"The ST au"/h:p[3]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[2]""/f-component[2]""/f-element[2]""/note[1]"The ST au"/h:p[4]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[2]""/f-component[2]""/f-element[2]""/note[1]"The ST au"/h:p[5]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[2]""/f-component[2]""/f-element[2]""/note[1]"“Subject "/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[2]""/f-component[2]""/f-element[2]""/note[1]"“Subject "/h:p[2]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[2]""/f-component[2]""/f-element[2]""/note[1]"“Subject "/h:p[3]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[2]""/f-component[2]""/f-element[2]""/note[1]"“Subject "/h:p[4]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[2]""/f-component[2]""/f-element[2]""/aactivity[1]""/Tests[1]"The evalu"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[2]""/f-component[5]""/f-element[1]""/aactivity[1]"Protocols"/Tests[1]"Testing o"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[2]""/f-component[5]""/f-element[1]""/aactivity[1]"Protocols"/Tests[1]"Testing o"/h:p[2]""
@@ -525,7 +530,6 @@
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[16]""/f-element[2]""/note[1]"This requ"/h:p[4]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[7]""/f-component[1]""/f-element[1]""/note[1]"This requ"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[8]""/f-component[1]""/f-element[1]""/note[1]"If the ST"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[8]""/f-component[1]""/f-element[1]""/note[1]"If the ST"/h:p[2]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[8]""/f-component[2]""/f-element[3]""/note[1]"This SFR "/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[8]""/f-component[2]""/f-element[3]""/note[1]"This SFR "/h:p[2]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[8]""/f-component[3]""/f-element[1]""/note[1]"This requ"/h:p[1]""
@@ -576,16 +580,6 @@
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[4]""
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[5]""
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[6]""
- Failed to find a reference to pkg-tls.
- Failed to find a reference to pkg-ssh.
- Failed to find a reference to pkg-tls.
- Failed to find a reference to pkg-ssh.
- Failed to find a reference to pkg-tls.
- Failed to find a reference to pkg-tls.
- Failed to find a reference to pkg-ssh.
  Failed to find a reference to entropyappendix.
- Failed to find a reference to pkg-tls.
- Failed to find a reference to pkg-tls.
- Failed to find a reference to pkg-ssh.
 * Warning: Since FMT_MOF_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
