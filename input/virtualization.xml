@@ -974,8 +974,9 @@
                                     <selectable id="sel-at2">Auditable events defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable>
 									<selectable id="sel-at3">Auditable events defined in <xref g="t-audit-objective"/> for Objective SFRs</selectable>
                                     <selectable id="sel-at4">Auditable events defined in <xref g="t-audit-sel-based"/> for Selection-Based SFRs</selectable>
-									<selectable id="sel-attls">Auditable events for the <xref to="pkg-tls"/> listed in <xref to="atref-pkgs"/></selectable>
-									<selectable id="sel-atssh">Auditable events defined in the audit table for the <xref to="pkg-ssh"/></selectable>
+                                	<selectable id="sel-atssh">Auditable events for the <xref to="ssh"/></selectable>
+                                	<selectable id="sel-attls">Auditable events for the <xref to="tls"/></selectable>
+                                	<selectable id="sel-atssh">Auditable events for the <xref to="X509"/></selectable>
                                     <selectable exclusive="yes">no other auditable events</selectable>
 								</selectables></refinement></h:li>
                             </h:ol>
@@ -993,20 +994,20 @@
                                     <selectable>Additional information defined in <xref g="t-audit-optional"/> for Strictly Optional SFRs</selectable>
                                     <selectable>Additional information defined in <xref g="t-audit-objective"/> for Objective SFRs</selectable>
                                     <selectable>Additional information defined in <xref g="t-audit-sel-based"/> for Selection-Based SFRs</selectable>
-									<selectable >Additional information for the <xref to="pkg-tls"/> listed in <xref to="atref-pkgs"/></selectable>
-									<selectable>Additional information defined in the audit table for the <xref to="pkg-ssh"/></selectable>
+                                	<selectable id="sel-atssh">Auditable events for the <xref to="ssh"/></selectable>
+                                	<selectable id="sel-attls">Auditable events for the <xref to="tls"/></selectable>
+                                	<selectable id="sel-atssh">Auditable events for the <xref to="X509"/></selectable>
                                     <selectable exclusive="yes">no other information</selectable>
 								</selectables></refinement></h:li>
                             </h:ol>
                         </title>
                         <note role="application">
-                            The ST author can include other auditable events directly in <xref g="t-audit-mandatory"/>; they are not
-							limited to the list presented. The ST author should update the table in 
-							FAU_GEN.1.2 with any additional information generated. “Subject identity” in FAU_GEN.1.2 could be a 
+                            “Subject identity” in FAU_GEN.1.2 could be a 
 							user id or an identifier specifying a VM, for example.<h:p/>
 							Appropriate entries from <xref g="t-audit-optional"/>, <xref g="t-audit-objective"/>, and
 							<xref g="t-audit-sel-based"/> should be included in the ST if the 
 							associated SFRs and selections are included.<h:p/>
+                        	Each functional package includes auditable events for the SFRs defined in the package. The ST author is expected to include the auditable events (if any) for each SFR that the ST claims from a functional package.
 							The <xref g="t-audit-mandatory"/> entry for FDP_VNC_EXT.1 refers to configuration settings that attach 
 							VMs to virtualized network components. Changes to these configurations can be made 
 							during VM execution or when VMs are not running. Audit records 
@@ -1016,37 +1017,6 @@
 							to log every time that the device is accessed. Generally, this is only once at VM
 							startup. However, some devices can be connected and disconnected during operation (e.g., virtual USB
 							devices such as CD-ROMs). All such connection/disconnection events must be logged.<h:p/>
-							
-							The following table contains the events enumerated in the auditable events table for 
-							the <xref to="pkg-tls"/>. Inclusion of these events in the ST is subject to selection above,
-							inclusion of the corresponding SFRs in the ST, and support in the FP as represented by a selection in the 
-							table below.<h:p/>
-							<h:b><ctr ctr-type='Table' id="atref-pkgs">: Auditable Events for the <xref to="pkg-tls"/></ctr></h:b><h:br/>							
-							<h:table>
-								<h:tr><h:td>FCS_TLSC_EXT.1</h:td>
-								<h:td>Failure to establish a session.</h:td>
-								<h:td>Reason for failure.</h:td></h:tr>
-								
-								<h:tr><h:td>FCS_TLSC_EXT.1</h:td>
-								<h:td>Failure to verify presented identifier.</h:td>
-								<h:td>Presented identifier and reference identifier.</h:td></h:tr>
-
-								<h:tr><h:td>FCS_TLSC_EXT.1</h:td>
-								<h:td>Establishment/termination of a TLS session.</h:td>
-								<h:td>Non-TOE endpoint of connection.</h:td></h:tr>
-
-								<h:tr><h:td>FCS_TLSS_EXT.1</h:td>
-								<h:td>Failure to establish a session.</h:td>
-								<h:td>Reason for failure.</h:td></h:tr>
-
-								<h:tr><h:td>FCS_DTLSC_EXT.1</h:td>
-								<h:td>Failure of the certificate validity check.</h:td>
-								<h:td>Issuer Name and Subject Name of certificate.</h:td></h:tr>
-							
-								<h:tr><h:td>FCS_DTLSS_EXT.1</h:td>
-								<h:td>Failure of the certificate validity check.</h:td>
-								<h:td>Issuer Name and Subject Name of certificate.</h:td></h:tr>
-							</h:table>
                         </note>
 			    
 						<aactivity>
@@ -5753,10 +5723,9 @@
                         <note role="application">Selection of ‘authentication based on username and password’ requires that 
 							FIA_PMG_EXT.1 be included in the ST. This also requires that the ST claim management function 
 							<xref to="mf-admin-pwd-policy"/> for password management. 
-							If the ST author selects ‘authentication based on an SSH public-key credential’,
-							the TSF shall be validated against the <xref to="pkg-ssh"/>. The ST must include 
-                            FIA_X509_EXT.1 and FIA_X509_EXT.2 from the <!-- <xref to="pkg-509"/> --> Functional Package for
-                            X.509, version 1.0, if 'authentication based on X.509 certificates' is selected. <h:p/>
+							If the ST author selects ‘authentication based on an SSH public-key credential,’ the TOE is expected to conform to <xref to="ssh"/>,
+                        	If the ST author selects 'authentication based on X.509 certificates,' the TOE is expected to conform to <xref to="X509"/>. 
+							<h:p/>
 							PINs used to access OE-protected storage are set and managed by the OE-protected storage mechanism. Thus
 							requirements on PIN management are outside the scope of the TOE.
                         </note>
@@ -5894,7 +5863,7 @@
                 </f-component>		    
 
 				<f-component cc-id="fia_x509_ext.4" name="Exceptions to X.509 Certificate Revocation Checking"  status="sel-based" id="fia-x509-ext-4">
-				    <depends on-sel="fia-x509-ext-1e1"><external-doc ref="pkg-x509"/></depends>
+				    <depends on-sel="fia-x509-ext-1e1"><external-doc ref="X509"/></depends>
 					<consistency-rationale/>
 					<comp-lev/>
 					<management/>
@@ -7390,7 +7359,7 @@
                         <title>The TSF shall use
                             <selectables linebreak="yes">
                                 <selectable id="sel-itc-tls">TLS as conforming to the <h:a href="https://www.niap-ccevs.org/protectionprofiles/465">
-									<h:i><xref to="pkg-tls"/></h:i></h:a></selectable>
+									<h:i><xref to="tls"/></h:i></h:a></selectable>
                                 <selectable id="sel-itc-https">TLS/HTTPS as conforming to FCS_HTTPS_EXT.1</selectable>
                                 <selectable id="sel-itc-ipsec">IPsec as conforming to FCS_IPSEC_EXT.1</selectable>
                                 <selectable id="sel-itc-ssh">SSH as conforming to the
@@ -7423,15 +7392,12 @@
 								that is logically distinct from other communication paths and provides assured identification of its
 								endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.
 							</title></ext-comp-def-title>
-                        <note role="application">If the ST author selects either TLS or HTTPS, the TSF shall be validated against the 
-                            <xref to="pkg-tls"/>. This PP does not mandate that a product implement TLS with mutual authentication,
+                        <note role="application">If the ST author selects either TLS or HTTPS, the TOE will claim the relevant functionality defined in the 
+                            <xref to="tls"/>. This PP does not mandate that a product implement TLS with mutual authentication,
 							but if the product includes the capability to perform TLS with mutual authentication, then
-							mutual authentication must be included within the TOE boundary. The TLS Package requires that
-							the X.509 requirements be included by the PP, so selection of TLS or HTTPS causes FIA_X509_EXT.* to be selected.<h:p/>
-							If the ST author selects SSH, the TSF shall be validated against the <xref to="pkg-ssh"/>.<h:br/> <h:br/>
-							If the ST author selects "certificate-based authentication of the remote peer," then FIA_X509_EXT.1 and FIA_X509_EXT.2
-							in the <!-- <xref to="pkg-509"/> --> Functional Package for
-							X.509, version 1.0 must be included in the ST. "No authentication of the remote peer" should be selected only if 
+							mutual authentication must be included within the TOE boundary. 
+							If the ST author selects SSH, the TOE will claim the relevant functionality defined in the <xref to="ssh"/>.<h:br/> <h:br/>
+							If the ST author selects "certificate-based authentication of the remote peer," then the TOE will claim the relevant functionality defined in the <xref to="X509"/>. "No authentication of the remote peer" should be selected only if 
 							the TOE is acting as a server in a non-mutual authentication configuration.<h:p/>			    
 							The ST author must include the security functional requirements for the
                             trusted channel protocol selected in FTP_ITC_EXT.1 in the main body of the ST.
