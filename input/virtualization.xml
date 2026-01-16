@@ -184,7 +184,7 @@
 		<tech-terms>
 		  <suppress>Distributed TOE</suppress>
 		  <term full="Administrator">Administrators perform management activities on the VS. These management functions do not 
-			  include administration of software running within guest VMs, such as the guest OS. Administrators need not be human 
+			  include administration of software running within Guest VMs, such as the guest OS. Administrators need not be human 
 			  as in the case of embedded or headless VMs. Administrators are often nothing more than software entities that 
 			  operate within the VM.</term>
 		  <term abbr="AES" full="Advanced Encryption Standard"/>
@@ -204,14 +204,14 @@
 			  <term abbr="FIPS" full="Federal Information Processing Standard"/>
 			  <term abbr="FFC" full="Finite-Field Cryptography"/>
 		  <term full="Guest Network">See Operational Network.</term>
-		  <term full="Guest Operating System (OS)">An operating system that runs within a guest VM.</term>
-		  <term full="guest VM">A guest VM is a VM that contains a virtual environment for the execution of an independent computing
+		  <term full="Guest Operating System (OS)">An operating system that runs within a Guest VM.</term>
+		  <term full="Guest VM">A Guest VM is a VM that contains a virtual environment for the execution of an independent computing
 			  system. Virtual environments execute mission workloads and implement customer-specific client or server functionality
-			  in guest VMs, such as a web server or desktop productivity applications.</term>
-		  <term full="Helper VM">A Helper VM is a VM that performs services on behalf of one or more guest VMs, but does not qualify
+			  in Guest VMs, such as a web server or desktop productivity applications.</term>
+		  <term full="Helper VM">A Helper VM is a VM that performs services on behalf of one or more Guest VMs, but does not qualify
 			  as a Service VM—and therefore is not part of the VMM. Helper VMs implement functions or services that are particular
-			  to the workloads of guest VMs. For example, a VM that provides a virus scanning service for a guest VM would be
-			  considered a Helper VM. For the purposes of this document, Helper VMs are considered a type of guest VM, and are 
+			  to the workloads of Guest VMs. For example, a VM that provides a virus scanning service for a Guest VM would be
+			  considered a Helper VM. For the purposes of this document, Helper VMs are considered a type of Guest VM, and are 
 			  therefore subject to all the same requirements, unless specifically stated otherwise.</term>
 		  <term full="Host Operating System (OS)">An operating system onto which a VS is installed. Relative to the VS, the Host OS is 
 			  part of the Platform. There need not be a Host OS, but often VSes employ a Host OS or Control Domain to support
@@ -237,12 +237,12 @@
 			  document, networks that connect physical hosts and backend storage networks for purposes of VM transfer or backup 
 			  are considered management networks. </term>
 		  <term full="Management Subsystem">Components of the VS that allow VS administrators to configure and manage the VMM, as 
-			  well as configure guest VMs. VMM management functions include VM configuration, virtualized network configuration,
+			  well as configure Guest VMs. VMM management functions include VM configuration, virtualized network configuration,
 			  and allocation of physical resources.</term>
 			  <term abbr="NIST" full="National Institute of Standards and Technology"/>
 			  <term abbr="NVLAP" full="National Voluntary Laboratory Accreditation Program"/>
 		  <term full="Operational Network">An Operational Network is a network, which may have both physical and virtualized 
-			  components, used to connect guest VMs to each other and potentially to other entities outside of the VS. Operational
+			  components, used to connect Guest VMs to each other and potentially to other entities outside of the VS. Operational
 			  Networks support mission workloads and customer-specific client or server functionality. Also called a 
 			  “Guest Network.”</term>
 			  <term abbr="OS" full="Operating System"/>
@@ -252,11 +252,11 @@
 		  <term full="Platform">The hardware, firmware, and software environment into which a VS is installed and executes.</term>
 			  <term abbr="RSA" full="Rivest, Shamir, Adleman"/>
 		  <term full="Service VM">A Service VM is a VM whose purpose is to support the hypervisor in providing the resources or
-			  services necessary to support guest VMs. Service VMs may implement some portion of hypervisor functionality, but 
+			  services necessary to support Guest VMs. Service VMs may implement some portion of hypervisor functionality, but 
 			  also may contain important system functionality that is not necessary for hypervisor operation. As with any VM,
 			  Service VMs necessarily execute without full hypervisor privileges—only the privileges required to perform its 
 			  designed functionality. Examples of Service VMs include device driver VMs that manage access to physical devices,
-			  VMs that provide life-cycle management and provisioning of hypervisor and guest VMs, and name-service VMs that 
+			  VMs that provide life-cycle management and provisioning of hypervisor and Guest VMs, and name-service VMs that 
 			  help establish communication paths between VMs.</term>
 			  <term abbr="SP" full="Special Publication"/>
 			  <term abbr="SPD" full="Security Policy Database"/>
@@ -264,7 +264,7 @@
 			  of VMs and users.</term>
 			  <term abbr="SWID" full="Software Identification"/>
 			  <term abbr="TPM" full="Trusted Platform Module"/>
-		  <term full="User">Users operate guest VMs and are subject to configuration policies applied to the VS by administrators.
+		  <term full="User">Users operate Guest VMs and are subject to configuration policies applied to the VS by administrators.
 			  Users need not be human as in the case of embedded or headless VMs, users are often nothing more than software
 			  entities that operate within the VM.</term>
 		  <term full="Virtual Machine" abbr="VM">A Virtual Machine is a virtualized hardware environment in which an operating system
@@ -298,32 +298,32 @@
 			delegation of the management of all other hardware devices on the hardware platform. This document does not specify
 			any hypervisor-specific requirements, though many VMM requirements would naturally apply to a hypervisor.<h:p/>
 				A Service VM is a VM whose purpose is to support the hypervisor in providing the resources or services necessary to
-			support guest VMs. Service VMs may implement some portion of hypervisor functionality, but also may contain important
+			support Guest VMs. Service VMs may implement some portion of hypervisor functionality, but also may contain important
 			system functionality that is not necessary for hypervisor operation. As with any VM, Service VMs necessarily execute
 			without full hypervisor privileges—only the privileges required to perform its designed functionality. Examples of 
 			Service VMs include device driver VMs that manage access to physical devices, VMs that provide life-cycle management and 
-			provisioning of hypervisor and guest VMs, and name-service VMs that help establish 
+			provisioning of hypervisor and Guest VMs, and name-service VMs that help establish 
 			communication paths between VMs.<h:p/>
-				A guest VM is a VM that contains a virtual environment for the execution of an independent computing system. Virtual 
-			environments execute mission workloads and implement customer-specific client or server functionality in guest VMs, 
+				A Guest VM is a VM that contains a virtual environment for the execution of an independent computing system. Virtual 
+			environments execute mission workloads and implement customer-specific client or server functionality in Guest VMs, 
 			such as a web server or desktop productivity applications. A Helper VM is a VM that performs services on behalf of
-			one or more guest VMs, but does not qualify as a Service VM—and therefore is not part of the VMM. Helper VMs implement
-			functions or services that are particular to the workloads of guest VMs. For example, a VM that provides a virus 
-			scanning service for a guest VM would be considered a Helper VM. The line between Helper and Service VMs can easily
+			one or more Guest VMs, but does not qualify as a Service VM—and therefore is not part of the VMM. Helper VMs implement
+			functions or services that are particular to the workloads of Guest VMs. For example, a VM that provides a virus 
+			scanning service for a Guest VM would be considered a Helper VM. The line between Helper and Service VMs can easily
 			be blurred. For instance, a VM that implements a cryptographic function—such as an in-line encryption VM—could be 
 			identified as either a Service or Helper VM depending on the particular virtualization solution. If the cryptographic
-			functions are necessary only for the privacy of guest VM data in support of the Guest’s mission applications, it would
+			functions are necessary only for the privacy of Guest VM data in support of the Guest’s mission applications, it would
 			be proper to classify the encryption VM as a Helper. But if the encryption VM is necessary for the VMM to isolate
-			guest VMs, it would be proper to classify the encryption VM as a Service 
+			Guest VMs, it would be proper to classify the encryption VM as a Service 
 			VM. For the purposes of this document, Helper VMs are subject to all requirements
-			that apply to guest VMs, unless specifically stated otherwise.<h:p/>
+			that apply to Guest VMs, unless specifically stated otherwise.<h:p/>
 			
 			<!-- 1.3.1 TOE Boundary -->
 			<section id="ss-toeboundary" title="TOE Boundary">
 				Figure 1 shows a greatly simplified view of a generic virtualization system and platform. TOE components are displayed
 				in Red. Non-TOE components are in Blue. The Platform is the hardware, firmware, and software onto which the VS is 
 				installed. The VMM includes the hypervisor, Service VMs, and VM containers, but not the software that runs inside
-				guest VMs or Helper VMs. The Management Subsystem is part of the TOE, but may or may not be part of the VMM. 
+				Guest VMs or Helper VMs. The Management Subsystem is part of the TOE, but may or may not be part of the VMM. 
 				<h:p/>
 
 				<figure entity="images/figure1.png" title="Virtualization System and Platform " id="vsplatform"/><h:br/><h:br/>
@@ -389,10 +389,10 @@
 					Typically, virtualized servers provide services to remote clients from a data center, and are generally not directly accessible 
 					by non-administrative users.<h:p/>
 					Claiming of the Server Virtualization use case requires that the ST Author:<h:ul>
-					<h:li>Not permit Users to invoke management function <xref to="mf-admin-setDefVMConfigs"/>,</h:li>
-					<h:li>Not permit Users to invoke management function <xref to="mf-admin-mediaPolicy"/>,</h:li>
-					<h:li>Require that Administrators be able to invoke management function <xref to="mf-admin-configCrypto"/>, and</h:li>
-					<h:li>Not permit Users to invoke management function <xref to="mf-admin-configCrypto"/>.</h:li>
+					<h:li>Not permit Users to invoke management function <xref to="mf-admin-setDefVMConfigs"/> (<xref to="manfunc"/>),</h:li>
+						<h:li>Not permit Users to invoke management function <xref to="mf-admin-mediaPolicy"/> (<xref to="manfunc"/>),</h:li>
+						<h:li>Require that Administrators be able to invoke management function <xref to="mf-admin-configCrypto"/> (<xref to="manfunc"/>), and</h:li>
+						<h:li>Not permit Users to invoke management function <xref to="mf-admin-configCrypto"/>  (<xref to="manfunc"/>).</h:li>
 					</h:ul>
 				</description>
 <!--				<config>
@@ -410,9 +410,9 @@
 					resources. Client virtualization is generally used on endpoint systems, making use of the local machine's resources (memory, CPU, etc.)
 					to provide isolated user environments.<h:p/>
 					Claiming of the Client Virtualization use case requires that the ST Author:<h:ul>
-					<h:li>Optionally allow Users to invoke management function <xref to="mf-admin-setDefVMConfigs"/>,</h:li>
-					<h:li>Optionally allow Users to invoke management function <xref to="mf-admin-mediaPolicy"/>, and</h:li>
-					<h:li>Optionally allow Administrators and Users to invoke management function <xref to="mf-admin-configCrypto"/>.</h:li>
+						<h:li>Optionally allow Users to invoke management function <xref to="mf-admin-setDefVMConfigs"/>  (<xref to="manfunc"/>),</h:li>
+						<h:li>Optionally allow Users to invoke management function <xref to="mf-admin-mediaPolicy"/>  (<xref to="manfunc"/>), and</h:li>
+						<h:li>Optionally allow Administrators and Users to invoke management function <xref to="mf-admin-configCrypto"/> (<xref to="manfunc"/>).</h:li>
 					</h:ul>
 				</description>
 <!--				<config>
@@ -505,6 +505,9 @@
 				<feature id="key-encap-support" title="Key Encapsulation Support">
 					<description>A conformant TOE is required to implement trusted communications. Depending on the specific protocols used and the supported connection parameters for these protocols, it may be necessary to implement a key encapsulation algorithm as part of key establishment.<h:br/></description>
 				</feature>
+				<feature id="key-wrap-support" title="Key Wrap Support">
+					<description>A conformant TOE is required to implement trusted communications. Depending on the specific protocols used and the supported connection parameters for these protocols, it may be necessary to implement a key wrap algorithm as part of key establishment.<h:br/></description>
+				</feature>
 				<feature id="key-agreement-support" title="Key Agreement Support">
 					<description>A conformant TOE is required to implement trusted communications. Depending on the specific protocols used and the supported connection parameters for these protocols, it may be necessary to implement one or more key agreement algorithms as part of key establishment.<h:br/></description>
 				</feature>
@@ -573,15 +576,16 @@
                     <addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
                     <addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
                     <addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
+                	<addressed-by>FPT_DDI_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another.</rationale>
                     <addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
                     <addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
                     <addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that hypercall parameters be validated.</rationale>
                     <addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
                     <addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>Ensures that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
-                    <addressed-by>FPT_DDI_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
                     <addressed-by>FPT_ML_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
                 	<addressed-by>FCS_CKM.2 (implementation-dependent)</addressed-by><rationale>This threat is mitigated by this SFR by using key encapsulation to distribute cryptographic keys.</rationale>
-                	<addressed-by>FCS_COP.1/KeyEncap (implementation-dependent)</addressed-by> <rationale>This threat is mitigated by this SFR by using a secure key encapsulation method to transmit a symmetric key to a third party as part of key establishment for trusted communications.</rationale>
+                	<addressed-by>FCS_COP.1/KeyEncap (selection-based)</addressed-by> <rationale>This threat is mitigated by this SFR by using a secure key encapsulation method to transmit a symmetric key to a third party as part of key establishment for trusted communications.</rationale>
+                	<addressed-by>FCS_COP.1/KeyWrap (selection-based)</addressed-by> <rationale>This threat is mitigated by this SFR by using a secure key wrap method to transmit a symmetric key to a third party as part of key establishment for trusted communications.</rationale>
                 	<addressed-by>FCS_COP.1/XOF (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by supporting extendable output function implementations that are dependencies of some secure key generation and signature verification algorithms.</rationale>
                 </threat>
                 
@@ -611,8 +615,8 @@
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                     <addressed-by>FTP_UIF_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that users are able to determine the domain with the current input focus.</rationale>
 					<addressed-by>FTP_UIF_EXT.2</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that users can know the identity of any VM that they can access.</rationale>
-                    <addressed-by>FPT_GVI_EXT.1 (optional)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE support guest VM measurements and integrity checks (optional).</rationale>
-                    <addressed-by>FPT_INT_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE support introspection into guest VMs (optional).</rationale>
+                    <addressed-by>FPT_GVI_EXT.1 (optional)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE support Guest VM measurements and integrity checks (optional).</rationale>
+                    <addressed-by>FPT_INT_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE support introspection into Guest VMs (optional).</rationale>
                 	<addressed-by>FCS_COP.1/XOF (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by supporting extendable output function implementations that is a dependency of signature verification algorithms.</rationale>
 				</threat>
                 
@@ -669,7 +673,7 @@
                 	<addressed-by>FCS_COP.1/SigVer</addressed-by><rationale>This threat is mitigated by this SFR by implementing signature verification functions used for protected storage.</rationale>
                 	<addressed-by>FCS_COP.1/SKC</addressed-by><rationale>This threat is mitigated by this SFR by implementing cryptographic confidentiality measures.</rationale>
                     <addressed-by>FCS_RBG.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE uses a cryptographically strong DRBG.</rationale>
-                    <addressed-by>FIA_AFL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE detect failed authentication attempts for administrator access.</rationale>
+                    
                     <addressed-by>FIA_UAU.5</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that strong mechanisms are used for administrator authentication.</rationale>
                     <addressed-by>FIA_UIA_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that administrators be successfully authenticated before performing management functions.</rationale>
                 	<addressed-by>FMT_MOF_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by limiting the management functions to be limited to authorized administrators as managed through controls required by FMT_MOF_EXT.1.</rationale>
@@ -684,6 +688,7 @@
                     <addressed-by>FCS_RBG.3 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that entropy data used for DRBG seeding is sufficiently unpredictable to result in the generation of strong keys.</rationale>
                     <addressed-by>FCS_RBG.4 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that entropy data used for DRBG seeding is sufficiently unpredictable to result in the generation of strong keys.</rationale>
                     <addressed-by>FCS_RBG.5 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that entropy data used for DRBG seeding is sufficiently unpredictable to result in the generation of strong keys.</rationale>
+                	<addressed-by>FIA_AFL_EXT.1 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE detect failed authentication attempts for administrator access.</rationale>
                     <addressed-by>FIA_PMG_EXT.1 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that password-based administrator login is properly implemented.</rationale>
                     <addressed-by>FIA_X509_EXT.4 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by requiring an exception to be met without the need to validate the revocation of the certificate.</rationale>
                     <addressed-by>FTP_TRP.1 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that certain communications use a trusted path.</rationale>
@@ -702,6 +707,7 @@
 					<addressed-by>FAU_SAR.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for administrator review of audit records.</rationale>
 					<addressed-by>FAU_STG.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for protected transmission of audit records off the TOE.</rationale>
 					<addressed-by>FAU_STG.2</addressed-by><rationale>This threat is mitigated by this SFR by requiring protection of stored audit records.</rationale>
+                	<addressed-by>FAU_STG.5</addressed-by><rationale>This threat is mitigated by this SFR by taking some action to ensure that exhaustion of audit storage does not allow for activities to be performed without auditing.</rationale>
                     <addressed-by>FCS_CKM.1/AKG</addressed-by><rationale>This threat is mitigated by this SFR by requiring generation of asymmetric keys for protection of integrity measures.</rationale>
                 	<addressed-by>FCS_CKM.1/SKG</addressed-by><rationale>This threat is mitigated by this SFR by requiring generation of symmetric keys for protection of integrity measures.</rationale>
                 	<addressed-by>FCS_COP.1/AEAD</addressed-by><rationale>This threat is mitigated by this SFR by implementing authenticated encryption measures.</rationale>
@@ -712,6 +718,7 @@
                 	<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
 					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
 					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
+                	<addressed-by>FPT_DDI_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another.</rationale>
                     <addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
 					<addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
 					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that hypercall parameters be validated.</rationale>
@@ -719,7 +726,7 @@
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
                     <addressed-by>FAU_ARP.1 (optional)</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for automatic responses to audit events (optional).</rationale>
 					<addressed-by>FAU_SAA.1 (optional)</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for rules for indicating security violations based on audit events (optional).</rationale>
-					<addressed-by>FPT_DDI_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
+					
 					<addressed-by>FPT_ML_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
                 	<addressed-by>FCS_COP.1/XOF (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by supporting extendable output function implementations to prevent the execution of modified code.</rationale>
 				</threat>
@@ -740,12 +747,13 @@
                 	<addressed-by>FDP_PPR_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring support for reducing attack surface through disabling access to unneeded physical platform resources.</rationale>
 					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
 					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
+                	<addressed-by>FPT_DDI_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another.</rationale>
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
                     <addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
 					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that hypercall parameters be validated.</rationale>
                     <addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
-                    <addressed-by>FPT_DDI_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another.</rationale>
+                    
 					<addressed-by>FPT_ML_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
 					<addressed-by>FMT_MOF_EXT.1</addressed-by><rationale>This SFR mitigates this threat by ensuring that the only way to modify the VS is through a trusted update process initiated by an authorized administrator as required by FMT_MOF_EXT.1.</rationale>	
                 	<addressed-by>FCS_COP.1/XOF (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by supporting extendable output function implementations to prevent modification of the virtualization system's behavior.</rationale>
@@ -797,13 +805,14 @@
 					<addressed-by>FDP_RIP_EXT.2</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that domain data is cleared from physical storage upon re-allocation of the storage.</rationale>
 					<addressed-by>FDP_VMS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that authorized data transfers between VMs are done securely.</rationale>
 					<addressed-by>FDP_VNC_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that network traffic is visible only to VMs configured to be that network.</rationale>
+                	<addressed-by>FPT_DDI_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another.</rationale>
 					<addressed-by>FPT_DVD_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that VMs can access only those virtual devices that they are configured to access.</rationale>
 					<addressed-by>FPT_EEM_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use security mechanisms supported by the physical platform.</rationale>
                     <addressed-by>FPT_HAS_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that the TOE use platform-supported virtualization assists to reduce attack surface.</rationale>
 					<addressed-by>FPT_HCL_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring that hypercall parameters be validated.</rationale>
                     <addressed-by>FPT_VDP_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by requiring validation of parameter data passed to the hardware abstraction by untrusted VMs.</rationale>
 					<addressed-by>FPT_VIV_EXT.1</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that untrusted VMs cannot invoke privileged code without proper hypervisor mediation.</rationale>
-                    <addressed-by>FPT_DDI_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring that physical device drivers be isolated other parts of the TOE and from one another (optional).</rationale>
+                    
 					<addressed-by>FPT_ML_EXT.1 (objective)</addressed-by><rationale>This threat is mitigated by this SFR by requiring measured launch of the platform and VMM (objective).</rationale>
 				</threat>
                 
@@ -1047,7 +1056,11 @@
                             </Tests>   
                         </aactivity>
                     </f-element>
-					<audit-event/>
+					<audit-event>
+						<audit-event-descr>
+							On failure of logging function, capture record of failure and record upon restart of logging function.
+						</audit-event-descr>
+					</audit-event>
 				</f-component>
 		    
                 
@@ -1118,7 +1131,7 @@
                     <f-element id="fau-stg-1e1">
                         <title>
 							The TSF shall be able to <h:s>store generated audit data on the</h:s> 
-								[<h:i>transmit the generated audit data to an external IT entity using a trusted channel according to FTP_ITC</h:i>].						
+								[<h:i>transmit the generated audit data to an external IT entity using a trusted channel according to FTP_ITC_EXT.1</h:i>].						
                         </title>
                         <aactivity>
                             Protocols used for implementing the trusted channel must be selected in FTP_ITC_EXT.1.
@@ -1151,17 +1164,7 @@
                             </Tests>
                         </aactivity>
                     </f-element>
-                    
-					<audit-event>
-                        <audit-event-descr>
-							Failure of audit data capture due to lack of disk space or pre-defined limit.
-                        </audit-event-descr>
-					</audit-event>
-					<audit-event>
-                        <audit-event-descr>
-							On failure of logging function, capture record of failure and record upon restart of logging function.
-                        </audit-event-descr>
-					</audit-event>
+                <audit-event/>
                 </f-component>
                 
                 <f-component cc-id="fau_stg.2" name="Protected Audit Trail Storage">
@@ -1203,8 +1206,7 @@
 				
 				<f-component cc-id="fau_stg.5" name="Prevention of Audit Data Loss">
 					<f-element id="fau-stg-5e1">
-                        <title>The TSF shall <selectables><selectable>ignore audited events</selectable><selectable>“prevent audited
-``							events, except those taken by the authorized user with special rights”</selectable><selectable>overwrite the oldest
+                        <title>The TSF shall <selectables><selectable>ignore audited events</selectable><selectable>prevent audited events except those taken by the authorized user with special rights</selectable><selectable>overwrite the oldest
 							stored audit records</selectable></selectables>, <assignable>other actions to be taken in case of audit storage 
 							failure and conditions for the actions</assignable> if the audit data storage is full.</title>
                         <note role="application">An external log server, if available, might be used as alternative storage space
@@ -1231,6 +1233,12 @@
                             </Tests>
                         </aactivity>
                     </f-element> 
+					
+					<audit-event>
+						<audit-event-descr>
+							Failure of audit data capture due to lack of disk space or pre-defined limit.
+						</audit-event-descr>
+					</audit-event>
 				</f-component>
 			    
             </section>
@@ -1341,10 +1349,10 @@
                     				</col>
                     			</selectable>
                     			
-                    			<!-- FFC-RS - Extra Random Bits -->
+                    			<!-- FFC-RS - Rejection Sampling -->
                     			<selectable id="sel-fcs-ckm-ak-ffc-rs">
                     				<col>FFC-RS</col>
-                    				<col>FFC-RS - Extra Random Bits</col>
+                    				<col>FFC-RS - Rejection Sampling</col>
                     				<col>Static domain parameters approved for <selectables>
                     					<selectable>IKE Groups <selectables>
                     						<selectable id="sel-dp-ak-ffc-rs-modp3072">MODP-3072</selectable>
@@ -1912,10 +1920,16 @@
             	</f-component>
 
             	<f-component cc-id="fcs_ckm.2" name="Cryptographic Key Distribution" status="feat-based">
-            		<depends on="key-encap-support"/>            		
+            		<depends on="key-encap-support"/> 
+            		<depends on="key-wrap-support"/>
             		<f-element id="fel-crypt-key-estab">
             			<title>The TSF shall distribute cryptographic keys in accordance with a specified cryptographic 
-            				key distribution method [<h:i>key encapsulation</h:i>] that meets the following:
+            				key distribution method <selectables>
+            					<selectable id="sel-ckm-2-encap">key encapsulation</selectable>
+            					<selectable id="sel-ckm-2-wrap">key wrapping</selectable>
+            				</selectables> 
+            				
+            				[<h:i>key encapsulation</h:i>] that meets the following:
             				[<h:i>none</h:i>].
             			</title>            				
             			<aactivity>
@@ -1932,7 +1946,7 @@
             					how to configure the TOE to use the selected key distribution methods.
             				</Guidance>
             				<Tests>
-            					Specific testing for this component is covered by testing for the claimed components in
+            					Specific testing for this component is covered by testing for the claimed components in FCS_COP.1/KeyEncap or
             					FCS_COP.1/KeyWrap, depending on selections made.
             				</Tests>
             			</aactivity>
@@ -2406,6 +2420,18 @@
             							completion of the selection operations of FCS_COP.1/AEAD.</reqtext>
             					</tabularize>
             					
+            					<selectable id="sel-fcs-cop-aead-aes-ccm">
+            						<col>AES-CCM</col>
+            						<col>AES in CCM mode with unpredictable, non-repeating nonce, minimum size of 64 bits</col>
+            						<col>256 bits</col>
+            						<col><selectables>
+            							<selectable>ISO/IEC 18033-3:2010 (Subclause 5.2)</selectable>
+            							<selectable>FIPS PUB 197</selectable></selectables> [AES]<h:p/>
+            							<selectables>
+            								<selectable>ISO/IEC 19772:2020 (Clause 7)</selectable> 
+            								<selectable>NIST SP 800-38C</selectable></selectables> [CCM]
+            						</col></selectable>
+            					
             					<selectable id="sel-fcs-cop-aead-aes-gcm">
             						<col>AES-GCM</col>
             						<col>AES in GCM mode with non-repeating IVs using <selectables>
@@ -2430,8 +2456,7 @@
             						</col></selectable>
             				</selectables>
             			</title>
-            			<note role="application">              
-            				<h:p/>
+            			<note role="application">
             				The use of 256-bit keys for AES encryption is required by CNSA 1.0 and 2.0.
             			</note>
             			<aactivity>
@@ -2458,6 +2483,60 @@
             					itself, the test platform shall be identified and the differences between test
             					environment and TOE execution environment shall be described.<h:p/>
             					
+            					<!-- AES-CCM -->
+            					<h:br/><h:b>AES-CCM</h:b><h:p/>
+            					<h:table border="1">
+            						<h:tr class="header" bgcolor="#cccccc">
+            							<h:td valign="top">Identifier</h:td>
+            							<h:td valign="top">Cryptographic Algorithm</h:td>
+            							<h:td valign="top">Cryptographic Key Sizes</h:td>
+            							<h:td valign="top">List of Standards</h:td>
+            						</h:tr>
+            						<h:tr>
+            							<h:td valign="top">AES-CCM </h:td>
+            							<h:td valign="top">AES in CCM mode with nonrepeating nonce, minimum size
+            								of 64 bits</h:td>
+            							<h:td valign="top">256 bits</h:td>
+            							<h:td valign="top">
+            								[<h:b>selection:</h:b> ISO/IEC 18033-3:2010 (Subclause 5.2),
+            								FIPS PUB 197] [AES]<h:p/>
+            								[<h:b>selection:</h:b>  ISO/IEC 19772:2020 (Clause 7), NIST SP 800-38C] [CCM]</h:td>
+            						</h:tr>
+            					</h:table><h:p/>	
+            					To test the TOE’s implementation of AES-CCM authenticated encryption functionality the
+            					evaluator shall perform the Algorithm Functional Tests described below using the following
+            					input parameters:<h:ul>
+            						<h:li>Key Size [256] bits</h:li>
+            						<h:li>Associated data size [0-65536] bits in increments of 8</h:li>
+            						<h:li>Payload size [0-256] bits in increments of 8</h:li>
+            						<h:li>IV/Nonce size [64-104] bits in increments of 8</h:li>
+            						<h:li>Tag size [32-128] bits in increments of 16</h:li></h:ul><h:p/>
+            					<h:br/><h:b>Algorithm Functional Tests</h:b><h:p/>
+            					Unless otherwise specified, the following tests should use random data, a tag size of 128 bits,
+            					IV/Nonce size of 104 bits, payload size of 256 bits, and associated data size of 256 bits. If any of
+            					these values are not supported, any supported value may be used. The evaluator shall compare
+            					the output from each test case against results generated by a known-good implementation with
+            					the same input parameters.<h:p/>
+            					<h:br/><h:b><h:i>Variable Associated Data Test</h:i></h:b><h:p/>
+            					For each claimed key size, and for each supported associated data size from 0 through 256 bits in
+            					increments of 8 bits, the TOE must be tested by encrypting 10 test cases using all random data.
+            					In addition, for each key size, the TOE must be tested by encrypting 10 cases with associated
+            					data lengths of 65536 bits, if supported.<h:p/>				
+            					<h:br/><h:b><h:i>Variable Payload Test</h:i></h:b><h:p/>
+            					For each claimed key size, and for each supported payload size from 0 through 256 bits in
+            					increments of 8 bits, the TOE must be tested by encrypting 10 test cases using all random data.<h:p/>
+            					<h:br/><h:b><h:i>Variable Nonce Test</h:i></h:b><h:p/>
+            					For each claimed key size, and for each supported IV/Nonce size from 64 through 104 bits in
+            					increments of 8 bits, the TOE must be tested by encrypting 10 test cases using all random data.<h:p/>
+            					<h:br/><h:b><h:i>Variable Tag Test</h:i></h:b><h:p/>
+            					For each claimed key size, and for each supported tag size from 32 through 128 bits in
+            					increments of 16 bits, the TOE must be tested by encrypting 10 test cases using all random data.<h:p/>
+            					<h:br/><h:b><h:i>Decryption Verification Test</h:i></h:b><h:p/>
+            					For each claimed key size, for each supported associated data size from 0 through 256 bits in
+            					increments of 8 bits, for each supported payload size from 0 through 256 bits in increments of 8
+            					bits, for each supported IV/Nonce size from 64 through 104 bits in increments of 8 bits, and for
+            					each supported tag size from 32 through 128 bits in increments of 16 bits, the TOE must be
+            					tested by decrypting 10 test cases using all random data.<h:p/>					
             					
             					<!-- AES-GCM -->
             					<h:br/><h:b>AES-GCM</h:b><h:p/>
@@ -2798,8 +2877,8 @@
                 </f-component>
  		    
             	<f-component id="sfr-fcs-cop-1-keyencap" cc-id="fcs_cop.1" iteration="KeyEncap" 
-            		name="Cryptographic Operation - Key Encapsulation" status="feat-based">
-            		<depends on="key-encap-support"/>    
+            		name="Cryptographic Operation - Key Encapsulation" status="sel-based">
+            		<depends on-sel="sel-ckm-2-encap"/> 
             		<f-element id="fcs-cop-1e1-keyencap">
             			<title> The TSF shall perform [key encapsulation] in accordance with a specified cryptographic algorithm 
             				<selectables>
@@ -2903,6 +2982,186 @@
             					corresponding shared secret <h:i>k</h:i> whether or not the ciphertext is valid. To determine correctness,
             					the evaluator shall compare the resulting values with those generated using a known-good
             					implementation using the same inputs.<h:p/>						
+            				</Tests>
+            			</aactivity>
+            		</f-element>
+            		<audit-event/>
+            	</f-component>
+            	
+            	
+            	<!-- FCS_COP.1/KeyWrap Cryptographic Operation - Key Wrapping -->
+            	<f-component id="sfr-fcs-cop-1-kw" cc-id="fcs_cop.1" iteration="KeyWrap" 
+            		name="Cryptographic Operation - Key Wrapping" status="sel-based">
+            		<depends on-sel="sel-ckm-2-wrap"/>
+  
+            		<f-element id="fcs-cop-1e1-kw">
+            			<title>
+            				The TSF shall perform [key wrapping] in accordance with a specified cryptographic algorithm 
+            				<selectables>
+            					<tabularize id="fcs-cop-kw-sels" title="Allowable choices for FCS_COP.1/KeyWrap">
+            						<textcol>Identifier</textcol>
+            						<reqtext></reqtext>
+            						<selectcol>Cryptographic algorithm</selectcol>
+            						<reqtext>and cryptographic key sizes</reqtext>
+            						<selectcol>Cryptographic key sizes</selectcol>
+            						<reqtext>that meet the following:</reqtext>
+            						<selectcol>List of standards</selectcol>
+            						<reqtext><h:p/><h:p/>The following table provides the allowable choices for
+            							completion of the selection operations of FCS_COP.1/KeyWrap.</reqtext>
+            					</tabularize>
+            					
+            					<!-- AES-KW  -->
+            					<selectable id="sel-fcs-cop-kw-aes-kw">
+            						<col>AES-KW</col>
+            						<col>AES in KW mode</col>
+            						<col>256 bits</col>
+            						<col><selectables>
+            							<selectable>ISO/IEC 18033-3:2010 (Subclause 5.2)</selectable>
+            							<selectable>FIPS PUB 197</selectable></selectables> [AES]<h:p/>
+            							<selectables>
+            								<selectable>ISO/IEC 19772:2020 (clause 6)</selectable>
+            								<selectable>NIST SP 800-38F (Section 6.2)</selectable> 
+            							</selectables> [KW mode]</col>
+            					</selectable>
+            					
+            					<!-- KWP mode -->
+            					<selectable id="sel-fcs-cop-kw-aes-kwp">
+            						<col>AES-KWP</col>
+            						<col>AES in KWP mode</col>
+            						<col>256 bits</col>
+            						<col><selectables>
+            							<selectable>ISO/IEC 18033-3:2010 (Subclause 5.2)</selectable>
+            							<selectable>FIPS PUB 197</selectable></selectables> [AES]<h:p/>
+            							NIST SP 800-38F (Section 6.3) [KWP mode]</col>
+            					</selectable>
+            					
+            					<selectable id="sel-fcs-cop-kw-aes-ccm">
+            						<col>AES-CCM</col>
+            						<col>AES in CCM mode with unpredictable, non-repeating nonce, minimum size of 64 bits</col>
+            						<col>256 bits</col>
+            						<col><selectables>
+            							<selectable>ISO/IEC 18033-3:2010 (Subclause 5.2)</selectable>
+            							<selectable>FIPS PUB 197</selectable></selectables> [AES]<h:p/>
+            							<selectables>
+            								<selectable>ISO/IEC 19772:2020 (Clause 7)</selectable> 
+            								<selectable>NIST SP 800-38C</selectable></selectables> [CCM]
+            						</col></selectable>
+            					
+            					<selectable id="sel-fcs-cop-kw-aes-gcm">
+            						<col>AES-GCM</col>
+            						<col>AES in GCM mode with non-repeating IVs using <selectables>
+            							<selectable>deterministic</selectable>
+            							<selectable>RBG-based</selectable></selectables>,
+            							IV construction; the tag must be of length
+            							<selectables>
+            								<selectable>96</selectable>
+            								<selectable>104</selectable>
+            								<selectable>112</selectable>
+            								<selectable>120</selectable>
+            								<selectable>128</selectable>
+            							</selectables> bits.
+            						</col>
+            						<col>256 bits</col>
+            						<col><selectables>
+            							<selectable>ISO/IEC 18033-3:2010 (Subclause 5.2)</selectable>
+            							<selectable>FIPS PUB 197</selectable></selectables> [AES]<h:p/>
+            							<selectables>
+            								<selectable>ISO/IEC 19772:2020 (Clause 10)</selectable> 
+            								<selectable>NIST SP 800-38D</selectable></selectables> [GCM]
+            						</col></selectable>
+            				</selectables>
+            			</title>
+            			<note role="application">
+            				NIST 800-57p1rev5 sec. 5.6.2 specifies that the size of key used to protect the key being 
+            				transported should be at least the security strength of the key it is protecting.
+            			</note>
+            			<aactivity>
+            				<TSS>
+            					The evaluator shall ensure that the TSS documents that the selection of the key size is
+            					sufficient for the security strength of the key wrapped.<h:p/>
+            					The evaluator shall examine the TSS to ensure that it describes the construction of any IVs,
+            					nonces, and MACs in conformance with the relevant specifications.
+            				</TSS>
+            				<Guidance/>
+            				<Tests>
+            					For tests of AES-GCM and AES-CCM, see testing for FCS_COP.1/AEAD.<h:p/>
+            					The following tests are conditional based upon the selections made in the SFR. The evaluator
+            					shall perform the following test or witness respective tests executed by the developer. The tests
+            					must be executed on a platform that is as close as practically possible to the operational platform
+            					(but which may be instrumented in terms of, for example, use of a debug mode). Where the test
+            					is not carried out on the TOE itself, the test platform shall be identified and the differences
+            					between test environment and TOE execution environment shall be described.<h:p/>
+            					
+            					<!-- AES-KW -->
+            					<h:br/><h:b>AES-KW</h:b><h:p/>
+            					<h:table border="1">
+            						<h:tr class="header" bgcolor="#cccccc">
+            							<h:td valign="top">Identifier</h:td>
+            							<h:td valign="top">Cryptographic Algorithm</h:td>
+            							<h:td valign="top">Cryptographic Key Sizes</h:td>
+            							<h:td valign="top">List of Standards</h:td>
+            						</h:tr>
+            						<h:tr>
+            							<h:td valign="top">AES-KW</h:td>
+            							<h:td valign="top">AES in KW mode</h:td>
+            							<h:td valign="top">256 bits</h:td>
+            							<h:td valign="top">[<h:b>selection:</h:b> ISO/IEC 18033-3:2010 (Subclause 5.2),
+            								FIPS PUB 197] [AES]<h:p/>
+            								[<h:b>selection:</h:b> ISO/IEC 19772:2020 (clause 6), 
+            								NIST SP 800-38F (Section 6.2)] [KW mode] </h:td>
+            						</h:tr>
+            					</h:table><h:p/>	
+            					To test the TOE’s ability to wrap keys using AES in Key Wrap mode the evaluator shall perform
+            					the Algorithm Functional Tests using the following input parameters:<h:ul>
+            						<h:li>Key size [256] bits</h:li>
+            						<h:li>Keyword cipher type [cipher, inverse]</h:li>
+            						<h:li>Payload sizes [128-4096] bits by 64s</h:li></h:ul><h:p/>
+            					<h:br/><h:b>Algorithm Functional Test</h:b><h:p/>
+            					The evaluator shall generate 100 encryption test cases using random data for each combination
+            					of claimed key size, keyword cipher type, and six supported payload sizes such that the payload
+            					sizes include the minimum, the maximum, two that are divisible by 128, and two that are not
+            					divisible by 128.<h:p/>
+            					The results shall be compared with those generated by a known-good implementation using the
+            					same inputs.<h:p/>
+            					The evaluator shall generate 100 decryption test cases using the same parameters as above, but
+            					with 20 of each 100 test cases having modified ciphertext to produce an incorrect result. To
+            					determine correctness, the evaluator shall confirm that the results correspond as expected for
+            					both the modified and unmodified values.<h:p/>
+            					
+            					<!-- AES-KWP -->
+            					<h:br/><h:b>AES-KWP</h:b><h:p/>
+            					<h:table border="1">
+            						<h:tr class="header" bgcolor="#cccccc">
+            							<h:td valign="top">Identifier</h:td>
+            							<h:td valign="top">Cryptographic Algorithm</h:td>
+            							<h:td valign="top">Cryptographic Key Sizes</h:td>
+            							<h:td valign="top">List of Standards</h:td>
+            						</h:tr>
+            						<h:tr>
+            							<h:td valign="top">AES-KWP</h:td>
+            							<h:td valign="top">AES in KWP mode</h:td>
+            							<h:td valign="top">256 bits</h:td>
+            							<h:td valign="top">[<h:b>selection:</h:b> ISO/IEC 18033-3:2010 (Subclause 5.2),
+            								FIPS PUB 197] [AES]<h:p/>
+            								NIST SP 800-38F (Section 6.3) [KWP mode] </h:td>
+            						</h:tr>
+            					</h:table><h:p/>	
+            					To test the TOE’s ability to wrap keys using AES in Key Wrap with Padding mode with padding
+            					the evaluator shall perform the Algorithm Functional Tests using the following input parameters:<h:ul>
+            						<h:li>Key size [256] bits</h:li>
+            						<h:li>Keyword cipher type [cipher, inverse]</h:li>
+            						<h:li>Payload sizes [8-4096] bits by 8s</h:li></h:ul><h:p/>
+            					<h:br/><h:b>Algorithm Functional Test</h:b><h:p/>
+            					The evaluator shall generate 100 encryption test cases using random data for each combination
+            					of claimed key size, keyword cipher type, and six supported payload sizes such that the payload
+            					sizes include the minimum, the maximum, two that are divisible by 128, and two that are not
+            					divisible by 128.<h:p/>
+            					The results shall be compared with those generated by a known-good implementation using the
+            					same inputs.<h:p/>
+            					The evaluator shall generate 100 decryption test cases using the same parameters as above, but
+            					with 20 of each 100 test cases having modified ciphertext to produce an incorrect result. To
+            					determine correctness, the evaluator shall confirm that the results correspond as expected for
+            					both the modified and unmodified values.<h:p/>					
             				</Tests>
             			</aactivity>
             		</f-element>
@@ -3732,253 +3991,270 @@
                 		<external-doc ref="tls"/>
                 	</depends>
                     <f-element id="fcs-cop-1e1-skc">
-                    	<title>
-                    		The TSF shall perform [<h:i>symmetric-key encryption and decryption</h:i>] in accordance with a 
-                    		specified cryptographic algorithm   
-                    		<selectables>
-                    			<tabularize id="fcs-cop-skc-sels" title="Allowable Choices for FCS_COP.1/SKC">
-                    				<textcol>Identifier</textcol>
-                    				<reqtext></reqtext>
-                    				<selectcol>Cryptographic Algorithm</selectcol>
-                    				<reqtext>and cryptographic key sizes</reqtext>
-                    				<selectcol>Cryptographic Key Sizes</selectcol>
-                    				<reqtext>that meet the following:</reqtext>
-                    				<selectcol>List of Standards</selectcol>
-                    				<reqtext><h:p/><h:p/>The following table provides the allowable choices for
-                    					completion of the selection operations in FCS_COP.1/SKC.</reqtext>							
-                    			</tabularize>
-                    			
-                    			<!-- AES-CBC -->
-                    			<selectable id="sel-fcs-cop-skc-aes-cbc">
-                    				<col>AES-CBC</col>
-                    				<col>AES in CBC mode with non-repeating and unpredictable IVs</col>
-                    				<col>256 bits</col>
-                    				<col><selectables>
-                    					<selectable><h:i>ISO/IEC 18033-3:2010 (Subclause 5.2)</h:i></selectable> 
-                    					<selectable><h:i>FIPS PUB 197</h:i></selectable></selectables> [AES]<h:p/><selectables>
-                    						<selectable><h:i>ISO/IEC 10116:2017 (Clause 7)</h:i></selectable> 
-                    						<selectable><h:i>NIST SP 800-38A</h:i></selectable></selectables> [CBC]
-                    				</col>
-                    			</selectable>
-                    		</selectables>
-                    	</title>
-                        <note role="application">For the first selection of FCS_COP.1.1/SKC, the ST author should choose the mode or
-							modes in which AES operates. For the second selection, the ST author should choose the key sizes that
-							are supported by this functionality.</note>
-						<aactivity>
-							<TSS>
-								The evaluator shall examine the TSS to ensure that it describes the construction of any IVs,
-								tweak values, and counters in conformance with the relevant specifications.<h:p/>
-								If XTS-AES is claimed then the evaluator shall examine the TSS to verify that the TOE creates
-								full-length keys by methods that ensure that the two key halves are different and independent.
-							</TSS>
-							<Guidance/>
-							<Tests>
-								The following tests require the developer to provide access to a test platform that
-								provides the evaluator with tools that are typically not found on factory products.<h:p/>
-								The following tests are conditional based on the selections made in the SFR. The
-								evaluator shall perform the following tests or witness respective tests executed by
-								the developer. The tests must be executed on a platform that is as close as practically
-								possible to the operational platform (but which may be instrumented in terms of,
-								for example, use of a debug mode). Where the test is not carried out on the TOE
-								itself, the test platform shall be identified and the differences between test
-								environment and TOE execution environment shall be described.
-								
-								<!-- AES-CBC -->
-								<h:br/><h:b>AES-CBC</h:b><h:p/>
-								<h:table border="1">
-									<h:tr class="header" bgcolor="#cccccc">
-										<h:td valign="top">Identifier</h:td>
-										<h:td valign="top">Cryptographic Algorithm</h:td>
-										<h:td valign="top">Cryptographic Key Sizes</h:td>
-										<h:td valign="top">List of Standards</h:td>
-									</h:tr>
-									<h:tr>
-										<h:td valign="top">AES-CBC</h:td>
-										<h:td valign="top">AES in CBC mode with non-repeating and unpredictable IVs</h:td>
-										<h:td valign="top">256 bits</h:td>
-										<h:td valign="top">
-											[<h:b>selection:</h:b> <h:i>ISO/IEC 18033-3:2010 (Subclause 5.2),
-												FIPS PUB 197</h:i>] [AES]<h:p/>
-											[<h:b>selection:</h:b>  <h:i>ISO/IEC 10116:2017 (Clause 7), 
-												NIST SP 800-38A</h:i>] [CBC]</h:td>
-									</h:tr>
-								</h:table><h:p/>	
-								
-								To test the TOE’s ability to encrypt and decrypt data using AES in CBC mode, the evaluator 
-								shall perform Algorithm Functional Tests and Monte Carlo Tests using the following
-								input parameters:<h:ul>
-									<h:li>Key size [256] bits</h:li>
-									<h:li>Direction [encryption, decryption]</h:li></h:ul><h:p/>
-								<h:br/><h:b>Algorithm Functional Tests</h:b><h:p/>
-								Algorithm Functional Tests are designed to verify the correct operation of the logical
-								components of the algorithm implementation under normal operation using different block sizes.
-								For AES-CBC, there are two types of AFTs:<h:p/>
-								<h:br/><h:b><h:i>Known-Answer Tests</h:i></h:b><h:p/>
-								For each combination of direction and claimed key size, the TOE must be tested using the
-								GFSBox, KeySbox, VarTxt, and VarKey test cases listed in Appendixes B through E of <h:i>The
-									Advanced Encryption Standard Algorithm Validation Suite (AESAVS)</h:i>, NIST, 15 November 2002.<h:p/>
-								<h:br/><h:b><h:i>Multi-Block Message Tests</h:i></h:b><h:p/>
-								For each combination of direction and claimed key size, the TOE must be tested against 10 test
-								cases consisting of a random IV, random key, and random plaintext or ciphertext. The
-								plaintext or ciphertext starts with a length of 16 bytes and increases by 16 bytes for each test case
-								until reaching 160 bytes.<h:p/>
-								<h:br/><h:b><h:i>Monte Carlo Tests</h:i></h:b><h:p/>
-								Monte Carlo tests are intended to test the implementation under strenuous conditions. The TOE
-								must process the test cases according to the following algorithm once for each combination of
-								direction and key size:<h:p/>
-								<h:pre>
-									Key[0] = Key
-									IV[0] = IV
-									PT[0] = PT
-									for i = 0 to 99 {
-									Output Key[i], IV[i], PT[0]
-									for j = 0 to 999 {
-									if (j == 0) {
-									CT[j] = AES-CBC-Encrypt(Key[i], IV[i], PT[j])
-									PT[j+1] = IV[i]
-									} else {
-									CT[j] = AES-CBC-Encrypt(Key[i], PT[j])
-									PT[j+1] = CT[j-1]
-									}
-									}
-									Output CT[j]
-									AES_KEY_SHUFFLE(Key, CT)
-									IV[i+1] = CT[j]
-									PT[0] = CT[j-1]
-									}
-								</h:pre><h:p/>	
-								where <h:pre>AES_KEY_SHUFFLE</h:pre> is defined as: <h:p/>
-								<h:pre>
-									If ( keylen = 128 )
-									Key[i+1] = Key[i] xor MSB(CT[j], 128)
-									If ( keylen = 192 )
-									Key[i+1] = Key[i] xor (LSB(CT[j-1], 64) || MSB(CT[j], 128))
-									If ( keylen = 256 )
-									Key[i+1] = Key[i] xor (MSB(CT[j-1], 128) || MSB(CT[j], 128))
-								</h:pre><h:p/>
-								The above pseudocode is for encryption. For decryption, swap all instances of CT and PT.<h:p/>
-								The initial IV, key, and plaintext or ciphertext should be random.<h:p/>
-								The evaluator shall test the decrypt functionality using the same test as above,
-								exchanging CT and PT, and replacing AES-CBC-Encrypt with AES-CBC-Decrypt.<h:p/>
-								
-								
-								<!-- XTS-AES -->
-								<h:br/><h:b>XTS-AES</h:b><h:p/>
-								<h:table border="1">
-									<h:tr class="header" bgcolor="#cccccc">
-										<h:td valign="top">Identifier</h:td>
-										<h:td valign="top">Cryptographic Algorithm</h:td>
-										<h:td valign="top">Cryptographic Key Sizes</h:td>
-										<h:td valign="top">List of Standards</h:td>
-									</h:tr>
-									<h:tr>
-										<h:td valign="top">XTS-AES</h:td>
-										<h:td valign="top">AES in XTS mode with unique tweak values that are consecutive
-											non-negative integers starting at an arbitrary non-negative integer</h:td>
-										<h:td valign="top">512 bits</h:td>
-										<h:td valign="top">
-											[<h:b>selection:</h:b> <h:i>ISO/IEC 18033-3:2010 (Subclause 5.2),
-												FIPS PUB 197</h:i>] [AES]<h:p/>
-											[<h:b>selection:</h:b> <h:i>IEEE Std. 1619-2018, 
-												NIST SP 800-38E</h:i>] [XTS]</h:td>
-									</h:tr>
-								</h:table><h:p/>	
-								To test the TOE’s ability to encrypt and decrypt data using AES in XTS mode, the evaluator shall
-								perform the Single Data Unit Test and the Multiple Data Unit Test using the following input
-								parameters:<h:ul>
-									<h:li>Direction [encryption, decryption]</h:li>
-									<h:li>Key size [512] bits</h:li>
-									<h:li>Tweak value format [128-bit hex string, data unit sequence number]</h:li></h:ul><h:p/>
-								<h:br/><h:b>Single Data Unit Test</h:b><h:p/>
-								For each combination of claimed key size, direction, and supported tweak value format, the
-								evaluator shall generate 50 test cases consisting of random payload data. The payload data size is
-								determined randomly for each test case from supported values within the range [128-65536] bits.
-								The payload size and data unit size must be equal.<h:p/>
-								<h:br/><h:b>Multiple Data Unit Test</h:b><h:p/>
-								For each combination of claimed key size, direction, and supported tweak value format, the
-								evaluator shall generate 50 test cases consisting of random payload data. The payload data size is
-								determined randomly for each test case from supported values within the range [128-65536] bits.
-								Likewise, the data unit size is determined randomly for each test case from supported values
-								within the range [128-65535] bits. The payload size and data unit size must not be equal.<h:p/>
-								The evaluator shall verify the correctness of the TSF’s implementation by comparing values
-								generated by the TSF with those generated by a known good implementation using the same
-								input parameters.<h:p/>
-								
-								<!-- AES-CTR -->
-								<h:br/><h:b>AES-CTR</h:b><h:p/>
-								<h:table border="1">
-									<h:tr class="header" bgcolor="#cccccc">
-										<h:td valign="top">Identifier</h:td>
-										<h:td valign="top">Cryptographic Algorithm</h:td>
-										<h:td valign="top">Cryptographic Key Sizes</h:td>
-										<h:td valign="top">List of Standards</h:td>
-									</h:tr>
-									<h:tr>
-										<h:td valign="top">AES-CTR</h:td>
-										<h:td valign="top">AES in Counter Mode with a non-repeating initial counter and
-											with no repeated use of counter values across multiple messages with the 
-											same secret key.</h:td>
-										<h:td valign="top">256 bits</h:td>
-										<h:td valign="top">
-											[<h:b>selection:</h:b> <h:i>ISO/IEC 18033-3:2010 (Subclause 5.2),
-												FIPS PUB 197</h:i>] [AES]<h:p/>
-											[<h:b>selection:</h:b>  <h:i>ISO/IEC 10116:2017 (Clause 10), 
-												NIST SP 800-38A</h:i>] [CTR]</h:td>
-									</h:tr>
-								</h:table><h:p/>	
-								To test the TOE’s ability to encrypt and decrypt data using AES in CTR mode, the evaluator shall
-								perform the Algorithm Functional Test and the Counter Test using the following input
-								parameters:<h:ul>
-									<h:li>Direction [encryption, decryption]</h:li>
-									<h:li>Key size [256] bits</h:li></h:ul><h:p/>
-								<h:br/><h:b>Algorithm Functional Tests</h:b><h:p/>
-								Algorithm Functional Tests are designed to verify the correct operation of the logical
-								components of the algorithm implementation under normal operation using different block sizes.
-								For AES-CTR, there are three types of AFTs:<h:p/>
-								<h:br/><h:b><h:i>Known-Answer Tests</h:i></h:b><h:p/>
-								For each combination of direction and claimed key size, the TOE must be tested using the
-								GFSBox, KeySbox, VarTxt, and VarKey test cases listed in Appendixes B through E of <h:i>The
-									Advanced Encryption Standard Algorithm Validation Suite (AESAVS)</h:i>, NIST, 15 November 2002.<h:p/>
-								<h:br/><h:b><h:i>Single Block Message Tests</h:i></h:b><h:p/>
-								For each combination of direction and claimed key, the evaluator shall generate 10 test cases
-								with a data size of 128 bits.<h:p/>
-								<h:br/><h:b><h:i>Partial Block Message Tests</h:i></h:b><h:p/>
-								Monte Carlo tests are intended to test the implementation under strenuous conditions. The TOE
-								must process the test cases according to the following algorithm once for each combination of
-								direction and key size:<h:p/>
-								For each combination of direction and claimed key, the evaluator shall generate five test cases
-								such that the data size is not a multiple of 128 bits.<h:p/>
-								The evaluator shall verify the correctness of the TSF’s implementation by comparing values
-								generated by the TSF with those generated by a known good implementation using the same
-								input parameters.<h:p/>
-								<h:br/><h:b><h:i>Counter Test</h:i></h:b><h:p/>
-								The evaluator shall generate a single message of 1000 blocks (128000 bits) and either encrypt or
-								decrypt it. Back-compute the IVs used and verify that they are unique and increasing (encryption) or
-								decreasing (decryption).<h:p/>
-								
-							</Tests>
-						</aactivity>
-                        <!--
-						<rule id="rule-ssh-included-ude">
-							<description>If the SSH Package is included in the ST then "<h:i><xref to="sel-ude-aes-ctr"/></h:i>,"  
-									"<h:i><xref to="sel-ude-keysize-128"/></h:i>," and "<h:i><xref to="sel-ude-keysize-256"/></h:i>" must be selected in FCS_COP.1/SKC.
-							</description>
-							<if><or><ref-id>sel-itc-ssh</ref-id><ref-id>sel-x509-2-ssh</ref-id></or></if>
-							 <then><and><ref-id>sel-ude-aes-ctr</ref-id><ref-id>sel-ude-keysize-128</ref-id><ref-id>sel-ude-keysize-256</ref-id></and></then>
-							</rule>
-							
-						<rule id="rule-ipsec-included-ude">
-								<description>If the TOE implements IPSec then "<h:i><xref to="sel-ude-aes-cbc"/></h:i>," "<h:i><xref to="sel-ude-aes-gcm"/></h:i>,"
-									"<h:i><xref to="sel-ude-keysize-128"/></h:i>," and "<h:i><xref to="sel-ude-keysize-256"/></h:i>" must be selected in FCS_COP.1/SKC.
-								</description>
-								<if><ref-id>sel-itc-ipsec</ref-id></if>
-								<then><and><ref-id>sel-ude-aes-cbc</ref-id><ref-id>sel-ude-aes-gcm</ref-id>
-												<ref-id>sel-ude-keysize-128</ref-id>
-												<ref-id>sel-ude-keysize-256</ref-id></and>
-								</then>							
-						</rule>
-						-->
+                 
+                    		<title>
+                    			The TSF shall perform [symmetric-key encryption/decryption] in accordance with a 
+                    			specified cryptographic algorithm   
+                    			<selectables>
+                    				<tabularize id="fcs-cop-skc-sels" title="Allowable choices for FCS_COP.1/SKC">
+                    					<textcol>Identifier</textcol>
+                    					<reqtext></reqtext>
+                    					<selectcol>Cryptographic Algorithm</selectcol>
+                    					<reqtext>and cryptographic Key sizes</reqtext>
+                    					<selectcol>Cryptographic Key Sizes</selectcol>
+                    					<reqtext>that meet the following:</reqtext>
+                    					<selectcol>List of Standards</selectcol>
+                    					<reqtext><h:p/><h:p/>The following table provides the allowable choices for
+                    						completion of the selection operations of FCS_COP.1/SKC.</reqtext>							
+                    				</tabularize>
+                    				
+                    				<!-- AES-CBC -->
+                    				<selectable id="sel-fcs-cop-skc-aes-cbc">
+                    					<col>AES-CBC</col>
+                    					<col>AES in CBC mode with non-repeating and unpredictable IVs</col>
+                    					<col>256 bits</col>
+                    					<col><selectables>
+                    						<selectable>ISO/IEC 18033-3:2010 (Subclause 5.2)</selectable> 
+                    						<selectable>FIPS PUB 197</selectable></selectables> [AES]<h:p/><selectables>
+                    							<selectable>ISO/IEC 10116:2017 (Clause 7)</selectable> 
+                    							<selectable>NIST SP 800-38A</selectable></selectables> [CBC]
+                    					</col>
+                    				</selectable>
+                    				
+                    				<!-- XTS-AES -->
+                    				<selectable id="sel-fcs-cop-skc-aes-xts">
+                    					<col>XTS-AES</col>
+                    					<col>AES in XTS mode with unique tweak values that are consecutive non-negative 
+                    						integers starting at an arbitrary non-negative integer</col>
+                    					<col>512 bits</col>
+                    					<col><selectables>
+                    						<selectable>ISO/IEC 18033-3:2010 (Subclause 5.2)</selectable> 
+                    						<selectable>FIPS PUB 197</selectable></selectables> [AES]<h:p/><selectables>
+                    							<selectable>IEEE Std. 1619-2018</selectable> 
+                    							<selectable>NIST SP 800-38E</selectable></selectables> [XTS]
+                    					</col>
+                    				</selectable>
+                    				
+                    				<!-- AES-CTR -->
+                    				<selectable id="sel-fcs-cop-skc-aes-ctr">
+                    					<col>AES-CTR</col>
+                    					<col>AES in Counter Mode with a non-repeating initial counter and with no repeated
+                    						use of counter values across multiple messages with the same secret key</col>
+                    					<col>256 bits</col>
+                    					<col><selectables>
+                    						<selectable>ISO/IEC 18033-3:2010 (Subclause 5.2)</selectable> 
+                    						<selectable>FIPS PUB 197</selectable></selectables> [AES]<h:p/><selectables>
+                    							<selectable>: ISO/IEC 10116:2017 (Clause 10)</selectable> 
+                    							<selectable>NIST SP 800-38A</selectable></selectables> [CBC]
+                    					</col>
+                    				</selectable>
+                    			</selectables>
+                    		</title>
+                    		<note role="application">
+                    			This SFR must be included in the ST if symmetric-key cryptography is a service provided by the TOE 
+                    			to tenant software, or if the TOE itself uses SKC to support or implement PP-specified security 
+                    			functionality.<h:p/> 
+                    			Specifically, this SFR must be included if the ST includes FCS_IPSEC_EXT.1 or FCS_STG_EXT.2, or includes
+                    			any of the following selections: <h:ul>
+                    				<h:li>"<h:i>CTR_DRBG (AES)</h:i>" in FCS_RBG.1</h:li>
+                    				<h:li>"<h:i>AES-*</h:i>" in FCS_STG_EXT.3</h:li>
+                    			</h:ul>	<h:p/>
+                    		</note>
+                    		<aactivity>
+                    			<TSS>
+                    				The evaluator shall examine the TSS to ensure that it describes the construction of any IVs,
+                    				tweak values, and counters in conformance with the relevant specifications.<h:p/>
+                    				If XTS-AES is claimed then the evaluator shall examine the TSS to verify that the TOE creates
+                    				full-length keys by methods that ensure that the two key halves are different and independent.
+                    			</TSS>
+                    			<Guidance/>
+                    			<Tests>
+                    				The following tests require the developer to provide access to a test platform that
+                    				provides the evaluator with tools that are typically not found on factory products.<h:p/>
+                    				The following tests are conditional based upon the selections made in the SFR. The
+                    				evaluator shall perform the following test or witness respective tests executed by
+                    				the developer. The tests must be executed on a platform that is as close as practically
+                    				possible to the operational platform (but which may be instrumented in terms of,
+                    				for example, use of a debug mode). Where the test is not carried out on the TOE
+                    				itself, the test platform shall be identified and the differences between test
+                    				environment and TOE execution environment shall be described.<h:p/>
+                    				
+                    				<!-- AES-CBC -->
+                    				<h:br/><h:b>AES-CBC</h:b><h:p/>
+                    				<h:table border="1">
+                    					<h:tr class="header" bgcolor="#cccccc">
+                    						<h:td valign="top">Identifier</h:td>
+                    						<h:td valign="top">Cryptographic Algorithm</h:td>
+                    						<h:td valign="top">Cryptographic Key Sizes</h:td>
+                    						<h:td valign="top">List of Standards</h:td>
+                    					</h:tr>
+                    					<h:tr>
+                    						<h:td valign="top">AES-CBC</h:td>
+                    						<h:td valign="top">AES in CBC mode with non-repeating and unpredictable IVs</h:td>
+                    						<h:td valign="top">256 bits</h:td>
+                    						<h:td valign="top">
+                    							[<h:b>selection:</h:b> ISO/IEC 18033-3:2010 (Subclause 5.2),
+                    							FIPS PUB 197] [AES]<h:p/>
+                    							[<h:b>selection:</h:b>  ISO/IEC 10116:2017 (Clause 7), 
+                    							NIST SP 800-38A] [CBC]</h:td>
+                    					</h:tr>
+                    				</h:table><h:p/>	
+                    				
+                    				To test the TOE’s ability to encrypt/decrypt data using AES in CBC mode, the evaluator 
+                    				shall perform Algorithm Functional Tests and Monte Carlo Tests using the following
+                    				input parameters:<h:ul>
+                    					<h:li>Key size [256] bits</h:li>
+                    					<h:li>Direction [encryption, decryption]</h:li></h:ul><h:p/>
+                    				<h:br/><h:b>Algorithm Functional Tests</h:b><h:p/>
+                    				Algorithm Functional Tests are designed to verify the correct operation of the logical
+                    				components of the algorithm implementation under normal operation using different block sizes.
+                    				For AES-CBC, there are two types of AFTs:<h:p/>
+                    				<h:br/><h:b><h:i>Known-Answer Tests</h:i></h:b><h:p/>
+                    				For each combination of direction and claimed key size, the TOE must be tested using the
+                    				GFSBox, KeySbox, VarTxt, and VarKey test cases listed in Appendixes B through E of <h:i>The
+                    					Advanced Encryption Standard Algorithm Validation Suite (AESAVS)</h:i>, NIST, 15 November 2002.<h:p/>
+                    				<h:br/><h:b><h:i>Multi-Block Message Tests</h:i></h:b><h:p/>
+                    				For each combination of direction and claimed key size, the TOE must be tested against 10 test
+                    				cases consisting of a random IV, random key, and random plaintext/ciphertext. The
+                    				plaintext/ciphertext starts with a length of 16 bytes and increases by 16 bytes for each test case
+                    				until reaching 160 bytes.<h:p/>
+                    				<h:br/><h:b><h:i>Monte Carlo Tests</h:i></h:b><h:p/>
+                    				Monte Carlo tests are intended to test the implementation under strenuous conditions. The TOE
+                    				must process the test cases according to the following algorithm once for each combination of
+                    				direction and key size:<h:p/>
+                    				<h:pre>
+                    					Key[0] = Key
+                    					IV[0] = IV
+                    					PT[0] = PT
+                    					for i = 0 to 99 {
+                    					Output Key[i], IV[i], PT[0]
+                    					for j = 0 to 999 {
+                    					if (j == 0) {
+                    					CT[j] = AES-CBC-Encrypt(Key[i], IV[i], PT[j])
+                    					PT[j+1] = IV[i]
+                    					} else {
+                    					CT[j] = AES-CBC-Encrypt(Key[i], PT[j])
+                    					PT[j+1] = CT[j-1]
+                    					}
+                    					}
+                    					Output CT[j]
+                    					AES_KEY_SHUFFLE(Key, CT)
+                    					IV[i+1] = CT[j]
+                    					PT[0] = CT[j-1]
+                    					}
+                    				</h:pre><h:p/>	
+                    				where <h:pre>AES_KEY_SHUFFLE</h:pre> is defined as: <h:p/>
+                    				<h:pre>
+                    					If ( keylen = 128 )
+                    					Key[i+1] = Key[i] xor MSB(CT[j], 128)
+                    					If ( keylen = 192 )
+                    					Key[i+1] = Key[i] xor (LSB(CT[j-1], 64) || MSB(CT[j], 128))
+                    					If ( keylen = 256 )
+                    					Key[i+1] = Key[i] xor (MSB(CT[j-1], 128) || MSB(CT[j], 128))
+                    				</h:pre><h:p/>
+                    				The above pseudocode is for encryption. For decryption, swap all instances of CT and PT.<h:p/>
+                    				The initial IV, key, and plaintext/ciphertext should be random.<h:p/>
+                    				The evaluator shall test the decrypt functionality using the same test as above,
+                    				exchanging CT and PT, and replacing AES-CBC-Encrypt with AES-CBC-Decrypt.<h:p/>
+                    				
+                    				
+                    				<!-- XTS-AES -->
+                    				<h:br/><h:b>XTS-AES</h:b><h:p/>
+                    				<h:table border="1">
+                    					<h:tr class="header" bgcolor="#cccccc">
+                    						<h:td valign="top">Identifier</h:td>
+                    						<h:td valign="top">Cryptographic Algorithm</h:td>
+                    						<h:td valign="top">Cryptographic Key Sizes</h:td>
+                    						<h:td valign="top">List of Standards</h:td>
+                    					</h:tr>
+                    					<h:tr>
+                    						<h:td valign="top">XTS-AES</h:td>
+                    						<h:td valign="top">AES in XTS mode with unique tweak values that are consecutive
+                    							non-negative integers starting at an arbitrary non-negative integer</h:td>
+                    						<h:td valign="top">512 bits</h:td>
+                    						<h:td valign="top">
+                    							[<h:b>selection:</h:b> ISO/IEC 18033-3:2010 (Subclause 5.2),
+                    							FIPS PUB 197] [AES]<h:p/>
+                    							[<h:b>selection:</h:b> IEEE Std. 1619-2018, 
+                    							NIST SP 800-38E] [XTS]</h:td>
+                    					</h:tr>
+                    				</h:table><h:p/>	
+                    				To test the TOE’s ability to encrypt/decrypt data using AES in XTS mode, the evaluator shall
+                    				perform the Single Data Unit Test and the Multiple Data Unit Test using the following input
+                    				parameters:<h:ul>
+                    					<h:li>Direction [encryption, decryption]</h:li>
+                    					<h:li>Key size [512] bits</h:li>
+                    					<h:li>Tweak value format [128-bit hex string, data unit sequence number]</h:li></h:ul><h:p/>
+                    				<h:br/><h:b>Single Data Unit Test</h:b><h:p/>
+                    				For each combination of claimed key size, direction, and supported tweak value format, the
+                    				evaluator shall generate 50 test cases consisting of random payload data. The payload data size is
+                    				determined randomly for each test case from supported values within the range [128-65536] bits.
+                    				The payload size and data unit size must be equal.<h:p/>
+                    				<h:br/><h:b>Multiple Data Unit Test</h:b><h:p/>
+                    				For each combination of claimed key size, direction, and supported tweak value format, the
+                    				evaluator shall generate 50 test cases consisting of random payload data. The payload data size is
+                    				determined randomly for each test case from supported values within the range [128-65536] bits.
+                    				Likewise, the data unit size is determined randomly for each test case from supported values
+                    				within the range [128-65535] bits. The payload size and data unit size must not be equal.<h:p/>
+                    				The evaluator shall verify the correctness of the TSF’s implementation by comparing values
+                    				generated by the TSF with those generated by a known good implementation using the same
+                    				input parameters.<h:p/>
+                    				
+                    				<!-- AES-CTR -->
+                    				<h:br/><h:b>AES-CTR</h:b><h:p/>
+                    				<h:table border="1">
+                    					<h:tr class="header" bgcolor="#cccccc">
+                    						<h:td valign="top">Identifier</h:td>
+                    						<h:td valign="top">Cryptographic Algorithm</h:td>
+                    						<h:td valign="top">Cryptographic Key Sizes</h:td>
+                    						<h:td valign="top">List of Standards</h:td>
+                    					</h:tr>
+                    					<h:tr>
+                    						<h:td valign="top">AES-CTR</h:td>
+                    						<h:td valign="top">AES in Counter Mode with a non-repeating initial counter and
+                    							with no repeated use of counter values across multiple messages with the 
+                    							same secret key.</h:td>
+                    						<h:td valign="top">256 bits</h:td>
+                    						<h:td valign="top">
+                    							[<h:b>selection:</h:b> ISO/IEC 18033-3:2010 (Subclause 5.2),
+                    							FIPS PUB 197] [AES]<h:p/>
+                    							[<h:b>selection:</h:b>  ISO/IEC 10116:2017 (Clause 10), 
+                    							NIST SP 800-38A] [CTR]</h:td>
+                    					</h:tr>
+                    				</h:table><h:p/>	
+                    				To test the TOE’s ability to encrypt/decrypt data using AES in CTR mode, the evaluator shall
+                    				perform the Algorithm Functional Test and the Counter Test using the following input
+                    				parameters:<h:ul>
+                    					<h:li>Direction [encryption, decryption]</h:li>
+                    					<h:li>Key size [256] bits</h:li></h:ul><h:p/>
+                    				<h:br/><h:b>Algorithm Functional Tests</h:b><h:p/>
+                    				Algorithm Functional Tests are designed to verify the correct operation of the logical
+                    				components of the algorithm implementation under normal operation using different block sizes.
+                    				For AES-CTR, there are three types of AFTs:<h:p/>
+                    				<h:br/><h:b><h:i>Known-Answer Tests</h:i></h:b><h:p/>
+                    				For each combination of direction and claimed key size, the TOE must be tested using the
+                    				GFSBox, KeySbox, VarTxt, and VarKey test cases listed in Appendixes B through E of <h:i>The
+                    					Advanced Encryption Standard Algorithm Validation Suite (AESAVS)</h:i>, NIST, 15 November 2002.<h:p/>
+                    				<h:br/><h:b><h:i>Single Block Message Tests</h:i></h:b><h:p/>
+                    				For each combination of direction and claimed key, the evaluator shall generate 10 test cases
+                    				with a data size of 128 bits.<h:p/>
+                    				<h:br/><h:b><h:i>Partial Block Message Tests</h:i></h:b><h:p/>
+                    				Monte Carlo tests are intended to test the implementation under strenuous conditions. The TOE
+                    				must process the test cases according to the following algorithm once for each combination of
+                    				direction and key size:<h:p/>
+                    				For each combination of direction and claimed key, the evaluator shall generate five test cases
+                    				such that the data size is not a multiple of 128 bits.<h:p/>
+                    				The evaluator shall verify the correctness of the TSF’s implementation by comparing values
+                    				generated by the TSF with those generated by a known good implementation using the same
+                    				input parameters.
+                    				<h:br/><h:b><h:i>Counter Test</h:i></h:b><h:p/>
+                    				The evaluator shall generate a single message of 1000 blocks (128000 bits) and either encrypt or
+                    				decrypt it. Back-compute the IVs used. Verify that they are unique and increasing (encryption) or
+                    				decreasing (decryption).<h:p/>
+                    				
+                    			</Tests>
+                    		</aactivity>
+                    	
                     </f-element>
 					<audit-event />
 				</f-component>
@@ -4113,7 +4389,7 @@
                             This requirement ensures that sufficient entropy is available to any VM that requires it. The entropy 
 							need not provide high-quality entropy for every possible method that a VM might acquire it. The VMM
 							must, however, provide some means for VMs to get sufficient entropy. For example, the VMM can
-							provide an interface that returns entropy to a guest VM. Alternatively, the VMM could provide 
+							provide an interface that returns entropy to a Guest VM. Alternatively, the VMM could provide 
 							pass-through access to entropy sources provided by the host platform.<h:p/>
                             This requirement allows for three general ways of providing entropy to guests: 1) The VS can provide a 
 							hypercall accessible to VM-aware guests, 2) access to a virtualized device that provides entropy, or 
@@ -4130,14 +4406,14 @@
 							which it can obtain entropy or random numbers. Such an interface could present a virtualized real
 							device, such as a TPM, that can be accessed by VM-unaware guests, or a virtualized fictional device
 							that would require the guest OS to be VM-aware. The ST author should select “pass-through access to 
-							hardware entropy source” if the TSF permits guest VMs to have direct access to hardware entropy or
+							hardware entropy source” if the TSF permits Guest VMs to have direct access to hardware entropy or
 							random number source on the platform. The ST author should select all items that are appropriate.<h:p/>
                             For FCS_ENT_EXT.1.2, the VMM must ensure that the provision of entropy to one VM cannot affect the quality
 							of entropy provided to another VM on the same platform.
                         </note>
                         <aactivity>
                             <TSS>
-                                The evaluator shall verify that the TSS describes how the TOE provides entropy to guest VMs, and
+                                The evaluator shall verify that the TSS describes how the TOE provides entropy to Guest VMs, and
 								how to access the interface to acquire entropy or random numbers. The evaluator shall verify that
 								the TSS describes the mechanisms for ensuring that one VM does not affect the entropy acquired by 
 								another. 
@@ -4147,7 +4423,7 @@
                                The evaluator shall perform the following tests:
                                <testlist>
                                  <test>
-                                     The evaluator shall invoke entropy from each guest VM. The evaluator shall 
+                                     The evaluator shall invoke entropy from each Guest VM. The evaluator shall 
                                      verify that each VM acquires values from the interface.
                                  </test>
                                  <test>The evaluator shall invoke entropy from multiple VMs as nearly 
@@ -4621,10 +4897,13 @@
                         </aactivity>
                     </f-element>
                     <f-element id="fcs-ipsec-ext-1e8">
-                        <title>The TSF shall ensure that all IKE protocols implement DH groups [<h:i>19 (256-bit
-							Random ECP), 20 (384-bit Random ECP), and 
+                        <title>The TSF shall ensure that all IKE protocols implement DH groups [<h:i>20 (384-bit Random ECP), and 
 							</h:i><selectables>
 								<selectable>15 (3072-bit MODP)</selectable>
+								<selectable>16 (4096-bit MODP)</selectable>
+								<selectable>17 (6144-bit MODP)</selectable>
+								<selectable>18 (8192-bit MODP)</selectable>
+								<selectable>21 (521-bit Random ECP)</selectable>
 								<selectable exclusive="yes">no other DH groups</selectable>
 							</selectables>].
 						</title>
@@ -4991,6 +5270,8 @@
                             <TSS/>
 							<Guidance/>
                             <Tests>
+                            	<h:p>Documentation will be produced - and the evaluator will perform the activities - in accordance with <xref to="entropyappendix"/>
+                            	</h:p>
 								The evaluator shall perform the following tests, depending on the standard to which the RBG
 								conforms.<h:p/>
                                 The evaluator shall perform 15 trials for the RBG implementation. If the RBG is configurable, the 
@@ -5110,30 +5391,30 @@
             <sec:User_Data_Protection title="User Data Protection (FDP)">
 			
 			    <ext-comp-def title="Hardware-Based Isolation Mechanisms" fam-id="FDP_HBI_EXT">
-					<fam-behavior>This family defines requirements for isolation of guest VMs from the hardware resources
-						of the physical device on which the guest VMs are deployed.</fam-behavior>
+					<fam-behavior>This family defines requirements for isolation of Guest VMs from the hardware resources
+						of the physical device on which the Guest VMs are deployed.</fam-behavior>
 				</ext-comp-def>
 			    <ext-comp-def title="Physical Platform Resource Controls" fam-id="FDP_PPR_EXT">
 					<fam-behavior>This family defines requirements for the physical resources that
-						the TOE will allow or prohibit guest VMs to access.</fam-behavior>
+						the TOE will allow or prohibit Guest VMs to access.</fam-behavior>
 				</ext-comp-def>
 			    <ext-comp-def title="Residual Information in Memory" fam-id="FDP_RIP_EXT">
-					<fam-behavior>This family defines requirements for ensuring that allocation of data to a guest VM 
+					<fam-behavior>This family defines requirements for ensuring that allocation of data to a Guest VM 
 						does not cause a disclosure of residual data from a previous VM.</fam-behavior>
 				</ext-comp-def>
 			    <ext-comp-def title="VM Separation" fam-id="FDP_VMS_EXT">
-					<fam-behavior>This family defines requirements for the logical separation of multiple guest VMs
+					<fam-behavior>This family defines requirements for the logical separation of multiple Guest VMs
 						that are managed by the same virtualization system.</fam-behavior>
 				</ext-comp-def>
 			    <ext-comp-def title="Virtual Networking Components" fam-id="FDP_VNC_EXT">
 					<fam-behavior>This family defines requirements for configuration of virtual networking
-						between guest VMs that are managed by the virtualization system.</fam-behavior>
+						between Guest VMs that are managed by the virtualization system.</fam-behavior>
 				</ext-comp-def>
 
                 <!-- FDP_HBI_EXT.1 -->
                 <f-component cc-id="fdp_hbi_ext.1" name="Hardware-Based Isolation Mechanisms">
 					<consistency-rationale/>
-					<comp-lev>requires the TSF to identify the mechanisms used to isolate guest VMs from platform
+					<comp-lev>requires the TSF to identify the mechanisms used to isolate Guest VMs from platform
 						hardware resources.</comp-lev>
 					<management/>
 					<audit/>
@@ -5143,10 +5424,10 @@
                             <selectables>
                                 <selectable exclusive="yes">no mechanism</selectable>
                                 <selectable><assignable>list of platform-provided, hardware-based mechanisms</assignable></selectable>
-                            </selectables> to constrain a guest VM's direct access to the following physical devices:
+                            </selectables> to constrain a Guest VM's direct access to the following physical devices:
                             <selectables>
                                 <selectable exclusive="yes">no devices</selectable>
-                                <selectable><assignable> physical devices to which the VMM allows guest VMs physical access</assignable></selectable>
+                                <selectable><assignable> physical devices to which the VMM allows Guest VMs physical access</assignable></selectable>
                             </selectables>.                        
                         </title>
                         <note role="application">The TSF must use available hardware-based isolation mechanisms to constrain VMs
@@ -5173,7 +5454,7 @@
                 <!-- FDP_PPR_EXT.1 -->
                 <f-component cc-id="fdp_ppr_ext.1" name="Physical Platform Resource Controls">
 					<consistency-rationale/>
-					<comp-lev>requires the TSF to define the hardware resources that guest VMs may always access, may never access,
+					<comp-lev>requires the TSF to define the hardware resources that Guest VMs may always access, may never access,
 						and may conditionally access based on administrative configuration.</comp-lev>
 					<management>The following actions could be considered for the management functions in FMT:
 						<h:ol type="a">
@@ -5191,13 +5472,13 @@
 					<dependencies>FDP_HBI_EXT.1 Hardware-Based Isolation Mechanisms<h:p/>
 							FMT_SMR.1 Security Roles</dependencies>
                     <f-element id="fdp-ppr-ext-1e1">
-                        <title>The TSF shall allow an authorized administrator to control guest VM access to the following physical
+                        <title>The TSF shall allow an authorized administrator to control Guest VM access to the following physical
 							platform resources: <assignable>list of physical platform resources the VMM is
 							able to control access to</assignable>.
                         </title>
                     </f-element>
                     <f-element id="fdp-ppr-ext-1e2">
-                        <title>The TSF shall explicitly deny all guest VMs access to the following physical platform resources:
+                        <title>The TSF shall explicitly deny all Guest VMs access to the following physical platform resources:
                             <selectables>
                                 <selectable exclusive="yes">no physical platform resources</selectable>
                                 <selectable><assignable>list of physical platform resources to which access is explicitly denied</assignable></selectable>
@@ -5205,7 +5486,7 @@
                         </title>
                     </f-element>
                     <f-element id="fdp-ppr-ext-1e3">
-                        <title>The TSF shall explicitly allow all guest VMs access to the following physical platform resources:
+                        <title>The TSF shall explicitly allow all Guest VMs access to the following physical platform resources:
                             <selectables>
                                 <selectable exclusive="yes">no physical platform resources</selectable>
                                 <selectable><assignable>list of physical platform resources to which access is always allowed</assignable></selectable>
@@ -5218,29 +5499,29 @@
 								<h:li>those to which the guest OS is never allowed to have direct access, and</h:li>
 								<h:li>those to which the guest OS is always allowed to have direct access.</h:li>
 							</h:ul>
-							For element 1, the ST author lists the physical platform resources that can be configured for guest VM access by 
+							For element 1, the ST author lists the physical platform resources that can be configured for Guest VM access by 
 							an administrator. For element 2, the ST author lists the physical platform resources to which 
-							guest VMs may never be allowed direct access. If there are no such resources, the ST author selects "no physical platform 
-							resources." Likewise, any resources to which all guest VMs automatically have access to are to be listed in 
+							Guest VMs may never be allowed direct access. If there are no such resources, the ST author selects "no physical platform 
+							resources." Likewise, any resources to which all Guest VMs automatically have access to are to be listed in 
 							the third element. If there are no such resources, then "no physical platform resources" is selected.
                         </note>
                         <aactivity>
                             <TSS>
                                 The evaluator shall examine the TSS to determine that it describes the mechanism by which the VMM controls a 
-								guest VM's access to
+								Guest VM's access to
                                 physical platform resources. This description shall cover all of the physical
                                 platforms allowed in the evaluated configuration by the ST. It should explain how the VMM distinguishes among 
-								guest VMs, and 
+								Guest VMs, and 
                                 how each physical platform resource that is controllable (that is, listed in the assignment
                                 statement in the first element) is identified to an administrator.<h:p/> 
-								The evaluator shall ensure that the TSS describes how the guest VM is associated with each 
-                                physical resource, and how other guest VMs cannot access a physical resource
+								The evaluator shall ensure that the TSS describes how the Guest VM is associated with each 
+                                physical resource, and how other Guest VMs cannot access a physical resource
                                 without being granted explicit access. For TOEs that implement a robust 
                                 interface (other than just "allow access" or "deny access"), the evaluator shall ensure that the
-                                TSS describes the possible operations or modes of access between a guest VM's and physical platform resources.<h:p/>
+                                TSS describes the possible operations or modes of access between a Guest VM's and physical platform resources.<h:p/>
                                 If physical resources are listed in the second element, the evaluator shall examine the 
                                 TSS and operational guidance to determine that there appears to be no way to
-                                configure those resources for access by a guest VM. The evaluator shall
+                                configure those resources for access by a Guest VM. The evaluator shall
                                 document in the evaluation report their analysis of why the controls offered to configure access
                                 to physical resources can't be used to specify access to the resources identified in the second 
                                 element (for example, if the interface offers a drop-down list of resources to assign, and the
@@ -5249,7 +5530,7 @@
                             </TSS>
                             <Guidance>
                                 The evaluator shall examine the operational guidance to determine that it describes how an 
-                                administrator is able to configure access to physical platform resources for guest VMs for each platform allowed in the evaluated configuration according to the 
+                                administrator is able to configure access to physical platform resources for Guest VMs for each platform allowed in the evaluated configuration according to the 
                                 ST. The evaluator shall also determine that the operational guidance identifies
                                 those resources listed in the second and third elements of the component and notes that access to 
                                 these resources is explicitly denied/allowed, respectively.
@@ -5258,22 +5539,22 @@
                                 Using the operational guidance, the evaluator shall perform the following tests for each physical platform identified in the ST:<h:p/>
                                <testlist>
                                     <test>For each physical platform resource identified in the first element, the evaluator shall
-										configure a guest VM to have access to that resource and show that the guest VM is able to
+										configure a Guest VM to have access to that resource and show that the Guest VM is able to
 										successfully access that resource.</test>
                                     <test>For each physical platform resource identified in the first element, the evaluator shall
-										configure the system such that a guest VM does not have access to that resource and show
-										that the guest VM is unable to successfully access that resource.</test>
+										configure the system such that a Guest VM does not have access to that resource and show
+										that the Guest VM is unable to successfully access that resource.</test>
                                     <test>[conditional]: For TOEs that have a robust control interface, the evaluator shall exercise 
 										each element of the interface as described in the TSS and the operational guidance to
 										ensure that the behavior described in the operational guidance is exhibited.</test>
                                     <test>[conditional]: If the TOE explicitly denies access to certain physical resources, the
 										evaluator shall attempt to access each listed (in FDP_PPR_EXT.1.2) physical resource 
-										from a guest VM and observe that access is denied.</test>
+										from a Guest VM and observe that access is denied.</test>
                                     <test>[conditional]: If the TOE explicitly allows access to certain physical resources, the 
 										evaluator shall attempt to access each listed (in FDP_PPR_EXT.1.3) physical resource 
-										from a guest VM and observe that the access is allowed. If the operational guidance
-										specifies that access is allowed simultaneously by more than one guest VM, the evaluator
-										shall attempt to access each resource listed from more than one guest VM and show that
+										from a Guest VM and observe that the access is allowed. If the operational guidance
+										specifies that access is allowed simultaneously by more than one Guest VM, the evaluator
+										shall attempt to access each resource listed from more than one Guest VM and show that
 										access is allowed.</test>
                                 </testlist>
                             </Tests>
@@ -5296,13 +5577,13 @@
                 <f-component cc-id="fdp_rip_ext.1" name="Residual Information in Memory">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to ensure that physical memory is cleared to zeroes prior to its allocation to a
-						guest VM.</comp-lev>
+						Guest VM.</comp-lev>
 					<management/>
 					<audit/>
 					<dependencies/>
                     <f-element id="fdp-rip-ext-1e1">
                         <title>The TSF shall ensure that any previous information content of physical memory is cleared prior to 
-							allocation to a guest VM.
+							allocation to a Guest VM.
                         </title>
                         <note role="application">Physical memory must be zeroed before it is made accessible to a VM for general use
 							by a guest OS. <h:p/>
@@ -5316,10 +5597,10 @@
                         <aactivity>
                             <TSS>
                                 The evaluator shall ensure that the TSS documents the process used for clearing
-                                physical memory prior to allocation to a guest VM, providing details on when 
+                                physical memory prior to allocation to a Guest VM, providing details on when 
                                 and how this is performed. Additionally, the evaluator shall ensure that the TSS
                                 documents the conditions under which physical memory is not cleared prior to allocation to a
-                                guest VM, and describes when and how the memory is cleared.
+                                Guest VM, and describes when and how the memory is cleared.
                             </TSS>
 							<Guidance/>
 							<Tests/>
@@ -5332,13 +5613,13 @@
                 <f-component cc-id="fdp_rip_ext.2" name="Residual Information on Disk">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to ensure that physical disk storage is cleared upon 
-						allocation to a guest VM.</comp-lev>
+						allocation to a Guest VM.</comp-lev>
 					<management/>
 					<audit/>
 					<dependencies/>
                     <f-element id="fdp-rip-ext-2e1">
                         <title>The TSF shall ensure that any previous information content of physical disk storage is cleared to zeroes upon
-							allocation to a guest VM.
+							allocation to a Guest VM.
                         </title>
                         <note role="application">
                             The purpose of this requirement is to ensure that a VM does not receive disk storage containing data
@@ -5349,7 +5630,7 @@
                         <aactivity>
                             <TSS>
                                 The evaluator shall ensure that the TSS documents how the TSF ensures that disk storage is zeroed upon allocation to 
-								guest VMs. Also, the TSS must document any conditions under which disk storage is not cleared prior to allocation to a guest VM. 
+								Guest VMs. Also, the TSS must document any conditions under which disk storage is not cleared prior to allocation to a Guest VM. 
 								Any file system format and metadata information needed by the evaluator to perform the below test shall be made available
 								to the evaluator, but need not be published in the TSS.
                             </TSS>
@@ -5363,7 +5644,7 @@
 										the storage media).  This file (or files) shall be filled entirely with a non-zero value. 
 										Then, the file (or files) shall be released (freed for use but not cleared).  Next, the 
 										evaluator (as a VS administrator) creates a virtual disk at least that large on the same
-										physical storage device and connects it to a powered-off VM.  Then, from outside the guest VM,
+										physical storage device and connects it to a powered-off VM.  Then, from outside the Guest VM,
 										scan through and check that all the non-metadata (as documented in the TSS) in the file
 										corresponding to that virtual disk is set to zero.
 									</test>
@@ -5377,7 +5658,7 @@
                 <!-- FDP_VMS_EXT.1 -->
                 <f-component cc-id="fdp_vms_ext.1" name="VM Separation">
 					<consistency-rationale/>
-					<comp-lev>requires the TSF to maintain logical separation between guest VMs
+					<comp-lev>requires the TSF to maintain logical separation between Guest VMs
 						except through the use of specific configurable methods.</comp-lev>
 					<management>The following actions could be considered for the management 
 						functions in FMT:
@@ -5388,7 +5669,7 @@
 					<audit/>
 					<dependencies/>
                     <f-element id="fdp-vms-ext-1e1">
-                        <title>The VS shall provide the following mechanisms for transferring data between guest VMs:
+                        <title>The VS shall provide the following mechanisms for transferring data between Guest VMs:
                             <selectables linebreak="yes">
                                 <selectable exclusive="yes">no mechanism</selectable>
                                 <selectable>virtual networking</selectable>
@@ -5397,15 +5678,15 @@
                         </title>
                     </f-element>
                     <f-element id="fdp-vms-ext-1e2">
-						<title>The TSF shall by default enforce a policy prohibiting sharing of data between guest VMs.</title>
+						<title>The TSF shall by default enforce a policy prohibiting sharing of data between Guest VMs.</title>
 					</f-element>			
                     <f-element id="fdp-vms-ext-1e3">
                         <title>The TSF shall allow administrators to configure the mechanisms selected in FDP_VMS_EXT.1.1 to
-                            enable and disable the transfer of data between guest VMs.
+                            enable and disable the transfer of data between Guest VMs.
                         </title>
                     </f-element>
                     <f-element id="fdp-vms-ext-1e4">
-                        <title>The VS shall ensure that no guest VM is able to read or transfer data to or from another guest VM except
+                        <title>The VS shall ensure that no Guest VM is able to read or transfer data to or from another Guest VM except
 							through the mechanisms listed in FDP_VMS_EXT.1.1.
                         </title>
                         <note role="application">
@@ -5414,8 +5695,8 @@
 							requirement is to ensure that VMs, VMMs, and the VS as a whole is implemented with 
 							this fundamental requirement in mind.<h:p/>
                             The ST author should select “no mechanism” in the unlikely event that the VS implements no mechanisms for
-							transferring data between guest VMs. Otherwise, the ST author should select “virtual networking” 
-							and identify all other mechanisms through which data can be transferred between guest VMs. <h:p/>
+							transferring data between Guest VMs. Otherwise, the ST author should select “virtual networking” 
+							and identify all other mechanisms through which data can be transferred between Guest VMs. <h:p/>
 							Examples of non-network inter-VM sharing mechanisms are:<h:p/>
                             <h:ul>
                                 <h:li>User interface-based mechanisms, such as copy-paste and drag-and-drop</h:li>
@@ -5472,7 +5753,7 @@
                 <!-- FDP_VNC_EXT.1 -->
                 <f-component cc-id="fdp_vnc_ext.1" name="Virtual Networking Components">
 					<consistency-rationale/>
-					<comp-lev>requires the TSF to support the configuration of virtual networking between guest VMs.</comp-lev>
+					<comp-lev>requires the TSF to support the configuration of virtual networking between Guest VMs.</comp-lev>
 					<management>The following actions could be considered for the management
 						functions in FMT:
 						<h:ol type="a">
@@ -5497,21 +5778,21 @@
                         </title>
                     </f-element>
                     <f-element id="fdp-vnc-ext-1e2">
-                        <title>The TSF shall ensure that network traffic visible to a guest VM on a
+                        <title>The TSF shall ensure that network traffic visible to a Guest VM on a
                             virtual network&#8211;or virtual 
-                            segment of a physical network&#8211;is visible only to guest VMs configured to be on that virtual network
+                            segment of a physical network&#8211;is visible only to Guest VMs configured to be on that virtual network
 							or segment.
                         </title>
                         <note role="application">
                             Virtual networks must be separated from one another to provide isolation commensurate with that provided by 
 							physically separate networks. It must not be possible for data to cross between properly configured
-							virtual networks regardless of whether the traffic originated from a local guest VM or a remote host.<h:p/>
+							virtual networks regardless of whether the traffic originated from a local Guest VM or a remote host.<h:p/>
                             Unprivileged users must not be able to connect VMs to each other or to external networks.
                         </note>
                         <aactivity>
                             <TSS>
                                The evaluator shall examine the TSS (or a proprietary annex) to verify that it describes the mechanism 
-							   by which virtual network traffic is ensured to be visible only to guest VMs configured to be on that virtual network.
+							   by which virtual network traffic is ensured to be visible only to Guest VMs configured to be on that virtual network.
 							</TSS>
 							<Guidance>
                                The evaluator must ensure that the Operational Guidance describes how
@@ -5570,7 +5851,9 @@
 				</ext-comp-def>
                 
                 <!-- FIA_AFL_EXT.1 -->
-                <f-component cc-id="fia_afl_ext.1" name="Authentication Failure Handling">
+                <f-component cc-id="fia_afl_ext.1" name="Authentication Failure Handling" status="sel-based">
+                	<depends on="sel-uau-pws"/>
+                	<depends on="sel-uau-pin"/>
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to lock an administrator account when an excessive number of failed authentication attempts
 						have been observed until some restorative event occurs to enable the account.</comp-lev>
@@ -5617,7 +5900,7 @@
                                     period has elapsed</selectable>
                             </selectables>
                         </title>
-                        <note role="application">The action to be taken shall be populated in the selection of the ST
+                        <note role="application">The action to be taken is populated in the selection of the ST
                             and defined in the administrator guidance.<h:p/>
                             This requirement applies to a defined number of successive unsuccessful remote password or PIN-based
                             authentication attempts and does not apply to local Administrative access. Compliant TOEs may optionally
@@ -5742,7 +6025,7 @@
                                     </selectables>
                                     authentication based on username and password
                                 </selectable>
-                                <selectable>authentication based on username and a PIN that releases an asymmetric key stored in
+                                <selectable id="sel-uau-pin">authentication based on username and a PIN that releases an asymmetric key stored in
 									OE-protected storage</selectable>
                                 <selectable id="sel-uau-x509">
                                     <selectables>
@@ -5763,7 +6046,7 @@
                         </title>
                         <note role="application">Selection of ‘authentication based on username and password’ requires that 
 							FIA_PMG_EXT.1 be included in the ST. This also requires that the ST claim management function 
-							<xref to="mf-admin-pwd-policy"/> for password management. 
+							<xref to="mf-admin-pwd-policy"/> for password management. Selection of either 'authentication based on username and password' or 'authentication based on username and a PIN...' requires that FIA_AFL_EXT.1 be included in the ST.
 							If the ST author selects ‘authentication based on an SSH public-key credential,’ the TOE is expected to conform to <xref to="ssh"/>,
                         	If the ST author selects 'authentication based on X.509 certificates,' the TOE is expected to conform to <xref to="X509"/>. 
 							<h:p/>
@@ -6413,7 +6696,7 @@
 					<fam-behavior>This family defines requirements for isolation of device drivers</fam-behavior>
 				</ext-comp-def>
 			    <ext-comp-def title="Non-Existence of Disconnected Virtual Devices" fam-id="FPT_DVD_EXT">
-					<fam-behavior>This family defines requirements for ensuring that guest VMs cannot access
+					<fam-behavior>This family defines requirements for ensuring that Guest VMs cannot access
 						the virtual hardware interfaces disabled or disconnected virtual devices.</fam-behavior>
 				</ext-comp-def>
 			    <ext-comp-def title="Execution Environment Mitigations" fam-id="FPT_EEM_EXT">
@@ -6421,9 +6704,9 @@
 						vulnerabilities that allow for the execution of unauthorized code or bypass of 
 						access restrictions on memory or storage.</fam-behavior>
 				</ext-comp-def>
-			    <ext-comp-def title="guest VM Integrity" fam-id="FPT_GVI_EXT">
+			    <ext-comp-def title="Guest VM Integrity" fam-id="FPT_GVI_EXT">
 					<fam-behavior>This family defines requirements for the TOE to assert the integrity of
-						guest VMs.</fam-behavior>
+						Guest VMs.</fam-behavior>
 				</ext-comp-def>
 			    <ext-comp-def title="Hardware Assists" fam-id="FPT_HAS_EXT">
 					<fam-behavior>This family defines requirements for use of hardware-based virtualization 
@@ -6451,15 +6734,15 @@
 				</ext-comp-def>
 			    <ext-comp-def title="Virtual Device Parameters" fam-id="FPT_VDP_EXT">
 					<fam-behavior>This family defines requirements for processing data transmitted to the TOE from
-						a guest VM.</fam-behavior>
+						a Guest VM.</fam-behavior>
 				</ext-comp-def>
 			    <ext-comp-def title="VMM Isolation from VMs" fam-id="FPT_VIV_EXT">
 					<fam-behavior>This family defines requirements for ensuring the TOE is logically 
-						isolated from its guest VMs</fam-behavior>
+						isolated from its Guest VMs</fam-behavior>
 				</ext-comp-def>
 				
                 <!-- FPT_DDI_EXT.1 -->
-                <f-component cc-id="fpt_ddi_ext.1" name="Device Driver Isolation"  status="objective">
+                <f-component cc-id="fpt_ddi_ext.1" name="Device Driver Isolation" >
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to isolate device drivers for physical devices from all virtual domains.</comp-lev>
 					<management/>
@@ -6500,13 +6783,13 @@
                 <!-- FPT_DVD_EXT.1 -->
                 <f-component cc-id="fpt_dvd_ext.1" name="Non-Existence of Disconnected Virtual Devices">
 					<consistency-rationale/>
-					<comp-lev>requires the TSF to prevent guest VMs from accessing virtual devices
+					<comp-lev>requires the TSF to prevent Guest VMs from accessing virtual devices
 						that it is not configured to have access to.</comp-lev>
 					<management/>
 					<audit/>
 					<dependencies>FPT_VDP_EXT.1 Virtual Device Parameters</dependencies>
                     <f-element id="fpt-dvd-ext-1e1">
-                        <title>The TSF shall prevent guest VMs from accessing virtual device interfaces that are not present in the VM’s current
+                        <title>The TSF shall prevent Guest VMs from accessing virtual device interfaces that are not present in the VM’s current
 							virtual hardware configuration.
                         </title>
                         <note role="application">The virtualized hardware abstraction implemented by a particular VS might include the
@@ -6603,10 +6886,10 @@
                 </f-component>
                 
                 <!-- FPT_GVI_EXT.1 -->
-                <f-component cc-id="fpt_gvi_ext.1" name="guest VM Integrity"  status="optional">
+                <f-component cc-id="fpt_gvi_ext.1" name="Guest VM Integrity"  status="optional">
 					<consistency-rationale/>
 					<comp-lev>requires the TSF to specify the mechanisms it uses to verify the
-						integrity of guest VMs.</comp-lev>
+						integrity of Guest VMs.</comp-lev>
 					<management/>
 					<audit>The following actions should be auditable if FAU_GEN Security 
 						audit data generation is included in the PP/ST:
@@ -6616,12 +6899,12 @@
 					</audit>
 					<dependencies/>
                     <f-element id="fpt-gvi-ext-1e1">
-                        <title>The TSF shall verify the integrity of guest VMs through the following mechanisms: 
-				<assignable>list of guest VM integrity mechanisms</assignable>.
+                        <title>The TSF shall verify the integrity of Guest VMs through the following mechanisms: 
+				<assignable>list of Guest VM integrity mechanisms</assignable>.
                         </title>
                         <note role="application">The primary purpose of this requirement is to identify and describe 
-							the mechanisms used to verify the integrity of guest VMs that have been 'imported' in some fashion,
-							though these mechanisms could also be applied to all guest VMs, depending on the mechanism used.
+							the mechanisms used to verify the integrity of Guest VMs that have been 'imported' in some fashion,
+							though these mechanisms could also be applied to all Guest VMs, depending on the mechanism used.
 							Importation for this requirement could include VM migration (live or otherwise), the importation of
 							virtual disk files that were previously exported, VMs in shared storage, etc. It is possible that a 
 							trusted VM could have been modified during the migration or import/export process, or VMs could have 
@@ -6633,7 +6916,7 @@
                         <aactivity>
                             <TSS>
                                 For each mechanism listed in the assignment, the evaluator shall ensure that the TSS 
-                                documents the mechanism, including how it verifies VM integrity, which set of guest VMs it will check (all guest VMs, only migrated VM
+                                documents the mechanism, including how it verifies VM integrity, which set of Guest VMs it will check (all Guest VMs, only migrated VM
                                 s, etc.), when such checks occur (before VM startup, immediately following 
                                 importation/migration, on demand, etc.), and which actions are taken if a VM fails
                                 the integrity check (or which range of actions are possible if the action is configurable).
@@ -6712,7 +6995,7 @@
 							functionality exposed by each interface.
                         </title>
                         <note role="application">The purpose of this requirement is to help ensure the integrity of the
-                            VMM by protecting the attack surface exposed to untrusted guest VMs through hypercalls. <h:p/>
+                            VMM by protecting the attack surface exposed to untrusted Guest VMs through hypercalls. <h:p/>
                             A hypercall interface allows VMM functionality to be invoked by VM-aware guest software. 
 							For example, a hypercall interface could be used to get information about
 							the real world, such as the time of day or the underlying hardware of the host system. A hypercall 
@@ -6807,7 +7090,7 @@
 							the guest environment. This not only helps protect the guest OS, it also protects the VS by providing 
 							an opportunity for the VS to detect threats to itself that originate within VMs, and that may attempt
 							to break out of the VM and compromise the VMM or other VMs.<h:p/>
-                            The hosting of malware detection software outside of the guest VM helps protect the guest and helps ensure
+                            The hosting of malware detection software outside of the Guest VM helps protect the guest and helps ensure
 							the integrity of the malware detection/antivirus software. This capability can be implemented in 
 							the VMM itself, but ideally it should be hosted by a Service VM so that it can be better contained 
 							and does not introduce bugs into the VMM.</note>
@@ -7031,7 +7314,7 @@
 							to describe the self-test behavior for each.</note>
                         <aactivity>
                             <TSS>
-                                The	evaluator shall examine the TSS to ensure that it details the self-tests that are run
+                                The 	evaluator shall examine the TSS to ensure that it details the self-tests that are run
 								by the TSF along with how they are run. This description should include an outline of what
 								the tests are actually doing. The evaluator shall ensure that the TSS makes an argument that
 								the tests are sufficient to demonstrate that the DRBG is operating correctly.<h:p/>
@@ -7234,8 +7517,8 @@
                 <!-- FPT_VDP_EXT.1 -->
                 <f-component cc-id="fpt_vdp_ext.1" name="Virtual Device Parameters">
 					<consistency-rationale/>
-					<comp-lev>requires the TSF to interface with guest VMs through virtual hardware abstractions
-						so that any data transmitted to the TOE from a guest VM can be validated 
+					<comp-lev>requires the TSF to interface with Guest VMs through virtual hardware abstractions
+						so that any data transmitted to the TOE from a Guest VM can be validated 
 						as well-formed.</comp-lev>
 					<management/>
 					<audit/>
@@ -7286,7 +7569,7 @@
                 <!-- FPT_VIV_EXT.1 -->
                 <f-component cc-id="fpt_viv_ext.1" name="VMM Isolation from VMs">
 					<consistency-rationale/>
-					<comp-lev>requires the TSF to ensure that there is no mechanism by which a guest VM can interface
+					<comp-lev>requires the TSF to ensure that there is no mechanism by which a Guest VM can interface
 						with the TOE, other VMs, or the hardware platform without authorization.</comp-lev>
 					<management/>
 					<audit/>
@@ -7298,11 +7581,11 @@
                         </title>
                     </f-element>
                     <f-element id="fpt-viv-ext-1e2">
-                        <title>The TSF must ensure that a guest VM is unable to invoke platform code that runs at a privilege level 
+                        <title>The TSF must ensure that a Guest VM is unable to invoke platform code that runs at a privilege level 
 							equal to or exceeding that of the VMM without involvement of the VMM.
                         </title>
-                        <note role="application">This requirement is intended to ensure that software running within a guest VM cannot
-							compromise other VMs, the VMM, or the platform. This requirement is not met if guest VM 
+                        <note role="application">This requirement is intended to ensure that software running within a Guest VM cannot
+							compromise other VMs, the VMM, or the platform. This requirement is not met if Guest VM 
 							software—whatever its privilege level—can crash the VS or the Platform, or breakout
 							of its virtual hardware abstraction to gain execution on the platform, within or outside of the context
 							of the VMM.<h:p/>
@@ -7378,7 +7661,7 @@
 				</ext-comp-def>
 			    <ext-comp-def title="User Interface" fam-id="FTP_UIF_EXT">
 					<fam-behavior>This family defines requirements for unambiguously identifying the specific
-						guest VM that a TOE user is interacting with at any given point in time.</fam-behavior>
+						Guest VM that a TOE user is interacting with at any given point in time.</fam-behavior>
 				</ext-comp-def>
                 
                 <!-- FTP_ITC_EXT.1 -->
@@ -7581,7 +7864,7 @@
                 <!-- FTP_UIF_EXT.1 -->
                 <f-component cc-id="ftp_uif_ext.1" name="User Interface: I/O Focus">
 					<consistency-rationale/>
-					<comp-lev>requires the TSF to unambiguously identify the guest VM that has
+					<comp-lev>requires the TSF to unambiguously identify the Guest VM that has
 						the current input focus for input peripherals.</comp-lev>
 					<management/>
 					<audit/>
@@ -7641,7 +7924,7 @@
 							<Guidance/>
                             <Tests>
                                 The evaluator shall perform the following test:<h:p/>
-                                The evaluator shall attempt to create and start at least three guest VMs on a single 
+                                The evaluator shall attempt to create and start at least three Guest VMs on a single 
                                 display device where the evaluator attempts to assign two of the VMs the same
                                 identifier. If the user interface displays different identifiers for each VM, then 
                                 the requirement is met. Likewise, the requirement is met if the system refuses to create or start a
@@ -8367,7 +8650,14 @@
                     FMT_SMR.2 has a dependency on FIA_UID.1. The extended SFR FIA_UID_EXT.1 expresses
                     this dependency by also requiring user identification for use of the TOE.
                 </h:td>
-            </h:tr>            
+            </h:tr>         
+        	
+        	<h:tr>
+        		<h:td>FMT_SMR.2 - Restrictions on Security Roles</h:td>
+        		<h:td>
+        			Several SFRs have dependencise on FMT_SMR.2. The SFR FMT_MOF_EXT.1 implicitly satisfies this SFR because it defines the manangement roles that can be used to perform each function, which defines the existence of management roles and any restrictions on those roles (e.g. there are some management functions one must perform while another must not, while there are others that one must perform and the other may perform). 
+        		</h:td>
+        	</h:tr>  
             
             <h:tr>
                 <h:td>FPT_STM.1 - Reliable Time Stamps</h:td>
