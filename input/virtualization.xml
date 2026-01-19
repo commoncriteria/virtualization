@@ -5323,11 +5323,10 @@
 					<depends on="internal-seed"/>
                     <f-element id="fcs-rbg-3e1">
                     	<title>
-                    		The TSF shall be able to seed the RBG using a <selectables onlyone="yes">
-                    			<selectable>TSF software-based noise source</selectable>
-                    			<selectable>TSF hardware-based noise source</selectable></selectables>  <assignable>name of noise source</assignable>
+                    		The TSF shall be able to seed the RBG using a [<h:i>TSF software-based noise source</h:i>] <assignable>name of noise source</assignable>
                     		with a minimum of <assignable>number of bits</assignable> bits of min-entropy.
                     	</title>   
+                    	<note role="application">This SFR is claimed when the ST author claims "TSF noise source..." in FCS_RBG.1.2. Since this PP defines the TOE as software, it does not have any hardware components and therefore would only claim a software-based noise source here. If the TOE obtains seed material from a hardware component, this is specified using FCS_RBG.2.</note>
 						<aactivity>
 							<TSS/>
 							<Guidance/>
@@ -5340,11 +5339,9 @@
                 <f-component cc-id="fcs_rbg.4" name="Random Bit Generation (Internal Seeding - Multiple Sources)" status="sel-based">
 				    <depends on="internal-seeds"/>
                     <f-element id="fcs-rbg-4e1" >
-                        <title>The TSF shall be able to seed the RBG using <selectables>
-							<selectable><assignable>number</assignable> TSF software-based noise source(s)</selectable>
-							<selectable><assignable>number</assignable> TSF hardware-based noise source(s)</selectable>
-							</selectables>.
+                        <title>The TSF shall be able to seed the RBG using [<h:i><assignable>number</assignable> TSF software-based noise sources</h:i>]. 
                         </title>
+                    	<note role="application">This SFR is claimed when the ST author claims "multiple TSF noise sources..." in FCS_RBG.1.2. Since this PP defines the TOE as software, it does not have any hardware components and therefore would only claim software-based noise sources here. If the TOE obtains seed material from any hardware components, this is specified using FCS_RBG.2.</note>
 						<aactivity>
 							<TSS/>
 							<Guidance/>
