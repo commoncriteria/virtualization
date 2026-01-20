@@ -2703,7 +2703,7 @@ The following sections list Common Criteria and technology terms used in this do
 	  <a href="#FCS_CKM.2.1">FCS_CKM.2.1</a>.
       </i></b></div>
             		 
-            		<div class="element"><div class="reqid" id="FCS_COP.1.1/KeyEncap"><a href="#FCS_COP.1.1/KeyEncap" class="abbr">FCS_COP.1.1/KeyEncap</a></div><div class="reqdesc"> The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform [key encapsulation] in accordance with a specified cryptographic algorithm 
+            		<div class="element"><div class="reqid" id="FCS_COP.1.1/KeyEncap"><a href="#FCS_COP.1.1/KeyEncap" class="abbr">FCS_COP.1.1/KeyEncap</a></div><div class="reqdesc"> The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform [<i>key encapsulation</i>] in accordance with a specified cryptographic algorithm 
             				
             						
             						
@@ -2836,7 +2836,7 @@ The following sections list Common Criteria and technology terms used in this do
             		
   
             		<div class="element"><div class="reqid" id="FCS_COP.1.1/KeyWrap"><a href="#FCS_COP.1.1/KeyWrap" class="abbr">FCS_COP.1.1/KeyWrap</a></div><div class="reqdesc">
-            				The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform [key wrapping] in accordance with a specified cryptographic algorithm 
+            				The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform [<i>key wrapping</i>] in accordance with a specified cryptographic algorithm 
             				
             						
             						
@@ -3840,7 +3840,7 @@ work-dir of external doc = ../../outputFCS_DTLSC_EXT.1.2
                 	
                 	
                     <div class="element"><div class="reqid" id="FCS_COP.1.1/SKC"><a href="#FCS_COP.1.1/SKC" class="abbr">FCS_COP.1.1/SKC</a></div><div class="reqdesc">
-                    			The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform [symmetric-key encryption/decryption] in accordance with a 
+                    			The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform [<i>symmetric-key encryption/decryption</i>] in accordance with a 
                     			specified cryptographic algorithm   
                     			
                     					
@@ -4124,7 +4124,7 @@ work-dir of external doc = ../../outputFCS_DTLSC_EXT.1.2
             						<p></p><p></p>The following table provides the allowable choices for
             							completion of the selection operations of <a href="#FCS_COP.1/XOF">FCS_COP.1/XOF</a>.
             					
-            			<table><caption><span class="ctr" data-myid="fcs-cop-xof-sels" data-counter-type="ct-Table" id="fcs-cop-xof-sels">Table <span class="counter">13</span></span>: Allowable Choices for <a href="#FCS_COP.1/XOF">FCS_COP.1/XOF</a></caption>
+            			<table><caption><span class="ctr" data-myid="fcs-cop-xof-sels" data-counter-type="ct-Table" id="fcs-cop-xof-sels">Table <span class="counter">13</span></span>: Allowable choices for <a href="#FCS_COP.1/XOF">FCS_COP.1/XOF</a></caption>
             					<tr>
             						<th>Cryptographic Algorithm</th>
             						
@@ -4138,7 +4138,7 @@ work-dir of external doc = ../../outputFCS_DTLSC_EXT.1.2
             					
             					<tr>
             						<td>SHAKE</td>
-            						<td>Functions = [SHAKE128, SHAKE256]
+            						<td>Functions = [SHAKE256]
             						</td>
             						<td><abbr class="dyn-abbr"><a href="#abbr_NIST">NIST</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_FIPS">FIPS</a></abbr> PUB 202 Section 6.2 [SHAKE]</td>
             					</tr>
@@ -4148,9 +4148,7 @@ work-dir of external doc = ../../outputFCS_DTLSC_EXT.1.2
       Note:
     </span><span class="note">
             				In accordance with CNSA 2.0, SHAKE is permitted to be used only as a component of LMS or XMSS. 
-            				Therefore this component is claimed only if LMS or XMSS is claimed in <a href="#FCS_COP.1/SigVer">FCS_COP.1/SigVer</a>. <p></p>
-            				Since LMS and XMSS use both SHAKE128 and SHAKE256 internally, claiming and testing of both
-            				functions is mandatory.
+            				Therefore this component is claimed only if LMS or XMSS is claimed in <a href="#FCS_COP.1/SigVer">FCS_COP.1/SigVer</a>.
             			</span></div></div></div>
             		
             	<div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_COP.1/XOF">FCS_COP.1/XOF</a></div>
@@ -4177,25 +4175,22 @@ work-dir of external doc = ../../outputFCS_DTLSC_EXT.1.2
             						</tr>
             						<tr>
             							<td valign="top">SHAKE</td>
-            							<td valign="top">Function = [SHAKE128, SHAKE256]</td>
+            							<td valign="top">Function = [SHAKE256]</td>
             							<td valign="top"><abbr class="dyn-abbr"><a href="#abbr_NIST">NIST</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_FIPS">FIPS</a></abbr> PUB 202 Section 6.2 [SHAKE]</td>
             						</tr>
             					</table><p></p>	
             					To test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>’s implementation of the SHAKE Extendable Output Function the evaluator shall
             					perform the Algorithm Functional Test, Monte Carlo Test, and Variable Output Test using the
             					following input parameters:<ul>
-            						<li>Function [SHAKE128, SHAKE256]</li>
+            						<li>Function [SHAKE256]</li>
             						<li>Output length [16-65536] bits</li></ul><p></p>
             					<br/><b><i>Algorithm Functional Test</i></b><p></p>
             					For each supported function, generate test cases consisting of random data for every message
-            					length from 0 bits (if supported) to <i>rate</i>-1 bits, where <i>rate</i> equals<p></p><ul>
-            						<li>1344 for SHAKE128, and</li>
-            						<li>1088 for SHAKE256.</li></ul><p></p>
+            					length from 0 bits (if supported) to <i>rate</i>-1 bits, where <i>rate</i> equals<p></p> 1088.<p></p>
             					Additionally, generate tests cases of random data for messages of every multiple of (rate+1) bits
-            					starting at length rate, and continuing until 65535 is exceeded. For SHAKE128, this should
-            					result in a total of 1391 test cases.<p></p>
+            					starting at length rate, and continuing until 65535 is exceeded.<p></p>
             					<br/><b><i>Monte Carlo Test</i></b><p></p>
-            					The Monte Carlos test takes in a single 128-bit message (SEED) and desired output length in
+            					The Monte Carlo test takes in a single 128-bit message (SEED) and desired output length in
             					bits, and runs 100 iterations of the chained computation. MaxOutBytes and MinOutBytes are the
             					largest and smallest supported input and output sizes in bytes, respectively.<p></p>
             					<pre>
