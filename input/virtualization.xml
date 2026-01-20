@@ -2882,7 +2882,7 @@
             		name="Cryptographic Operation - Key Encapsulation" status="sel-based">
             		<depends on-sel="sel-ckm-2-encap"/> 
             		<f-element id="fcs-cop-1e1-keyencap">
-            			<title> The TSF shall perform [key encapsulation] in accordance with a specified cryptographic algorithm 
+            			<title> The TSF shall perform [<h:i>key encapsulation</h:i>] in accordance with a specified cryptographic algorithm 
             				<selectables>
             					<tabularize id="tab-fcs-cop-keyencap-sels" title="Allowable Choices for FCS_COP.1/KeyEncap">
             						<textcol>Identifier</textcol>
@@ -2998,7 +2998,7 @@
   
             		<f-element id="fcs-cop-1e1-kw">
             			<title>
-            				The TSF shall perform [key wrapping] in accordance with a specified cryptographic algorithm 
+            				The TSF shall perform [<h:i>key wrapping</h:i>] in accordance with a specified cryptographic algorithm 
             				<selectables>
             					<tabularize id="fcs-cop-kw-sels" title="Allowable choices for FCS_COP.1/KeyWrap">
             						<textcol>Identifier</textcol>
@@ -3995,7 +3995,7 @@
                     <f-element id="fcs-cop-1e1-skc">
                  
                     		<title>
-                    			The TSF shall perform [symmetric-key encryption/decryption] in accordance with a 
+                    			The TSF shall perform [<h:i>symmetric-key encryption/decryption</h:i>] in accordance with a 
                     			specified cryptographic algorithm   
                     			<selectables>
                     				<tabularize id="fcs-cop-skc-sels" title="Allowable choices for FCS_COP.1/SKC">
@@ -4261,7 +4261,7 @@
             			<title>
             				The TSF shall perform [<h:i>extendable-output function</h:i>] in accordance with a specified cryptographic algorithm  
             				<selectables>
-            					<tabularize id="fcs-cop-xof-sels" title="Allowable Choices for FCS_COP.1/XOF">
+            					<tabularize id="fcs-cop-xof-sels" title="Allowable choices for FCS_COP.1/XOF">
             						<selectcol>Cryptographic Algorithm</selectcol>
             						<reqtext>and parameters</reqtext>
             						<selectcol>Parameters</selectcol>
@@ -4274,7 +4274,7 @@
             					<!-- SHAKE -->
             					<selectable id="sel-fcs-cop-xof-shake">
             						<col>SHAKE</col>
-            						<col>Functions = [SHAKE128, SHAKE256]
+            						<col>Functions = [SHAKE256]
             						</col>
             						<col>NIST FIPS PUB 202 Section 6.2 [SHAKE]</col>
             					</selectable>
@@ -4283,9 +4283,7 @@
             			</title>
             			<note role="application">
             				In accordance with CNSA 2.0, SHAKE is permitted to be used only as a component of LMS or XMSS. 
-            				Therefore this component is claimed only if LMS or XMSS is claimed in FCS_COP.1/SigVer. <h:p/>
-            				Since LMS and XMSS use both SHAKE128 and SHAKE256 internally, claiming and testing of both
-            				functions is mandatory.
+            				Therefore this component is claimed only if LMS or XMSS is claimed in FCS_COP.1/SigVer.
             			</note>
             			<aactivity>
             				<TSS/>
@@ -4308,25 +4306,22 @@
             						</h:tr>
             						<h:tr>
             							<h:td valign="top">SHAKE</h:td>
-            							<h:td valign="top">Function = [SHAKE128, SHAKE256]</h:td>
+            							<h:td valign="top">Function = [SHAKE256]</h:td>
             							<h:td valign="top">NIST FIPS PUB 202 Section 6.2 [SHAKE]</h:td>
             						</h:tr>
             					</h:table><h:p/>	
             					To test the TOE’s implementation of the SHAKE Extendable Output Function the evaluator shall
             					perform the Algorithm Functional Test, Monte Carlo Test, and Variable Output Test using the
             					following input parameters:<h:ul>
-            						<h:li>Function [SHAKE128, SHAKE256]</h:li>
+            						<h:li>Function [SHAKE256]</h:li>
             						<h:li>Output length [16-65536] bits</h:li></h:ul><h:p/>
             					<h:br/><h:b><h:i>Algorithm Functional Test</h:i></h:b><h:p/>
             					For each supported function, generate test cases consisting of random data for every message
-            					length from 0 bits (if supported) to <h:i>rate</h:i>-1 bits, where <h:i>rate</h:i> equals<h:p/><h:ul>
-            						<h:li>1344 for SHAKE128, and</h:li>
-            						<h:li>1088 for SHAKE256.</h:li></h:ul><h:p/>
+            					length from 0 bits (if supported) to <h:i>rate</h:i>-1 bits, where <h:i>rate</h:i> equals<h:p/> 1088.<h:p/>
             					Additionally, generate tests cases of random data for messages of every multiple of (rate+1) bits
-            					starting at length rate, and continuing until 65535 is exceeded. For SHAKE128, this should
-            					result in a total of 1391 test cases.<h:p/>
+            					starting at length rate, and continuing until 65535 is exceeded.<h:p/>
             					<h:br/><h:b><h:i>Monte Carlo Test</h:i></h:b><h:p/>
-            					The Monte Carlos test takes in a single 128-bit message (SEED) and desired output length in
+            					The Monte Carlo test takes in a single 128-bit message (SEED) and desired output length in
             					bits, and runs 100 iterations of the chained computation. MaxOutBytes and MinOutBytes are the
             					largest and smallest supported input and output sizes in bytes, respectively.<h:p/>
             					<h:pre>
