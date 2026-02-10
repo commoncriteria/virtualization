@@ -68,7 +68,7 @@
             <PPTitle>Protection Profile for Virtualization</PPTitle>
             <PPVersion>2.0</PPVersion>
             <PPAuthor>National Information Assurance Partnership</PPAuthor>
-            <PPPubDate>2025-06-11</PPPubDate> 
+            <PPPubDate>2026-02-10</PPPubDate> 
             <Keywords>Virtualization</Keywords>
         </ReferenceTable>
     </PPReference>
@@ -94,7 +94,7 @@
         </entry>
 		<entry>
             <version>2.0</version>
-            <date>2025-06-11</date>
+            <date>2026-02-10</date>
             <subject>CC:2022 conversion, remove Modules.</subject>
         </entry>
     </RevisionHistory>	
@@ -2617,7 +2617,7 @@
                         		<h:li>SHA-1 hash is no longer permitted to be used as a hash function, </h:li>
                         		<h:li>SHA3 hashes may be used only for internal hardware functionality such as
                         			boot integrity checks, and</h:li>
-                        		<h:li>SHA-256 is permitted only for use as a PRF or MAC as part of a key derivation function,
+                        		<h:li>SHA-256 is permitted only for use as a PRF, including as part of an RBG or key derivation function,
                         			or as part of LMS or XMSS.</h:li>
                         	</h:ul><h:p/>
                         	The hash selection should be consistent with the overall strength of the 
@@ -4022,21 +4022,7 @@
                     							<selectable>NIST SP 800-38A</selectable></selectables> [CBC]
                     					</col>
                     				</selectable>
-                    				
-                    				<!-- XTS-AES -->
-                    				<selectable id="sel-fcs-cop-skc-aes-xts">
-                    					<col>XTS-AES</col>
-                    					<col>AES in XTS mode with unique tweak values that are consecutive non-negative 
-                    						integers starting at an arbitrary non-negative integer</col>
-                    					<col>512 bits</col>
-                    					<col><selectables>
-                    						<selectable>ISO/IEC 18033-3:2010 (Subclause 5.2)</selectable> 
-                    						<selectable>FIPS PUB 197</selectable></selectables> [AES]<h:p/><selectables>
-                    							<selectable>IEEE Std. 1619-2018</selectable> 
-                    							<selectable>NIST SP 800-38E</selectable></selectables> [XTS]
-                    					</col>
-                    				</selectable>
-                    				
+                    				                				
                     				<!-- AES-CTR -->
                     				<selectable id="sel-fcs-cop-skc-aes-ctr">
                     					<col>AES-CTR</col>
@@ -4047,7 +4033,7 @@
                     						<selectable>ISO/IEC 18033-3:2010 (Subclause 5.2)</selectable> 
                     						<selectable>FIPS PUB 197</selectable></selectables> [AES]<h:p/><selectables>
                     							<selectable>: ISO/IEC 10116:2017 (Clause 10)</selectable> 
-                    							<selectable>NIST SP 800-38A</selectable></selectables> [CBC]
+                    							<selectable>NIST SP 800-38A</selectable></selectables> [CTR]
                     					</col>
                     				</selectable>
                     			</selectables>
@@ -4057,8 +4043,6 @@
                     			<TSS>
                     				The evaluator shall examine the TSS to ensure that it describes the construction of any IVs,
                     				tweak values, and counters in conformance with the relevant specifications.<h:p/>
-                    				If XTS-AES is claimed then the evaluator shall examine the TSS to verify that the TOE creates
-                    				full-length keys by methods that ensure that the two key halves are different and independent.
                     			</TSS>
                     			<Guidance/>
                     			<Tests>
@@ -4149,49 +4133,6 @@
                     				The initial IV, key, and plaintext/ciphertext should be random.<h:p/>
                     				The evaluator shall test the decrypt functionality using the same test as above,
                     				exchanging CT and PT, and replacing AES-CBC-Encrypt with AES-CBC-Decrypt.<h:p/>
-                    				
-                    				
-                    				<!-- XTS-AES -->
-                    				<h:br/><h:b>XTS-AES</h:b><h:p/>
-                    				<h:table border="1">
-                    					<h:tr class="header" bgcolor="#cccccc">
-                    						<h:td valign="top">Identifier</h:td>
-                    						<h:td valign="top">Cryptographic Algorithm</h:td>
-                    						<h:td valign="top">Cryptographic Key Sizes</h:td>
-                    						<h:td valign="top">List of Standards</h:td>
-                    					</h:tr>
-                    					<h:tr>
-                    						<h:td valign="top">XTS-AES</h:td>
-                    						<h:td valign="top">AES in XTS mode with unique tweak values that are consecutive
-                    							non-negative integers starting at an arbitrary non-negative integer</h:td>
-                    						<h:td valign="top">512 bits</h:td>
-                    						<h:td valign="top">
-                    							[<h:b>selection:</h:b> ISO/IEC 18033-3:2010 (Subclause 5.2),
-                    							FIPS PUB 197] [AES]<h:p/>
-                    							[<h:b>selection:</h:b> IEEE Std. 1619-2018, 
-                    							NIST SP 800-38E] [XTS]</h:td>
-                    					</h:tr>
-                    				</h:table><h:p/>	
-                    				To test the TOE’s ability to encrypt/decrypt data using AES in XTS mode, the evaluator shall
-                    				perform the Single Data Unit Test and the Multiple Data Unit Test using the following input
-                    				parameters:<h:ul>
-                    					<h:li>Direction [encryption, decryption]</h:li>
-                    					<h:li>Key size [512] bits</h:li>
-                    					<h:li>Tweak value format [128-bit hex string, data unit sequence number]</h:li></h:ul><h:p/>
-                    				<h:br/><h:b>Single Data Unit Test</h:b><h:p/>
-                    				For each combination of claimed key size, direction, and supported tweak value format, the
-                    				evaluator shall generate 50 test cases consisting of random payload data. The payload data size is
-                    				determined randomly for each test case from supported values within the range [128-65536] bits.
-                    				The payload size and data unit size must be equal.<h:p/>
-                    				<h:br/><h:b>Multiple Data Unit Test</h:b><h:p/>
-                    				For each combination of claimed key size, direction, and supported tweak value format, the
-                    				evaluator shall generate 50 test cases consisting of random payload data. The payload data size is
-                    				determined randomly for each test case from supported values within the range [128-65536] bits.
-                    				Likewise, the data unit size is determined randomly for each test case from supported values
-                    				within the range [128-65535] bits. The payload size and data unit size must not be equal.<h:p/>
-                    				The evaluator shall verify the correctness of the TSF’s implementation by comparing values
-                    				generated by the TSF with those generated by a known good implementation using the same
-                    				input parameters.<h:p/>
                     				
                     				<!-- AES-CTR -->
                     				<h:br/><h:b>AES-CTR</h:b><h:p/>
@@ -5416,10 +5357,8 @@
 					<dependencies>FDP_VMS_EXT.1 VM Separation</dependencies>
                     <f-element id="fdp-hbi-ext-1e1">
                         <title>The TSF shall use
-                            <selectables>
-                                <selectable exclusive="yes">no mechanism</selectable>
-                                <selectable><assignable>list of platform-provided, hardware-based mechanisms</assignable></selectable>
-                            </selectables> to constrain a Guest VM's direct access to the following physical devices:
+                            <assignable>list of platform-provided, hardware-based mechanisms</assignable>
+                            to constrain a Guest VM's direct access to the following physical devices:
                             <selectables>
                                 <selectable exclusive="yes">no devices</selectable>
                                 <selectable><assignable> physical devices to which the VMM allows Guest VMs physical access</assignable></selectable>
