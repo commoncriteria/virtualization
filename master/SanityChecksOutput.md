@@ -585,7 +585,5 @@
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[4]""
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[5]""
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[6]""
- Failed to find a reference to entropyappendix.
- Failed to find a reference to entropyappendix.
 * Warning: Since FMT_MOF_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
