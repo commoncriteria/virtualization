@@ -503,10 +503,10 @@
 			The features enumerated below, if implemented by the TOE, require that additional SFRs be claimed in the ST.<h:br/>
 			<implements>
 				<feature id="key-encap-support" title="Key Encapsulation Support">
-					<description>A conformant TOE is required to implement trusted communications. Depending on the specific protocols used and the supported connection parameters for these protocols, it may be necessary to implement a key encapsulation algorithm as part of key establishment.<h:br/></description>
+					<description>A conformant TOE is required to implement trusted communications. Depending on the specific protocols used and the supported connection parameters for these protocols, it may be necessary to implement a key encapsulation algorithm as part of key establishment. In addition to the SFR referenced here, the corresponding selection for key encapsulation shall be made in FCS_CKM.2.1, which then requires the inclusion of FCS_COP.1/KeyEncap.<h:br/></description>
 				</feature>
 				<feature id="key-wrap-support" title="Key Wrap Support">
-					<description>A conformant TOE is required to implement trusted communications. Depending on the specific protocols used and the supported connection parameters for these protocols, it may be necessary to implement a key wrap algorithm as part of key establishment.<h:br/></description>
+					<description>A conformant TOE is required to implement trusted communications. Depending on the specific protocols used and the supported connection parameters for these protocols, it may be necessary to implement a key wrap algorithm as part of key establishment. In addition to the SFR referenced here, the corresponding selection for key encapsulation shall be made in FCS_CKM.2.1, which then requires the inclusion of FCS_COP.1/KeyWrap.<h:br/></description>
 				</feature>
 				<feature id="key-agreement-support" title="Key Agreement Support">
 					<description>A conformant TOE is required to implement trusted communications. Depending on the specific protocols used and the supported connection parameters for these protocols, it may be necessary to implement one or more key agreement algorithms as part of key establishment.<h:br/></description>
@@ -1134,10 +1134,10 @@
 								[<h:i>transmit the generated audit data to an external IT entity using a trusted channel according to FTP_ITC_EXT.1</h:i>].						
                         </title>
                         <aactivity>
-                            Protocols used for implementing the trusted channel must be selected in FTP_ITC_EXT.1.
+    
                             <TSS>
                                 The evaluator shall examine the TSS to ensure it describes the means by which 
-                                the audit data are transferred to the external audit server, and how the trusted channel is 
+                                the audit data are transferred to the external audit server (i.e., which of the trusted channels identified in FTP_ITC_EXT.1 is used), and how the trusted channel is 
                                 provided. 
                             </TSS>
                             <Guidance>
@@ -1150,8 +1150,7 @@
                                 Testing of the trusted channel mechanism is to be performed as specified in the evaluation 
                                 activities for FTP_ITC_EXT.1. <h:p/>
                                 The evaluator shall perform the following test for this requirement:<h:p/>
-                                <testlist>
-                                    <test>The evaluator shall establish a session between the TOE and the audit server according
+                                The evaluator shall establish a session between the TOE and the audit server according
 										to the configuration guidance provided. The evaluator shall then examine the traffic
 										that passes between the audit server and the TOE during several activities of the 
 										evaluator’s choice designed to generate audit data to be transferred to the audit server. 
@@ -1159,8 +1158,6 @@
 										this transfer, and that they are successfully received by the audit server. The evaluator
 										shall record the particular software (name, version) used on the audit server during 
 										testing.
-									</test>
-                                </testlist>
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -1173,7 +1170,7 @@
                         </title>
                     </f-element> 
                     <f-element id="fau-stg-2e2">
-						<title>The TSF shall be able to [<h:i>prevent</h:i>] unauthorized modifications to the stored audit in the audit trail.
+						<title>The TSF shall be able to [<h:i>prevent</h:i>] unauthorized modifications to the stored audit data in the audit trail.
                         </title>
                         <note role="application">The evaluation activity for this SFR is not intended to imply that the TOE must
 							support an administrator’s ability to designate individual audit records for deletion. That level 
@@ -2617,8 +2614,7 @@
                         		<h:li>SHA-1 hash is no longer permitted to be used as a hash function, </h:li>
                         		<h:li>SHA3 hashes may be used only for internal hardware functionality such as
                         			boot integrity checks, and</h:li>
-                        		<h:li>SHA-256 is permitted only for use as a PRF, including as part of an RBG or key derivation function,
-                        			or as part of LMS or XMSS.</h:li>
+                        		<h:li>SHA-256 is permitted only for use as part of LMS or XMSS.</h:li>
                         	</h:ul><h:p/>
                         	The hash selection should be consistent with the overall strength of the 
                         	algorithm used for signature generation. For example, the TOE should choose SHA-384 for 3072-bit RSA, 
@@ -2756,15 +2752,7 @@
                     				<reqtext><h:p/><h:p/>The following table provides the allowable choices for
                     					completion of the selection operations of FCS_COP.1/KeyedHash.</reqtext>
                     			</tabularize>
-                    			
-                    			<selectable id="sel-fcs-cop-keyedhash-hmac-sha-256">
-                    				<col>HMAC-SHA-256</col>
-                    				<col>256 bits</col>
-                    				<col><selectables>
-                    					<selectable><h:i>ISO/IEC 9797-2:2021 (Section 7 “MAC Algorithm 2”)</h:i></selectable>
-                    					<selectable><h:i>FIPS PUB 198-1</h:i></selectable></selectables>
-                    				</col>
-                    			</selectable>
+                    		
                     			
                     			<selectable id="sel-fcs-cop-keyedhash-hmac-sha-384">
                     				<col>HMAC-SHA-384</col>
@@ -2798,8 +2786,7 @@
                         	<TSS>
                         		The evaluator shall examine the TSS to ensure that the size of the key is sufficient for the desired
                         		security strength of the output.<h:p/>
-                        		The evaluator shall examine the TSS to verify that if HMAC-SHA-256 is selected, that it is being 
-                        		used only as a PRF or MAC step in a key derivation function.
+                        		
                         	</TSS>
                         	<Guidance/>
                         	<Tests>
@@ -2818,12 +2805,7 @@
                         				<h:td valign="top">Cryptographic Key Sizes</h:td>
                         				<h:td valign="top">List of Standards</h:td>
                         			</h:tr>
-                        			<h:tr>
-                        				<h:td valign="top">HMAC-SHA-256</h:td>
-                        				<h:td valign="top">256 bits</h:td>
-                        				<h:td valign="top">
-                        					[<h:b>selection:</h:b> <h:i>ISO/IEC 9797-2:2021 (Section 7 “MAC Algorithm 2”), FIPS PUB 198-1</h:i>] </h:td>
-                        			</h:tr>
+                        		
                         			<h:tr>
                         				<h:td valign="top">HMAC-SHA-384</h:td>
                         				<h:td valign="top">[<h:i><h:b>selection:</h:b> (ISO, FIPS) 384, (FIPS) 256] bits</h:i></h:td>
@@ -3297,7 +3279,7 @@
 													NIST FIPS PUB 186-5 (Section 5.4) [RSASSA-PKCS1-v1_5]</h:td>
 							</h:tr>
 						</h:table><h:p/>	
-						To test the TOE’s ability to perform RSA Digital Signature Generation using PKCS1-v1,5
+						To test the TOE’s ability to perform RSA Digital Signature Generation using PKCS1-v1_5
 						signature type, the evaluator shall perform the Generated Data Test using the following input
 						parameters:<h:ul>
 						<h:li>Modulus size [3072, 4096, 6144, 8192] bits</h:li>
@@ -3730,7 +3712,7 @@
                  NIST FIPS PUB 186-5 (Section 5.4) [RSASSA-PKCS1-v1_5]</h:td>
              </h:tr>
            </h:table><h:p/>	
-           To test the TOE’s ability to perform RSA Digital Signature Verification using PKCS1-v1,5
+           To test the TOE’s ability to perform RSA Digital Signature Verification using PKCS1-v1_5
            signature type, the evaluator shall perform Generated Data Test using the following input
            parameters:<h:ul>
              <h:li>Modulus size [3072, 4096, 6144, 8192] bits</h:li>
@@ -4302,7 +4284,7 @@
 					<audit/>
 					<dependencies>FCS_RBG.1 Cryptographic Operation (Random Bit Generation)</dependencies>
                     <f-element id="fcs-ent-ext-1e1">
-                        <title>The TSF shall provide a mechanism to make available to VMs entropy that meets FCS_RBG.1 through
+                        <title>The TSF shall provide a mechanism to make entropy available to VMs that is generated obtained via mechanisms specified in FCS_RBG.1.2 through
                             <selectables>
                                 <selectable>hypercall interface</selectable>
                                 <selectable>virtual device interface</selectable>
@@ -4530,7 +4512,7 @@
                             <Tests>
                                 The evaluator uses the operational guidance to configure the TOE to carry out the following tests:<h:p/>
                                 <testlist>
-                                    <test>The evaluator shall configure the SPD such that there is a rule for dropping a packet,
+                                    <test id="spd-rules-test">The evaluator shall configure the SPD such that there is a rule for dropping a packet,
 										encrypting a packet, and allowing a packet to flow in plaintext. The selectors used in
 										the construction of the rule shall be different such that the evaluator can generate a
 										packet and send packets to the gateway with the appropriate fields (fields that are used
@@ -4541,7 +4523,7 @@
 										behavior: appropriate packets were dropped, allowed to flow without modification, 
 										encrypted by the IPsec implementation.</test>
 									<test>The evaluator shall devise several tests that cover a variety of scenarios for packet
-										processing. As with Test 1, the evaluator ensures both positive and negative test cases
+										processing. As with <xref to="spd-rules-test"/>, the evaluator ensures both positive and negative test cases
 										are constructed. These scenarios shall exercise the range of possibilities for SPD entries 
 										and processing modes as outlined in the TSS and operational guidance. Potential areas to
 										cover include rules with overlapping ranges and conflicting entries, inbound and outbound
@@ -4813,12 +4795,12 @@
                                     <test>(conditional) The evaluator shall configure a maximum lifetime in terms of the # of packets (or
 										bytes) allowed following the operational guidance. The evaluator shall establish an SA and determine that
 										once the allowed # of packets (or bytes) through this SA is exceeded, the connection is closed.</test>
-                                    <test>(conditional) The evaluator shall construct a test where an IKEv2 IKE_SA is established and attempted
+                                    <test id="ike-sa-lifetime-test">(conditional) The evaluator shall construct a test where an IKEv2 IKE_SA is established and attempted
 										to be maintained for more than 24 hours before it is renegotiated. The evaluator shall observe that this
 										SA is closed or renegotiated in 24 hours or less. If such an action requires that the TOE be configured in a
 										specific way, the evaluator shall implement tests demonstrating that the configuration capability of the
 										TOE works as documented in the operational guidance.</test>
-									<test>(conditional) The evaluator shall perform a test similar to Test 2 
+									<test>(conditional) The evaluator shall perform a test similar to <xref to="ike-sa-lifetime-test"/> 
 										for Child SAs, except that the lifetime will be 8 hours or less instead of 24 hours or less.</test>
 								</testlist>				    
                             </Tests>
@@ -4952,17 +4934,16 @@
 							</Guidance>
 							<Tests>
 								For efficiency’s sake, the testing that is performed here has been combined with the testing for
-								FIA_X509_EXT.2 and FIA_X509_EXT.3 in the <!-- <xref to="pkg-509"/> --> Functional Package for
-								X.509, version 1.0 (for IPsec connections and depending on the Base-PP),
+								FIA_X509_EXT.2 and FIA_X509_EXT.3 in the <xref to="x509"/> (for IPsec connections and depending on the base PP),
 								FCS_IPSEC_EXT.1.12, and FCS_IPSEC_EXT.1.13. The following tests shall be repeated for each peer
 								authentication protocol selected in the FCS_IPSEC_EXT.1.11 selection above:<h:p/>
 								<testlist>
-									<test>The evaluator shall have the TOE generate a public-private key pair, and submit a CSR (Certificate
+									<test id="csr-parameter-test">The evaluator shall have the TOE generate a public-private key pair, and submit a CSR (Certificate
 										Signing Request) to a CA (trusted by both the TOE and the peer VPN used to establish a connection) for
 										its signature. The values for the DN (Common Name, Organization, Organizational Unit, and Country) will
 										also be passed in the request. Alternatively, the evaluator may import to the TOE a previously generated
 										private key and corresponding certificate.</test>
-									<test>The evaluator shall configure the TOE to use a private key and associated certificate signed by a
+									<test id="successful-certificate-test">The evaluator shall configure the TOE to use a private key and associated certificate signed by a
 										trusted CA and shall establish an IPsec connection with the peer.</test>
 									<test>The evaluator shall test that the TOE can properly handle revoked certificates – conditional on
 										whether CRL or OCSP is selected; if both are selected, and then a test is performed for each method. For
@@ -4997,7 +4978,8 @@
 										(OID) in the DN) and verify that the IKEv2 authentication fails. To demonstrate a comparison of DN values,
 										the evaluator shall change any one of the four DN values and verify that the IKEv2 authentication fails.</test>
 									<test>(conditional) If the TOE supports both IPv4 and IPv6 and supports IP address identifier types, the
-										evaluator must repeat test 1 and 2 with both IPv4 address identifiers and IPv6 identifiers. Additionally,
+										evaluator must repeat <xref to="csr-parameter-test"/> and <xref to="successful-certificate-test"/> 
+with both IPv4 address identifiers and IPv6 identifiers. Additionally,
 										the evaluator shall verify that the TOE verifies that the IP header matches the identifiers by setting the
 										presented identifiers and the reference identifier with the same IP address that differs from the actual IP
 										address of the peer in the IP headers and verifying that the IKEv2 authentication fails.</test>
@@ -5148,9 +5130,9 @@
                     <title>
 						The TSF shall perform deterministic random bit generation services using 
 						<selectables linebreak="yes">
-						  <selectable>Hash_DRBG (any)</selectable>
-						  <selectable>HMAC_DRBG (any)</selectable>
-						  <selectable>CTR_DRBG (AES)</selectable>
+						  <selectable>Hash_DRBG (SHA-384 or SHA-512)</selectable>
+						  <selectable>HMAC_DRBG (HMAC-SHA-384 or HMAC-SHA-512)</selectable>
+						  <selectable>CTR_DRBG (AES-256)</selectable>
 						</selectables>
 						in accordance with [<h:i>NIST SP 800-90A</h:i>] after initialization with a seed.              
 					  </title>
@@ -5571,8 +5553,7 @@
 							<Guidance/>
                             <Tests>
                                 The evaluator shall perform the following test:<h:p/>
-                                <testlist>
-                                    <test>
+                                
 										On the host, the evaluator creates a file that is more than half the size of a connected physical 
 										storage device (or multiple files whose individual sizes add up to more than half the size of 
 										the storage media).  This file (or files) shall be filled entirely with a non-zero value. 
@@ -5581,8 +5562,6 @@
 										physical storage device and connects it to a powered-off VM.  Then, from outside the Guest VM,
 										scan through and check that all the non-metadata (as documented in the TSS) in the file
 										corresponding to that virtual disk is set to zero.
-									</test>
-                                </testlist>
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -5655,10 +5634,9 @@
 								communications mechanisms, including how they are invoked and how they are disabled.
 							</Guidance>
                             <Tests>
-                                The evaluator shall perform the following tests for each documented inter-VM communications channel:
-                                <testlist>
-                                    <test>
-                                        <h:ol type="a">
+                                The evaluator shall perform the following tests for each documented inter-VM communications channel: <h:p/>
+                                
+                                        <h:ol>
                                             <h:li>Create two VMs without specifying any communications mechanism or overriding
 												the default configuration. </h:li>
                                             <h:li>Test that the two VMs cannot communicate through the mechanisms selected in FDP_VMS_EXT.1.1.</h:li>
@@ -5676,8 +5654,6 @@
                                         </h:ol>
 										FDP_VMS_EXT.1.2 is met if communication is unsuccessful in step (b).
 										FDP_VMS_EXT.1.3 is met if communication is successful in step (d) and unsuccessful in step (f).<h:p/>
-                                    </test>
-                                </testlist>
                             </Tests>
                          </aactivity>
                     </f-element>
@@ -5931,15 +5907,14 @@
                                 on setting the minimum password length. 
                             </Guidance>
                             <Tests>
-                                The evaluator shall also perform the following test. 
-								<testlist>
-									<test>The evaluator shall compose passwords that either meet the requirements, or fail to meet the 
+                                The evaluator shall also perform the following test: <h:p/>
+								The evaluator shall compose passwords that either meet the requirements, or fail to meet the 
 										requirements, in some way. For each password, the evaluator shall verify that the TOE supports
 										the password. While the evaluator is not required (nor is it feasible) to test all possible
 										combinations of passwords, the evaluator shall ensure that all characters, rule 
 										characteristics, and a minimum length listed in the requirement are supported, and justify the
-										subset of those characters chosen for testing.</test>
-								</testlist>
+										subset of those characters chosen for testing.
+								
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -6018,8 +5993,7 @@
 								If ‘X.509 certificate authentication‘ is selected, the evaluator will generate an X.509v3 certificate for 
 								an administrator user with the Client Authentication Enhanced Key Usage field set. The evaluator
 								will provision the VS for authentication with the X.509v3 certificate. The evaluator shall ensure
-								that the certificates are validated by the VS as per FIA_X509_EXT.1.1 in the <!-- <xref to="pkg-509"/> --> Functional Package for
-                                X.509, version 1.0 and then conduct the following tests:
+								that the certificates are validated by the VS as per FIA_X509_EXT.1.1 in the <xref to="x509"/> and then conduct the following tests:
 								<testlist>
 									<test>The evaluator will attempt to authenticate to the VS using the X.509v3 certificate. The 
 										evaluator will ensure that the authentication attempt is successful.</test>
@@ -6116,12 +6090,12 @@
 					<!-- Below event used to be in Table 3 -->
 					<audit-event type="optional"> 
 						<audit-event-descr>Start and end of administrator session.</audit-event-descr>
-                        <audit-event-info>Start time and end time of administrator session.</audit-event-info>
+						<audit-event-info>[<h:b>selection:</h:b> <h:i>Start time and end time of administrator session, N/A</h:i>]</audit-event-info>
 					</audit-event> 
                 </f-component>		    
 
 				<f-component cc-id="fia_x509_ext.4" name="Exceptions to X.509 Certificate Revocation Checking"  status="sel-based" id="fia-x509-ext-4">
-				    <depends on-sel="fia-x509-ext-1e1"><external-doc ref="X509"/></depends>
+				    <depends on-sel="fia-x509-ext-1e4"><external-doc ref="X509"/></depends>
 					<consistency-rationale/>
 					<comp-lev/>
 					<management/>
@@ -6141,16 +6115,14 @@
 								the TOE implements to handle the lack of certificate revocation. The description must be 
 								consistent with the selection in the requirement.</TSS>
 							<Guidance/>
-							<Tests>
-							<testlist>
-								<test>For each exception, the evaluator shall configure the TSF as necessary to meet the 
+							<Tests>The evaluator shall perform the following test:<h:p/>
+							For each exception, the evaluator shall configure the TSF as necessary to meet the 
 									exceptional condition described, and exercise the function using a certificate chain
 									without revocation information. The evaluator shall attempt to examine TSF logging or
 									behavior as described in the TSS to confirm the alternative action described is performed.
 									For example, in the case of firmware updates that invalidate automatic updates, the
 									evaluator shall invoke an automatic update and observe that the update is not performed. 
-									In other cases, the TSS describes the alternative action.</test>
-							</testlist></Tests>
+									In other cases, the TSS describes the alternative action.</Tests>
 						</aactivity>
 					</f-element>
 					<audit-event/>
@@ -6957,8 +6929,8 @@
                         </aactivity>
                     </f-element>
 					<audit-event type="optional">
-					<audit-event-descr>Invalid parameter to hypercall detected.</audit-event-descr>
-					<audit-event-info>Hypercall interface for which access was attempted</audit-event-info>
+					<audit-event-descr>Invalid parameter to hypercall detected</audit-event-descr>
+						<audit-event-info><h:b>[selection: </h:b><h:i>Hypercall interface for which access was attempted, None</h:i>]</audit-event-info>
 					</audit-event>
 					<audit-event type="optional">
 					<audit-event-descr>Hypercall interface invoked when documented preconditions are not met</audit-event-descr>
@@ -6992,12 +6964,10 @@
                             </TSS>
 							<Guidance/>
                             <Tests>
-                                The evaluator shall perform the following test:
-                                <testlist>
-                                    <test>The evaluator shall check for the existence of SWID tags in a .swidtag file. The evaluator 
+                                The evaluator shall perform the following test: <h:p/>
+                                The evaluator shall check for the existence of SWID tags in a .swidtag file. The evaluator 
 									shall open the file and verify that each SWID contains at least a SoftwareIdentity element 
-									and an Entity element.</test>
-								</testlist>
+									and an Entity element.
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -7104,10 +7074,8 @@
 								access the measurements in the Management Subsystem.</Guidance>
                             <Tests>
                                 The evaluator shall perform the following test:<h:p/>
-                                <testlist>
-                                    <test>The evaluator shall start the VS, login as an administrator, and verify that the
-										measurements for the specified components are viewable in the Management Subsystem.</test>
-                              </testlist>
+                                The evaluator shall start the VS, login as an administrator, and verify that the
+										measurements for the specified components are viewable in the Management Subsystem.
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -7148,7 +7116,7 @@
                     <f-element id="fpt-rdm-ext-1e2">
                         <title>The TSF shall enforce the following rules when <assignable>virtual or physical 
 							removable media and virtual or physical removable media devices</assignable> are switched between 
-							information domains, then
+							information domains:
                             <selectables linebreak="yes">
                                 <selectable>the administrator has granted explicit access for the media or device to be connected to
 									the receiving domain</selectable>
@@ -7196,13 +7164,12 @@
 							documents how an administrator or user configures the behavior of each media or device.
 							</Guidance>
                             <Tests>
-                                The evaluator shall perform the following test for each listed media or device:
-                                <testlist>
-                                    <test>The evaluator shall configure two VMs that are members of different information domains,
+                                The evaluator shall perform the following test for each listed media or device: <h:p/>
+                                The evaluator shall configure two VMs that are members of different information domains,
 										with the media or device connected to one of the VMs. The evaluator shall disconnect the
 										media or device from the VM and connect it to the other VM. The evaluator shall verify 
-										that the action performed is consistent with the action assigned in the TSS.</test>
-                                </testlist>
+										that the action performed is consistent with the action assigned in the TSS.
+                                
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -7227,7 +7194,7 @@
                                 <selectable>at the request of the authorized user</selectable>
                                 <selectable>at the conditions <assignable>conditions under which self-test should occur</assignable></selectable>
                             </selectables>
-                            to demonstrate the correct operation of [<h:i>TSF DRBG specified in FCS_RBG.1</h:i>].              
+                            to demonstrate the correct operation of [<h:i>TSF DRBG specified in FCS_RBG.1</h:i>]: <assignable>DRBG health tests</assignable>.              
                         </title>
                     </f-element>
                     
@@ -7325,14 +7292,11 @@
                          </title></ext-comp-def-title>
 
                         <note role="application">The digital signature mechanism referenced in FPT_TUD_EXT.1.3 is one of the 
-							algorithms specified in FCS_COP.1/SIG.<h:p/>
+							algorithms specified in FCS_COP.1/SigVer.<h:p/>
                             If certificates are used by the update verification mechanism, then
-                            FIA_X509_EXT.1 and FIA_X509_EXT.2 in the  <!-- <xref to="pkg-509"/> --> Functional Package for
-                            X.509, version 1.0  must be included in the ST. Certificates are validated in accordance
-                            with FIA_X509_EXT.1 in the  <!-- <xref to="pkg-509"/> --> Functional Package for
-                            X.509, version 1.0 and 
-                            the appropriate selections should be made in FIA_X509_EXT.2.1 in the  <!-- <xref to="pkg-509"/> --> Functional Package for
-                            X.509, version 1.0. Additionally, FPT_TUD_EXT.2 must be
+                            FIA_X509_EXT.1 and FIA_X509_EXT.2 in the  <xref to="x509"/> must be included in the ST. Certificates are validated in accordance
+                        	with FIA_X509_EXT.1 in the <xref to="x509"/> and 
+                            the appropriate selections should be made in FIA_X509_EXT.2.1 in <xref to="x509"/>. Additionally, FPT_TUD_EXT.2 must be
 							included in the ST.<h:p/>
                             “Update” in the context of this SFR refers to the process of replacing a non-volatile, system resident
 							software component with another. The former is referred to as the NV image, and the latter is the
@@ -7428,19 +7392,16 @@
                         </title>
                         <note role="application">Certificates may optionally be used for code signing of system software updates
 							(FPT_TUD_EXT.1.3). This element must be included in the ST if certificates are used for validating 
-							updates. If “code signing for system software updates” is selected in FIA_X509_EXT.2.1 from the <!-- <xref to="pkg-509"/> --> 
-							Functional Package for X.509, version 1.0, FPT_TUD_EXT.2 
+							updates. If “code signing for system software updates” is selected in FIA_X509_EXT.2.1 from the <xref to="x509"/>, FPT_TUD_EXT.2 
 							must be included in the ST.<h:p/>
                             Validity is determined by the certificate path, the expiration date, and the revocation status in 
-                            accordance with FIA_X509_EXT.1 in the <!-- <xref to="pkg-509"/> --> Functional Package for
-                            X.509, version 1.0.</note>
+                            accordance with FIA_X509_EXT.1 in the <xref to="x509"/>.</note>
                         <aactivity>
 							<TSS/>
 							<Guidance/>
                             <Tests>
                                 The evaluation activity for this requirement is performed in conjunction with the evaluation activity
-                                for FIA_X509_EXT.1  and FIA_X509_EXT.2 in the <!-- <xref to="pkg-509"/> --> Functional Package for
-                                X.509, version 1.0.
+                                for FIA_X509_EXT.1  and FIA_X509_EXT.2 in the <xref to="x509"/>.
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -7620,8 +7581,7 @@
                                 <selectable id="sel-itc-https">TLS/HTTPS as conforming to FCS_HTTPS_EXT.1</selectable>
                                 <selectable id="sel-itc-ipsec">IPsec as conforming to FCS_IPSEC_EXT.1</selectable>
                                 <selectable id="sel-itc-ssh">SSH as conforming to the
-                                    <h:a href="https://www.niap-ccevs.org/protectionprofiles/515"><h:i>Functional Package
-									for Secure Shell</h:i></h:a></selectable>
+                                    <h:a href="https://www.niap-ccevs.org/protectionprofiles/515"><h:i><xref to="ssh"/></h:i></h:a></selectable>
                             </selectables>
 							and
 							<selectables linebreak="yes">
@@ -7649,15 +7609,20 @@
 								that is logically distinct from other communication paths and provides assured identification of its
 								endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.
 							</title></ext-comp-def-title>
-                        <note role="application">If the ST author selects either TLS or HTTPS, the TOE will claim the relevant functionality defined in the 
+                        <note role="application"><h:p>If the ST author selects either TLS or HTTPS, the TOE will claim the relevant functionality defined in the 
                             <xref to="tls"/>. This PP does not mandate that a product implement TLS with mutual authentication,
 							but if the product includes the capability to perform TLS with mutual authentication, then
-							mutual authentication must be included within the TOE boundary. 
-							If the ST author selects SSH, the TOE will claim the relevant functionality defined in the <xref to="ssh"/>.<h:br/> <h:br/>
+							mutual authentication must be included within the TOE boundary.
+                        </h:p><h:p>
+								If the ST author selects TLS/HTTPS, the TOE will claim FCS_HTTPS_EXT.1
+                        </h:p><h:p>
+                        	If the ST author selects IPsec, the TOE will claim FCS_IPSEC_EXT.1.
+                        </h:p><h:p>
+								If the ST author selects SSH, the TOE will claim the relevant functionality defined in the <xref to="ssh"/>.
+							</h:p><h:p>
 							If the ST author selects "certificate-based authentication of the remote peer," then the TOE will claim the relevant functionality defined in the <xref to="X509"/>. "No authentication of the remote peer" should be selected only if 
-							the TOE is acting as a server in a non-mutual authentication configuration.<h:p/>			    
-							The ST author must include the security functional requirements for the
-                            trusted channel protocol selected in FTP_ITC_EXT.1 in the main body of the ST.
+							the TOE is acting as a server in a non-mutual authentication configuration.
+							</h:p>
                         </note>
                         <aactivity>
                             <TSS>
@@ -8032,7 +7997,7 @@
                                 <h:li>Instructions for querying the current version of the TOE software.</h:li>
                                 <h:li>For hashes, a description of where the hash for a given update can be obtained. For digital 
 									signatures, instructions for obtaining the certificate that will be used by the
-									FCS_COP.1/SIG mechanism to ensure that a signed update has been received from the
+									FCS_COP.1/SigVer mechanism to ensure that a signed update has been received from the
 									certificate owner. This may be supplied with the product initially, or may be obtained by
 									some other means.</h:li>
 								<h:li>Instructions for obtaining the update itself. This should include instructions for making 
@@ -8605,8 +8570,7 @@
             <h:tr>
                 <h:td>FPT_STM.1 - Reliable Time Stamps</h:td>
                 <h:td>
-                    FIA_X509_EXT.1 in the <!-- <xref to="pkg-509"/> --> Functional Package for
-                    X.509, version 1.0 has a dependency on FPT_STM.1. While not explicitly stated in the PP, it is
+                	FIA_X509_EXT.1 in the <xref to="x509"/> has a dependency on FPT_STM.1. While not explicitly stated in the PP, it is
                     assumed that this will be provided by the underlying hardware platform on which the TOE
                     is installed. This is because the TOE is installed as a software or firmware product that runs
                     on general-purpose computing hardware so a hardware clock is assumed to be available.
