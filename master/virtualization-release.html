@@ -1773,17 +1773,17 @@ The following sections list Common Criteria and technology terms used in this do
                 
                 <div class="comp" id="FCS_CKM.6"><h4>FCS_CKM.6 Timing and Event of Cryptographic Key Destruction</h4>
 					
-                    <div class="element"><div class="reqid" id="FCS_CKM.6.1"><a href="#FCS_CKM.6.1" class="abbr">FCS_CKM.6.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall destroy [<i>all plaintext keying material and critical security
-                    		parameters (CSPs)</i>] when 
+                    <div class="element"><div class="reqid" id="FCS_CKM.6.1"><a href="#FCS_CKM.6.1" class="abbr">FCS_CKM.6.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall destroy [<i>all plaintext keys and keying material</i>] when 
                     		[<b>selection</b>: <span class="selectable-content" id="_s_63">no longer needed</span>, <span class="selectable-content" id="_s_64">[<b>assignment</b>: 
-     <span class="assignable-content">other circumstances for destruction</span>]</span>].
+     <span class="assignable-content">other circumstances for key or keying material destruction</span>]</span>].
                     	</div></div>
-                	<div class="element"><div class="reqid" id="FCS_CKM.6.2"><a href="#FCS_CKM.6.2" class="abbr">FCS_CKM.6.2</a></div><div class="reqdesc"> The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall destroy <b>plaintext</b> keying material <b>and critical security parameters</b> by [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_65">invoking platform-provided functionality with the following rules: <ul>
+                	<div class="element"><div class="reqid" id="FCS_CKM.6.2"><a href="#FCS_CKM.6.2" class="abbr">FCS_CKM.6.2</a></div><div class="reqdesc"> The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall destroy <b>plaintext</b> cryptographic keys and keying material specified by <a href="#FCS_CKM.6.1">FCS_CKM.6.1</a> in accordance with a specified cryptographic key destruction method
+                		    [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_65">invoking platform-provided functionality with the following rules: <ul>
                 				<li>For volatile memory, the destruction shall be executed by [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_66">a single direct overwrite consisting of [<b>selection</b>: <span class="selectable-content" id="_s_67">a pseudo-random pattern using the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> or platform DRBG (as specified in <a href="#FCS_RBG.1">FCS_RBG.1</a>)</span>, <span class="selectable-content" id="_s_68">zeroes</span>, <span class="selectable-content" id="_s_69">ones</span>, <span class="selectable-content" id="_s_70">a new value of a key</span>, <span class="selectable-content" id="_s_71">[<b>assignment</b>: 
-     <span class="assignable-content">some value that does not contain any CSP</span>]</span>]</span></li><li style=""><span class="selectable-content" id="_s_72">removal of power to the memory</span></li><li style=""><span class="selectable-content" id="_s_73">destruction of reference to the key directly followed by a request for garbage collection</span></li></ul>]</li>
+     <span class="assignable-content">some value that does not contain any keying materal</span>]</span>]</span></li><li style=""><span class="selectable-content" id="_s_72">removal of power to the memory</span></li><li style=""><span class="selectable-content" id="_s_73">destruction of reference to the key directly followed by a request for garbage collection</span></li></ul>]</li>
                 				<li>For non-volatile memory that consists of the invocation of an interface provided by the underlying platform that [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_74">logically addresses the storage location of the key and performs a [<b>selection</b>: <span class="selectable-content" id="_s_75">single</span>, <span class="selectable-content" id="_s_76">[<b>assignment</b>: 
      <span class="assignable-content"><abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author defined multi-pass</span>]</span>] direct overwrite consisting of [<b>selection</b>: <span class="selectable-content" id="_s_77">a pseudo-random pattern using the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> or platform DRBG (as specified in <a href="#FCS_RBG.1">FCS_RBG.1</a>)</span>, <span class="selectable-content" id="_s_78">zeroes</span>, <span class="selectable-content" id="_s_79">ones</span>, <span class="selectable-content" id="_s_80">a new value of a key</span>, <span class="selectable-content" id="_s_81">[<b>assignment</b>: 
-     <span class="assignable-content">some value that does not contain any CSP</span>]</span>]</span></li><li style=""><span class="selectable-content" id="_s_82">instructs the underlying platform to destroy the abstraction that represents the key</span></li></ul>]
+     <span class="assignable-content">some value that does not contain any keying material</span>]</span>]</span></li><li style=""><span class="selectable-content" id="_s_82">instructs the underlying platform to destroy the abstraction that represents the key</span></li></ul>]
                 				</li>
                 			</ul></span></li><li style=""><span class="selectable-content" id="_s_83">implementing key destruction in accordance with the following rules: <ul>
                 				<li>For volatile memory, the destruction shall be executed by a single direct overwrite consisting of [<b>selection</b>: <span class="selectable-content" id="_s_84">a pseudo-random pattern using the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> or platform DRBG (as specified in <a href="#FCS_RBG.1">FCS_RBG.1</a>)</span>, <span class="selectable-content" id="_s_85">zeroes</span>]</li>
@@ -1793,14 +1793,14 @@ The following sections list Common Criteria and technology terms used in this do
                 				</li>
                 				<li>For non-volatile flash memory that is wear-leveled, the destruction shall be executed by a[<b>selection</b>: <span class="selectable-content" id="_s_88">single direct overwrite consisting of zeroes</span>, <span class="selectable-content" id="_s_89">block erase</span>]</li>
                 				<li>For non-volatile memory other than EEPROM and flash, the destruction shall be executed by a single direct overwrite with a random pattern that 
-                					is changed before each write</li></ul></span></li></ul>].
+                					is changed before each write</li></ul></span></li></ul>] that meets the following: [<i>no standard</i>].
                 		<div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
                         	<p>
                         		For the purposes of this requirement, keying material refers to authentication data, passwords, secret/private symmetric keys, private asymmetric keys, data used to derive keys, values derived from passwords, etc. “Plaintext keying material” may refer to a KEK that is used to encrypt other keying material. Destruction of encrypted keying material may be accomplished by destroying the KEK used to encrypt it. If different mechanisms are used for destroying different keying material, all relevant claims should be selected and the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> should identify which keying material is destroyed by which mechanism.
                         	</p><p>
-                        		Key storage areas in non-volatile storage can be overwritten with any value that renders the keys unrecoverable. The value used can be all zeroes, all ones, or any other pattern or combination of values significantly different than the value of the key itself. When ‘a value that does not contain any CSP’ is chosen, it means that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> uses some other specified data not drawn from a source that may contain keying material or reveal information about it or any other <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>-protected data. In other words, the data used for overwriting is carefully selected and not taken from a general ‘pool’ that might contain current or residual data that itself requires confidentiality protection. If multiple copies exist, all copies must be destroyed. 
+                        		Key storage areas in non-volatile storage can be overwritten with any value that renders the keys unrecoverable. The value used can be all zeroes, all ones, or any other pattern or combination of values significantly different than the value of the key itself. When ‘a value that does not contain any keying material’ is chosen, it means that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> uses some other specified data not drawn from a source that may contain keying material or reveal information about it or any other <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>-protected data. In other words, the data used for overwriting is carefully selected and not taken from a general ‘pool’ that might contain current or residual data that itself requires confidentiality protection. If multiple copies exist, all copies must be destroyed. 
                         	</p><p>
                         		Since this is a software-only <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, the hardware controllers that manage non-volatile storage media are necessarily outside the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary. Thus, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> developer is likely to have little control over—or insight into—the functioning of these storage devices. The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must make a “best-effort” to destroy disused cryptographic keys by invoking the appropriate hardware interfaces—recognizing that the specific actions taken by the hardware are out of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>’s control. But in cases where the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> has insight into the non-volatile storage technologies used by the hardware, or where the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> can specify a preference or method for destroying keys, the destruction should be executed by a single, direct overwrite consisting of pseudorandom data or a new key, by a repeating pattern of any static value, or by a block erase.
                         	</p><p>
@@ -1814,7 +1814,7 @@ The following sections list Common Criteria and technology terms used in this do
                             
                         <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">
                             	<p>
-                            	The evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> identifies all plaintext keying material and CSPs stored by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, the type of memory in which it is stored, and when and how the keying material is erased. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> uses one or more KEKs to protect stored keying material, the evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes the destruction of that keying material, either directly or by destruction of the KEK used to encrypt it.
+                            	The evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> identifies all plaintext keys and keying material stored by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, the type of memory in which it is stored, and when and how the keying material is erased. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> uses one or more KEKs to protect stored keying material, the evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes the destruction of that keying material, either directly or by destruction of the KEK used to encrypt it.
                             	</p><p>
                             	If different types of memory are used to store the materials to be protected, the evaluator shall check to ensure that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes the clearing procedure in terms of the memory in which the data are stored (for example, "secret keys stored on flash are cleared by overwriting once with zeros, while secret keys stored on the internal persistent storage device are cleared by overwriting one time with a random pattern that is changed before each write"). For block erases, the evaluator shall also ensure that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> identifies the block erase command that is used and shall verify that the command used also addresses any copies of the plaintext key material that may be created, e.g. in order to optimize the use of Flash memory.
                             	</p><p>
@@ -3233,14 +3233,16 @@ The following sections list Common Criteria and technology terms used in this do
                             [<b>assignment</b>: 
      <span class="assignable-content">list of platform-provided, hardware-based mechanisms</span>]
                             to constrain a Guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>'s direct access to the following physical devices:
-                            [<b>selection</b>: <span class="selectable-content" id="_s_315">no devices</span>, <span class="selectable-content" id="_s_316">[<b>assignment</b>: 
-     <span class="assignable-content"> physical devices to which the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> allows Guest VMs physical access</span>]</span>].                        
+                            [<b>selection</b>: <span class="selectable-content" id="_s_315">all devices</span>, <span class="selectable-content" id="_s_316">all devices except for [<b>assignment</b>: 
+     <span class="assignable-content">list of devices to which Guest VMs may access</span>]</span>].                        
                         <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> must use available hardware-based isolation mechanisms to constrain VMs
 							when VMs have direct access to physical devices. “Direct access” in this context means that the 
 							<abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> can read or write device memory or access device I/O ports without the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> being able to intercept 
-							and validate every transaction.</span></div></div></div>
+							and validate every transaction.
+                        The selection for "all devices" is made when VMs have no access to physical devices. Even if the <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> has no inherent need to access a device, hardware-based isolation mechanisms must be enforced in case malicious action, bug, or misconfiguration causes attempts to access that device.
+                        </span></div></div></div>
 					
                 <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FDP_HBI_EXT.1">FDP_HBI_EXT.1</a></div>
                             
@@ -3592,7 +3594,11 @@ The following sections list Common Criteria and technology terms used in this do
                             to support user authentication.
                         <div class="appnote"><span class="note-header">Application
       Note:
-    </span><span class="note">Selection of ‘authentication based on username and password’ requires that 
+    </span><span class="note">
+                            <p>
+                                "Local" authentication refers to the authentication factors residing within the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>, not whether the authentication mechanism itself is local to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> or remote.
+                            </p>
+                            Selection of ‘authentication based on username and password’ requires that 
 							<a href="#FIA_PMG_EXT.1">FIA_PMG_EXT.1</a> be included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>. This also requires that the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> claim management function 
 							<a href="#mf-admin-pwd-policy">2</a> for password management. Selection of either 'authentication based on username and password' or 'authentication based on username and a PIN...' requires that <a href="#FIA_AFL_EXT.1">FIA_AFL_EXT.1</a> be included in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>.
 							If the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects ‘authentication based on an SSH public-key credential,’ the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is expected to conform to <a href="https://commoncriteria.github.io/ssh/release-2.0/ssh-release.html">Functional Package for Secure Shell (SSH),
@@ -3803,13 +3809,13 @@ The following sections list Common Criteria and technology terms used in this do
 <tr id="mf-admin-configLockoutPolicy"><td>15</td><td style="text-align:left">
 										Ability to configure lockout policy for unsuccessful authentication attempts through 
                                         [<b>selection</b>: <span class="selectable-content" id="_s_357">timeouts between attempts</span>, <span class="selectable-content" id="_s_358">limiting number of attempts during a time period</span>]
-									</td><td><div class="tooltipped">M<span class="tooltiptext">Mandatory</span></div></td><td><div class="tooltipped">X<span class="tooltiptext">Not permitted</span></div></td><td style="text-align:left"><p>See <a href="#FIA_AFL_EXT.1">FIA_AFL_EXT.1</a></p></td></tr>
+									</td><td><div class="tooltipped">O<span class="tooltiptext">Optional/Conditional</span></div></td><td><div class="tooltipped">X<span class="tooltiptext">Not permitted</span></div></td><td style="text-align:left"><p>Must be selected if a password or PIN-based authentication method is claimed in <a href="#FIA_UAU.5.1">FIA_UAU.5.1</a>.</p></td></tr>
 <tr id="mf-admin-configDirServer"><td>16</td><td style="text-align:left">
 										[<b>selection</b>: <span class="selectable-content" id="sel-mf-dir-server">Ability to configure name/address of directory server to bind with</span>, <span class="selectable-content" id="_s_360">Not applicable</span>]
 									</td><td><div class="tooltipped">O<span class="tooltiptext">Optional/Conditional</span></div></td><td><div class="tooltipped">X<span class="tooltiptext">Not permitted</span></div></td><td style="text-align:left"><p>Must be selected if "directory-based" is selected anywhere in <a href="#FIA_UAU.5.1">FIA_UAU.5.1</a>.</p></td></tr>
 <tr id="mf-admin-configAuditServer"><td>17</td><td style="text-align:left">
 										Ability to configure name/address of audit/logging server to which to send audit/logging records
-									</td><td><div class="tooltipped">M<span class="tooltiptext">Mandatory</span></div></td><td><div class="tooltipped">X<span class="tooltiptext">Not permitted</span></div></td><td style="text-align:left"><p>See FAU_STG_EXT.1</p></td></tr>
+									</td><td><div class="tooltipped">M<span class="tooltiptext">Mandatory</span></div></td><td><div class="tooltipped">X<span class="tooltiptext">Not permitted</span></div></td><td style="text-align:left"><p>See <a href="#FAU_STG.1">FAU_STG.1</a></p></td></tr>
 <tr id="mf-admin-configTimeServer"><td>18</td><td style="text-align:left">
 										Ability to configure name/address of network time server
 									</td><td><div class="tooltipped">M<span class="tooltiptext">Mandatory</span></div></td><td><div class="tooltipped">O<span class="tooltiptext">Optional/Conditional</span></div></td><td style="text-align:left"><p></p></td></tr>
@@ -4515,8 +4521,8 @@ The following sections list Common Criteria and technology terms used in this do
                 
                 <div class="comp" id="FTA_TAB.1"><h4>FTA_TAB.1 TOE Access Banner</h4>
                     <div class="element"><div class="reqid" id="FTA_TAB.1.1"><a href="#FTA_TAB.1.1" class="abbr">FTA_TAB.1.1</a></div><div class="reqdesc">Before establishing a user session, the [<b>selection</b>: <span class="selectable-content" id="_s_393"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></span>, <span class="selectable-content" id="_s_394"><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> platform</span>] 
-                            shall display a [<b>assignment</b>: 
-     <span class="assignable-content">description of the message</span>] message.                            
+                            shall display an [<b>assignment</b>: 
+     <span class="assignable-content">advisory notice and consent warning regarding use of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr></span>] message.                            
                         <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
@@ -4563,8 +4569,8 @@ The following sections list Common Criteria and technology terms used in this do
 							[<b>selection</b>: <ul><li style=""><span class="selectable-content" id="sel-itc-certauth">certificate-based authentication of the remote peer</span></li><li style=""><span class="selectable-content" id="_s_400">non-certificate-based authentication of the remote peer</span></li><li style=""><span class="selectable-content" id="_s_401">no authentication of the remote peer</span></li></ul>]
                             to provide a trusted communication channel between itself and <ul>
                                 <li>audit servers (as required by <a href="#FAU_STG.1">FAU_STG.1</a>) and</li></ul>
-                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_402">remote administrators (as required by <a href="#FTP_TRP.1.1">FTP_TRP.1.1</a> if selected in <a href="#FMT_MOF_EXT.1.1">FMT_MOF_EXT.1.1</a></span></li><li style=""><span class="selectable-content" id="_s_403">separation of management and operational networks (if selected in <a href="#FMT_SMO_EXT.1">FMT_SMO_EXT.1</a>)</span></li><li style=""><span class="selectable-content" id="_s_404">[<b>assignment</b>: 
-     <span class="assignable-content">other capabilities</span>]</span></li><li style=""><span class="selectable-content" id="_s_405">no other capabilities</span></li></ul>]
+                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_402">remote administrators (as required by <a href="#FTP_TRP.1.1">FTP_TRP.1.1</a> (if selected in <a href="#FMT_MOF_EXT.1">FMT_MOF_EXT.1</a>)</span></li><li style=""><span class="selectable-content" id="_s_403">separation of management and operational networks (if selected in <a href="#FMT_SMO_EXT.1">FMT_SMO_EXT.1</a>)</span></li><li style=""><span class="selectable-content" id="_s_404">[<b>assignment</b>: 
+     <span class="assignable-content">other remote <abbr class="dyn-abbr"><a href="#abbr_IT">IT</a></abbr> entities</span>]</span></li><li style=""><span class="selectable-content" id="_s_405">no other remote <abbr class="dyn-abbr"><a href="#abbr_IT">IT</a></abbr> entities</span></li></ul>]
                             that is logically distinct from other communication paths and provides assured identification of its
                             endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.
                         <div class="appnote"><span class="note-header">Application
@@ -6741,10 +6747,6 @@ The following sections list Common Criteria and technology terms used in this do
 				the Common Name. In the future, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> will be required to compare the
 				reference identifier to the presented identifier in the SAN only, ignoring the
 				Common Name.
-              <br/>
-              <br/>
-              The configuration of the peer reference identifier is addressed by
-				FMT_SMF.1.1/VPN.
             </span></div></div></div>
           <div class="element"><div class="reqid" id="FCS_IPSEC_EXT.1.14"><a href="#FCS_IPSEC_EXT.1.14" class="abbr">FCS_IPSEC_EXT.1.14</a></div><div class="reqdesc">
               The
@@ -7940,8 +7942,8 @@ The following sections list Common Criteria and technology terms used in this do
                             [<b>assignment</b>: 
      <span class="assignable-content">list of platform-provided, hardware-based mechanisms</span>]
                             to constrain a Guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>'s direct access to the following physical devices:
-                            [<b>selection</b>: <span class="selectable-content" id="_s_315">no devices</span>, <span class="selectable-content" id="_s_316">[<b>assignment</b>: 
-     <span class="assignable-content"> physical devices to which the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> allows Guest VMs physical access</span>]</span>].                        
+                            [<b>selection</b>: <span class="selectable-content" id="_s_315">all devices</span>, <span class="selectable-content" id="_s_316">all devices except for [<b>assignment</b>: 
+     <span class="assignable-content">list of devices to which Guest VMs may access</span>]</span>].                        
                         </div></div><h3 id="ext-comp-FDP_PPR_EXT" class="indexable" data-level="4">C.2.6.2 FDP_PPR_EXT Physical Platform Resource Controls</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines requirements for the physical resources that
 						the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> will allow or prohibit Guest VMs to access.</div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FDP_PPR_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FDP_PPR_EXT.1">FDP_PPR_EXT.1</a>,
              Physical Platform Resource Controls,
