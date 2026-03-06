@@ -1282,12 +1282,12 @@
                     		a specified cryptographic key generation algorithm<selectables>
                     			<tabularize id="fcs-ckm-1-ak-sels" title="Allowable Choices for FCS_CKM.1/AKG">
                     				<textcol>Identifier</textcol>
-                    				<selectcol>Cryptographic Key Generation Algorithm as defined in <xref to="fcs-ckm-1-ak-sels"/></selectcol>
+                    				<selectcol>Cryptographic Key Generation Algorithm</selectcol>
                     				<reqtext>and specified cryptographic <h:b>algorithm parameters</h:b> <h:s>key sizes</h:s></reqtext>
-                    				<selectcol>Cryptographic Algorithm Parameters as defined in <xref to="fcs-ckm-1-ak-sels"/></selectcol>
+                    				<selectcol>Cryptographic Algorithm Parameters</selectcol>
                     				<reqtext>that meet the following: </reqtext>
-                    				<selectcol>List of Standards as defined in <xref to="fcs-ckm-1-ak-sels"/></selectcol>
-                    				<reqtext><h:p/><h:p/>The following table provides the allowable choices for
+                    				<selectcol>List of Standards as defined in</selectcol>
+                    				<reqtext><h:p/><h:p/><xref to="fcs-ckm-1-ak-sels"/> provides the allowable choices for
                     					completion of the selection operations of FCS_CKM.1/AKG.</reqtext>
                     			</tabularize>
                     			
@@ -1459,7 +1459,7 @@
                     				</col>
                     			</selectable>
                     			-->
-                    		</selectables>
+                    		</selectables>.
 						</title>
                     	<note role="application">For RSA the choice of the modulus implies the resulting key sizes of the public and private keys
                     		generated using the specified standard methods. RSA key generation with modulus size 2048 bits is no longer permitted
@@ -2757,11 +2757,11 @@
                     		with a specified cryptographic algorithm 
                     		<selectables>
                     			<tabularize id="tab-fcs-cop-keyedhash-sels" title="Allowable Choices for FCS_COP.1/KeyedHash">
-                    				<selectcol>Keyed Hash Algorithm as defined in <xref to="fcs-cop-keyedhash-sels"/></selectcol>
+                    				<selectcol>Keyed Hash Algorithm as defined in <xref to="tab-fcs-cop-keyedhash-sels"/></selectcol>
                     				<reqtext>and cryptographic key sizes</reqtext>
-                    				<selectcol>Cryptographic Key Sizes as defined in <xref to="fcs-cop-keyedhash-sels"/></selectcol>
+                    				<selectcol>Cryptographic Key Sizes as defined in <xref to="tab-fcs-cop-keyedhash-sels"/></selectcol>
                     				<reqtext>that meet the following:</reqtext>
-                    				<selectcol>List of Standards as defined in <xref to="fcs-cop-keyedhash-sels"/></selectcol>
+                    				<selectcol>List of Standards as defined in <xref to="tab-fcs-cop-keyedhash-sels"/></selectcol>
                     				<reqtext><h:p/><h:p/>The following table provides the allowable choices for
                     					completion of the selection operations of FCS_COP.1/KeyedHash.</reqtext>
                     			</tabularize>
@@ -4694,8 +4694,7 @@
               <TSS>
                 The evaluator shall examine the TSS to verify that the algorithm AES-GCM-256 is
 		implemented. In addition, the evaluator shall ensure that the SHA-based HMAC 
-		algorithm conforms to the algorithms specified in the relevant iteration of FCS_COP.1 from
-		the Base-PP that applies to keyed-hash message authentication.
+		algorithm conforms to the algorithms specified in the relevant iteration of FCS_COP.1/KeyedHash.
                 <h:br/>
                 <h:br/>
               </TSS>
@@ -4902,8 +4901,7 @@
             <title>
               The TSF shall generate the secret value x used in the
               IKE DH key exchange (“x” in g^x mod p) using the random bit
-              generator specified in FCS_RBG.1
-              <h:b>(or FCS_RBG_EXT.1 in the case of <xref to="bibAppPP"/>)</h:b>, and having a length of at least
+              generator specified in FCS_RBG.1 and having a length of at least
               <assignable>(one or more) numbers of bits that is at least twice the “bits of security” value associated with the negotiated DH group as listed in Table 2 of NIST SP 800-57, Recommendation for Key Management – Part 1: General</assignable>
               bits.
             </title>
@@ -4949,9 +4947,9 @@
                 </selectables>
                 that use X.509v3 certificates that conform to RFC 4945 and
                 <selectables>
-                  <selectable id="sel-ipsec-e11-psk">Pre-shared Keys that conform to RFC 8784</selectable>
+                  <selectable id="sel-ipsec-e11-psk">Pre-shared Keys that conform to RFC 8784</selectable> <!--
                   <selectable id="sel-ipsec-e11-eapttls">Pre-shared Keys transmitted via EAP-TTLS</selectable>
-                  <selectable id="sel-ipsec-e11-eaptls">EAP-TLS</selectable>
+                  <selectable id="sel-ipsec-e11-eaptls">EAP-TLS</selectable> -->
                   <selectable id="fcs_ipsec_ext.1.11_3" exclusive="yes">no other method</selectable>
                 </selectables></h:i>].
             </title>
@@ -4970,23 +4968,14 @@
               appropriate FCS requirements reflecting the algorithms used (and key
               generation capabilities, if provided) are listed to support those methods. Note
               that the TSS will elaborate on the way in which these algorithms are to be used. X.509 certificates will be validated against FIA_X509_EXT.1 from
-              <xref to="X509"/>, which is referenced in each supported Base-PP.
+              <xref to="X509"/>.
               <h:br/>
-              <h:br/>
+            <!--  <h:br/>
               If a selection with “EAP-TLS” or “EAP-TTLS” is chosen, the selection-based requirement FCS_EAP_EXT.1 must be claimed. 
               When an EAP method is used, verification occurs via an external authentication server.
+              <h:br/> -->
               <h:br/>
-              <h:br/>
-              If any selection including “pre-shared keys” is chosen, the selection-based requirement FIA_PSK_EXT.1 must be claimed.
-              <h:br/>
-              <h:br/>
-              Multifactor support can be achieved via traffic filtering in accordance with FPF_MFA_EXT.1.
-              <h:br/>
-              <h:br/>
-              It is acceptable for different use cases to leverage different selections. If this is the case, it must be identified.
-              <h:br/>
-              <h:br/>
-              This SFR is modified from its definition in the Base-PP by adding new selections for authentication methods.
+              If the selection for pre-shared keys is chosen, the selection-based requirement FIA_PSK_EXT.1 must be claimed.
             </note>
             <aactivity level="element">
               <TSS>
@@ -5029,8 +5018,6 @@
                 in
                 <xref to="X509"/>
                 and
-                <no-link>FIA_X509_EXT.4</no-link>
-                (for IPsec connections and depending on the Base-PP),
                 <no-link>FCS_IPSEC_EXT.1.12</no-link>, and
                 <no-link>FCS_IPSEC_EXT.1.13</no-link>. The following tests shall be repeated for each peer authentication protocol selected in the
                 <no-link>FCS_IPSEC_EXT.1.11</no-link>
@@ -5731,8 +5718,8 @@
                                             <h:li>As an administrator again, disable inter-VM communications between the two VMs.</h:li>
                                             <h:li>Test that communications can no longer be passed through the channel.</h:li>
                                         </h:ol>
-										FDP_VMS_EXT.1.2 is met if communication is unsuccessful in step (b).
-										FDP_VMS_EXT.1.3 is met if communication is successful in step (d) and unsuccessful in step (f).<h:p/>
+										FDP_VMS_EXT.1.2 is met if communication is unsuccessful in step 2.
+										FDP_VMS_EXT.1.3 is met if communication is successful in step 4 and unsuccessful in step 6.<h:p/>
                             </Tests>
                          </aactivity>
                     </f-element>
@@ -6059,9 +6046,7 @@
             </note>
             <aactivity level="element">
               <TSS>
-                If "generate" is selected, the evaluator shall confirm that this process uses the RBG specified in FCS_RBG.1 (or FCS_RBG_EXT.1 in the case of
-                <xref to="bibAppPP"/>
-                and the output matches the size selected in FIA_PSK_EXT.2.1.
+                If "generate" is selected, the evaluator shall confirm that this process uses the RBG specified in FCS_RBG.1 and the output matches the size selected in FIA_PSK_EXT.2.1.
                 <h:br/>
                 <h:br/>
               </TSS>
@@ -6217,13 +6202,7 @@
           </f-element>
           <f-element id="fia-psk-ext-3e5">
             <title>
-              The TSF shall generate all salts using an RBG that meets
-              <h:b>
-                <selectables>
-                  <selectable id="fia_psk_ext.3.5_1">FCS_RBG.1</selectable>
-                  <selectable id="fia_psk_ext.3.5_2">FCS_RBG_EXT.1</selectable>
-                </selectables>
-              </h:b>
+              The TSF shall generate all salts using an RBG that meets FCS_RBG.1
               and with entropy of
               <assignable>value equal to or greater than 256</assignable>
               bits.
@@ -6231,7 +6210,6 @@
             <ext-comp-def-title>
               <title>The TSF shall generate all salts using an RBG that meets FCS_RBG.1 and with entropy of <assignable>value equal to or greater than 256</assignable> bits.</title>
             </ext-comp-def-title>
-            <note role="application">For the first selection, the ST author selects FCS_RBG.1 if the TOE implements its own DRBG. The ST author selects FCS_RBG_EXT.1 if <xref to="bibAppPP"/> is the Base-PP for the TOE and the TSF relies on a DRBG in its operational environment.</note>
           </f-element>
           <f-element id="fia-psk-ext-3e6">
             <title>The TSF shall require the PSK to be entered before every initiated connection.</title>
@@ -7401,7 +7379,7 @@
                     </f-element>
 					<audit-event type="optional">
 					<audit-event-descr>Invalid parameter to hypercall detected</audit-event-descr>
-						<audit-event-info><h:b>[selection: </h:b><h:i>Hypercall interface for which access was attempted, None</h:i>]</audit-event-info>
+						<audit-event-info><h:b>[selection: </h:b><h:i>Hypercall interface for which access was attempted, N/A</h:i>]</audit-event-info>
 					</audit-event>
 					<audit-event type="optional">
 					<audit-event-descr>Hypercall interface invoked when documented preconditions are not met</audit-event-descr>
@@ -7866,7 +7844,7 @@
 							updates. If “code signing for system software updates” is selected in FIA_X509_EXT.2.1 from the <xref to="x509"/>, FPT_TUD_EXT.2 
 							must be included in the ST.<h:p/>
                             Validity is determined by the certificate path, the expiration date, and the revocation status in 
-                            accordance with FIA_X509_EXT.1 in the <xref to="x509"/>.</note>
+                            accordance with FIA_X509_EXT.1 in the <xref to="X509"/>.</note>
                         <aactivity>
 							<TSS/>
 							<Guidance/>
