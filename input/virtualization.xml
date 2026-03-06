@@ -5196,13 +5196,51 @@
                 <f-component cc-id="fcs_rbg.1" name="Cryptographic Operation (Random Bit Generation)" id="fcs-rbg-1">
 					<f-element id="fcs-rbg-1e1">
                     <title>
-						The TSF shall perform deterministic random bit generation services using 
-						<selectables linebreak="yes">
-						  <selectable>Hash_DRBG (SHA-384 or SHA-512)</selectable>
-						  <selectable>HMAC_DRBG (HMAC-SHA-384 or HMAC-SHA-512)</selectable>
-						  <selectable>CTR_DRBG (AES-256)</selectable>
-						</selectables>
-						in accordance with [<h:i>NIST SP 800-90A</h:i>] after initialization with a seed.              
+                    	The TSF shall perform deterministic random bit generation services using   
+                    	<selectables>
+                    		<tabularize id="fcs-rbg-1-sels" title="Allowable choices for FCS_RBG.1.1">
+                    			<textcol>Identifier</textcol>
+                    			<reqtext></reqtext>
+                    			<selectcol>DRBG Algorithm</selectcol>
+                    			<reqtext> in accordance with </reqtext>
+                    			<selectcol>List of standards</selectcol>
+                    			<reqtext>after initialization with a seed.<h:p/><h:p/><xref to="fcs-rbg-1-sels"/> provides the allowable choices for
+                    				completion of the selection operations of FCS_RBG.1.</reqtext>
+                    		</tabularize>
+                    		
+                    		<selectable id="sel-fcs-rbg-hash-drbg">
+                    			<col>HASH_DRBG</col>
+                    			<col>Hash_DRBG with <selectables>
+                    				<selectable>SHA-384</selectable>
+                    				<selectable>SHA-512</selectable>
+                    			</selectables></col>
+                    			<col><selectables>
+                    				<selectable>ISO/IEC 18031: 2011 (Section C.2.2)</selectable>
+                    				<selectable>NIST SP 800-90A Revision 1 Section 10.1.1</selectable></selectables>
+                    			</col>
+                    		</selectable>
+                    		
+                    		<selectable id="sel-fcs-rbg-hmac-drbg">
+                    			<col>HMAC_DRBG</col>
+                    			<col>HMAC_DRBG with  <selectables>
+                    				<selectable>SHA-384</selectable>
+                    				<selectable>SHA-512</selectable>
+                    			</selectables></col>
+                    			<col><selectables>
+                    				<selectable>ISO/IEC 18031: 2011 (Section C.2.3)</selectable>
+                    				<selectable>NIST SP 800-90A Revision 1 Section 10.1.2</selectable></selectables>
+                    			</col>
+                    		</selectable>
+                    		
+                    		<selectable id="sel-fcs-rbg-ctr-drbg">
+                    			<col>CTR_DRBG</col>
+                    			<col>CTR_DRBG with AES-CTR-256</col>
+                    			<col><selectables>
+                    				<selectable>ISO/IEC 18031: 2011 (Section C.3.2)</selectable>
+                    				<selectable>NIST SP800-90A Revision 1 Section 10.2.1</selectable></selectables>
+                    			</col>
+                    		</selectable>
+                    	</selectables>           
 					  </title>
                     </f-element>
                     <f-element id="fcs-rbg-1e2">
