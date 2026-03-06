@@ -1986,16 +1986,16 @@
                 <f-component cc-id="fcs_ckm.6" name="Timing and Event of Cryptographic Key Destruction">
 					
                     <f-element id="fcs-ckm-6e1">
-                    	<title>The TSF shall destroy [<h:i>all plaintext keying material and critical security
-                    		parameters (CSPs)</h:i>] when 
+                    	<title>The TSF shall destroy [<h:i>all plaintext keys and keying material</h:i>] when 
                     		<selectables>
                     			<selectable>no longer needed</selectable>
-                    			<selectable><assignable>other circumstances for destruction</assignable></selectable>
+                    			<selectable><assignable>other circumstances for key or keying material destruction</assignable></selectable>
                     		</selectables>.
                     	</title>
                     </f-element>
                 	<f-element id="fcs-ckm-6e2">
-                		<title> The TSF shall destroy <h:b>plaintext</h:b> keying material <h:b>and critical security parameters</h:b> by <selectables>
+                		<title> The TSF shall destroy <h:b>plaintext</h:b> cryptographic keys and keying material specified by FCS_CKM.6.1 in accordance with a specified cryptographic key destruction method
+                		    <selectables>
                 			<selectable>invoking platform-provided functionality with the following rules: <h:ul>
                 				<h:li>For volatile memory, the destruction shall be executed by <selectables>
                 					<selectable>a single direct overwrite consisting of <selectables>
@@ -2003,7 +2003,7 @@
                 						<selectable>zeroes</selectable>
                 						<selectable>ones</selectable>
                 						<selectable>a new value of a key</selectable>
-                						<selectable><assignable>some value that does not contain any CSP</assignable></selectable>
+                						<selectable><assignable>some value that does not contain any keying materal</assignable></selectable>
                 					</selectables> </selectable>
                 					<selectable>removal of power to the memory</selectable>
                 					<selectable>destruction of reference to the key directly followed by a request for garbage collection</selectable>
@@ -2017,7 +2017,7 @@
                 						<selectable>zeroes</selectable>
                 						<selectable>ones</selectable>
                 						<selectable>a new value of a key</selectable>
-                						<selectable><assignable>some value that does not contain any CSP</assignable></selectable>
+                						<selectable><assignable>some value that does not contain any keying material</assignable></selectable>
                 					</selectables> </selectable>
                 					<selectable>instructs the underlying platform to destroy the abstraction that represents the key</selectable>
                 				</selectables>
@@ -2040,13 +2040,13 @@
                 					<selectable>block erase</selectable>
                 				</selectables></h:li>
                 				<h:li>For non-volatile memory other than EEPROM and flash, the destruction shall be executed by a single direct overwrite with a random pattern that 
-                					is changed before each write</h:li></h:ul></selectable></selectables>.
+                					is changed before each write</h:li></h:ul></selectable></selectables> that meets the following: [<h:i>no standard</h:i>].
                 		</title>
                         <note role="application">
                         	<h:p>
                         		For the purposes of this requirement, keying material refers to authentication data, passwords, secret/private symmetric keys, private asymmetric keys, data used to derive keys, values derived from passwords, etc. “Plaintext keying material” may refer to a KEK that is used to encrypt other keying material. Destruction of encrypted keying material may be accomplished by destroying the KEK used to encrypt it. If different mechanisms are used for destroying different keying material, all relevant claims should be selected and the TSS should identify which keying material is destroyed by which mechanism.
                         	</h:p><h:p>
-                        		Key storage areas in non-volatile storage can be overwritten with any value that renders the keys unrecoverable. The value used can be all zeroes, all ones, or any other pattern or combination of values significantly different than the value of the key itself. When ‘a value that does not contain any CSP’ is chosen, it means that the TOE uses some other specified data not drawn from a source that may contain keying material or reveal information about it or any other TSF-protected data. In other words, the data used for overwriting is carefully selected and not taken from a general ‘pool’ that might contain current or residual data that itself requires confidentiality protection. If multiple copies exist, all copies must be destroyed. 
+                        		Key storage areas in non-volatile storage can be overwritten with any value that renders the keys unrecoverable. The value used can be all zeroes, all ones, or any other pattern or combination of values significantly different than the value of the key itself. When ‘a value that does not contain any keying material’ is chosen, it means that the TOE uses some other specified data not drawn from a source that may contain keying material or reveal information about it or any other TSF-protected data. In other words, the data used for overwriting is carefully selected and not taken from a general ‘pool’ that might contain current or residual data that itself requires confidentiality protection. If multiple copies exist, all copies must be destroyed. 
                         	</h:p><h:p>
                         		Since this is a software-only TOE, the hardware controllers that manage non-volatile storage media are necessarily outside the TOE boundary. Thus, the TOE developer is likely to have little control over—or insight into—the functioning of these storage devices. The TOE must make a “best-effort” to destroy disused cryptographic keys by invoking the appropriate hardware interfaces—recognizing that the specific actions taken by the hardware are out of the TOE’s control. But in cases where the TOE has insight into the non-volatile storage technologies used by the hardware, or where the TOE can specify a preference or method for destroying keys, the destruction should be executed by a single, direct overwrite consisting of pseudorandom data or a new key, by a repeating pattern of any static value, or by a block erase.
                         	</h:p><h:p>
@@ -2056,7 +2056,7 @@
                         <aactivity>
                             <TSS>
                             	<h:p>
-                            	The evaluator shall verify that the TSS identifies all plaintext keying material and CSPs stored by the TOE, the type of memory in which it is stored, and when and how the keying material is erased. If the TOE uses one or more KEKs to protect stored keying material, the evaluator shall verify that the TSS describes the destruction of that keying material, either directly or by destruction of the KEK used to encrypt it.
+                            	The evaluator shall verify that the TSS identifies all plaintext keys and keying material stored by the TOE, the type of memory in which it is stored, and when and how the keying material is erased. If the TOE uses one or more KEKs to protect stored keying material, the evaluator shall verify that the TSS describes the destruction of that keying material, either directly or by destruction of the KEK used to encrypt it.
                             	</h:p><h:p>
                             	If different types of memory are used to store the materials to be protected, the evaluator shall check to ensure that the TSS describes the clearing procedure in terms of the memory in which the data are stored (for example, "secret keys stored on flash are cleared by overwriting once with zeros, while secret keys stored on the internal persistent storage device are cleared by overwriting one time with a random pattern that is changed before each write"). For block erases, the evaluator shall also ensure that the TSS identifies the block erase command that is used and shall verify that the command used also addresses any copies of the plaintext key material that may be created, e.g. in order to optimize the use of Flash memory.
                             	</h:p><h:p>
@@ -5095,10 +5095,6 @@
 				the Common Name. In the future, the TOE will be required to compare the
 				reference identifier to the presented identifier in the SAN only, ignoring the
 				Common Name.
-              <h:br/>
-              <h:br/>
-              The configuration of the peer reference identifier is addressed by
-				FMT_SMF.1.1/VPN.
             </note>
             <aactivity level="element">
               <no-tests>EAs for this element are tested through EAs for FCS_IPSEC_EXT.1.11.</no-tests>
@@ -5448,14 +5444,15 @@
                             <assignable>list of platform-provided, hardware-based mechanisms</assignable>
                             to constrain a Guest VM's direct access to the following physical devices:
                             <selectables>
-                                <selectable exclusive="yes">no devices</selectable>
-                                <selectable><assignable> physical devices to which the VMM allows Guest VMs physical access</assignable></selectable>
-                            </selectables>.                        
+                                <selectable exclusive="yes">all devices</selectable>
+                                <selectable>all devices except for <assignable>list of devices to which Guest VMs may access</assignable></selectable></selectables>.                        
                         </title>
                         <note role="application">The TSF must use available hardware-based isolation mechanisms to constrain VMs
 							when VMs have direct access to physical devices. “Direct access” in this context means that the 
 							VM can read or write device memory or access device I/O ports without the VMM being able to intercept 
-							and validate every transaction.</note>
+							and validate every transaction.
+                        The selection for "all devices" is made when VMs have no access to physical devices. Even if the VM has no inherent need to access a device, hardware-based isolation mechanisms must be enforced in case malicious action, bug, or misconfiguration causes attempts to access that device.
+                        </note>
 						<aactivity>
                             <TSS>
                                 The evaluator shall ensure that the TSS provides evidence that hardware-based
@@ -6111,7 +6108,11 @@
                             </selectables>                            
                             to support user authentication.
                         </title>
-                        <note role="application">Selection of ‘authentication based on username and password’ requires that 
+                        <note role="application">
+                            <h:p>
+                                "Local" authentication refers to the authentication factors residing within the TSF, not whether the authentication mechanism itself is local to the TOE or remote.
+                            </h:p>
+                            Selection of ‘authentication based on username and password’ requires that 
 							FIA_PMG_EXT.1 be included in the ST. This also requires that the ST claim management function 
 							<xref to="mf-admin-pwd-policy"/> for password management. Selection of either 'authentication based on username and password' or 'authentication based on username and a PIN...' requires that FIA_AFL_EXT.1 be included in the ST.
 							If the ST author selects ‘authentication based on an SSH public-key credential,’ the TOE is expected to conform to <xref to="ssh"/>,
@@ -6501,9 +6502,9 @@
                                             <selectable>limiting number of attempts during a time period</selectable>
                                         </selectables>
 									</text>
-									<M ref="A"/>
+									<O ref="A"/>
 									<X ref="U"/>
-									<app-note>See FIA_AFL_EXT.1</app-note>
+									<app-note>Must be selected if a password or PIN-based authentication method is claimed in FIA_UAU.5.1.</app-note>
 								</management-function>
 
 								<!-- 16 (was 17) -->
@@ -6525,7 +6526,7 @@
 									</text>
 									<M ref="A"/>
 									<X ref="U"/>
-									<app-note>See FAU_STG_EXT.1</app-note>
+									<app-note>See FAU_STG.1</app-note>
 								</management-function>
 
 								<!-- 18 (was 19) -->
@@ -7683,7 +7684,7 @@
                             <selectable>TSF</selectable>
                             <selectable>TOE platform</selectable>
                         </selectables> 
-                            shall display a <assignable>description of the message</assignable> message.                            
+                            shall display an <assignable>advisory notice and consent warning regarding use of the TOE</assignable> message.                            
                         </title>
                         <note role="application">
                             This requirement is intended to apply to interactive sessions between a human user and a TOE. IT
@@ -7750,10 +7751,10 @@
                             to provide a trusted communication channel between itself and <h:ul>
                                 <h:li>audit servers (as required by FAU_STG.1) and</h:li></h:ul>
                             <selectables linebreak="yes">
-                                <selectable>remote administrators (as required by FTP_TRP.1.1 if selected in FMT_MOF_EXT.1.1</selectable>
+                                <selectable>remote administrators (as required by FTP_TRP.1.1 (if selected in FMT_MOF_EXT.1)</selectable>
                                 <selectable>separation of management and operational networks (if selected in FMT_SMO_EXT.1)</selectable>
-								<selectable><assignable>other capabilities</assignable></selectable>
-                                <selectable exclusive="yes">no other capabilities</selectable>
+								<selectable><assignable>other remote IT entities</assignable></selectable>
+                                <selectable exclusive="yes">no other remote IT entities</selectable>
                             </selectables>
                             that is logically distinct from other communication paths and provides assured identification of its
                             endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.
