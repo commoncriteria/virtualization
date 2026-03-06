@@ -693,6 +693,7 @@
                 	<addressed-by>FIA_PSK_EXT.1 (selection-based)</addressed-by>
                 	<rationale>This SFR mitigates the threat by optionally
                 		requiring support for pre-shared keys as an alternate authentication method for IPsec.</rationale>
+                	<!--
                 	<addressed-by>FIA_PSK_EXT.2 (selection-based)</addressed-by>
                 	<rationale>This SFR mitigates the threat by optionally specifying whether the TOE generates its own IPsec pre-shared keys used for authentication or accept them from an external source.</rationale>
                 	<addressed-by>FIA_PSK_EXT.3 (selection-based)</addressed-by>
@@ -703,6 +704,7 @@
                 	<addressed-by>FIA_PSK_EXT.5 (selection-based)</addressed-by>
                 	<rationale>This SFR mitigates the threat by optionally
                 		defining TOTP as an authentication mechanism for IPsec.</rationale>
+                		-->
                     <addressed-by>FIA_X509_EXT.4 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by requiring an exception to be met without the need to validate the revocation of the certificate.</rationale>
                     <addressed-by>FTP_TRP.1 (selection-based)</addressed-by><rationale>This threat is mitigated by this SFR by ensuring that certain communications use a trusted path.</rationale>
                 	<addressed-by>FCS_CKM_EXT.7 (implementation-dependent)</addressed-by><rationale>This threat is mitigated by this SFR by requiring use of strong cryptographic key establishment algorithms.</rationale>
@@ -1286,7 +1288,7 @@
                     				<reqtext>and specified cryptographic <h:b>algorithm parameters</h:b> <h:s>key sizes</h:s></reqtext>
                     				<selectcol>Cryptographic Algorithm Parameters</selectcol>
                     				<reqtext>that meet the following: </reqtext>
-                    				<selectcol>List of Standards as defined in</selectcol>
+                    				<selectcol>List of Standards</selectcol>
                     				<reqtext><h:p/><h:p/><xref to="fcs-ckm-1-ak-sels"/> provides the allowable choices for
                     					completion of the selection operations of FCS_CKM.1/AKG.</reqtext>
                     			</tabularize>
@@ -1459,7 +1461,7 @@
                     				</col>
                     			</selectable>
                     			-->
-                    		</selectables>.
+                    		</selectables>
 						</title>
                     	<note role="application">For RSA the choice of the modulus implies the resulting key sizes of the public and private keys
                     		generated using the specified standard methods. RSA key generation with modulus size 2048 bits is no longer permitted
@@ -1876,12 +1878,12 @@
             				a specified cryptographic key generation algorithm<selectables>
             					<tabularize id="fcs-ckm-1-skg-sels" title="Allowable Choices for FCS_CKM.1/SKG">
             						<textcol>Identifier</textcol>
-            						<selectcol>Cryptographic Key Generation Algorithm as defined in <xref to="fcs-ckm-1-skg-sels"/></selectcol>
+            						<selectcol>Cryptographic Key Generation Algorithm</selectcol>
             						<reqtext>and specified cryptographic key sizes</reqtext>
-            						<selectcol>Cryptographic Key Sizes as defined in <xref to="fcs-ckm-1-skg-sels"/></selectcol>
+            						<selectcol>Cryptographic Key Sizes</selectcol>
             						<reqtext>that meet the following: </reqtext>
-            						<selectcol>List of standard as defined in <xref to="fcs-ckm-1-skg-sels"/>s</selectcol>
-            						<reqtext><h:p/><h:p/>The following table provides the allowable choices for
+            						<selectcol>List of standards</selectcol>
+            						<reqtext><h:p/><h:p/><xref to="fcs-ckm-1-skg-sels"/> provides the allowable choices for
             							completion of the selection operations of FCS_CKM.1/SKG.</reqtext>
             					</tabularize>
             					
@@ -2163,8 +2165,8 @@
             		<audit>
             			The following actions should be auditable if FAU_GEN Security audit data generation is
             			included in the PP, PP-Module, functional package or ST:<h:br/><h:ul>
-            				<h:li>minimal: Success and failure of the activity;</h:li>
-            				<h:li>basic: The object attribute(s), and object value(s) excluding any sensitive information.</h:li>
+            				<h:li>Minimal: Success and failure of the activity;</h:li>
+            				<h:li>Basic: The object attribute(s), and object value(s) excluding any sensitive information.</h:li>
             			</h:ul>
             		</audit>
             		<dependencies><h:br/>
@@ -2191,12 +2193,12 @@
             					<tabularize id="fcs-ckm-ext-7-sels" 
             						title="Allowable Choices for FCS_CKM_EXT.7">
             						<textcol>Identifier</textcol>
-            						<selectcol>Cryptographic Algorithm as defined in <xref to="fcs-ckm-ext-7-sels"/></selectcol>
+            						<selectcol>Cryptographic Algorithm</selectcol>
             						<reqtext>and specified cryptographic parameters</reqtext>
-            						<selectcol>Cryptographic Parameters as defined in <xref to="fcs-ckm-ext-7-sels"/></selectcol>
+            						<selectcol>Cryptographic Parameters </selectcol>
             						<reqtext>that meet the following:</reqtext>
-            						<selectcol>List of Standards as defined in <xref to="fcs-ckm-ext-7-sels"/></selectcol>
-            						<reqtext>.<h:p/><h:p/>The following table provides the allowable choices for
+            						<selectcol>List of Standards</selectcol>
+            						<reqtext>.<h:p/><h:p/><xref to="fcs-ckm-ext-7-sels"/>  provides the allowable choices for
             							completion of the selection operations of FCS_CKM_EXT.7.</reqtext>
             					</tabularize>
             					
@@ -2423,12 +2425,12 @@
             					<tabularize id="fcs-cop-aead-sels" title="Allowable choices for FCS_COP.1/AEAD">
             						<textcol>Identifier</textcol>
             						<reqtext></reqtext>
-            						<selectcol>Cryptographic Algorithm as defined in <xref to="fcs-cop-aead-sels"/></selectcol>
+            						<selectcol>Cryptographic Algorithm</selectcol>
             						<reqtext>and cryptographic key sizes</reqtext>
-            						<selectcol>Cryptographic Key Sizes  as defined in <xref to="fcs-cop-aead-sels"/></selectcol>
+            						<selectcol>Cryptographic Key Sizes</selectcol>
             						<reqtext>that meet the following:</reqtext>
-            						<selectcol>List of Standards  as defined in <xref to="fcs-cop-aead-sels"/></selectcol>
-            						<reqtext><h:p/><h:p/>The following table provides the allowable choices for
+            						<selectcol>List of Standards</selectcol>
+            						<reqtext><h:p/><h:p/><xref to="fcs-cop-aead-sels"/> provides the allowable choices for
             							completion of the selection operations of FCS_COP.1/AEAD.</reqtext>
             					</tabularize>
             					
@@ -2756,13 +2758,13 @@
                     	<title>The TSF shall perform [<h:i>keyed hash message authentication</h:i>] in accordance
                     		with a specified cryptographic algorithm 
                     		<selectables>
-                    			<tabularize id="tab-fcs-cop-keyedhash-sels" title="Allowable Choices for FCS_COP.1/KeyedHash">
-                    				<selectcol>Keyed Hash Algorithm as defined in <xref to="tab-fcs-cop-keyedhash-sels"/></selectcol>
+                    			<tabularize id="fcs-cop-keyedhash-sels" title="Allowable Choices for FCS_COP.1/KeyedHash">
+                    				<selectcol>Keyed Hash Algorithm</selectcol>
                     				<reqtext>and cryptographic key sizes</reqtext>
-                    				<selectcol>Cryptographic Key Sizes as defined in <xref to="tab-fcs-cop-keyedhash-sels"/></selectcol>
+                    				<selectcol>Cryptographic Key Sizes</selectcol>
                     				<reqtext>that meet the following:</reqtext>
-                    				<selectcol>List of Standards as defined in <xref to="tab-fcs-cop-keyedhash-sels"/></selectcol>
-                    				<reqtext><h:p/><h:p/>The following table provides the allowable choices for
+                    				<selectcol>List of Standards</selectcol>
+                    				<reqtext><h:p/><h:p/><xref to="fcs-cop-keyedhash-sels"/> provides the allowable choices for
                     					completion of the selection operations of FCS_COP.1/KeyedHash.</reqtext>
                     			</tabularize>
                     		
@@ -2879,7 +2881,7 @@
             		<f-element id="fcs-cop-1e1-keyencap">
             			<title> The TSF shall perform [<h:i>key encapsulation</h:i>] in accordance with a specified cryptographic algorithm 
             				<selectables>
-            					<tabularize id="tab-fcs-cop-keyencap-sels" title="Allowable Choices for FCS_COP.1/KeyEncap">
+            					<tabularize id="fcs-cop-keyencap-sels" title="Allowable Choices for FCS_COP.1/KeyEncap">
             						<textcol>Identifier</textcol>
             						<reqtext></reqtext>
             						<selectcol>Cryptographic Algorithm</selectcol>
@@ -2887,7 +2889,7 @@
             						<selectcol>Cryptographic Key Sizes</selectcol>
             						<reqtext>that meet the following:</reqtext>
             						<selectcol>List of Standards</selectcol>
-            						<reqtext><h:p/><h:p/>The following table provides the allowable choices for
+            						<reqtext><h:p/><h:p/><xref to="fcs-cop-keyencap-sels"/> provides the allowable choices for
             							completion of the selection operations of FCS_COP.1/KeyEncap.</reqtext>
             					</tabularize>
             					
@@ -3003,7 +3005,7 @@
             						<selectcol>Cryptographic key sizes</selectcol>
             						<reqtext>that meet the following:</reqtext>
             						<selectcol>List of standards</selectcol>
-            						<reqtext><h:p/><h:p/>The following table provides the allowable choices for
+            						<reqtext><h:p/><h:p/><xref to="fcs-cop-kw-sels"/> provides the allowable choices for
             							completion of the selection operations of FCS_COP.1/KeyWrap.</reqtext>
             					</tabularize>
             					
@@ -3172,15 +3174,15 @@
                     	<title> The TSF shall perform [<h:i>digital signature generation</h:i>] in accordance with a specified 
                     		cryptographic algorithm 
                     		<selectables>
-                    			<tabularize id="tab-fcs-cop-siggen-sels" title="Allowable Choices for FCS_COP.1/SigGen">
+                    			<tabularize id="fcs-cop-siggen-sels" title="Allowable Choices for FCS_COP.1/SigGen">
                     				<textcol>Identifier</textcol>
                     				<reqtext></reqtext>
-                    				<selectcol>Cryptographic Algorithm as defined in <xref to="fcs-cop-siggen-sels"/></selectcol>
+                    				<selectcol>Cryptographic Algorithm</selectcol>
                     				<reqtext>and cryptographic key sizes</reqtext>
-                    				<selectcol>Cryptographic Key Sizes as defined in <xref to="fcs-cop-siggen-sels"/></selectcol>
+                    				<selectcol>Cryptographic Key Sizes</selectcol>
                     				<reqtext>that meet the following:</reqtext>
-                    				<selectcol>List of Standards as defined in <xref to="fcs-cop-siggen-sels"/></selectcol>
-                    				<reqtext><h:p/><h:p/>The following table provides the allowable choices for
+                    				<selectcol>List of Standards</selectcol>
+                    				<reqtext><h:p/><h:p/><xref to="fcs-cop-siggen-sels"/>  provides the allowable choices for
                     					completion of the selection operations in FCS_COP.1/SigGen.<h:p/></reqtext>
                     			</tabularize>
                     			
@@ -3554,15 +3556,15 @@
               The TSF shall perform [<h:i>digital signature verification</h:i>] in accordance with a specified 
               cryptographic algorithm  
               <selectables>
-              	<tabularize id="tab-fcs-cop-sigver-sels" title="Allowable Choices for FCS_COP.1/SigVer">
+              	<tabularize id="fcs-cop-sigver-sels" title="Allowable Choices for FCS_COP.1/SigVer">
                   <textcol>Identifier</textcol>
                   <reqtext></reqtext>
-              		<selectcol>Cryptographic Algorithm as defined in <xref to="fcs-cop-sigver-sels"/></selectcol>
+              		<selectcol>Cryptographic Algorithm</selectcol>
                   <reqtext>and cryptographic key sizes</reqtext>
-              		<selectcol>Cryptographic Key Sizes as defined in <xref to="fcs-cop-sigver-sels"/></selectcol>
+              		<selectcol>Cryptographic Key Sizes</selectcol>
                   <reqtext>that meet the following:</reqtext>
-              		<selectcol>List of Standards as defined in <xref to="fcs-cop-sigver-sels"/></selectcol>
-              		<reqtext><h:p/><h:p/>The following table provides the allowable choices for
+              		<selectcol>List of Standards</selectcol>
+              		<reqtext><h:p/><h:p/><xref to="fcs-cop-sigver-sels"/>  provides the allowable choices for
                     completion of the selection operations in FCS_COP.1/SigVer.<h:p/></reqtext>
                 </tabularize>
                 
@@ -4002,7 +4004,7 @@
                     					<selectcol>Cryptographic Key Sizes</selectcol>
                     					<reqtext>that meet the following:</reqtext>
                     					<selectcol>List of Standards</selectcol>
-                    					<reqtext><h:p/><h:p/>The following table provides the allowable choices for
+                    					<reqtext><h:p/><h:p/><xref to="fcs-cop-skc-sels"/> provides the allowable choices for
                     						completion of the selection operations of FCS_COP.1/SKC.</reqtext>							
                     				</tabularize>
                     				
@@ -4204,7 +4206,7 @@
             						<selectcol>Parameters</selectcol>
             						<reqtext>that meet the following:</reqtext>
             						<selectcol>List of Standards</selectcol>
-            						<reqtext><h:p/><h:p/>The following table provides the allowable choices for
+            						<reqtext><h:p/><h:p/><xref to="fcs-cop-xof-sels"/> provides the allowable choices for
             							completion of the selection operations of FCS_COP.1/XOF.</reqtext>
             					</tabularize>
             					
@@ -5946,34 +5948,20 @@
               </TSS>
               <Guidance>
                 The evaluator shall examine the operational guidance to determine that it provides guidance to 
-                administrators on how to configure all selected pre-shared key options if any configuration is required.
+                administrators on how to configure pre-shared keys if any configuration is required.
                 <h:br/>
                 <h:br/>
                 The evaluator shall examine the operational guidance to determine that it provides guidance to administrators on
                 how to configure the mandatory_or_not flag per RFC 8784.
               </Guidance>
               <Tests>
-                The evaluator shall also perform the following tests for each protocol (or instantiation of a protocol, if performed by a different implementation on the TOE).
-                <testlist>
-                  <test>For each mechanism selected in FIA_PSK_EXT.1.2, the evaluator shall attempt to establish a connection and confirm that the connection requires the selected factors in the PSK to establish the connection in alignment with table 1 from RFC 8784.</test>
-                </testlist>
+              	The evaluator shall attempt to establish a connection and confirm that the connection requires the selected factors in the PSK to establish the connection in alignment with table 1 from RFC 8784.
               </Tests>
             </aactivity>
           </f-element>
           <f-element id="fia-psk-ext-1e2">
             <title>
-              The TSF shall be able to accept the following as pre-shared keys:
-              <selectables>
-                <selectable id="pskgen">generated bit-based</selectable>
-                <selectable id="pskpw">password-based</selectable>
-                <selectable id="pskhotp">HMAC-based one-time password</selectable>
-                <selectable id="psktotp">time-based one-time password</selectable>
-                <selectable id="pskgenhotp">combination of a generated bit-based and HMAC-based one-time password</selectable>
-                <selectable id="pskgentotp">combination of a generated bit-based and time-based one-time password</selectable>
-                <selectable id="pskpwhotp">combination of a password-based and HMAC-based one-time password</selectable>
-                <selectable id="pskpwtotp">combination of a password-based and time-based one-time password</selectable>
-              </selectables>
-              keys.
+              The TSF shall be able to accept the following as pre-shared keys: [<h:i>generated bit-based</h:i>].
             </title>
             <ext-comp-def-title>
               <title>
@@ -5991,318 +5979,11 @@
                 keys.
               </title>
             </ext-comp-def-title>
-            <note role="application">
-              If “pre-shared keys that conform to RFC 8784” is selected in FCS_IPSEC_EXT.1.11, a generated, bit-based PSK must be used.
-              <h:br/>
-              <h:br/>
-              If any selection including "generated bit-based" is chosen, then FIA_PSK_EXT.2 must be included.
-              <h:br/>
-              <h:br/>
-              If any selection including password-based keys is chosen, then FIA_PSK_EXT.3 must be included.
-              <h:br/>
-              <h:br/>
-              If any selection including HMAC-based one-time password keys is chosen, then FIA_PSK_EXT.4 must be included.
-              <h:br/>
-              <h:br/>
-              If any selection including time-based one-time password is chosen, then FIA_PSK_EXT.5 must be included.
-              <h:br/>
-              <h:br/>
-              This requirement is selection-based on FCS_IPSEC_EXT.1.11 or inclusion of FPF_MFA_EXT.1.
-            </note>
+           
           </f-element>
           <audit-event table="sel-based"/>
         </f-component>
-        <!-- FIA_PSK_EXT.2 Generated Pre-Shared Keys -->
-        <f-component cc-id="fia_psk_ext.2" id="fia-psk-ext-2" name="Generated Pre-Shared Keys" status="sel-based">
-          <depends on-sel="pskgen"/>
-          <depends on-sel="pskgenhotp"/>
-          <depends on-sel="pskgentotp"/>
-          <consistency-rationale/>
-          <comp-lev>defines the use and composition of generated pre-shared keys used for IPsec.</comp-lev>
-          <management>No specific management functions are identified.</management>
-          <audit>
-            The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the
-            PP/ST:
-            <h:ul>
-              <h:li>Failure of the randomization process</h:li>
-            </h:ul>
-          </audit>
-          <dependencies><no-link>FIA_PSK_EXT.1</no-link> Pre-Shared Key Composition</dependencies>
-          <f-element id="fia-psk-ext-2e1">
-            <title>
-              The TSF shall be able to
-              <selectables>
-                <selectable id="fia_psk_ext.2.1_1">accept externally generated pre-shared keys</selectable>
-                <selectable id="fia_psk_ext.2.1_2">generate 256 bit-based pre-shared keys via the random number generator used by the TSF.</selectable>
-              </selectables>.
-            </title>
-            <note role="application">
-              Generated PSKs are expected to be shared between components via an out-of-band mechanism.
-              <h:br/>
-              <h:br/>
-              This requirement is selection-based on FIA_PSK_EXT.1.
-              <h:br/>
-              <h:br/>
-            </note>
-            <aactivity level="element">
-              <TSS>
-                If "generate" is selected, the evaluator shall confirm that this process uses the RBG specified in FCS_RBG.1 and the output matches the size selected in FIA_PSK_EXT.2.1.
-                <h:br/>
-                <h:br/>
-              </TSS>
-              <Guidance>
-                The evaluator shall confirm the operational guidance contains instructions for entering generated pre-shared keys 
-                for each protocol identified in the FIA_PSK_EXT.1.1.
-                <h:br/>
-                <h:br/>
-              </Guidance>
-              <Tests>
-                <testlist>
-                  <test>[conditional] If "generate" was selected, the evaluator shall generate a pre-shared key and confirm the output matches the size selected in FIA_PSK_EXT.2.1.</test>
-                </testlist>
-              </Tests>
-            </aactivity>
-          </f-element>
-          <audit-event table="sel-based"/>
-        </f-component>
-        <!-- FIA_PSK_EXT.3 Password-Based Pre-Shared Keys -->
-        <f-component cc-id="fia_psk_ext.3" id="fia-psk-ext-3" name="Password-Based Pre-Shared Keys" status="sel-based">
-          <depends on-sel="pskpw"/>
-          <depends on-sel="pskpwhotp"/>
-          <depends on-sel="pskpwtotp"/>
-          <consistency-rationale/>
-          <comp-lev>defines the use and composition of password-based pre-shared keys used for IPsec.</comp-lev>
-          <management>No specific management functions are identified.</management>
-          <audit>
-            The following actions should be auditable if FAU_GEN Security Audit Data Generation is included in the
-            PP/ST:
-            <h:ul>
-              <h:li>Failure of the randomization process</h:li>
-            </h:ul>
-          </audit>
-          <dependencies>
-            <no-link>FCS_RBG.1</no-link>
-            Random Bit Generation (RBG)
-            <no-link>FIA_PSK_EXT.1</no-link>
-            Pre-Shared Key Composition
-          </dependencies>
-          <f-element id="fia-psk-ext-3e1">
-            <title>
-              The TSF shall support a PSK of up to
-              <assignable>positive integer of 64 or more</assignable>
-              characters.
-            </title>
-            <aactivity level="component">
-              <TSS>
-                The evaluator shall examine the TSS to ensure it describes the process by which the bit-based pre-shared keys are used.
-                <h:br/>
-                <h:br/>
-                Support for length: The evaluator shall check to ensure that the TSS describes the allowable ranges for PSK lengths,
-		      and that at least 64 characters or a length defined by the platform may be specified by the user.
-                <h:br/>
-                <h:br/>
-                Support for character set: The evaluator shall check to ensure that the TSS describes the allowable character set and that
-		      it contains the characters listed in the SFR.
-                <h:br/>
-                <h:br/>
-                Support for PBKDF: The evaluator shall examine the TSS to ensure that the use of PBKDF2 is described and that 
-		      the key sizes match that described by the ST author.
-                <h:br/>
-                <h:br/>
-                The evaluator shall check that the TSS describes the method by which the PSK is first encoded and then fed 
-		      to the hash algorithm. The settings for the algorithm (padding, blocking, etc.) shall be described, and the evaluator 
-		      shall verify that these are supported by the selections in this component as well as the selections concerning the hash function itself.
-                <h:br/>
-                <h:br/>
-                For the NIST SP 800-132-based conditioning of the PSK, the required evaluation activities will be performed
-		      when doing the evaluation activities for the appropriate requirements (FCS_COP.1/KeyedHash).
-                <h:br/>
-                <h:br/>
-                The evaluator shall confirm that the minimum length is described.
-                <h:br/>
-                <h:br/>
-                The ST author shall provide a description in the TSS regarding the salt generation. The evaluator shall confirm
-		      that the salt is generated using an RBG described in the DRBG that is generated by the TSF or that is invoked from the operational environment.
-                <h:br/>
-                <h:br/>
-                [conditional] If "password strength meter" or "check the password against a denylist" is selected, the evaluator shall examine the TSS to 
-		      ensure any password checking functionality provided by the TSF is described and contains details on how the function operates.
-                <h:br/>
-                <h:br/>
-              </TSS>
-              <Guidance>
-                The evaluator shall confirm the operational guidance contains instructions for entering bit-based pre-shared keys for each 
-                protocol identified in the requirement, is generating a bit-based pre-shared key, or both. The evaluator shall confirm that any 
-                management functions related to pre-shared keys that are performed by the TOE are specified in the operational guidance.
-                <h:br/>
-                <h:br/>
-                The guidance must specify the allowable characters for pre-shared keys, and that list must include, at minimum, the same 
-                items contained in FIA_PSK_EXT.3.2.
-                <h:br/>
-                <h:br/>
-                The evaluator shall confirm the operational guidance contains any necessary instructions for enabling and configuring 
-		      password checking functionality.
-                <h:br/>
-                <h:br/>
-              </Guidance>
-              <Tests>
-                Support for Password/Passphrase characteristics: In addition to the analysis above, the evaluator shall also perform the following tests on a TOE configured according to the operational guidance:
-                <testlist>
-                  <test>The evaluator shall compose a pre-shared key of at least 64 characters that contains a combination of the allowed characters in accordance with the FIA_PSK_EXT.1.3 and verify that a successful protocol negotiation can be performed with the key.</test>
-                  <test>[conditional]: If the TOE supports pre-shared keys of multiple lengths, the evaluator shall repeat Test 1 using the minimum length and invalid lengths that are below the minimum length, above the maximum length, null length, empty length, or zero length. The minimum test should be successful, and the invalid lengths must be rejected by the TOE.</test>
-                  <test>[conditional]: If the TOE initiates connections, initiate and establish a remote connection, disconnect from the connection, and verify that the PSK is required when initiating the connection a second time.</test>
-                  <test>[conditional]: If the TOE supports a password meter, the evaluator shall enter a password and verify the password checker responds per the description in the TSS.</test>
-                  <test>[conditional]: If the TOE supports a password denylist, the evaluator shall enter a denylisted password and verify that the password is rejected or flagged as such.</test>
-                </testlist>
-              </Tests>
-            </aactivity>
-          </f-element>
-          <f-element id="fia-psk-ext-3e2">
-            <title>
-              The TSF shall allow PSKs to be composed of any combination of upper case characters, 
-              lower case characters, numbers, and the following special characters: "!", "@", "#", "$", "%", "^", "&amp;", "*", "(", and ")", and
-              <selectables>
-                <selectable id="fia_psk_ext.3.2_2">
-                  <assignable>other supported special characters</assignable>
-                </selectable>
-                <selectable id="fia_psk_ext.3.2_3" exclusive="yes">no other characters</selectable>
-              </selectables>.
-            </title>
-          </f-element>
-          <f-element id="fia-psk-ext-3e3">
-            <title>
-              The TSF shall perform Password-based Key Derivation Functions in accordance with a specified cryptographic algorithm [<h:i>HMAC-SHA-384</h:i>], with
-              <assignable>positive integer of 4096 or more</assignable>
-              iterations, and output cryptographic key sizes [<h:i>256 bits</h:i>]
-              that meet the following: [<h:i>NIST SP 800-132</h:i>].
-            </title>
-            <ext-comp-def-title>
-              <title>
-                The TSF shall perform Password-based Key Derivation Functions in accordance with a specified cryptographic algorithm
-                <assignable>cryptographic algorithm used for key derivation</assignable>, with
-                <assignable>positive integer of 4096 or more</assignable>
-                iterations, and output cryptographic key sizes
-                <assignable>output key size</assignable>
-                that meet the following:
-                <assignable>list of standards</assignable>.
-              </title>
-            </ext-comp-def-title>
-          </f-element>
-          <f-element id="fia-psk-ext-3e4">
-            <title>
-              The TSF shall not accept PSKs less than
-              <selectables>
-                <selectable id="fia_psk_ext.3.4_1" exclusive="yes">a value settable by the administrator</selectable>
-                <selectable id="fia_psk_ext.3.4_3">
-                  <assignable>minimum PSK length accepted by the TOE, must be >= 6</assignable>
-                </selectable>
-              </selectables>
-              and greater than the maximum PSK length defined in FIA_PSK_EXT.3.1.
-            </title>
-          </f-element>
-          <f-element id="fia-psk-ext-3e5">
-            <title>
-              The TSF shall generate all salts using an RBG that meets FCS_RBG.1
-              and with entropy of
-              <assignable>value equal to or greater than 256</assignable>
-              bits.
-            </title>
-            <ext-comp-def-title>
-              <title>The TSF shall generate all salts using an RBG that meets FCS_RBG.1 and with entropy of <assignable>value equal to or greater than 256</assignable> bits.</title>
-            </ext-comp-def-title>
-          </f-element>
-          <f-element id="fia-psk-ext-3e6">
-            <title>The TSF shall require the PSK to be entered before every initiated connection.</title>
-          </f-element>
-          <f-element id="fia-psk-ext-3e7">
-            <title>
-              The TSF shall
-              <selectables>
-                <selectable id="fia_psk_ext.3.7_1">provide a password strength meter</selectable>
-                <selectable id="fia_psk_ext.3.7_2">check the password against a denylist</selectable>
-                <selectable id="fia_psk_ext.3.7_3" exclusive="yes">perform no action to assist the user in choosing a strong password</selectable>
-              </selectables>.
-            </title>
-            <note role="application">
-              For FIA_PSK_EXT.3.1, the ST author assigns the maximum size of the PSK it supports; it must support at least 64 characters or a length defined by the platform.
-              <h:br/>
-              <h:br/>
-              For FIA_PSK_EXT.3.2, the ST author assigns any other supported characters; if there are no other supported characters, they should select
-		    "no other characters."<h:br/>
-              <h:br/>
-              For FIA_PSK_EXT.3.3, the ST author selects the parameters based on the PBKDF used by the TSF.
-              <h:br/>
-              <h:br/>
-              For FIA_PSK_EXT.3.4, if the minimum length is settable, then the ST author chooses "a value settable by the administrator." If the minimum length is not settable, 
-              the ST author fills in the assignment with the minimum length the PSK must be. This requirement is to ensure bounds work properly.
-              <h:br/>
-              <h:br/>
-              For FIA_PSK_EXT.3.7, the ST author may select one, both, or neither of the functions in alignment with NIST SP 800-63b.
-              <h:br/>
-              <h:br/>
-              This requirement is selection-based on FIA_PSK_EXT.1.
-            </note>
-          </f-element>
-          <audit-event table="sel-based"/>
-        </f-component>
-        <!-- FIA_PSK_EXT.4 HMAC-Based One-Time Password Pre-shared Keys Support -->
-        <f-component cc-id="fia_psk_ext.4" id="fia-psk-ext-4" name="HMAC-Based One-Time Password Pre-shared Keys Support" status="sel-based">
-          <depends on-sel="pskhotp"/>
-          <depends on-sel="pskgenhotp"/>
-          <depends on-sel="pskpwhotp"/>
-          <consistency-rationale/>
-          <comp-lev>defines the use and composition of HOTP pre-shared keys used for IPsec.</comp-lev>
-          <management>No specific management functions are identified.</management>
-          <audit>No specific audit functions are identified.</audit>
-          <dependencies><no-link>FIA_PSK_EXT.1</no-link> Pre-Shared Key Composition</dependencies>
-          <f-element id="fia-psk-ext-4e1">
-            <title>The TSF shall accept and send an HOTP while initiating a VPN connection.</title>
-            <note role="application">This requirement is selection-based on FIA_PSK_EXT.1</note>
-            <aactivity level="element">
-              <TSS>The evaluator shall verify the TSS describes how the HOTP is input into the client and how that value is sent to the server.</TSS>
-              <Guidance>
-                The evaluator shall verify the operational guidance contains any configuration necessary to enable HOTP.
-                <h:br/>
-                <h:br/>
-              </Guidance>
-              <Tests>
-                <testlist>
-                  <test>The evaluator shall configure the TOE to use a supported HOTP factor, then attempt to establish a connection using that factor. The evaluator shall verify the client prompts the user for the HOTP before initiating the connection. The evaluator shall verify the server validates the HOTP or receives confirmation from an authentication server before establishing the channel.</test>
-                </testlist>
-              </Tests>
-            </aactivity>
-          </f-element>
-          <audit-event table="sel-based"/>
-        </f-component>
-        <!-- FIA_PSK_EXT.5 Time-Based One-Time Password Pre-shared Keys Support -->
-        <f-component cc-id="fia_psk_ext.5" id="fia-psk-ext-5" name="Time-Based One-Time Password Pre-shared Keys Support" status="sel-based">
-          <depends on-sel="psktotp"/>
-          <depends on-sel="pskgentotp"/>
-          <depends on-sel="pskpwtotp"/>
-          <consistency-rationale/>
-          <comp-lev>defines the use and composition of TOTP pre-shared keys used for IPsec.</comp-lev>
-          <management>No specific management functions are identified.</management>
-          <audit>No specific audit functions are identified.</audit>
-          <dependencies><no-link>FIA_PSK_EXT.1</no-link> Pre-Shared Key Composition</dependencies>
-          <f-element id="fia-psk-ext-5e1">
-            <title>The TSF shall accept and send a TOTP while initiating a VPN connection.</title>
-            <note role="application">This requirement is selection-based on FIA_PSK_EXT.1.</note>
-            <aactivity level="element">
-              <TSS>The evaluator shall verify the TSS describes how the TOTP is input into the client and how that value is sent to the server.</TSS>
-              <Guidance>
-                The evaluator shall verify the operational guidance contains any configuration necessary to enable TOTP.
-                <h:br/>
-                <h:br/>
-              </Guidance>
-              <Tests>
-                <testlist>
-                  <test>The evaluator shall configure the TOE to use a supported TOTP factor, then attempt to establish a connection using that factor. The evaluator shall verify the client prompts the user for the TOTP before initiating the connection. The evaluator shall verify the server validates the TOTP or receives confirmation from an authentication server before establishing the channel.</test>
-                </testlist>
-              </Tests>
-            </aactivity>
-          </f-element>
-          <audit-event table="sel-based"/>
-        </f-component>
+    
 		    
 				<!-- FIA_PMG_EXT.1 -->
                 <!-- Depends on password-based authentication being used for administrator authentication -->
@@ -7743,9 +7424,9 @@
                         <note role="application">The digital signature mechanism referenced in FPT_TUD_EXT.1.3 is one of the 
 							algorithms specified in FCS_COP.1/SigVer.<h:p/>
                             If certificates are used by the update verification mechanism, then
-                            FIA_X509_EXT.1 and FIA_X509_EXT.2 in the  <xref to="x509"/> must be included in the ST. Certificates are validated in accordance
-                        	with FIA_X509_EXT.1 in the <xref to="x509"/> and 
-                            the appropriate selections should be made in FIA_X509_EXT.2.1 in <xref to="x509"/>. Additionally, FPT_TUD_EXT.2 must be
+                            FIA_X509_EXT.1 and FIA_X509_EXT.2 in the  <xref to="X509"/> must be included in the ST. Certificates are validated in accordance
+                        	with FIA_X509_EXT.1 in the <xref to="X509"/> and 
+                            the appropriate selections should be made in FIA_X509_EXT.2.1 in <xref to="X509"/>. Additionally, FPT_TUD_EXT.2 must be
 							included in the ST.<h:p/>
                             “Update” in the context of this SFR refers to the process of replacing a non-volatile, system resident
 							software component with another. The former is referred to as the NV image, and the latter is the
@@ -7841,7 +7522,7 @@
                         </title>
                         <note role="application">Certificates may optionally be used for code signing of system software updates
 							(FPT_TUD_EXT.1.3). This element must be included in the ST if certificates are used for validating 
-							updates. If “code signing for system software updates” is selected in FIA_X509_EXT.2.1 from the <xref to="x509"/>, FPT_TUD_EXT.2 
+							updates. If “code signing for system software updates” is selected in FIA_X509_EXT.2.1 from the <xref to="X509"/>, FPT_TUD_EXT.2 
 							must be included in the ST.<h:p/>
                             Validity is determined by the certificate path, the expiration date, and the revocation status in 
                             accordance with FIA_X509_EXT.1 in the <xref to="X509"/>.</note>
@@ -7850,7 +7531,7 @@
 							<Guidance/>
                             <Tests>
                                 The evaluation activity for this requirement is performed in conjunction with the evaluation activity
-                                for FIA_X509_EXT.1  and FIA_X509_EXT.2 in the <xref to="x509"/>.
+                                for FIA_X509_EXT.1  and FIA_X509_EXT.2 in the <xref to="X509"/>.
                             </Tests>
                         </aactivity>
                     </f-element>
@@ -9019,7 +8700,7 @@
             <h:tr>
                 <h:td>FPT_STM.1 - Reliable Time Stamps</h:td>
                 <h:td>
-                	FIA_X509_EXT.1 in the <xref to="x509"/> has a dependency on FPT_STM.1. While not explicitly stated in the PP, it is
+                	FIA_X509_EXT.1 in the <xref to="X509"/> has a dependency on FPT_STM.1. While not explicitly stated in the PP, it is
                     assumed that this will be provided by the underlying hardware platform on which the TOE
                     is installed. This is because the TOE is installed as a software or firmware product that runs
                     on general-purpose computing hardware so a hardware clock is assumed to be available.
