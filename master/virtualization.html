@@ -6340,10 +6340,11 @@ work-dir of external doc = ../../outputFIA_X509_EXT.1.4
                 
                 <div class="comp" id="FPT_TST.1"><h4>FPT_TST.1 TSF Self-Testing</h4>
                     <div class="element"><div class="reqid" id="FPT_TST.1.1"><a href="#FPT_TST.1.1" class="abbr">FPT_TST.1.1</a></div><div class="reqdesc">
-                            The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall run a suite of the following self-tests [<b>selection</b>: <span class="selectable-content" id="_s_385">during initial start-up</span>, <span class="selectable-content" id="_s_386">periodically during normal operation</span>, <span class="selectable-content" id="_s_387">at the request of the authorized user</span>, <span class="selectable-content" id="_s_388">at the conditions [<b>assignment</b>: 
-     <span class="assignable-content">conditions under which self-test should occur</span>]</span>]
-                            to demonstrate the correct operation of [<i><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> DRBG specified in <a href="#FCS_RBG.1">FCS_RBG.1</a></i>]: [<b>assignment</b>: 
-     <span class="assignable-content">DRBG health tests</span>].              
+                        The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall run a suite of the following self-tests [<i>during initial start-up, 
+                            [<b>selection</b>: <span class="selectable-content" id="_s_385">periodically during normal operation</span>, <span class="selectable-content" id="_s_386">at the request of the authorized user</span>, <span class="selectable-content" id="_s_387">at the conditions [<b>assignment</b>: 
+     <span class="assignable-content">conditions under which self-test should occur</span>]</span>, <span class="selectable-content" id="_s_388">at no other time</span>]</i>]
+                        to demonstrate the correct operation of [<i><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> DRBG specified in <a href="#FCS_RBG.1">FCS_RBG.1</a></i>]: [<b>assignment</b>: 
+     <span class="assignable-content">DRBG health tests</span>]. 
                         </div></div>
                     
                     <div class="element"><div class="reqid" id="FPT_TST.1.2"><a href="#FPT_TST.1.2" class="abbr">FPT_TST.1.2</a></div><div class="reqdesc">
@@ -6355,9 +6356,7 @@ work-dir of external doc = ../../outputFIA_X509_EXT.1.4
 							of [<i>[<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> DRBG specified in <a href="#FCS_RBG.1">FCS_RBG.1</a>]</i>].
                         <div class="appnote"><span class="note-header">Application
       Note:
-    </span><span class="note">This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is a required dependency of <a href="#FCS_RBG.1">FCS_RBG.1</a>. It is intended to require 
-							that any DRBG implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> undergo health testing to ensure that the random bit generation
-							functionality has not been degraded. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports multiple DRBGs, this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> should be iterated
+    </span><span class="note">This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is a required dependency of <a href="#FCS_RBG.1">FCS_RBG.1</a>. It is intended to require that any DRBG implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> undergo health testing at startup (and optionally in other circumstances) to ensure that the random bit generation functionality has not been degraded.  If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> supports multiple DRBGs, this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> should be iterated
 							to describe the self-test behavior for each. The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>'s response to a DRBG health test failure is addressed by in <a href="#FPT_FLS.1">FPT_FLS.1</a>.</span></div></div></div>
                     
                                                                 
@@ -8402,7 +8401,11 @@ work-dir of external doc = ../../outputFIA_X509_EXT.1.4
 <tr><td><span class="term" id="abbr_VM"><abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr></span></td><td><span id="long_abbr_VM">Virtual Machine</span></td></tr>
 <tr><td><span class="term" id="abbr_VMM"><abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr></span></td><td><span id="long_abbr_VMM">Virtual Machine Manager</span></td></tr>
 <tr><td><span class="term" id="abbr_VS"><abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr></span></td><td><span id="long_abbr_VS">Virtualization System</span></td></tr>
-</table><h1 id="appendix-bibliography" class="indexable" data-level="A">Appendix G -  Bibliography</h1><table><caption><span class="ctr" data-myid="t-biblio" data-counter-type="ct-Table" id="t-biblio">Table <span class="counter">24</span></span>: Bibliography</caption><tr class="header"><th>Identifier</th><th>Title</th></tr><tr><td><span id="bibCC">[<abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>]</span></td><td><span class="description">Common Criteria for Information Technology Security Evaluation - <ul>
+</table><h1 id="appendix-bibliography" class="indexable" data-level="A">Appendix G -  Bibliography</h1><table><caption><span class="ctr" data-myid="t-biblio" data-counter-type="ct-Table" id="t-biblio">Table <span class="counter">24</span></span>: Bibliography</caption><tr class="header"><th>Identifier</th><th>Title</th></tr><tr><td><span id="bibCSA">[CSA]</span></td><td><span class="description">
+                <a href="http://csrc.nist.gov/groups/SMA/ispab/documents/csa_87.txt">Computer Security Act of 1987</a>, H.R. 145, June 11, 1987. </span></td></tr><tr><td><span id="bibCCerrata">[Errata]</span></td><td><span class="description">
+                <a href="https://www.commoncriteriaportal.org/files/ccfiles/CCMB-2025-001-v1_2-Errata_Interpretation_CC_CEM_2022.pdf">Errata and Interpretation for CC:2022 (Release 1) and CEM:2022 (Release 1)</a>
+            </span></td></tr><tr><td><span id="bibOMB">[OMB]</span></td><td><span class="description">
+                <a href="http://www.whitehouse.gov/sites/default/files/omb/memoranda/fy2006/m06-19.pdf">Reporting Incidents Involving Personally Identifiable Information and Incorporating the Cost for Security in Agency Information Technology Investments</a>, OMB M-06-19, July 12, 2006. </span></td></tr><tr><td><span id="bibCC">[<abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>]</span></td><td><span class="description">Common Criteria for Information Technology Security Evaluation - <ul>
             <li><a href="https://www.commoncriteriaportal.org/files/ccfiles/CC2022PART1R1.pdf">Part 1: 
 				Introduction and general model</a>, CCMB-2022-11-001, <abbr class="dyn-abbr"><a href="#abbr_CC">CC</a></abbr>:2022, Revision 1, November 2022.</li>
             <li><a href="http://www.commoncriteriaportal.org/files/ccfiles/CC2022PART2R1.pdf">Part 2: 
