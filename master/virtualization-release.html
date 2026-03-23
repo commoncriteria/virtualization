@@ -1751,7 +1751,7 @@ The following sections list Common Criteria and technology terms used in this do
             					<abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes how the key is used as part of the key chain/hierarchy.
             				</div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">
             					The evaluator shall verify that the AGD instructs the administrator how to configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to
-            					use the RBG to generate symmetric keys for all uses identified in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>.
+            					use the DRBG to generate symmetric keys for all uses identified in the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>.
             				</div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
             					The following tests are conditional based upon the selections made in the <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr>.
             					The evaluator shall perform the following test or witness respective tests 
@@ -1764,8 +1764,8 @@ The following sections list Common Criteria and technology terms used in this do
             					To test the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>’s ability to generate symmetric cryptographic keys using a 
             					random bit generator, the evaluator shall configure the symmetric cryptographic 
             					key generation capability for each claimed key size. The evaluator shall use the
-            					description of the RBG interface to verify that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> requests and receives an
-            					amount of RBG output greater than or equal to the requested key size.
+            					description of the DRBG interface to verify that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> requests and receives an
+            					amount of DRBG output greater than or equal to the requested key size.
             				</div></div></div></div></div>
 
             	
@@ -2056,7 +2056,7 @@ The following sections list Common Criteria and technology terms used in this do
             						<tr>
             							<td valign="top"><abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-GCM </td>
             							<td valign="top"><abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr> in GCM mode with nonrepeating IVs using 
-            								[<b>selection:</b> deterministic, RBG-based] IV construction; 
+            								[<b>selection:</b> deterministic, DRBG-based] IV construction; 
             								the tag must be of length [<b>selection:</b> 96, 104, 112, 120, or 128] bits.</td>
             							<td valign="top">256 bits</td>
             							<td valign="top">
@@ -3130,32 +3130,36 @@ The following sections list Common Criteria and technology terms used in this do
 
                     	</table></div></div>
                     <div class="element"><div class="reqid" id="FCS_RBG.1.2"><a href="#FCS_RBG.1.2" class="abbr">FCS_RBG.1.2</a></div><div class="reqdesc">
-							The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall use a [<b>selection</b>: <span class="selectable-content" id="internal-seed"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise source [<b>assignment</b>: 
-     <span class="assignable-content">name of noise source</span>]</span>, <span class="selectable-content" id="internal-seeds"><b>multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise sources [<b>assignment</b>: 
-     <span class="assignable-content">names of noise sources</span>]</b></span>, <span class="selectable-content" id="external-seed"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for seeding</span>]
-							for initialized seeding.
+                            The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall use a [<b>selection</b>: <span class="selectable-content" id="internal-seed"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy source [<b>assignment</b>: 
+     <span class="assignable-content">name of entropy source</span>]</span>, <span class="selectable-content" id="internal-seeds"><b>multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy sources [<b>assignment</b>: 
+     <span class="assignable-content">names of entropy sources</span>]</b></span>, <span class="selectable-content" id="external-seed"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for obtaining entropy</span>]
+                            after initialization and reseeding.
 						  <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
-							  For the selection in this requirement, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise source" if
-							  a single noise source is used as input to the DRBG. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects "multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise sources" 
-							  if a seed is formed from a combination of two or more noise sources within the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>
-							  implements two or more separate DRBGs that are seeded in separate manners, this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> should be iterated for 
-							  each DRBG. If multiple distinct noise sources exist such that each DRBG only uses one of them, then each 
-							  iteration would select "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise source"; "multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise sources" is only selected if a single DRBG 
-							  uses multiple noise sources for its seed. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for seeding" if noise source 
-							  data is generated outside the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary.<p></p>
-							  If "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise source" is selected, <a href="#FCS_RBG.3">FCS_RBG.3</a> must be claimed.<p></p>
-							  If "multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise sources" is selected, <a href="#FCS_RBG.4">FCS_RBG.4</a> and <a href="#FCS_RBG.5">FCS_RBG.5</a> must be claimed. <p></p>
-							  If "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for seeding" is selected, <a href="#FCS_RBG.2">FCS_RBG.2</a> must be claimed. 
+						      <p>
+						          For the 
+						          selection in this requirement, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy source" if
+						          a single entropy source is used as input to the. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects "multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy sources" if a seed is formed from a combination of two or more entropy sources within the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> implements two or more separates that are seeded in separate manners, this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> should be iterated for each. It multiple distinct entropy sources exist such that each only uses one of them, then each iteration would select "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy source"; "multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy sources" is only selected if a single uses multiple entropy sources for its seed. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for obtaining entropy" if entropy source data is generated outside the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary.
+						      </p>
+						      <p>
+						          If "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy source" is selected, <a href="#FCS_RBG.3">FCS_RBG.3</a> must be claimed.
+						      </p>
+						      <p>
+						          If "multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy sources" is selected, <a href="#FCS_RBG.4">FCS_RBG.4</a> and <a href="#FCS_RBG.5">FCS_RBG.5</a> must be claimed. 
+						      </p>
+						      <p>
+						          If "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for obtaining entropy" is selected, <a href="#FCS_RBG.2">FCS_RBG.2</a> must be claimed. 
+						      </p>
 						  </span></div></div></div>
 					<div class="element"><div class="reqid" id="FCS_RBG.1.3"><a href="#FCS_RBG.1.3" class="abbr">FCS_RBG.1.3</a></div><div class="reqdesc">
-							The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall update the RBG state by [<b>selection</b>: <span class="selectable-content" id="_s_305">reseeding</span>, <span class="selectable-content" id="_s_306">uninstantiating and reinstantiating</span>] using a [<b>selection</b>: <span class="selectable-content" id="_s_307"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise source [<b>assignment</b>: 
-     <span class="assignable-content">name of noise source</span>]</span>, <span class="selectable-content" id="_s_308"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for seeding</span>]
-							in the following situations: [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_309">never</span></li><li style=""><span class="selectable-content" id="_s_310">on demand</span></li><li style=""><span class="selectable-content" id="_s_311">on the condition: [<b>assignment</b>: 
+						    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall update the DRBG state by [<b>selection</b>: <span class="selectable-content" id="_s_305">reseeding</span>, <span class="selectable-content" id="_s_306">uninstantiating and reinstantiating</span>] using a [<b>selection</b>: <span class="selectable-content" id="_s_307"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy source [<b>assignment</b>: 
+     <span class="assignable-content">name of entropy source</span>]</span>, <span class="selectable-content" id="_s_308"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for obtaining entropy [<b>assignment</b>: 
+     <span class="assignable-content">name of the interface</span>]</span>]
+						    in the following situations: [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_309">never</span></li><li style=""><span class="selectable-content" id="_s_310">on demand</span></li><li style=""><span class="selectable-content" id="_s_311">on the condition: [<b>assignment</b>: 
      <span class="assignable-content">condition</span>]</span></li><li style=""><span class="selectable-content" id="_s_312">after [<b>assignment</b>: 
      <span class="assignable-content">time</span>]</span></li></ul>]
-							in accordance with [<b>assignment</b>: 
+						    in accordance with [<b>assignment</b>: 
      <span class="assignable-content">list of standards</span>].
 						  </div></div>
                     
@@ -3168,12 +3172,12 @@ The following sections list Common Criteria and technology terms used in this do
 			There are no additional Guidance evaluation activities for this component.<br/></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
                             	<p>Documentation shall be produced - and the evaluator will perform the activities - in accordance with <a href="#appendix-entropy" class="dynref">Appendix E -  Entropy Documentation and Assessment</a>.
                             	</p>
-								The evaluator shall perform the following tests, depending on the standard to which the RBG
+								The evaluator shall perform the following tests, depending on the standard to which the DRBG
 								conforms.<p></p>
-                                The evaluator shall perform 15 trials for the RBG implementation. If the RBG is configurable, the 
+                                The evaluator shall perform 15 trials for the DRBG implementation. If the DRBG is configurable, the 
 								evaluator shall perform 15 trials for each configuration. The evaluator shall also confirm that
-								the operational guidance contains appropriate instructions for configuring the RBG functionality.<p></p>
-                                If the RBG has prediction resistance enabled, each trial consists of (1) instantiate DRBG, (2)
+								the operational guidance contains appropriate instructions for configuring the DRBG functionality.<p></p>
+                                If the DRBG has prediction resistance enabled, each trial consists of (1) instantiate DRBG, (2)
 								generate the first block of random bits (3) generate a second block of random bits (4) 
 								uninstantiate. The evaluator verifies that the second block of random bits is the expected value. 
 								The evaluator shall generate eight input values for each trial. The first is a count (0 – 14). The
@@ -3182,7 +3186,7 @@ The following sections list Common Criteria and technology terms used in this do
 								additional input and entropy input for the second call to generate. These values are randomly
 								generated. “generate one block of random bits” means to generate random bits with number of 
 								returned bits equal to the Output Block Length (as defined in <abbr class="dyn-abbr"><a href="#abbr_NIST">NIST</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_SP">SP</a></abbr> 800-90A).<p></p>
-                                If the RBG does not have prediction resistance, each trial consists of (1) instantiate DRBG, (2) 
+                                If the DRBG does not have prediction resistance, each trial consists of (1) instantiate DRBG, (2) 
 								generate the first block of random bits (3) reseed, (4) generate a second block of random bits (5)
 								uninstantiate. The evaluator verifies that the second block of random bits is the expected value.
 								The evaluator shall generate eight input values for each trial. The first is a count (0 – 14). The
@@ -3233,7 +3237,7 @@ The following sections list Common Criteria and technology terms used in this do
                             [<b>assignment</b>: 
      <span class="assignable-content">list of platform-provided, hardware-based mechanisms</span>]
                             to constrain a Guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>'s direct access to the following physical devices:
-                            [<b>selection</b>: <span class="selectable-content" id="_s_315">all devices</span>, <span class="selectable-content" id="_s_316">all devices except for [<b>assignment</b>: 
+                            [<b>selection</b>: <span class="selectable-content" id="_s_323">all devices</span>, <span class="selectable-content" id="_s_324">all devices except for [<b>assignment</b>: 
      <span class="assignable-content">list of devices to which Guest VMs may access</span>]</span>].                        
                         <div class="appnote"><span class="note-header">Application
       Note:
@@ -3272,11 +3276,11 @@ The following sections list Common Criteria and technology terms used in this do
 							able to control access to</span>].
                         </div></div>
                     <div class="element"><div class="reqid" id="FDP_PPR_EXT.1.2"><a href="#FDP_PPR_EXT.1.2" class="abbr">FDP_PPR_EXT.1.2</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall explicitly deny all Guest VMs access to the following physical platform resources:
-                            [<b>selection</b>: <span class="selectable-content" id="_s_317">no physical platform resources</span>, <span class="selectable-content" id="_s_318">[<b>assignment</b>: 
+                            [<b>selection</b>: <span class="selectable-content" id="_s_325">no physical platform resources</span>, <span class="selectable-content" id="_s_326">[<b>assignment</b>: 
      <span class="assignable-content">list of physical platform resources to which access is explicitly denied</span>]</span>].
                         </div></div>
                     <div class="element"><div class="reqid" id="FDP_PPR_EXT.1.3"><a href="#FDP_PPR_EXT.1.3" class="abbr">FDP_PPR_EXT.1.3</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall explicitly allow all Guest VMs access to the following physical platform resources:
-                            [<b>selection</b>: <span class="selectable-content" id="_s_319">no physical platform resources</span>, <span class="selectable-content" id="_s_320">[<b>assignment</b>: 
+                            [<b>selection</b>: <span class="selectable-content" id="_s_327">no physical platform resources</span>, <span class="selectable-content" id="_s_328">[<b>assignment</b>: 
      <span class="assignable-content">list of physical platform resources to which access is always allowed</span>]</span>].
                         <div class="appnote"><span class="note-header">Application
       Note:
@@ -3439,7 +3443,7 @@ The following sections list Common Criteria and technology terms used in this do
 					
 					
                     <div class="element"><div class="reqid" id="FDP_VMS_EXT.1.1"><a href="#FDP_VMS_EXT.1.1" class="abbr">FDP_VMS_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> shall provide the following mechanisms for transferring data between Guest VMs:
-                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_321">no mechanism</span></li><li style=""><span class="selectable-content" id="_s_322">virtual networking</span></li><li style=""><span class="selectable-content" id="_s_323">[<b>assignment</b>: 
+                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_329">no mechanism</span></li><li style=""><span class="selectable-content" id="_s_330">virtual networking</span></li><li style=""><span class="selectable-content" id="_s_331">[<b>assignment</b>: 
      <span class="assignable-content">other inter-VM data sharing mechanisms</span>]</span></li></ul>].
                         </div></div>
                     <div class="element"><div class="reqid" id="FDP_VMS_EXT.1.2"><a href="#FDP_VMS_EXT.1.2" class="abbr">FDP_VMS_EXT.1.2</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall by default enforce a policy prohibiting sharing of data between Guest VMs.</div></div>			
@@ -3583,12 +3587,12 @@ The following sections list Common Criteria and technology terms used in this do
                 
                 <div class="comp" id="FIA_UAU.5"><h4>FIA_UAU.5 Multiple Authentication Mechanisms</h4>
                     <div class="element"><div class="reqid" id="FIA_UAU.5.1"><a href="#FIA_UAU.5.1" class="abbr">FIA_UAU.5.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide 
-                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="sel-uau-pwd">[<b>selection</b>: <span class="selectable-content" id="_s_342">local</span>, <span class="selectable-content" id="sel-uau-pwd-dirbased">directory-based</span>]
+                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="sel-uau-pwd">[<b>selection</b>: <span class="selectable-content" id="_s_350">local</span>, <span class="selectable-content" id="sel-uau-pwd-dirbased">directory-based</span>]
                                     authentication based on username and password
                                 </span></li><li style=""><span class="selectable-content" id="sel-uau-pin">authentication based on username and a PIN that releases an asymmetric key stored in
-									<abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr>-protected storage</span></li><li style=""><span class="selectable-content" id="sel-uau-x509">[<b>selection</b>: <span class="selectable-content" id="_s_346">local</span>, <span class="selectable-content" id="sel-uau-x509-dirbased">directory-based</span>]
+									<abbr class="dyn-abbr"><a href="#abbr_OE">OE</a></abbr>-protected storage</span></li><li style=""><span class="selectable-content" id="sel-uau-x509">[<b>selection</b>: <span class="selectable-content" id="_s_354">local</span>, <span class="selectable-content" id="sel-uau-x509-dirbased">directory-based</span>]
                                     authentication based on X.509 certificates
-                                </span></li><li style=""><span class="selectable-content" id="sel-uau-ssh">[<b>selection</b>: <span class="selectable-content" id="_s_349">local</span>, <span class="selectable-content" id="sel-uau-ssh-dirbased">directory-based</span>]
+                                </span></li><li style=""><span class="selectable-content" id="sel-uau-ssh">[<b>selection</b>: <span class="selectable-content" id="_s_357">local</span>, <span class="selectable-content" id="sel-uau-ssh-dirbased">directory-based</span>]
                                     authentication based on an SSH public key credential
                                 </span></li></ul>]                            
                             to support user authentication.
@@ -3731,7 +3735,7 @@ The following sections list Common Criteria and technology terms used in this do
 					
                     <div class="element"><div class="reqid" id="FMT_MOF_EXT.1.1"><a href="#FMT_MOF_EXT.1.1" class="abbr">FMT_MOF_EXT.1.1</a></div><div class="reqdesc">
 							The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be capable of supporting 
-                           		[<b>selection</b>: <span class="selectable-content" id="_s_353">local</span>, <span class="selectable-content" id="sel-mof-1e1-remote">remote</span>] administration.
+                           		[<b>selection</b>: <span class="selectable-content" id="_s_361">local</span>, <span class="selectable-content" id="sel-mof-1e1-remote">remote</span>] administration.
                        	<div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
@@ -3753,7 +3757,7 @@ The following sections list Common Criteria and technology terms used in this do
 										See <a href="#FPT_TUD_EXT.1">FPT_TUD_EXT.1</a>.
 									</p></td></tr>
 <tr id="mf-admin-pwd-policy"><td>2</td><td style="text-align:left">
-										[<b>selection</b>: <span class="selectable-content" id="sel-mf-pwd-policy">Ability to configure administrator password policy as defined in <a href="#FIA_PMG_EXT.1">FIA_PMG_EXT.1</a></span>, <span class="selectable-content" id="_s_356">Not applicable</span>]
+										[<b>selection</b>: <span class="selectable-content" id="sel-mf-pwd-policy">Ability to configure administrator password policy as defined in <a href="#FIA_PMG_EXT.1">FIA_PMG_EXT.1</a></span>, <span class="selectable-content" id="_s_364">Not applicable</span>]
 									</td><td><div class="tooltipped">O<span class="tooltiptext">Optional/Conditional</span></div></td><td><div class="tooltipped">X<span class="tooltiptext">Not permitted</span></div></td><td style="text-align:left"><p>
 										Must be selected if <a href="#FIA_PMG_EXT.1">FIA_PMG_EXT.1</a> is claimed.
 									</p></td></tr>
@@ -3808,10 +3812,10 @@ The following sections list Common Criteria and technology terms used in this do
 									</td><td><div class="tooltipped">M<span class="tooltiptext">Mandatory</span></div></td><td><div class="tooltipped">X<span class="tooltiptext">Not permitted</span></div></td><td style="text-align:left"><p></p></td></tr>
 <tr id="mf-admin-configLockoutPolicy"><td>15</td><td style="text-align:left">
 										Ability to configure lockout policy for unsuccessful authentication attempts through 
-                                        [<b>selection</b>: <span class="selectable-content" id="_s_357">timeouts between attempts</span>, <span class="selectable-content" id="_s_358">limiting number of attempts during a time period</span>]
+                                        [<b>selection</b>: <span class="selectable-content" id="_s_365">timeouts between attempts</span>, <span class="selectable-content" id="_s_366">limiting number of attempts during a time period</span>]
 									</td><td><div class="tooltipped">O<span class="tooltiptext">Optional/Conditional</span></div></td><td><div class="tooltipped">X<span class="tooltiptext">Not permitted</span></div></td><td style="text-align:left"><p>Must be selected if a password or PIN-based authentication method is claimed in <a href="#FIA_UAU.5.1">FIA_UAU.5.1</a>.</p></td></tr>
 <tr id="mf-admin-configDirServer"><td>16</td><td style="text-align:left">
-										[<b>selection</b>: <span class="selectable-content" id="sel-mf-dir-server">Ability to configure name/address of directory server to bind with</span>, <span class="selectable-content" id="_s_360">Not applicable</span>]
+										[<b>selection</b>: <span class="selectable-content" id="sel-mf-dir-server">Ability to configure name/address of directory server to bind with</span>, <span class="selectable-content" id="_s_368">Not applicable</span>]
 									</td><td><div class="tooltipped">O<span class="tooltiptext">Optional/Conditional</span></div></td><td><div class="tooltipped">X<span class="tooltiptext">Not permitted</span></div></td><td style="text-align:left"><p>Must be selected if "directory-based" is selected anywhere in <a href="#FIA_UAU.5.1">FIA_UAU.5.1</a>.</p></td></tr>
 <tr id="mf-admin-configAuditServer"><td>17</td><td style="text-align:left">
 										Ability to configure name/address of audit/logging server to which to send audit/logging records
@@ -3842,7 +3846,7 @@ The following sections list Common Criteria and technology terms used in this do
 									</td><td><div class="tooltipped">O<span class="tooltiptext">Optional/Conditional</span></div></td><td><div class="tooltipped">O<span class="tooltiptext">Optional/Conditional</span></div></td><td style="text-align:left"><p></p></td></tr>
 <tr id="mf-admin-configCertAction"><td>26</td><td style="text-align:left">
 										[<b>selection</b>: <span class="selectable-content" id="sel-mf-cert-no-validity-action">Ability to configure action taken
-												if unable to determine the validity of a certificate</span>, <span class="selectable-content" id="_s_362">Not applicable</span>]
+												if unable to determine the validity of a certificate</span>, <span class="selectable-content" id="_s_370">Not applicable</span>]
 									</td><td><div class="tooltipped">O<span class="tooltiptext">Optional/Conditional</span></div></td><td><div class="tooltipped">X<span class="tooltiptext">Not permitted</span></div></td><td style="text-align:left"><p>This function must be selected if "allow the administrator to choose whether to accept the certificate 
 										in these cases" in FIA_X509_EXT.2.2</p></td></tr>
 </table>
@@ -3904,7 +3908,7 @@ The following sections list Common Criteria and technology terms used in this do
 					
 					
                     <div class="element"><div class="reqid" id="FMT_SMO_EXT.1.1"><a href="#FMT_SMO_EXT.1.1" class="abbr">FMT_SMO_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support the separation of management and operational network traffic through
-                            [<b>selection</b>: <span class="selectable-content" id="_s_363">separate physical networks</span>, <span class="selectable-content" id="_s_364">separate logical networks</span>, <span class="selectable-content" id="_s_365">trusted channels as defined in <a href="#FTP_ITC_EXT.1">FTP_ITC_EXT.1</a></span>, <span class="selectable-content" id="smo-skc">data encryption using an algorithm specified in FCS_COP.1<b>/SKC</b></span>].
+                            [<b>selection</b>: <span class="selectable-content" id="_s_371">separate physical networks</span>, <span class="selectable-content" id="_s_372">separate logical networks</span>, <span class="selectable-content" id="_s_373">trusted channels as defined in <a href="#FTP_ITC_EXT.1">FTP_ITC_EXT.1</a></span>, <span class="selectable-content" id="smo-skc">data encryption using an algorithm specified in FCS_COP.1<b>/SKC</b></span>].
                         <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">Management communications must be separate from user workload communications. Administrative 
@@ -4047,8 +4051,8 @@ The following sections list Common Criteria and technology terms used in this do
 					
                     <div class="element"><div class="reqid" id="FPT_EEM_EXT.1.1"><a href="#FPT_EEM_EXT.1.1" class="abbr">FPT_EEM_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall take advantage of execution environment-based vulnerability mitigation mechanisms 
 							supported by the Platform such as:
-                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_371">Address space randomization</span></li><li style=""><span class="selectable-content" id="_s_372">Memory execution protection (e.g., <abbr class="dyn-abbr"><a href="#abbr_DEP">DEP</a></abbr>)</span></li><li style=""><span class="selectable-content" id="_s_373">Stack buffer overflow protection</span></li><li style=""><span class="selectable-content" id="_s_374">Heap corruption detection</span></li><li style=""><span class="selectable-content" id="_s_375">[<b>assignment</b>: 
-     <span class="assignable-content">other mechanisms</span>]</span></li><li style=""><span class="selectable-content" id="_s_376">No mechanisms</span></li></ul>]
+                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_379">Address space randomization</span></li><li style=""><span class="selectable-content" id="_s_380">Memory execution protection (e.g., <abbr class="dyn-abbr"><a href="#abbr_DEP">DEP</a></abbr>)</span></li><li style=""><span class="selectable-content" id="_s_381">Stack buffer overflow protection</span></li><li style=""><span class="selectable-content" id="_s_382">Heap corruption detection</span></li><li style=""><span class="selectable-content" id="_s_383">[<b>assignment</b>: 
+     <span class="assignable-content">other mechanisms</span>]</span></li><li style=""><span class="selectable-content" id="_s_384">No mechanisms</span></li></ul>]
                         <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">Processor manufacturers, compiler developers, and operating system vendors have 
@@ -4211,9 +4215,9 @@ The following sections list Common Criteria and technology terms used in this do
      <span class="assignable-content">virtual or physical 
 							removable media and virtual or physical removable media devices</span>] are switched between 
 							information domains:
-                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_381">the administrator has granted explicit access for the media or device to be connected to
-									the receiving domain</span></li><li style=""><span class="selectable-content" id="_s_382">the media in a device that is being transferred is ejected prior to the receiving domain
-									being allowed access to the device</span></li><li style=""><span class="selectable-content" id="_s_383">the user of the receiving domain expressly authorizes the connection</span></li><li style=""><span class="selectable-content" id="_s_384">the device or media that is being transferred is prevented from being accessed by the 
+                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_389">the administrator has granted explicit access for the media or device to be connected to
+									the receiving domain</span></li><li style=""><span class="selectable-content" id="_s_390">the media in a device that is being transferred is ejected prior to the receiving domain
+									being allowed access to the device</span></li><li style=""><span class="selectable-content" id="_s_391">the user of the receiving domain expressly authorizes the connection</span></li><li style=""><span class="selectable-content" id="_s_392">the device or media that is being transferred is prevented from being accessed by the 
 									receiving domain</span></li></ul>]
                         <div class="appnote"><span class="note-header">Application
       Note:
@@ -4268,8 +4272,8 @@ The following sections list Common Criteria and technology terms used in this do
                 <div class="comp" id="FPT_TST.1"><h4>FPT_TST.1 TSF Self-Testing</h4>
                     <div class="element"><div class="reqid" id="FPT_TST.1.1"><a href="#FPT_TST.1.1" class="abbr">FPT_TST.1.1</a></div><div class="reqdesc">
                         The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall run a suite of the following self-tests [<i>during initial start-up, 
-                            [<b>selection</b>: <span class="selectable-content" id="_s_385">periodically during normal operation</span>, <span class="selectable-content" id="_s_386">at the request of the authorized user</span>, <span class="selectable-content" id="_s_387">at the conditions [<b>assignment</b>: 
-     <span class="assignable-content">conditions under which self-test should occur</span>]</span>, <span class="selectable-content" id="_s_388">at no other time</span>]</i>]
+                            [<b>selection</b>: <span class="selectable-content" id="_s_393">periodically during normal operation</span>, <span class="selectable-content" id="_s_394">at the request of the authorized user</span>, <span class="selectable-content" id="_s_395">at the conditions [<b>assignment</b>: 
+     <span class="assignable-content">conditions under which self-test should occur</span>]</span>, <span class="selectable-content" id="_s_396">at no other time</span>]</i>]
                         to demonstrate the correct operation of [<i><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> DRBG specified in <a href="#FCS_RBG.1">FCS_RBG.1</a></i>]: [<b>assignment</b>: 
      <span class="assignable-content">DRBG health tests</span>]. 
                         </div></div>
@@ -4327,7 +4331,7 @@ The following sections list Common Criteria and technology terms used in this do
 							as well as the most recently installed update.
                         </span></div></div></div>
                     <div class="element"><div class="reqid" id="FPT_TUD_EXT.1.2"><a href="#FPT_TUD_EXT.1.2" class="abbr">FPT_TUD_EXT.1.2</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide administrators the ability to manually initiate updates to	<abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> firmware and software and
-                            [<b>selection</b>: <span class="selectable-content" id="_s_389">automatic updates</span>, <span class="selectable-content" id="_s_390">no other update mechanism</span>].
+                            [<b>selection</b>: <span class="selectable-content" id="_s_397">automatic updates</span>, <span class="selectable-content" id="_s_398">no other update mechanism</span>].
                         </div></div>
                     <div class="element"><div class="reqid" id="FPT_TUD_EXT.1.3"><a href="#FPT_TUD_EXT.1.3" class="abbr">FPT_TUD_EXT.1.3</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide means to authenticate firmware and software updates to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> using a
                             [<b>selection</b>: <span class="selectable-content" id="sel-tud-digsign-cert">digital signature mechanism using certificates</span>, <span class="selectable-content" id="sel-tud-digsign">digital signature mechanism not using certificates</span>] prior to installing those updates.
@@ -4519,7 +4523,7 @@ The following sections list Common Criteria and technology terms used in this do
 	
                 
                 <div class="comp" id="FTA_TAB.1"><h4>FTA_TAB.1 TOE Access Banner</h4>
-                    <div class="element"><div class="reqid" id="FTA_TAB.1.1"><a href="#FTA_TAB.1.1" class="abbr">FTA_TAB.1.1</a></div><div class="reqdesc">Before establishing a user session, the [<b>selection</b>: <span class="selectable-content" id="_s_393"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></span>, <span class="selectable-content" id="_s_394"><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> platform</span>] 
+                    <div class="element"><div class="reqid" id="FTA_TAB.1.1"><a href="#FTA_TAB.1.1" class="abbr">FTA_TAB.1.1</a></div><div class="reqdesc">Before establishing a user session, the [<b>selection</b>: <span class="selectable-content" id="_s_401"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr></span>, <span class="selectable-content" id="_s_402"><abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> platform</span>] 
                             shall display an [<b>assignment</b>: 
      <span class="assignable-content">advisory notice and consent warning regarding use of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr></span>] message.                            
                         <div class="appnote"><span class="note-header">Application
@@ -4565,11 +4569,11 @@ The following sections list Common Criteria and technology terms used in this do
         version 
         2.0</a></i></a></span></li></ul>]
 							and
-							[<b>selection</b>: <ul><li style=""><span class="selectable-content" id="sel-itc-certauth">certificate-based authentication of the remote peer</span></li><li style=""><span class="selectable-content" id="_s_400">non-certificate-based authentication of the remote peer</span></li><li style=""><span class="selectable-content" id="_s_401">no authentication of the remote peer</span></li></ul>]
+							[<b>selection</b>: <ul><li style=""><span class="selectable-content" id="sel-itc-certauth">certificate-based authentication of the remote peer</span></li><li style=""><span class="selectable-content" id="_s_408">non-certificate-based authentication of the remote peer</span></li><li style=""><span class="selectable-content" id="_s_409">no authentication of the remote peer</span></li></ul>]
                             to provide a trusted communication channel between itself and <ul>
                                 <li>audit servers (as required by <a href="#FAU_STG.1">FAU_STG.1</a>) and</li></ul>
-                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_402">remote administrators (as required by <a href="#FTP_TRP.1.1">FTP_TRP.1.1</a> (if selected in <a href="#FMT_MOF_EXT.1">FMT_MOF_EXT.1</a>)</span></li><li style=""><span class="selectable-content" id="_s_403">separation of management and operational networks (if selected in <a href="#FMT_SMO_EXT.1">FMT_SMO_EXT.1</a>)</span></li><li style=""><span class="selectable-content" id="_s_404">[<b>assignment</b>: 
-     <span class="assignable-content">other remote <abbr class="dyn-abbr"><a href="#abbr_IT">IT</a></abbr> entities</span>]</span></li><li style=""><span class="selectable-content" id="_s_405">no other remote <abbr class="dyn-abbr"><a href="#abbr_IT">IT</a></abbr> entities</span></li></ul>]
+                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_410">remote administrators (as required by <a href="#FTP_TRP.1.1">FTP_TRP.1.1</a> (if selected in <a href="#FMT_MOF_EXT.1">FMT_MOF_EXT.1</a>)</span></li><li style=""><span class="selectable-content" id="_s_411">separation of management and operational networks (if selected in <a href="#FMT_SMO_EXT.1">FMT_SMO_EXT.1</a>)</span></li><li style=""><span class="selectable-content" id="_s_412">[<b>assignment</b>: 
+     <span class="assignable-content">other remote <abbr class="dyn-abbr"><a href="#abbr_IT">IT</a></abbr> entities</span>]</span></li><li style=""><span class="selectable-content" id="_s_413">no other remote <abbr class="dyn-abbr"><a href="#abbr_IT">IT</a></abbr> entities</span></li></ul>]
                             that is logically distinct from other communication paths and provides assured identification of its
                             endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.
                         <div class="appnote"><span class="note-header">Application
@@ -5633,9 +5637,9 @@ The following sections list Common Criteria and technology terms used in this do
 					
                     <div class="element"><div class="reqid" id="FPT_ML_EXT.1.1"><a href="#FPT_ML_EXT.1.1" class="abbr">FPT_ML_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support a measured launch of the virtualization system. Measured 
 							components of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> shall include the static executable image of the hypervisor and:
-                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_377">Static executable images of the Management Subsystem</span></li><li style=""><span class="selectable-content" id="_s_378">[<b>assignment</b>: 
-     <span class="assignable-content">list of (static images of) Service VMs</span>]</span></li><li style=""><span class="selectable-content" id="_s_379">[<b>assignment</b>: 
-     <span class="assignable-content">list of configuration files</span>]</span></li><li style=""><span class="selectable-content" id="_s_380">no other components</span></li></ul>]
+                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_385">Static executable images of the Management Subsystem</span></li><li style=""><span class="selectable-content" id="_s_386">[<b>assignment</b>: 
+     <span class="assignable-content">list of (static images of) Service VMs</span>]</span></li><li style=""><span class="selectable-content" id="_s_387">[<b>assignment</b>: 
+     <span class="assignable-content">list of configuration files</span>]</span></li><li style=""><span class="selectable-content" id="_s_388">no other components</span></li></ul>]
                         </div></div>
                     <div class="element"><div class="reqid" id="FPT_ML_EXT.1.2"><a href="#FPT_ML_EXT.1.2" class="abbr">FPT_ML_EXT.1.2</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall make the measurements selected in <a href="#FPT_ML_EXT.1.1">FPT_ML_EXT.1.1</a> available to the Management Subsystem.
                         <div class="appnote"><span class="note-header">Application
@@ -7198,10 +7202,20 @@ The following sections list Common Criteria and technology terms used in this do
               </div>
             </div></div></div><div class="comp" id="FCS_RBG.2"><h4>FCS_RBG.2 Random Bit Generation (External Seeding)</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in:</i></b><ul><li><b><i><a href="#FCS_RBG.1.2">FCS_RBG.1.2</a></i></b></li></ul></div>
 					
-                    <div class="element"><div class="reqid" id="FCS_RBG.2.1"><a href="#FCS_RBG.2.1" class="abbr">FCS_RBG.2.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to accept a minimum input of [<b>assignment</b>: 
-     <span class="assignable-content">minimum input length greater
-							than zero</span>] from a <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for the purpose of seeding.
-                        </div></div>
+                    <div class="element"><div class="reqid" id="FCS_RBG.2.1"><a href="#FCS_RBG.2.1" class="abbr">FCS_RBG.2.1</a></div><div class="reqdesc">
+                            The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to accept a minimum input of [<b>assignment</b>: 
+     <span class="assignable-content">sufficient input length to ensure 256 bits of entropy</span>]
+                            from a <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for obtaining entropy.
+                        <div class="appnote"><span class="note-header">Application
+      Note:
+    </span><span class="note">
+                            This requirement is claimed when a DRBG is seeded with entropy from one or more entropy sources that are outside the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>
+                            boundary. Typically the entropy produced by an environmental entropy source is conditioned such that the input length has
+                            full entropy and is therefore  usable as the seed. However, if this is not the case, it should be noted what the minimum
+                            entropy rate of the entropy source is so that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> can collect a sufficiently large sample of entropy data to be
+                            conditioned into a seed value.<br/><br/>
+                            This requirement is claimed if "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for obtaining entropy" is selected in <a href="#fel-rbg-init-seed-how" class="dynref" data-format=""></a>. 
+                        </span></div></div></div>
                     
                 <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_RBG.2">FCS_RBG.2</a></div>
                     		
@@ -7216,18 +7230,17 @@ The following sections list Common Criteria and technology terms used in this do
 			There are no test activities for this component.<br/></div></div></div></div><div class="comp" id="FCS_RBG.3"><h4>FCS_RBG.3 Random Bit Generation (Internal Seeding - Single Source)</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in:</i></b><ul><li><b><i><a href="#FCS_RBG.1.2">FCS_RBG.1.2</a></i></b></li></ul></div>
 					
                     <div class="element"><div class="reqid" id="FCS_RBG.3.1"><a href="#FCS_RBG.3.1" class="abbr">FCS_RBG.3.1</a></div><div class="reqdesc">
-                    		The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to seed the RBG using a [<i><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> software-based noise source</i>] [<b>assignment</b>: 
-     <span class="assignable-content">name of noise source</span>]
-                    		with a minimum of [<b>assignment</b>: 
-     <span class="assignable-content">number of bits</span>] bits of min-entropy.
+                    	    The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to seed the DRBG using a [<b>selection</b><b>, choose one of</b>: <span class="selectable-content" id="_s_313"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> software-based entropy source</span>, <span class="selectable-content" id="_s_314"><abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> hardware-based entropy source</span>]  [<b>assignment</b>: 
+     <span class="assignable-content">name of entropy source</span>]
+                    	    with [<i>a minimum of [<b>selection</b>: <span class="selectable-content" id="_s_315">256</span>, <span class="selectable-content" id="_s_316">384</span>]</i>] bits of min-entropy.
                     	<div class="appnote"><span class="note-header">Application
       Note:
-    </span><span class="note">This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed when the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author claims "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise source..." in <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a>. Since this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> defines the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as software, it does not have any hardware components and therefore would only claim a software-based noise source here. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> obtains seed material from a hardware component, this is specified using <a href="#FCS_RBG.2">FCS_RBG.2</a>.</span></div></div></div>
+    </span><span class="note">This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed when the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author claims "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy source..." in <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a>. Since this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> defines the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as software, it does not have any hardware components and therefore would only claim a software-based entropy source here. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> obtains seed material from a hardware component, this is specified using <a href="#FCS_RBG.2">FCS_RBG.2</a>.</span></div></div></div>
 					
                     
                 <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_RBG.3">FCS_RBG.3</a></div>
                     		
-                    		The evaluator shall examine the entropy documentation required by <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a> to verify that it identifies, for each DRBG function implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise source used to seed the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s DRBG. The evaluator shall verify that this includes the amount of sampled data and the min-entropy rate of the sampled data such that it can be determined that sufficient entropy can be made available for the highest strength keys that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> can generate (e.g., 256 bits). If the seed data cannot be assumed to have full entropy (e.g., the min-entropy of the sampled bits is less than 1), the evaluator shall ensure that the entropy documentation describes the method by which the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> estimates the amount of entropy that has been accumulated to ensure that sufficient data is collected and any conditioning that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies to the output data to create a seed of sufficient size with full entropy.
+                    		The evaluator shall examine the entropy documentation required by <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a> to verify that it identifies, for each DRBG function implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy source used to seed the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s DRBG. The evaluator shall verify that this includes the amount of sampled data and the min-entropy rate of the sampled data such that it can be determined that sufficient entropy can be made available for the highest strength keys that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> can generate (e.g., 256 bits). If the seed data cannot be assumed to have full entropy (e.g., the min-entropy of the sampled bits is less than 1), the evaluator shall ensure that the entropy documentation describes the method by which the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> estimates the amount of entropy that has been accumulated to ensure that sufficient data is collected and any conditioning that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies to the output data to create a seed of sufficient size with full entropy.
                     		
                     		
                     		
@@ -7237,15 +7250,17 @@ The following sections list Common Criteria and technology terms used in this do
 			There are no additional Guidance evaluation activities for this component.<br/></div><div class="eacategory">Tests</div><div class="ea">
 			There are no test activities for this component.<br/></div></div></div></div><div class="comp" id="FCS_RBG.4"><h4>FCS_RBG.4 Random Bit Generation (Internal Seeding - Multiple Sources)</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in:</i></b><ul><li><b><i><a href="#FCS_RBG.1.2">FCS_RBG.1.2</a></i></b></li></ul></div>
 				    
-                    <div class="element"><div class="reqid" id="FCS_RBG.4.1"><a href="#FCS_RBG.4.1" class="abbr">FCS_RBG.4.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to seed the RBG using [<i>[<b>assignment</b>: 
-     <span class="assignable-content">number</span>] <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> software-based noise sources</i>]. 
+                    <div class="element"><div class="reqid" id="FCS_RBG.4.1"><a href="#FCS_RBG.4.1" class="abbr">FCS_RBG.4.1</a></div><div class="reqdesc">
+                            The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be able to seed the DRBG using [<b>selection</b>: <span class="selectable-content" id="_s_317">[<b>assignment</b>: 
+     <span class="assignable-content">number</span>] <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> software-based entropy source(s)</span>, <span class="selectable-content" id="_s_318">[<b>assignment</b>: 
+     <span class="assignable-content">number</span>] <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> hardware-based entropy source(s)</span>]. 
                         <div class="appnote"><span class="note-header">Application
       Note:
-    </span><span class="note">This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed when the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author claims "multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise sources..." in <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a>. Since this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> defines the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as software, it does not have any hardware components and therefore would only claim software-based noise sources here. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> obtains seed material from any hardware components, this is specified using <a href="#FCS_RBG.2">FCS_RBG.2</a>.</span></div></div></div>
+    </span><span class="note">This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed when the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author claims "multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy sources..." in <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a>. Since this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> defines the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as software, it does not have any hardware components and therefore would only claim software-based entropy sources here. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> obtains seed material from any hardware components, this is specified using <a href="#FCS_RBG.2">FCS_RBG.2</a>.</span></div></div></div>
                     
                 <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_RBG.4">FCS_RBG.4</a></div>
                     		
-                    		The evaluator shall examine the entropy documentation required by <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a> to verify that it identifies, for each DRBG function implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, each <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise source used to seed the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s DRBG. The evaluator shall verify that this includes the amount of sampled data and the min-entropy rate of the sampled data from each data source.
+                    		The evaluator shall examine the entropy documentation required by <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a> to verify that it identifies, for each DRBG function implemented by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, each <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy source used to seed the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s DRBG. The evaluator shall verify that this includes the amount of sampled data and the min-entropy rate of the sampled data from each data source.
                     		
                     		
                     		
@@ -7253,21 +7268,32 @@ The following sections list Common Criteria and technology terms used in this do
                     	<div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea">
 			There are no additional <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> evaluation activities for this component.<br/></div><div class="eacategory">Guidance</div><div class="ea">
 			There are no additional Guidance evaluation activities for this component.<br/></div><div class="eacategory">Tests</div><div class="ea">
-			There are no test activities for this component.<br/></div></div></div></div><div class="comp" id="FCS_RBG.5"><h4>FCS_RBG.5 Random Bit Generation (Combining Noise Sources Sources)</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in:</i></b><ul><li><b><i><a href="#FCS_RBG.1.2">FCS_RBG.1.2</a></i></b></li></ul></div>
+			There are no test activities for this component.<br/></div></div></div></div><div class="comp" id="FCS_RBG.5"><h4>FCS_RBG.5 Random Bit Generation (Combining Entropy Sources)</h4><div class="statustag"><b><i>The inclusion of this selection-based component depends upon selection in:</i></b><ul><li><b><i><a href="#FCS_RBG.1.2">FCS_RBG.1.2</a></i></b></li></ul></div>
 				    
-                    <div class="element"><div class="reqid" id="FCS_RBG.5.1"><a href="#FCS_RBG.5.1" class="abbr">FCS_RBG.5.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>assignment</b>: 
-     <span class="assignable-content">combining operation</span>]
-                            [<b>selection</b>: <span class="selectable-content" id="_s_313">output from <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> noise source(s)</span>, <span class="selectable-content" id="_s_314">input from <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface(s) for seeding</span>] 
-							to create the entropy input into the derivation function as defined in 
-							[<b>assignment</b>: 
-     <span class="assignable-content">list of standards</span>], resulting in a minimum of 
-							[<b>assignment</b>: 
-     <span class="assignable-content">number of bits</span>] bits of min-entropy.
-                        </div></div>
+                    <div class="element"><div class="reqid" id="FCS_RBG.5.1"><a href="#FCS_RBG.5.1" class="abbr">FCS_RBG.5.1</a></div><div class="reqdesc">
+                            The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall [<b>assignment</b>: 
+     <span class="assignable-content">combining operation</span>] [<b>selection</b>: <span class="selectable-content" id="_s_319">output from <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy source(s)</span>, <span class="selectable-content" id="_s_320">input from <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface(s) for obtaining entropy</span>]
+                            resulting in a minimum of [<i>[<b>selection</b>: <span class="selectable-content" id="_s_321">256</span>, <span class="selectable-content" id="_s_322">384</span>]</i>] bits of min-entropy to create the entropy input into the derivation function as defined in [<b>assignment</b>: 
+     <span class="assignable-content">list of standards</span>].
+                        <div class="appnote"><span class="note-header">Application
+      Note:
+    </span><span class="note">
+                            The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author claims this requirement when a <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> combines two or more sources of entropy to
+                            initialize or reseed a DRBG. Seeding a DRBG is the same as initializing a DRBG. The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>
+                            author ensures that the assignment is completed with the number of bits of the combined entropy
+                            sufficient to initialize or reseed a DRBG. Different entropy sources may contribute different amounts of entropy to the entropy pool over time, whether due to collection rate or to the relative strength of the entropy that is collected. When CTR_DRBG is selected in <a href="#FCS_RBG.1">FCS_RBG.1</a> and the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> uses no derivation function after acquiring the seed, then the minimum bits of entropy must be 384. If an amount of entropy greater than the minimum is collected, the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author selects the minimum value.<p></p>
+                            One can apply <abbr class="dyn-abbr"><a href="#abbr_NIST">NIST</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_SP">SP</a></abbr> 800-90B (or AIS-31) statistical tests against internal entropy sources
+                            (aka raw entropy) to confirm the min-entropy of the entropy sources either in aggregate or
+                            individually. One should not apply <abbr class="dyn-abbr"><a href="#abbr_NIST">NIST</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_SP">SP</a></abbr> 800-90B (or AIS-31) statistical tests against
+                            external entropy sources since the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is unable to enforce entropy requirements or conditioning
+                            requirements against external sources of entropy. However, the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> may include estimates for
+                            min-entropy from external sources that contribute to the overall entropy requirements for 
+                            the DRBG.
+                        </span></div></div></div>
                     
                 <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FCS_RBG.5">FCS_RBG.5</a></div>
                     		
-                    		Using the entropy sources specified in <a href="#FCS_RBG.4">FCS_RBG.4</a>, the evaluator shall examine the entropy documentation required by <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a> to verify that it describes the method by which the various entropy sources are combined into a single seed. This should include an estimation of the rate at which each noise source outputs data and whether this is dependent on any system-specific factors so that each source's relative contribution to the overall entropy is understood. The evaluator shall verify that the resulting combination of sampled data and the min-entropy rate of the sampled data is described in sufficient detail to determine that sufficient entropy can be made available for the highest strength keys that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> can generate (e.g., 256 bits). If the seed data cannot be assumed to have full entropy (e.g., the min-entropy of the sampled bits is less than 1), the evaluator shall ensure that the entropy documentation describes the method by which the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> estimates the amount of entropy that has been accumulated to ensure that sufficient data is collected and any conditioning that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies to the output data to create a seed of sufficient size with full entropy.
+                    		Using the entropy sources specified in <a href="#FCS_RBG.4">FCS_RBG.4</a>, the evaluator shall examine the entropy documentation required by <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a> to verify that it describes the method by which the various entropy sources are combined into a single seed. This should include an estimation of the rate at which each entropy source outputs data and whether this is dependent on any system-specific factors so that each source's relative contribution to the overall entropy is understood. The evaluator shall verify that the resulting combination of sampled data and the min-entropy rate of the sampled data is described in sufficient detail to determine that sufficient entropy can be made available for the highest strength keys that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> can generate (e.g., 256 bits). If the seed data cannot be assumed to have full entropy (e.g., the min-entropy of the sampled bits is less than 1), the evaluator shall ensure that the entropy documentation describes the method by which the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> estimates the amount of entropy that has been accumulated to ensure that sufficient data is collected and any conditioning that the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> applies to the output data to create a seed of sufficient size with full entropy.
                     		
                     		
                     		
@@ -7284,20 +7310,20 @@ The following sections list Common Criteria and technology terms used in this do
 					
 					
                     <div class="element"><div class="reqid" id="FIA_AFL_EXT.1.1"><a href="#FIA_AFL_EXT.1.1" class="abbr">FIA_AFL_EXT.1.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall detect when
-                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_324">[<b>assignment</b>: 
-     <span class="assignable-content">a positive integer number</span>]</span></li><li style=""><span class="selectable-content" id="_s_325">an administrator configurable positive integer within a
+                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_332">[<b>assignment</b>: 
+     <span class="assignable-content">a positive integer number</span>]</span></li><li style=""><span class="selectable-content" id="_s_333">an administrator configurable positive integer within a
                                     [<b>assignment</b>: 
      <span class="assignable-content">range of acceptable values</span>]</span></li></ul>]
                             unsuccessful authentication attempts occur related to administrators attempting 
 							to authenticate remotely using
-                            [<b>selection</b>: <span class="selectable-content" id="_s_326">username and password</span>, <span class="selectable-content" id="_s_327">username and PIN</span>].
+                            [<b>selection</b>: <span class="selectable-content" id="_s_334">username and password</span>, <span class="selectable-content" id="_s_335">username and PIN</span>].
                         </div></div>
                     <div class="element"><div class="reqid" id="FIA_AFL_EXT.1.2"><a href="#FIA_AFL_EXT.1.2" class="abbr">FIA_AFL_EXT.1.2</a></div><div class="reqdesc">When the defined number of unsuccessful authentication attempts has been met, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>
                             shall:
-                            [<b>selection</b>: <span class="selectable-content" id="_s_328">prevent the offending administrator from successfully establishing a remote session using
+                            [<b>selection</b>: <span class="selectable-content" id="_s_336">prevent the offending administrator from successfully establishing a remote session using
                                     any authentication method that involves a password or PIN until
                                     [<b>assignment</b>: 
-     <span class="assignable-content">action to unlock</span>] is taken by an administrator</span>, <span class="selectable-content" id="_s_329">prevent the offending administrator from successfully establishing a remote session using
+     <span class="assignable-content">action to unlock</span>] is taken by an administrator</span>, <span class="selectable-content" id="_s_337">prevent the offending administrator from successfully establishing a remote session using
                                     any authentication method that involves a password or PIN until an administrator-defined time
                                     period has elapsed</span>]
                         <div class="appnote"><span class="note-header">Application
@@ -7390,7 +7416,7 @@ The following sections list Common Criteria and technology terms used in this do
                             <ol type="a">
                                 <li>Passwords shall be able to be composed of any combination of upper and lower case characters, 
 									digits, and the following special characters:
-                                    [<b>selection</b>: <span class="selectable-content" id="_s_330">“!”</span>, <span class="selectable-content" id="_s_331">“@”</span>, <span class="selectable-content" id="_s_332">“#”</span>, <span class="selectable-content" id="_s_333">“$”</span>, <span class="selectable-content" id="_s_334">“%”</span>, <span class="selectable-content" id="_s_335">“^”</span>, <span class="selectable-content" id="_s_336">“&amp; ”</span>, <span class="selectable-content" id="_s_337">“*”</span>, <span class="selectable-content" id="_s_338">“(“</span>, <span class="selectable-content" id="_s_339">“)”</span>, <span class="selectable-content" id="_s_340">[<b>assignment</b>: 
+                                    [<b>selection</b>: <span class="selectable-content" id="_s_338">“!”</span>, <span class="selectable-content" id="_s_339">“@”</span>, <span class="selectable-content" id="_s_340">“#”</span>, <span class="selectable-content" id="_s_341">“$”</span>, <span class="selectable-content" id="_s_342">“%”</span>, <span class="selectable-content" id="_s_343">“^”</span>, <span class="selectable-content" id="_s_344">“&amp; ”</span>, <span class="selectable-content" id="_s_345">“*”</span>, <span class="selectable-content" id="_s_346">“(“</span>, <span class="selectable-content" id="_s_347">“)”</span>, <span class="selectable-content" id="_s_348">[<b>assignment</b>: 
      <span class="assignable-content">other characters</span>]</span>]</li>
                                 <li>Minimum password length shall be configurable</li>
                                 <li>Passwords of at least 15 characters in length shall be supported</li>
@@ -7434,8 +7460,8 @@ The following sections list Common Criteria and technology terms used in this do
 					
 					
 					<div class="element"><div class="reqid" id="FIA_X509_EXT.4.1"><a href="#FIA_X509_EXT.4.1" class="abbr">FIA_X509_EXT.4.1</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide alternate functionality to standard X.509 certificate revocation
-							checking for the following exceptions: [<b>selection</b>: <span class="selectable-content" id="_s_351">firmware checking of updates: 
-							invalidate automatic updates if the firmware certificate is compromised</span>, <span class="selectable-content" id="_s_352">[<b>assignment</b>: 
+							checking for the following exceptions: [<b>selection</b>: <span class="selectable-content" id="_s_359">firmware checking of updates: 
+							invalidate automatic updates if the firmware certificate is compromised</span>, <span class="selectable-content" id="_s_360">[<b>assignment</b>: 
      <span class="assignable-content">other exceptions and corresponding functionality</span>]</span>].
 						</div></div>
 					
@@ -7704,7 +7730,7 @@ The following sections list Common Criteria and technology terms used in this do
                             [<b>assignment</b>: 
      <span class="assignable-content">list of platform-provided, hardware-based mechanisms</span>]
                             to constrain a Guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>'s direct access to the following physical devices:
-                            [<b>selection</b>: <span class="selectable-content" id="_s_315">all devices</span>, <span class="selectable-content" id="_s_316">all devices except for [<b>assignment</b>: 
+                            [<b>selection</b>: <span class="selectable-content" id="_s_323">all devices</span>, <span class="selectable-content" id="_s_324">all devices except for [<b>assignment</b>: 
      <span class="assignable-content">list of devices to which Guest VMs may access</span>]</span>].                        
                         </div></div><h3 id="ext-comp-FDP_PPR_EXT" class="indexable" data-level="4">C.2.2.2 FDP_PPR_EXT Physical Platform Resource Controls</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines requirements for the physical resources that
 						the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> will allow or prohibit Guest VMs to access.</div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FDP_PPR_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FDP_PPR_EXT.1">FDP_PPR_EXT.1</a>,
@@ -7727,10 +7753,10 @@ The following sections list Common Criteria and technology terms used in this do
      <span class="assignable-content">list of physical platform resources the <abbr class="dyn-abbr"><a href="#abbr_VMM">VMM</a></abbr> is
 							able to control access to</span>].
                         <h4 id="ext-comp-FDP_PPR_EXT.1.2">FDP_PPR_EXT.1.2</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall explicitly deny all Guest VMs access to the following physical platform resources:
-                            [<b>selection</b>: <span class="selectable-content" id="_s_317">no physical platform resources</span>, <span class="selectable-content" id="_s_318">[<b>assignment</b>: 
+                            [<b>selection</b>: <span class="selectable-content" id="_s_325">no physical platform resources</span>, <span class="selectable-content" id="_s_326">[<b>assignment</b>: 
      <span class="assignable-content">list of physical platform resources to which access is explicitly denied</span>]</span>].
                         <h4 id="ext-comp-FDP_PPR_EXT.1.3">FDP_PPR_EXT.1.3</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall explicitly allow all Guest VMs access to the following physical platform resources:
-                            [<b>selection</b>: <span class="selectable-content" id="_s_319">no physical platform resources</span>, <span class="selectable-content" id="_s_320">[<b>assignment</b>: 
+                            [<b>selection</b>: <span class="selectable-content" id="_s_327">no physical platform resources</span>, <span class="selectable-content" id="_s_328">[<b>assignment</b>: 
      <span class="assignable-content">list of physical platform resources to which access is always allowed</span>]</span>].
                         </div></div><h3 id="ext-comp-FDP_RIP_EXT" class="indexable" data-level="4">C.2.2.3 FDP_RIP_EXT Residual Information in Memory</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines requirements for ensuring that allocation of data to a Guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> 
 						does not cause a disclosure of residual data from a previous <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr>.</div><h4>Component Leveling</h4><svg style="max-height: 50px;"><text x="4" fill="black" font-size="15" y="44">FDP_RIP_EXT</text><rect x="2" y="31" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="37" x2="231" y2="17" stroke="black"></line><text x="234" fill="black" font-size="15" y="44">2</text><rect x="232" y="31" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="37" x2="231" y2="37" stroke="black"></line></svg><p><a href="#FDP_RIP_EXT.1">FDP_RIP_EXT.1</a>,
@@ -7753,7 +7779,7 @@ The following sections list Common Criteria and technology terms used in this do
 							<li>Ability to configure inter-VM data sharing.</li>
 						</ol>
 					</p><h4>Audit: FDP_VMS_EXT.1</h4><p>There are no audit events foreseen.</p><h4>FDP_VMS_EXT.1 VM Separation</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td></td></tr></table><h4 id="ext-comp-FDP_VMS_EXT.1.1">FDP_VMS_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> shall provide the following mechanisms for transferring data between Guest VMs:
-                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_321">no mechanism</span></li><li style=""><span class="selectable-content" id="_s_322">virtual networking</span></li><li style=""><span class="selectable-content" id="_s_323">[<b>assignment</b>: 
+                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_329">no mechanism</span></li><li style=""><span class="selectable-content" id="_s_330">virtual networking</span></li><li style=""><span class="selectable-content" id="_s_331">[<b>assignment</b>: 
      <span class="assignable-content">other inter-VM data sharing mechanisms</span>]</span></li></ul>].
                         <h4 id="ext-comp-FDP_VMS_EXT.1.2">FDP_VMS_EXT.1.2</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall by default enforce a policy prohibiting sharing of data between Guest VMs.<h4 id="ext-comp-FDP_VMS_EXT.1.3">FDP_VMS_EXT.1.3</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall allow administrators to configure the mechanisms selected in <a href="#FDP_VMS_EXT.1.1">FDP_VMS_EXT.1.1</a> to
                             enable and disable the transfer of data between Guest VMs.
@@ -7801,19 +7827,19 @@ The following sections list Common Criteria and technology terms used in this do
 						</ol>
 					</p><h4>FIA_AFL_EXT.1 Authentication Failure Handling</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td><a href="#FIA_UIA_EXT.1">FIA_UIA_EXT.1</a> Administrator Identification and Authentication<p></p>
 						FMT_SMR.1 Security Roles</td></tr></table><h4 id="ext-comp-FIA_AFL_EXT.1.1">FIA_AFL_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall detect when
-                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_324">[<b>assignment</b>: 
-     <span class="assignable-content">a positive integer number</span>]</span></li><li style=""><span class="selectable-content" id="_s_325">an administrator configurable positive integer within a
+                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_332">[<b>assignment</b>: 
+     <span class="assignable-content">a positive integer number</span>]</span></li><li style=""><span class="selectable-content" id="_s_333">an administrator configurable positive integer within a
                                     [<b>assignment</b>: 
      <span class="assignable-content">range of acceptable values</span>]</span></li></ul>]
                             unsuccessful authentication attempts occur related to administrators attempting 
 							to authenticate remotely using
-                            [<b>selection</b>: <span class="selectable-content" id="_s_326">username and password</span>, <span class="selectable-content" id="_s_327">username and PIN</span>].
+                            [<b>selection</b>: <span class="selectable-content" id="_s_334">username and password</span>, <span class="selectable-content" id="_s_335">username and PIN</span>].
                         <h4 id="ext-comp-FIA_AFL_EXT.1.2">FIA_AFL_EXT.1.2</h4>When the defined number of unsuccessful authentication attempts has been met, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr>
                             shall:
-                            [<b>selection</b>: <span class="selectable-content" id="_s_328">prevent the offending administrator from successfully establishing a remote session using
+                            [<b>selection</b>: <span class="selectable-content" id="_s_336">prevent the offending administrator from successfully establishing a remote session using
                                     any authentication method that involves a password or PIN until
                                     [<b>assignment</b>: 
-     <span class="assignable-content">action to unlock</span>] is taken by an administrator</span>, <span class="selectable-content" id="_s_329">prevent the offending administrator from successfully establishing a remote session using
+     <span class="assignable-content">action to unlock</span>] is taken by an administrator</span>, <span class="selectable-content" id="_s_337">prevent the offending administrator from successfully establishing a remote session using
                                     any authentication method that involves a password or PIN until an administrator-defined time
                                     period has elapsed</span>]
                         </div></div><h3 id="ext-comp-FIA_PMG_EXT" class="indexable" data-level="4">C.2.3.2 FIA_PMG_EXT Password Management</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines requirements for the composition of
@@ -7830,7 +7856,7 @@ The following sections list Common Criteria and technology terms used in this do
                             <ol type="a">
                                 <li>Passwords shall be able to be composed of any combination of upper and lower case characters, 
 									digits, and the following special characters:
-                                    [<b>selection</b>: <span class="selectable-content" id="_s_330">“!”</span>, <span class="selectable-content" id="_s_331">“@”</span>, <span class="selectable-content" id="_s_332">“#”</span>, <span class="selectable-content" id="_s_333">“$”</span>, <span class="selectable-content" id="_s_334">“%”</span>, <span class="selectable-content" id="_s_335">“^”</span>, <span class="selectable-content" id="_s_336">“&amp; ”</span>, <span class="selectable-content" id="_s_337">“*”</span>, <span class="selectable-content" id="_s_338">“(“</span>, <span class="selectable-content" id="_s_339">“)”</span>, <span class="selectable-content" id="_s_340">[<b>assignment</b>: 
+                                    [<b>selection</b>: <span class="selectable-content" id="_s_338">“!”</span>, <span class="selectable-content" id="_s_339">“@”</span>, <span class="selectable-content" id="_s_340">“#”</span>, <span class="selectable-content" id="_s_341">“$”</span>, <span class="selectable-content" id="_s_342">“%”</span>, <span class="selectable-content" id="_s_343">“^”</span>, <span class="selectable-content" id="_s_344">“&amp; ”</span>, <span class="selectable-content" id="_s_345">“*”</span>, <span class="selectable-content" id="_s_346">“(“</span>, <span class="selectable-content" id="_s_347">“)”</span>, <span class="selectable-content" id="_s_348">[<b>assignment</b>: 
      <span class="assignable-content">other characters</span>]</span>]</li>
                                 <li>Minimum password length shall be configurable</li>
                                 <li>Passwords of at least 15 characters in length shall be supported</li>
@@ -7852,8 +7878,8 @@ The following sections list Common Criteria and technology terms used in this do
                         </div></div><h3 id="ext-comp-FIA_X509_EXT" class="indexable" data-level="4">C.2.3.4 FIA_X509_EXT X.509 Certificate</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines requirements for the validation and use of X.509 certificates.</div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FIA_X509_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">4</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FIA_X509_EXT.4">FIA_X509_EXT.4</a>,
              Exceptions to X.509 Certificate Revocation Checking,
              </p><h4>Management: FIA_X509_EXT.4</h4><p>There are no management functions foreseen.</p><h4>Audit: FIA_X509_EXT.4</h4><p>There are no audit events foreseen.</p><h4>FIA_X509_EXT.4 Exceptions to X.509 Certificate Revocation Checking</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>FIA_X509_EXT.1 X.509 Certificate Validation</td></tr></table><h4 id="ext-comp-FIA_X509_EXT.4.1">FIA_X509_EXT.4.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide alternate functionality to standard X.509 certificate revocation
-							checking for the following exceptions: [<b>selection</b>: <span class="selectable-content" id="_s_351">firmware checking of updates: 
-							invalidate automatic updates if the firmware certificate is compromised</span>, <span class="selectable-content" id="_s_352">[<b>assignment</b>: 
+							checking for the following exceptions: [<b>selection</b>: <span class="selectable-content" id="_s_359">firmware checking of updates: 
+							invalidate automatic updates if the firmware certificate is compromised</span>, <span class="selectable-content" id="_s_360">[<b>assignment</b>: 
      <span class="assignable-content">other exceptions and corresponding functionality</span>]</span>].
 						</div></div><h3 id="ext-comp-FIA_PSK_EXT" class="indexable" data-level="4">C.2.3.5 FIA_PSK_EXT Pre-Shared Key Composition</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>Components in this family describe the requirements for pre-shared keys when implementing IPsec.</div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FIA_PSK_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FIA_PSK_EXT.1">FIA_PSK_EXT.1</a>,
              Pre-Shared Key Composition,
@@ -7870,13 +7896,13 @@ The following sections list Common Criteria and technology terms used in this do
              Separation of Management and Operational Networks,
              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to separate its management and operational networks through a defined 
 						mechanism.</p><h4>Management: FMT_SMO_EXT.1</h4><p>There are no management functions foreseen.</p><h4>Audit: FMT_SMO_EXT.1</h4><p>There are no audit events foreseen.</p><h4>FMT_SMO_EXT.1 Separation of Management and Operational Networks</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td></td></tr></table><h4 id="ext-comp-FMT_SMO_EXT.1.1">FMT_SMO_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support the separation of management and operational network traffic through
-                                [<b>selection</b>: <span class="selectable-content" id="_s_367">separate physical networks</span>, <span class="selectable-content" id="_s_368">separate logical networks</span>, <span class="selectable-content" id="_s_369">trusted channels as defined in <a href="#FTP_ITC_EXT.1">FTP_ITC_EXT.1</a></span>, <span class="selectable-content" id="_s_370">data encryption using an algorithm specified in FCS_COP.1</span>].
+                                [<b>selection</b>: <span class="selectable-content" id="_s_375">separate physical networks</span>, <span class="selectable-content" id="_s_376">separate logical networks</span>, <span class="selectable-content" id="_s_377">trusted channels as defined in <a href="#FTP_ITC_EXT.1">FTP_ITC_EXT.1</a></span>, <span class="selectable-content" id="_s_378">data encryption using an algorithm specified in FCS_COP.1</span>].
                             </div></div><h3 id="ext-comp-FMT_MOF_EXT" class="indexable" data-level="4">C.2.4.2 FMT_MOF_EXT Management of Security Functions Behavior</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines requirements for administrative management of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. 
                     </div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FMT_MOF_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FMT_MOF_EXT.1">FMT_MOF_EXT.1</a>,
              Management of Security Functions Behavior,
              defines required management functions and responsibilities.</p><h4>Management: FMT_MOF_EXT.1</h4><p>There are no additional management functions beyond those already described in <a href="#FMT_MOF_EXT.1">FMT_MOF_EXT.1</a>.</p><h4>Audit: FMT_MOF_EXT.1</h4><p>Success or failure of management function.</p><h4>FMT_MOF_EXT.1 Management of Security Functions Behavior</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>No other dependencies.</td></tr></table><h4 id="ext-comp-FMT_MOF_EXT.1.1">FMT_MOF_EXT.1.1</h4>
 							The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be capable of supporting 
-                           		[<b>selection</b>: <span class="selectable-content" id="_s_353">local</span>, <span class="selectable-content" id="sel-mof-1e1-remote">remote</span>] administration.
+                           		[<b>selection</b>: <span class="selectable-content" id="_s_361">local</span>, <span class="selectable-content" id="sel-mof-1e1-remote">remote</span>] administration.
                        	<h4 id="ext-comp-FMT_MOF_EXT.1.2">FMT_MOF_EXT.1.2</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall be capable of performing the following management functions
                                 [<b>assignment</b>: 
      <span class="assignable-content">description of management functions</span>].
@@ -7899,8 +7925,8 @@ The following sections list Common Criteria and technology terms used in this do
              requires the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> to identify the execution environment-based
 						protection mechanisms that it can use for self-protection.</p><h4>Management: FPT_EEM_EXT.1</h4><p>There are no management functions foreseen.</p><h4>Audit: FPT_EEM_EXT.1</h4><p>There are no audit events foreseen.</p><h4>FPT_EEM_EXT.1 Execution Environment Mitigations</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td></td></tr></table><h4 id="ext-comp-FPT_EEM_EXT.1.1">FPT_EEM_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall take advantage of execution environment-based vulnerability mitigation mechanisms 
 							supported by the Platform such as:
-                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_371">Address space randomization</span></li><li style=""><span class="selectable-content" id="_s_372">Memory execution protection (e.g., <abbr class="dyn-abbr"><a href="#abbr_DEP">DEP</a></abbr>)</span></li><li style=""><span class="selectable-content" id="_s_373">Stack buffer overflow protection</span></li><li style=""><span class="selectable-content" id="_s_374">Heap corruption detection</span></li><li style=""><span class="selectable-content" id="_s_375">[<b>assignment</b>: 
-     <span class="assignable-content">other mechanisms</span>]</span></li><li style=""><span class="selectable-content" id="_s_376">No mechanisms</span></li></ul>]
+                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_379">Address space randomization</span></li><li style=""><span class="selectable-content" id="_s_380">Memory execution protection (e.g., <abbr class="dyn-abbr"><a href="#abbr_DEP">DEP</a></abbr>)</span></li><li style=""><span class="selectable-content" id="_s_381">Stack buffer overflow protection</span></li><li style=""><span class="selectable-content" id="_s_382">Heap corruption detection</span></li><li style=""><span class="selectable-content" id="_s_383">[<b>assignment</b>: 
+     <span class="assignable-content">other mechanisms</span>]</span></li><li style=""><span class="selectable-content" id="_s_384">No mechanisms</span></li></ul>]
                         </div></div><h3 id="ext-comp-FPT_GVI_EXT" class="indexable" data-level="4">C.2.5.4 FPT_GVI_EXT Guest VM Integrity</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines requirements for the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to assert the integrity of
 						Guest VMs.</div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FPT_GVI_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FPT_GVI_EXT.1">FPT_GVI_EXT.1</a>,
              Guest <abbr class="dyn-abbr"><a href="#abbr_VM">VM</a></abbr> Integrity,
@@ -7957,9 +7983,9 @@ The following sections list Common Criteria and technology terms used in this do
 						</ol>
 					</p><h4>FPT_ML_EXT.1 Measured Launch of Platform and VMM</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td></td></tr></table><h4 id="ext-comp-FPT_ML_EXT.1.1">FPT_ML_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall support a measured launch of the virtualization system. Measured 
 							components of the <abbr class="dyn-abbr"><a href="#abbr_VS">VS</a></abbr> shall include the static executable image of the hypervisor and:
-                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_377">Static executable images of the Management Subsystem</span></li><li style=""><span class="selectable-content" id="_s_378">[<b>assignment</b>: 
-     <span class="assignable-content">list of (static images of) Service VMs</span>]</span></li><li style=""><span class="selectable-content" id="_s_379">[<b>assignment</b>: 
-     <span class="assignable-content">list of configuration files</span>]</span></li><li style=""><span class="selectable-content" id="_s_380">no other components</span></li></ul>]
+                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_385">Static executable images of the Management Subsystem</span></li><li style=""><span class="selectable-content" id="_s_386">[<b>assignment</b>: 
+     <span class="assignable-content">list of (static images of) Service VMs</span>]</span></li><li style=""><span class="selectable-content" id="_s_387">[<b>assignment</b>: 
+     <span class="assignable-content">list of configuration files</span>]</span></li><li style=""><span class="selectable-content" id="_s_388">no other components</span></li></ul>]
                         <h4 id="ext-comp-FPT_ML_EXT.1.2">FPT_ML_EXT.1.2</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall make the measurements selected in <a href="#FPT_ML_EXT.1.1">FPT_ML_EXT.1.1</a> available to the Management Subsystem.
                         </div></div><h3 id="ext-comp-FPT_RDM_EXT" class="indexable" data-level="4">C.2.5.10 FPT_RDM_EXT Removable Devices and Media</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines requirements for enforcement of domain isolation when
 						removable devices can be connected to a domain.</div><h4>Component Leveling</h4><svg style="max-height: 30px;"><text x="4" fill="black" font-size="15" y="24">FPT_RDM_EXT</text><rect x="2" y="11" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="17" x2="231" y2="17" stroke="black"></line></svg><p><a href="#FPT_RDM_EXT.1">FPT_RDM_EXT.1</a>,
@@ -7986,9 +8012,9 @@ The following sections list Common Criteria and technology terms used in this do
      <span class="assignable-content">virtual or physical 
 							removable media and virtual or physical removable media devices</span>] are switched between 
 							information domains:
-                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_381">the administrator has granted explicit access for the media or device to be connected to
-									the receiving domain</span></li><li style=""><span class="selectable-content" id="_s_382">the media in a device that is being transferred is ejected prior to the receiving domain
-									being allowed access to the device</span></li><li style=""><span class="selectable-content" id="_s_383">the user of the receiving domain expressly authorizes the connection</span></li><li style=""><span class="selectable-content" id="_s_384">the device or media that is being transferred is prevented from being accessed by the 
+                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_389">the administrator has granted explicit access for the media or device to be connected to
+									the receiving domain</span></li><li style=""><span class="selectable-content" id="_s_390">the media in a device that is being transferred is ejected prior to the receiving domain
+									being allowed access to the device</span></li><li style=""><span class="selectable-content" id="_s_391">the user of the receiving domain expressly authorizes the connection</span></li><li style=""><span class="selectable-content" id="_s_392">the device or media that is being transferred is prevented from being accessed by the 
 									receiving domain</span></li></ul>]
                         </div></div><h3 id="ext-comp-FPT_TUD_EXT" class="indexable" data-level="4">C.2.5.11 FPT_TUD_EXT Trusted Updates</h3><div style="margin-left: 1em;"><h4>Family Behavior</h4><div>This family defines requirements for ensuring that updates to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> software
 						and firmware are genuine.</div><h4>Component Leveling</h4><svg style="max-height: 50px;"><text x="4" fill="black" font-size="15" y="44">FPT_TUD_EXT</text><rect x="2" y="31" width="150" height="16" fill="none" stroke="black"></rect><text x="234" fill="black" font-size="15" y="24">1</text><rect x="232" y="11" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="37" x2="231" y2="17" stroke="black"></line><text x="234" fill="black" font-size="15" y="44">2</text><rect x="232" y="31" width="12" height="16" fill="none" stroke="black"></rect><line x1="152" y1="37" x2="231" y2="37" stroke="black"></line></svg><p><a href="#FPT_TUD_EXT.1">FPT_TUD_EXT.1</a>,
@@ -8009,7 +8035,7 @@ The following sections list Common Criteria and technology terms used in this do
 					</p><h4>FPT_TUD_EXT.1 Trusted Updates to the Virtualization System</h4><div style="margin-left: 1em;"><table class="ecd_heir_dep" style="width: 100%"><tr><td style="whitespace: nowrap">Hierarchical to:</td><td style="width: 100%">No other components.</td></tr><tr style="background-color: inherit"><td>Dependencies to:</td><td>FCS_COP.1 Cryptographic Operation</td></tr></table><h4 id="ext-comp-FPT_TUD_EXT.1.1">FPT_TUD_EXT.1.1</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide administrators the ability to query the currently executed version of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> 
 							firmware and software as well as the most recently installed version of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> firmware and software.
                         <h4 id="ext-comp-FPT_TUD_EXT.1.2">FPT_TUD_EXT.1.2</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide administrators the ability to manually initiate updates to	<abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> firmware and software and
-                            [<b>selection</b>: <span class="selectable-content" id="_s_389">automatic updates</span>, <span class="selectable-content" id="_s_390">no other update mechanism</span>].
+                            [<b>selection</b>: <span class="selectable-content" id="_s_397">automatic updates</span>, <span class="selectable-content" id="_s_398">no other update mechanism</span>].
                         <h4 id="ext-comp-FPT_TUD_EXT.1.3">FPT_TUD_EXT.1.3</h4>The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall provide means to authenticate firmware and software updates to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> using a 
 				[<b>assignment</b>: 
      <span class="assignable-content">integrity action</span>] prior to installing those updates.
