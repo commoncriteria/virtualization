@@ -410,12 +410,6 @@
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[16]""/f-element[1]""/note[1]"This SFR "/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[18]""/f-element[1]""/title[1]"The TSF s"/selectables[1]""/tabularize[1]""/reqtext[3]"after ini"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[18]""/f-element[1]""/title[1]"The TSF s"/selectables[1]""/tabularize[1]""/reqtext[3]"after ini"/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[18]""/f-element[3]""/aactivity[1]""/Tests[1]""/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[18]""/f-element[3]""/aactivity[1]""/Tests[1]""/h:p[3]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[18]""/f-element[3]""/aactivity[1]""/Tests[1]""/h:p[4]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[18]""/f-element[3]""/aactivity[1]""/Tests[1]""/h:p[5]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[18]""/f-element[3]""/aactivity[1]""/Tests[1]""/h:p[6]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[22]""/f-element[1]""/note[1]"The ST au"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/sec:User_Data_Protection[1]""/f-component[2]""/dependencies[1]"FDP_HBI_E"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/sec:User_Data_Protection[1]""/f-component[2]""/f-element[3]""/aactivity[1]""/TSS[1]"The evalu"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/sec:User_Data_Protection[1]""/f-component[2]""/f-element[3]""/aactivity[1]""/TSS[1]"The evalu"/h:p[2]""
@@ -550,8 +544,8 @@
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[4]""
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[5]""
 * Warning: Detected an empty _p_ element./PP[1]""/appendix[5]""/section[6]"In order "/h:p[6]""
+ Failed to find a reference to entropyappendix.
  Failed to find a reference to x509.
- Failed to find a reference to fel-rbg-init-seed-how.
 * Warning: Since FCS_IPSEC_EXT.1.2 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
 * Warning: Since FCS_IPSEC_EXT.1.8 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
