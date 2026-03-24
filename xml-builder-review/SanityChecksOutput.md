@@ -48,16 +48,24 @@
         on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[5]""/f-component[6]""/depends[1]""/on-sel[1]""
 * Error: Detected dangling id-reference to sel-x5092-signed-updates from attribute
         on-sel/PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[7]""/f-component[14]""/depends[2]""/on-sel[1]""
+* Error: Detected multiple elements with an id of ''.
 * Error: Detected multiple elements with an id of 'sel-atssh'.
 * Error: Detected multiple elements with an id of 'sel-attls'.
 * Error: Detected multiple elements with an id of 'sel-atssh'.
 * Error: Detected multiple elements with an id of 'sel-atssh'.
 * Error: Detected multiple elements with an id of 'sel-attls'.
 * Error: Detected multiple elements with an id of 'sel-atssh'.
+* Error: Detected multiple elements with an id of ''.
 * Error: Detected multiple elements with an id of 'sel-exp-skg-256'.
 * Error: Detected multiple elements with an id of 'sel-exp-skg-256'.
 * Error: Detected multiple elements with an id of 'fcs_ipsec_ext.1.12_1'.
 * Error: Detected multiple elements with an id of 'fcs_ipsec_ext.1.12_1'.
+* Error: Detected multiple elements with an id of ''.
+* Error: Detected multiple elements with an id of ''.
+* Error: Detected multiple elements with an id of ''.
+* Error: Detected multiple elements with an id of ''.
+* Error: Detected multiple elements with an id of ''.
+* Error: Detected multiple elements with an id of ''.
 * Error: Detected dangling ref-id to 'dummy-ref-id'.
 	  /PP[1]""/sec:Introduction[1]""/section[3]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[1]""/config[1]""/ref-id[1]"dummy-ref"
 * Error: Detected dangling ref-id to 'dummy-ref-id'.
@@ -448,14 +456,6 @@
 * Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[3]""/f-component[16]""/f-element[1]""/note[1]"This SFR "/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[3]""/f-component[18]""/f-element[1]""/title[1]"The TSF s"/selectables[1]""/tabularize[1]""/reqtext[3]"after ini"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[3]""/f-component[18]""/f-element[1]""/title[1]"The TSF s"/selectables[1]""/tabularize[1]""/reqtext[3]"after ini"/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[3]""/f-component[18]""/f-element[2]""/note[1]"For the s"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[3]""/f-component[18]""/f-element[2]""/note[1]"For the s"/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[3]""/f-component[18]""/f-element[2]""/note[1]"For the s"/h:p[3]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[3]""/f-component[18]""/f-element[3]""/aactivity[1]""/Tests[1]""/h:p[2]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[3]""/f-component[18]""/f-element[3]""/aactivity[1]""/Tests[1]""/h:p[3]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[3]""/f-component[18]""/f-element[3]""/aactivity[1]""/Tests[1]""/h:p[4]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[3]""/f-component[18]""/f-element[3]""/aactivity[1]""/Tests[1]""/h:p[5]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[3]""/f-component[18]""/f-element[3]""/aactivity[1]""/Tests[1]""/h:p[6]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[2]""/dependencies[1]"FDP_HBI_E"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[2]""/f-element[3]""/aactivity[1]""/TSS[1]"The evalu"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:req[1]""/sec:SFRs[1]""/section[4]""/f-component[2]""/f-element[3]""/aactivity[1]""/TSS[1]"The evalu"/h:p[2]""
