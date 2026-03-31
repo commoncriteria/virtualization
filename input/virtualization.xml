@@ -5984,12 +5984,7 @@
                                     period has elapsed</selectable>
                             </selectables>
                         </title>
-                        <note role="application">The action to be taken is populated in the selection of the ST
-                            and defined in the administrator guidance.<h:p/>
-                            This requirement applies to a defined number of successive unsuccessful remote password or PIN-based
-                            authentication attempts and does not apply to local Administrative access. Compliant TOEs may optionally
-                            include cryptographic and local authentication failures in the number of
-                            unsuccessful authentication attempts.
+                        <note role="application">This requirement is claimed if the selection for "...based on username and password" or "...based on username and a PIN..." is selected in FIA_UAU.5.1. Because this PP assumes physical access to the TOE is secured (A.PHYSICAL), this SFR only applies to interfaces that are used to access the TOE remotely; a local physical console, for example, does not require a lockout mechanism.
                         </note>
                         <aactivity>
 							<TSS/>
@@ -6199,8 +6194,8 @@
                             <selectable>If authentication is based on password, the TSF shall perform Password-Based Key Derivation Function in accordance with a specified cryptographic algorithm <selectables><selectable>HMAC-SHA-384</selectable><selectable>HMAC-SHA-512</selectable></selectables>, with <selectables>
                                 <selectable><assignable>positive integer of 10,000 or more</assignable> iterations</selectable>
                                 <selectable>value supported by the platform greater than 1,000</selectable>
-                            </selectables> and output cryptographic key sizes of 256 bits that meet the following: NIST SP 800-132.</selectable>
-                            <selectable><assignable>other rules describing how the multiple authentication mechanisms provide authentication</assignable></selectable>
+                            </selectables> and output cryptographic key sizes of 256 bits that meet the following: NIST SP 800-132,</selectable>
+                            <selectable><assignable>other rules describing how the multiple authentication mechanisms provide authentication</assignable>,</selectable>
                             <selectable>no other rules</selectable>
                         </selectables></h:i>].
                         </title>
@@ -7766,16 +7761,16 @@
                             shall display an <assignable>advisory notice and consent warning regarding use of the TOE</assignable> message.                            
                         </title>
                         <note role="application">
-                            This requirement is intended to apply to interactive sessions between a human user and a TOE. IT
+                            This requirement is intended to apply to interactive sessions between a human user and the TOE. IT
                             entities establishing connections or programmatic connections (e.g., remote procedure calls over
                             a network) are not required to be covered by this requirement.<h:p/>
                         </note>
                     <aactivity>
 						<TSS>The evaluator shall examine the TSS to verify that it identifies the mechanism that is responsible for displaying the warning banner.</TSS>
-						<Guidance>The evaluator shall examine the operational guidance to verify that it describes how to configure the warning banner (if </Guidance>
+						<Guidance>The evaluator shall examine the operational guidance to verify that it describes how to configure the warning banner if the TSF provides the mechanism to do this. </Guidance>
                         <Tests>
-                            The evaluator shall follow the operational guidance to configure the TOE or its operational environment to display the advisory warning message 
-                            “TEST TEST Warning Message TEST TEST”. The evaluator shall then log out and confirm that the advisory 
+                            The evaluator shall follow the operational guidance to configure the TOE or its operational environment (depending on selection made in FTA_TAB.1) to display the advisory warning message 
+                            “TEST TEST Warning Message TEST TEST”. The evaluator shall then log out and confirm that the configured advisory 
                             message is displayed before login can occur.
                         </Tests>
                         </aactivity>
@@ -7831,7 +7826,7 @@
                                 <h:li>audit servers (as required by FAU_STG.1) and</h:li></h:ul>
                             <selectables linebreak="yes">
                                 <selectable>remote administrators (as required by FTP_TRP.1.1 (if selected in FMT_MOF_EXT.1)</selectable>
-                                <selectable>separation of management and operational networks (if selected in FMT_SMO_EXT.1)</selectable>
+                                <selectable>for separation of management and operational networks (if selected in FMT_SMO_EXT.1)</selectable>
 								<selectable><assignable>other remote IT entities</assignable></selectable>
                                 <selectable exclusive="yes">no other remote IT entities</selectable>
                             </selectables>
