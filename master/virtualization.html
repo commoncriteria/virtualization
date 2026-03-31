@@ -5390,12 +5390,7 @@ work-dir of external doc = ../../outputFCS_DTLSC_EXT.1.2
                                     period has elapsed</span>]
                         <div class="appnote"><span class="note-header">Application
       Note:
-    </span><span class="note">The action to be taken is populated in the selection of the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>
-                            and defined in the administrator guidance.<p></p>
-                            This requirement applies to a defined number of successive unsuccessful remote password or PIN-based
-                            authentication attempts and does not apply to local Administrative access. Compliant <abbr class="dyn-abbr"><a href="#abbr_TOE">TOEs</a></abbr> may optionally
-                            include cryptographic and local authentication failures in the number of
-                            unsuccessful authentication attempts.
+    </span><span class="note">This requirement is claimed if the selection for "...based on username and password" or "...based on username and a PIN..." is selected in <a href="#FIA_UAU.5.1">FIA_UAU.5.1</a>. Because this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> assumes physical access to the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> is secured (<a href="#A.PHYSICAL">A.PHYSICAL</a>), this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> only applies to interfaces that are used to access the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> remotely; a local physical console, for example, does not require a lockout mechanism.
                         </span></div></div></div>
 					
                 <div class="activity_pane hide"><div class="activity_pane_header"><a onclick="toggle(this);return false;" href="#"><span class="activity_pane_label"> Evaluation Activities </span><span class="toggler"></span></a></div><div class="activity_pane_body"><div class="component-activity-header"><a href="#FIA_AFL_EXT.1">FIA_AFL_EXT.1</a></div>
@@ -5559,8 +5554,8 @@ work-dir of external doc = ../../outputFCS_DTLSC_EXT.1.2
                         </span></div></div></div>
                     <div class="element"><div class="reqid" id="FIA_UAU.5.2"><a href="#FIA_UAU.5.2" class="abbr">FIA_UAU.5.2</a></div><div class="reqdesc">The <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall authenticate any user’s claimed identity according to the [<i>following rules:
                         [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_357">If authentication is based on password, the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> shall perform Password-Based Key Derivation Function in accordance with a specified cryptographic algorithm [<b>selection</b>: <span class="selectable-content" id="_s_358">HMAC-SHA-384</span>, <span class="selectable-content" id="_s_359">HMAC-SHA-512</span>], with [<b>selection</b>: <span class="selectable-content" id="_s_360">[<b>assignment</b>: 
-     <span class="assignable-content">positive integer of 10,000 or more</span>] iterations</span>, <span class="selectable-content" id="_s_361">value supported by the platform greater than 1,000</span>] and output cryptographic key sizes of 256 bits that meet the following: <abbr class="dyn-abbr"><a href="#abbr_NIST">NIST</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_SP">SP</a></abbr> 800-132.</span></li><li style=""><span class="selectable-content" id="_s_362">[<b>assignment</b>: 
-     <span class="assignable-content">other rules describing how the multiple authentication mechanisms provide authentication</span>]</span></li><li style=""><span class="selectable-content" id="_s_363">no other rules</span></li></ul>]</i>].
+     <span class="assignable-content">positive integer of 10,000 or more</span>] iterations</span>, <span class="selectable-content" id="_s_361">value supported by the platform greater than 1,000</span>] and output cryptographic key sizes of 256 bits that meet the following: <abbr class="dyn-abbr"><a href="#abbr_NIST">NIST</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_SP">SP</a></abbr> 800-132,</span></li><li style=""><span class="selectable-content" id="_s_362">[<b>assignment</b>: 
+     <span class="assignable-content">other rules describing how the multiple authentication mechanisms provide authentication</span>],</span></li><li style=""><span class="selectable-content" id="_s_363">no other rules</span></li></ul>]</i>].
                         <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">The intent behind <a href="#FIA_UAU.5.2">FIA_UAU.5.2</a> is to specify how the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> determines that authentication credentials are valid. In the case of password-based credentials, it is expected that the password is used to derive a key that is used to for validation, rather than comparing a cleartext or hashed password to a corresponding stored value.</span></div></div></div>
@@ -6698,7 +6693,7 @@ work-dir of external doc = ../../outputFIA_X509_EXT.1.4
                         <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
-                            This requirement is intended to apply to interactive sessions between a human user and a <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. <abbr class="dyn-abbr"><a href="#abbr_IT">IT</a></abbr>
+                            This requirement is intended to apply to interactive sessions between a human user and the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>. <abbr class="dyn-abbr"><a href="#abbr_IT">IT</a></abbr>
                             entities establishing connections or programmatic connections (e.g., remote procedure calls over
                             a network) are not required to be covered by this requirement.<p></p>
                         </span></div></div></div>
@@ -6707,9 +6702,9 @@ work-dir of external doc = ../../outputFIA_X509_EXT.1.4
 						
 						
                         
-                        <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to verify that it identifies the mechanism that is responsible for displaying the warning banner.</div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">The evaluator shall examine the operational guidance to verify that it describes how to configure the warning banner (if </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
-                            The evaluator shall follow the operational guidance to configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> or its operational environment to display the advisory warning message 
-                            “TEST TEST Warning Message TEST TEST”. The evaluator shall then log out and confirm that the advisory 
+                        <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to verify that it identifies the mechanism that is responsible for displaying the warning banner.</div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">The evaluator shall examine the operational guidance to verify that it describes how to configure the warning banner if the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> provides the mechanism to do this. </div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
+                            The evaluator shall follow the operational guidance to configure the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> or its operational environment (depending on selection made in <a href="#FTA_TAB.1">FTA_TAB.1</a>) to display the advisory warning message 
+                            “TEST TEST Warning Message TEST TEST”. The evaluator shall then log out and confirm that the configured advisory 
                             message is displayed before login can occur.
                         </div></div></div></div></div>
             
@@ -6739,7 +6734,7 @@ work-dir of external doc = ../../outputFIA_X509_EXT.1.4
 							[<b>selection</b>: <ul><li style=""><span class="selectable-content" id="sel-itc-certauth">certificate-based authentication of the remote peer</span></li><li style=""><span class="selectable-content" id="_s_413">non-certificate-based authentication of the remote peer</span></li><li style=""><span class="selectable-content" id="_s_414">no authentication of the remote peer</span></li></ul>]
                             to provide a trusted communication channel between itself and <ul>
                                 <li>audit servers (as required by <a href="#FAU_STG.1">FAU_STG.1</a>) and</li></ul>
-                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_415">remote administrators (as required by <a href="#FTP_TRP.1.1">FTP_TRP.1.1</a> (if selected in <a href="#FMT_MOF_EXT.1">FMT_MOF_EXT.1</a>)</span></li><li style=""><span class="selectable-content" id="_s_416">separation of management and operational networks (if selected in <a href="#FMT_SMO_EXT.1">FMT_SMO_EXT.1</a>)</span></li><li style=""><span class="selectable-content" id="_s_417">[<b>assignment</b>: 
+                            [<b>selection</b>: <ul><li style=""><span class="selectable-content" id="_s_415">remote administrators (as required by <a href="#FTP_TRP.1.1">FTP_TRP.1.1</a> (if selected in <a href="#FMT_MOF_EXT.1">FMT_MOF_EXT.1</a>)</span></li><li style=""><span class="selectable-content" id="_s_416">for separation of management and operational networks (if selected in <a href="#FMT_SMO_EXT.1">FMT_SMO_EXT.1</a>)</span></li><li style=""><span class="selectable-content" id="_s_417">[<b>assignment</b>: 
      <span class="assignable-content">other remote <abbr class="dyn-abbr"><a href="#abbr_IT">IT</a></abbr> entities</span>]</span></li><li style=""><span class="selectable-content" id="_s_418">no other remote <abbr class="dyn-abbr"><a href="#abbr_IT">IT</a></abbr> entities</span></li></ul>]
                             that is logically distinct from other communication paths and provides assured identification of its
                             endpoints and protection of the communicated data from disclosure and detection of modification of the communicated data.
