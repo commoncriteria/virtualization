@@ -1631,7 +1631,7 @@ The following sections list Common Criteria and technology terms used in this do
 						<br/><i><b>Safe Primes Verification Test</b></i><br/>
 						For each supported safe primes group, use a known good implementation to generate
 						10 key pairs. For each set of 10, the evaluator shall modify three so they are 
-						incorrect. The remaining values are left unmodified (i.e. correct). To
+						incorrect. The remaining values are left unmodified (i.e., correct). To
 						determine correctness, the evaluator shall submit the key pairs to the public 
 						key validation (<abbr class="dyn-abbr"><a href="#abbr_PKV">PKV</a></abbr>) function of the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> and shall confirm that the results
 						correspond as expected for the modified and unmodified values.<p></p>
@@ -1810,7 +1810,7 @@ The following sections list Common Criteria and technology terms used in this do
                             	<p>
                             	The evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> identifies all plaintext keys and keying material stored by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, the type of memory in which it is stored, and when and how the keying material is erased. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> uses one or more KEKs to protect stored keying material, the evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes the destruction of that keying material, either directly or by destruction of the KEK used to encrypt it.
                             	</p><p>
-                            	If different types of memory are used to store the materials to be protected, the evaluator shall check to ensure that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes the clearing procedure in terms of the memory in which the data are stored (for example, "secret keys stored on flash are cleared by overwriting once with zeros, while secret keys stored on the internal persistent storage device are cleared by overwriting one time with a random pattern that is changed before each write"). For block erases, the evaluator shall also ensure that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> identifies the block erase command that is used and shall verify that the command used also addresses any copies of the plaintext key material that may be created, e.g. in order to optimize the use of Flash memory.
+                            	If different types of memory are used to store the materials to be protected, the evaluator shall check to ensure that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> describes the clearing procedure in terms of the memory in which the data are stored (for example, "secret keys stored on flash are cleared by overwriting once with zeros, while secret keys stored on the internal persistent storage device are cleared by overwriting one time with a random pattern that is changed before each write"). For block erases, the evaluator shall also ensure that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> identifies the block erase command that is used and shall verify that the command used also addresses any copies of the plaintext key material that may be created, e.g., in order to optimize the use of Flash memory.
                             	</p><p>
                             	If platform-provided functionality is invoked for key destruction, the evaluator shall verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> identifies the platform functions used for this.
                             	</p>
@@ -2921,9 +2921,9 @@ The following sections list Common Criteria and technology terms used in this do
            <br/><b>Algorithm Functional Test</b><p></p>
            For each supported combination of the above parameters, the evaluator shall generate four test cases
            consisting of signed messages and keys, such that<ul>
-             <li>One test case is unmodified (i.e. correct)</li>
-             <li>For one test case modify the message, i.e. the message is different</li>
-             <li>For one test case modify the signature, i.e. signature is different</li>
+             <li>One test case is unmodified (i.e., correct)</li>
+             <li>For one test case modify the message, i.e., the message is different</li>
+             <li>For one test case modify the signature, i.e., signature is different</li>
              <li>For one test case modify the signature header so that it is a valid header for a different
                LMS parameter set.</li></ul><p></p>
            The <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> must correctly verify the unmodified test case and fail to verify the modified test cases.<p></p>
@@ -2955,9 +2955,9 @@ The following sections list Common Criteria and technology terms used in this do
            <br/><b>XMSS Digital Signature Verification Test</b><p></p>
            For each supported combination of the above parameters, the evaluator shall generate four test
            cases consisting of signed messages and keys, such that<ul>
-             <li>One test case is unmodified (i.e. correct)</li>
-             <li>For one test case modify the message, i.e. the message is different</li>
-             <li>For one test case modify the signature, i.e. signature is different</li>
+             <li>One test case is unmodified (i.e., correct)</li>
+             <li>For one test case modify the message, i.e., the message is different</li>
+             <li>For one test case modify the signature, i.e., signature is different</li>
              <li>For one test case modify the signature header so that it is a valid header 
                for a different XMSS parameter set</li></ul><p></p>
            The evaluator shall verify the correctness of the implementation by verifying that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>
@@ -5842,7 +5842,7 @@ The following sections list Common Criteria and technology terms used in this do
             						<li><abbr class="dyn-abbr"><a href="#abbr_RSA">RSA</a></abbr> Private key format [Basic, Prime Factor, Chinese Remainder Theorem]</li>
             						<li>Modulo value [3072, 4096, 6144, 8192]</li>
             						<li>Role [initiator, responder]</li></ul><p></p>
-            					The evaluator shall generate a test group (i.e. set of tests) for each parameter
+            					The evaluator shall generate a test group (i.e., set of tests) for each parameter
             					value of the above parameter type with the largest number of supported values.
             					For example, if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> supports all five Modulo values, then the evaluator 
             					shall generate five test groups. Each of the above supported parameter values
@@ -6807,7 +6807,7 @@ The following sections list Common Criteria and technology terms used in this do
 				certificate, which are both presented identifiers, as required by RFC 4945 and 2)
 				verification that the peer identified by the ID payload and the certificate is the
 				peer expected by the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> (per the reference identifier). At that time, the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> will
-				be required to demonstrate both aspects (i.e. that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> enforces that the
+				be required to demonstrate both aspects (i.e., that the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> enforces that the
 				peer’s ID payload matches the peer’s certificate, which both match configured
 				peer reference identifiers).
               <br/>
@@ -6871,7 +6871,7 @@ The following sections list Common Criteria and technology terms used in this do
                 <br/>
                 <br/>
                 Note, in this case, that the implementation of the IPsec protocol must be enforced entirely within the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>
-			boundary; i.e. it is not permissible for a software application <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to be a graphical front-end for IPsec
+			boundary; i.e., it is not permissible for a software application <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> to be a graphical front-end for IPsec
 			functionality implemented totally or in part by the underlying <abbr class="dyn-abbr"><a href="#abbr_OS">OS</a></abbr> platform. The behavior referenced here
 			is for the possibility that the configuration of the IPsec connection is initiated from outside the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>, which
 			is permissible so long as the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> is solely responsible for enforcing the configured behavior. However, it is
@@ -7231,9 +7231,9 @@ The following sections list Common Criteria and technology terms used in this do
                         <div class="appnote"><span class="note-header">Application
       Note:
     </span><span class="note">
-                            <p>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed if "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for obtaining entropy" is selected in <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a>, i.e. the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s entropy source is outside the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary.
+                            <p>This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed if "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> interface for obtaining entropy" is selected in <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a>, i.e., the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr>'s entropy source is outside the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary.
                             </p><p>
-                                The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author specifies 384 bits of entropy in the selection if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> uses an <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CTR_DRBG and there is no derivation function, and 256 bits of entropy for all other DRBG implementations. If the environmental entropy source produces full entropy, the amount of entropy data collected is equal to the amount specified in the selection. If the entropy source does not assure full entropy (i.e. the ratio of min-entropy to collected data is less than 1:1), then the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> must collect sufficient additional entropy data and perform a derivation function on it to reduce the collected data to a seed with the claimed min-entropy. In this case, the entropy documentation is expected to identify the min-entropy rate of the source data, how much data the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> collects, and what derivation function is performed on this collected data to ensure that it has the claimed min-entropy.
+                                The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author specifies 384 bits of entropy in the selection if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> uses an <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CTR_DRBG and there is no derivation function, and 256 bits of entropy for all other DRBG implementations. If the environmental entropy source produces full entropy, the amount of entropy data collected is equal to the amount specified in the selection. If the entropy source does not assure full entropy (i.e., the ratio of min-entropy to collected data is less than 1:1), then the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> must collect sufficient additional entropy data and perform a derivation function on it to reduce the collected data to a seed with the claimed min-entropy. In this case, the entropy documentation is expected to identify the min-entropy rate of the source data, how much data the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> collects, and what derivation function is performed on this collected data to ensure that it has the claimed min-entropy.
                             </p>
                             <p>
                                 One should not apply <abbr class="dyn-abbr"><a href="#abbr_NIST">NIST</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_SP">SP</a></abbr> 800-90B (or AIS-31) statistical tests against
@@ -7264,9 +7264,9 @@ The following sections list Common Criteria and technology terms used in this do
       Note:
     </span><span class="note">
                             <p>
-                                This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed if "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy source..." is selected in <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a>, i.e. the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> has a single entropy source that is inside the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> obtains seed material from an environmental component, this is specified using <a href="#FCS_RBG.2">FCS_RBG.2</a>.
+                                This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed if "<abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy source..." is selected in <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a>, i.e., the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> has a single entropy source that is inside the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> boundary. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> obtains seed material from an environmental component, this is specified using <a href="#FCS_RBG.2">FCS_RBG.2</a>.
                             </p><p>
-                                The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author specifies 384 bits of entropy in the selection if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> uses an <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CTR_DRBG and there is no derivation function, and 256 bits of entropy for all other DRBG implementations. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy source produces full entropy, the amount of entropy data collected is equal to the amount specified in the selection. If the entropy source does not assure full entropy (i.e. the ratio of min-entropy to collected data is less than 1:1), then the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> must collect sufficient additional entropy data and perform a derivation function on it to reduce the collected data to a seed with the claimed min-entropy. In this case, the entropy documentation is expected to identify the min-entropy rate of the source data, how much data the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> collects, and what derivation function is performed on this collected data to ensure that it has the claimed min-entropy.
+                                The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author specifies 384 bits of entropy in the selection if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> uses an <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CTR_DRBG and there is no derivation function, and 256 bits of entropy for all other DRBG implementations. If the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy source produces full entropy, the amount of entropy data collected is equal to the amount specified in the selection. If the entropy source does not assure full entropy (i.e., the ratio of min-entropy to collected data is less than 1:1), then the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> must collect sufficient additional entropy data and perform a derivation function on it to reduce the collected data to a seed with the claimed min-entropy. In this case, the entropy documentation is expected to identify the min-entropy rate of the source data, how much data the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> collects, and what derivation function is performed on this collected data to ensure that it has the claimed min-entropy.
                             </p><p>
                                 One can apply <abbr class="dyn-abbr"><a href="#abbr_NIST">NIST</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_SP">SP</a></abbr> 800-90B (or AIS-31) statistical tests against internal entropy sources
                                 (aka raw entropy) to confirm the min-entropy of the entropy source. 
@@ -7292,7 +7292,7 @@ The following sections list Common Criteria and technology terms used in this do
       Note:
     </span><span class="note">
                             <p>
-                                This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed if "multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy sources..." is selected in <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a>, i.e. the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> performs some sort of operation to combine data from multiple distinct sources into a value that is used to derive a seed. Since this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> defines the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as software, it does not have any hardware components and therefore would only claim software-based entropy sources here. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> obtains seed material from any hardware components, this is specified using <a href="#FCS_RBG.2">FCS_RBG.2</a>. <a href="#FCS_RBG.5">FCS_RBG.5</a> defines the mechanism by which all sources are combined to ensure sufficient minimum entropy.
+                                This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed if "multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy sources..." is selected in <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a>, i.e., the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> performs some sort of operation to combine data from multiple distinct sources into a value that is used to derive a seed. Since this <abbr class="dyn-abbr"><a href="#abbr_PP">PP</a></abbr> defines the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> as software, it does not have any hardware components and therefore would only claim software-based entropy sources here. If the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> obtains seed material from any hardware components, this is specified using <a href="#FCS_RBG.2">FCS_RBG.2</a>. <a href="#FCS_RBG.5">FCS_RBG.5</a> defines the mechanism by which all sources are combined to ensure sufficient minimum entropy.
                             </p>
                         </span></div></div></div>
                     
@@ -7317,10 +7317,10 @@ The following sections list Common Criteria and technology terms used in this do
       Note:
     </span><span class="note">
                             <p>
-                                This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed if "multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy sources..." is selected in <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a>, i.e. the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> performs some sort of operation to combine data from multiple distinct sources into a value that is used to derive a seed.
+                                This <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> is claimed if "multiple <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> entropy sources..." is selected in <a href="#FCS_RBG.1.2">FCS_RBG.1.2</a>, i.e., the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> performs some sort of operation to combine data from multiple distinct sources into a value that is used to derive a seed.
                             </p>
                             <p>
-                                The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author specifies 384 bits of entropy in the selection if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> uses an <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CTR_DRBG and there is no derivation function, and 256 bits of entropy for all other DRBG implementations. If the environmental entropy source produces full entropy, the amount of entropy data collected is equal to the amount specified in the selection. If the entropy source does not assure full entropy (i.e. the ratio of min-entropy to collected data is less than 1:1), then the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> must collect sufficient additional entropy data and perform a derivation function on it to reduce the collected data to a seed with the claimed min-entropy. In this case, the entropy documentation is expected to identify the min-entropy rate of the source data, how much data the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> collects, and what derivation function is performed on this collected data to ensure that it has the claimed min-entropy.
+                                The <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr> author specifies 384 bits of entropy in the selection if the <abbr class="dyn-abbr"><a href="#abbr_TOE">TOE</a></abbr> uses an <abbr class="dyn-abbr"><a href="#abbr_AES">AES</a></abbr>-CTR_DRBG and there is no derivation function, and 256 bits of entropy for all other DRBG implementations. If the environmental entropy source produces full entropy, the amount of entropy data collected is equal to the amount specified in the selection. If the entropy source does not assure full entropy (i.e., the ratio of min-entropy to collected data is less than 1:1), then the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> must collect sufficient additional entropy data and perform a derivation function on it to reduce the collected data to a seed with the claimed min-entropy. In this case, the entropy documentation is expected to identify the min-entropy rate of the source data, how much data the <abbr class="dyn-abbr"><a href="#abbr_TSF">TSF</a></abbr> collects, and what derivation function is performed on this collected data to ensure that it has the claimed min-entropy.
                             </p>
                             <p>
                                 One can apply <abbr class="dyn-abbr"><a href="#abbr_NIST">NIST</a></abbr> <abbr class="dyn-abbr"><a href="#abbr_SP">SP</a></abbr> 800-90B (or AIS-31) statistical tests against internal entropy sources
@@ -8152,7 +8152,7 @@ The following sections list Common Criteria and technology terms used in this do
         	<tr>
         		<td>FMT_SMR.2 - Restrictions on Security Roles</td>
         		<td>
-        			Several <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> have dependencies on FMT_SMR.2. The <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> <a href="#FMT_MOF_EXT.1">FMT_MOF_EXT.1</a> implicitly satisfies this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> because it defines the management roles that can be used to perform each function, which defines the existence of management roles and any restrictions on those roles (e.g. there are some management functions one must perform while another must not, while there are others that one must perform and the other may perform). 
+        			Several <abbr class="dyn-abbr"><a href="#abbr_SFR">SFRs</a></abbr> have dependencies on FMT_SMR.2. The <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> <a href="#FMT_MOF_EXT.1">FMT_MOF_EXT.1</a> implicitly satisfies this <abbr class="dyn-abbr"><a href="#abbr_SFR">SFR</a></abbr> because it defines the management roles that can be used to perform each function, which defines the existence of management roles and any restrictions on those roles (e.g., there are some management functions one must perform while another must not, while there are others that one must perform and the other may perform). 
         		</td>
         	</tr>  
             
