@@ -1668,7 +1668,7 @@
 						<h:br/><h:i><h:b>Safe Primes Verification Test</h:b></h:i><h:br/>
 						For each supported safe primes group, use a known good implementation to generate
 						10 key pairs. For each set of 10, the evaluator shall modify three so they are 
-						incorrect. The remaining values are left unmodified (i.e. correct). To
+						incorrect. The remaining values are left unmodified (i.e., correct). To
 						determine correctness, the evaluator shall submit the key pairs to the public 
 						key validation (PKV) function of the TOE and shall confirm that the results
 						correspond as expected for the modified and unmodified values.<h:p/>
@@ -2059,7 +2059,7 @@
                             	<h:p>
                             	The evaluator shall verify that the TSS identifies all plaintext keys and keying material stored by the TOE, the type of memory in which it is stored, and when and how the keying material is erased. If the TOE uses one or more KEKs to protect stored keying material, the evaluator shall verify that the TSS describes the destruction of that keying material, either directly or by destruction of the KEK used to encrypt it.
                             	</h:p><h:p>
-                            	If different types of memory are used to store the materials to be protected, the evaluator shall check to ensure that the TSS describes the clearing procedure in terms of the memory in which the data are stored (for example, "secret keys stored on flash are cleared by overwriting once with zeros, while secret keys stored on the internal persistent storage device are cleared by overwriting one time with a random pattern that is changed before each write"). For block erases, the evaluator shall also ensure that the TSS identifies the block erase command that is used and shall verify that the command used also addresses any copies of the plaintext key material that may be created, e.g. in order to optimize the use of Flash memory.
+                            	If different types of memory are used to store the materials to be protected, the evaluator shall check to ensure that the TSS describes the clearing procedure in terms of the memory in which the data are stored (for example, "secret keys stored on flash are cleared by overwriting once with zeros, while secret keys stored on the internal persistent storage device are cleared by overwriting one time with a random pattern that is changed before each write"). For block erases, the evaluator shall also ensure that the TSS identifies the block erase command that is used and shall verify that the command used also addresses any copies of the plaintext key material that may be created, e.g., in order to optimize the use of Flash memory.
                             	</h:p><h:p>
                             	If platform-provided functionality is invoked for key destruction, the evaluator shall verify that the TSS identifies the platform functions used for this.
                             	</h:p>
@@ -2306,7 +2306,7 @@
             						<h:li>RSA Private key format [Basic, Prime Factor, Chinese Remainder Theorem]</h:li>
             						<h:li>Modulo value [3072, 4096, 6144, 8192]</h:li>
             						<h:li>Role [initiator, responder]</h:li></h:ul><h:p/>
-            					The evaluator shall generate a test group (i.e. set of tests) for each parameter
+            					The evaluator shall generate a test group (i.e., set of tests) for each parameter
             					value of the above parameter type with the largest number of supported values.
             					For example, if the TOE supports all five Modulo values, then the evaluator 
             					shall generate five test groups. Each of the above supported parameter values
@@ -3845,9 +3845,9 @@
            <h:br/><h:b>Algorithm Functional Test</h:b><h:p/>
            For each supported combination of the above parameters, the evaluator shall generate four test cases
            consisting of signed messages and keys, such that<h:ul>
-             <h:li>One test case is unmodified (i.e. correct)</h:li>
-             <h:li>For one test case modify the message, i.e. the message is different</h:li>
-             <h:li>For one test case modify the signature, i.e. signature is different</h:li>
+             <h:li>One test case is unmodified (i.e., correct)</h:li>
+             <h:li>For one test case modify the message, i.e., the message is different</h:li>
+             <h:li>For one test case modify the signature, i.e., signature is different</h:li>
              <h:li>For one test case modify the signature header so that it is a valid header for a different
                LMS parameter set.</h:li></h:ul><h:p/>
            The TOE must correctly verify the unmodified test case and fail to verify the modified test cases.<h:p/>
@@ -3879,9 +3879,9 @@
            <h:br/><h:b>XMSS Digital Signature Verification Test</h:b><h:p/>
            For each supported combination of the above parameters, the evaluator shall generate four test
            cases consisting of signed messages and keys, such that<h:ul>
-             <h:li>One test case is unmodified (i.e. correct)</h:li>
-             <h:li>For one test case modify the message, i.e. the message is different</h:li>
-             <h:li>For one test case modify the signature, i.e. signature is different</h:li>
+             <h:li>One test case is unmodified (i.e., correct)</h:li>
+             <h:li>For one test case modify the message, i.e., the message is different</h:li>
+             <h:li>For one test case modify the signature, i.e., signature is different</h:li>
              <h:li>For one test case modify the signature header so that it is a valid header 
                for a different XMSS parameter set</h:li></h:ul><h:p/>
            The evaluator shall verify the correctness of the implementation by verifying that the TOE
@@ -4516,7 +4516,7 @@
                 <h:br/>
                 <h:br/>
                 Note, in this case, that the implementation of the IPsec protocol must be enforced entirely within the TOE
-			boundary; i.e. it is not permissible for a software application TOE to be a graphical front-end for IPsec
+			boundary; i.e., it is not permissible for a software application TOE to be a graphical front-end for IPsec
 			functionality implemented totally or in part by the underlying OS platform. The behavior referenced here
 			is for the possibility that the configuration of the IPsec connection is initiated from outside the TOE, which
 			is permissible so long as the TSF is solely responsible for enforcing the configured behavior. However, it is
@@ -5079,7 +5079,7 @@
 				certificate, which are both presented identifiers, as required by RFC 4945 and 2)
 				verification that the peer identified by the ID payload and the certificate is the
 				peer expected by the TOE (per the reference identifier). At that time, the TOE will
-				be required to demonstrate both aspects (i.e. that the TOE enforces that the
+				be required to demonstrate both aspects (i.e., that the TOE enforces that the
 				peer’s ID payload matches the peer’s certificate, which both match configured
 				peer reference identifiers).
               <h:br/>
@@ -5370,9 +5370,9 @@
                             </selectables> bits of min-entropy</h:i>] from a TSF interface for obtaining entropy.
                         </title>
                         <note role="application">
-                            <h:p>This SFR is claimed if "TSF interface for obtaining entropy" is selected in <xref to="fel-rbg-init-seed-how"/>, i.e. the TOE's entropy source is outside the TOE boundary.
+                            <h:p>This SFR is claimed if "TSF interface for obtaining entropy" is selected in <xref to="fel-rbg-init-seed-how"/>, i.e., the TOE's entropy source is outside the TOE boundary.
                             </h:p><h:p>
-                                The ST author specifies 384 bits of entropy in the selection if the TOE uses an AES-CTR_DRBG and there is no derivation function, and 256 bits of entropy for all other DRBG implementations. If the environmental entropy source produces full entropy, the amount of entropy data collected is equal to the amount specified in the selection. If the entropy source does not assure full entropy (i.e. the ratio of min-entropy to collected data is less than 1:1), then the TSF must collect sufficient additional entropy data and perform a derivation function on it to reduce the collected data to a seed with the claimed min-entropy. In this case, the entropy documentation is expected to identify the min-entropy rate of the source data, how much data the TSF collects, and what derivation function is performed on this collected data to ensure that it has the claimed min-entropy.
+                                The ST author specifies 384 bits of entropy in the selection if the TOE uses an AES-CTR_DRBG and there is no derivation function, and 256 bits of entropy for all other DRBG implementations. If the environmental entropy source produces full entropy, the amount of entropy data collected is equal to the amount specified in the selection. If the entropy source does not assure full entropy (i.e., the ratio of min-entropy to collected data is less than 1:1), then the TSF must collect sufficient additional entropy data and perform a derivation function on it to reduce the collected data to a seed with the claimed min-entropy. In this case, the entropy documentation is expected to identify the min-entropy rate of the source data, how much data the TSF collects, and what derivation function is performed on this collected data to ensure that it has the claimed min-entropy.
                             </h:p>
                             <h:p>
                                 One should not apply NIST SP 800-90B (or AIS-31) statistical tests against
@@ -5406,9 +5406,9 @@
                         </title>        
                         <note role="application">
                             <h:p>
-                                This SFR is claimed if "TSF entropy source..." is selected in <xref to="fel-rbg-init-seed-how"/>, i.e. the TOE has a single entropy source that is inside the TOE boundary. If the TOE obtains seed material from an environmental component, this is specified using FCS_RBG.2.
+                                This SFR is claimed if "TSF entropy source..." is selected in <xref to="fel-rbg-init-seed-how"/>, i.e., the TOE has a single entropy source that is inside the TOE boundary. If the TOE obtains seed material from an environmental component, this is specified using FCS_RBG.2.
                             </h:p><h:p>
-                                The ST author specifies 384 bits of entropy in the selection if the TOE uses an AES-CTR_DRBG and there is no derivation function, and 256 bits of entropy for all other DRBG implementations. If the TSF entropy source produces full entropy, the amount of entropy data collected is equal to the amount specified in the selection. If the entropy source does not assure full entropy (i.e. the ratio of min-entropy to collected data is less than 1:1), then the TSF must collect sufficient additional entropy data and perform a derivation function on it to reduce the collected data to a seed with the claimed min-entropy. In this case, the entropy documentation is expected to identify the min-entropy rate of the source data, how much data the TSF collects, and what derivation function is performed on this collected data to ensure that it has the claimed min-entropy.
+                                The ST author specifies 384 bits of entropy in the selection if the TOE uses an AES-CTR_DRBG and there is no derivation function, and 256 bits of entropy for all other DRBG implementations. If the TSF entropy source produces full entropy, the amount of entropy data collected is equal to the amount specified in the selection. If the entropy source does not assure full entropy (i.e., the ratio of min-entropy to collected data is less than 1:1), then the TSF must collect sufficient additional entropy data and perform a derivation function on it to reduce the collected data to a seed with the claimed min-entropy. In this case, the entropy documentation is expected to identify the min-entropy rate of the source data, how much data the TSF collects, and what derivation function is performed on this collected data to ensure that it has the claimed min-entropy.
                             </h:p><h:p>
                                 One can apply NIST SP 800-90B (or AIS-31) statistical tests against internal entropy sources
                                 (aka raw entropy) to confirm the min-entropy of the entropy source. 
@@ -5434,7 +5434,7 @@
                         </title>
                         <note role="application">
                             <h:p>
-                                This SFR is claimed if "multiple TSF entropy sources..." is selected in <xref to="fel-rbg-init-seed-how"/>, i.e. the TSF performs some sort of operation to combine data from multiple distinct sources into a value that is used to derive a seed. Since this PP defines the TOE as software, it does not have any hardware components and therefore would only claim software-based entropy sources here. If the TOE obtains seed material from any hardware components, this is specified using FCS_RBG.2. FCS_RBG.5 defines the mechanism by which all sources are combined to ensure sufficient minimum entropy.
+                                This SFR is claimed if "multiple TSF entropy sources..." is selected in <xref to="fel-rbg-init-seed-how"/>, i.e., the TSF performs some sort of operation to combine data from multiple distinct sources into a value that is used to derive a seed. Since this PP defines the TOE as software, it does not have any hardware components and therefore would only claim software-based entropy sources here. If the TOE obtains seed material from any hardware components, this is specified using FCS_RBG.2. FCS_RBG.5 defines the mechanism by which all sources are combined to ensure sufficient minimum entropy.
                             </h:p>
                         </note>
                         <aactivity>
@@ -5463,10 +5463,10 @@
                         </title> 
                         <note role="application">
                             <h:p>
-                                This SFR is claimed if "multiple TSF entropy sources..." is selected in <xref to="fel-rbg-init-seed-how"/>, i.e. the TSF performs some sort of operation to combine data from multiple distinct sources into a value that is used to derive a seed.
+                                This SFR is claimed if "multiple TSF entropy sources..." is selected in <xref to="fel-rbg-init-seed-how"/>, i.e., the TSF performs some sort of operation to combine data from multiple distinct sources into a value that is used to derive a seed.
                             </h:p>
                             <h:p>
-                                The ST author specifies 384 bits of entropy in the selection if the TOE uses an AES-CTR_DRBG and there is no derivation function, and 256 bits of entropy for all other DRBG implementations. If the environmental entropy source produces full entropy, the amount of entropy data collected is equal to the amount specified in the selection. If the entropy source does not assure full entropy (i.e. the ratio of min-entropy to collected data is less than 1:1), then the TSF must collect sufficient additional entropy data and perform a derivation function on it to reduce the collected data to a seed with the claimed min-entropy. In this case, the entropy documentation is expected to identify the min-entropy rate of the source data, how much data the TSF collects, and what derivation function is performed on this collected data to ensure that it has the claimed min-entropy.
+                                The ST author specifies 384 bits of entropy in the selection if the TOE uses an AES-CTR_DRBG and there is no derivation function, and 256 bits of entropy for all other DRBG implementations. If the environmental entropy source produces full entropy, the amount of entropy data collected is equal to the amount specified in the selection. If the entropy source does not assure full entropy (i.e., the ratio of min-entropy to collected data is less than 1:1), then the TSF must collect sufficient additional entropy data and perform a derivation function on it to reduce the collected data to a seed with the claimed min-entropy. In this case, the entropy documentation is expected to identify the min-entropy rate of the source data, how much data the TSF collects, and what derivation function is performed on this collected data to ensure that it has the claimed min-entropy.
                             </h:p>
                             <h:p>
                                 One can apply NIST SP 800-90B (or AIS-31) statistical tests against internal entropy sources
@@ -8837,7 +8837,7 @@
         	<h:tr>
         		<h:td>FMT_SMR.2 - Restrictions on Security Roles</h:td>
         		<h:td>
-        			Several SFRs have dependencies on FMT_SMR.2. The SFR FMT_MOF_EXT.1 implicitly satisfies this SFR because it defines the management roles that can be used to perform each function, which defines the existence of management roles and any restrictions on those roles (e.g. there are some management functions one must perform while another must not, while there are others that one must perform and the other may perform). 
+        			Several SFRs have dependencies on FMT_SMR.2. The SFR FMT_MOF_EXT.1 implicitly satisfies this SFR because it defines the management roles that can be used to perform each function, which defines the existence of management roles and any restrictions on those roles (e.g., there are some management functions one must perform while another must not, while there are others that one must perform and the other may perform). 
         		</h:td>
         	</h:tr>  
             
