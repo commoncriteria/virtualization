@@ -5991,13 +5991,17 @@
                                 <selectable>prevent the offending administrator from successfully establishing a remote session using
                                     any authentication method that involves a password or PIN until an administrator-defined time
                                     period has elapsed</selectable>
-                            </selectables>
+                            </selectables>.
                         </title>
-                        <note role="application">This requirement is claimed if the selection for "...based on username and password" or "...based on username and a PIN..." is selected in FIA_UAU.5.1. Because this PP assumes physical access to the TOE is secured (A.PHYSICAL), this SFR only applies to interfaces that are used to access the TOE remotely; a local physical console, for example, does not require a lockout mechanism.
+                        <note role="application">This requirement is claimed if the selection for "[local] authentication based on username and password" or "authentication based on username and a PIN..." is selected in FIA_UAU.5.1. Because this PP assumes physical access to the TOE is secured (A.PHYSICAL), this SFR only applies to interfaces that are used to access the TOE remotely; a local physical console, for example, does not require a lockout mechanism.<h:p/>
+                            When the TOE uses directory-based password authentication, it is expected that account lockout is enforced by the directory, and this behavior is defined in FIA_UAU.5.2.
                         </note>
                         <aactivity>
-							<TSS/>
-							<Guidance/>
+							<TSS>The evaluator shall examine the TSS to verify that it describes the authentication mechanisms that authentication failure lockout applies to and whether the failure threshold is fixed or configurable. If configurable, the evaluator shall verify that athe TSS identifies the range of supported values. The evaluator shall also verify that the TSS identifies whether the failure state is resolved through administrative action or whether it persists for a configurable amount of time (and what the supported time range is if this applies).</TSS>
+							<Guidance>The evaluator shall verify that if the range of authentication failures that trigger a lockout is configurable, the operational guidance describes how to configure this parameter and what the range of acceptable values is for it. This is also covered by FMT_MOF_EXT.1, function 15.<h:p/>
+							    If a locked account can be unlocked through administrative action, the evaluator shall verify that the operational guidance includes instructions for how to unlock this account.<h:p/>
+							    If a locked account can be unlocked automatically through a configurable time period, the evaluator shall verify that the operational guidance includes instructions for how to configure this time period, as well as the minimum and maximum values for it.
+							</Guidance>
                             <Tests>
                                 The evaluator shall perform the following tests for each credential selected in FIA_AFL_EXT.1.1:<h:p/>
                                 The evaluator shall set an administrator-configurable threshold n for failed attempts, or note
@@ -6124,8 +6128,8 @@
                             </h:ol>
                         </title>
                         <note role="application">
-							This SFR is included in the ST if the ST author selects ‘authentication based on username and password’ 
-							in FIA_UAU.5.1.<h:br/><h:br/>
+							This SFR is included in the ST if the ST author selects "[local] authentication based on username and password" 
+							in FIA_UAU.5.1. If the TOE uses directory-based authentication, it is expected that password composition requirements are enforced by the directory server.<h:br/><h:br/>
 							The ST author selects the special characters that are supported by the TOE; they may
 							optionally list additional special characters supported using the assignment. “Administrative
 							passwords” refers to passwords used by administrators to gain access to the Management Subsystem.</note>
@@ -6200,15 +6204,17 @@
                     <f-element id="fia-uau-5e2">
                         <title>The TSF shall authenticate any user’s claimed identity according to the [<h:i>following rules:
                         <selectables linebreak="yes">
-                            <selectable>If authentication is based on password, the TSF shall perform Password-Based Key Derivation Function in accordance with a specified cryptographic algorithm <selectables><selectable>HMAC-SHA-384</selectable><selectable>HMAC-SHA-512</selectable></selectables>, with <selectables>
+                            <selectable>If authentication is based on local password, the TSF shall perform Password-Based Key Derivation Function in accordance with a specified cryptographic algorithm <selectables><selectable>HMAC-SHA-384</selectable><selectable>HMAC-SHA-512</selectable></selectables>, with <selectables>
                                 <selectable><assignable>positive integer of 10,000 or more</assignable> iterations</selectable>
                                 <selectable>value supported by the platform greater than 1,000</selectable>
                             </selectables> and output cryptographic key sizes of 256 bits that meet the following: NIST SP 800-132,</selectable>
+                            <selectable>If directory-based authentication is used, the TSF shall abide by any decision returned by the directory with regards to the validity of the authentication request,</selectable>
                             <selectable><assignable>other rules describing how the multiple authentication mechanisms provide authentication</assignable>,</selectable>
                             <selectable>no other rules</selectable>
                         </selectables></h:i>].
                         </title>
-                        <note role="application">The intent behind FIA_UAU.5.2 is to specify how the TSF determines that authentication credentials are valid. In the case of password-based credentials, it is expected that the password is used to derive a key that is used to for validation, rather than comparing a cleartext or hashed password to a corresponding stored value.</note>
+                        <note role="application">The intent behind FIA_UAU.5.2 is to specify how the TSF determines that authentication credentials are valid. In the case of password-based credentials, it is expected that the password is used to derive a key that is used to for validation, rather than comparing a cleartext or hashed password to a corresponding stored value.<h:p/>
+                        In the case of directory-based password authentication, the directory is expected to determine if the authentication request is valid and return a response to the TOE that the TSF will enforce. Specifically, a directory-based authentication attempt could be rejected not just because of invalid credentials but also other factors such as exceeding a failed authentication threshold, suspended account, or time of day restrictions.</note>
                         <aactivity>
 							<TSS/>
 							<Guidance/>
@@ -6594,13 +6600,11 @@
 								<!-- 16 (was 17) -->
 								<management-function id="mf-admin-configDirServer">	
 									<text>
-										<selectables>
-											<selectable id="sel-mf-dir-server">Ability to configure name/address of directory server to bind with</selectable>
-											<selectable>Not applicable</selectable></selectables>
+										Ability to configure name/address of directory server to bind with
 									</text>
 									<O ref="A"/>
 									<X ref="U"/>
-									<app-note>Must be selected if "directory-based" is selected anywhere in FIA_UAU.5.1.</app-note>
+									<app-note>Must be selected if "an administrator configurable..." is selected in FIA_AFL_EXT.1.1.</app-note>
 								</management-function>
 
 								<!-- 17 (was 18) -->
