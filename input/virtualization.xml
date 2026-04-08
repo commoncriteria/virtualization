@@ -6214,7 +6214,7 @@
                         </selectables></h:i>].
                         </title>
                         <note role="application">The intent behind FIA_UAU.5.2 is to specify how the TSF determines that authentication credentials are valid. In the case of password-based credentials, it is expected that the password is used to derive a key that is used to for validation, rather than comparing a cleartext or hashed password to a corresponding stored value.<h:p/>
-                        In the case of directory-based password authentication, the directory is expected to determine if the authentication request is valid and return a response to the TOE that the TSF will enforce. Specifically, a directory-based authentication attempt could be rejected not just because of invalid credentials but also other factors such as exceeding a failed authentication threshold, suspended account, or time of day restrictions.</note>
+                        In the case of directory-based authentication, the directory is expected to determine if the authentication request is valid and return a response to the TOE that the TSF will enforce. Specifically, a directory-based authentication attempt could be rejected not just because of invalid credentials but also other factors such as exceeding a failed authentication threshold (when passwords are used), suspended account, or time of day restrictions.</note>
                         <aactivity>
 							<TSS/>
 							<Guidance/>
@@ -6594,7 +6594,7 @@
 									</text>
 									<O ref="A"/>
 									<X ref="U"/>
-									<app-note>Must be selected if a password or PIN-based authentication method is claimed in FIA_UAU.5.1.</app-note>
+								    <app-note>Must be selected if "an administrator configurable..." is selected in FIA_AFL_EXT.1.1.</app-note>
 								</management-function>
 
 								<!-- 16 (was 17) -->
@@ -6604,7 +6604,7 @@
 									</text>
 									<O ref="A"/>
 									<X ref="U"/>
-									<app-note>Must be selected if "an administrator configurable..." is selected in FIA_AFL_EXT.1.1.</app-note>
+									<app-note>Must be selected if any selections with "directory-based" are made in FIA_UAU.5.1.</app-note>
 								</management-function>
 
 								<!-- 17 (was 18) -->
