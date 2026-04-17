@@ -4035,7 +4035,7 @@
                     				</selectable>
                     			</selectables>
                     		</title>
-                    
+                    <note role="application">This SFR is claimed if the TSF uses an algorithm defined by this SFR to enforce separation of management and operational networks as claimed in FMT_SMO_EXT.1.</note>
                     		<aactivity>
                     			<TSS>
                     				The evaluator shall examine the TSS to ensure that it describes the construction of any IVs,
@@ -6788,7 +6788,10 @@
                                 <selectable>separate physical networks</selectable>
                                 <selectable>separate logical networks</selectable>
                                 <selectable>trusted channels as defined in FTP_ITC_EXT.1</selectable>
-                            	<selectable id="smo-skc">data encryption using an algorithm specified in FCS_COP.1<h:b>/SKC</h:b></selectable>
+                                <selectable>data encryption using an algorithm specified in <selectables>
+                                    <selectable id="smo-aead">FCS_COP.1/AEAD</selectable>
+                                    <selectable id="smo-skc">FCS_COP.1/SKC</selectable>
+                                </selectables></selectable>
                             </selectables>.
                         </title>
                         <ext-comp-def-title>
@@ -6797,7 +6800,7 @@
                                     <selectable>separate physical networks</selectable>
                                     <selectable>separate logical networks</selectable>
                                     <selectable>trusted channels as defined in FTP_ITC_EXT.1</selectable>
-                                    <selectable>data encryption using an algorithm specified in FCS_COP.1</selectable>
+                                    <selectable>data encryption using an algorithm specified in <assignable>cryptographic requirement</assignable></selectable>
                                 </selectables>.
                             </title>
                         </ext-comp-def-title>
@@ -6814,10 +6817,10 @@
 							hosts using separate virtualized networking components.<h:p/>
                             If the ST author selects “trusted channels...” then the protocols used for network separation must be 
 							selected in FTP_ITC_EXT.1.<h:p/>
-							The ST author selects "data encryption..." if, for example, the TOE encrypts VMs as data blobs for backup, storage,
+							The ST author selects "data encryption using an algorithm..." if, for example, the TOE encrypts VMs as data blobs for backup, storage,
 							deployment, or live migration, and does not send the data through a tunnel. 
-							If the ST author selects "data encryption..." then the algorithms and key sizes must be selected in FCS_COP.1/SKC.<h:p/>
-							The ST author should select as many mechanisms as apply.
+							If the ST author selects "data encryption using an algorithm..." then the algorithms and key sizes must be selected in the corresponding requirement. If those algorithms include any defined in FCS_COP.1/SKC, the ST must include FCS_COP.1/SKC.
+							
                         </note>                       
                         <aactivity>
                             <TSS>
