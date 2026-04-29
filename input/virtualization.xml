@@ -462,7 +462,7 @@
 					<description>
 					The TOE is required to utilize CRL or OCSP, thus it shall not select to not obtain revocation status information. 
 					Additionally, the TOE shall not utilize local revocation information or utilize a network connection to the CA to obtain its revocation information. 
-					In other words, the TOE shall utilize a network connection to a CRL distribution point, OCSP responder, OCSP stapling, or OCSP multi-stapling. However, this PP permits exceptions to revocation checking (see FIA_X509_EXT.4). If there are circumstances where the TSF does not check revocation status of a certificate such as for firmware updates, the ST author shall also select "not obtain revocation status information by the TSF due to..." and identify any functions defined in FIA_X509_EXT.4 as well as the alternatve method by which revocation status is validated (e.g., if the firmware signing cetificate is not checked for revocation, it is validated implicitly." The ST author shall also claim FIA_X509_EXT.4.  
+					In other words, the TOE shall utilize a network connection to a CRL distribution point, OCSP responder, OCSP stapling, or OCSP multi-stapling. However, this PP permits exceptions to revocation checking (see FIA_X509_EXT.4). If there are circumstances where the TSF does not check revocation status of a certificate such as for firmware updates, the ST author shall also select "not obtain revocation status information by the TSF due to..." and identify any functions defined in FIA_X509_EXT.4 as well as the alternative method by which revocation status is validated (e.g., if the firmware signing certificate is not checked for revocation, it is validated implicitly." The ST author shall also claim FIA_X509_EXT.4.  
 					</description>
 					<config>
 						<ref-id>dummy-ref-id</ref-id>
@@ -2038,7 +2038,7 @@
                 			</selectable>
                 		    <selectable>implementing key destruction in accordance with the following rules:
                 		        <selectables>
-                		            <selectable>For volaltile memory , the destruction shall be executed by a <selectables linebreak="yes">
+                		            <selectable>For volatile memory, the destruction shall be executed by a <selectables linebreak="yes">
                 		                <selectable>a pseudo-random pattern using the TSF or platform DRBG (as specified in FCS_RBG.1)</selectable>
                 		                <selectable>zeroes</selectable>
                 		                <selectable>ones</selectable>
