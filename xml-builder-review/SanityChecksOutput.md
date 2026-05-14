@@ -168,7 +168,7 @@
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[5]""/f-component[1]""/f-element[2]""/aactivity[1]""/Guidance[1]"The evalu"/h:p[2]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[5]""/f-component[4]""/f-element[1]""/note[1]""/h:p[2]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[5]""/f-component[4]""/f-element[2]""/note[1]"The inten"/h:p[1]""
-* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[5]""/f-component[4]""/f-element[2]""/aactivity[1]""/Tests[1]"If ‘usern"/testlist[4]""/test[2]"The evalu"/h:p[1]""
+* Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[5]""/f-component[4]""/f-element[2]""/aactivity[1]""/Tests[1]""/testlist[4]"If ‘SSH p"/test[2]"The evalu"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[1]""/f-element[2]""/title[1]"The TSF s"/h:p[1]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[1]""/f-element[2]""/title[1]"The TSF s"/h:p[2]""
 * Warning: Detected an empty _p_ element./PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[6]""/f-component[1]""/f-element[2]""/note[1]"The ST au"/h:p[1]""
@@ -287,8 +287,6 @@
 * Warning: Since FIA_AFL_EXT.1.2 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
 * Warning: Since FIA_PMG_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
-                       
-* Warning: Since FIA_X509_EXT.4.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
 * Warning: Since FMT_MOF_EXT.1.1 has an 'id' attribute in a descendant node in the title, you probably need to define an alternative 'ext-comp-def-title'.
                        
