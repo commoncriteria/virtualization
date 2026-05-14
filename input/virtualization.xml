@@ -6277,30 +6277,30 @@
 							<TSS/>
 							<Guidance/>
                             <Tests>
-                                If ‘username and password authentication‘ is selected, The evaluator shall configure the VS with a 
-								known username and password and conduct the following tests:
-								<testlist>
+                                <testlist>
+									If ‘username and password authentication‘ is selected, The evaluator shall configure the VS with a 
+									known username and password and conduct the following tests:
 									<test>The evaluator shall attempt to authenticate to the VS using the known username and password.
 										The evaluator shall ensure that the authentication attempt is successful.</test>
 									<test>The evaluator shall attempt to authenticate to the VS using the known username but an incorrect
 										password. The evaluator shall ensure that the authentication attempt is unsuccessful.</test>
 								</testlist>
-								If ‘username and PIN that releases an asymmetric key‘ is selected, The evaluator shall examine the TSS for
-								guidance on supported protected storage and will then configure the TOE or OE to establish a PIN
-								which enables release of the asymmetric key from the protected storage (such as a TPM, a hardware
-								token, or isolated execution environment) with which the VS can interface. The evaluator shall then
-								conduct the following tests:
 								<testlist>
+									If ‘username and PIN that releases an asymmetric key‘ is selected, The evaluator shall examine the TSS for
+									guidance on supported protected storage and will then configure the TOE or OE to establish a PIN
+									which enables release of the asymmetric key from the protected storage (such as a TPM, a hardware
+									token, or isolated execution environment) with which the VS can interface. The evaluator shall then
+									conduct the following tests:
 									<test>The evaluator shall attempt to authenticate to the VS using the known user name and PIN. The
 										evaluator will ensure that the authentication attempt is successful.</test>
 									<test>The evaluator shall attempt to authenticate to the VS using the known user name but an incorrect
 										PIN. The evaluator shall ensure that the authentication attempt is unsuccessful.</test>
 								</testlist>
-								If ‘X.509 certificate authentication‘ is selected, The evaluator shall generate an X.509v3 certificate for 
-								an administrator user with the Client Authentication Enhanced Key Usage field set. The evaluator
-								will provision the VS for authentication with the X.509v3 certificate. The evaluator shall ensure
-								that the certificates are validated by the VS as per FIA_X509_EXT.1.1 in the <xref to="x509"/> and then conduct the following tests:
 								<testlist>
+									If ‘X.509 certificate authentication‘ is selected, The evaluator shall generate an X.509v3 certificate for 
+									an administrator user with the Client Authentication Enhanced Key Usage field set. The evaluator
+									will provision the VS for authentication with the X.509v3 certificate. The evaluator shall ensure
+									that the certificates are validated by the VS as per FIA_X509_EXT.1.1 in the <xref to="x509"/> and then conduct the following tests:
 									<test>The evaluator shall attempt to authenticate to the VS using the X.509v3 certificate. The 
 										evaluator will ensure that the authentication attempt is successful.</test>
 									<test>The evaluator shall generate a second certificate identical to the first except for the public
@@ -6308,11 +6308,11 @@
 										the VS with this certificate. The evaluator shall ensure that the authentication attempt is
 										unsuccessful.</test>
 								</testlist>
-								If ‘SSH public-key credential authentication‘ is selected, the evaluator shall generate a public-private
-								host key pair on the TOE using RSA or ECDSA, and a second public-private key pair on a remote
-								client. The evaluator shall provision the VS with the client public key for authentication over
-								SSH, and conduct the following tests:
 								<testlist>
+									If ‘SSH public-key credential authentication‘ is selected, the evaluator shall generate a public-private
+									host key pair on the TOE using RSA or ECDSA, and a second public-private key pair on a remote
+									client. The evaluator shall provision the VS with the client public key for authentication over
+									SSH, and conduct the following tests:
 									<test>The evaluator shall attempt to authenticate to the VS using a message signed by the client
 										private key that corresponds to provisioned client public key. The evaluator shall ensure that 
 										the authentication attempt is successful.</test>
