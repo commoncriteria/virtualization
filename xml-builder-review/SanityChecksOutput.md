@@ -10,22 +10,14 @@
         on-sel/PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[5]""/f-component[1]""/depends[1]""/on-sel[1]""
 * Error: Detected dangling id-reference to sel-x5092-signed-updates from attribute
         on-sel/PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[7]""/f-component[14]""/depends[2]""/on-sel[1]""
-* Error: Detected multiple elements with an id of ''.
 * Error: Detected multiple elements with an id of 'sel-atssh'.
 * Error: Detected multiple elements with an id of 'sel-attls'.
 * Error: Detected multiple elements with an id of 'sel-atssh'.
 * Error: Detected multiple elements with an id of 'sel-atssh'.
 * Error: Detected multiple elements with an id of 'sel-attls'.
 * Error: Detected multiple elements with an id of 'sel-atssh'.
-* Error: Detected multiple elements with an id of ''.
 * Error: Detected multiple elements with an id of 'sel-exp-skg-256'.
 * Error: Detected multiple elements with an id of 'sel-exp-skg-256'.
-* Error: Detected multiple elements with an id of ''.
-* Error: Detected multiple elements with an id of ''.
-* Error: Detected multiple elements with an id of ''.
-* Error: Detected multiple elements with an id of ''.
-* Error: Detected multiple elements with an id of ''.
-* Error: Detected multiple elements with an id of ''.
 * Error: Detected dangling ref-id to 'dummy-ref-id'.
 	  /PP[1]""/sec:Introduction[1]""/section[3]"This sect"/package-usage-list[1]""/package-usage[1]""/usage[1]""/config[1]""/ref-id[1]"dummy-ref"
 * Error: Detected dangling ref-id to 'dummy-ref-id'.
