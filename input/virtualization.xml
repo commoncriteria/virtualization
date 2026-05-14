@@ -231,7 +231,7 @@
       <term full="Software Identification" abbr="SWID"/>
       <term full="Trusted Platform Module" abbr="TPM"/>
     </tech-terms>
-    <section title="Compliant Targets of Evaluation" id="s-complianttargets">
+    <section id="s-complianttargets" title="Compliant Targets of Evaluation">
       A Virtualization System (VS) is a software product that enables multiple independent computing systems to execute on the 
 			same physical hardware platform without interference from one another. A VS creates a virtualized hardware environment
 			(virtual machines or VMs) for each instance of an operating system permitting these environments to execute 
@@ -273,7 +273,7 @@
 			VM. For the purposes of this document, Helper VMs are subject to all requirements
 			that apply to Guest VMs, unless specifically stated otherwise.
       <h:p/>
-      <sec:TOE_Boundary>
+      <section title="TOE Boundary" id="ss-toeboundary">
         Figure 1 shows a greatly simplified view of a generic virtualization system and platform. TOE components are displayed
 				in Red. Non-TOE components are in Blue. The Platform is the hardware, firmware, and software onto which the VS is 
 				installed. The VMM includes the hypervisor, Service VMs, and VM containers, but not the software that runs inside
@@ -294,7 +294,25 @@
 				constitute the TOE, and the hardware constitutes the Platform. Also in general, for products that are hosted by or
 				integrated into a commodity operating system, the components installed expressly for implementing and supporting
 				virtualization are in the TOE, and the Platform comprises the hardware and Host OS.
-      </sec:TOE_Boundary>
+      </section>
+      <section title="Requirements Met by the Platform" id="ss-platformreqs">Depending on the way the VS is installed, functions tested under this PP may be implemented by the TOE or by the
+				Platform. There is no difference in the testing required whether the function is implemented by the TOE or by the
+				Platform. In either case, the tests determine whether the function being tested provides a level of confidence 
+				acceptable to meet the goals of this Profile with respect to a particular product and platform. The equivalency 
+				guidelines are intended in part to address this TOE vs. Platform distinction, and to ensure that confidence 
+				in the evaluation results do not erode between instances of equivalent products on equivalent platforms—and also, of course, to
+				ensure that the appropriate testing is done when the distinction is significant.</section>
+      <section title="Scope of Certification" id="ss-scopecert">Successful evaluation of a Virtualization System against this profile does not constitute or imply successful 
+				evaluation of any Host Operating System or Platform—no matter how tightly integrated with the VS. The Platform,
+				including any Host OS, supports the VS through provision of services and resources. Specialized VS components 
+				installed on or in a Host OS to support the VS may be considered part of the TOE. But general-purpose OS
+				components and functions—whether or not they support the VS—are not part of the TOE, and thus
+				are not evaluated under this PP.</section>
+      <section title="Product and Platform Equivalence" id="ss-equiv">
+        The tests in this Protection Profile must be run on all product versions and Platforms with which the Vendor would 
+				like to claim compliance—subject to this Profile’s equivalency guidelines (see
+        <xref to="appendix-equiv"/>).
+      </section>
     </section>
     <sec:Use_Cases>
       This Protection Profile supports two use cases: Server Virtualization and Client Virtualization. A product must align with one
