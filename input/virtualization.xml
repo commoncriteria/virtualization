@@ -52,8 +52,7 @@
 	- Addressed comments from April 2021.
 
     -->
-<?xml-model href="../transforms/schemas/CCProtectionProfile.rng" 
-	type="application/xml"?>
+<?xml-model href="../transforms/schemas/CCProtectionProfile.rng" type="application/xml"?>
 <!-- TITLE PAGE -->
 <PP boilerplate="yes" target-product="Virtualization Systems" target-products="Virtualization Systems" xmlns="https://niap-ccevs.org/cc/v1" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:sec="https://niap-ccevs.org/cc/v1/section" short="Virtualization">
   <PPReference>
@@ -1871,7 +1870,9 @@
         <f-component cc-id="fcs_ckm_ext.7" id="sfr-fcs-ckm-ext-7" name="Cryptographic Key
             		Agreement" status="feat-based">
           <depends on="key-agreement-support"/>
+          <consistency-rationale/>
           <comp-lev>requires that cryptographic key agreement be performed in accordance with specified standards.</comp-lev>
+          <management/>
           <audit>
             The following actions should be auditable if FAU_GEN Security audit data generation is
             			included in the PP, PP-Module, functional package or ST:
@@ -4081,7 +4082,10 @@
         </f-component>
         <!-- FCS_ENT_EXT.1 Entropy for Virtual Machines -->
         <f-component cc-id="fcs_ent_ext.1" id="fcs-ent-ext-1" name="Entropy for Virtual Machines">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to provide entropy data to VMs in a specified manner.</comp-lev>
+          <management/>
+          <audit/>
           <dependencies>FCS_RBG.1 Cryptographic Operation (Random Bit Generation)</dependencies>
           <f-element id="fcs-ent-ext-1e1">
             <title>
@@ -4146,7 +4150,9 @@
         <f-component cc-id="fcs_https_ext.1" id="fcs-https-ext-1" name="HTTPS Protocol" status="sel-based">
           <depends on-sel="sel-itc-https"/>
           <depends on-sel="sel-x509-2-https"/>
+          <consistency-rationale/>
           <comp-lev>defines requirements for the implementation of the HTTPS protocol.</comp-lev>
+          <management/>
           <audit>
             The following actions should be auditable if FAU_GEN Security audit data generation is included
                         in the PP, PP-Module, functional package or ST:
@@ -4200,6 +4206,7 @@
         <f-component cc-id="fcs_ipsec_ext.1" id="fcs-ipsec-ext-1" name="IPsec Protocol" status="sel-based">
           <depends on-sel="sel-itc-ipsec"/>
           <depends on-sel="sel-x509-2-ipsec"/>
+          <consistency-rationale/>
           <comp-lev>requires the TSF to securely implement the IPsec protocol.</comp-lev>
           <management>The following actions could be considered for the management functions in FMT: <h:ul><h:li>Specify VPN gateways to use for connections</h:li> <h:li>Specify IPsec VPN clients to use for connections</h:li> <h:li>Specify IPsec-capable network devices to use for connections</h:li> <h:li>Specify client credentials to be used for connections</h:li></h:ul></management>
           <audit>
@@ -5289,8 +5296,11 @@
         </ext-comp-def>
         <!-- FDP_HBI_EXT.1 Hardware-Based Isolation Mechanisms -->
         <f-component cc-id="fdp_hbi_ext.1" id="fdp-hbi-ext-1" name="Hardware-Based Isolation Mechanisms">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to identify the mechanisms used to isolate Guest VMs from platform
 						hardware resources.</comp-lev>
+          <management/>
+          <audit/>
           <dependencies>FDP_VMS_EXT.1 VM Separation</dependencies>
           <f-element id="fdp-hbi-ext-1e1">
             <title>
@@ -5321,6 +5331,7 @@
         </f-component>
         <!-- FDP_PPR_EXT.1 Physical Platform Resource Controls -->
         <f-component cc-id="fdp_ppr_ext.1" id="fdp-ppr-ext-1" name="Physical Platform Resource Controls">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to define the hardware resources that Guest VMs may always access, may never access,
 						and may conditionally access based on administrative configuration.</comp-lev>
           <management>
@@ -5429,8 +5440,7 @@
             </aactivity>
           </f-element>
           <audit-event>
-            <audit-event-descr>Successful and failed VM connections to physical devices where connection is governed by configurable
-							policy.</audit-event-descr>
+            <audit-event-descr>Successful and failed VM connections to physical devices where connection is governed by configurable policy.</audit-event-descr>
             <audit-event-info>VM and physical device identifiers.</audit-event-info>
           </audit-event>
           <audit-event>
@@ -5440,8 +5450,12 @@
         </f-component>
         <!-- FDP_RIP_EXT.1 Residual Information in Memory -->
         <f-component cc-id="fdp_rip_ext.1" id="fdp-rip-ext-1" name="Residual Information in Memory">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to ensure that physical memory is cleared to zeroes prior to its allocation to a
 						Guest VM.</comp-lev>
+          <management/>
+          <audit/>
+          <dependencies/>
           <f-element id="fdp-rip-ext-1e1">
             <title>The TSF shall ensure that any previous information content of physical memory is cleared prior to 
 							allocation to a Guest VM.</title>
@@ -5472,8 +5486,12 @@
         </f-component>
         <!-- FDP_RIP_EXT.2 Residual Information on Disk -->
         <f-component cc-id="fdp_rip_ext.2" id="fdp-rip-ext-2" name="Residual Information on Disk">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to ensure that physical disk storage is cleared upon 
 						allocation to a Guest VM.</comp-lev>
+          <management/>
+          <audit/>
+          <dependencies/>
           <f-element id="fdp-rip-ext-2e1">
             <title>The TSF shall ensure that any previous information content of physical disk storage is cleared to zeroes upon
 							allocation to a Guest VM.</title>
@@ -5508,6 +5526,7 @@
         </f-component>
         <!-- FDP_VMS_EXT.1 VM Separation -->
         <f-component cc-id="fdp_vms_ext.1" id="fdp-vms-ext-1" name="VM Separation">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to maintain logical separation between Guest VMs
 						except through the use of specific configurable methods.</comp-lev>
           <management>
@@ -5517,6 +5536,8 @@
               <h:li>Ability to configure inter-VM data sharing.</h:li>
             </h:ol>
           </management>
+          <audit/>
+          <dependencies/>
           <f-element id="fdp-vms-ext-1e1">
             <title>
               The VS shall provide the following mechanisms for transferring data between Guest VMs:
@@ -5597,6 +5618,7 @@
         </f-component>
         <!-- FDP_VNC_EXT.1 Virtual Networking Components -->
         <f-component cc-id="fdp_vnc_ext.1" id="fdp-vnc-ext-1" name="Virtual Networking Components">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to support the configuration of virtual networking between Guest VMs.</comp-lev>
           <management>
             The following actions could be considered for the management
@@ -5652,8 +5674,7 @@
             </aactivity>
           </f-element>
           <audit-event>
-            <audit-event-descr>Successful and failed attempts to connect VMs to virtual and physical networking
-							components.</audit-event-descr>
+            <audit-event-descr>Successful and failed attempts to connect VMs to virtual and physical networking components.</audit-event-descr>
             <audit-event-info>VM and virtual or physical networking component identifiers.</audit-event-info>
           </audit-event>
           <audit-event>
@@ -5688,6 +5709,7 @@
         <f-component cc-id="fia_afl_ext.1" id="fia-afl-ext-1" name="Authentication Failure Handling" status="sel-based">
           <depends on-sel="sel-uau-pws"/>
           <depends on-sel="sel-uau-pin"/>
+          <consistency-rationale/>
           <comp-lev>requires the TSF to lock an administrator account when an excessive number of failed authentication attempts
 						have been observed until some restorative event occurs to enable the account.</comp-lev>
           <management>
@@ -5776,6 +5798,7 @@
         <!-- FIA_PMG_EXT.1 Password Management -->
         <f-component cc-id="fia_pmg_ext.1" id="fia-pmg-ext-1" name="Password Management" status="sel-based">
           <depends on-sel="sel-uau-pwd"/>
+          <consistency-rationale/>
           <comp-lev>requires the TSF to ensure that administrator passwords meet a
 						defined password policy.</comp-lev>
           <management>
@@ -5786,6 +5809,7 @@
 								the ability to change default authorization factors.</h:li>
             </h:ol>
           </management>
+          <audit/>
           <dependencies>FIA_UIA_EXT.1 Administrator Identification and Authentication</dependencies>
           <f-element id="fia-pmg-ext-1e1">
             <title>
@@ -5840,6 +5864,7 @@
         <!-- FIA_PSK_EXT.1 Pre-Shared Key Composition -->
         <f-component cc-id="fia_psk_ext.1" id="fia-psk-ext-1" name="Pre-Shared Key Composition" status="sel-based">
           <depends on-sel="sel-ipsec-e11-psk"/>
+          <consistency-rationale/>
           <comp-lev>defines the use and composition of pre-shared keys used for IPsec.</comp-lev>
           <management>No specific management functions are identified.</management>
           <audit>No specific audit functions are identified.</audit>
@@ -5961,8 +5986,10 @@
         </f-component>
         <!-- FIA_UIA_EXT.1 Administrator Identification and Authentication -->
         <f-component cc-id="fia_uia_ext.1" id="fia-uia-ext-1" name="Administrator Identification and Authentication">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to ensure that all subjects attempting to perform TSF-mediated actions
 						are identified and authenticated prior to authorizing these actions to be performed.</comp-lev>
+          <management/>
           <audit>
             The following actions should be auditable if FAU_GEN Security audit data generation is included
                         in the PP, PP-Module, functional package or ST:
@@ -6008,7 +6035,7 @@
                 <selectable>None</selectable>
               </selectables>
             </audit-event-descr>
-            <audit-event-info>[<h:b>selection:</h:b> <h:i>Start time and end time of administrator session, N/A</h:i>]</audit-event-info>
+            <audit-event-info>[<h:b>selection:</h:b><h:i>Start time and end time of administrator session, N/A</h:i>]</audit-event-info>
           </audit-event>
         </f-component>
         <!-- FIA_X509_EXT.4 Exceptions to X.509 Certificate Revocation Checking -->
@@ -6016,6 +6043,10 @@
           <depends on-sel="fia-x509-ext-1e4">
             <external-doc ref="X509"/>
           </depends>
+          <consistency-rationale/>
+          <comp-lev/>
+          <management/>
+          <audit/>
           <dependencies>FIA_X509_EXT.1 X.509 Certificate Validation</dependencies>
           <f-element id="fia-x509-ext-4-1">
             <title>
@@ -6056,6 +6087,7 @@
         </ext-comp-def>
         <!-- FMT_MOF_EXT.1 Management of Security Functions Behavior -->
         <f-component cc-id="fmt_mof_ext.1" id="fmt-mof-ext-1" name="Management of Security Functions Behavior">
+          <consistency-rationale/>
           <comp-lev>defines required management functions and responsibilities.</comp-lev>
           <management>There are no additional management functions beyond those already described in FMT_MOF_EXT.1.</management>
           <audit>Success or failure of management function.</audit>
@@ -6335,15 +6367,19 @@
             </aactivity>
           </f-element>
           <audit-event>
-            <audit-event-descr>Attempts to invoke any of the management functions listed in <xref to="manfunc"/>.</audit-event-descr>
+            <audit-event-descr>.</audit-event-descr>
             <audit-event-info>Success or failure of attempt</audit-event-info>
             <audit-event-info>Identity of actor</audit-event-info>
           </audit-event>
         </f-component>
         <!-- FMT_SMO_EXT.1 Separation of Management and Operational Networks -->
         <f-component cc-id="fmt_smo_ext.1" id="fmt-smo-ext-1" name="Separation of Management and Operational Networks">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to separate its management and operational networks through a defined 
 						mechanism.</comp-lev>
+          <management/>
+          <audit/>
+          <dependencies/>
           <f-element id="fmt-smo-ext-1e1">
             <title>
               The TSF shall support the separation of management and operational network traffic through
@@ -6448,7 +6484,11 @@
         </ext-comp-def>
         <!-- FPT_DDI_EXT.1 Device Driver Isolation -->
         <f-component cc-id="fpt_ddi_ext.1" id="fpt-ddi-ext-1" name="Device Driver Isolation" status="optional">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to isolate device drivers for physical devices from all virtual domains.</comp-lev>
+          <management/>
+          <audit/>
+          <dependencies/>
           <f-element id="fpt-ddi-ext-1e1">
             <title>The TSF shall ensure that device drivers for physical devices are isolated from the VMM and 
 							all other domains.</title>
@@ -6479,8 +6519,11 @@
         </f-component>
         <!-- FPT_DVD_EXT.1 Non-Existence of Disconnected Virtual Devices -->
         <f-component cc-id="fpt_dvd_ext.1" id="fpt-dvd-ext-1" name="Non-Existence of Disconnected Virtual Devices">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to prevent Guest VMs from accessing virtual devices
 						that it is not configured to have access to.</comp-lev>
+          <management/>
+          <audit/>
           <dependencies>FPT_VDP_EXT.1 Virtual Device Parameters</dependencies>
           <f-element id="fpt-dvd-ext-1e1">
             <title>The TSF shall prevent Guest VMs from accessing virtual device interfaces that are not present in the VM’s current
@@ -6510,8 +6553,12 @@
         </f-component>
         <!-- FPT_EEM_EXT.1 Execution Environment Mitigations -->
         <f-component cc-id="fpt_eem_ext.1" id="fpt-eem-ext-1" name="Execution Environment Mitigations">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to identify the execution environment-based
 						protection mechanisms that it can use for self-protection.</comp-lev>
+          <management/>
+          <audit/>
+          <dependencies/>
           <f-element id="fpt-eem-ext-1e1">
             <title>
               The TSF shall take advantage of execution environment-based vulnerability mitigation mechanisms 
@@ -6574,8 +6621,10 @@
         </f-component>
         <!-- FPT_GVI_EXT.1 Guest VM Integrity -->
         <f-component cc-id="fpt_gvi_ext.1" id="fpt-gvi-ext-1" name="Guest VM Integrity" status="optional">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to specify the mechanisms it uses to verify the
 						integrity of Guest VMs.</comp-lev>
+          <management/>
           <audit>
             The following actions should be auditable if FAU_GEN Security audit data generation is included
                         in the PP, PP-Module, functional package or ST:
@@ -6583,6 +6632,7 @@
               <h:li>Actions taken due to failed integrity check.</h:li>
             </h:ol>
           </audit>
+          <dependencies/>
           <f-element id="fpt-gvi-ext-1e1">
             <title>
               The TSF shall verify the integrity of Guest VMs through the following mechanisms:
@@ -6615,8 +6665,12 @@
         </f-component>
         <!-- FPT_HAS_EXT.1 Hardware Assists -->
         <f-component cc-id="fpt_has_ext.1" id="fpt-has-ext-1" name="Hardware Assists">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to identify the hardware assists it uses to reduce
 						TOE complexity.</comp-lev>
+          <management/>
+          <audit/>
+          <dependencies/>
           <f-element id="fpt-has-ext-1e1">
             <title>
               The VMM shall use
@@ -6662,8 +6716,10 @@
         </f-component>
         <!-- FPT_HCL_EXT.1 Hypercall Controls -->
         <f-component cc-id="fpt_hcl_ext.1" id="fpt-hcl-ext-1" name="Hypercall Controls">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to implement appropriate parameter validation
 						to protect the VMM from unauthorized access through a hypercall interface.</comp-lev>
+          <management/>
           <audit>
             The following actions should be auditable if FAU_GEN Security audit data generation is included
                         in the PP, PP-Module, functional package or ST:
@@ -6710,7 +6766,7 @@
                 <selectable>None</selectable>
               </selectables>
             </audit-event-descr>
-            <audit-event-info><h:b>[selection: </h:b> <h:i>Hypercall interface for which access was attempted, N/A</h:i>]</audit-event-info>
+            <audit-event-info><h:b>[selection: </h:b><h:i>Hypercall interface for which access was attempted, N/A</h:i>]</audit-event-info>
           </audit-event>
           <audit-event>
             <audit-event-descr>
@@ -6723,7 +6779,11 @@
         </f-component>
         <!-- FPT_IDV_EXT.1 Software Identification and Versions -->
         <f-component cc-id="fpt_idv_ext.1" id="fpt-idv-ext-1" name="Software Identification and Versions" status="objective">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to identify itself using SWID tags.</comp-lev>
+          <management/>
+          <audit/>
+          <dependencies/>
           <f-element id="fpt-idv-ext-1e1">
             <title>The TSF shall include software identification (SWID) tags that contain a SoftwareIdentity element and 
 							an Entity element as defined in ISO/IEC 19770-2:2009.</title>
@@ -6749,7 +6809,9 @@
         </f-component>
         <!-- FPT_INT_EXT.1 Support for Introspection -->
         <f-component cc-id="fpt_int_ext.1" id="fpt-int-ext-1" name="Support for Introspection" status="objective">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to support introspection.</comp-lev>
+          <management/>
           <audit>
             The following actions should be auditable if FAU_GEN Security audit data generation is included
                         in the PP, PP-Module, functional package or ST:
@@ -6757,6 +6819,7 @@
               <h:li>Introspection initiated/enabled.</h:li>
             </h:ol>
           </audit>
+          <dependencies/>
           <f-element id="fpt-int-ext-1e1">
             <title>The TSF shall support a mechanism for permitting the VMM or privileged VMs to access the internals of
 							another VM for purposes of introspection.</title>
@@ -6787,7 +6850,9 @@
         </f-component>
         <!-- FPT_ML_EXT.1 Measured Launch of Platform and VMM -->
         <f-component cc-id="fpt_ml_ext.1" id="fpt-ml-ext-1" name="Measured Launch of Platform and VMM" status="objective">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to support a measured launch of itself.</comp-lev>
+          <management/>
           <audit>
             The following actions should be auditable if FAU_GEN Security audit data generation is included
                         in the PP, PP-Module, functional package or ST:
@@ -6795,6 +6860,7 @@
               <h:li>Integrity measurements collected.</h:li>
             </h:ol>
           </audit>
+          <dependencies/>
           <f-element id="fpt-ml-ext-1e1">
             <title>
               The TSF shall support a measured launch of the virtualization system. Measured 
@@ -6853,6 +6919,7 @@
         </f-component>
         <!-- FPT_RDM_EXT.1 Removable Devices and Media -->
         <f-component cc-id="fpt_rdm_ext.1" id="fpt-rdm-ext-1" name="Removable Devices and Media">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to ensure that VMs are not inadvertently given access to information
 						in different domains because removable media is simultaneously accessible from separate
 						domains.</comp-lev>
@@ -7001,6 +7068,7 @@
         </f-component>
         <!-- FPT_TUD_EXT.1 Trusted Updates to the Virtualization System -->
         <f-component cc-id="fpt_tud_ext.1" id="fpt-tud-ext-1" name="Trusted Updates to the Virtualization System">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to define the mechanism for applying and verifying TOE updates.</comp-lev>
           <management>
             The following actions could be considered for the 
@@ -7128,7 +7196,10 @@
         <f-component cc-id="fpt_tud_ext.2" id="fpt-tud-ext-2" name="Trusted Update Based on Certificates" status="sel-based">
           <depends on-sel="sel-tud-digsign-cert"/>
           <depends on-sel="sel-x5092-signed-updates"/>
+          <consistency-rationale/>
           <comp-lev>requires the TSF to validate updates using a code signing certificate.</comp-lev>
+          <management/>
+          <audit/>
           <dependencies>
             FPT_TUD_EXT.1 Trusted Updates to the Virtualization System
             <h:p/>
@@ -7163,9 +7234,12 @@
         </f-component>
         <!-- FPT_VDP_EXT.1 Virtual Device Parameters -->
         <f-component cc-id="fpt_vdp_ext.1" id="fpt-vdp-ext-1" name="Virtual Device Parameters">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to interface with Guest VMs through virtual hardware abstractions
 						so that any data transmitted to the TOE from a Guest VM can be validated 
 						as well-formed.</comp-lev>
+          <management/>
+          <audit/>
           <dependencies>FPT_VIV_EXT.1 VMM Isolation from VMs</dependencies>
           <f-element id="fpt-vdp-ext-1e1">
             <title>The TSF shall provide interfaces for virtual devices implemented by the VMM as part of the virtual
@@ -7209,8 +7283,11 @@
         </f-component>
         <!-- FPT_VIV_EXT.1 VMM Isolation from VMs -->
         <f-component cc-id="fpt_viv_ext.1" id="fpt-viv-ext-1" name="VMM Isolation from VMs">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to ensure that there is no mechanism by which a Guest VM can interface
 						with the TOE, other VMs, or the hardware platform without authorization.</comp-lev>
+          <management/>
+          <audit/>
           <dependencies>
             FDP_PPR_EXT.1 Physical Platform Resource Controls
             <h:p/>
@@ -7304,8 +7381,10 @@
         </ext-comp-def>
         <!-- FTP_ITC_EXT.1 Trusted Channel Communications -->
         <f-component cc-id="ftp_itc_ext.1" id="ftp-itc-ext-1" name="Trusted Channel Communications">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to implement one or more cryptographic protocols
 						to secure connectivity between the TSF and various external entities.</comp-lev>
+          <management/>
           <audit>
             The following actions should be auditable if FAU_GEN Security audit data generation is included
                         in the PP, PP-Module, functional package or ST:
@@ -7320,10 +7399,10 @@
             <title>
               The TSF shall use
               <selectables linebreak="yes">
-                <selectable id="sel-itc-tls">TLS as conforming to the <h:a href="https://www.niap-ccevs.org/protectionprofiles/465"><h:i><xref to="tls"/></h:i></h:a></selectable>
+                <selectable id="sel-itc-tls">TLS as conforming to the <h:a href="https://www.niap-ccevs.org/protectionprofiles/465"></h:a></selectable>
                 <selectable id="sel-itc-https">TLS/HTTPS as conforming to FCS_HTTPS_EXT.1</selectable>
                 <selectable id="sel-itc-ipsec">IPsec as conforming to FCS_IPSEC_EXT.1</selectable>
-                <selectable id="sel-itc-ssh">SSH as conforming to the <h:a href="https://www.niap-ccevs.org/protectionprofiles/515"><h:i><xref to="ssh"/></h:i></h:a></selectable>
+                <selectable id="sel-itc-ssh">SSH as conforming to the <h:a href="https://www.niap-ccevs.org/protectionprofiles/515"></h:a></selectable>
               </selectables>
               and
               <selectables linebreak="yes">
@@ -7483,8 +7562,12 @@
         </f-component>
         <!-- FTP_UIF_EXT.1 User Interface: I/O Focus -->
         <f-component cc-id="ftp_uif_ext.1" id="ftp-uif-ext-1" name="User Interface: I/O Focus">
+          <consistency-rationale/>
           <comp-lev>requires the TSF to unambiguously identify the Guest VM that has
 						the current input focus for input peripherals.</comp-lev>
+          <management/>
+          <audit/>
+          <dependencies/>
           <f-element id="ftp-uif-ext-1e1">
             <title>The TSF shall indicate to users which VM, if any, has the current input focus.</title>
             <note role="application">
@@ -7510,8 +7593,12 @@
         </f-component>
         <!-- FTP_UIF_EXT.2 User Interface: Identification of VM -->
         <f-component cc-id="ftp_uif_ext.2" id="ftp-uif-ext-2" name="User Interface: Identification of VM">
+          <consistency-rationale/>
           <comp-lev>requires the TOE to perform power on self-tests to verify its functionality and
 						the integrity of its stored executable code.</comp-lev>
+          <management/>
+          <audit/>
+          <dependencies/>
           <f-element id="ftp-uif-ext-2e1">
             <title>The TSF shall support the unique identification of a VM’s output display to users.</title>
             <note role="application">
