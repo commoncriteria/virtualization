@@ -7014,10 +7014,10 @@ The following sections list Common Criteria and technology terms used in this do
                         <div class="eacategory"><abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr></div><div class="ea"><div class="ea">The evaluator shall examine the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> to verify that it describes the authentication mechanisms that authentication failure lockout applies to and whether the failure threshold is fixed or configurable<a id="period_1901" href="#period_1901">. </a>If configurable, the evaluator shall verify that athe <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> identifies the range of supported values<a id="period_1902" href="#period_1902">. </a>The evaluator shall also verify that the <abbr class="dyn-abbr"><a href="#abbr_TSS">TSS</a></abbr> identifies whether the failure state is resolved through administrative action or whether it persists for a configurable amount of time (and what the supported time range is if this applies)<a id="period_1903" href="#period_1903">. </a></div></div><div class="eacategory">Guidance</div><div class="ea"><div class="ea">The evaluator shall verify that if the range of authentication failures that trigger a lockout is configurable, the operational guidance describes how to configure this parameter and what the range of acceptable values is for it<a id="period_1904" href="#period_1904">. </a>This is also covered by <a href="#FMT_MOF_EXT.1">FMT_MOF_EXT.1</a>, function 15<a id="period_1905" href="#period_1905">. </a><p></p>
 							    If a locked account can be unlocked through administrative action, the evaluator shall verify that the operational guidance includes instructions for how to unlock this account<a id="period_1906" href="#period_1906">. </a><p></p>
 							    If a locked account can be unlocked automatically through a configurable time period, the evaluator shall verify that the operational guidance includes instructions for how to configure this time period, as well as the minimum and maximum values for it<a id="period_1907" href="#period_1907">. </a>							</div></div><div class="eacategory">Tests</div><div class="ea"><div class="ea">
-                                The evaluator shall perform the following tests for each credential selected in <a href="#FIA_AFL_EXT.1.1">FIA_AFL_EXT.1.1</a>:<p></p>
-                                The evaluator shall set an administrator-configurable threshold n for failed attempts, or note
-									the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>-specified assignment<a id="period_1908" href="#period_1908">. </a>                                <span class="testlist-"><ul>
-                                    <li class="test-"><a id="_t_44" class="defined" href="#_t_44">Test FIA_AFL_EXT.1:1</a>:
+                                <span class="testlist-"><ul>
+									The evaluator shall perform the following tests for each credential selected in <a href="#FIA_AFL_EXT.1.1">FIA_AFL_EXT.1.1</a>:<p></p>
+	                                The evaluator shall set an administrator-configurable threshold n for failed attempts, or note
+										the <abbr class="dyn-abbr"><a href="#abbr_ST">ST</a></abbr>-specified assignment<a id="period_1908" href="#period_1908">. </a>                                    <li class="test-"><a id="_t_44" class="defined" href="#_t_44">Test FIA_AFL_EXT.1:1</a>:
       The evaluator shall attempt to authenticate remotely with the credential n-1 times<a id="period_1909" href="#period_1909">. </a>The 
 										evaluator will then attempt to authenticate
                                         using a good credential and verify that authentication is successful<a id="period_1910" href="#period_1910">. </a></li>
@@ -7026,10 +7026,11 @@ The following sections list Common Criteria and technology terms used in this do
                                         will then attempt to authenticate using a good credential and verify that the attempt is
                                         unsuccessful<a id="period_1912" href="#period_1912">. </a>Note that the authentication attempts and lockouts must also be logged as
                                         specified in <a href="#FAU_GEN.1">FAU_GEN.1</a><a id="period_1913" href="#period_1913">. </a></li>
-								</ul></span><p></p>
-                                    After reaching the limit for unsuccessful authentication attempts The evaluator shall proceed
-                                    as follows:
+								</ul></span>
+
                                 <span class="testlist-"><ul>
+									After reaching the limit for unsuccessful authentication attempts The evaluator shall proceed
+                                    as follows:
                                     <li class="test-"><a id="_t_46" class="defined" href="#_t_46">Test FIA_AFL_EXT.1:3</a>:
       If the administrator action selection in <a href="#FIA_AFL_EXT.1.2">FIA_AFL_EXT.1.2</a> is selected, then the evaluator
                                         will confirm by testing that following the operational guidance and performing each action
