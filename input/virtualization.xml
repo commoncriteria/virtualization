@@ -6061,10 +6061,10 @@
 							    If a locked account can be unlocked automatically through a configurable time period, the evaluator shall verify that the operational guidance includes instructions for how to configure this time period, as well as the minimum and maximum values for it.
 							</Guidance>
                             <Tests>
-                                The evaluator shall perform the following tests for each credential selected in FIA_AFL_EXT.1.1:<h:p/>
-                                The evaluator shall set an administrator-configurable threshold n for failed attempts, or note
-									the ST-specified assignment.
                                 <testlist>
+									The evaluator shall perform the following tests for each credential selected in FIA_AFL_EXT.1.1:<h:p/>
+	                                The evaluator shall set an administrator-configurable threshold n for failed attempts, or note
+										the ST-specified assignment.
                                     <test>The evaluator shall attempt to authenticate remotely with the credential n-1 times. The 
 										evaluator will then attempt to authenticate
                                         using a good credential and verify that authentication is successful.</test>
@@ -6072,10 +6072,11 @@
                                         will then attempt to authenticate using a good credential and verify that the attempt is
                                         unsuccessful. Note that the authentication attempts and lockouts must also be logged as
                                         specified in FAU_GEN.1.</test>
-								</testlist><h:p/>
-                                    After reaching the limit for unsuccessful authentication attempts The evaluator shall proceed
-                                    as follows:
+								</testlist>
+
                                 <testlist>
+									After reaching the limit for unsuccessful authentication attempts The evaluator shall proceed
+                                    as follows:
                                     <test>If the administrator action selection in FIA_AFL_EXT.1.2 is selected, then the evaluator
                                         will confirm by testing that following the operational guidance and performing each action
                                         specified in the ST to re-enable the remote administrator’s access results in successful
