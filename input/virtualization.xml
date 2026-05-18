@@ -52,7 +52,8 @@
 	- Addressed comments from April 2021.
 
     -->
-<?xml-model href="../transforms/schemas/CCProtectionProfile.rng" type="application/xml"?>
+<?xml-model href="../transforms/schemas/CCProtectionProfile.rng" 
+	type="application/xml"?>
 <!-- TITLE PAGE -->
 <PP boilerplate="yes" target-product="Virtualization Systems" target-products="Virtualization Systems" xmlns="https://niap-ccevs.org/cc/v1" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:sec="https://niap-ccevs.org/cc/v1/section" short="Virtualization">
   <PPReference>
@@ -230,7 +231,7 @@
       <term full="Software Identification" abbr="SWID"/>
       <term full="Trusted Platform Module" abbr="TPM"/>
     </tech-terms>
-    <section title="Compliant Targets of Evaluation" id="s-complianttargets">
+    <section id="s-complianttargets" title="Compliant Targets of Evaluation">
       A Virtualization System (VS) is a software product that enables multiple independent computing systems to execute on the 
 			same physical hardware platform without interference from one another. A VS creates a virtualized hardware environment
 			(virtual machines or VMs) for each instance of an operating system permitting these environments to execute 
@@ -272,7 +273,7 @@
 			VM. For the purposes of this document, Helper VMs are subject to all requirements
 			that apply to Guest VMs, unless specifically stated otherwise.
       <h:p/>
-      <sec:TOE_Boundary>
+      <section title="TOE Boundary" id="ss-toeboundary">
         Figure 1 shows a greatly simplified view of a generic virtualization system and platform. TOE components are displayed
 				in Red. Non-TOE components are in Blue. The Platform is the hardware, firmware, and software onto which the VS is 
 				installed. The VMM includes the hypervisor, Service VMs, and VM containers, but not the software that runs inside
@@ -293,7 +294,25 @@
 				constitute the TOE, and the hardware constitutes the Platform. Also in general, for products that are hosted by or
 				integrated into a commodity operating system, the components installed expressly for implementing and supporting
 				virtualization are in the TOE, and the Platform comprises the hardware and Host OS.
-      </sec:TOE_Boundary>
+      </section>
+      <section title="Requirements Met by the Platform" id="ss-platformreqs">Depending on the way the VS is installed, functions tested under this PP may be implemented by the TOE or by the
+				Platform. There is no difference in the testing required whether the function is implemented by the TOE or by the
+				Platform. In either case, the tests determine whether the function being tested provides a level of confidence 
+				acceptable to meet the goals of this Profile with respect to a particular product and platform. The equivalency 
+				guidelines are intended in part to address this TOE vs. Platform distinction, and to ensure that confidence 
+				in the evaluation results do not erode between instances of equivalent products on equivalent platforms—and also, of course, to
+				ensure that the appropriate testing is done when the distinction is significant.</section>
+      <section title="Scope of Certification" id="ss-scopecert">Successful evaluation of a Virtualization System against this profile does not constitute or imply successful 
+				evaluation of any Host Operating System or Platform—no matter how tightly integrated with the VS. The Platform,
+				including any Host OS, supports the VS through provision of services and resources. Specialized VS components 
+				installed on or in a Host OS to support the VS may be considered part of the TOE. But general-purpose OS
+				components and functions—whether or not they support the VS—are not part of the TOE, and thus
+				are not evaluated under this PP.</section>
+      <section title="Product and Platform Equivalence" id="ss-equiv">
+        The tests in this Protection Profile must be run on all product versions and Platforms with which the Vendor would 
+				like to claim compliance—subject to this Profile’s equivalency guidelines (see
+        <xref to="appendix-equiv"/>).
+      </section>
     </section>
     <sec:Use_Cases>
       This Protection Profile supports two use cases: Server Virtualization and Client Virtualization. A product must align with one
@@ -5440,7 +5459,8 @@
             </aactivity>
           </f-element>
           <audit-event>
-            <audit-event-descr>Successful and failed VM connections to physical devices where connection is governed by configurable policy.</audit-event-descr>
+            <audit-event-descr>Successful and failed VM connections to physical devices where connection is governed by configurable
+							policy.</audit-event-descr>
             <audit-event-info>VM and physical device identifiers.</audit-event-info>
           </audit-event>
           <audit-event>
@@ -5674,7 +5694,8 @@
             </aactivity>
           </f-element>
           <audit-event>
-            <audit-event-descr>Successful and failed attempts to connect VMs to virtual and physical networking components.</audit-event-descr>
+            <audit-event-descr>Successful and failed attempts to connect VMs to virtual and physical networking
+							components.</audit-event-descr>
             <audit-event-info>VM and virtual or physical networking component identifiers.</audit-event-info>
           </audit-event>
           <audit-event>
@@ -5771,18 +5792,16 @@
                 If a locked account can be unlocked automatically through a configurable time period, the evaluator shall verify that the operational guidance includes instructions for how to configure this time period, as well as the minimum and maximum values for it.
               </Guidance>
               <Tests>
-                The evaluator shall perform the following tests for each credential selected in FIA_AFL_EXT.1.1:
-                                The evaluator shall set an administrator-configurable threshold n for failed attempts, or note
-									the ST-specified assignment.
-                                
-                                    After reaching the limit for unsuccessful authentication attempts The evaluator shall proceed
-                                    as follows:
                 <testlist>
+                  The evaluator shall perform the following tests for each credential selected in FIA_AFL_EXT.1.1:
+                  <h:p/>
+                  The evaluator shall set an administrator-configurable threshold n for failed attempts, or note the ST-specified assignment.
                   <test>The evaluator shall attempt to authenticate remotely with the credential n-1 times. The evaluator will then attempt to authenticate using a good credential and verify that authentication is successful.</test>
                   <h:br/>
                   <test>The evaluator shall make n attempts to authenticate using a bad credential. The evaluator will then attempt to authenticate using a good credential and verify that the attempt is unsuccessful. Note that the authentication attempts and lockouts must also be logged as specified in FAU_GEN.1.</test>
                 </testlist>
                 <testlist>
+                  After reaching the limit for unsuccessful authentication attempts The evaluator shall proceed as follows:
                   <test>If the administrator action selection in FIA_AFL_EXT.1.2 is selected, then the evaluator will confirm by testing that following the operational guidance and performing each action specified in the ST to re-enable the remote administrator’s access results in successful access (when using valid credentials for that administrator).</test>
                   <h:br/>
                   <test>If the time period selection in FIA_AFL_EXT.1.2 is selected, The evaluator shall wait for just less than the time period configured and show that an authentication attempt using valid credentials does not result in successful access. The evaluator shall then wait until just after the time period configured and show that an authentication attempt using valid credentials results in successful access.</test>
@@ -6035,7 +6054,7 @@
                 <selectable>None</selectable>
               </selectables>
             </audit-event-descr>
-            <audit-event-info>[<h:b>selection:</h:b><h:i>Start time and end time of administrator session, N/A</h:i>]</audit-event-info>
+            <audit-event-info>[<h:b>selection:</h:b> <h:i>Start time and end time of administrator session, N/A</h:i>]</audit-event-info>
           </audit-event>
         </f-component>
         <!-- FIA_X509_EXT.4 Exceptions to X.509 Certificate Revocation Checking -->
@@ -6367,7 +6386,7 @@
             </aactivity>
           </f-element>
           <audit-event>
-            <audit-event-descr>.</audit-event-descr>
+            <audit-event-descr>Attempts to invoke any of the management functions listed in <xref to="manfunc"/>.</audit-event-descr>
             <audit-event-info>Success or failure of attempt</audit-event-info>
             <audit-event-info>Identity of actor</audit-event-info>
           </audit-event>
@@ -6766,7 +6785,7 @@
                 <selectable>None</selectable>
               </selectables>
             </audit-event-descr>
-            <audit-event-info><h:b>[selection: </h:b><h:i>Hypercall interface for which access was attempted, N/A</h:i>]</audit-event-info>
+            <audit-event-info><h:b>[selection: </h:b> <h:i>Hypercall interface for which access was attempted, N/A</h:i>]</audit-event-info>
           </audit-event>
           <audit-event>
             <audit-event-descr>
@@ -7399,10 +7418,10 @@
             <title>
               The TSF shall use
               <selectables linebreak="yes">
-                <selectable id="sel-itc-tls">TLS as conforming to the <h:a href="https://www.niap-ccevs.org/protectionprofiles/465"></h:a></selectable>
+                <selectable id="sel-itc-tls">TLS as conforming to the <h:a href="https://www.niap-ccevs.org/protectionprofiles/465"><h:i><xref to="tls"/></h:i></h:a></selectable>
                 <selectable id="sel-itc-https">TLS/HTTPS as conforming to FCS_HTTPS_EXT.1</selectable>
                 <selectable id="sel-itc-ipsec">IPsec as conforming to FCS_IPSEC_EXT.1</selectable>
-                <selectable id="sel-itc-ssh">SSH as conforming to the <h:a href="https://www.niap-ccevs.org/protectionprofiles/515"></h:a></selectable>
+                <selectable id="sel-itc-ssh">SSH as conforming to the <h:a href="https://www.niap-ccevs.org/protectionprofiles/515"><h:i><xref to="ssh"/></h:i></h:a></selectable>
               </selectables>
               and
               <selectables linebreak="yes">
