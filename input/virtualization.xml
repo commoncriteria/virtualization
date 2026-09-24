@@ -99,38 +99,6 @@
         </entry>
     </RevisionHistory>	
       
-  <include-pkg id="ssh">
-    <git>
-      <url>https://github.com/commoncriteria/ssh</url>
-      <branch>release-2.0</branch>
-    </git>
-    <url>https://commoncriteria.github.io/ssh/release-2.0/ssh-release.html</url>
-    <depends on="s-ftp_ssh" also="s-uau-ssh"/>
-	<depends on-sel="sel-itc-ssh"/>
-  </include-pkg>
-    
-  <include-pkg id="tls">
-    <git>
-      <url>https://github.com/commoncriteria/tls</url>
-      <branch>release-2.1</branch>
-    </git>
-    <url>https://commoncriteria.github.io/tls/release-2.1/tls-release.html</url>
-    <depends on-sel="sel-itc-tls"/>
-	<depends on-sel="sel-itc-https"/>
-    </include-pkg>    
-    
-    <include-pkg id="X509">
-        <git>
-            <url>https://github.com/commoncriteria/X509</url>
-            <branch>release-1.0</branch>
-        </git>
-        <url>https://www.niap-ccevs.org/static_html/protection-profile/511/Functional%20Package%20for%20X.509_v1.0.html</url>
-        <depends on="fcs-ipsec-ext-1e11"/>
-        <depends on="fia-uau-5e1"/>
-        <depends on="fpt-tud-ext-1e3"/>
-        <depends on="fpt-tud-ext-2e1"/>
-        <depends on="ftp-itc-ext-1e1"/>
-    </include-pkg>
     
     
 	<!-- Rules - These are rules where selections in the base require selections in the PP-Modules.
@@ -543,9 +511,45 @@
 
 		<!-- Package claims -->
 		<cc-pkg-claim>
-			<FP-cc-ref conf="conformant">Functional Package for Secure Shell Version 2.0</FP-cc-ref>
-			<FP-cc-ref conf="conformant">Functional Package for Transport Layer Security Version 2.1</FP-cc-ref>
-			<FP-cc-ref conf="conformant">Functional Package for X.509 Version 1.0</FP-cc-ref>			
+			<FP-cc-ref conf="conformant">
+				<!-- Functional Package for Secure Shell Version 2.0 -->
+				<cc-doc-ref id="ssh">
+					<git>
+						<url>https://github.com/commoncriteria/ssh</url>
+						<branch>release-2.0</branch>
+					</git>
+					<url>https://www.niap-ccevs.org/protectionprofiles/515</url>
+					<depends on="s-ftp_ssh" also="s-uau-ssh"/>
+					<depends on-sel="sel-itc-ssh"/>
+				</cc-doc-ref>
+			</FP-cc-ref>
+			<FP-cc-ref conf="conformant">
+				<!-- Functional Package for Transport Layer Security Version 2.1 -->
+				<cc-doc-ref id="tls">
+					<git>
+						<url>https://github.com/commoncriteria/tls</url>
+						<branch>release-2.1</branch>
+					</git>
+					<url>https://www.niap-ccevs.org/protectionprofiles/519</url>
+					<depends on-sel="sel-itc-tls"/>
+					<depends on-sel="sel-itc-https"/>
+				</cc-doc-ref>
+			</FP-cc-ref>
+			<FP-cc-ref conf="conformant">
+				<!-- Functional Package for X.509 Version 1.0 -->
+				<cc-doc-ref id="X509">
+					<git>
+						<url>https://github.com/commoncriteria/X509</url>
+						<branch>release-1.0</branch>
+					</git>
+					<url>https://www.niap-ccevs.org/protectionprofiles/511</url>
+					<depends on="fcs-ipsec-ext-1e11"/>
+					<depends on="fia-uau-5e1"/>
+					<depends on="fpt-tud-ext-1e3"/>
+					<depends on="fpt-tud-ext-2e1"/>
+					<depends on="ftp-itc-ext-1e1"/>
+				</cc-doc-ref>
+			</FP-cc-ref>
 		</cc-pkg-claim>
 
 	</CClaimsInfo>
