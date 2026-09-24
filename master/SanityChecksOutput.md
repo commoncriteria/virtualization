@@ -1,7 +1,7 @@
 * Error: Detected dangling id-reference to s-ftp_ssh from attribute
-        on/PP[1]""/include-pkg[1]""/depends[1]""/on[1]""
+        on/PP[1]""/section[1]""/CClaimsInfo[1]""/cc-pkg-claim[1]""/FP-cc-ref[1]""/cc-doc-ref[1]""/depends[1]""/on[1]""
 * Error: Detected dangling id-reference to s-uau-ssh from attribute
-        also/PP[1]""/include-pkg[1]""/depends[1]""/also[1]""
+        also/PP[1]""/section[1]""/CClaimsInfo[1]""/cc-pkg-claim[1]""/FP-cc-ref[1]""/cc-doc-ref[1]""/depends[1]""/also[1]""
 * Error: Detected dangling id-reference to sel-x509-2-https from attribute
         on-sel/PP[1]""/sec:Security_Requirements[1]""/section[1]""/section[3]""/f-component[16]""/depends[2]""/on-sel[1]""
 * Error: Detected dangling id-reference to sel-x509-2-ipsec from attribute
